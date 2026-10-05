@@ -14,6 +14,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "The text of a <description> element contains a character outside printable US-ASCII (0x20 to 0x7E), for example a non-ASCII letter, a symbol such as the euro sign, typographic quotes, or a line break inside the text; %NAME% shows the …"
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:207", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:222-230", "Open-CMSIS-Pack/devtools@30f5e817:libs/xmlreader/src/XML_Reader.cpp:515-527", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:915-950", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/TestTextExceedsLength/TestVendor.TestTextExceedsLength.pdsc:28"]

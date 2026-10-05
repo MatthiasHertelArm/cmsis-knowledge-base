@@ -16,6 +16,7 @@ applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Only one PDSC file is allowed in a package. Remove unnecessary PDSC files. The message lists all \\*.pdsc files found."
+summary: "The folder that contains the PDSC holds more than one *.pdsc file; only that folder is searched, not its subfolders."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:90", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CreateModel.cpp:39-86", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtefsutils/src/RteFsUtils.cpp:750-788", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ParseOptions.cpp:222", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:135"]

@@ -16,6 +16,7 @@ applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Update schema and add CPU section."
+summary: "The <device> has schemaVersion=\"1.0\" and no <cpu> element; CMSIS-SVD 1.0 had no <cpu> section."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:983-994", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:77"]

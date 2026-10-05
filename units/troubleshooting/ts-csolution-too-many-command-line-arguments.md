@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:322"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "The command-line parser reported arguments that it could not assign to an option or to the positional arguments."
 cause_origin: "source-analysis"
 confidence: "low"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:320", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:214", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:257"]

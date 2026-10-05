@@ -16,6 +16,7 @@ applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Add tag."
+summary: "An element has dim data but lacks <dim> or <dimIncrement>; both are required as soon as any dim element (<dim>, <dimIncrement>, <dimIndex>, <dimName>) is present. svdconv drops the element."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDimension.cpp:571-582", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdItem.cpp:251-257", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:80"]

@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlSchemaCh
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "The YAML schema check was asked to validate a file that does not exist at the given path (`<…>`)."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:18-24", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:69-74", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrRpcServer.cpp:322-350", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrSchemaCheckerUnitTests.cpp:62-64"]

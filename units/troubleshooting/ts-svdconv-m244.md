@@ -14,6 +14,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msg
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "A peripheral's <disableCondition> uses a name svdconv cannot resolve."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCExpression.cpp:59", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCExpression.cpp:85", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCExpression.cpp:87", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/include/SvdItem.h:256", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCExpressionParser.cpp:110", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdPeripheral.cpp:147", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/data/disablecondition/DisableCondTest.svd:32", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/data/disablecondition/DisableCondTest.svd:85"]

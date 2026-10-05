@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:8
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "The folder given with `--clayer-path`/`-L` to `csolution list layers` does not exist."
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:857-864", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:301-303", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:2459-2467"]

@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1045"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "`csolution run` was called without `-g`/`--generator <id>`."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1042-1047"]

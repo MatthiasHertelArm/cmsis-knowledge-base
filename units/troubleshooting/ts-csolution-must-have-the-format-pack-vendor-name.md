@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "A `$Pack(...)$` access sequence in a YAML path or option has an argument without both vendor and pack name separated by `::`, e.g."
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3684-3690", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3727-3729", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:2667-2691", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestAccessSequences/pack-access-sequences.csolution.yml:13"]

@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "csolution could not create its internal pack-model kernel at start."
 cause_origin: "source-analysis"
 confidence: "low"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:503-508", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrKernel.cpp:54-59"]

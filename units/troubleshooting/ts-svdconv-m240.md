@@ -16,6 +16,7 @@ applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Correct SVD."
+summary: "A dim element (any tag whose name contains 'dim') is not accepted on this level by svdconv: <dimIndex> or <dimName> on a <peripheral>, <dimName> on a <register>, <dimArrayIndex> on a <field>, or any dim element on an <interrupt>."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDimension.cpp:60-100", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDimension.cpp:137-148", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdItem.cpp:251-257", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:107"]

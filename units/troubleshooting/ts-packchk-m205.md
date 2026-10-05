@@ -15,6 +15,7 @@ doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "Check the disk space or your permissions."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:89", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk.cpp:54-84", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtefsutils/src/RteFsUtils.cpp:217-232", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:134"]

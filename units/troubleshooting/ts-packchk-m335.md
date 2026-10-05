@@ -16,6 +16,7 @@ applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "A component defined as 'board support' needs a reference to a device. Add a device or correct the component definition. Refer to attribute _Cclass_ of [/package/components/.../component](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_components_pg.html#element_component) and [/package/boards/board/mountedDevice](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_boards_pg.html#element_board_mountedDevice)."
+summary: "A component with Cclass \"Device\", \"Board Support\", or \"CMSIS Driver\" without Csub has no condition attribute, so nothing restricts it to the devices it supports."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:151-152", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckComponents.cpp:84-107", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:176"]

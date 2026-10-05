@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:6
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "`csolution check pack-updates` found no pack information at all: the pack index $CMSIS_PACK_ROOT/.Web/index.pidx is missing or unreadable, and no installed or local pack could be read either."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:6137-6149", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteKernel.cpp:610-678", "Open-CMSIS-Pack/devtools@30f5e817:tools/buildmgr/test/scripts/setup_test.sh:131-133"]

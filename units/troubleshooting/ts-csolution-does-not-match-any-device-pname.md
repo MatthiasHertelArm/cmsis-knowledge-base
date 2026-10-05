@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrRunDebug.cpp
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "A `telnet:` entry under `target-set:` - `debugger:` in the csolution.yml has `pname:` set to a processor name the device does not have; `<…>` is that name."
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrRunDebug.cpp:482", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:615", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestRunDebug/telnet.csolution.yml:86", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:7369"]

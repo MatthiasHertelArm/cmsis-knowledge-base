@@ -14,6 +14,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "A component's condition (directly or through a referenced condition) contains a component dependency that the component itself satisfies, e.g. the component Cclass=\"C\" Cgroup=\"G\" uses a condition with <require Cclass=\"C\" Cgroup=\"G\"/>. %NAME% is the component, %EXPR% the condition and %NAME2% …"
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:208", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSemantic.cpp:976-1020", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:528-554", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/CompResolvedByItself/ARM.CompResolvedByItself.pdsc:16-33"]

@@ -14,6 +14,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "Validation of the RTE model built from the loaded PDSC files found an error and prints it as '<pack>: <element> '<id>': error #<n>: <text>'."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:228", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/RteModelReader.cpp:20-44", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/RteModelReader.cpp:142-154", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteItem.cpp:470-474", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteItem.cpp:1048-1066", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteComponent.cpp:47-53", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteCondition.cpp:160-192", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteCondition.cpp:360-372", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteDevice.cpp:525-553", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteExample.cpp:46-53"]

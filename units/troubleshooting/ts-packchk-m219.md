@@ -14,6 +14,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "The schema file given with --xsd does not exist (a relative path is resolved against the current working directory)."
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:105", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackOptions.cpp:272-287", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CreateModel.cpp:151-162", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:697-727", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:730-762", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:54-57"]

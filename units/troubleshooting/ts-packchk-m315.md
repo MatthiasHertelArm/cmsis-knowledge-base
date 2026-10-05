@@ -16,6 +16,7 @@ applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Correct package URL _'URL'_. Refer to [/package/url](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_package_pg.html#package_url)."
+summary: "The <url> of the package has ':' as its second character, i.e. it starts with a drive letter such as \"C:/packs/\" instead of a web address."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:131", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:513-515", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:162"]

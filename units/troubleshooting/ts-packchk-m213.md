@@ -14,6 +14,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "The file name given with option -n (text file that receives the pack name) contains a space, tab, carriage return or line feed. packchk deletes each such character from the whole path, folder names included, and prints its decimal …"
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:99", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackOptions.cpp:57-74", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk.cpp:138-157", "Open-CMSIS-Pack/devtools@30f5e817:libs/errlog/include/ErrLog.h:66"]

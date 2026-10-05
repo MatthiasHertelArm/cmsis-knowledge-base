@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlEmitter.
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "`--frozen-packs` was given, and the packs csolution resolves for the solution differ from those locked in `<name>.cbuild-pack.yml` (e.g. a pack was added to or removed from packs:, or a version requirement changed), so the lock file would have to change."
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlEmitter.cpp:55-58", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrCbuildPack.cpp:139-149", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:1265-1305"]

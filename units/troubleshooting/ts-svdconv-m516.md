@@ -15,6 +15,7 @@ doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "During SFD generation (--generate=sfd or sfr) a text contains a character svdconv cannot write into the SFD file: a byte outside printable ASCII 0x20..0x7E (UTF-8 letters, µ, ©, typographic quotes or dashes, each byte reported separately) or a double quote."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdUtils.cpp:1238-1300", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/SfdData_SingleItems.cpp:78", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/SfdData_SingleItems.cpp:262", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/SfdData_SingleItems.cpp:874", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/SfdData_SingleItems.cpp:1044", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:217"]

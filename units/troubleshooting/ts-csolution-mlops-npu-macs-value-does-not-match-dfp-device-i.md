@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrMlops.cpp:29
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "`mlops:` - `npu:` - `macs:` in the csolution.yml (possibly combined with `npu: type:`) names a MAC count that no NPU of the selected device offers. csolution compares it with the `<feature type=\"NPU\">` entries the DFP declares for the processors …"
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrMlops.cpp:286", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrMlops.cpp:253", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:6485", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/MLOps/npu_mismatch.csolution.yml:8", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:7950"]

@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "A `for-context:` or `not-for-context:` entry in a csolution.yml, cproject.yml or clayer.yml uses `.Name`, but Name is not a build type defined under build-types: (nor in a context-map:)."
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4012-4105", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:5508-5531", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestSolution/typefilters.cproject.yml", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestSolution/typefilters.csolution.yml"]

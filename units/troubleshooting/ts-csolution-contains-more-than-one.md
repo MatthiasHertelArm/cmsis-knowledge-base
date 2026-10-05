@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrCbuild.cpp:2
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "The RTE folder of a component configuration file (for example RTE/Device/<device>/startup_<device>.c) holds more than one backup with the same prefix, such as two `<file>.base@<version>` or two `<file>.update@<version>` files."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrCbuild.cpp:235-261", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrCbuild.cpp:191-196", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteProject.cpp:646-668", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteProject.cpp:714-725", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteProject.cpp:1087-1092", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2425"]

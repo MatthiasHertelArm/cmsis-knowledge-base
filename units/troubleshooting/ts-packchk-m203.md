@@ -16,6 +16,7 @@ applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Verify the PDSC file for consistency."
+summary: "The folder that contains the PDSC holds more than one *.pdsc file, so packchk does not read the pack; M206 printed just before lists the files."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:87", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CreateModel.cpp:39-63", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CreateModel.cpp:112-117", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ParseOptions.cpp:222", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtefsutils/src/RteFsUtils.cpp:750-788", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:132"]

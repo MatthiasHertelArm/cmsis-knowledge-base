@@ -16,6 +16,7 @@ applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "The PDSC file expected has not been found. Rename or exchange the PDSC file."
+summary: "The PDSC file name is not <vendor>.<name>.pdsc as built from the <vendor> and <name> elements of the PDSC (exact, case-sensitive comparison)."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:91-93", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:335-341", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:136"]

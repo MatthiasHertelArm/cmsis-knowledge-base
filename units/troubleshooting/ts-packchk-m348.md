@@ -16,6 +16,7 @@ applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "This feature _'FEATURE'_ has been defined already on the same level in line _'REF\\_LINE'_. The feature characteristics defined on line _'LINE'_ overwrite those from _'REF\\_LINE'_. Correct the feature ([/package/devices/family/.../feature](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_feature))."
+summary: "Within one device-level element (family, subFamily, device or variant), two <feature> elements with the same type, m and name, or two <algorithm> elements with the same identity, apply to the same processor (same Pname, or both to all processors); …"
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:166", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:868-963", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:1164-1201", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:794-824", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/DuplicateFlashAlgo/TestVendor.DuplicateFlashAlgo.pdsc:93-104", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:189"]

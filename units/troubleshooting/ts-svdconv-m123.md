@@ -16,6 +16,7 @@ applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Check speficied path."
+summary: "A path given on the command line does not exist: the input SVD file, or the output directory of -o/--outdir when --create-folder is not given."
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SvdOptions.cpp:278-293", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SvdOptions.cpp:320-339", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv.cpp:202-206", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:53"]

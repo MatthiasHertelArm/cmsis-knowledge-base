@@ -14,6 +14,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "Xerces reported a warning while validating the PDSC against the PACK.xsd schema; %MSG% is the Xerces text and the line is the PDSC line."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:231", "Open-CMSIS-Pack/devtools@30f5e817:libs/xmlschemachecker/src/XmlErrorHandler.cpp:22-25", "Open-CMSIS-Pack/devtools@30f5e817:libs/xmlschemachecker/src/XmlErrorHandler.cpp:37-46", "Open-CMSIS-Pack/devtools@30f5e817:libs/xmlschemachecker/src/XmlValidator.cpp:49-66", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CreateModel.cpp:119-123"]

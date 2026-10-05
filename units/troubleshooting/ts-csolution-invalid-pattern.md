@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.c
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "A `for-context:` or `not-for-context:` entry starts with `^` or `\\`, so csolution treats it as a regular expression, but the expression does not compile; the first `<…>` is the entry, the second the regex library's error text."
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:684", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:710", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:715", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestSolution/ForContextRegex/regex-fail.csolution.yml:19", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestSolution/ForContextRegex/regex.cproject.yml:13", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:6764"]

@@ -74,7 +74,7 @@ The server loads it when `knowledge_search` gets a `cbuild` path and reloads on 
 | `tools/overlay.py` | Workspace entities for unreleased devices |
 | `units/` | Generated knowledge units (all draft). `units/cda-skills` and `units/cda-routes` come from a checkout of the extension: `CDA=<checkout> scripts/rebuild.sh`. `units/docs/<source>` from `sources/docs.yml`; `units/docs-ccbysa/<source>` is built but left out of the index unless `CCBYSA=1` |
 | `build/` | `entities/*.jsonl` and prebuilt `knowledge.db` |
-| `tests/` | `test_kb.py` and fixtures (incl. a workspace with a local DFP and a docs-only device) |
+| `tests/` | `test_kb.py` and fixtures (incl. a workspace with a local DFP and a docs-only device). `golden.json`: 47 questions and tool outputs with the units that answer them; `node tests/eval_search.js build/knowledge.db <CDA checkout>` runs them through the extension's own search and prints hit@1, hit@5 and MRR |
 | `scripts/` | `setup.sh`, `fetch_sources.py`, `rebuild.sh` |
 | `docs/design/` | Design documents 00 to 05 (German): concept and schema, migration findings, domains, source list with licenses, status |
 | `docs/kickoff/` | Team kickoff deck (English) and its generator |

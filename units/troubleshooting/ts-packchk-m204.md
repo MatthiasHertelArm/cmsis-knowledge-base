@@ -15,6 +15,7 @@ doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "The specified PDSC file could not be found in the _PATH_ displayed in the message."
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:88", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackOptions.cpp:171-188", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CreateModel.cpp:101-106", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:89-108", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:133"]

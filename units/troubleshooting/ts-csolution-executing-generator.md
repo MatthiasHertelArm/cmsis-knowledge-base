@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "`csolution run -g <id>` started the command of a generator defined in a pack (from its `<exe>` element) for the context, and the command ended with a non-zero exit code."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5163-5180", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrLogger.cpp:72-80"]

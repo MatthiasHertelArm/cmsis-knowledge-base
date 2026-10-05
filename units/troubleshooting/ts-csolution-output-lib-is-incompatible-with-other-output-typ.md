@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "The `output:` - `type:` settings that apply to a context combine `lib` with `elf`, `hex` or `bin`; output types from several `output:` nodes (in cproject.yml, setups, clayer.yml) add up."
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5608", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestSolution/outputFiles.cproject.yml:2", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:4703"]

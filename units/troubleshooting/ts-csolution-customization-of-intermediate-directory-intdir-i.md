@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "The csolution.yml sets `output-dirs: intdir:`, which only the legacy `--cbuildgen` flow uses; the default cbuild2cmake backend ignores it."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:193-209", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/schemas/common.schema.json:356-370"]

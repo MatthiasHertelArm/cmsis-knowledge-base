@@ -16,6 +16,7 @@ applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Correct the MCU name."
+summary: "The SVD file name without path and extension differs from <device><name>; the comparison is case-sensitive (e.g. stm32f4.svd for <name>STM32F4</name>)."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:939-961", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/SvdGenerator.cpp:69-73", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:90", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:223"]

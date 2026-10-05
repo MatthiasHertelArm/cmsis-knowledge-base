@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "A selected component is handled by a generator defined in its pack, and the generator's gpdsc file (its path prefixes the message) cannot be loaded: it does not exist yet because the generator has not been run for this …"
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2882-2898", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2049-2064", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrUtils.cpp:108-132", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteProject.cpp:1196-1214", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUtilsUnitTests.cpp:61-75", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestGenerator/RTE/Device/RteTestGen_ARMCM0/RteTest_Invalid.gpdsc"]

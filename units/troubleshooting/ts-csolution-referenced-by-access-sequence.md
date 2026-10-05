@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "A solution-level node of the csolution.yml (for example `executes:` input/output) uses an access sequence such as `$elf(unknown.Debug+Target)$` whose context argument matches no context of the solution: no context name contains the given text."
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3735-3751", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:6369-6392", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestSolution/Executes/error.csolution.yml"]

@@ -2,17 +2,17 @@
 id: "mcuboot-bootloader-swap-using-offset-without-using-scratch"
 type: "concept"
 domain: "boot-update"
-title: "Bootloader: [Image slots](#image-slots) / [Swap using offset (without using scratch)](#image-swap-offset-no-scratch)"
+title: "Bootloader: Image slots / Swap using offset (without using scratch)"
 summary: "This algorithm is an alternative to the swap-using-scratch algorithm and an enhancement of the swap using move algorithm. It uses an additional sector in the secondary slot to make swap possible. The algorithm works as follows:"
 status: "draft"
 collection: "mcuboot"
 source: "mcu-tools/mcuboot@ba2099f:docs/design.md"
-doc_source: "https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/design.md#swap-using-offset-without-using-scratch-image-swap-offset-no-scratch"
+doc_source: "https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/design.md#swap-using-offset-without-using-scratch"
 license: "Apache-2.0"
 mode: "V"
 ---
 
-_Part of: [Image slots](#image-slots)_
+_Part of: Image slots_
 
 This algorithm is an alternative to the swap-using-scratch algorithm and an
 enhancement of the swap using move algorithm.

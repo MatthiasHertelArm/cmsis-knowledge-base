@@ -16,6 +16,7 @@ applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "The PDSC file is missing release information. Add `<release>` information to the file. Refer to [/package/releases element](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/element_releases.html)."
+summary: "The PDSC has no <releases> element at all. packchk then also skips the package description and PDSC file name checks."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:156", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:291-296", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:179"]

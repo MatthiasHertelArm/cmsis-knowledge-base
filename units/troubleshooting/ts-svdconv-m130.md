@@ -16,6 +16,7 @@ applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Check user rights."
+summary: "svdconv could not open an output file (header, partition, SFD or listing) for writing."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/FileIo.cpp:44-56", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/SvdGenerator.cpp:69-73", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/SvdGenerator.cpp:103-108", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:60"]

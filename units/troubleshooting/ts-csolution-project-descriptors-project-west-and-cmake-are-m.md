@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.c
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "One entry under `projects:` in the csolution.yml has more than one of `project:`, `west:` and `cmake:`; the message points to that entry."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:879", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/schemas/common.schema.json:753"]

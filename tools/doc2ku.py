@@ -364,7 +364,9 @@ def headings(md):
         elif not fence:
             m = re.match(r"(#{1,6})\s+(.*?)\s*#*\s*$", line)
             if m:
-                out.append((len(m.group(1)), m.group(2).strip(), pos, pos + len(line)))
+                # A heading that is a link, as in "## [Signing images](#signing-images)": its text.
+                title = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", m.group(2)).strip()
+                out.append((len(m.group(1)), title, pos, pos + len(line)))
         pos += len(line)
     return out
 

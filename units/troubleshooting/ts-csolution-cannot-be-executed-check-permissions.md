@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "The pack generator's executable exists but is not executable for the current user, e.g. a script in the pack without its execute bit after unpacking on Linux/macOS."
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5155-5158", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrGeneratorUnitTests.cpp:127-145", "Open-CMSIS-Pack/devtools@30f5e817:test/packs/ARM/RteTestGenerator/0.1.0/ARM.RteTestGenerator.pdsc:89-107"]

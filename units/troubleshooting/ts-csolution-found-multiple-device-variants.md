@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "The selected device, from `device:` or from the board's mounted device, has variants in its pack, and csolution needs one variant."
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1502-1512", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:3394-3409", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestSolution/TestProject4/test_board_multi_variant.cproject.yml", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestSolution/TestProject4/test_board_multi_variant_and_device.cproject.yml"]

@@ -16,6 +16,7 @@ applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Use standard URL notation using forward slashes (/)."
+summary: "A path attribute or license entry in the PDSC holds a URL (http, https, ftp or ftps) that contains backslashes."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:189", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/RteModelReader.cpp:52-67", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:155-174", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:208"]

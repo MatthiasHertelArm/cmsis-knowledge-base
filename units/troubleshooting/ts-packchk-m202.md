@@ -16,6 +16,7 @@ applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Correct the command line. **packchk** expects a *.pdsc file name as input."
+summary: "packchk got no PDSC file to check: no file argument was given, or the argument names a folder instead of a *.pdsc file."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:86", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CreateModel.cpp:94-110", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackOptions.cpp:171-176", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ParseOptions.cpp:208", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:131"]

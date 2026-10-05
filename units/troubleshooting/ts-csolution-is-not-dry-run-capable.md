@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "`csolution run --dry-run` was used with a pack generator whose `<exe>` in the pack declares no `<argument mode=\"dry-run\">`, so it cannot run without writing files."
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5159-5162", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteGenerator.cpp:307-319", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrGeneratorUnitTests.cpp:151-166", "Open-CMSIS-Pack/devtools@30f5e817:test/packs/ARM/RteTestGenerator/0.1.0/ARM.RteTestGenerator.pdsc:110-130"]

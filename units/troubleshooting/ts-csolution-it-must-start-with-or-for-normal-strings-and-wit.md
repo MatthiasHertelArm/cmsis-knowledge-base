@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.c
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "A `for-context:` or `not-for-context:` entry does not begin with `.` (build type), `+` (target type), `^` or `\\` (regular expression); `<…>` is the entry, e.g."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:707", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:684", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/schemas/common.schema.json:14"]

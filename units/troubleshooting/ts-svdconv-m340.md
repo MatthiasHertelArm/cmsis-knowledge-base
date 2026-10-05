@@ -15,6 +15,7 @@ doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "The input has no <device> root element: the root element has another name, or the XML could not be parsed at all (then XML errors and M111 'Reading SVD File failed' come first)."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdModel.cpp:46", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdModel.cpp:84", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdModel.cpp:85", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv.cpp:214", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv.cpp:218", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv.cpp:245", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:159"]

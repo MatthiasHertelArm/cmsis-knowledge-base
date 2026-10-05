@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "csolution tried to generate the memory regions header `regions_<board or device>.h` in the project's RTE device folder, either for a default linker script template or because `linker:` - `regions:` names a file that does not exist, and could not."
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2332", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2302", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteTarget.cpp:1931", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteTarget.cpp:1799", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrWorkerUnitTests.cpp:1566"]

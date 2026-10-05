@@ -15,6 +15,7 @@ doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "File _'PATH'_ is defined with the attribute _'ATTR'_ that requires presense of attribute _'ATTR2'_ as well, but such attribute was not found."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:161", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:649-679", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:184"]

@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1215"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "The csolution.yml has `created-for: CMSIS-Toolbox@<version>`, and to compare versions csolution looks for `manifest_<x.y.z>*.yml` in the CMSIS-Toolbox installation directory (the parent of the folder that holds the csolution executable)."
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1209", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1184", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrKernel.cpp:36", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:7104"]

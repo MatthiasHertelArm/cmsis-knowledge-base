@@ -16,6 +16,7 @@ applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Unsupported characters are found in the _'NAME'_ for the tag/attribute _'TAG'_. Specify the name using only supported characters from _'CHAR'_."
+summary: "A device or variant name (Dname or Dvariant) contains characters other than letters, digits, '-', '_' and '/'."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:202", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSemantic.cpp:307-324", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSemantic.cpp:577-581", "Open-CMSIS-Pack/devtools@30f5e817:libs/rteutils/src/RteUtils.cpp:187-194", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:221"]

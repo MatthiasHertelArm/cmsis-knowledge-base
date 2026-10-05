@@ -16,6 +16,7 @@ applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Package releases shall be entered in consecutive way: newest release version and latest date first. Rearrange the releases in the list or correct values for the returned 'TAG' attributes (version or date). Refer to [/package/releases/release](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/element_releases.html#element_release)."
+summary: "The <release> elements are not ordered newest first by version: a release has a version equal to or higher than the release listed before it."
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:215", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:477-489", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:407-451", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:230"]

@@ -10,6 +10,7 @@ For each result the unit <id>.md gets:
   - ## Cause and ## Fix replaced by the result where it has one, unless its confidence is unknown;
   - ## Note with the note, when there is one;
   - ## Evidence: the source lines and the confidence;
+  - summary: the first sentence of the cause;
   - frontmatter cause_origin "source-analysis", confidence, evidence, and doc_cause with the
     README text the cause replaced, so the review can compare.
 Results whose unit does not exist are reported and skipped. Run it after errcat.py.
@@ -47,6 +48,13 @@ def write_unit(path, meta, secs):
     fm = "\n".join(f"{k}: {json.dumps(v, ensure_ascii=False)}" for k, v in meta.items())
     body = "\n\n".join(f"## {h}\n\n{t}" for h, t in secs)
     path.write_text(f"---\n{fm}\n---\n\n{body}\n", encoding="utf-8")
+
+
+def summary_of(cause, words=40):
+    """The first sentence of the cause, at most `words` words: what a search hit shows."""
+    first = re.split(r"(?<=[.!?])\s+(?=[A-Z<`'\"(])", " ".join(cause.split()), maxsplit=1)[0]
+    w = first.split()
+    return first if len(w) <= words else " ".join(w[:words - 1]) + " …"
 
 
 def text_of(value):
@@ -89,6 +97,9 @@ def merge(units, results, ref):
         if evidence:
             lines = "\n".join(f"- `{e.strip()}`" for e in evidence)
             new.append(("Evidence", f"Read from the source of {ref}, confidence {confidence}, not reviewed yet:\n\n{lines}"))
+        shown = cause or ("" if PLACEHOLDER.match(old_cause) else old_cause)
+        if shown and confidence != "unknown":
+            meta["summary"] = summary_of(shown)
         meta["cause_origin"] = "source-analysis"
         meta["confidence"] = confidence
         meta["evidence"] = [f"{ref}:{e.strip()}" for e in evidence]

@@ -16,6 +16,7 @@ applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Contact Arm for clarifications"
+summary: "During the letter-case check of a file path from the PDSC, packchk could not find one path segment in the folder listing although the file exists; the text reads 'Internal Error: file/folder \"<segment>\" not found'."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:74", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:511-550", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:461-474", "Open-CMSIS-Pack/devtools@30f5e817:libs/rteutils/src/RteUtils.cpp:143-156", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:118"]

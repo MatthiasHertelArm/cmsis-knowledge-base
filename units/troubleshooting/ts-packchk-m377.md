@@ -16,6 +16,7 @@ applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "The category _'TYPE'_ of the file _'NAME'_ requires it to be defined as a configuration file. Add the attribute attr=\"config\" to the `<file>` element that defines the file. Refer to [/package/.../files/file](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_components_pg.html#element_file)."
+summary: "In a Device:Startup component (Cclass=\"Device\" Cgroup=\"Startup\"), a startup_* file or a system_*.c file of category source, sourceAsm or sourceC lacks attr=\"config\". %TYPE% shows the category."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:196", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSemantic.cpp:674-758", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:215"]

@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "The same `component:` string appears more than once under components: of the cproject.yml for the same context (entries are compared as written, after for-context:/not-for-context: filtering)."
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3900-3914", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3611-3619", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:7871-7885", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestSolution/DuplicateComponents/Cproject/duplicateComponents_cproject.cproject.yml"]

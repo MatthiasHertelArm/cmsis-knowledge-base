@@ -16,6 +16,7 @@ applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "File _'PATH'_ is defined with the attribute attr set to _'ATTR'_. This conflicts with the file category _'CAT'_ specified in category attribute. For example attr=config and category=include are not allowed for the same file. Correct the file attribute or the file category. Refer to [/package/.../files/file](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_components_pg.html#element_file)."
+summary: "A <file> with attr=\"template\" also has category=\"include\"; packchk does not allow templates to be include folders."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:160", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:382-384", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:649-679", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:183"]

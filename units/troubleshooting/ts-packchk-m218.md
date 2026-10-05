@@ -16,6 +16,7 @@ applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "CHeck whether the file exists."
+summary: "No --xsd option was given and packchk found no PACK.xsd in ./, ../etc/ or ../../etc/ relative to the folder of its executable (%PATH%), so it cannot run the schema check."
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:104", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackOptions.cpp:228-265", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ParseOptions.cpp:316-332", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:54-57", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:138"]

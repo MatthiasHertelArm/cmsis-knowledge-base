@@ -15,6 +15,7 @@ doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "The parsed input holds more than one <device> element at the top level. svdconv reads one file per run and an XML document has a single root element, so this does not normally occur."
 cause_origin: "source-analysis"
 confidence: "low"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdModel.cpp:83", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdModel.cpp:87", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdModel.cpp:88", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv.cpp:210", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:160"]

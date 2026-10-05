@@ -14,6 +14,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "An element text or attribute value in the PDSC contains 'http://', for example <url>, <repository>, the url of a <release>, the name of a <book> or <file>, a board orderForm or an <image> link. %TAG% is the element name …"
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:108", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:246-269", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:41-56", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:826-855", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/TestUrlHttps/TestVendor.TestUrlHttps.pdsc:5-65"]

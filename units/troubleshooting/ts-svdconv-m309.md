@@ -15,6 +15,7 @@ doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "A field's bit offset (from <bitOffset>, <lsb> or <bitRange>) is above 63, the highest bit svdconv handles."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:481", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:482", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/include/SvdField.h:13", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/include/SvdField.h:14", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:128"]

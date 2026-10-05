@@ -16,6 +16,7 @@ applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Check specified file."
+summary: "With --generate=sfr on Windows, svdconv looks for SfrCC2.exe in the directory of svdconv.exe and did not find it at the path shown."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/SfrccInterface.cpp:43-69", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md:47-50", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:46"]

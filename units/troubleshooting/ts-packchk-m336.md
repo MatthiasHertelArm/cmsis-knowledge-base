@@ -16,6 +16,7 @@ applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Define the device [/package/devices/family/../device](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_device) or correct the information about the device in the reference."
+summary: "A component with Cclass \"Device\", \"Board Support\", or \"CMSIS Driver\" without Csub has a condition, but neither that condition nor the conditions it references contains an expression whose Dname matches a device known to packchk (this pack or PDSC …"
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:153-154", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckComponents.cpp:104-110", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckComponents.cpp:155-207", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:177"]

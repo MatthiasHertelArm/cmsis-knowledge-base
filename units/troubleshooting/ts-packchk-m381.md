@@ -16,6 +16,7 @@ applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Vendor name specified in the Dvendor attribute for the `<mountedDevice>` tag does not match the actual device vendor name. Verify and correct vendor name. Refer to [/package/boards/board/mountedDevice](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_boards_pg.html#element_board_mountedDevice)."
+summary: "The Dvendor of a <mountedDevice> or <compatibleDevice> identifies the device's vendor but is not written the same way as the Dvendor of the device itself (e.g."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:200", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:1751-1759", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:1800-1808", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteModel.cpp:682-698", "Open-CMSIS-Pack/devtools@30f5e817:libs/rteutils/src/DeviceVendor.cpp:382-396", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:219"]

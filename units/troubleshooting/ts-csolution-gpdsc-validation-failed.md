@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "The gpdsc file that a pack generator wrote for a component (its path prefixes the message) loads, but fails pack validation without a specific error, e.g. a component in it references a condition that does not exist. csolution still …"
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2891-2905", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrUtils.cpp:108-132", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUtilsUnitTests.cpp:49-59", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestGenerator/RTE/Device/RteTestGen_ARMCM0/RteTest_Warning.gpdsc:28"]

@@ -16,6 +16,7 @@ applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "File definition for _'PATH'_ shall contain a condition _'COND'_. Add attribute condition with the _'COND'_ in the `<file>` tag that defines the _'PATH'_ file. Refer to [/package/.../files/file](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_components_pg.html#element_file)."
+summary: "A library or assembler file (category library or sourceAsm, or category source with extension .s or .asm) has no condition with a Tcompiler expression, neither on the <file> nor on its <component>. %COND% is always 'Tcompiler'."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:162", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:386-398", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:689-751", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:810-833", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:185"]

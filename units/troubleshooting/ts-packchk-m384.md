@@ -16,6 +16,7 @@ applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Resolve recursion in condition _'NAME'_."
+summary: "Evaluating a <condition> while collecting the compilers named in the pack's conditions failed: it refers to itself directly or through condition=\"...\" references, or such a reference names a condition id that is not defined."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:203", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/GatherCompilers.cpp:76-87", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckConditions.cpp:42-55", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteCondition.cpp:501-506", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteCondition.cpp:889-904", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteCondition.cpp:955-956", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:222"]

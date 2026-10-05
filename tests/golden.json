@@ -1,0 +1,320 @@
+{
+  "about": "Retrieval golden set: a question or tool output, and the units that answer it (any of them counts). Hand-picked on 5 Oct 2026 from what the units say, not from what the search returned. tests/eval_search.js runs it against the extension's search.",
+  "queries": [
+    {
+      "q": "start a new project in an empty VS Code window",
+      "expect": [
+        "proc-cmsis-bootstrap"
+      ]
+    },
+    {
+      "q": "add a board layer for my board",
+      "expect": [
+        "proc-add-board-layer"
+      ]
+    },
+    {
+      "q": "debug my application on an Arm FVP Corstone model",
+      "expect": [
+        "proc-fvp-debug-setup"
+      ]
+    },
+    {
+      "q": "Failed to power up DAP",
+      "expect": [
+        "proc-debugger-troubleshooting"
+      ]
+    },
+    {
+      "q": "look up a register bit in the reference manual of my device",
+      "expect": [
+        "proc-cmsis-pack-docs"
+      ]
+    },
+    {
+      "q": "set up the debugger for an ST-Link probe",
+      "expect": [
+        "proc-cmsis-debugger-setup",
+        "tbx-csolution-project-format-debugger"
+      ]
+    },
+    {
+      "q": "firmware ends in the HardFault handler, find out why",
+      "expect": [
+        "proc-cmsis-debug-live",
+        "view-fault-analysis-overview"
+      ]
+    },
+    {
+      "q": "write a ResetSystem debug sequence in the PDSC",
+      "expect": [
+        "spec-debug-description-resetsystem",
+        "proc-generate-debug-sequences"
+      ]
+    },
+    {
+      "q": "board mounted device 'XYZ123' not found",
+      "expect": [
+        "ts-csolution-board-mounted-device"
+      ],
+      "top1": true
+    },
+    {
+      "q": "error csolution: board mounted device STM32U585AIIx not found\nerror csolution: processing context 'app+U5' failed",
+      "expect": [
+        "ts-csolution-board-mounted-device"
+      ],
+      "top1": true
+    },
+    {
+      "q": "warning csolution: no unresolved dependency was found with filter 'foo'",
+      "expect": [
+        "ts-csolution-no-unresolved-dependency-was-found-with-filter"
+      ],
+      "top1": true
+    },
+    {
+      "q": "svdconv: Register 'CTRL' size (32Bit) is greater than <dimIncrement> * <addressBitsUnits> (16Bit).",
+      "expect": [
+        "ts-svdconv-m366"
+      ],
+      "top1": true
+    },
+    {
+      "q": "packchk M302",
+      "tools": [
+        "packchk"
+      ],
+      "expect": [
+        "ts-packchk-m302"
+      ],
+      "top1": true
+    },
+    {
+      "q": "svdconv M302",
+      "tools": [
+        "svdconv"
+      ],
+      "expect": [
+        "ts-svdconv-m302"
+      ],
+      "top1": true
+    },
+    {
+      "q": "osThreadNew returns NULL",
+      "expect": [
+        "rtos2-thread-management-osthreadnew"
+      ]
+    },
+    {
+      "q": "thread stack overflow in RTX",
+      "expect": [
+        "rtx-cmsis-rtos2-api-osrtxerrorstackoverflow",
+        "rtx-operation-thread-stack-management"
+      ]
+    },
+    {
+      "q": "SysTick timer configuration",
+      "expect": [
+        "core-systick-timer-systick"
+      ]
+    },
+    {
+      "q": "MPU region setup ARM_MPU_SetRegion",
+      "expect": [
+        "core-mpu-functions-for-armv8-m",
+        "core-mpu-functions-for-armv6-m-v7-m-arm-mpu-rasr",
+        "core-mpu-functions-for-armv6-m-v7-m-arm-mpu-rbar"
+      ]
+    },
+    {
+      "q": "SystemCoreClock and SystemInit",
+      "expect": [
+        "core-system-and-clock-configuration"
+      ]
+    },
+    {
+      "q": "TrustZone SAU setup partition header",
+      "expect": [
+        "core-trustzone-setup-partition-device-h-sau-ctrl-register-settings",
+        "core-trustzone-for-armv8-m-v8-1-m"
+      ]
+    },
+    {
+      "q": "send data over USART without blocking ARM_USART_Send",
+      "expect": [
+        "drv-usart-interface-arm-usart-send"
+      ]
+    },
+    {
+      "q": "set up Event Recorder",
+      "expect": [
+        "view-event-recorder-setup"
+      ]
+    },
+    {
+      "q": "Event Recorder time stamp source",
+      "expect": [
+        "view-theory-of-operation-time-stamp-settings",
+        "view-event-recorder-timer"
+      ]
+    },
+    {
+      "q": "store fault information with ARM_FaultSave",
+      "expect": [
+        "view-fault-api-arm-faultsave"
+      ]
+    },
+    {
+      "q": "Component Viewer SCVD file in a pack",
+      "expect": [
+        "view-scvd-file-format-scvd-files-in-software-packs",
+        "view-scvd-file-format"
+      ]
+    },
+    {
+      "q": "csolution debugger configuration for J-Link",
+      "expect": [
+        "tbx-csolution-project-format-j-link-server"
+      ]
+    },
+    {
+      "q": "list unresolved dependencies of a csolution project",
+      "expect": [
+        "tbx-build-tools-list-unresolved-dependencies"
+      ]
+    },
+    {
+      "q": "install the packs a project is missing",
+      "expect": [
+        "tbx-build-tools-install-missing-packs"
+      ]
+    },
+    {
+      "q": "condition element deny in a pack description",
+      "expect": [
+        "spec-package-conditions-element-package-conditions-condition-deny"
+      ]
+    },
+    {
+      "q": "build a pack with gen-pack",
+      "expect": [
+        "genpack-bash-library-for-gen-pack-scripts-usage",
+        "genpack-bash-library-for-gen-pack-scripts-get-started"
+      ]
+    },
+    {
+      "q": "how do I get cpackget",
+      "expect": [
+        "cpg-cpackget-open-cmsis-pack-package-i-how-to-get-cpackget"
+      ]
+    },
+    {
+      "q": "list connected debug probes with pyOCD",
+      "expect": [
+        "pyocd-debug-probes-listing-available-debug-probes"
+      ]
+    },
+    {
+      "q": "pyOCD semihosting",
+      "expect": [
+        "pyocd-semihosting-enabling",
+        "pyocd-command-reference-semihosting",
+        "pyocd-api-examples-semihosting"
+      ]
+    },
+    {
+      "q": "enable SWO trace in CMSIS-DAP firmware",
+      "expect": [
+        "dap-cmsis-dap-firmware-enabling-swo-trace"
+      ]
+    },
+    {
+      "q": "validate an SPI driver with the SPI server",
+      "expect": [
+        "dv-spi-server-operation",
+        "dv-spi-server-features"
+      ]
+    },
+    {
+      "q": "Zephyr devicetree overlay for my board",
+      "expect": [
+        "zep-devicetree-howtos-set-devicetree-overlays",
+        "zep-devicetree-howtos-use-devicetree-overlays"
+      ]
+    },
+    {
+      "q": "flash a Zephyr application with west flash",
+      "expect": [
+        "zep-building-flashing-and-debugging-flashing-west-flash"
+      ]
+    },
+    {
+      "q": "west build in a csolution project",
+      "expect": [
+        "tbx-csolution-project-format-west-build",
+        "tbx-csolution-project-structure-west-build-system-integration"
+      ]
+    },
+    {
+      "q": "ThreadX tx_thread_create parameters",
+      "expect": [
+        "threadx-chapter-4-description-of-threadx-s-tx-thread-create"
+      ]
+    },
+    {
+      "q": "ThreadX mutex priority inheritance",
+      "expect": [
+        "threadx-chapter-3-functional-components-of-mutexes",
+        "threadx-chapter-4-description-of-threadx-s-tx-mutex-create"
+      ]
+    },
+    {
+      "q": "build TF-M secure image",
+      "expect": [
+        "tfm-build-instructions-building-tf-m-spe",
+        "tfm-build-instructions"
+      ]
+    },
+    {
+      "q": "sign an image for MCUboot with imgtool",
+      "expect": [
+        "mcuboot-image-tool-signing-images",
+        "mcuboot-signed-images-image-signing"
+      ]
+    },
+    {
+      "q": "Unity test assertions for arrays",
+      "expect": [
+        "unity-unity-assertions-reference-arrays"
+      ]
+    },
+    {
+      "q": "Ceedling project file configuration",
+      "expect": [
+        "ceed-the-mighty-ceedling-project-config",
+        "ceed-configuration-project-file",
+        "ceed-a-build-system-for-all-your-c-mad-simple-sample-project-file"
+      ]
+    },
+    {
+      "q": "size of the tensor arena in TensorFlow Lite Micro",
+      "expect": [
+        "tflm-memory-management-in-tensorflow-li-tensor-arena",
+        "mlek-memory-considerations-tensor-arena-and-neural-network-model-me"
+      ]
+    },
+    {
+      "q": "Vela accelerator configuration option for Ethos-U55",
+      "expect": [
+        "vela-vela-cli-options-accelerator-configuration"
+      ]
+    },
+    {
+      "q": "SDS recorder data blocks and records",
+      "expect": [
+        "sds-theory-data-blocks-records-and-values"
+      ]
+    }
+  ]
+}

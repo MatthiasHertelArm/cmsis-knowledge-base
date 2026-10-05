@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "An access sequence with a context argument in a cproject.yml or clayer.yml, such as `$elf(project.Debug+Target)$`, `$cmse-lib(...)$`, `$OutDir(...)$` or `$ProjectDir(...)$`, refers to a context that is not among the contexts selected for this run: the project, build type or target …"
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3752-3781", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrUtils.cpp:459-490", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:2634-2664", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestAccessSequences/test-not_exisitng-access-sequences1.cproject.yml:9", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestAccessSequences/test-not_exisitng-access-sequences2.cproject.yml:11"]

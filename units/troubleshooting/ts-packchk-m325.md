@@ -16,6 +16,7 @@ applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "This board has been defined already in the line _'LINE'_ of the file _'PATH'_. Verify and remove one of the board definitions. Refer to [/package/boards/board](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_boards_pg.html#element_board)."
+summary: "Two <board> elements in the checked PDSC have the same name and revision."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:141", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:1584-1608", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteBoard.cpp:32-39", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteBoard.cpp:246-249", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:166"]

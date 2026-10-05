@@ -16,6 +16,7 @@ applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "At least one package release shall be specified in the PDSC file, but none was not found. Use `<release>` tag to specify release information in `<releases>` element. Refer to [/package/releases/release](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/element_releases.html#element_release)."
+summary: "The PDSC has a <releases> element, but it contains no <release>."
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:117", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:291-302", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:154"]

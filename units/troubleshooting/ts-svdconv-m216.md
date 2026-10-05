@@ -16,6 +16,7 @@ applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Correct name."
+summary: "A <name>, <description>, register <displayName> or enumerated-value name contains a character svdconv does not support: a byte outside printable ASCII 0x20..0x7E (UTF-8 letters such as ä or µ, ©, typographic quotes or dashes, non-breaking spaces; each byte is reported) …"
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdUtils.cpp:1155-1215", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdItem.cpp:217-235", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:83"]

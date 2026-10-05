@@ -16,6 +16,7 @@ applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "The package ([/package](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_package_pg.html#element_package)) defines a Vendor-MCU combination for which no component was defined. Define a component ([/package/components/.../component](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_components_pg.html#element_component)) or verify the _'VENDOR'_ - _'MCU'_ settings."
+summary: "For a device (checked per processor, per TrustZone mode when Dtz is set, and per compiler named in the pack's conditions), no Device:Startup component (Cclass=\"Device\" Cgroup=\"Startup\") is available whose conditions accept that device. packchk looks in this pack and …"
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:168", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSemantic.cpp:571-636", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSemantic.cpp:92-123", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSemantic.cpp:848-870", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:191"]

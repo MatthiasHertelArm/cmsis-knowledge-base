@@ -14,6 +14,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "A <processor>, together with what it inherits from family and subFamily, lacks an attribute that packchk requires for its Dcore: Dfpu, Dmpu, Ddsp, Dendian, Dclock and DcoreVersion for every listed core; Dtz additionally for Cortex-M23, M33, M35P, M52, M55, …"
 cause_origin: "source-analysis"
 confidence: "high"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:240", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSemantic.cpp:481-559", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1284-1312", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/ProcessorFeatures/TestVendor.ProcessorFeatures.pdsc:45-53"]

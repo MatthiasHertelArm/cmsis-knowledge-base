@@ -13,6 +13,7 @@ source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+summary: "csolution wanted to load the installed packs (no pack is required by the YAML, or `-l all`/`-l latest` is set) but has no pack root: CMSIS_PACK_ROOT is not set and no default location could be derived from the user environment."
 cause_origin: "source-analysis"
 confidence: "medium"
 evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:566", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteKernel.cpp:415", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:486", "Open-CMSIS-Pack/devtools@30f5e817:libs/crossplatform/src/CrossPlatformUtils.cpp:37"]
