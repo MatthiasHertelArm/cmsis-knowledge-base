@@ -1,0 +1,3 @@
+build:
+  device: MyVendor::MYCHIP300
+  compiler: AC6

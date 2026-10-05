@@ -1,0 +1,38 @@
+{
+  "id": "proc-generate-debug-sequences",
+  "summary": "Adds evidence-backed, device-specific non-trace CMSIS-Pack Debug Description sequences to an existing Device Family Pack PDSC, keeps a private proposal record, applies the confirmed change, and reports validation results.",
+  "triggers": [
+    "device unlock",
+    "debug-port setup",
+    "debug-authentication",
+    "multi-core startup",
+    "reliable debug through sleep, deep-sleep, and device low-power modes"
+  ],
+  "applies_to": {"tool": [], "toolchain": [], "core": [], "component": [], "api": []},
+  "unmapped": [
+    "Device Family Pack PDSC",
+    "CMSIS-Pack Debug Description sequences",
+    "debugvars",
+    ".dbgconf"
+  ],
+  "verification": [
+    "Run `$apply-confirmed-pdsc-proposal` with `$validate-pdsc-sequence-xml` as the common validation step",
+    "Compare every overridden predefined sequence against its current specification default",
+    "Perform documented low-power checks when a target is available",
+    "Set `APPLIED` only after all checks pass"
+  ],
+  "stop_conditions": [
+    "Stop when the knowledge record is inadequate, a required specification default is unavailable, confirmation is absent, or any validation fails.",
+    "Return insufficient access facts to `$debug-access-knowledge` and behavior facts to `$debug-knowledge`.",
+    "Present it with the proposed XML and obtain confirmation.",
+    "Do not modify `.dbgconf` without explicit confirmation."
+  ],
+  "rules": [
+    {"id": "rule-no-fabrication-generate-debug-sequences", "class": "generic", "canonical_id": "rule-no-fabrication", "delta": "reset, unlock, authentication, boot, flash, processor-control, low-power, register, delay, or connection behavior"},
+    {"id": "rule-tone-and-style", "class": "generic", "canonical_id": "rule-tone-and-style", "delta": ""},
+    {"id": "rule-critical-blockers-generate-debug-sequences", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-scope-generate-debug-sequences", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-portability-generate-debug-description", "class": "generic", "canonical_id": "rule-portability", "delta": "unless authoritative inputs require it. Identify each required dependency in the output."}
+  ],
+  "extracted": []
+}

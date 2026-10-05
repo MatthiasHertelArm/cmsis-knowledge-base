@@ -1,0 +1,10 @@
+- "Validation" section: the prompt says to copy verification verbatim from "the Validation section", but neither input has one. Only "Validation Resources" and an Execution Steps item named "Validation" (plus step "6. Validate the result" in add-cmsis-target) exist. I used those.
+- For ethos, "Validation Resources" holds runner self-tests, not agent success checks; unclear whether they count as verification. I included them plus step 3.
+- applies_to: add-cmsis-target names tools csolution/cbuild/cpackget, yet portability says it is vendor-neutral across MCU/SoC vendors. The prompt says empty if vendor-neutral; the tool-vs-vendor distinction is unclear. I left it empty, which drops explicit tool mentions.
+- applies_to for ethos: "Ethos-U" is named but only a Driver component ID exists in the list, which the text does not name. I used only tool:vela.
+- Rule class for specific rules: output format shows canonical_id and delta, but "unchanged" gives no field values. I emitted only id and class.
+- Generic rules: "no fabrication" in the entity list has no canonical text, so the delta (what is additional) is a judgement. I put the procedure's full wording in delta. "Tone and style" is identical to the generic, so delta is empty. The shared rule-tone-and-style already exists with shared:true; its id equals the canonical_id.
+- Generic-vs-specific for rules like Critical blockers or Scope is subjective; I treated all non-universal ones as specific.
+- stop_conditions: "all places where it stops or asks" gives no length limit or dedup rule; I listed granular items plus the consolidated blocker rules, so some overlap.
+- extracted: "verbatim body" but "never add facts"; "in doubt extract nothing" is subjective. Symptoms need exact error strings; AMBIGUOUS/NO MATCH are results of other skills, so I did not extract a troubleshooting item. Ethos extracted nothing.
+- triggers: "short user phrasings" derived from "Use when" are paraphrases, so wording is partly my own.

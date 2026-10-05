@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "cmsis-knowledge": {
+      "type": "stdio",
+      "command": "/ABSOLUTE/PATH/cmsis-knowledge-base/.venv/bin/python",
+      "args": [
+        "/ABSOLUTE/PATH/cmsis-knowledge-base/tools/kb_server.py",
+        "/ABSOLUTE/PATH/cmsis-knowledge-base/build/knowledge.db"
+      ]
+    }
+  }
+}

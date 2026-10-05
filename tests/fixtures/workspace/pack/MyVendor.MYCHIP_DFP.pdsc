@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package schemaVersion="1.7.36" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
+  <vendor>MyVendor</vendor>
+  <name>MYCHIP_DFP</name>
+  <description>Device pack under development (test fixture)</description>
+  <releases><release version="0.0.1">draft</release></releases>
+  <devices>
+    <family Dfamily="MYCHIP Series" Dvendor="MyVendor:999">
+      <processor Dcore="Cortex-M55" Dfpu="DP_FPU" Dmve="FP_MVE" Dtz="TZ"/>
+      <book name="docs/MYCHIP200_DS.pdf" title="MYCHIP200 Datasheet (draft)"/>
+      <device Dname="MYCHIP200"/>
+    </family>
+  </devices>
+</package>

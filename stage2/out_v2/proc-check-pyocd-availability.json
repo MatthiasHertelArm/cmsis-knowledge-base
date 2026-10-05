@@ -1,0 +1,35 @@
+{
+  "id": "proc-check-pyocd-availability",
+  "summary": "Checks whether pyOCD is available, preferring the bundled copy of the active Visual Studio Code CMSIS Debugger extension and otherwise a runnable pyocd in the active shell, and returns one availability record without installing or modifying anything.",
+  "triggers": [
+    "before a workflow needs to run pyOCD",
+    "without installing, configuring, or modifying it"
+  ],
+  "applies_to": {"tool": ["pyocd"], "toolchain": [], "core": [], "component": [], "api": []},
+  "unmapped": [
+    "Visual Studio Code",
+    "arm.vscode-cmsis-debugger extension"
+  ],
+  "verification": [
+    "Confirm the result in the environment used for the lookup",
+    "a bundled result requires the exact extension ID and its `tools/pyocd/` directory",
+    "a PATH result requires a successful `pyocd --version`",
+    "otherwise report pyOCD unavailable",
+    "Use `pyocd --version` as the repeatable runnable-command check.",
+    "In Visual Studio Code, use the exact installed-extension identifier `arm.vscode-cmsis-debugger` and verify its actual `tools/pyocd/` subdirectory."
+  ],
+  "stop_conditions": [
+    "When verified, report this bundled directory as the preferred pyOCD installation and stop: it is not necessary to check `PATH`.",
+    "Do not proceed to target detection or install software.",
+    "Report the relevant check as unavailable when the required terminal, extension query, or extension directory cannot be accessed. Do not search unrelated directories or request a target connection."
+  ],
+  "rules": [
+    {"id": "rule-no-fabrication-check-pyocd-availability", "class": "generic", "canonical_id": "rule-no-fabrication", "delta": "executable path, extension location, version, or availability from the extension identifier alone"},
+    {"id": "rule-no-mutation-check-pyocd-availability", "class": "generic", "canonical_id": "rule-no-install", "delta": "pyOCD or an extension, change `PATH`, activate an environment, or alter Visual Studio Code settings"},
+    {"id": "rule-critical-blockers-check-pyocd-availability", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-scope-check-pyocd-availability", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-tone-and-style", "class": "generic", "canonical_id": "rule-tone-and-style", "delta": ""},
+    {"id": "rule-vs-code-scope-check-pyocd-availability", "class": "specific", "canonical_id": "", "delta": ""}
+  ],
+  "extracted": []
+}

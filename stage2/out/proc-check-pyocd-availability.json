@@ -1,0 +1,32 @@
+{
+  "id": "proc-check-pyocd-availability",
+  "summary": "Checks whether pyOCD is available without installing or modifying anything. Prefers the bundled pyOCD directory of the active VS Code CMSIS Debugger extension, otherwise checks the PATH, and returns one availability record naming the environment.",
+  "triggers": [
+    "is pyocd available",
+    "check pyocd installation",
+    "find bundled pyocd",
+    "run pyocd from VS Code terminal"
+  ],
+  "applies_to": ["tool:pyocd"],
+  "verification": [
+    "Confirm the result in the environment used for the lookup: a bundled result requires the exact extension ID and its `tools/pyocd/` directory; a PATH result requires a successful `pyocd --version`; otherwise report pyOCD unavailable.",
+    "Use `pyocd --version` as the repeatable runnable-command check.",
+    "In Visual Studio Code, use the exact installed-extension identifier `arm.vscode-cmsis-debugger` and verify its actual `tools/pyocd/` subdirectory.",
+    "Visual Studio Code documents `code --list-extensions` and `--show-versions` for installed-extension checks."
+  ],
+  "stop_conditions": [
+    "When verified, report this bundled directory as the preferred pyOCD installation and stop: it is not necessary to check `PATH`.",
+    "Report the relevant check as unavailable when the required terminal, extension query, or extension directory cannot be accessed.",
+    "Do not search unrelated directories or request a target connection.",
+    "Do not proceed to target detection or install software."
+  ],
+  "rules": [
+    {"id": "rule-no-fabrication-check-pyocd-availability", "class": "specific"},
+    {"id": "rule-no-mutation-check-pyocd-availability", "class": "specific"},
+    {"id": "rule-critical-blockers-check-pyocd-availability", "class": "specific"},
+    {"id": "rule-scope-check-pyocd-availability", "class": "specific"},
+    {"id": "rule-tone-and-style", "class": "generic", "canonical_id": "rule-tone-and-style", "delta": ""},
+    {"id": "rule-vs-code-scope-check-pyocd-availability", "class": "specific"}
+  ],
+  "extracted": []
+}

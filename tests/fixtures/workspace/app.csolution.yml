@@ -1,0 +1,9 @@
+solution:
+  packs:
+    - pack: MyVendor::MYCHIP_DFP
+      path: ./pack
+  target-types:
+    - type: MYCHIP200
+      device: MyVendor::MYCHIP200
+  projects:
+    - project: ./app/app.cproject.yml

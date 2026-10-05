@@ -1,0 +1,366 @@
+{
+ "nodes": {
+  "proc-add-board-layer": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "project",
+   "title": "add-board-layer",
+   "summary": "Add a board layer to an existing csolution by asking for the few open decisions, then build it",
+   "triggers": [
+    "Add a board layer to an existing CMSIS csolution by interviewing the user for the few facts that cannot be read from the repo — board/device, layer strategy, debugger, STDIO transport, memory — then generating Board.clayer.yml and its startup / retarget-stdio / regions / device-header files (reusing the BSP layer when it fits, running the DFP's configuration generator when startup only comes from it, or a minimal bare-metal layer otherwise) and wiring the target-type into the solution. Use when the user wants to add or author a board layer and would rather be asked than hand over every parameter up front."
+   ],
+   "status": "draft",
+   "source": "add-board-layer/SKILL.md",
+   "preconditions": "",
+   "portability": "",
+   "tools": [
+    "csolution",
+    "cbuild",
+    "cpackget"
+   ],
+   "output": "",
+   "sections": [
+    "0. Read before you ask",
+    "1. The interview",
+    "2. Resolve the board and device identity — from the pdsc, never by guess",
+    "3. Choose the layer strategy",
+    "4a. Generator-based layer: integrate, then let the user run the generator",
+    "4b. Minimal bare-metal recipe",
+    "5. Wire into the csolution",
+    "6. Build to green",
+    "7. Confirm and hand off",
+    "Goal and method",
+    "Hardware facts: ask the documentation, not memory"
+   ]
+  },
+  "proc-cmsis-bootstrap": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "project",
+   "title": "cmsis-bootstrap",
+   "summary": "Go from an empty VS Code window to a CMSIS solution that builds and debugs",
+   "triggers": [
+    "Get from an empty VS Code window (no folder open, no project on disk) to a CMSIS solution that builds, flashes and debugs: check the CMSIS extensions and the tools environment, choose the project folder, create the solution for the board or device with $start-cmsis-project or open an existing one with cmsis_action open_solution, wait for the CMSIS Solution extension to load it, build, wire the debugger and hand over to cmsis-debug-live. Use when the user wants to start a new CMSIS project for a board, when get_session_status says that no folder is open, or when cmsis_action answers NO_WORKSPACE or CMSIS_NO_SOLUTION. Not for extending an existing solution (cmsis-project) and not for debugging a running target (cmsis-debug-live)."
+   ],
+   "status": "draft",
+   "source": "cmsis-bootstrap/SKILL.md",
+   "preconditions": "",
+   "portability": "",
+   "tools": [
+    "csolution",
+    "cbuild",
+    "cpackget",
+    "vcpkg"
+   ],
+   "output": "",
+   "sections": [
+    "1. Find out where you are",
+    "10. Report",
+    "2. Extensions",
+    "3. An existing project, or a new one?",
+    "4. The project folder and its tools",
+    "5. Create the solution",
+    "6. Open the solution in VS Code",
+    "7. Build",
+    "8. The debugger",
+    "9. Flash, debug, hand over",
+    "Goal and method",
+    "Shell commands this skill allows",
+    "What stays with the user"
+   ]
+  },
+  "asset-cmsis-bootstrap-assets-vcpkg-configuration-json": {
+   "kind": "entity",
+   "type": "asset",
+   "title": "assets/vcpkg-configuration.json",
+   "body": "{\n    \"registries\": [\n        {\n            \"name\": \"arm\",\n            \"kind\": \"artifact\",\n            \"location\": \"https://artifacts.tools.arm.com/vcpkg-registry\"\n        }\n    ],\n    \"requires\": {\n        \"arm:tools/open-cmsis-pack/cmsis-toolbox\": \"^2.12.0\",\n        \"arm:tools/kitware/cmake\": \"^3.31.5\",\n        \"arm:tools/ninja-build/ninja\": \"^1.12.1\",\n        \"arm:compilers/arm/arm-none-eabi-gcc\": \"^14.3.1\"\n    }\n}\n",
+   "source": "cmsis-bootstrap/assets/vcpkg-configuration.json",
+   "of": "proc-cmsis-bootstrap"
+  },
+  "proc-cmsis-debug-live": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "debug",
+   "title": "cmsis-debug-live",
+   "summary": "Investigate a firmware runtime bug on a live Cortex-M debug session: faults, hangs, wrong values, silent peripherals",
+   "triggers": [
+    "Drive a live Arm Cortex-M debug session through the CMSIS Debugger to investigate firmware runtime bugs — HardFaults and other faults, crashes, hangs, failing tests, peripherals that do not respond, wrong/null values that are right in simulation but wrong on hardware, unexpected output, code that never reaches the line you expect, timing that does not close. Prefer it as the first investigation step whenever live inspection is practical, and use it instead of adding temporary printf/UART logging, LED toggles, or console output to diagnose firmware — halting the CPU and looking is cheaper and does not perturb the target the way a reflash with extra prints does. Pairs with the CMSIS Developer Assistant MCP server, which exposes the breakpoint / step / memory / register / peripheral tools."
+   ],
+   "status": "draft",
+   "source": "cmsis-debug-live/SKILL.md",
+   "preconditions": "",
+   "portability": "",
+   "tools": [
+    "csolution",
+    "cbuild"
+   ],
+   "output": "",
+   "sections": [
+    "Before anything else: know your target",
+    "Clean up",
+    "Core loop",
+    "Debugger first — do not start by adding prints",
+    "Reading results",
+    "Root cause, not symptom",
+    "Session state gates everything",
+    "Several VS Code windows open",
+    "When it did not reach your breakpoint",
+    "When it faulted",
+    "When the firmware prints",
+    "When the variable and the hardware disagree",
+    "Why embedded debugging is different"
+   ]
+  },
+  "concept-cmsis-embedded-guide": {
+   "kind": "knowledge",
+   "type": "concept",
+   "domain": "debug",
+   "title": "cmsis-embedded-guide",
+   "status": "draft",
+   "source": "cmsis-debug-live/references/cmsis-embedded-guide.md"
+  },
+  "proc-cmsis-debugger-setup": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "project",
+   "title": "cmsis-debugger-setup",
+   "summary": "Wire the debug adapter of a csolution target and verify Load & Debug",
+   "triggers": [
+    "Wire the debug adapter of a CMSIS csolution target so that Load & Debug works, and prove it on the target: choose the adapter (CMSIS-DAP@pyOCD, ST-Link@pyOCD, ULINKplus@pyOCD, J-Link Server, …) from csolution list debuggers, set the debugger node of the target set, let the CMSIS Solution extension write launch.json and tasks.json, then verify with cmsis_action load_and_debug, a breakpoint and the serial console. Use when a new target has no debugger yet, when launch.json has no gdbtarget configuration, when cmsis_action says a CMSIS task is not offered, or when the probe changes. For an Arm FVP use fvp-debug-setup; for a session that fails to connect use debugger-troubleshooting."
+   ],
+   "status": "draft",
+   "source": "cmsis-debugger-setup/SKILL.md",
+   "preconditions": "",
+   "portability": "",
+   "tools": [
+    "csolution",
+    "cbuild"
+   ],
+   "output": "",
+   "sections": [
+    "1. Read before you change",
+    "2. Choose the adapter",
+    "3. Set the debugger node",
+    "4. Let the extension write launch.json and tasks.json",
+    "5. Verify on the target",
+    "6. When it does not connect",
+    "7. Finish",
+    "Goal"
+   ]
+  },
+  "proc-cmsis-pack-docs": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "bring-up",
+   "title": "cmsis-pack-docs",
+   "summary": "Look up registers, peripherals, errata and board facts in the target's manuals, with page citations",
+   "triggers": [
+    "Look things up in the documentation of the current CMSIS csolution target through the CMSIS Developer Assistant documentation tools (list_target_docs, search_target_docs, read_doc_pages, fetch_doc, get_peripheral_docs) — the reference manual, datasheet, errata and board manual the packs ship or link, the Arm documents for the device's core (architecture reference manual, ADIv5/ADIv6, CoreSight and ETM specifications, core TRM), and the datasheets of third-party parts (sensors, ADCs, codecs) the user added or fetch_doc downloaded. Use for any part number before searching the web, before assuming what a peripheral register or bit does, when the SVD gives a bit position but not its meaning, when a peripheral does not behave as expected (check the errata), when a debug/trace bring-up skill needs a vendor or Arm document, or when the user asks where something is documented. Cites document id, edition and page. The tools are on by default; the setting `cmsis-developer-assistant.packDocs.enabled` drops or restores them (window reload)."
+   ],
+   "status": "draft",
+   "source": "cmsis-pack-docs/SKILL.md",
+   "preconditions": "",
+   "portability": "",
+   "tools": [
+    "csolution",
+    "cbuild"
+   ],
+   "output": "",
+   "sections": [
+    "Citing",
+    "For the bring-up skills",
+    "Rules of thumb",
+    "What the documentation tools cover",
+    "Workflow"
+   ]
+  },
+  "artifact-docs": {
+   "kind": "entity",
+   "type": "artifact",
+   "title": ".agent-artifacts/docs"
+  },
+  "proc-debugger-troubleshooting": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "debug",
+   "title": "debugger-troubleshooting",
+   "summary": "Find out why a debug or flash session fails to start, connect or program",
+   "triggers": [
+    "Diagnose a failing embedded debug or flash session: the GDB server will not start, the target will not connect, \"Failed to power up DAP\", \"Could not find core in Coresight setup\", \"Could not read memory\", \"Waiting for a debug probe\", flashing succeeds but the firmware faults or is silent, or programming is implausibly slow. Covers pyOCD and J-Link sessions of the CMSIS Debugger, CMSIS-Toolbox cbuild-run files and FVP setups, and works through the CMSIS Developer Assistant tools first. Use when cmsis_action load_and_debug, attach, load or flash fails and the cause is not obvious from the error text."
+   ],
+   "status": "draft",
+   "source": "debugger-troubleshooting/SKILL.md",
+   "preconditions": "",
+   "portability": "",
+   "tools": [
+    "cbuild",
+    "pyocd"
+   ],
+   "output": "",
+   "sections": [
+    "0. Read the error for what it actually says",
+    "1. Is something already holding the probe or the port?",
+    "2. Is it the core you think it is?",
+    "3. Connection failures, in increasing severity",
+    "4. `Could not read memory` at an external-memory window",
+    "5. It flashed, but the firmware faults or prints nothing",
+    "6. Flashing an ELF that drops its RW init data",
+    "7. Programming is implausibly slow",
+    "8. J-Link device definitions",
+    "9. pyOCD specifics",
+    "When you are through"
+   ]
+  },
+  "proc-fvp-debug-setup": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "debug",
+   "title": "fvp-debug-setup",
+   "summary": "Make Load & Debug and Run work against an Arm FVP model",
+   "triggers": [
+    "Wire the CMSIS Solution extension's Run/Debug buttons to an Arm FVP using the model's built-in GDBServer plugin (MDK FVP models 11.32.23+, vcpkg arm:models/arm/avh-fvp). Sets the csolution `debugger: name: Arm-FVP` node, installs a model shim that resolves plugins/GDBServer.so, line-buffers the model's stdout and runs the model in Docker on macOS (where Arm ships no FVP build), and fixes the launch config's readiness handshake so GDB does not connect before the model is listening. Use when the user wants to debug firmware on a Corstone FVP, migrate off fvp-gdb/Iris, or map the CMSIS view buttons to an FVP in a csolution project."
+   ],
+   "status": "draft",
+   "source": "fvp-debug-setup/SKILL.md",
+   "preconditions": "",
+   "portability": "",
+   "tools": [
+    "csolution",
+    "cbuild",
+    "vcpkg"
+   ],
+   "output": "",
+   "sections": [
+    "1. Verify prerequisites",
+    "2. The plugin's contract",
+    "3. How the CMSIS Solution extension maps its buttons",
+    "4. Set the csolution debugger node",
+    "5. The two readiness bugs — fix both or neither works",
+    "6. Install the model shim",
+    "7. Verify",
+    "Caveats to tell the user"
+   ]
+  },
+  "asset-fvp-debug-setup-templates-fvp-dockerfile": {
+   "kind": "entity",
+   "type": "asset",
+   "title": "templates/fvp.Dockerfile",
+   "body": "# Copyright 2026 Arm Limited. SPDX-License-Identifier: Apache-2.0\n#\n# MDK FVP models for macOS hosts, which Arm does not build for.\n#\n# The image is the Linux build of the very same release the rest of the project\n# pins in vcpkg-configuration.json (arm:models/arm/avh-fvp), so the model, its\n# plugins and plugins/GDBServer.so are bit-identical to what a Linux or\n# Windows developer gets from vcpkg. .vscode/fvp.sh builds it on first use.\nFROM ubuntu:22.04\n\nARG DEBIAN_FRONTEND=noninteractive\n\n# 11.32.23 -> mdk-fvp-11.32_23_linux_arm64.tar.gz (fvp.sh derives and passes it)\nARG FVP_VERSION={{FVP_VERSION}}\nARG FVP_ARCHIVE={{FVP_ARCHIVE}}\nARG FVP_BASE_URL=https://artifacts.tools.arm.com/avh\n\n# libpython is dlopen'd by the VSI/VIO bridges. We do not use them, but without\n# a libpython3*.so the model prints a five-paragraph error before every run.\n# The archive unpacks as ./<host>/{bin,plugins,...}, hence --strip-components 2.\nRUN apt-get update && \\\n    apt-get install -y --no-install-recommends ca-certificates curl libatomic1 libpython3.10 && \\\n    ln -sf libpython3.10.so.1.0 \"/usr/lib/$(uname -m)-linux-gnu/libpython3.10.so\" && \\\n    curl -fsSL -o /tmp/fvp.tar.gz \"${FVP_BASE_URL}/${FVP_VERSION}/${FVP_ARCHIVE}\" && \\\n    mkdir -p /opt/avh-fvp && \\\n    tar -xf /tmp/fvp.tar.gz --strip-components 2 -C /opt/avh-fvp && \\\n    rm /tmp/fvp.tar.gz && \\\n    apt-get purge -y curl && apt-get autoremove -y && \\\n    rm -rf /var/lib/apt/lists/*\n\n# The Arm user-based licence in ~/.armlm is bound to the account that activated\n# it, so the container has to run as that same user name and uid or the model\n# aborts with \"The license found is assigned to another user\".\nARG USERNAME=root\nARG USERID=0\nRUN if [ \"${USERID}\" != \"0\" ]; then \\\n        groupadd -g \"${USERID}\" \"${USERNAME}\" && \\\n        useradd -l -r -u \"${USERID}\" -g \"${USERNAME}\" \"${USERNAME}\"; \\\n    fi\nUSER ${USERNAME}\n\nENV PATH=\"${PATH}:/opt/avh-fvp/bin\"\nENV AVH_FVP_PLUGINS=/opt/avh-fvp/plugins\n",
+   "source": "fvp-debug-setup/templates/fvp.Dockerfile",
+   "of": "proc-fvp-debug-setup"
+  },
+  "asset-fvp-debug-setup-templates-fvp-sh": {
+   "kind": "entity",
+   "type": "asset",
+   "title": "templates/fvp.sh",
+   "body": "#!/usr/bin/env bash\n# Copyright 2026 Arm Limited. SPDX-License-Identifier: Apache-2.0\n#\n# Stand-in for the FVP model executable ({{FVP_MODEL}}), referenced from the\n# `debugger: model:` node of the FVP target-set. The CMSIS Solution\n# extension runs it both as the \"CMSIS Run\" task and as the gdbtarget debug\n# server, in the latter case with\n#\n#   -D --plugin $AVH_FVP_PLUGINS/GDBServer.so -C GDBServer.port=3333 \\\n#      -f <config-file> -a <application>.elf\n#\n# It does two things the bare model command cannot:\n#\n#   * resolves plugins/GDBServer.so itself. The generated launch config takes\n#     the path from $AVH_FVP_PLUGINS, which only exists in a shell that has run\n#     `vcpkg activate` -- VS Code, started from Finder or Spotlight, has not.\n#   * runs the model in Docker on macOS, where Arm publishes no FVP build, with\n#     the GDB port forwarded to the host so arm-none-eabi-gdb can reach it.\n#\n# On Linux and Windows (git-bash/MSYS) it just execs the real model.\nset -euo pipefail\n\nMODEL=\"${FVP_MODEL:-{{FVP_MODEL}}}\"\nFVP_VERSION=\"${FVP_VERSION:-{{FVP_VERSION}}}\"          # keep in sync with vcpkg-configuration.json\nIMAGE=\"${FVP_IMAGE:-cmsis-fvp:${FVP_VERSION}}\"\nHERE=\"$(cd \"$(dirname \"${BASH_SOURCE[0]}\")\" && pwd)\"\n\nis_macos() { [[ \"$(uname -s)\" == \"Darwin\" ]]; }\n\n# Where GDBServer.so lives, given that $AVH_FVP_PLUGINS is often unset.\nplugin_dir() {\n    if is_macos; then\n        echo \"/opt/avh-fvp/plugins\"                       # inside the container\n        return\n    fi\n    if [[ -n \"${AVH_FVP_PLUGINS:-}\" && -d \"${AVH_FVP_PLUGINS}\" ]]; then\n        echo \"${AVH_FVP_PLUGINS%/}\"\n        return\n    fi\n    local model_path\n    model_path=\"$(command -v \"${MODEL}\" 2>/dev/null || true)\"\n    [[ -n \"${model_path}\" ]] && echo \"$(dirname \"$(dirname \"$(realpath \"${model_path}\")\")\")/plugins\"\n}\n\n# Rewrite `--plugin <path>` when <path> does not resolve, and pick the GDB port\n# out of `-C GDBServer.port=<n>` so the macOS branch knows what to forward.\nARGS=()\nGDB_PORT=\"\"\nALLOW_REMOTE_SET=0\nwhile [[ $# -gt 0 ]]; do\n    case \"$1\" in\n        --plugin)\n            plugin=\"${2:-}\"\n            if [[ ! -f \"${plugin}\" ]] || is_macos; then\n                dir=\"$(plugin_dir)\"\n                [[ -n \"${dir}\" ]] && plugin=\"${dir}/$(basename \"${plugin}\")\"\n            fi\n            ARGS+=(\"--plugin\" \"${plugin}\")\n            shift 2\n            ;;\n        -C)\n            [[ \"${2:-}\" == GDBServer.port=* ]] && GDB_PORT=\"${2#GDBServer.port=}\"\n            [[ \"${2:-}\" == GDBServer.allow_remote=* ]] && ALLOW_REMOTE_SET=1\n            ARGS+=(\"-C\" \"${2:-}\")\n            shift 2\n            ;;\n        -C*)\n            [[ \"$1\" == -CGDBServer.port=* ]] && GDB_PORT=\"${1#-CGDBServer.port=}\"\n            [[ \"$1\" == -CGDBServer.allow_remote=* ]] && ALLOW_REMOTE_SET=1\n            ARGS+=(\"$1\")\n            shift\n            ;;\n        *)\n            ARGS+=(\"$1\")\n            shift\n            ;;\n    esac\ndone\n\n# The model block-buffers its own stdout whenever it is a pipe -- which it\n# always is under VS Code -- so \"GDBServer: Listening ... port=3333\" and every\n# semihosting printf sit in a 4KB buffer until the model exits. The debug\n# adapter waits for that banner to know the server is up (target.serverPortRegExp\n# in launch.json), so without line buffering it gives up and kills the model\n# just before the line it was waiting for gets flushed.\nRUNNER=()\ncommand -v stdbuf >/dev/null 2>&1 && RUNNER=(stdbuf -oL -eL)\n\nif ! is_macos; then\n    command -v \"${MODEL}\" >/dev/null 2>&1 || {\n        echo \"${MODEL} not found on PATH. Run 'vcpkg activate' in this folder,\" >&2\n        echo \"or set FVP_MODEL to the full path of the model executable.\" >&2\n        exit 1\n    }\n    exec \"${RUNNER[@]}\" \"${MODEL}\" \"${ARGS[@]}\"\nfi\n\n# ---------------------------------------------------------------- macOS/Docker\ndocker info >/dev/null 2>&1 || {\n    echo \"Docker is not running. On macOS the FVP runs in a container because\" >&2\n    echo \"Arm ships no macOS build of the model.\" >&2\n    exit 1\n}\n\nif ! docker image inspect \"${IMAGE}\" >/dev/null 2>&1; then\n    case \"$(uname -m)\" in\n        arm64|aarch64) arch=\"arm64\" ;;\n        *)             arch=\"x86\" ;;\n    esac\n    archive=\"mdk-fvp-${FVP_VERSION%.*}_${FVP_VERSION##*.}_linux_${arch}.tar.gz\"\n    echo \"Building ${IMAGE} from ${archive} (first run only, ~100MB download).\"\n    echo \"By using these models you accept the Arm FVP End User License Agreement:\"\n    echo \"  https://artifacts.tools.arm.com/avh/${FVP_VERSION}/license_agreement.txt\"\n    docker build -t \"${IMAGE}\" -f \"${HERE}/fvp.Dockerfile\" \\\n        --build-arg \"FVP_VERSION=${FVP_VERSION}\" \\\n        --build-arg \"FVP_ARCHIVE=${archive}\" \\\n        --build-arg \"USERNAME=$(whoami)\" \\\n        --build-arg \"USERID=$(id -u)\" \\\n        \"${HERE}\" >&2\nfi\n\nPORTS=()\nNAME=()\nif [[ -n \"${GDB_PORT}\" ]]; then\n    PORTS=(-p \"${GDB_PORT}:${GDB_PORT}\")\n    # GDBServer binds to localhost unless told otherwise, and a connection\n    # arriving through Docker's port forwarder is not localhost as far as the\n    # container is concerned -- without this GDB's first packet is met with a\n    # connection reset.\n    [[ \"${ALLOW_REMOTE_SET}\" == \"0\" ]] && ARGS+=(\"-C\" \"GDBServer.allow_remote=1\")\n    # A container left behind by a debug session that ended badly still holds\n    # the port; the next launch would fail on bind rather than on connect.\n    NAME=(--name \"cmsis-fvp-${GDB_PORT}\")\n    docker rm -f \"cmsis-fvp-${GDB_PORT}\" >/dev/null 2>&1 || true\nfi\n\n# $HOME is bind-mounted at the same path so the ELF, the config file and\n# ~/.armlm are reachable under the paths the extension passes in.\nMOUNTS=(--mount \"type=bind,src=${HOME}/,dst=${HOME}/\")\n[[ \"${PWD}\" == \"${HOME}\"* ]] || MOUNTS+=(--mount \"type=bind,src=${PWD}/,dst=${PWD}/\")\n\nexec docker run --rm -i --init \"${NAME[@]}\" \"${PORTS[@]}\" \"${MOUNTS[@]}\" \\\n    --workdir \"${PWD}\" \\\n    --env \"ARMLM_CACHED_LICENSES_LOCATION=${HOME}/.armlm\" \\\n    \"${IMAGE}\" stdbuf -oL -eL \"${MODEL}\" \"${ARGS[@]}\"\n",
+   "source": "fvp-debug-setup/templates/fvp.sh",
+   "of": "proc-fvp-debug-setup"
+  },
+  "asset-fvp-debug-setup-templates-verify-launch-py": {
+   "kind": "entity",
+   "type": "asset",
+   "title": "templates/verify-launch.py",
+   "body": "#!/usr/bin/env python3\n# Copyright 2026 Arm Limited. SPDX-License-Identifier: Apache-2.0\n\"\"\"Replay cdt-gdb-adapter's launch path against the project's launch.json.\n\nRun from the workspace folder, with the path of this skill's directory:\n\n    python3 <skill-dir>/templates/verify-launch.py \\\n        [--config \"Arm-FVP@GDB (launch)\"] [--gdb arm-none-eabi-gdb]\n\nIt starts the model as the debug adapter would, waits for its readiness banner\nand lets GDB run to main. It talks to the simulation model only, never to a\nboard. Use it when the session cannot be started through VS Code, or when the\nuser asks for the launch path to be replayed (see SKILL.md section 7).\n\"\"\"\nimport argparse\nimport json\nimport os\nimport re\nimport subprocess\nimport sys\nimport threading\nimport time\n\nap = argparse.ArgumentParser()\nap.add_argument(\"--launch-json\", default=\".vscode/launch.json\")\nap.add_argument(\"--config\", default=\"Arm-FVP@GDB (launch)\")\nap.add_argument(\"--gdb\", default=\"arm-none-eabi-gdb\")\nargs = ap.parse_args()\n\n# launch.json is JSONC; strip whole-line // comments, which is all VS Code's own\n# generated files and our annotations use.\nraw = re.sub(r\"^\\s*//.*$\", \"\", open(args.launch_json).read(), flags=re.M)\nconfigs = json.loads(raw)[\"configurations\"]\ntry:\n    cfg = next(c for c in configs if c[\"name\"] == args.config)\nexcept StopIteration:\n    sys.exit(f\"no launch config named {args.config!r} in {args.launch_json}\")\n\ntarget = cfg[\"target\"]\n\n\ndef expand(s):\n    s = s.replace(\"${workspaceFolder}\", os.getcwd())\n    return re.sub(\n        r\"\\$\\{env:([A-Za-z_][A-Za-z0-9_]*)\\}\", lambda m: os.environ.get(m.group(1), \"\"), s\n    )\n\n\nserver = expand(target[\"server\"])\nparams = [expand(p) for p in target.get(\"serverParameters\", [])]\nprint(\"spawn:\", server, \" \".join(params))\n\nproc = subprocess.Popen(\n    [server] + params, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1\n)\n\n# The adapter's own readiness rule: with target.port blank it accumulates the\n# server's output and waits for serverPortRegExp; with a port set it would wait\n# target.serverStartupDelay (default 0ms) instead -- which is the bug.\nregexp = target.get(\"serverPortRegExp\")\ntimeout = target.get(\"portDetectionTimeout\", 10000) / 1000.0\nport, acc, t0 = target.get(\"port\") or None, \"\", time.time()\nif port and params:\n    delay = target.get(\"serverStartupDelay\", 0) / 1000.0\n    print(f\"!! target.port is set -> adapter would connect after {delay}s with no readiness check\")\n    time.sleep(delay)\nelif regexp:\n    rx = re.compile(regexp)\n    for line in proc.stdout:\n        sys.stdout.write(\"  server| \" + line)\n        acc += line\n        m = rx.search(acc)\n        if m:\n            port = m.group(1)\n            break\n        if time.time() - t0 > timeout:\n            proc.terminate()\n            sys.exit(f\"serverPortRegExp never matched within {timeout}s\")\n    print(f\"port detected: {port} after {time.time() - t0:.1f}s\")\nelse:\n    proc.terminate()\n    sys.exit(\"config has neither a usable port nor serverPortRegExp\")\n\n# Keep draining, so the model never blocks on a full pipe and late output shows.\nthreading.Thread(\n    target=lambda: [sys.stdout.write(\"  server| \" + l) for l in proc.stdout], daemon=True\n).start()\n\ncmds = [\"-ex\", \"file \" + cfg[\"program\"], \"-ex\", f\"target remote localhost:{port}\"]\nfor ic in cfg.get(\"initCommands\", []):\n    if ic.strip():\n        cmds += [\"-ex\", ic]\ncmds += [\"-ex\", \"continue\", \"-ex\", \"bt\", \"-ex\", \"detach\"]\nr = subprocess.run([cfg.get(\"gdb\", args.gdb), \"-q\", \"-batch\"] + cmds,\n                   capture_output=True, text=True, timeout=300)\nprint(\"--- gdb ---\")\nprint((r.stdout + r.stderr).strip())\n\nproc.terminate()\ntry:\n    proc.wait(timeout=30)\nexcept subprocess.TimeoutExpired:\n    proc.kill()\n\nleft = subprocess.run([\"docker\", \"ps\", \"--format\", \"{{.Names}}\"],\n                      capture_output=True, text=True).stdout.split()\nprint(\"containers left after teardown:\", left or \"none\")\nsys.exit(0 if \"Temporary breakpoint\" in r.stdout and not left else 1)\n",
+   "source": "fvp-debug-setup/templates/verify-launch.py",
+   "of": "proc-fvp-debug-setup"
+  },
+  "doc-artifacts-tools-arm-com-vcpkg-registry": {
+   "kind": "entity",
+   "type": "docsection",
+   "title": "https://artifacts.tools.arm.com/vcpkg-registry/`"
+  }
+ },
+ "edges": [
+  {
+   "src": "proc-cmsis-bootstrap",
+   "rel": "requires",
+   "dst": "proc-add-board-layer"
+  },
+  {
+   "src": "proc-cmsis-bootstrap",
+   "rel": "requires",
+   "dst": "proc-check-cmsis-environment"
+  },
+  {
+   "src": "proc-cmsis-bootstrap",
+   "rel": "requires",
+   "dst": "proc-cmsis-debug-live"
+  },
+  {
+   "src": "proc-cmsis-bootstrap",
+   "rel": "requires",
+   "dst": "proc-cmsis-debugger-setup"
+  },
+  {
+   "src": "proc-cmsis-bootstrap",
+   "rel": "requires",
+   "dst": "proc-debugger-troubleshooting"
+  },
+  {
+   "src": "proc-cmsis-bootstrap",
+   "rel": "requires",
+   "dst": "proc-fvp-debug-setup"
+  },
+  {
+   "src": "proc-cmsis-bootstrap",
+   "rel": "requires",
+   "dst": "proc-identify-cmsis-board-support"
+  },
+  {
+   "src": "proc-cmsis-bootstrap",
+   "rel": "references",
+   "dst": "asset-cmsis-bootstrap-assets-vcpkg-configuration-json"
+  },
+  {
+   "src": "proc-cmsis-debug-live",
+   "rel": "requires",
+   "dst": "proc-cmsis-pack-docs"
+  },
+  {
+   "src": "proc-cmsis-debug-live",
+   "rel": "requires",
+   "dst": "concept-cmsis-embedded-guide"
+  },
+  {
+   "src": "proc-cmsis-debugger-setup",
+   "rel": "requires",
+   "dst": "proc-debugger-troubleshooting"
+  },
+  {
+   "src": "proc-cmsis-debugger-setup",
+   "rel": "requires",
+   "dst": "proc-fvp-debug-setup"
+  },
+  {
+   "src": "proc-cmsis-pack-docs",
+   "rel": "requires",
+   "dst": "proc-resolve-official-device-documentation"
+  },
+  {
+   "src": "proc-cmsis-pack-docs",
+   "rel": "consumes",
+   "dst": "artifact-docs"
+  },
+  {
+   "src": "proc-fvp-debug-setup",
+   "rel": "references",
+   "dst": "asset-fvp-debug-setup-templates-fvp-dockerfile"
+  },
+  {
+   "src": "proc-fvp-debug-setup",
+   "rel": "references",
+   "dst": "asset-fvp-debug-setup-templates-fvp-sh"
+  },
+  {
+   "src": "proc-fvp-debug-setup",
+   "rel": "references",
+   "dst": "asset-fvp-debug-setup-templates-verify-launch-py"
+  },
+  {
+   "src": "proc-fvp-debug-setup",
+   "rel": "references",
+   "dst": "doc-artifacts-tools-arm-com-vcpkg-registry"
+  }
+ ]
+}

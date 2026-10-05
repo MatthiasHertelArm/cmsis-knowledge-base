@@ -1,0 +1,16 @@
+# Devices ohne PDSC, nur mit Doku, und manuell gepflegte Cores
+cores:
+  - name: Cortex-M99
+devices:
+  - name: MYCHIP300
+    vendor: MyVendor
+    family: MYCHIP Series
+    core: Cortex-M55
+    features: {Dfpu: DP_FPU, Dmve: FP_MVE}
+    docs:
+      - title: MYCHIP300 Reference Manual (draft)
+        path: ../docs/MYCHIP300_RM.pdf
+  - name: MYCHIP900
+    vendor: MyVendor
+    family: MYCHIP Series
+    core: Cortex-M99

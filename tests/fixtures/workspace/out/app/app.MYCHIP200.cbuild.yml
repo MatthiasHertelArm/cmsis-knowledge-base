@@ -1,0 +1,8 @@
+build:
+  device: MyVendor::MYCHIP200
+  compiler: AC6
+  packs:
+    - pack: MyVendor::MYCHIP_DFP@0.0.1
+      path: ../../pack
+  components:
+    - component: ARM::CMSIS:CORE@6.1.0

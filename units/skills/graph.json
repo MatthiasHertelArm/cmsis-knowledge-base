@@ -1,0 +1,3036 @@
+{
+ "nodes": {
+  "proc-board-debug-knowledge": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "bring-up",
+   "title": "board-debug-knowledge",
+   "summary": "Document a named board's supported debug and trace connector, jumper, pin-routing, and configuration choices without narrowing device-level Pack support. Use only for an explicitly requested board-specific debug or trace configuration before a knowledge workflow records optional board alternatives or a Pack workflow designs a runtime variable.",
+   "triggers": [],
+   "status": "draft",
+   "source": "bring-up/board-debug-knowledge/SKILL.md",
+   "preconditions": "A named board, its fitted device when known, board manual/design guide/schematics or equivalent authoritative documentation, and the requested debug or trace purpose.",
+   "portability": "Support any board and MCU family. Do not assume a board connector, probe, trace transport, voltage level, or jumper convention.",
+   "tools": [],
+   "output": "Return these tables in conversation:\n\n```markdown\n| Board / revision | Connector / pins | Jumper / switch / route | Debug or trace purpose | Electrical notes | Evidence | Status |\n|---|---|---|---|---|---|---|\n\n| Board choice | Candidate runtime choice | Documented values and default | Evidence | Status |\n|---|---|---|---|---|\n```\n\nMark a missing field `not reported`; do not infer it. The caller may copy an evidenced candidate into its own record.",
+   "sections": [
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "proc-check-pyocd-availability": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "bring-up",
+   "title": "check-pyocd-availability",
+   "summary": "Prefer the active Visual Studio Code CMSIS Debugger extension's bundled pyOCD, or otherwise check whether pyOCD is runnable from the active shell. Use before a workflow needs to run pyOCD without installing, configuring, or modifying it.",
+   "triggers": [],
+   "status": "draft",
+   "source": "bring-up/check-pyocd-availability/SKILL.md",
+   "preconditions": "The active host environment; an open Visual Studio Code workspace or its integrated terminal when Visual Studio Code is in use.",
+   "portability": "Support Windows, macOS, and Linux. Do not assume a device, probe, target, Python installation, or a default Visual Studio Code extensions directory.",
+   "tools": [
+    "pyocd"
+   ],
+   "output": "Return one availability record in the stated format, preferring a verified bundled directory in Visual Studio Code, otherwise a runnable PATH command, or an explicit unavailable result. Identify the environment in which the result was obtained.",
+   "sections": [
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "proc-debug-access-knowledge": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "bring-up",
+   "title": "debug-access-knowledge",
+   "summary": "Build a documentation-led, verifiable record of an existing SoC's reusable CMSIS debug access topology: processor association, debug port and access-port path, protocol, and dormant-state decision. Use before work that needs those access facts, including debug-definition, debug-behavior, or CoreSight trace knowledge; no active target connection is required.",
+   "triggers": [],
+   "status": "draft",
+   "source": "bring-up/debug-access-knowledge/SKILL.md",
+   "preconditions": "An existing target `.pdsc`, selected family/subFamily/device/variant scope, affected processor descriptions, and available device documentation or startup logs.",
+   "portability": "Support any existing CMSIS Device Family Pack. Do not assume a device family, debug probe, toolchain, or active target.",
+   "tools": [
+    "pyocd"
+   ],
+   "output": "Create or update this record:\n\n```markdown\n# CMSIS-Pack debug access knowledge review\n\nPDSC: `<path>`\nDevice / processor: `<name>`\nSelected scope: `<family | subFamily | device | variants>`\nLast updated: `<ISO 8601 date and time>` (Model: `<name> <version> <reasoning-level>`)\nStatus: `DRAFT — AWAITING USER REVIEW` | `READY` | `BLOCKED`",
+   "sections": [
+    "Completion checklist",
+    "Debug access topology",
+    "Documents requiring user download",
+    "Evidence",
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Non-sequence access-definition requirements",
+    "Open questions",
+    "PDSC scope and inherited access definitions",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "artifact-pdsc-stem-debug-access-knowledge-md": {
+   "kind": "entity",
+   "type": "artifact",
+   "title": ".agent-artifacts/<pdsc-stem>.debug-access-knowledge.md"
+  },
+  "proc-debug-knowledge": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "bring-up",
+   "title": "debug-knowledge",
+   "summary": "Build a documentation-led, verifiable knowledge record of an existing SoC's reset, unlock, authentication, boot, flash, processor-control, and low-power debug behavior after `$debug-access-knowledge` has established the reusable access topology. Use when those device-debug facts need establishing or refreshing for PDSC debug sequences; no active target connection is required.",
+   "triggers": [],
+   "status": "draft",
+   "source": "bring-up/debug-knowledge/SKILL.md",
+   "preconditions": "An existing target `.pdsc`, selected family/subFamily/device/variant scope, affected processor descriptions, documentation or target startup logs, and a current `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` record covering the selected scope.",
+   "portability": "Support any existing CMSIS Device Family Pack. Do not assume a device family, debug probe, toolchain, or active target.",
+   "tools": [],
+   "output": "Create or update the debug behavior review record defined by the evidence contract, including board-specific candidate runtime choices when applicable, then provide the concise unresolved-facts summary required for user review before `READY`.",
+   "sections": [
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "artifact-pdsc-stem-debug-knowledge-md": {
+   "kind": "entity",
+   "type": "artifact",
+   "title": ".agent-artifacts/<pdsc-stem>.debug-knowledge.md"
+  },
+  "concept-debug-knowledge-contract": {
+   "kind": "knowledge",
+   "type": "concept",
+   "domain": "bring-up",
+   "title": "debug-knowledge-contract",
+   "status": "draft",
+   "source": "bring-up/debug-knowledge/references/debug-knowledge-contract.md"
+  },
+  "proc-pyocd-detect-debug-topology": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "bring-up",
+   "title": "pyocd-detect-debug-topology",
+   "summary": "Capture supplementary, non-authoritative CMSIS debug and CoreSight topology evidence from the complete stdout/stderr of `pyocd gdbserver -vv --target cortex_m` after `$check-pyocd-availability` succeeds. Use when documentation does not establish a required processor, debug-port, access-port, or CoreSight-component observation; do not use detection to infer missing hardware behavior.",
+   "triggers": [],
+   "status": "draft",
+   "source": "bring-up/pyocd-detect-debug-topology/SKILL.md",
+   "preconditions": "Complete captured stdout and stderr from `pyocd gdbserver -vv --target cortex_m`, or an accessible target plus a successful `$check-pyocd-availability` result for a new scan. No supplied target or probe context is required when exactly one target is attached; provide a selection only when multiple targets are attached. Documented unlock, power-up, and recovery steps are required before a repeat scan.",
+   "portability": "Support any target pyOCD can probe. Do not assume that a successful scan exposes every powered-down, reset-held, debug-locked, or disabled subsystem.",
+   "tools": [
+    "pyocd"
+   ],
+   "output": "Return this Markdown record in conversation:\n\n```markdown\nScan source: `<captured process stdout/stderr | new scan command>`\nScan status: `Observed` | `Unavailable` | `Incomplete`\nServer shutdown: `<not applicable | graceful interrupt and outcome | force termination after 10 seconds>`\n\n| Observation | Reported value | Output excerpt / line | Confidence | Limitation |\n|---|---|---|---|---|",
+   "sections": [
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Prerequisites & Context",
+    "Scan limitations",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "proc-resolve-official-device-documentation": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "bring-up",
+   "title": "resolve-official-device-documentation",
+   "summary": "Recover or conclusively account for an unavailable vendor device-documentation URL by finding the current official source and returning a traceable retrieval result. Use when a CMSIS device, debug, trace, board, or Pack research workflow has a broken, moved, or inaccessible vendor document reference.",
+   "triggers": [],
+   "status": "draft",
+   "source": "bring-up/resolve-official-device-documentation/SKILL.md",
+   "preconditions": "A failed URL, document title or identifier when known, vendor, product or device family, and the required document type.",
+   "portability": "Support any vendor and MCU family. Do not assume a vendor portal, account, product naming scheme, or document revision.",
+   "tools": [],
+   "output": "Return this Markdown table in conversation:\n\n```markdown\n| Title | Failed URL | Retrieval issue and search terms | Replacement official URL | Requested workspace path |\n|---|---|---|---|---|\n```\n\nCallers copy the returned row into their own document-download table and retain the failed URL even when a replacement is found. For an unavailable source, write `Unavailable` in `Replacement official URL` and state the precise reason in `Retrieval issue and search terms`.",
+   "sections": [
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "proc-trace-knowledge": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "bring-up",
+   "title": "trace-knowledge",
+   "summary": "Build a documentation-led, verifiable knowledge record of an existing SoC's CoreSight trace paths, components, operating requirements, and constraints for subsequent generation of PDSC trace sequences. Use when documented trace facts need establishing or refreshing before generating or maintaining CoreSight trace setup. No active target connection is required; treat runtime scanning as supplementary evidence.",
+   "triggers": [],
+   "status": "draft",
+   "source": "bring-up/trace-knowledge/SKILL.md",
+   "preconditions": "An existing target `.pdsc`, selected family/subFamily/device/variant scope, affected processor descriptions, and available device documentation or target startup logs. A current `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` record is supporting input when trace evidence needs a processor association, debug connection, DP/AP path, protocol, or dormant-state fact.",
+   "portability": "",
+   "tools": [
+    "pyocd"
+   ],
+   "output": "Create or update the trace review record defined by the evidence contract, including board-specific configurable-routing-variable proposals when applicable, then provide the concise trace-path summary required for user review before `READY`.",
+   "sections": [
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "artifact-pdsc-stem-trace-knowledge-md": {
+   "kind": "entity",
+   "type": "artifact",
+   "title": ".agent-artifacts/<pdsc-stem>.trace-knowledge.md"
+  },
+  "concept-trace-knowledge-contract": {
+   "kind": "knowledge",
+   "type": "concept",
+   "domain": "bring-up",
+   "title": "trace-knowledge-contract",
+   "status": "draft",
+   "source": "bring-up/trace-knowledge/references/trace-knowledge-contract.md"
+  },
+  "proc-cmsis-stream": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "cmsis-stream",
+   "title": "cmsis-stream",
+   "summary": "This skill must be used to create new components for CMSIS Stream. It generates the Python description and C++ wrapper for a component.",
+   "triggers": [],
+   "status": "draft",
+   "source": "cmsis-stream/SKILL.md",
+   "preconditions": "The component specification listed below and the destination folders for the generated Python description and C++ wrapper. Update `__init__.py` in the specified Python folder to import the new component.",
+   "portability": "Generate descriptions and wrappers for the CMSIS Stream APIs described below. Device, compiler, build-system, debugger, and RTOS choices come from the input project; this skill does not select them. Confirm the project's CMSIS Stream API supports the required component features. Each component is self-contained so it can easily be plugged into a CMSIS Stream graph. Generate it from the user's specification; the Python and C++ destination folders determine where to write its files. Knowing or inspecting other components is not a prerequisite.",
+   "tools": [],
+   "output": "- A Python file named after the component's Python class, such as `MyComponent.py`, in the specified Python destination folder, generally `nodes`.\n- An update to that folder's `__init__.py` importing the new component.\n- A C++ header named after the component's C++ class, such as `MyComponent.hpp`, in the specified C++ destination folder.\n- Both files must satisfy the applicable port, type, length, parameter, visibility, event, and state requirements confirmed with the user, including all relevant Python and C++ rules above.\n- A concise report of the files generated, the import update, checks performed, checks that remain unavailable, and functionality left for the user to implement.",
+   "sections": [
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "proc-create-csolution-github-action": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "devops",
+   "title": "create-csolution-github-action",
+   "summary": "Create a GitHub Actions workflow that builds selected targets from the currently loaded CMSIS solution and optionally tests configured FVP targets. Use when a CMSIS solution workspace needs single-target or target-matrix CI.",
+   "triggers": [],
+   "status": "draft",
+   "source": "devops/create-csolution-github-action/SKILL.md",
+   "preconditions": "A Git repository containing `.vscode/cmsis.json`, the loaded `*.csolution.yml`, and a reproducible CI tool configuration.",
+   "portability": "The workflow runs on `ubuntu-latest`. Device, compiler, RTOS, and debugger dependencies come only from the selected project. FVP tests require an FVP provided by the project tool environment.",
+   "tools": [
+    "csolution",
+    "cbuild",
+    "cpackget",
+    "vcpkg"
+   ],
+   "output": "Create one workflow:\n\n- `.github/workflows/build-<solution-name>.yml`; or\n- `.github/workflows/test-<solution-name>.yml`.\n\nReport the asset used, selected targets, FVP rows, whether output assertions are confirmed or remain a stub, and validation results.",
+   "sections": [
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "asset-create-csolution-github-action-assets-workflow-matrix-yml": {
+   "kind": "entity",
+   "type": "asset",
+   "title": "assets/workflow-matrix.yml",
+   "body": "# generated with AI\n# Adapted by the create-csolution-github-action skill.\n\nname: __WORKFLOW_NAME__\n\non:\n  workflow_dispatch:\n  pull_request:\n  push:\n    branches: [__DEFAULT_BRANCH__]\n\npermissions:\n  contents: read\n\nconcurrency:\n  group: ${{ github.workflow }}-${{ github.ref }}\n  cancel-in-progress: true\n\njobs:\n  build:\n    name: ${{ matrix.target_type }}\n    runs-on: ubuntu-latest\n    strategy:\n      fail-fast: false\n      matrix:\n        include:\n__MATRIX_ROWS__\n\n    steps:\n      - uses: actions/checkout@v7\n\n      - name: Activate vcpkg environment\n        uses: ARM-software/cmsis-actions/vcpkg@v1\n        with:\n          config: __VCPKG_CONFIG__\n          cache: __CACHE_KEY__\n\n      # The default Arm license setup is for evaluation only.\n      - name: Activate Arm tool license\n        uses: ARM-software/cmsis-actions/armlm@v1\n\n      - name: Build ${{ matrix.target_type }}\n        working-directory: \"__SOLUTION_DIR__\"\n        run: |\n          cbuild \"__SOLUTION_FILE__\" \\\n            --active \"${{ matrix.target_type }}\" \\\n            --packs\n\n      - name: Run ${{ matrix.target_type }} on FVP simulation\n        if: matrix.fvp != ''\n        working-directory: \"__SOLUTION_DIR__\"\n        run: |\n          set -o pipefail\n          \"${{ matrix.fvp }}\" \\\n            -f \"${{ matrix.fvp_config }}\" \\\n            -a out/*/\"${{ matrix.target_type }}\"/*/*.hex \\\n            --simlimit 120 2>&1 | tee fvp.log\n\n      - name: Check FVP output\n        if: matrix.fvp != ''\n        working-directory: \"__SOLUTION_DIR__\"\n        run: |\n          # Replace this stub with confirmed application output checks.\n          test -s fvp.log\n__FVP_OUTPUT_CHECKS__\n\n      - name: Upload build artifacts\n        if: always()\n        uses: actions/upload-artifact@v7\n        with:\n          name: __ARTIFACT_NAME_PREFIX__-${{ matrix.target_type }}\n          path: |\n            __SOLUTION_DIR__/out\n            __SOLUTION_DIR__/fvp.log\n          if-no-files-found: warn\n",
+   "source": "devops/create-csolution-github-action/assets/workflow-matrix.yml",
+   "of": "proc-create-csolution-github-action"
+  },
+  "asset-create-csolution-github-action-assets-workflow-single-yml": {
+   "kind": "entity",
+   "type": "asset",
+   "title": "assets/workflow-single.yml",
+   "body": "# generated with AI\n# Adapted by the create-csolution-github-action skill.\n\nname: __WORKFLOW_NAME__\n\non:\n  workflow_dispatch:\n  pull_request:\n  push:\n    branches: [__DEFAULT_BRANCH__]\n\npermissions:\n  contents: read\n\nconcurrency:\n  group: ${{ github.workflow }}-${{ github.ref }}\n  cancel-in-progress: true\n\njobs:\n  build:\n    name: __JOB_NAME__\n    runs-on: ubuntu-latest\n\n    steps:\n      - uses: actions/checkout@v7\n\n      - name: Activate vcpkg environment\n        uses: ARM-software/cmsis-actions/vcpkg@v1\n        with:\n          config: __VCPKG_CONFIG__\n          cache: __CACHE_KEY__\n\n      # The default Arm license setup is for evaluation only.\n      - name: Activate Arm tool license\n        uses: ARM-software/cmsis-actions/armlm@v1\n\n      - name: Build __TARGET_TYPE__\n        working-directory: \"__SOLUTION_DIR__\"\n        run: cbuild \"__SOLUTION_FILE__\" --active \"__TARGET_TYPE__\" --packs\n\n      - name: Run __TARGET_TYPE__ on FVP simulation\n        working-directory: \"__SOLUTION_DIR__\"\n        run: |\n          set -o pipefail\n          \"__FVP__\" \\\n            -f \"__FVP_CONFIG__\" \\\n            -a out/*/\"__TARGET_TYPE__\"/*/*.hex \\\n            --simlimit 120 2>&1 | tee fvp.log\n\n      - name: Check FVP output\n        working-directory: \"__SOLUTION_DIR__\"\n        run: |\n          # Replace this stub with confirmed application output checks.\n          test -s fvp.log\n__FVP_OUTPUT_CHECKS__\n\n      - name: Upload build artifacts\n        if: always()\n        uses: actions/upload-artifact@v7\n        with:\n          name: __ARTIFACT_NAME__\n          path: |\n            __SOLUTION_DIR__/out\n            __SOLUTION_DIR__/fvp.log\n          if-no-files-found: warn\n",
+   "source": "devops/create-csolution-github-action/assets/workflow-single.yml",
+   "of": "proc-create-csolution-github-action"
+  },
+  "doc-github-com-arm-software-cmsis-actions": {
+   "kind": "entity",
+   "type": "docsection",
+   "title": "https://github.com/ARM-software/cmsis-actions"
+  },
+  "doc-open-cmsis-pack-github-io-cmsis-toolbox-build-tools": {
+   "kind": "entity",
+   "type": "docsection",
+   "title": "https://open-cmsis-pack.github.io/cmsis-toolbox/build-tools/"
+  },
+  "proc-evaluate-ethos-u-variants": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "ethos-u",
+   "title": "evaluate-ethos-u-variants",
+   "summary": "Evaluate an existing pre-trained, quantized TFLite or TOSA model across Arm Ethos-U Vela configurations, comparing memory use and estimated performance without installing tools or models. Use when selecting an Ethos-U accelerator, MAC configuration, reference system, memory mode, or optimization strategy.",
+   "triggers": [],
+   "status": "draft",
+   "source": "ethos-u/evaluate-ethos-u-variants/SKILL.md",
+   "preconditions": "A user-provided path to an existing pre-trained, quantized `.tflite` or `.tosa` model. Ask for this path when it is absent; do not select or download a model.",
+   "portability": "The runner supports Windows, macOS, and Linux host systems. The default `Arm/vela.ini` systems are generic reference configurations for evaluation, not descriptions of a production device.",
+   "tools": [
+    "vela"
+   ],
+   "output": "On success, return `PASS` with:\n\n- the resolved model path, Vela executable, and installed Vela version;\n- the selected configuration file or installed `Arm/vela.ini` identifier and shared compilation limit;\n- `.agent-artifacts/ethos-u-evaluation/<model>-<timestamp>/comparison.md`, unless the user selected another output directory;\n- `comparison.csv`, retaining separate SRAM, DRAM, on-chip Flash, and off-chip Flash values from Vela;\n- separate size and performance tables containing accelerator, system configuration, memory mode, SRAM, combined other memory, estimated inference time, and CPU/NPU operator counts;\n- a warning when CPU/NPU operator counts differ between builds or cannot be read.\n\nOn failure, return `FAIL`, the failed stage or Vela command, the error output, and\nthe failed build log path when available. Do not present partial builds as a\ncomparison.",
+   "sections": [
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "asset-evaluate-ethos-u-variants-scripts-evaluate-ethos-u-variants-py": {
+   "kind": "entity",
+   "type": "asset",
+   "title": "scripts/evaluate_ethos_u_variants.py",
+   "body": "#!/usr/bin/env python3\n\"\"\"Compare Vela estimates for a quantized model across Ethos-U candidates.\"\"\"\n\nfrom __future__ import annotations\n\nimport argparse\nimport csv\nimport re\nimport shlex\nimport shutil\nimport subprocess\nimport sys\nimport time\nfrom dataclasses import dataclass\nfrom datetime import datetime, timezone\nfrom pathlib import Path\nfrom typing import Sequence\n\n\nDEFAULT_CANDIDATES = (\n    (\"ethos-u55-128\", \"Ethos_U55_Deep_Embedded\", \"Shared_Sram\"),\n    (\"ethos-u85-256\", \"Ethos_U85_SYS_DRAM_High\", \"Shared_Sram\"),\n)\nOPTIMISATIONS = (\"Size\", \"Performance\")\nSUMMARY_FIELDS = (\n    \"sram_memory_used\",\n    \"dram_memory_used\",\n    \"on_chip_flash_memory_used\",\n    \"off_chip_flash_memory_used\",\n    \"inference_time\",\n)\n\n\nclass EvaluationError(RuntimeError):\n    \"\"\"A fatal error that must stop the complete comparison.\"\"\"\n\n\n@dataclass(frozen=True)\nclass Candidate:\n    accelerator: str\n    system_config: str\n    memory_mode: str\n\n\n@dataclass(frozen=True)\nclass Result:\n    optimisation: str\n    candidate: Candidate\n    reported_accelerator: str\n    sram_kib: float\n    dram_kib: float\n    on_chip_flash_kib: float\n    off_chip_flash_kib: float\n    inference_time_ms: float\n    cpu_operators: int | None\n    npu_operators: int | None\n    build_dir: Path\n\n    @property\n    def other_memory_kib(self) -> float:\n        return self.dram_kib + self.on_chip_flash_kib + self.off_chip_flash_kib\n\n\ndef positive_seconds(value: str) -> float:\n    try:\n        seconds = float(value)\n    except ValueError as exc:\n        raise argparse.ArgumentTypeError(\"must be a number\") from exc\n    if seconds <= 0:\n        raise argparse.ArgumentTypeError(\"must be greater than zero\")\n    return seconds\n\n\ndef parse_args(argv: Sequence[str]) -> argparse.Namespace:\n    parser = argparse.ArgumentParser(\n        description=(\n            \"Compare Vela memory and estimated performance for a quantized \"\n            \"TFLite or TOSA model across Ethos-U configurations.\"\n        )\n    )\n    parser.add_argument(\"model\", type=Path, help=\"existing .tflite or .tosa model\")\n    parser.add_argument(\n        \"--candidate\",\n        action=\"append\",\n        nargs=3,\n        metavar=(\"ACCELERATOR\", \"SYSTEM_CONFIG\", \"MEMORY_MODE\"),\n        help=\"replace the defaults; repeat for every candidate\",\n    )\n    parser.add_argument(\n        \"--vela-config\",\n        \"--config\",\n        dest=\"vela_config\",\n        default=\"Arm/vela.ini\",\n        help=(\n            \"device-specific .ini path or installed Vela config name \"\n            \"(default: the installed Arm/vela.ini)\"\n        ),\n    )\n    parser.add_argument(\n        \"--timeout-seconds\",\n        type=positive_seconds,\n        default=300.0,\n        help=\"shared deadline for all model compilations (default: 300)\",\n    )\n    parser.add_argument(\n        \"--output-dir\",\n        type=Path,\n        help=(\n            \"empty comparison directory (default: .agent-artifacts/\"\n            \"ethos-u-evaluation/<model>-<UTC timestamp>)\"\n        ),\n    )\n    return parser.parse_args(argv)\n\n\ndef command_text(command: Sequence[str]) -> str:\n    return shlex.join(str(part) for part in command)\n\n\ndef run_checked(\n    command: Sequence[str], stage: str, timeout: float, log_path: Path | None = None\n) -> subprocess.CompletedProcess[str]:\n    try:\n        completed = subprocess.run(\n            [str(part) for part in command],\n            capture_output=True,\n            text=True,\n            encoding=\"utf-8\",\n            errors=\"replace\",\n            timeout=timeout,\n            check=False,\n        )\n    except subprocess.TimeoutExpired as exc:\n        stdout = exc.stdout or \"\"\n        stderr = exc.stderr or \"\"\n        if isinstance(stdout, bytes):\n            stdout = stdout.decode(\"utf-8\", errors=\"replace\")\n        if isinstance(stderr, bytes):\n            stderr = stderr.decode(\"utf-8\", errors=\"replace\")\n        write_log(log_path, command, stdout, stderr)\n        detail = f\"; log: {log_path}\" if log_path else \"\"\n        raise EvaluationError(\n            f\"{stage} exceeded the remaining {timeout:.1f} second deadline{detail}\"\n        ) from exc\n    except OSError as exc:\n        raise EvaluationError(f\"could not run {stage}: {exc}\") from exc\n\n    write_log(log_path, command, completed.stdout, completed.stderr)\n    if completed.returncode != 0:\n        detail = f\"\\nLog: {log_path}\" if log_path else \"\"\n        output = (completed.stderr or completed.stdout).strip()\n        if output:\n            output = f\"\\n{output}\"\n        raise EvaluationError(\n            f\"{stage} failed with exit code {completed.returncode}: \"\n            f\"{command_text(command)}{detail}{output}\"\n        )\n    return completed\n\n\ndef write_log(\n    log_path: Path | None, command: Sequence[str], stdout: str, stderr: str\n) -> None:\n    if log_path is None:\n        return\n    sections = [f\"Command: {command_text(command)}\\n\", \"\\n--- stdout ---\\n\", stdout]\n    if stderr:\n        sections.extend((\"\\n--- stderr ---\\n\", stderr))\n    log_path.write_text(\"\".join(sections), encoding=\"utf-8\")\n\n\ndef validate_model(model: Path) -> Path:\n    resolved = model.expanduser().resolve()\n    if not resolved.exists():\n        raise EvaluationError(f\"model does not exist: {resolved}\")\n    if not resolved.is_file():\n        raise EvaluationError(f\"model path is not a file: {resolved}\")\n    if resolved.suffix.lower() not in {\".tflite\", \".tosa\"}:\n        raise EvaluationError(\"model must use the .tflite or .tosa extension\")\n    try:\n        with resolved.open(\"rb\") as stream:\n            header = stream.read(256)\n    except OSError as exc:\n        raise EvaluationError(f\"model cannot be read: {resolved}: {exc}\") from exc\n    if header.startswith(b\"version https://git-lfs.github.com/spec/v1\"):\n        size_match = re.search(rb\"^size (\\d+)$\", header, re.MULTILINE)\n        expected = (\n            f\" for a {int(size_match.group(1))}-byte object\" if size_match else \"\"\n        )\n        raise EvaluationError(\n            f\"model content is unavailable: {resolved} is a Git LFS pointer{expected}; \"\n            \"retrieve the model outside this skill\"\n        )\n    return resolved\n\n\ndef default_output_dir(model: Path) -> Path:\n    stamp = datetime.now(timezone.utc).strftime(\"%Y%m%d-%H%M%S\")\n    name = re.sub(r\"[^A-Za-z0-9._-]+\", \"-\", model.stem).strip(\"-_\") or \"model\"\n    return (\n        Path.cwd()\n        / \".agent-artifacts\"\n        / \"ethos-u-evaluation\"\n        / f\"{name}-{stamp}\"\n    )\n\n\ndef prepare_output_dir(path: Path) -> Path:\n    resolved = path.expanduser().resolve()\n    if resolved.exists():\n        if not resolved.is_dir():\n            raise EvaluationError(f\"output path is not a directory: {resolved}\")\n        if any(resolved.iterdir()):\n            raise EvaluationError(f\"output directory is not empty: {resolved}\")\n    else:\n        resolved.mkdir(parents=True)\n    return resolved\n\n\ndef slug(value: str) -> str:\n    return re.sub(r\"[^A-Za-z0-9._-]+\", \"-\", value).strip(\"-_\").lower()\n\n\ndef parse_operator_count(output: str, kind: str) -> int | None:\n    match = re.search(rf\"^{kind} operators\\s*=\\s*(\\d+)\", output, re.MULTILINE)\n    return int(match.group(1)) if match else None\n\n\ndef read_summary(\n    build_dir: Path, candidate: Candidate, optimisation: str, output: str\n) -> Result:\n    summaries = list(build_dir.glob(\"*_summary_*.csv\"))\n    if len(summaries) != 1:\n        raise EvaluationError(\n            f\"expected one Vela summary CSV in {build_dir}, found {len(summaries)}\"\n        )\n    with summaries[0].open(newline=\"\", encoding=\"utf-8-sig\") as stream:\n        rows = list(csv.DictReader(stream))\n    if len(rows) != 1:\n        raise EvaluationError(\n            f\"expected one data row in Vela summary CSV {summaries[0]}, \"\n            f\"found {len(rows)}\"\n        )\n    row = rows[0]\n    missing = [field for field in SUMMARY_FIELDS if not row.get(field)]\n    if missing:\n        raise EvaluationError(\n            f\"Vela summary CSV {summaries[0]} is missing values: {', '.join(missing)}\"\n        )\n    try:\n        return Result(\n            optimisation=optimisation,\n            candidate=candidate,\n            reported_accelerator=row.get(\"accelerator_configuration\", \"\"),\n            sram_kib=float(row[\"sram_memory_used\"]),\n            dram_kib=float(row[\"dram_memory_used\"]),\n            on_chip_flash_kib=float(row[\"on_chip_flash_memory_used\"]),\n            off_chip_flash_kib=float(row[\"off_chip_flash_memory_used\"]),\n            inference_time_ms=float(row[\"inference_time\"]) * 1000.0,\n            cpu_operators=parse_operator_count(output, \"CPU\"),\n            npu_operators=parse_operator_count(output, \"NPU\"),\n            build_dir=build_dir,\n        )\n    except ValueError as exc:\n        raise EvaluationError(\n            f\"Vela summary CSV {summaries[0]} contains a non-numeric result\"\n        ) from exc\n\n\ndef operator_text(result: Result) -> str:\n    if result.cpu_operators is None or result.npu_operators is None:\n        return \"unavailable\"\n    return f\"{result.cpu_operators}/{result.npu_operators}\"\n\n\ndef write_csv_report(path: Path, results: Sequence[Result]) -> None:\n    fieldnames = (\n        \"optimisation\",\n        \"accelerator_configuration\",\n        \"reported_accelerator_configuration\",\n        \"system_config\",\n        \"memory_mode\",\n        \"sram_memory_kib\",\n        \"dram_memory_kib\",\n        \"on_chip_flash_memory_kib\",\n        \"off_chip_flash_memory_kib\",\n        \"other_memory_kib\",\n        \"estimated_inference_time_ms\",\n        \"cpu_operators\",\n        \"npu_operators\",\n        \"build_directory\",\n    )\n    with path.open(\"w\", newline=\"\", encoding=\"utf-8\") as stream:\n        writer = csv.DictWriter(stream, fieldnames=fieldnames)\n        writer.writeheader()\n        for result in results:\n            writer.writerow(\n                {\n                    \"optimisation\": result.optimisation,\n                    \"accelerator_configuration\": result.candidate.accelerator,\n                    \"reported_accelerator_configuration\": result.reported_accelerator,\n                    \"system_config\": result.candidate.system_config,\n                    \"memory_mode\": result.candidate.memory_mode,\n                    \"sram_memory_kib\": f\"{result.sram_kib:.6f}\",\n                    \"dram_memory_kib\": f\"{result.dram_kib:.6f}\",\n                    \"on_chip_flash_memory_kib\": f\"{result.on_chip_flash_kib:.6f}\",\n                    \"off_chip_flash_memory_kib\": f\"{result.off_chip_flash_kib:.6f}\",\n                    \"other_memory_kib\": f\"{result.other_memory_kib:.6f}\",\n                    \"estimated_inference_time_ms\": f\"{result.inference_time_ms:.6f}\",\n                    \"cpu_operators\": result.cpu_operators,\n                    \"npu_operators\": result.npu_operators,\n                    \"build_directory\": str(result.build_dir),\n                }\n            )\n\n\ndef operation_warning(results: Sequence[Result]) -> str | None:\n    counts = {(item.cpu_operators, item.npu_operators) for item in results}\n    if any(None in count for count in counts):\n        return \"CPU/NPU operator counts could not be read from every Vela report.\"\n    if len(counts) != 1:\n        return \"CPU/NPU operator counts differ between builds; compare estimates with care.\"\n    return None\n\n\ndef write_markdown_report(\n    path: Path,\n    model: Path,\n    vela_path: str,\n    vela_version: str,\n    config: str,\n    timeout_seconds: float,\n    results: Sequence[Result],\n) -> str | None:\n    warning = operation_warning(results)\n    lines = [\n        \"# Ethos-U configuration comparison\",\n        \"\",\n        f\"- Model: `{model}`\",\n        f\"- Vela: `{vela_path}` ({vela_version})\",\n        f\"- Configuration file: `{config}`\",\n        f\"- Shared compilation limit: {timeout_seconds:g} seconds\",\n        \"\",\n        \"> [!CAUTION]\",\n        \"> Vela cycle counts and inference times are estimates. Validate the selected\",\n        \"> configuration on target hardware.\",\n        \"\",\n        \"`Other memory` is the sum of Vela's DRAM, on-chip Flash, and off-chip\",\n        \"Flash memory totals. See `comparison.csv` for the separate values.\",\n    ]\n    if warning:\n        lines.extend((\"\", \"> [!WARNING]\", f\"> {warning}\"))\n\n    headings = {\n        \"Size\": \"Optimize for memory size\",\n        \"Performance\": \"Optimize for performance\",\n    }\n    for optimisation in OPTIMISATIONS:\n        lines.extend(\n            (\n                \"\",\n                f\"## {headings[optimisation]}\",\n                \"\",\n                \"| Accelerator | System configuration | Memory mode | SRAM | Other memory | Estimated time | CPU/NPU operators |\",\n                \"| --- | --- | --- | ---: | ---: | ---: | ---: |\",\n            )\n        )\n        for result in (r for r in results if r.optimisation == optimisation):\n            lines.append(\n                f\"| `{result.candidate.accelerator}` | \"\n                f\"`{result.candidate.system_config}` | \"\n                f\"`{result.candidate.memory_mode}` | \"\n                f\"{result.sram_kib:.2f} KiB | \"\n                f\"{result.other_memory_kib:.2f} KiB | \"\n                f\"{result.inference_time_ms:.3f} ms | \"\n                f\"{operator_text(result)} |\"\n            )\n    path.write_text(\"\\n\".join(lines) + \"\\n\", encoding=\"utf-8\")\n    return warning\n\n\ndef evaluate(args: argparse.Namespace) -> int:\n    model = validate_model(args.model)\n    vela_path = shutil.which(\"vela\")\n    if vela_path is None:\n        raise EvaluationError(\"vela is not installed or is not available on PATH\")\n\n    version_result = run_checked([vela_path, \"--version\"], \"Vela version check\", 15.0)\n    vela_version = version_result.stdout.strip() or version_result.stderr.strip()\n    if not vela_version:\n        raise EvaluationError(\"vela --version returned no version\")\n    print(f\"Vela executable: {vela_path}\")\n    print(f\"Vela version: {vela_version}\")\n\n    run_checked(\n        [vela_path, \"--list-configs\", args.vela_config],\n        f\"Vela configuration check for {args.vela_config}\",\n        30.0,\n    )\n\n    candidates = [Candidate(*values) for values in (args.candidate or DEFAULT_CANDIDATES)]\n    output_dir = prepare_output_dir(args.output_dir or default_output_dir(model))\n    output_format = \"raw\" if model.suffix.lower() == \".tosa\" else \"tflite\"\n    results: list[Result] = []\n    deadline = time.monotonic() + args.timeout_seconds\n\n    for candidate_index, candidate in enumerate(candidates, start=1):\n        candidate_dir = (\n            f\"{candidate_index:02d}-{slug(candidate.accelerator)}-\"\n            f\"{slug(candidate.system_config)}-{slug(candidate.memory_mode)}\"\n        )\n        for optimisation in OPTIMISATIONS:\n            build_dir = output_dir / candidate_dir / optimisation.lower()\n            build_dir.mkdir(parents=True)\n            remaining = deadline - time.monotonic()\n            if remaining <= 0:\n                raise EvaluationError(\n                    f\"shared {args.timeout_seconds:g} second compilation deadline expired \"\n                    f\"before {candidate.accelerator} {optimisation}\"\n                )\n            command = [\n                vela_path,\n                str(model),\n                \"--accelerator-config\",\n                candidate.accelerator,\n                \"--config\",\n                args.vela_config,\n                \"--system-config\",\n                candidate.system_config,\n                \"--memory-mode\",\n                candidate.memory_mode,\n                \"--optimise\",\n                optimisation,\n                \"--output-format\",\n                output_format,\n                \"--output-dir\",\n                str(build_dir),\n                \"--verbose-cycle-estimate\",\n            ]\n            stage = (\n                f\"Vela compile for {candidate.accelerator}, \"\n                f\"{candidate.system_config}, {candidate.memory_mode}, {optimisation}\"\n            )\n            print(f\"Compiling: {stage}\")\n            completed = run_checked(\n                command, stage, remaining, build_dir / \"vela.log\"\n            )\n            results.append(\n                read_summary(build_dir, candidate, optimisation, completed.stdout)\n            )\n\n    csv_path = output_dir / \"comparison.csv\"\n    markdown_path = output_dir / \"comparison.md\"\n    write_csv_report(csv_path, results)\n    warning = write_markdown_report(\n        markdown_path,\n        model,\n        vela_path,\n        vela_version,\n        args.vela_config,\n        args.timeout_seconds,\n        results,\n    )\n\n    print(\"Status: PASS\")\n    print(f\"Markdown report: {markdown_path}\")\n    print(f\"CSV report: {csv_path}\")\n    if warning:\n        print(f\"Warning: {warning}\")\n    return 0\n\n\ndef main(argv: Sequence[str] | None = None) -> int:\n    try:\n        return evaluate(parse_args(argv if argv is not None else sys.argv[1:]))\n    except EvaluationError as exc:\n        print(f\"ERROR: {exc}\", file=sys.stderr)\n        print(\"Status: FAIL\", file=sys.stderr)\n        return 1\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n",
+   "source": "ethos-u/evaluate-ethos-u-variants/scripts/evaluate_ethos_u_variants.py",
+   "of": "proc-evaluate-ethos-u-variants"
+  },
+  "artifact-ethos-u-evaluation": {
+   "kind": "entity",
+   "type": "artifact",
+   "title": ".agent-artifacts/ethos-u-evaluation"
+  },
+  "proc-apply-confirmed-pdsc-proposal": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "pack",
+   "title": "apply-confirmed-pdsc-proposal",
+   "summary": "Apply a complete, explicitly confirmed CMSIS-Pack PDSC sequence or `debugvars` proposal provided through the active conversation and run its required validation. Use after a debug or trace proposal has been reviewed and the user has authorized edits to the named PDSC files; do not create agent-artifact records, infer missing technical behavior, or apply changes before confirmation.",
+   "triggers": [],
+   "status": "draft",
+   "source": "pack/apply-confirmed-pdsc-proposal/SKILL.md",
+   "preconditions": "Complete debug or trace proposal in conversation with exact XML and target paths, explicit confirmation for every user-owned file, and a named common plus domain-specific validation plan.",
+   "portability": "Support any existing CMSIS Device Family Pack. Do not assume a device family, debugger, toolchain, or active target.",
+   "tools": [],
+   "output": "Return the application result in conversation. The calling generator updates its private proposal record only after all checks pass.",
+   "sections": [
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "proc-generate-debug-description": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "pack",
+   "title": "generate-debug-description",
+   "summary": "Add or review non-sequence CMSIS-Pack Debug Description content in an existing Device Family Pack PDSC. Use for debug, debugconfig, dbg_datapatch, debug-port, or access-port definitions after `$debug-access-knowledge` has established the required access facts. Do not collect knowledge, generate or update debugvars, implement device debug sequences, or generate CoreSight trace sequences.",
+   "triggers": [],
+   "status": "draft",
+   "source": "pack/generate-debug-description/SKILL.md",
+   "preconditions": "An existing target `.pdsc`, selected family/subFamily/device/variant scope, affected `<processor>` descriptions, and a current `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` record.",
+   "portability": "Support any existing CMSIS Device Family Pack whose selected scope and debug topology are documented. Do not assume a device family, debug probe, toolchain, or runtime target.",
+   "tools": [],
+   "output": "Apply the confirmed non-sequence PDSC definitions and report their XML placement, applicability, evidence, unresolved items, and validation results.",
+   "sections": [
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "doc-open-cmsis-pack-github-io-open-cmsis-pack-spec-main-html-deb": {
+   "kind": "entity",
+   "type": "docsection",
+   "title": "https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/debug_description.html"
+  },
+  "concept-description-contract": {
+   "kind": "knowledge",
+   "type": "concept",
+   "domain": "pack",
+   "title": "description-contract",
+   "status": "draft",
+   "source": "pack/generate-debug-description/references/description-contract.md"
+  },
+  "proc-generate-debug-sequences": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "pack",
+   "title": "generate-debug-sequences",
+   "summary": "Add evidence-backed, device-specific non-trace CMSIS-Pack Debug Description sequences to an existing Device Family Pack PDSC. Use for device unlock, debug-port setup, reset, bootloader, flash, debug-authentication, multi-core startup, or reliable debug through sleep, deep-sleep, and device low-power modes after `$debug-access-knowledge` and `$debug-knowledge` have established the required facts; use the shared PDSC preparation, debugvars, application, and XML-validation skills for their respective integration work; do not use for CoreSight trace setup.",
+   "triggers": [],
+   "status": "draft",
+   "source": "pack/generate-debug-sequences/SKILL.md",
+   "preconditions": "Existing target `.pdsc`, selected family/subFamily/device/variant scope, affected processors and non-trace sequences, documented device behavior, and current `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` and `.agent-artifacts/<pdsc-stem>.debug-knowledge.md` records.",
+   "portability": "Support any existing CMSIS Device Family Pack with documented device-specific behavior. Do not assume a device family, debug probe, toolchain, or active target; use a target only when available for validation.",
+   "tools": [],
+   "output": "Create or update the private `.agent-artifacts/<pdsc-stem>.debug-sequences.md` proposal record, including proposed debugvars; apply the confirmed non-trace PDSC change; and report applicability, placement, evidence, low-power behavior, `.dbgconf` proposals, and validation results.",
+   "sections": [
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "artifact-pdsc-stem-debug-sequences-md": {
+   "kind": "entity",
+   "type": "artifact",
+   "title": ".agent-artifacts/<pdsc-stem>.debug-sequences.md"
+  },
+  "concept-debug-sequence-contract": {
+   "kind": "knowledge",
+   "type": "concept",
+   "domain": "pack",
+   "title": "debug-sequence-contract",
+   "status": "draft",
+   "source": "pack/generate-debug-sequences/references/debug-sequence-contract.md"
+  },
+  "proc-generate-trace-sequences": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "pack",
+   "title": "generate-trace-sequences",
+   "summary": "Add modular, evidence-backed CoreSight trace sequences to an existing CMSIS Device Family Pack PDSC. Use after `$trace-knowledge` has produced a READY trace knowledge record that evidences available trace paths, when assembling per-component trace snippets into TraceStart, TraceCapture, TraceFlush, and TraceStop sequences, or when maintaining trace setup with device-specific extension placeholders; use the shared PDSC preparation, debugvars, application, and XML-validation skills for their respective integration work. Consult `$debug-access-knowledge` only when a required access fact is not self-contained in the trace record.",
+   "triggers": [],
+   "status": "draft",
+   "source": "pack/generate-trace-sequences/SKILL.md",
+   "preconditions": "Existing target `.pdsc`, selected family/subFamily/device/variant scope, a READY `.agent-artifacts/<pdsc-stem>.trace-knowledge.md` record, and documentation for the selected CoreSight topology. Use `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` only for a required processor, connection, DP/AP path, protocol, or dormant-state fact absent from the trace record.",
+   "portability": "Support any existing CMSIS Device Family Pack with documented CoreSight paths. Do not assume a device family, debug probe, toolchain, active target, or trace transport.",
+   "tools": [],
+   "output": "Create or update the private `.agent-artifacts/<pdsc-stem>.trace-sequences.md` proposal record, including proposed debugvars; apply the confirmed trace XML; and report trace paths, component instances, sequence names, placement, placeholders, sources, `.dbgconf` proposals, and validation results.",
+   "sections": [
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "asset-generate-trace-sequences-assets-components-etb-xml": {
+   "kind": "entity",
+   "type": "asset",
+   "title": "assets/components/etb.xml",
+   "body": "<!-- CMSIS-Pack ETB template. Replace __INSTANCE_INDEX__ with the stable numeric instance suffix. -->\n<cmsis-pack-trace-snippet component=\"ETB\">\n  <debugvars>\n    // ETB\n    __var ETB___INSTANCE_INDEX___ADDRESS       = 0xE0042000;\n    __var ETB___INSTANCE_INDEX___AP            = 0x00000000;\n    __var ETB___INSTANCE_INDEX___TRIGGER_COUNT = 0x0;\n  </debugvars>\n  <sequence name=\"CS_ETB___INSTANCE_INDEX___Configure\">\n    <block>\n      // Helper variables\n      __var savedAP = __ap;\n      __var ffcrValue = 0x00000000;\n      __var etbStatus = 0x00000000;\n\n      Message(0, \"Begin CS_ETB___INSTANCE_INDEX_____INSTANCE_INDEX___Configure @0x%08X, AP 0x%08X\", ETB___INSTANCE_INDEX___ADDRESS, ETB___INSTANCE_INDEX___AP);\n      __ap = ETB___INSTANCE_INDEX___AP; // Set AP\n\n      // Configure ETB\n      Write32(ETB___INSTANCE_INDEX___ADDRESS + 0x020, 0x00000000);  // Disable ETB before configuring\n      etbStatus = Read32(ETB___INSTANCE_INDEX___ADDRESS + 0x00C);\n    </block>\n    <control while=\"(etbStatus &amp; 0x4) == 0\" info=\"Wait for AcqComp\" timeout=\"100\">\n      <block>\n        etbStatus = Read32(ETB___INSTANCE_INDEX___ADDRESS + 0x00C);\n      </block>\n    </control>\n    <block>\n      // Configure\n      Write32(ETB___INSTANCE_INDEX___ADDRESS + 0x304, 0x00000003);  // FFCR: Enable Formatter and Trigger Insertion\n      Write32(ETB___INSTANCE_INDEX___ADDRESS + 0x01C, ETB___INSTANCE_INDEX___TRIGGER_COUNT); // TRG: Number of words to capture after trigger\n      Write32(ETB___INSTANCE_INDEX___ADDRESS + 0x018, 0x00000000);  // Init RwP\n      Write32(ETB___INSTANCE_INDEX___ADDRESS + 0x014, 0x00000000);  // Init RRP\n\n      Write32(ETB___INSTANCE_INDEX___ADDRESS + 0x020, 0x00000001);  // Enable ETB\n    </block>\n    <block>\n      __ap = savedAP;\n      Message(0, \"End CS_ETB___INSTANCE_INDEX_____INSTANCE_INDEX___Configure @0x%08X, AP 0x%08X\", ETB___INSTANCE_INDEX___ADDRESS, ETB___INSTANCE_INDEX___AP);\n    </block>\n  </sequence>\n  <sequence name=\"CS_ETB___INSTANCE_INDEX___Capture\">\n    <block>\n      // Helper variables\n      __var ffcrValue = 0x00000000;\n      __var savedAP = __ap;\n\n      Message(0, \"Begin CS_ETB___INSTANCE_INDEX_____INSTANCE_INDEX___Capture @0x%08X, AP 0x%08X\", ETB___INSTANCE_INDEX___ADDRESS, ETB___INSTANCE_INDEX___AP);\n\n      // Ensure involved components are in a well-defined state.\n      Sequence(\"DoTraceFlush\");\n\n      __ap = ETB___INSTANCE_INDEX___AP; // Set AP\n      ffcrValue  = Read32(ETB___INSTANCE_INDEX___ADDRESS + 0x304);\n      ffcrValue |= 0x00000002;               // FFCR: Enable Formatter\n      Write32(ETB___INSTANCE_INDEX___ADDRESS + 0x304, ffcrValue);\n      Write32(ETB___INSTANCE_INDEX___ADDRESS + 0x01C, ETB___INSTANCE_INDEX___TRIGGER_COUNT); // TRG: Number of words to capture after trigger\n      Write32(ETB___INSTANCE_INDEX___ADDRESS + 0x018, 0x00000000);  // Init RwP\n      Write32(ETB___INSTANCE_INDEX___ADDRESS + 0x014, 0x00000000);  // Init RRP\n      Write32(ETB___INSTANCE_INDEX___ADDRESS + 0x020, 0x00000001);  // Enable ETB\n      __ap = savedAP;\n\n      Message(0, \"End CS_ETB___INSTANCE_INDEX_____INSTANCE_INDEX___Capture @0x%08X, AP 0x%08X\", ETB___INSTANCE_INDEX___ADDRESS, ETB___INSTANCE_INDEX___AP);\n    </block>\n  </sequence>\n  <sequence name=\"CS_ETB___INSTANCE_INDEX___Flush\">\n    <block>\n      // Helper variables\n      __var savedAP     = __ap;\n      __var ffcrValue   = 0x00000000;\n      __var etbStatus   = 0x00000000;\n\n      Message(0, \"Begin CS_ETB___INSTANCE_INDEX_____INSTANCE_INDEX___Flush @0x%08X, AP 0x%08X\", ETB___INSTANCE_INDEX___ADDRESS, ETB___INSTANCE_INDEX___AP);\n\n      __ap = ETB___INSTANCE_INDEX___AP; // Set AP\n    </block>\n    <block>\n      // Flush ETB first\n      ffcrValue = Read32(ETB___INSTANCE_INDEX___ADDRESS + 0x304);\n      ffcrValue &amp;= ~(0x00001040); // Clear StopOnFlush and FlushOnManual\n      ffcrValue |= 0x00001000;    // Stop after the manual flush completes\n      Write32(ETB___INSTANCE_INDEX___ADDRESS + 0x304, ffcrValue);\n      ffcrValue |= 0x00000040;    // Trigger manual flush\n      Write32(ETB___INSTANCE_INDEX___ADDRESS + 0x304, ffcrValue);\n    </block>\n    <block>\n      ffcrValue = Read32(ETB___INSTANCE_INDEX___ADDRESS + 0x304);\n    </block>\n    <control while=\"(ffcrValue &amp; 0x40) != 0\" info=\"Wait for ETB manual flush to complete\" timeout=\"100\">\n      <block>\n        ffcrValue = Read32(ETB___INSTANCE_INDEX___ADDRESS + 0x304);\n      </block>\n    </control>\n    <block>\n      etbStatus = Read32(ETB___INSTANCE_INDEX___ADDRESS + 0x00C);\n    </block>\n    <control while=\"(etbStatus &amp; 0x4) == 0\" info=\"Wait for ETB to become ready\" timeout=\"100\">\n      <block>\n        etbStatus = Read32(ETB___INSTANCE_INDEX___ADDRESS + 0x00C);\n      </block>\n    </control>\n    <block>\n      // Disable ETB after flush until next run/step\n      Write32(ETB___INSTANCE_INDEX___ADDRESS + 0x020, 0x00000000);\n      etbStatus = Read32(ETB___INSTANCE_INDEX___ADDRESS + 0x00C);\n    </block>\n    <control while=\"(etbStatus &amp; 0x4) == 0\" info=\"Wait for AcqComp\" timeout=\"100\">\n      <block>\n        etbStatus = Read32(ETB___INSTANCE_INDEX___ADDRESS + 0x00C);\n      </block>\n    </control>\n    <block>\n      __ap = savedAP;\n      Message(0, \"End CS_ETB___INSTANCE_INDEX_____INSTANCE_INDEX___Flush @0x%08X, AP 0x%08X\", ETB___INSTANCE_INDEX___ADDRESS, ETB___INSTANCE_INDEX___AP);\n    </block>\n  </sequence>\n</cmsis-pack-trace-snippet>\n",
+   "source": "pack/generate-trace-sequences/assets/components/etb.xml",
+   "of": "proc-generate-trace-sequences"
+  },
+  "asset-generate-trace-sequences-assets-components-etf-xml": {
+   "kind": "entity",
+   "type": "asset",
+   "title": "assets/components/etf.xml",
+   "body": "<!-- CMSIS-Pack ETF template. Replace __INSTANCE_INDEX__ with the stable numeric instance suffix. -->\n<cmsis-pack-trace-snippet component=\"ETF\">\n  <debugvars>\n    // ETF\n    __var ETF___INSTANCE_INDEX___ADDRESS       = 0xE0042000;\n    __var ETF___INSTANCE_INDEX___AP            = 0x00000000;\n  </debugvars>\n  <sequence name=\"CS_ETF___INSTANCE_INDEX___Configure_HWFIFO\">\n    <block>\n      // Helper variables\n      __var savedAP = __ap;\n      __var ffcrValue = 0x00000000;\n      __var etfStatus = 0x00000000;\n\n      Message(0, \"Begin CS_ETF___INSTANCE_INDEX_____INSTANCE_INDEX___Configure_HWFIFO @0x%08X, AP 0x%08X\", ETF___INSTANCE_INDEX___ADDRESS, ETF___INSTANCE_INDEX___AP);\n      __ap = ETF___INSTANCE_INDEX___AP; // Set AP\n\n      // Configure ETF to HW FIFO for Sync Trace\n      Write32(ETF___INSTANCE_INDEX___ADDRESS + 0x020, 0x00000000);  // Disable ETF before configuring\n      etfStatus = Read32(ETF___INSTANCE_INDEX___ADDRESS + 0x00C);\n    </block>\n    <control while=\"(etfStatus &amp; 0x4) == 0\" info=\"Wait for TMCReady\" timeout=\"100\">\n      <block>\n        etfStatus = Read32(ETF___INSTANCE_INDEX___ADDRESS + 0x00C);\n      </block>\n    </control>\n    <block>\n      // Configure\n      Write32(ETF___INSTANCE_INDEX___ADDRESS + 0x028, 0x00000002); // Set HW FIFO Mode\n      Write32(ETF___INSTANCE_INDEX___ADDRESS + 0x034, 0x00000000); // Watermark: Set threshold vacancy to 0 to use full buffer\n      Write32(ETF___INSTANCE_INDEX___ADDRESS + 0x304, 0x00000003); // FFCR: Enable Formatter and Trigger Insertion\n      Write32(ETF___INSTANCE_INDEX___ADDRESS + 0x308, 0x00000000); // Clear PSCR, use other components for periodic sync requests\n\n      Write32(ETF___INSTANCE_INDEX___ADDRESS + 0x020, 0x00000001); // Enable ETF\n    </block>\n    <block>\n      __ap = savedAP;\n      Message(0, \"End CS_ETF___INSTANCE_INDEX_____INSTANCE_INDEX___Configure_HWFIFO @0x%08X, AP 0x%08X\", ETF___INSTANCE_INDEX___ADDRESS, ETF___INSTANCE_INDEX___AP);\n    </block>\n  </sequence>\n  <sequence name=\"CS_ETF___INSTANCE_INDEX___Configure_CircularBuffer\">\n    <block>\n      // Helper variables\n      __var savedAP = __ap;\n      __var ffcrValue = 0x00000000;\n      __var etfStatus = 0x00000000;\n      __var traceBufferSyncCnt = 0xA;\n\n      Message(0, \"Begin CS_ETF___INSTANCE_INDEX_____INSTANCE_INDEX___Configure_CircularBuffer @0x%08X, AP 0x%08X\", ETF___INSTANCE_INDEX___ADDRESS, ETF___INSTANCE_INDEX___AP);\n      __ap = ETF___INSTANCE_INDEX___AP; // Set AP\n\n      // Configure ETF to HW FIFO for Sync Trace\n      Write32(ETF___INSTANCE_INDEX___ADDRESS + 0x020, 0x00000000);  // Disable ETF before configuring\n      etfStatus = Read32(ETF___INSTANCE_INDEX___ADDRESS + 0x00C);\n    </block>\n    <control while=\"(etfStatus &amp; 0x4) == 0\" info=\"Wait for TMCReady\" timeout=\"100\">\n      <block>\n        etfStatus = Read32(ETF___INSTANCE_INDEX___ADDRESS + 0x00C);\n      </block>\n    </control>\n    <block>\n      // Configure\n      Write32(ETF___INSTANCE_INDEX___ADDRESS + 0x028, 0x00000000);  // Set Circular Buffer mode\n      Write32(ETF___INSTANCE_INDEX___ADDRESS + 0x034, 0x00000000);  // Watermark: Set threshold vacancy to 0 to use full buffer\n      Write32(ETF___INSTANCE_INDEX___ADDRESS + 0x304, 0x00000003);  // FFCR: Enable Formatter and Trigger Insertion\n      Write32(ETF___INSTANCE_INDEX___ADDRESS + 0x308, traceBufferSyncCnt); // Set PSCR\n      Write32(ETF___INSTANCE_INDEX___ADDRESS + 0x018, 0x00000000);  // Init RwP\n      Write32(ETF___INSTANCE_INDEX___ADDRESS + 0x014, 0x00000000);  // Init RRP\n\n      Write32(ETF___INSTANCE_INDEX___ADDRESS + 0x020, 0x00000001);  // Enable ETF\n    </block>\n    <block>\n      __ap = savedAP;\n      Message(0, \"End CS_ETF___INSTANCE_INDEX_____INSTANCE_INDEX___Configure_CircularBuffer @0x%08X, AP 0x%08X\", ETF___INSTANCE_INDEX___ADDRESS, ETF___INSTANCE_INDEX___AP);\n    </block>\n  </sequence>\n  <sequence name=\"CS_ETF___INSTANCE_INDEX___Capture_CircularBuffer\">\n    <block>\n      // Helper variables\n      __var ffcrValue = 0x00000000;\n      __var savedAP = __ap;\n      __var traceBufferSyncCnt = 0xA;\n\n      Message(0, \"Begin CS_ETF___INSTANCE_INDEX_____INSTANCE_INDEX___Capture_CircularBuffer @0x%08X, AP 0x%08X\", ETF___INSTANCE_INDEX___ADDRESS, ETF___INSTANCE_INDEX___AP);\n\n      // Ensure involved components are in a well-defined state.\n      Sequence(\"DoTraceFlush\");\n\n      __ap = ETF___INSTANCE_INDEX___AP; // Set AP\n      ffcrValue  = Read32(ETF___INSTANCE_INDEX___ADDRESS + 0x304);\n      ffcrValue |= 0x00000002;               // FFCR: Enable Formatter\n      Write32(ETF___INSTANCE_INDEX___ADDRESS + 0x304, ffcrValue);\n      Write32(ETF___INSTANCE_INDEX___ADDRESS + 0x308, traceBufferSyncCnt); // Set PSCR\n      Write32(ETF___INSTANCE_INDEX___ADDRESS + 0x018, 0x00000000);  // Init RwP\n      Write32(ETF___INSTANCE_INDEX___ADDRESS + 0x014, 0x00000000);  // Init RRP\n      Write32(ETF___INSTANCE_INDEX___ADDRESS + 0x020, 0x00000001);  // Enable ETF\n      __ap = savedAP;\n\n      Message(0, \"End CS_ETF___INSTANCE_INDEX_____INSTANCE_INDEX___Capture_CircularBuffer @0x%08X, AP 0x%08X\", ETF___INSTANCE_INDEX___ADDRESS, ETF___INSTANCE_INDEX___AP);\n    </block>\n  </sequence>\n  <sequence name=\"CS_ETF___INSTANCE_INDEX___Flush\">\n    <block>\n      // Helper variables\n      __var savedAP     = __ap;\n      __var ffcrValue   = 0x00000000;\n      __var etfStatus   = 0x00000000;\n\n      Message(0, \"Begin CS_ETF___INSTANCE_INDEX_____INSTANCE_INDEX___Flush @0x%08X, AP 0x%08X\", ETF___INSTANCE_INDEX___ADDRESS, ETF___INSTANCE_INDEX___AP);\n\n      __ap = ETF___INSTANCE_INDEX___AP; // Set AP\n    </block>\n    <block>\n      // Flush ETF first so the HW FIFO drains towards the TPIU.\n      ffcrValue = Read32(ETF___INSTANCE_INDEX___ADDRESS + 0x304);\n      ffcrValue &amp;= ~(0x00001040); // Clear StopOnFlush and FlushOnManual\n      ffcrValue |= 0x00001000;    // Stop after the manual flush completes\n      Write32(ETF___INSTANCE_INDEX___ADDRESS + 0x304, ffcrValue);\n      ffcrValue |= 0x00000040;    // Trigger manual flush\n      Write32(ETF___INSTANCE_INDEX___ADDRESS + 0x304, ffcrValue);\n    </block>\n    <block>\n      ffcrValue = Read32(ETF___INSTANCE_INDEX___ADDRESS + 0x304);\n    </block>\n    <control while=\"(ffcrValue &amp; 0x40) != 0\" info=\"Wait for ETF manual flush to complete\" timeout=\"100\">\n      <block>\n        ffcrValue = Read32(ETF___INSTANCE_INDEX___ADDRESS + 0x304);\n      </block>\n    </control>\n    <block>\n      etfStatus = Read32(ETF___INSTANCE_INDEX___ADDRESS + 0x00C);\n    </block>\n    <control while=\"(etfStatus &amp; 0x4) == 0\" info=\"Wait for ETF to become ready\" timeout=\"100\">\n      <block>\n        etfStatus = Read32(ETF___INSTANCE_INDEX___ADDRESS + 0x00C);\n      </block>\n    </control>\n    <block>\n      // Disable ETF after flush until next run/step\n      Write32(ETF___INSTANCE_INDEX___ADDRESS + 0x020, 0x00000000);\n      etfStatus = Read32(ETF___INSTANCE_INDEX___ADDRESS + 0x00C);\n    </block>\n    <control while=\"(etfStatus &amp; 0x4) == 0\" info=\"Wait for TMCReady\" timeout=\"100\">\n      <block>\n        etfStatus = Read32(ETF___INSTANCE_INDEX___ADDRESS + 0x00C);\n      </block>\n    </control>\n    <block>\n      __ap = savedAP;\n      Message(0, \"End CS_ETF___INSTANCE_INDEX_____INSTANCE_INDEX___Flush @0x%08X, AP 0x%08X\", ETF___INSTANCE_INDEX___ADDRESS, ETF___INSTANCE_INDEX___AP);\n    </block>\n  </sequence>\n  <sequence name=\"CS_ETF___INSTANCE_INDEX___ReadBuffer\">\n    <block>\n      // Helper variables\n      __var savedAP       = __ap;\n      __var etfStatus     = 0x00000000;\n      __var bufferSize    = 0x00000000;\n      __var readPointer   = 0x00000000;\n      __var writePointer  = 0x00000000;\n      __var bytesToRead   = 0x00000000;\n      __var bytesStreamed = 0x00000000;\n\n      Message(0, \"Begin CS_ETF___INSTANCE_INDEX_____INSTANCE_INDEX___ReadBuffer @0x%08X, AP 0x%08X\", ETF___INSTANCE_INDEX___ADDRESS, ETF___INSTANCE_INDEX___AP);\n\n      __ap = ETF___INSTANCE_INDEX___AP; // Set AP\n\n      // TMC RSZ is expressed in 32-bit words. RRP and RWP are byte offsets.\n      bufferSize   = Read32(ETF___INSTANCE_INDEX___ADDRESS + 0x004) * 4;\n      etfStatus    = Read32(ETF___INSTANCE_INDEX___ADDRESS + 0x00C);\n      readPointer  = Read32(ETF___INSTANCE_INDEX___ADDRESS + 0x014);\n      writePointer = Read32(ETF___INSTANCE_INDEX___ADDRESS + 0x018);\n    </block>\n    <control if=\"bufferSize != 0\">\n      <control if=\"(etfStatus &amp; 0x00000001) != 0\">\n        <block>\n          // STS.Full distinguishes a wrapped/full buffer from an empty buffer\n          // when the read and write pointers are equal.\n          bytesToRead = bufferSize;\n        </block>\n      </control>\n      <control if=\"(etfStatus &amp; 0x00000001) == 0\">\n        <control if=\"writePointer &gt;= readPointer\">\n          <block>\n            bytesToRead = writePointer - readPointer;\n          </block>\n        </control>\n        <control if=\"writePointer &lt; readPointer\">\n          <block>\n            bytesToRead = (bufferSize - readPointer) + writePointer;\n          </block>\n        </control>\n      </control>\n      <control if=\"bytesToRead != 0\">\n        <block>\n          // Read repeatedly from the TMC RRD register. The TMC advances RRP.\n          BufferRead(0, 0, ETF___INSTANCE_INDEX___ADDRESS + 0x010, bytesToRead, 32);\n          bytesStreamed = BufferStreamOut(0, 0, bytesToRead, \".trace/TraceBufferOutput.TB.raw\", 0, 0);\n          Message(0, \"Streamed %d of %d ETF trace bytes\", bytesStreamed, bytesToRead);\n        </block>\n      </control>\n      <control if=\"bytesToRead == 0\">\n        <block>\n          Message(1, \"ETF trace buffer is empty\");\n        </block>\n      </control>\n    </control>\n    <block>\n      __ap = savedAP;\n      Message(0, \"End CS_ETF___INSTANCE_INDEX_____INSTANCE_INDEX___ReadBuffer @0x%08X, AP 0x%08X\", ETF___INSTANCE_INDEX___ADDRESS, ETF___INSTANCE_INDEX___AP);\n    </block>\n  </sequence>\n</cmsis-pack-trace-snippet>\n",
+   "source": "pack/generate-trace-sequences/assets/components/etf.xml",
+   "of": "proc-generate-trace-sequences"
+  },
+  "asset-generate-trace-sequences-assets-components-etr-catu-xml": {
+   "kind": "entity",
+   "type": "asset",
+   "title": "assets/components/etr-catu.xml",
+   "body": "<!-- CMSIS-Pack ETR-CATU template. Replace __INSTANCE_INDEX__ with the stable numeric instance suffix. -->\n<cmsis-pack-trace-snippet component=\"ETR-CATU\">\n  <debugvars>\n    // ETR\n    __var ETR___INSTANCE_INDEX___ADDRESS           = 0x00000000;\n    __var ETR___INSTANCE_INDEX___AP                = 0x00000000;\n    __var ETR___INSTANCE_INDEX___SYNCCNT           = 0xA;\n    __var ETR___INSTANCE_INDEX___TRIGGER_COUNT     = 0x0;\n    __var ETR___INSTANCE_INDEX___BUFFER_ADDRESS    = 0x00000000;\n    __var ETR___INSTANCE_INDEX___BUFFER_ADDRESS_HI = 0x00000000;\n    __var ETR___INSTANCE_INDEX___BUFFER_SIZE       = 0x00000000;\n    __var ETR___INSTANCE_INDEX___AXI_CTL           = 0x00000000; // [19:16]: RCACHE encoding\n                                              // [11:8]: WrBurstLen\n                                              // [5:2]: WCACHE encoding\n                                              // [1]: Secure Access\n                                              // [0]: Privileged Access\n    __var ETR___INSTANCE_INDEX___AXI_CTL1          = 0x00020000; // [27:16]: tlbXlateSlots\n                                              // [7:6]: stashMode\n                                              // [4:0]: tlbLimit\n\n    // CATU\n    // Additional settings if CATU implemented\n    __var CATU___INSTANCE_INDEX___ADDRESS             = 0x00000000;\n    __var CATU___INSTANCE_INDEX___AP                  = 0x00000000;\n    __var CATU___INSTANCE_INDEX___MODE                = 0x00000000;            // [0]: 1- Translate, 0 - Pass-through\n    __var CATU___INSTANCE_INDEX___SCATTERLIST_ADDR    = 0x00000000;            // Lookup table in RAM for translation\n    __var CATU___INSTANCE_INDEX___SCATTERLIST_ADDR_HI = 0x00000000;\n    __var CATU___INSTANCE_INDEX___INPUT_ADDR          = ETR___INSTANCE_INDEX___BUFFER_ADDRESS;    // Virtual base address\n    __var CATU___INSTANCE_INDEX___INPUT_ADDR_HI       = ETR___INSTANCE_INDEX___BUFFER_ADDRESS_HI;\n    __var CATU___INSTANCE_INDEX___AXI_CTRL = (((ETR___INSTANCE_INDEX___AXI_CTL &gt;&gt; 16) &amp; 0xF) &lt;&lt; 4) | (ETR___INSTANCE_INDEX___AXI_CTL &amp; 0x3); // [7:4]: ARCACHE, [1:0]: ARPROT (Secure|Privileged)\n    __var CATU___INSTANCE_INDEX___IRQEN               = 0x00000000;            // [0]: Enable/Disable\n  </debugvars>\n  <sequence name=\"CS_ETR___INSTANCE_INDEX___Configure_CircularBuffer\">\n    <block>\n      // Helper variables\n      __var savedAP = __ap;\n      __var ffcrValue = 0x00000000;\n      __var etrStatus = 0x00000000;\n\n      Message(0, \"Begin CS_ETR___INSTANCE_INDEX___CATU___INSTANCE_INDEX_____INSTANCE_INDEX___ConfigureETRCircularBuffer @0x%08X, AP 0x%08X\", ETR___INSTANCE_INDEX___ADDRESS, ETR___INSTANCE_INDEX___AP);\n      __ap = ETR___INSTANCE_INDEX___AP; // Set AP\n\n      // Configure ETR to HW FIFO for Sync Trace\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x020, 0x00000000);  // Disable ETR before configuring\n      etrStatus = Read32(ETR___INSTANCE_INDEX___ADDRESS + 0x00C);\n    </block>\n    <control while=\"(etrStatus &amp; 0x4) == 0\" info=\"Wait for TMCReady\" timeout=\"100\">\n      <block>\n        etrStatus = Read32(ETR___INSTANCE_INDEX___ADDRESS + 0x00C);\n      </block>\n    </control>\n    <block>\n      // Configure\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x028, 0x00000000);             // Set Circular Buffer mode\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x034, 0x00000000);             // Watermark: Set threshold vacancy to 0 to use full buffer\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x304, 0x00000003);             // FFCR: Enable Formatter and Trigger Insertion\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x01C, ETR___INSTANCE_INDEX___TRIGGER_COUNT);      // TRG: Number of words to capture after trigger\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x308, ETR___INSTANCE_INDEX___SYNCCNT);            // Set PSCR\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x018, ETR___INSTANCE_INDEX___BUFFER_ADDRESS);     // Init RwP\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x014, ETR___INSTANCE_INDEX___BUFFER_ADDRESS);     // Init RRP\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x11C, ETR___INSTANCE_INDEX___BUFFER_ADDRESS_HI);  // Init DBAHI\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x118, ETR___INSTANCE_INDEX___BUFFER_ADDRESS);     // Init DBALO\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x004, ETR___INSTANCE_INDEX___BUFFER_SIZE);        // Init RSZ\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x110, ETR___INSTANCE_INDEX___AXI_CTL);            // Init AXICTL\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0xED0, ETR___INSTANCE_INDEX___AXI_CTL1);           // Init AXICTL1\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x03C, ETR___INSTANCE_INDEX___BUFFER_ADDRESS_HI);  // Init RWPHI\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x038, ETR___INSTANCE_INDEX___BUFFER_ADDRESS_HI);  // Init RRPHI\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x020, 0x00000001);             // Enable ETR\n    </block>\n    <block>\n      __ap = savedAP;\n      Message(0, \"End CS_ETR___INSTANCE_INDEX___CATU___INSTANCE_INDEX_____INSTANCE_INDEX___ConfigureETRCircularBuffer @0x%08X, AP 0x%08X\", ETR___INSTANCE_INDEX___ADDRESS, ETR___INSTANCE_INDEX___AP);\n    </block>\n  </sequence>\n  <sequence name=\"CS_CATU___INSTANCE_INDEX___Configure\" info=\"Scatterlist expected to be programmed separately, too complex\">\n    <block>\n      // Helper variables\n      __var savedAP = __ap;\n      __var status = 0x00000000;\n\n      Message(0, \"Begin CS_ETR___INSTANCE_INDEX___CATU___INSTANCE_INDEX_____INSTANCE_INDEX___ConfigureCATU @0x%08X, AP 0x%08X\", CATU___INSTANCE_INDEX___ADDRESS, CATU___INSTANCE_INDEX___AP);\n\n      __ap = CATU___INSTANCE_INDEX___AP; // Set AP\n\n      // Disable CATU before configuration\n      Write32(CATU___INSTANCE_INDEX___ADDRESS + 0x000, 0x00000000);  \n\n      status = Read32(CATU___INSTANCE_INDEX___ADDRESS + 0x100);\n    </block>\n    <control while=\"(status &amp; 0x0100) == 0\" info=\"Wait for READY\" timeout=\"100\">\n      <block>\n        status = Read32(CATU___INSTANCE_INDEX___ADDRESS + 0x100);\n      </block>\n    </control>\n    <block>\n      // Configure\n      Write32(CATU___INSTANCE_INDEX___ADDRESS + 0x004, CATU___INSTANCE_INDEX___MODE);                 // Set MODE\n      Write32(CATU___INSTANCE_INDEX___ADDRESS + 0x008, CATU___INSTANCE_INDEX___AXI_CTRL);             // Set AXICTRL\n      Write32(CATU___INSTANCE_INDEX___ADDRESS + 0x00C, CATU___INSTANCE_INDEX___IRQEN);                // Set IRQEN\n      Write32(CATU___INSTANCE_INDEX___ADDRESS + 0x020, CATU___INSTANCE_INDEX___SCATTERLIST_ADDR);     // Set SLADDRLO\n      Write32(CATU___INSTANCE_INDEX___ADDRESS + 0x024, CATU___INSTANCE_INDEX___SCATTERLIST_ADDR_HI);  // Set SLADDRHI\n      Write32(CATU___INSTANCE_INDEX___ADDRESS + 0x028, CATU___INSTANCE_INDEX___INPUT_ADDR);           // Set INADDRLO\n      Write32(CATU___INSTANCE_INDEX___ADDRESS + 0x02C, CATU___INSTANCE_INDEX___INPUT_ADDR_HI);        // Set INADDRHI\n\n      // Enable CATU after configuration\n      Write32(CATU___INSTANCE_INDEX___ADDRESS + 0x000, 0x00000001);\n        status = Read32(CATU___INSTANCE_INDEX___ADDRESS + 0x100);\n    </block>\n    <control while=\"(status &amp; 0x0100) == 1\" info=\"Wait for READY cleared\" timeout=\"100\">\n      <block>\n        status = Read32(CATU___INSTANCE_INDEX___ADDRESS + 0x100);\n      </block>\n    </control>\n    <block>\n      __ap = savedAP;\n      Message(0, \"End CS_ETR___INSTANCE_INDEX___CATU___INSTANCE_INDEX_____INSTANCE_INDEX___ConfigureCATU @0x%08X, AP 0x%08X\", CATU___INSTANCE_INDEX___ADDRESS, CATU___INSTANCE_INDEX___AP);\n    </block>\n  </sequence>\n  <sequence name=\"CS_ETR___INSTANCE_INDEX___Capture_CircularBuffer\">\n    <block>\n      // Helper variables\n      __var ffcrValue = 0x00000000;\n      __var savedAP = __ap;\n\n      Message(0, \"Begin CS_ETR___INSTANCE_INDEX___CATU___INSTANCE_INDEX_____INSTANCE_INDEX___CaptureETRCircularBuffer @0x%08X, AP 0x%08X\", ETR___INSTANCE_INDEX___ADDRESS, ETR___INSTANCE_INDEX___AP);\n\n      // Ensure involved components are in a well-defined state.\n      Sequence(\"DoTraceFlush\");\n\n      __ap = ETR___INSTANCE_INDEX___AP; // Set AP\n      ffcrValue  = Read32(ETR___INSTANCE_INDEX___ADDRESS + 0x304);\n      ffcrValue |= 0x00000002;                              // FFCR: Enable Formatter\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x304, ffcrValue);\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x01C, ETR___INSTANCE_INDEX___TRIGGER_COUNT);      // TRG: Number of words to capture after trigger\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x308, ETR___INSTANCE_INDEX___SYNCCNT);            // Set PSCR\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x018, ETR___INSTANCE_INDEX___BUFFER_ADDRESS);     // Init RwP\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x014, ETR___INSTANCE_INDEX___BUFFER_ADDRESS);     // Init RRP\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x11C, ETR___INSTANCE_INDEX___BUFFER_ADDRESS_HI);  // Init DBAHI\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x118, ETR___INSTANCE_INDEX___BUFFER_ADDRESS);     // Init DBALO\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x004, ETR___INSTANCE_INDEX___BUFFER_SIZE);        // Init RSZ\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x110, ETR___INSTANCE_INDEX___AXI_CTL);            // Init AXICTL\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0xED0, ETR___INSTANCE_INDEX___AXI_CTL1);           // Init AXICTL1\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x03C, ETR___INSTANCE_INDEX___BUFFER_ADDRESS_HI);  // Init RWPHI\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x038, ETR___INSTANCE_INDEX___BUFFER_ADDRESS_HI);  // Init RRPHI\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x020, 0x00000001);             // Enable ETR\n      __ap = savedAP;\n\n      Message(0, \"End CS_ETR___INSTANCE_INDEX___CATU___INSTANCE_INDEX_____INSTANCE_INDEX___CaptureETRCircularBuffer @0x%08X, AP 0x%08X\", ETR___INSTANCE_INDEX___ADDRESS, ETR___INSTANCE_INDEX___AP);\n    </block>\n  </sequence>\n  <sequence name=\"CS_CATU___INSTANCE_INDEX___Capture\" info=\"Restart address translation unit\">\n    <block>\n      // Helper variables\n      __var savedAP = __ap;\n      __var status = 0x00000000;\n\n      Message(0, \"Begin CS_ETR___INSTANCE_INDEX___CATU___INSTANCE_INDEX_____INSTANCE_INDEX___CaptureCATU @0x%08X, AP 0x%08X\", CATU___INSTANCE_INDEX___ADDRESS, CATU___INSTANCE_INDEX___AP);\n\n      // Ensure involved components are in a well-defined state.\n      Sequence(\"DoTraceFlush\");\n\n      __ap = CATU___INSTANCE_INDEX___AP; // Set AP\n\n      // Keep initial values and re-enable CATU before next capture.\n      // Clears any remaning error bits.\n      Write32(CATU___INSTANCE_INDEX___ADDRESS + 0x000, 0x00000001);\n\n      status = Read32(CATU___INSTANCE_INDEX___ADDRESS + 0x100);\n    </block>\n    <control while=\"(status &amp; 0x0100) == 1\" info=\"Wait for READY cleared\" timeout=\"100\">\n      <block>\n        status = Read32(CATU___INSTANCE_INDEX___ADDRESS + 0x100);\n      </block>\n    </control>\n    <block>\n      __ap = savedAP;\n      Message(0, \"End CS_ETR___INSTANCE_INDEX___CATU___INSTANCE_INDEX_____INSTANCE_INDEX___CaptureCATU @0x%08X, AP 0x%08X\", CATU___INSTANCE_INDEX___ADDRESS, CATU___INSTANCE_INDEX___AP);\n    </block>\n  </sequence>\n  <sequence name=\"CS_ETR___INSTANCE_INDEX___Flush\">\n    <block>\n      // Helper variables\n      __var savedAP     = __ap;\n      __var ffcrValue   = 0x00000000;\n      __var etrStatus   = 0x00000000;\n\n      Message(0, \"Begin CS_ETR___INSTANCE_INDEX___CATU___INSTANCE_INDEX_____INSTANCE_INDEX___FlushETR @0x%08X, AP 0x%08X\", ETR___INSTANCE_INDEX___ADDRESS, ETR___INSTANCE_INDEX___AP);\n\n      __ap = ETR___INSTANCE_INDEX___AP; // Set AP\n    </block>\n    <block>\n      // Flush ETR first so the HW FIFO drains towards the TPIU.\n      ffcrValue = Read32(ETR___INSTANCE_INDEX___ADDRESS + 0x304);\n      ffcrValue &amp;= ~(0x00001040); // Clear StopOnFlush and FlushOnManual\n      ffcrValue |= 0x00001000;    // Stop after the manual flush completes\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x304, ffcrValue);\n      ffcrValue |= 0x00000040;    // Trigger manual flush\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x304, ffcrValue);\n    </block>\n    <block>\n      ffcrValue = Read32(ETR___INSTANCE_INDEX___ADDRESS + 0x304);\n    </block>\n    <control while=\"(ffcrValue &amp; 0x40) != 0\" info=\"Wait for ETR manual flush to complete\" timeout=\"100\">\n      <block>\n        ffcrValue = Read32(ETR___INSTANCE_INDEX___ADDRESS + 0x304);\n      </block>\n    </control>\n    <block>\n      etrStatus = Read32(ETR___INSTANCE_INDEX___ADDRESS + 0x00C);\n    </block>\n    <control while=\"(etrStatus &amp; 0x4) == 0\" info=\"Wait for ETR to become ready\" timeout=\"100\">\n      <block>\n        etrStatus = Read32(ETR___INSTANCE_INDEX___ADDRESS + 0x00C);\n      </block>\n    </control>\n    <block>\n      // Disable ETR after flush until next run/step\n      Write32(ETR___INSTANCE_INDEX___ADDRESS + 0x020, 0x00000000);\n      etrStatus = Read32(ETR___INSTANCE_INDEX___ADDRESS + 0x00C);\n    </block>\n    <control while=\"(etrStatus &amp; 0x4) == 0\" info=\"Wait for TMCReady\" timeout=\"100\">\n      <block>\n        etrStatus = Read32(ETR___INSTANCE_INDEX___ADDRESS + 0x00C);\n      </block>\n    </control>\n    <block>\n      __ap = savedAP;\n      Message(0, \"End CS_ETR___INSTANCE_INDEX___CATU___INSTANCE_INDEX_____INSTANCE_INDEX___FlushETR @0x%08X, AP 0x%08X\", ETR___INSTANCE_INDEX___ADDRESS, ETR___INSTANCE_INDEX___AP);\n    </block>\n  </sequence>\n  <sequence name=\"CS_CATU___INSTANCE_INDEX___Flush\" info=\"Flush any outstanding memory transactions\">\n    <block>\n      // Helper variables\n      __var savedAP = __ap;\n      __var status = 0x00000000;\n\n      Message(0, \"Begin CS_ETR___INSTANCE_INDEX___CATU___INSTANCE_INDEX_____INSTANCE_INDEX___FlushCATU @0x%08X, AP 0x%08X\", CATU___INSTANCE_INDEX___ADDRESS, CATU___INSTANCE_INDEX___AP);\n      __ap = CATU___INSTANCE_INDEX___AP; // Set AP\n\n      // Disable CATU before configuration\n      Write32(CATU___INSTANCE_INDEX___ADDRESS + 0x000, 0x00000000);  \n\n      status = Read32(CATU___INSTANCE_INDEX___ADDRESS + 0x100);\n    </block>\n    <control while=\"(status &amp; 0x0100) == 0\" info=\"Wait for READY\" timeout=\"100\">\n      <block>\n        status = Read32(CATU___INSTANCE_INDEX___ADDRESS + 0x100);\n      </block>\n    </control>\n    <block>\n      __ap = savedAP;\n      Message(0, \"End CS_ETR___INSTANCE_INDEX___CATU___INSTANCE_INDEX_____INSTANCE_INDEX___FlushCATU @0x%08X, AP 0x%08X\", CATU___INSTANCE_INDEX___ADDRESS, CATU___INSTANCE_INDEX___AP);\n    </block>\n  </sequence>\n</cmsis-pack-trace-snippet>\n",
+   "source": "pack/generate-trace-sequences/assets/components/etr-catu.xml",
+   "of": "proc-generate-trace-sequences"
+  },
+  "asset-generate-trace-sequences-assets-components-funnel-xml": {
+   "kind": "entity",
+   "type": "asset",
+   "title": "assets/components/funnel.xml",
+   "body": "<!-- CMSIS-Pack TraceFunnel template. Replace __INSTANCE_INDEX__ with the stable numeric instance suffix. -->\n<cmsis-pack-trace-snippet component=\"TraceFunnel\">\n  <debugvars>\n    // Funnel\n    __var FUNNEL___INSTANCE_INDEX___ADDRESS    = 0xE0043000;\n    __var FUNNEL___INSTANCE_INDEX___AP         = 0x00000000;\n    __var FUNNEL___INSTANCE_INDEX___INPUT_MASK = 0x00000003; // Mask of trace inputs connected to funnel, enable all valid inputs by default.\n  </debugvars>\n  <sequence name=\"CS_FUNNEL___INSTANCE_INDEX___Configure\">\n    <block>\n      __var swoTrace    = __traceout &amp; 0x1;\n      __var syncTrace   = __traceout &amp; 0x2;\n      __var bufferTrace = __traceout &amp; 0x4;\n\n      // Helper variables\n      __var savedAP    = __ap;\n      __var funnelMask = 0x00000000;\n      __var value      = 0x00000000;\n\n      Message(0, \"Begin ConfigureFunnel @0x%08X, AP 0x%08X\", FUNNEL___INSTANCE_INDEX___ADDRESS, FUNNEL___INSTANCE_INDEX___AP);\n    </block>\n    <control if=\"syncTrace != 0 || bufferTrace != 0\">\n      <block>\n        funnelMask = FUNNEL___INSTANCE_INDEX___INPUT_MASK;\n      </block>\n    </control>\n    <block>\n      __ap = FUNNEL___INSTANCE_INDEX___AP; // Set AP\n\n      value = Read32(FUNNEL___INSTANCE_INDEX___ADDRESS + 0x000);\n      value &amp;= ~0xFF;              // Clear existing funnel input enables, keep hold time\n      value |= FUNNEL___INSTANCE_INDEX___INPUT_MASK;  // Keep hold time as is for now, could be made configurable if needed\n    </block>\n    <block>\n      Write32(FUNNEL___INSTANCE_INDEX___ADDRESS + 0x000, value); // Configure CoreSight Trace Funnel to enable selected trace sources\n\n      __ap = savedAP;\n      Message(0, \"End CS_FUNNEL___INSTANCE_INDEX_____INSTANCE_INDEX___Configure @0x%08X, AP 0x%08X\", FUNNEL___INSTANCE_INDEX___ADDRESS, FUNNEL___INSTANCE_INDEX___AP);\n    </block>\n  </sequence>\n</cmsis-pack-trace-snippet>\n",
+   "source": "pack/generate-trace-sequences/assets/components/funnel.xml",
+   "of": "proc-generate-trace-sequences"
+  },
+  "asset-generate-trace-sequences-assets-components-replicator-xml": {
+   "kind": "entity",
+   "type": "asset",
+   "title": "assets/components/replicator.xml",
+   "body": "<!-- CMSIS-Pack TraceReplicator template. Replace __INSTANCE_INDEX__ with the stable numeric instance suffix. -->\n<cmsis-pack-trace-snippet component=\"TraceReplicator\">\n  <debugvars>\n    // Replicator\n    __var REPLICATOR___INSTANCE_INDEX___ADDRESS    = 0x00000000;\n    __var REPLICATOR___INSTANCE_INDEX___AP         = 0x00000000;\n    __var REPLICATOR___INSTANCE_INDEX___ID_FILTER0 = 0x00000000; // Default: all pass to output 0\n    __var REPLICATOR___INSTANCE_INDEX___ID_FILTER1 = 0x00000000; // Default: all pass to output 1\n  </debugvars>\n  <sequence name=\"CS_REPLICATOR___INSTANCE_INDEX___Configure\">\n    <block>\n      // Helper variables\n      __var savedAP    = __ap;\n      __var value      = 0x00000000;\n\n      Message(0, \"Begin CS_REPLICATOR___INSTANCE_INDEX_____INSTANCE_INDEX___Configure @0x%08X, AP 0x%08X\", REPLICATOR___INSTANCE_INDEX___ADDRESS, REPLICATOR___INSTANCE_INDEX___AP);\n\n      __ap = REPLICATOR___INSTANCE_INDEX___AP; // Set AP\n\n      Write32(REPLICATOR___INSTANCE_INDEX___ADDRESS + 0x000, REPLICATOR___INSTANCE_INDEX___ID_FILTER0);\n      Write32(REPLICATOR___INSTANCE_INDEX___ADDRESS + 0x004, REPLICATOR___INSTANCE_INDEX___ID_FILTER1);\n\n      __ap = savedAP;\n      Message(0, \"End CS_REPLICATOR___INSTANCE_INDEX_____INSTANCE_INDEX___Configure @0x%08X, AP 0x%08X\", REPLICATOR___INSTANCE_INDEX___ADDRESS, REPLICATOR___INSTANCE_INDEX___AP);\n    </block>\n  </sequence>\n</cmsis-pack-trace-snippet>\n\n",
+   "source": "pack/generate-trace-sequences/assets/components/replicator.xml",
+   "of": "proc-generate-trace-sequences"
+  },
+  "asset-generate-trace-sequences-assets-components-swo-xml": {
+   "kind": "entity",
+   "type": "asset",
+   "title": "assets/components/swo.xml",
+   "body": "<!-- CMSIS-Pack SWO template. Replace __INSTANCE_INDEX__ with the stable numeric instance suffix. -->\n<cmsis-pack-trace-snippet component=\"SWO\">\n  <debugvars>\n    // SWO\n    __var SWO___INSTANCE_INDEX___ADDRESS     = 0xE0040000;  // Default TPIU Location for single-core systems\n    __var SWO___INSTANCE_INDEX___AP          = 0x00000000;\n  </debugvars>\n  <sequence name=\"CS_SWO___INSTANCE_INDEX___Configure\">\n    <block>\n      // Helper variables\n      __var savedAP   = __ap;\n      __var prescaler =    0;\n      __var swoMode   =    2;                    // Fixed SWO-UART for now\n\n      Message(0, \"Begin CS_SWO___INSTANCE_INDEX_____INSTANCE_INDEX___Configure @0x%08X, AP 0x%08X\", SWO___INSTANCE_INDEX___ADDRESS, SWO___INSTANCE_INDEX___AP);\n    </block>\n    <control if=\"__traceclockout != 0\">\n      <control if=\"__traceclockin &lt; __traceclockout\">\n        <block>\n          Message(2, \"Error: __traceclockin (0x%08X) is less than __traceclockout (0x%08X)\", __traceclockin, __traceclockout);\n        </block>\n      </control>\n      <block>\n        // Calculate SWO prescaler value based on provided trace clock frequencies.\n        prescaler = (__traceclockin / __traceclockout) - 1;\n        Message(0, \"Calculated SWO prescaler value: %d\", prescaler);\n      </block>\n    </control>\n    <block>\n      __ap = SWO___INSTANCE_INDEX___AP;\n      Write32(SWO___INSTANCE_INDEX___ADDRESS + 0x010, prescaler);   // Prescaler\n      Write32(SWO___INSTANCE_INDEX___ADDRESS + 0x0F0, swoMode);     // Enable SWO-UART\n      __ap = savedAP;\n      Message(0, \"End CS_SWO___INSTANCE_INDEX_____INSTANCE_INDEX___Configure @0x%08X, AP 0x%08X\", SWO___INSTANCE_INDEX___ADDRESS, SWO___INSTANCE_INDEX___AP);\n    </block>\n  </sequence>\n</cmsis-pack-trace-snippet>\n\n",
+   "source": "pack/generate-trace-sequences/assets/components/swo.xml",
+   "of": "proc-generate-trace-sequences"
+  },
+  "asset-generate-trace-sequences-assets-components-tpiu-xml": {
+   "kind": "entity",
+   "type": "asset",
+   "title": "assets/components/tpiu.xml",
+   "body": "<!-- CMSIS-Pack TPIU template. Replace __INSTANCE_INDEX__ with the stable numeric instance suffix. -->\n<cmsis-pack-trace-snippet component=\"TPIU\">\n  <debugvars>\n    // TPIU\n    __var TPIU___INSTANCE_INDEX___ADDRESS     = 0xE0040000;  // Default TPIU Location for single-core systems\n    __var TPIU___INSTANCE_INDEX___AP          = 0x00000000;\n    __var TPIU___INSTANCE_INDEX___PRESCALER   = 0x00000000;  // Zero derives the prescaler from the trace clocks\n  </debugvars>\n  <sequence name=\"CS_TPIU___INSTANCE_INDEX___Configure\">\n    <block>\n      __var swoTrace    = __traceout &amp; 0x1;\n      __var syncTrace   = __traceout &amp; 0x2;\n      __var bufferTrace = __traceout &amp; 0x4;\n      __var tracePortWidth = (__traceout &gt;&gt; 16) &amp; 0x3F; // Parallel trace port size\n      __var clockRatio  = __traceclockout / __traceclockin &gt;= 1 ? (__traceclockout / __traceclockin) : 1;\n      __var prescaler   = TPIU___INSTANCE_INDEX___PRESCALER &gt; 0 ? TPIU___INSTANCE_INDEX___PRESCALER : clockRatio - 1;\n\n      // Helper variables\n      __var ffcrValue = 0x00000000;\n      __var LAR_KEY   = 0xC5ACCE55;\n      __var savedAP = __ap;\n\n      Message(0, \"Begin CS_TPIU___INSTANCE_INDEX_____INSTANCE_INDEX___Configure @0x%08X, AP 0x%08X\", TPIU___INSTANCE_INDEX___ADDRESS, TPIU___INSTANCE_INDEX___AP);\n\n      __ap = TPIU___INSTANCE_INDEX___AP; // Set AP\n    </block>\n    <control if=\"swoTrace != 0\">\n      <block>\n        Write32(TPIU___INSTANCE_INDEX___ADDRESS + 0xFB0, LAR_KEY);     // TPIU Lock Access Register: Unlock TPIU\n        Write32(TPIU___INSTANCE_INDEX___ADDRESS + 0x010, prescaler);   // TPIU Asynchronous Clock Prescaler Register: No prescaling\n        Write32(TPIU___INSTANCE_INDEX___ADDRESS + 0x0F0, 0x00000002);  // TPIU Selected Pin Protocol Register: Select SWO\n      </block>\n    </control>\n    <control if=\"syncTrace != 0\">\n      <block>\n        Write32(TPIU___INSTANCE_INDEX___ADDRESS + 0xFB0, LAR_KEY);       // TPIU Lock Access Register: Unlock TPIU\n        Write32(TPIU___INSTANCE_INDEX___ADDRESS + 0x010, 2*prescaler);   // TPIU Asynchronous Clock Prescaler Register: No prescaling\n        Write32(TPIU___INSTANCE_INDEX___ADDRESS + 0x004, 1 &lt;&lt; (tracePortWidth - 1));  // TPIU Current Synchronous Port Width\n        Write32(TPIU___INSTANCE_INDEX___ADDRESS + 0x0F0, 0x00000000);    // TPIU Selected Pin Protocol Register: Select Sync Trace Port\n        ffcrValue  = Read32(TPIU___INSTANCE_INDEX___ADDRESS + 0x304);\n        ffcrValue |= 0x00000002;                      // Enable formatter\n        Write32(TPIU___INSTANCE_INDEX___ADDRESS + 0x304, ffcrValue);     // TPIU FFCR\n      </block>\n    </control>\n    <block>\n      __ap = savedAP;\n      Message(0, \"End CS_TPIU___INSTANCE_INDEX_____INSTANCE_INDEX___Configure @0x%08X, AP 0x%08X\", TPIU___INSTANCE_INDEX___ADDRESS, TPIU___INSTANCE_INDEX___AP);\n    </block>\n  </sequence>\n  <sequence name=\"CS_TPIU___INSTANCE_INDEX___Capture\">\n    <block>\n      // Helper variables\n      __var LAR_KEY   = 0xC5ACCE55;\n      __var savedAP = __ap;\n      __var ffcrValue = 0x00000000;\n\n      Message(0, \"Begin CS_TPIU___INSTANCE_INDEX_____INSTANCE_INDEX___Capture @0x%08X, AP 0x%08X\", TPIU___INSTANCE_INDEX___ADDRESS, TPIU___INSTANCE_INDEX___AP);\n\n      // Ensure involved components are in a well-defined state.\n      Sequence(\"DoTraceFlush\");\n\n      // Configure TPIU if needed and enable formatter\n      __ap = TPIU___INSTANCE_INDEX___AP; // Set AP\n      ffcrValue  = Read32(TPIU___INSTANCE_INDEX___ADDRESS + 0x304);\n      ffcrValue |= 0x00000002;                                // Enable formatter\n      Write32(TPIU___INSTANCE_INDEX___ADDRESS + 0x304, ffcrValue);                  // TPIU FFCR\n      __ap = savedAP;\n      Message(0, \"End CS_TPIU___INSTANCE_INDEX_____INSTANCE_INDEX___Capture @0x%08X, AP 0x%08X\", TPIU___INSTANCE_INDEX___ADDRESS, TPIU___INSTANCE_INDEX___AP);\n    </block>\n  </sequence>\n  <sequence name=\"CS_TPIU___INSTANCE_INDEX___Flush\">\n    <block>\n      // Helper variables\n      __var savedAP     = __ap;\n      __var ffcrValue   = 0x00000000;\n      __var ffsrValue   = 0x00000000;\n\n      Message(0, \"Begin CS_TPIU___INSTANCE_INDEX_____INSTANCE_INDEX___Flush @0x%08X, AP 0x%08X\", TPIU___INSTANCE_INDEX___ADDRESS, TPIU___INSTANCE_INDEX___AP);\n\n      __ap = TPIU___INSTANCE_INDEX___AP;  // Set AP\n    </block>\n    <block>\n      // Configure \"local\" TPIU for Sync Trace\n      ffsrValue = Read32(TPIU___INSTANCE_INDEX___ADDRESS + 0x300);\n    </block>\n    <control if=\"ffsrValue &amp; 0x2 == 0\" info=\"Formatter not stopped, do it now\">\n      <block>\n        // Flush the TPIU formatter so pending packets leave the trace port.\n        ffcrValue = Read32(TPIU___INSTANCE_INDEX___ADDRESS + 0x304);\n        ffcrValue &amp;= ~(0x00001040); // Clear StopOnFlush and FlushOnManual\n        ffcrValue |= 0x00001000;    // Stop after the manual flush completes\n        Write32(TPIU___INSTANCE_INDEX___ADDRESS + 0x304, ffcrValue);\n        ffcrValue |= 0x00000040;    // Trigger manual flush\n        Write32(TPIU___INSTANCE_INDEX___ADDRESS + 0x304, ffcrValue);\n      </block>\n      <block>\n        ffcrValue = Read32(TPIU___INSTANCE_INDEX___ADDRESS + 0x304);\n      </block>\n      <control while=\"(ffcrValue &amp; 0x40) != 0\" info=\"Wait for TPIU manual flush to complete\" timeout=\"100\">\n        <block>\n          ffcrValue = Read32(TPIU___INSTANCE_INDEX___ADDRESS + 0x304);\n        </block>\n      </control>\n      <block>\n        ffsrValue = Read32(TPIU___INSTANCE_INDEX___ADDRESS + 0x300);\n      </block>\n      <control while=\"(ffsrValue &amp; 0x1) != 0\" info=\"Wait for TPIU flush in progress to clear\" timeout=\"100\">\n        <block>\n          ffsrValue = Read32(TPIU___INSTANCE_INDEX___ADDRESS + 0x300);\n        </block>\n      </control>\n    </control>\n    <block>\n      __ap = savedAP;\n      Message(0, \"End CS_TPIU___INSTANCE_INDEX_____INSTANCE_INDEX___Flush @0x%08X, AP 0x%08X\", TPIU___INSTANCE_INDEX___ADDRESS, TPIU___INSTANCE_INDEX___AP);\n    </block>\n  </sequence>\n</cmsis-pack-trace-snippet>\n",
+   "source": "pack/generate-trace-sequences/assets/components/tpiu.xml",
+   "of": "proc-generate-trace-sequences"
+  },
+  "asset-generate-trace-sequences-assets-scaffolds-full-trace-xml": {
+   "kind": "entity",
+   "type": "asset",
+   "title": "assets/scaffolds/full-trace.xml",
+   "body": "<cmsis-pack-trace-scaffold use-case=\"full-trace\">\n  <sequences traceSetup=\"full\">\n    <sequence name=\"TraceStart\">\n      <block>\n        __var swoTrace = __traceout &amp; 0x1;\n        __var syncTrace = __traceout &amp; 0x2;\n        __var bufferTrace = __traceout &amp; 0x4;\n      </block>\n      <!-- CMSIS-PACK-TRACE: ADD-DEVICE-SPECIFIC-HERE BEGIN -->\n      <!-- Add verified device-specific setup here, including migrated legacy setup when applicable. -->\n      <!-- CMSIS-PACK-TRACE: ADD-DEVICE-SPECIFIC-HERE END -->\n      <control if=\"swoTrace\">\n        <block>\n          Sequence(\"DoTraceStart_SWO\");\n        </block>\n      </control>\n      <control if=\"syncTrace\">\n        <block>\n          Sequence(\"DoTraceStart_Sync\");\n        </block>\n      </control>\n      <control if=\"bufferTrace\">\n        <block>\n          Sequence(\"DoTraceStart_Buffer\");\n        </block>\n      </control>\n    </sequence>\n    <sequence name=\"TraceCapture\">\n      <block>\n        __var swoTrace = __traceout &amp; 0x1;\n        __var syncTrace = __traceout &amp; 0x2;\n        __var bufferTrace = __traceout &amp; 0x4;\n      </block>\n      <!-- CMSIS-PACK-TRACE: ADD-DEVICE-SPECIFIC-HERE BEGIN -->\n      <!-- Add verified device-specific capture work here, including migrated legacy setup when applicable. -->\n      <!-- CMSIS-PACK-TRACE: ADD-DEVICE-SPECIFIC-HERE END -->\n      <control if=\"swoTrace\">\n        <block>\n          Sequence(\"DoTraceCapture_SWO\");\n        </block>\n      </control>\n      <control if=\"syncTrace\">\n        <block>\n          Sequence(\"DoTraceCapture_Sync\");\n        </block>\n      </control>\n      <control if=\"bufferTrace\">\n        <block>\n          Sequence(\"DoTraceCapture_Buffer\");\n        </block>\n      </control>\n    </sequence>\n    <sequence name=\"DoTraceFlush\">\n      <block>\n        __var swoTrace = __traceout &amp; 0x1;\n        __var syncTrace = __traceout &amp; 0x2;\n        __var bufferTrace = __traceout &amp; 0x4;\n      </block>\n      <control if=\"swoTrace\">\n        <block>\n          Sequence(\"DoTraceFlush_SWO\");\n        </block>\n      </control>\n      <control if=\"syncTrace\">\n        <block>\n          Sequence(\"DoTraceFlush_Sync\");\n        </block>\n      </control>\n      <control if=\"bufferTrace\">\n        <block>\n          Sequence(\"DoTraceFlush_Buffer\");\n        </block>\n      </control>\n    </sequence>\n    <sequence name=\"TraceFlush\">\n      <block>\n        __var swoTrace = __traceout &amp; 0x1;\n        __var syncTrace = __traceout &amp; 0x2;\n        __var bufferTrace = __traceout &amp; 0x4;\n      </block>\n      <block>\n        Sequence(\"DoTraceFlush\");\n      </block>\n      <control if=\"bufferTrace\">\n        <block>\n          Sequence(\"DoTraceRead_Buffer\");\n        </block>\n      </control>\n      <!-- CMSIS-PACK-TRACE: ADD-DEVICE-SPECIFIC-HERE BEGIN -->\n      <!-- Add verified device-specific post-flush work here, including migrated legacy setup when applicable. -->\n      <!-- CMSIS-PACK-TRACE: ADD-DEVICE-SPECIFIC-HERE END -->\n    </sequence>\n    <sequence name=\"TraceStop\">\n      <block>\n        __var swoTrace = __traceout &amp; 0x1;\n        __var syncTrace = __traceout &amp; 0x2;\n        __var bufferTrace = __traceout &amp; 0x4;\n      </block>\n      <control if=\"swoTrace\">\n        <block>\n          Sequence(\"DoTraceStop_SWO\");\n        </block>\n      </control>\n      <control if=\"syncTrace\">\n        <block>\n          Sequence(\"DoTraceStop_Sync\");\n        </block>\n      </control>\n      <control if=\"bufferTrace\">\n        <block>\n          Sequence(\"DoTraceStop_Buffer\");\n        </block>\n      </control>\n      <!-- CMSIS-PACK-TRACE: ADD-DEVICE-SPECIFIC-HERE BEGIN -->\n      <!-- Add verified device-specific shutdown work here, including migrated legacy setup when applicable. -->\n      <!-- CMSIS-PACK-TRACE: ADD-DEVICE-SPECIFIC-HERE END -->\n    </sequence>\n    <sequence name=\"DoTraceStart_SWO\">\n      <block>\n        __var swoTrace = __traceout &amp; 0x1;\n        __var syncTrace = __traceout &amp; 0x2;\n        __var bufferTrace = __traceout &amp; 0x4;\n      </block>\n      <!-- CMSIS-PACK-TRACE: INSERT-CORESIGHT-SNIPPET-CALLS-HERE -->\n    </sequence>\n    <sequence name=\"DoTraceStart_Sync\">\n      <block>\n        __var swoTrace = __traceout &amp; 0x1;\n        __var syncTrace = __traceout &amp; 0x2;\n        __var bufferTrace = __traceout &amp; 0x4;\n      </block>\n      <!-- CMSIS-PACK-TRACE: INSERT-CORESIGHT-SNIPPET-CALLS-HERE -->\n    </sequence>\n    <sequence name=\"DoTraceStart_Buffer\">\n      <block>\n        __var swoTrace = __traceout &amp; 0x1;\n        __var syncTrace = __traceout &amp; 0x2;\n        __var bufferTrace = __traceout &amp; 0x4;\n      </block>\n      <!-- CMSIS-PACK-TRACE: INSERT-CORESIGHT-SNIPPET-CALLS-HERE -->\n    </sequence>\n    <sequence name=\"DoTraceCapture_SWO\">\n      <block>\n        __var swoTrace = __traceout &amp; 0x1;\n        __var syncTrace = __traceout &amp; 0x2;\n        __var bufferTrace = __traceout &amp; 0x4;\n      </block>\n      <!-- No trace operation is required for this mode. -->\n      <!-- CMSIS-PACK-TRACE: INSERT-CORESIGHT-SNIPPET-CALLS-HERE -->\n    </sequence>\n    <sequence name=\"DoTraceCapture_Sync\">\n      <block>\n        __var swoTrace = __traceout &amp; 0x1;\n        __var syncTrace = __traceout &amp; 0x2;\n        __var bufferTrace = __traceout &amp; 0x4;\n      </block>\n      <!-- CMSIS-PACK-TRACE: INSERT-CORESIGHT-SNIPPET-CALLS-HERE -->\n    </sequence>\n    <sequence name=\"DoTraceCapture_Buffer\">\n      <block>\n        __var swoTrace = __traceout &amp; 0x1;\n        __var syncTrace = __traceout &amp; 0x2;\n        __var bufferTrace = __traceout &amp; 0x4;\n      </block>\n      <!-- CMSIS-PACK-TRACE: INSERT-CORESIGHT-SNIPPET-CALLS-HERE -->\n    </sequence>\n    <sequence name=\"DoTraceFlush_SWO\">\n      <block>\n        __var swoTrace = __traceout &amp; 0x1;\n        __var syncTrace = __traceout &amp; 0x2;\n        __var bufferTrace = __traceout &amp; 0x4;\n      </block>\n      <!-- No trace operation is required for this mode. -->\n      <!-- CMSIS-PACK-TRACE: INSERT-CORESIGHT-SNIPPET-CALLS-HERE -->\n    </sequence>\n    <sequence name=\"DoTraceFlush_Sync\">\n      <block>\n        __var swoTrace = __traceout &amp; 0x1;\n        __var syncTrace = __traceout &amp; 0x2;\n        __var bufferTrace = __traceout &amp; 0x4;\n      </block>\n      <!-- CMSIS-PACK-TRACE: INSERT-CORESIGHT-SNIPPET-CALLS-HERE -->\n      <!-- Actual component flush calls only. Do not read a trace buffer here. -->\n    </sequence>\n    <sequence name=\"DoTraceFlush_Buffer\">\n      <block>\n        __var swoTrace = __traceout &amp; 0x1;\n        __var syncTrace = __traceout &amp; 0x2;\n        __var bufferTrace = __traceout &amp; 0x4;\n      </block>\n      <!-- CMSIS-PACK-TRACE: INSERT-CORESIGHT-SNIPPET-CALLS-HERE -->\n      <!-- Actual component flush calls only. Do not read a trace buffer here. -->\n    </sequence>\n    <sequence name=\"DoTraceRead_Buffer\">\n      <block>\n        __var swoTrace = __traceout &amp; 0x1;\n        __var syncTrace = __traceout &amp; 0x2;\n        __var bufferTrace = __traceout &amp; 0x4;\n      </block>\n      <!-- CMSIS-PACK-TRACE: INSERT-CORESIGHT-SNIPPET-CALLS-HERE -->\n    </sequence>\n    <sequence name=\"DoTraceStop_SWO\">\n      <block>\n        __var swoTrace = __traceout &amp; 0x1;\n        __var syncTrace = __traceout &amp; 0x2;\n        __var bufferTrace = __traceout &amp; 0x4;\n      </block>\n      <!-- No trace operation is required for this mode. -->\n      <!-- CMSIS-PACK-TRACE: INSERT-CORESIGHT-SNIPPET-CALLS-HERE -->\n    </sequence>\n    <sequence name=\"DoTraceStop_Sync\">\n      <block>\n        __var swoTrace = __traceout &amp; 0x1;\n        __var syncTrace = __traceout &amp; 0x2;\n        __var bufferTrace = __traceout &amp; 0x4;\n      </block>\n      <!-- No trace operation is required for this mode. -->\n      <!-- CMSIS-PACK-TRACE: INSERT-CORESIGHT-SNIPPET-CALLS-HERE -->\n    </sequence>\n    <sequence name=\"DoTraceStop_Buffer\">\n      <block>\n        __var swoTrace = __traceout &amp; 0x1;\n        __var syncTrace = __traceout &amp; 0x2;\n        __var bufferTrace = __traceout &amp; 0x4;\n      </block>\n      <!-- No trace operation is required for this mode. -->\n      <!-- CMSIS-PACK-TRACE: INSERT-CORESIGHT-SNIPPET-CALLS-HERE -->\n    </sequence>\n  </sequences>\n</cmsis-pack-trace-scaffold>\n",
+   "source": "pack/generate-trace-sequences/assets/scaffolds/full-trace.xml",
+   "of": "proc-generate-trace-sequences"
+  },
+  "artifact-pdsc-stem-trace-sequences-md": {
+   "kind": "entity",
+   "type": "artifact",
+   "title": ".agent-artifacts/<pdsc-stem>.trace-sequences.md"
+  },
+  "concept-component-index": {
+   "kind": "knowledge",
+   "type": "concept",
+   "domain": "pack",
+   "title": "component-index",
+   "status": "draft",
+   "source": "pack/generate-trace-sequences/references/component-index.md"
+  },
+  "concept-legacy-to-full-migration": {
+   "kind": "knowledge",
+   "type": "concept",
+   "domain": "pack",
+   "title": "legacy-to-full-migration",
+   "status": "draft",
+   "source": "pack/generate-trace-sequences/references/legacy-to-full-migration.md"
+  },
+  "concept-trace-sequence-contract": {
+   "kind": "knowledge",
+   "type": "concept",
+   "domain": "pack",
+   "title": "trace-sequence-contract",
+   "status": "draft",
+   "source": "pack/generate-trace-sequences/references/trace-sequence-contract.md"
+  },
+  "proc-manage-pdsc-debugvars": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "pack",
+   "title": "manage-pdsc-debugvars",
+   "summary": "Design a documented CMSIS-Pack PDSC `debugvars` runtime choice through the active conversation. Use when defining or revising a `__var`, checking collisions and scope, or proposing its minimal sequence use and Configuration Wizard annotation; do not create agent-artifact records, edit files, invent device behavior, or redesign debug or trace sequences.",
+   "triggers": [],
+   "status": "draft",
+   "source": "pack/manage-pdsc-debugvars/SKILL.md",
+   "preconditions": "Target PDSC, selected device-tree scope, documented runtime choice, existing `<debugvars>`, and optional existing `.dbgconf` content.",
+   "portability": "Support any existing CMSIS Device Family Pack. Do not assume a device family, debugger, toolchain, or runtime target.",
+   "tools": [],
+   "output": "Return the variable proposal in conversation. Do not create or update workspace files.",
+   "sections": [
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "proc-prepare-pdsc-sequence-change": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "pack",
+   "title": "prepare-pdsc-sequence-change",
+   "summary": "Prepare an evidence-backed CMSIS-Pack PDSC sequence-change summary through the active conversation before debug or trace sequence assembly. Use when scoping a PDSC sequence change, checking verified knowledge facts and inherited definitions, or selecting shared-versus-leaf placement; do not create, read, or update agent-artifact records.",
+   "triggers": [],
+   "status": "draft",
+   "source": "pack/prepare-pdsc-sequence-change/SKILL.md",
+   "preconditions": "Existing target `.pdsc`, selected device-tree scope, `debug` or `trace` domain, verified facts and source references, and the requested outcome.",
+   "portability": "Support any existing CMSIS Device Family Pack. Do not assume a device family, debug probe, toolchain, or active target.",
+   "tools": [],
+   "output": "Return the prepared-change summary in conversation. Do not create or update workspace files.",
+   "sections": [
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "proc-validate-pdsc-sequence-xml": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "pack",
+   "title": "validate-pdsc-sequence-xml",
+   "summary": "Validate common CMSIS-Pack PDSC sequence XML and C-like block formatting through the active conversation after a proposed or applied change. Use for debug or trace PDSC sequence edits that need XML/PDSC syntax, block layout, and complete match inspection; do not create agent-artifact records or validate device behavior.",
+   "triggers": [],
+   "status": "draft",
+   "source": "pack/validate-pdsc-sequence-xml/SKILL.md",
+   "preconditions": "Target PDSC, changed XML, proposed or applied change details, and available XML/PDSC toolchain.",
+   "portability": "Support any existing CMSIS Device Family Pack with XML/PDSC validation available. Do not assume a device family, debugger, toolchain, or active target.",
+   "tools": [
+    "cpackget",
+    "packchk"
+   ],
+   "output": "Return the common validation result in conversation. Do not create or update workspace files.",
+   "sections": [
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "proc-add-cmsis-target": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "project",
+   "title": "add-cmsis-target",
+   "summary": "Add a verified board or device target to an existing CMSIS solution, declare its support packs, and offer compatible packaged board layers when the project uses them. Use when the supplied hardware name may be fuzzy and an existing *.csolution.yml must be extended.",
+   "triggers": [],
+   "status": "draft",
+   "source": "project/add-cmsis-target/SKILL.md",
+   "preconditions": "An existing `*.csolution.yml` project and a user-supplied board or device name. The name may be fuzzy; manufacturer, revision, and fitted MCU or SoC information improve identification.",
+   "portability": "Applies to CMSIS solution projects across MCU and SoC vendors. It has no compiler, RTOS, debugger, or probe dependency beyond requirements already present in the input project or selected layer. Use the [CMSIS-Toolbox project format](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/) and [Reference Applications workflow](https://open-cmsis-pack.github.io/cmsis-toolbox/ReferenceApplications/) as authoritative format guidance.",
+   "tools": [
+    "csolution",
+    "cbuild",
+    "cpackget"
+   ],
+   "output": "Report:\n\n- the `check-cmsis-environment` result plus effective `cbuild`, `csolution`, and `cpackget` paths and versions;\n- the edited `*.csolution.yml` and new target type;\n- exact board and device identifiers and whether the result used a BSP or DFP only;\n- when identification is ambiguous, the exact candidates shown to the user and the choice required before any edit;\n- DFP and BSP entries added or already present, with installed versions;\n- whether the existing project requires a board layer;\n- the compatible layer candidates and the user's selection, or the unresolved missing-layer result;\n- copied files, local layer path, `copied-from` source, and read-only cleanup when a layer was selected;\n- the `csolution convert` schema/semantic validation command and its result;\n- any remaining blocker without claiming the project is complete.",
+   "sections": [
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "doc-open-cmsis-pack-github-io-cmsis-toolbox-referenceapplication": {
+   "kind": "entity",
+   "type": "docsection",
+   "title": "https://open-cmsis-pack.github.io/cmsis-toolbox/ReferenceApplications/"
+  },
+  "doc-open-cmsis-pack-github-io-cmsis-toolbox-yml-input-format": {
+   "kind": "entity",
+   "type": "docsection",
+   "title": "https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/"
+  },
+  "proc-check-cmsis-environment": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "project",
+   "title": "check-cmsis-environment",
+   "summary": "Verify the CMSIS tools environment exported by the CMSIS Solution extension, CMSIS-Toolbox, CMake, Ninja, and available compiler toolchains. Use before creating or building a CMSIS solution project.",
+   "triggers": [],
+   "status": "draft",
+   "source": "project/check-cmsis-environment/SKILL.md",
+   "preconditions": "The workspace root and, when present, its `.cmsis/tools-environment.yml` and `vcpkg-configuration.json` files.",
+   "portability": "Applies to CMSIS solution workspaces on supported host operating systems. It has no MCU-, RTOS-, debugger-, or board-specific assumptions; compiler registrations are discovered from the workspace environment.",
+   "tools": [
+    "csolution",
+    "cbuild",
+    "vcpkg"
+   ],
+   "output": "Report:\n\n- status: `PASS` or `FAIL`;\n- workspace `.cmsis/tools-environment.yml` path, format version, generator,\n  resolved solution, selected tools, schema-validation level, and any extension\n  provenance mismatch, or report that no generated environment exists and the\n  fallback was used;\n- fallback `vcpkg-configuration.json` path and requested artifacts, when used;\n- process-local environment entries and whether they came from the generated\n  environment or fallback artifact discovery;\n- effective `cbuild` path and CMSIS-Toolbox version;\n- CMake and Ninja detection results from `cbuild list environment`;\n- detected compiler identifiers and versions from `cbuild list toolchains`;\n- each missing requirement and the applicable setup reference when status is\n  `FAIL`.",
+   "sections": [
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Missing Tools",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "doc-github-com-arm-software-vscode-environment-manager": {
+   "kind": "entity",
+   "type": "docsection",
+   "title": "https://github.com/ARM-software/vscode-environment-manager"
+  },
+  "doc-open-cmsis-pack-github-io-cmsis-toolbox-installation": {
+   "kind": "entity",
+   "type": "docsection",
+   "title": "https://open-cmsis-pack.github.io/cmsis-toolbox/installation/"
+  },
+  "doc-open-cmsis-pack-github-io-cmsis-toolbox-installation-compile": {
+   "kind": "entity",
+   "type": "docsection",
+   "title": "https://open-cmsis-pack.github.io/cmsis-toolbox/installation/#compiler-toolchains"
+  },
+  "proc-check-zephyr-environment": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "project",
+   "title": "check-zephyr-environment",
+   "summary": "Verify an existing Zephyr workspace, its Python virtual environment, and the venv-local west installation. Use before running Zephyr commands or creating projects that depend on an installed Zephyr workspace.",
+   "triggers": [],
+   "status": "draft",
+   "source": "project/check-zephyr-environment/SKILL.md",
+   "preconditions": "A Zephyr workspace path, or permission to use the default location named below.",
+   "portability": "Supports Windows, macOS, and Linux using the platform-specific virtual-environment executable paths below. It has no MCU-, board-, toolchain-, or debugger-specific assumptions. Obtain the Zephyr workspace path. Use `$HOME/zephyrproject` when the user followed the default CMSIS-Zephyr installation instructions and did not choose another location.",
+   "tools": [
+    "west"
+   ],
+   "output": "Report:\n\n- status: `PASS` or `FAIL`;\n- workspace path;\n- virtual-environment path;\n- selected Python and west executable paths;\n- west version;\n- Zephyr repository path;\n- failed check and corrective reference when status is `FAIL`.\n\nReturn `PASS` only when every check succeeds.",
+   "sections": [
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "doc-github-com-arm-examples-cmsis-zephyr": {
+   "kind": "entity",
+   "type": "docsection",
+   "title": "https://github.com/Arm-Examples/CMSIS-Zephyr"
+  },
+  "proc-identify-cmsis-board-layer": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "project",
+   "title": "identify-cmsis-board-layer",
+   "summary": "Identify packaged CMSIS board layers compatible with an existing solution target and its required connections. Use after a board or device target and its verified DFP/BSP entries exist, before selecting or copying a layer into the project.",
+   "triggers": [],
+   "status": "draft",
+   "source": "project/identify-cmsis-board-layer/SKILL.md",
+   "preconditions": "An existing `*.csolution.yml`, the exact target-type name to inspect, and verified board, device, DFP, and optional BSP identifiers from `identify-cmsis-board-support`.",
+   "portability": "Applies across MCU and SoC vendors when packs describe software layers and connections. It has no compiler, RTOS, debugger, or probe dependency beyond requirements already present in the solution or candidate layer. Use the [CMSIS-Toolbox software-layer format](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/#auto-select-layers) and [Reference Applications workflow](https://open-cmsis-pack.github.io/cmsis-toolbox/ReferenceApplications/) as authoritative guidance.",
+   "tools": [
+    "csolution",
+    "cpackget"
+   ],
+   "output": "Return one of:\n\n- `MATCHES`: each compatible layer's description, pack and version, source `path`, layer `file`, optional `copy-to`, matching `for-board:` or `for-device:`, provided connections, and any additional requirements;\n- `NO MATCH`: the exact target, searched packs, required connections, command used, and the missing or incompatible requirements;\n- `NOT REQUIRED`: evidence that the target context has no board-layer slot or requirement.\n\nAlso report the `csolution` version, whether packs were already installed or added, and the exact failed command and error when a required option is unsupported or a syntax error occurs.",
+   "sections": [
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "doc-open-cmsis-pack-github-io-cmsis-toolbox-yml-input-format-aut": {
+   "kind": "entity",
+   "type": "docsection",
+   "title": "https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/#auto-select-layers"
+  },
+  "proc-identify-cmsis-board-support": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "project",
+   "title": "identify-cmsis-board-support",
+   "summary": "Resolve a supplied board or device to exactly one verified CMSIS identity, identify its BSP or DFP, and ask the user when multiple candidates remain. Use when a CMSIS solution needs verified board, device, and pack identifiers.",
+   "triggers": [],
+   "status": "draft",
+   "source": "project/identify-cmsis-board-support/SKILL.md",
+   "preconditions": "A user-supplied board or device name, which may be fuzzy. Manufacturer, board revision, and fitted MCU or SoC evidence should be included when available.",
+   "portability": "Applies across MCU and SoC vendors when their board or device is represented in the referenced catalogs. It has no compiler, RTOS, debugger, or probe dependency. Collect when available:",
+   "tools": [
+    "csolution"
+   ],
+   "output": "Report:\n\n- status: `BSP`, `DFP`, `AMBIGUOUS`, or `NO MATCH`;\n- physical board and fitted device used for the lookup;\n- exact CMSIS board identifier when status is `BSP`;\n- exact CMSIS device identifier;\n- exact BSP pack identifier when status is `BSP`;\n- exact DFP pack identifier for the fitted device; when status is `BSP`, report\n  whether it is the same pack as the BSP or a separate pack;\n- supporting catalog URLs;\n- for `AMBIGUOUS`, the exact candidate board identifiers or device `Dname` values,\n  their distinguishing manufacturer/revision/device details and supporting URLs,\n  followed by one focused question asking the user to choose;\n- the missing identity or mismatch when status is `NO MATCH`.\n\nDo not invent CMSIS identifiers, infer support from similar part names, or treat an\nempty installed-pack query as proof that no online pack exists.",
+   "sections": [
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "doc-www-keil-arm-com-boards": {
+   "kind": "entity",
+   "type": "docsection",
+   "title": "https://www.keil.arm.com/boards/"
+  },
+  "doc-www-keil-arm-com-devices": {
+   "kind": "entity",
+   "type": "docsection",
+   "title": "https://www.keil.arm.com/devices/"
+  },
+  "proc-identify-zephyr-board": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "project",
+   "title": "identify-zephyr-board",
+   "summary": "Resolve a user-supplied physical board to its exact Zephyr board target and fitted MCU or SoC using the installed west board catalog. Use when a project, build, or support lookup needs a version-matched Zephyr board identifier.",
+   "triggers": [],
+   "status": "draft",
+   "source": "project/identify-zephyr-board/SKILL.md",
+   "preconditions": "The physical board manufacturer, model, relevant revision, and a verified Zephyr workspace with its venv-local west executable.",
+   "portability": "Applies to boards represented by the installed Zephyr version. It depends on Zephyr board metadata but has no CMSIS-pack, compiler, debugger, or RTOS configuration assumption beyond Zephyr itself. Require:",
+   "tools": [
+    "west"
+   ],
+   "output": "Report:\n\n- status: `MATCH` or `NO MATCH`;\n- physical board manufacturer, model, and revision;\n- Zephyr board name and exact board target;\n- vendor, default revision, revisions, and qualifiers from west;\n- fitted MCU or SoC;\n- installed board directory;\n- supporting local files and documentation URLs;\n- unresolved choice or mismatch when status is `NO MATCH`.",
+   "sections": [
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validation Resources"
+   ]
+  },
+  "doc-docs-zephyrproject-org-latest-boards-index-html": {
+   "kind": "entity",
+   "type": "docsection",
+   "title": "https://docs.zephyrproject.org/latest/boards/index.html"
+  },
+  "proc-start-zephyr-project": {
+   "kind": "knowledge",
+   "type": "procedure",
+   "domain": "project",
+   "title": "start-zephyr-project",
+   "summary": "Create an initial CMSIS Zephyr Blinky solution for a board already supported by Zephyr. Use when the Zephyr and CMSIS environments, exact Zephyr board target, and matching CMSIS BSP or DFP must be verified and combined into a west-integrated CMSIS solution.",
+   "triggers": [],
+   "status": "draft",
+   "source": "project/start-zephyr-project/SKILL.md",
+   "preconditions": "A solution directory, the physical board and exact Zephyr target, verified CMSIS and Zephyr environment results, verified CMSIS BSP/DFP identifiers, and a selected installed CMSIS compiler when more than one is available.",
+   "portability": "Applies to Zephyr-supported boards with verified CMSIS BSP or DFP support. It depends on CMSIS-Toolbox west integration and uses GCC-specific libc settings only when GCC is selected; it does not require the Zephyr SDK, sysbuild, or a particular debugger.",
+   "tools": [
+    "csolution",
+    "cbuild",
+    "west"
+   ],
+   "output": "Produce an initial `<solution-directory>/zephyr.csolution.yml` and self-contained\n`<solution-directory>/blinky` Zephyr application without unresolved tokens.\nSummarize the environment versions, exact Zephyr target, fitted device, CMSIS\nmatch type, CMSIS identifiers, selected packs, setup status, and build status.",
+   "sections": [
+    "Create the Blinky Solution",
+    "Execution Steps",
+    "Expected Output",
+    "Guardrails & Constraints",
+    "Prerequisites & Context",
+    "Target & Persona",
+    "Validate the Generated Project",
+    "Validation Resources"
+   ]
+  },
+  "asset-start-zephyr-project-assets-blinky-cmakelists-txt": {
+   "kind": "entity",
+   "type": "asset",
+   "title": "assets/blinky/CMakeLists.txt",
+   "body": "# SPDX-License-Identifier: Apache-2.0\n\ncmake_minimum_required(VERSION 3.28.0)\nfind_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})\nproject(blinky)\n\ntarget_sources(app PRIVATE src/main.c)\n",
+   "source": "project/start-zephyr-project/assets/blinky/CMakeLists.txt",
+   "of": "proc-start-zephyr-project"
+  },
+  "asset-start-zephyr-project-assets-blinky-prj-conf": {
+   "kind": "entity",
+   "type": "asset",
+   "title": "assets/blinky/prj.conf",
+   "body": "CONFIG_GPIO=y\n",
+   "source": "project/start-zephyr-project/assets/blinky/prj.conf",
+   "of": "proc-start-zephyr-project"
+  },
+  "asset-start-zephyr-project-assets-blinky-src-main-c": {
+   "kind": "entity",
+   "type": "asset",
+   "title": "assets/blinky/src/main.c",
+   "body": "/*\n * Copyright (c) 2016 Intel Corporation\n *\n * SPDX-License-Identifier: Apache-2.0\n */\n\n#include <stdio.h>\n#include <zephyr/kernel.h>\n#include <zephyr/drivers/gpio.h>\n\n/* 1000 msec = 1 sec */\n#define SLEEP_TIME_MS   1000\n\n/* The devicetree node identifier for the \"led0\" alias. */\n#define LED0_NODE DT_ALIAS(led0)\n\n/*\n * A build error on this line means your board is unsupported.\n * See the sample documentation for information on how to fix this.\n */\nstatic const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED0_NODE, gpios);\n\nint main(void)\n{\n\tint ret;\n\tbool led_state = true;\n\n\tif (!gpio_is_ready_dt(&led)) {\n\t\treturn 0;\n\t}\n\n\tret = gpio_pin_configure_dt(&led, GPIO_OUTPUT_ACTIVE);\n\tif (ret < 0) {\n\t\treturn 0;\n\t}\n\n\twhile (1) {\n\t\tret = gpio_pin_toggle_dt(&led);\n\t\tif (ret < 0) {\n\t\t\treturn 0;\n\t\t}\n\n\t\tled_state = !led_state;\n\t\tprintf(\"LED state: %s\\n\", led_state ? \"ON\" : \"OFF\");\n\t\tk_msleep(SLEEP_TIME_MS);\n\t}\n\treturn 0;\n}\n",
+   "source": "project/start-zephyr-project/assets/blinky/src/main.c",
+   "of": "proc-start-zephyr-project"
+  },
+  "asset-start-zephyr-project-assets-zephyr-csolution-yml": {
+   "kind": "entity",
+   "type": "asset",
+   "title": "assets/zephyr.csolution.yml",
+   "body": "# Template for a CMSIS solution that delegates the application build to west.\n# Replace every placeholder before using this file.\nsolution:\n  created-for: CMSIS-Toolbox@2.14.0\n  compiler: __COMPILER__\n\n  packs:\n    # Remove the following entry when DFP and BSP are the same pack.\n    - pack: __DEVICE_SUPPORT_PACK__\n    # Remove the following entry when no BSP exists.\n    - pack: __BOARD_SUPPORT_PACK__\n\n  target-types:\n    - type: __TARGET_TYPE__\n      # Remove board: when there is no BSP.\n      board: __CMSIS_BOARD__\n      device: __CMSIS_DEVICE__\n      variables:\n        - west-board: __WEST_BOARD__\n      target-set:\n        - set:\n          images:\n            - project-context: blinky.Debug\n\n  build-types:\n    - type: Debug\n      west-defs:\n        - CONFIG_DEBUG: y\n        - CONFIG_DEBUG_THREAD_INFO: y\n        - CONFIG_THREAD_STACK_INFO: n\n        - CONFIG_DEBUG_OPTIMIZATIONS: y\n    - type: Release\n      west-defs:\n        - CONFIG_SIZE_OPTIMIZATIONS: y\n\n  projects:\n    - west:\n        app-path: ./blinky\n",
+   "source": "project/start-zephyr-project/assets/zephyr.csolution.yml",
+   "of": "proc-start-zephyr-project"
+  },
+  "doc-github-com-arm-examples-cmsis-zephyr-blob-main-blinky-prj-co": {
+   "kind": "entity",
+   "type": "docsection",
+   "title": "https://github.com/Arm-Examples/CMSIS-Zephyr/blob/main/blinky/prj.conf"
+  },
+  "doc-github-com-arm-examples-cmsis-zephyr-blob-main-zephyr-csolut": {
+   "kind": "entity",
+   "type": "docsection",
+   "title": "https://github.com/Arm-Examples/CMSIS-Zephyr/blob/main/zephyr.csolution.yml"
+  },
+  "doc-github-com-open-cmsis-pack-vscode-cmsis-solution-blob-main-t": {
+   "kind": "entity",
+   "type": "docsection",
+   "title": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/blob/main/templates/template.csolution.yml"
+  },
+  "doc-open-cmsis-pack-github-io-cmsis-toolbox-build-overview-west-": {
+   "kind": "entity",
+   "type": "docsection",
+   "title": "https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview/#west-build-system-integration"
+  },
+  "rule-no-fabrication-board-debug-knowledge": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-portability-board-debug-knowledge": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Portability",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-critical-blockers-board-debug-knowledge": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-scope-board-debug-knowledge": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Scope",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-tone-and-style": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Tone and style",
+   "severity": "must",
+   "status": "draft",
+   "shared": true
+  },
+  "rule-no-fabrication-check-pyocd-availability": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-mutation-check-pyocd-availability": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No mutation",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-vs-code-scope-check-pyocd-availability": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "VS Code scope",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-critical-blockers-check-pyocd-availability": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-scope-check-pyocd-availability": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Scope",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-fabrication-debug-access-knowledge": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-portability-debug-access-knowledge": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Portability",
+   "severity": "must",
+   "status": "draft",
+   "shared": true
+  },
+  "rule-critical-blockers-debug-access-knowledge": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-scope-debug-access-knowledge": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Scope",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-fabrication-debug-knowledge": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-critical-blockers-debug-knowledge": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-scope-debug-knowledge": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Scope",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-fabrication-pyocd-detect-debug-topology": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-portability-pyocd-detect-debug-topology": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Portability",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-critical-blockers-pyocd-detect-debug-topology": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-scope-pyocd-detect-debug-topology": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Scope",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-fabrication-resolve-official-device-documentation": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-portability-resolve-official-device-documentation": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Portability",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-critical-blockers-resolve-official-device-documentation": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-scope-resolve-official-device-documentation": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Scope",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-unnamed-trace-knowledge": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Do not invent trace component addresses, identifiers, versions,",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-unnamed-trace-knowledge-2": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Do not infer that a discovered component, including",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-unnamed-trace-knowledge-3": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Do not edit PDSC debug descriptions or sequences.",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-unnamed-trace-knowledge-4": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Preserve READY unless an affected fact becomes stale,",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-unnamed-trace-knowledge-5": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Treat the artifact as read-only outside this workflow.",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-fabrication-cmsis-stream": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-portability-cmsis-stream": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Portability",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-critical-blockers-cmsis-stream": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-scope-cmsis-stream": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Scope",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-fabrication-create-csolution-github-action": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-portability-create-csolution-github-action": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Portability",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-critical-blockers-create-csolution-github-action": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-scope-create-csolution-github-action": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Scope",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-installation-or-acquisition-evaluate-ethos-u-variants": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No installation or acquisition",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-critical-blockers-evaluate-ethos-u-variants": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-fail-fast-evaluate-ethos-u-variants": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Fail fast",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-configuration-source-evaluate-ethos-u-variants": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Configuration source",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-comparable-inputs-evaluate-ethos-u-variants": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Comparable inputs",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-estimates-evaluate-ethos-u-variants": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Estimates",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-fabrication-evaluate-ethos-u-variants": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-output-safety-evaluate-ethos-u-variants": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Output safety",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-fabrication-apply-confirmed-pdsc-proposal": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-critical-blockers-apply-confirmed-pdsc-proposal": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-scope-apply-confirmed-pdsc-proposal": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Scope",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-fabrication-generate-debug-description": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-portability-generate-debug-description": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Portability",
+   "severity": "must",
+   "status": "draft",
+   "shared": true
+  },
+  "rule-critical-blockers-generate-debug-description": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-scope-generate-debug-description": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Scope",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-fabrication-generate-debug-sequences": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-critical-blockers-generate-debug-sequences": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-scope-generate-debug-sequences": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Scope",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-fabrication-generate-trace-sequences": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-critical-blockers-generate-trace-sequences": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-scope-generate-trace-sequences": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Scope",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-fabrication-manage-pdsc-debugvars": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-critical-blockers-manage-pdsc-debugvars": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-scope-manage-pdsc-debugvars": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Scope",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-fabrication-prepare-pdsc-sequence-change": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-critical-blockers-prepare-pdsc-sequence-change": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-scope-prepare-pdsc-sequence-change": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Scope",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-fabrication-validate-pdsc-sequence-xml": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-critical-blockers-validate-pdsc-sequence-xml": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-scope-validate-pdsc-sequence-xml": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Scope",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-fabrication-add-cmsis-target": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-invented-layer-add-cmsis-target": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No invented layer",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-pack-copy-invariant-add-cmsis-target": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Pack copy invariant",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-user-choice-add-cmsis-target": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "User choice",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-hardware-identity-add-cmsis-target": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Hardware identity",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-schema-integrity-add-cmsis-target": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Schema integrity",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-target-selection-add-cmsis-target": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Target selection",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-tool-integrity-add-cmsis-target": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Tool integrity",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-portability-add-cmsis-target": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Portability",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-critical-blockers-add-cmsis-target": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-scope-add-cmsis-target": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Scope",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-fabrication-check-cmsis-environment": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-portability-check-cmsis-environment": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Portability",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-critical-blockers-check-cmsis-environment": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-scope-check-cmsis-environment": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Scope",
+   "severity": "must",
+   "status": "draft",
+   "shared": true
+  },
+  "rule-no-fabrication-check-zephyr-environment": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-portability-check-zephyr-environment": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Portability",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-critical-blockers-check-zephyr-environment": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-fabrication-identify-cmsis-board-layer": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-exact-packs-identify-cmsis-board-layer": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Exact packs",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-compatibility-identify-cmsis-board-layer": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Compatibility",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-target-selection-identify-cmsis-board-layer": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Target selection",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-command-integrity-identify-cmsis-board-layer": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Command integrity",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-selection-or-copy-identify-cmsis-board-layer": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No selection or copy",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-portability-identify-cmsis-board-layer": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Portability",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-critical-blockers-identify-cmsis-board-layer": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-scope-identify-cmsis-board-layer": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Scope",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-fabrication-identify-cmsis-board-support": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-portability-identify-cmsis-board-support": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Portability",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-exactly-one-gate-identify-cmsis-board-support": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Exactly-one gate",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-critical-blockers-identify-cmsis-board-support": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-scope-identify-cmsis-board-support": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Scope",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-fabrication-identify-zephyr-board": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-portability-identify-zephyr-board": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Portability",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-critical-blockers-identify-zephyr-board": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-scope-identify-zephyr-board": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Scope",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-no-fabrication-start-zephyr-project": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "No fabrication",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-portability-start-zephyr-project": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Portability",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-critical-blockers-start-zephyr-project": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Critical blockers",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-scope-start-zephyr-project": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Scope",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-unnamed-start-zephyr-project": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Do not install, upgrade, repair, or reconfigure prerequisite",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-unnamed-start-zephyr-project-2": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Do not require the Zephyr SDK; Keil Studio",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-unnamed-start-zephyr-project-3": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Do not use Zephyr sysbuild; CMSIS-Toolbox west integration",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-unnamed-start-zephyr-project-4": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Do not list a combined BSP/DFP pack twice",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-unnamed-start-zephyr-project-5": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Do not rename the generated blinky directory without",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-unnamed-start-zephyr-project-6": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Do not guess identifiers, paths, dependencies, or test",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-unnamed-start-zephyr-project-7": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Do not modify either validation command or use",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-unnamed-start-zephyr-project-8": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Do not report overall success unless both required",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  },
+  "rule-unnamed-start-zephyr-project-9": {
+   "kind": "knowledge",
+   "type": "rule",
+   "title": "Stop and report the producing prerequisite when a",
+   "severity": "must",
+   "status": "draft",
+   "shared": false
+  }
+ },
+ "edges": [
+  {
+   "src": "proc-board-debug-knowledge",
+   "rel": "requires",
+   "dst": "proc-resolve-official-device-documentation"
+  },
+  {
+   "src": "proc-check-pyocd-availability",
+   "rel": "requires",
+   "dst": "proc-pyocd-detect-debug-topology"
+  },
+  {
+   "src": "proc-debug-access-knowledge",
+   "rel": "requires",
+   "dst": "proc-board-debug-knowledge"
+  },
+  {
+   "src": "proc-debug-access-knowledge",
+   "rel": "requires",
+   "dst": "proc-pyocd-detect-debug-topology"
+  },
+  {
+   "src": "proc-debug-access-knowledge",
+   "rel": "requires",
+   "dst": "proc-resolve-official-device-documentation"
+  },
+  {
+   "src": "proc-debug-access-knowledge",
+   "rel": "produces",
+   "dst": "artifact-pdsc-stem-debug-access-knowledge-md"
+  },
+  {
+   "src": "proc-debug-knowledge",
+   "rel": "requires",
+   "dst": "proc-board-debug-knowledge"
+  },
+  {
+   "src": "proc-debug-knowledge",
+   "rel": "requires",
+   "dst": "proc-debug-access-knowledge"
+  },
+  {
+   "src": "proc-debug-knowledge",
+   "rel": "requires",
+   "dst": "proc-resolve-official-device-documentation"
+  },
+  {
+   "src": "proc-debug-knowledge",
+   "rel": "consumes",
+   "dst": "artifact-pdsc-stem-debug-access-knowledge-md"
+  },
+  {
+   "src": "proc-debug-knowledge",
+   "rel": "produces",
+   "dst": "artifact-pdsc-stem-debug-knowledge-md"
+  },
+  {
+   "src": "proc-debug-knowledge",
+   "rel": "requires",
+   "dst": "concept-debug-knowledge-contract"
+  },
+  {
+   "src": "proc-pyocd-detect-debug-topology",
+   "rel": "requires",
+   "dst": "proc-check-pyocd-availability"
+  },
+  {
+   "src": "proc-trace-knowledge",
+   "rel": "requires",
+   "dst": "proc-board-debug-knowledge"
+  },
+  {
+   "src": "proc-trace-knowledge",
+   "rel": "requires",
+   "dst": "proc-debug-access-knowledge"
+  },
+  {
+   "src": "proc-trace-knowledge",
+   "rel": "requires",
+   "dst": "proc-pyocd-detect-debug-topology"
+  },
+  {
+   "src": "proc-trace-knowledge",
+   "rel": "requires",
+   "dst": "proc-resolve-official-device-documentation"
+  },
+  {
+   "src": "proc-trace-knowledge",
+   "rel": "consumes",
+   "dst": "artifact-pdsc-stem-debug-access-knowledge-md"
+  },
+  {
+   "src": "proc-trace-knowledge",
+   "rel": "produces",
+   "dst": "artifact-pdsc-stem-trace-knowledge-md"
+  },
+  {
+   "src": "proc-trace-knowledge",
+   "rel": "requires",
+   "dst": "concept-trace-knowledge-contract"
+  },
+  {
+   "src": "proc-create-csolution-github-action",
+   "rel": "references",
+   "dst": "asset-create-csolution-github-action-assets-workflow-matrix-yml"
+  },
+  {
+   "src": "proc-create-csolution-github-action",
+   "rel": "references",
+   "dst": "asset-create-csolution-github-action-assets-workflow-single-yml"
+  },
+  {
+   "src": "proc-create-csolution-github-action",
+   "rel": "references",
+   "dst": "doc-github-com-arm-software-cmsis-actions"
+  },
+  {
+   "src": "proc-create-csolution-github-action",
+   "rel": "references",
+   "dst": "doc-open-cmsis-pack-github-io-cmsis-toolbox-build-tools"
+  },
+  {
+   "src": "proc-evaluate-ethos-u-variants",
+   "rel": "references",
+   "dst": "asset-evaluate-ethos-u-variants-scripts-evaluate-ethos-u-variants-py"
+  },
+  {
+   "src": "proc-evaluate-ethos-u-variants",
+   "rel": "consumes",
+   "dst": "artifact-ethos-u-evaluation"
+  },
+  {
+   "src": "proc-apply-confirmed-pdsc-proposal",
+   "rel": "requires",
+   "dst": "proc-validate-pdsc-sequence-xml"
+  },
+  {
+   "src": "proc-generate-debug-description",
+   "rel": "requires",
+   "dst": "proc-debug-access-knowledge"
+  },
+  {
+   "src": "proc-generate-debug-description",
+   "rel": "requires",
+   "dst": "proc-validate-pdsc-sequence-xml"
+  },
+  {
+   "src": "proc-generate-debug-description",
+   "rel": "consumes",
+   "dst": "artifact-pdsc-stem-debug-access-knowledge-md"
+  },
+  {
+   "src": "proc-generate-debug-description",
+   "rel": "references",
+   "dst": "doc-open-cmsis-pack-github-io-open-cmsis-pack-spec-main-html-deb"
+  },
+  {
+   "src": "proc-generate-debug-description",
+   "rel": "requires",
+   "dst": "concept-description-contract"
+  },
+  {
+   "src": "proc-generate-debug-sequences",
+   "rel": "requires",
+   "dst": "proc-apply-confirmed-pdsc-proposal"
+  },
+  {
+   "src": "proc-generate-debug-sequences",
+   "rel": "requires",
+   "dst": "proc-debug-access-knowledge"
+  },
+  {
+   "src": "proc-generate-debug-sequences",
+   "rel": "requires",
+   "dst": "proc-debug-knowledge"
+  },
+  {
+   "src": "proc-generate-debug-sequences",
+   "rel": "requires",
+   "dst": "proc-manage-pdsc-debugvars"
+  },
+  {
+   "src": "proc-generate-debug-sequences",
+   "rel": "requires",
+   "dst": "proc-prepare-pdsc-sequence-change"
+  },
+  {
+   "src": "proc-generate-debug-sequences",
+   "rel": "requires",
+   "dst": "proc-validate-pdsc-sequence-xml"
+  },
+  {
+   "src": "proc-generate-debug-sequences",
+   "rel": "consumes",
+   "dst": "artifact-pdsc-stem-debug-access-knowledge-md"
+  },
+  {
+   "src": "proc-generate-debug-sequences",
+   "rel": "consumes",
+   "dst": "artifact-pdsc-stem-debug-knowledge-md"
+  },
+  {
+   "src": "proc-generate-debug-sequences",
+   "rel": "consumes",
+   "dst": "artifact-pdsc-stem-debug-sequences-md"
+  },
+  {
+   "src": "proc-generate-debug-sequences",
+   "rel": "references",
+   "dst": "doc-open-cmsis-pack-github-io-open-cmsis-pack-spec-main-html-deb"
+  },
+  {
+   "src": "proc-generate-debug-sequences",
+   "rel": "requires",
+   "dst": "concept-debug-sequence-contract"
+  },
+  {
+   "src": "proc-generate-trace-sequences",
+   "rel": "requires",
+   "dst": "proc-apply-confirmed-pdsc-proposal"
+  },
+  {
+   "src": "proc-generate-trace-sequences",
+   "rel": "requires",
+   "dst": "proc-debug-access-knowledge"
+  },
+  {
+   "src": "proc-generate-trace-sequences",
+   "rel": "requires",
+   "dst": "proc-manage-pdsc-debugvars"
+  },
+  {
+   "src": "proc-generate-trace-sequences",
+   "rel": "requires",
+   "dst": "proc-prepare-pdsc-sequence-change"
+  },
+  {
+   "src": "proc-generate-trace-sequences",
+   "rel": "requires",
+   "dst": "proc-trace-knowledge"
+  },
+  {
+   "src": "proc-generate-trace-sequences",
+   "rel": "requires",
+   "dst": "proc-validate-pdsc-sequence-xml"
+  },
+  {
+   "src": "proc-generate-trace-sequences",
+   "rel": "references",
+   "dst": "asset-generate-trace-sequences-assets-components-etb-xml"
+  },
+  {
+   "src": "proc-generate-trace-sequences",
+   "rel": "references",
+   "dst": "asset-generate-trace-sequences-assets-components-etf-xml"
+  },
+  {
+   "src": "proc-generate-trace-sequences",
+   "rel": "references",
+   "dst": "asset-generate-trace-sequences-assets-components-etr-catu-xml"
+  },
+  {
+   "src": "proc-generate-trace-sequences",
+   "rel": "references",
+   "dst": "asset-generate-trace-sequences-assets-components-funnel-xml"
+  },
+  {
+   "src": "proc-generate-trace-sequences",
+   "rel": "references",
+   "dst": "asset-generate-trace-sequences-assets-components-replicator-xml"
+  },
+  {
+   "src": "proc-generate-trace-sequences",
+   "rel": "references",
+   "dst": "asset-generate-trace-sequences-assets-components-swo-xml"
+  },
+  {
+   "src": "proc-generate-trace-sequences",
+   "rel": "references",
+   "dst": "asset-generate-trace-sequences-assets-components-tpiu-xml"
+  },
+  {
+   "src": "proc-generate-trace-sequences",
+   "rel": "references",
+   "dst": "asset-generate-trace-sequences-assets-scaffolds-full-trace-xml"
+  },
+  {
+   "src": "proc-generate-trace-sequences",
+   "rel": "consumes",
+   "dst": "artifact-pdsc-stem-debug-access-knowledge-md"
+  },
+  {
+   "src": "proc-generate-trace-sequences",
+   "rel": "consumes",
+   "dst": "artifact-pdsc-stem-trace-knowledge-md"
+  },
+  {
+   "src": "proc-generate-trace-sequences",
+   "rel": "consumes",
+   "dst": "artifact-pdsc-stem-trace-sequences-md"
+  },
+  {
+   "src": "proc-generate-trace-sequences",
+   "rel": "references",
+   "dst": "doc-open-cmsis-pack-github-io-open-cmsis-pack-spec-main-html-deb"
+  },
+  {
+   "src": "proc-generate-trace-sequences",
+   "rel": "requires",
+   "dst": "concept-component-index"
+  },
+  {
+   "src": "proc-generate-trace-sequences",
+   "rel": "requires",
+   "dst": "concept-legacy-to-full-migration"
+  },
+  {
+   "src": "proc-generate-trace-sequences",
+   "rel": "requires",
+   "dst": "concept-trace-sequence-contract"
+  },
+  {
+   "src": "proc-manage-pdsc-debugvars",
+   "rel": "references",
+   "dst": "doc-open-cmsis-pack-github-io-open-cmsis-pack-spec-main-html-deb"
+  },
+  {
+   "src": "proc-prepare-pdsc-sequence-change",
+   "rel": "requires",
+   "dst": "proc-debug-access-knowledge"
+  },
+  {
+   "src": "proc-prepare-pdsc-sequence-change",
+   "rel": "requires",
+   "dst": "proc-debug-knowledge"
+  },
+  {
+   "src": "proc-prepare-pdsc-sequence-change",
+   "rel": "requires",
+   "dst": "proc-trace-knowledge"
+  },
+  {
+   "src": "proc-prepare-pdsc-sequence-change",
+   "rel": "references",
+   "dst": "doc-open-cmsis-pack-github-io-open-cmsis-pack-spec-main-html-deb"
+  },
+  {
+   "src": "proc-validate-pdsc-sequence-xml",
+   "rel": "references",
+   "dst": "doc-open-cmsis-pack-github-io-open-cmsis-pack-spec-main-html-deb"
+  },
+  {
+   "src": "proc-add-cmsis-target",
+   "rel": "requires",
+   "dst": "proc-check-cmsis-environment"
+  },
+  {
+   "src": "proc-add-cmsis-target",
+   "rel": "requires",
+   "dst": "proc-identify-cmsis-board-layer"
+  },
+  {
+   "src": "proc-add-cmsis-target",
+   "rel": "requires",
+   "dst": "proc-identify-cmsis-board-support"
+  },
+  {
+   "src": "proc-add-cmsis-target",
+   "rel": "references",
+   "dst": "doc-open-cmsis-pack-github-io-cmsis-toolbox-referenceapplication"
+  },
+  {
+   "src": "proc-add-cmsis-target",
+   "rel": "references",
+   "dst": "doc-open-cmsis-pack-github-io-cmsis-toolbox-yml-input-format"
+  },
+  {
+   "src": "proc-check-cmsis-environment",
+   "rel": "references",
+   "dst": "doc-github-com-arm-software-vscode-environment-manager"
+  },
+  {
+   "src": "proc-check-cmsis-environment",
+   "rel": "references",
+   "dst": "doc-open-cmsis-pack-github-io-cmsis-toolbox-build-tools"
+  },
+  {
+   "src": "proc-check-cmsis-environment",
+   "rel": "references",
+   "dst": "doc-open-cmsis-pack-github-io-cmsis-toolbox-installation"
+  },
+  {
+   "src": "proc-check-cmsis-environment",
+   "rel": "references",
+   "dst": "doc-open-cmsis-pack-github-io-cmsis-toolbox-installation-compile"
+  },
+  {
+   "src": "proc-check-zephyr-environment",
+   "rel": "references",
+   "dst": "doc-github-com-arm-examples-cmsis-zephyr"
+  },
+  {
+   "src": "proc-identify-cmsis-board-layer",
+   "rel": "requires",
+   "dst": "proc-identify-cmsis-board-support"
+  },
+  {
+   "src": "proc-identify-cmsis-board-layer",
+   "rel": "references",
+   "dst": "doc-open-cmsis-pack-github-io-cmsis-toolbox-referenceapplication"
+  },
+  {
+   "src": "proc-identify-cmsis-board-layer",
+   "rel": "references",
+   "dst": "doc-open-cmsis-pack-github-io-cmsis-toolbox-yml-input-format-aut"
+  },
+  {
+   "src": "proc-identify-cmsis-board-support",
+   "rel": "requires",
+   "dst": "proc-identify-zephyr-board"
+  },
+  {
+   "src": "proc-identify-cmsis-board-support",
+   "rel": "references",
+   "dst": "doc-www-keil-arm-com-boards"
+  },
+  {
+   "src": "proc-identify-cmsis-board-support",
+   "rel": "references",
+   "dst": "doc-www-keil-arm-com-devices"
+  },
+  {
+   "src": "proc-identify-zephyr-board",
+   "rel": "references",
+   "dst": "doc-docs-zephyrproject-org-latest-boards-index-html"
+  },
+  {
+   "src": "proc-start-zephyr-project",
+   "rel": "requires",
+   "dst": "proc-check-cmsis-environment"
+  },
+  {
+   "src": "proc-start-zephyr-project",
+   "rel": "requires",
+   "dst": "proc-identify-zephyr-board"
+  },
+  {
+   "src": "proc-start-zephyr-project",
+   "rel": "references",
+   "dst": "asset-start-zephyr-project-assets-blinky-cmakelists-txt"
+  },
+  {
+   "src": "proc-start-zephyr-project",
+   "rel": "references",
+   "dst": "asset-start-zephyr-project-assets-blinky-prj-conf"
+  },
+  {
+   "src": "proc-start-zephyr-project",
+   "rel": "references",
+   "dst": "asset-start-zephyr-project-assets-blinky-src-main-c"
+  },
+  {
+   "src": "proc-start-zephyr-project",
+   "rel": "references",
+   "dst": "asset-start-zephyr-project-assets-zephyr-csolution-yml"
+  },
+  {
+   "src": "proc-start-zephyr-project",
+   "rel": "references",
+   "dst": "doc-github-com-arm-examples-cmsis-zephyr-blob-main-blinky-prj-co"
+  },
+  {
+   "src": "proc-start-zephyr-project",
+   "rel": "references",
+   "dst": "doc-github-com-arm-examples-cmsis-zephyr-blob-main-zephyr-csolut"
+  },
+  {
+   "src": "proc-start-zephyr-project",
+   "rel": "references",
+   "dst": "doc-github-com-open-cmsis-pack-vscode-cmsis-solution-blob-main-t"
+  },
+  {
+   "src": "proc-start-zephyr-project",
+   "rel": "references",
+   "dst": "doc-open-cmsis-pack-github-io-cmsis-toolbox-build-overview-west-"
+  },
+  {
+   "src": "proc-start-zephyr-project",
+   "rel": "references",
+   "dst": "doc-open-cmsis-pack-github-io-cmsis-toolbox-build-tools"
+  },
+  {
+   "src": "rule-no-fabrication-board-debug-knowledge",
+   "rel": "constrains",
+   "dst": "proc-board-debug-knowledge"
+  },
+  {
+   "src": "rule-portability-board-debug-knowledge",
+   "rel": "constrains",
+   "dst": "proc-board-debug-knowledge"
+  },
+  {
+   "src": "rule-critical-blockers-board-debug-knowledge",
+   "rel": "constrains",
+   "dst": "proc-board-debug-knowledge"
+  },
+  {
+   "src": "rule-scope-board-debug-knowledge",
+   "rel": "constrains",
+   "dst": "proc-board-debug-knowledge"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-board-debug-knowledge"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-check-pyocd-availability"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-debug-access-knowledge"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-debug-knowledge"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-pyocd-detect-debug-topology"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-resolve-official-device-documentation"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-cmsis-stream"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-create-csolution-github-action"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-evaluate-ethos-u-variants"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-apply-confirmed-pdsc-proposal"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-generate-debug-description"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-generate-debug-sequences"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-generate-trace-sequences"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-manage-pdsc-debugvars"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-prepare-pdsc-sequence-change"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-validate-pdsc-sequence-xml"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-add-cmsis-target"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-check-cmsis-environment"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-check-zephyr-environment"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-identify-cmsis-board-layer"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-identify-cmsis-board-support"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-identify-zephyr-board"
+  },
+  {
+   "src": "rule-tone-and-style",
+   "rel": "constrains",
+   "dst": "proc-start-zephyr-project"
+  },
+  {
+   "src": "rule-no-fabrication-check-pyocd-availability",
+   "rel": "constrains",
+   "dst": "proc-check-pyocd-availability"
+  },
+  {
+   "src": "rule-no-mutation-check-pyocd-availability",
+   "rel": "constrains",
+   "dst": "proc-check-pyocd-availability"
+  },
+  {
+   "src": "rule-vs-code-scope-check-pyocd-availability",
+   "rel": "constrains",
+   "dst": "proc-check-pyocd-availability"
+  },
+  {
+   "src": "rule-critical-blockers-check-pyocd-availability",
+   "rel": "constrains",
+   "dst": "proc-check-pyocd-availability"
+  },
+  {
+   "src": "rule-scope-check-pyocd-availability",
+   "rel": "constrains",
+   "dst": "proc-check-pyocd-availability"
+  },
+  {
+   "src": "rule-no-fabrication-debug-access-knowledge",
+   "rel": "constrains",
+   "dst": "proc-debug-access-knowledge"
+  },
+  {
+   "src": "rule-portability-debug-access-knowledge",
+   "rel": "constrains",
+   "dst": "proc-debug-access-knowledge"
+  },
+  {
+   "src": "rule-portability-debug-access-knowledge",
+   "rel": "constrains",
+   "dst": "proc-debug-knowledge"
+  },
+  {
+   "src": "rule-portability-debug-access-knowledge",
+   "rel": "constrains",
+   "dst": "proc-apply-confirmed-pdsc-proposal"
+  },
+  {
+   "src": "rule-portability-debug-access-knowledge",
+   "rel": "constrains",
+   "dst": "proc-manage-pdsc-debugvars"
+  },
+  {
+   "src": "rule-portability-debug-access-knowledge",
+   "rel": "constrains",
+   "dst": "proc-prepare-pdsc-sequence-change"
+  },
+  {
+   "src": "rule-portability-debug-access-knowledge",
+   "rel": "constrains",
+   "dst": "proc-validate-pdsc-sequence-xml"
+  },
+  {
+   "src": "rule-critical-blockers-debug-access-knowledge",
+   "rel": "constrains",
+   "dst": "proc-debug-access-knowledge"
+  },
+  {
+   "src": "rule-scope-debug-access-knowledge",
+   "rel": "constrains",
+   "dst": "proc-debug-access-knowledge"
+  },
+  {
+   "src": "rule-no-fabrication-debug-knowledge",
+   "rel": "constrains",
+   "dst": "proc-debug-knowledge"
+  },
+  {
+   "src": "rule-critical-blockers-debug-knowledge",
+   "rel": "constrains",
+   "dst": "proc-debug-knowledge"
+  },
+  {
+   "src": "rule-scope-debug-knowledge",
+   "rel": "constrains",
+   "dst": "proc-debug-knowledge"
+  },
+  {
+   "src": "rule-no-fabrication-pyocd-detect-debug-topology",
+   "rel": "constrains",
+   "dst": "proc-pyocd-detect-debug-topology"
+  },
+  {
+   "src": "rule-portability-pyocd-detect-debug-topology",
+   "rel": "constrains",
+   "dst": "proc-pyocd-detect-debug-topology"
+  },
+  {
+   "src": "rule-critical-blockers-pyocd-detect-debug-topology",
+   "rel": "constrains",
+   "dst": "proc-pyocd-detect-debug-topology"
+  },
+  {
+   "src": "rule-scope-pyocd-detect-debug-topology",
+   "rel": "constrains",
+   "dst": "proc-pyocd-detect-debug-topology"
+  },
+  {
+   "src": "rule-no-fabrication-resolve-official-device-documentation",
+   "rel": "constrains",
+   "dst": "proc-resolve-official-device-documentation"
+  },
+  {
+   "src": "rule-portability-resolve-official-device-documentation",
+   "rel": "constrains",
+   "dst": "proc-resolve-official-device-documentation"
+  },
+  {
+   "src": "rule-critical-blockers-resolve-official-device-documentation",
+   "rel": "constrains",
+   "dst": "proc-resolve-official-device-documentation"
+  },
+  {
+   "src": "rule-scope-resolve-official-device-documentation",
+   "rel": "constrains",
+   "dst": "proc-resolve-official-device-documentation"
+  },
+  {
+   "src": "rule-unnamed-trace-knowledge",
+   "rel": "constrains",
+   "dst": "proc-trace-knowledge"
+  },
+  {
+   "src": "rule-unnamed-trace-knowledge-2",
+   "rel": "constrains",
+   "dst": "proc-trace-knowledge"
+  },
+  {
+   "src": "rule-unnamed-trace-knowledge-3",
+   "rel": "constrains",
+   "dst": "proc-trace-knowledge"
+  },
+  {
+   "src": "rule-unnamed-trace-knowledge-4",
+   "rel": "constrains",
+   "dst": "proc-trace-knowledge"
+  },
+  {
+   "src": "rule-unnamed-trace-knowledge-5",
+   "rel": "constrains",
+   "dst": "proc-trace-knowledge"
+  },
+  {
+   "src": "rule-no-fabrication-cmsis-stream",
+   "rel": "constrains",
+   "dst": "proc-cmsis-stream"
+  },
+  {
+   "src": "rule-portability-cmsis-stream",
+   "rel": "constrains",
+   "dst": "proc-cmsis-stream"
+  },
+  {
+   "src": "rule-critical-blockers-cmsis-stream",
+   "rel": "constrains",
+   "dst": "proc-cmsis-stream"
+  },
+  {
+   "src": "rule-scope-cmsis-stream",
+   "rel": "constrains",
+   "dst": "proc-cmsis-stream"
+  },
+  {
+   "src": "rule-no-fabrication-create-csolution-github-action",
+   "rel": "constrains",
+   "dst": "proc-create-csolution-github-action"
+  },
+  {
+   "src": "rule-portability-create-csolution-github-action",
+   "rel": "constrains",
+   "dst": "proc-create-csolution-github-action"
+  },
+  {
+   "src": "rule-critical-blockers-create-csolution-github-action",
+   "rel": "constrains",
+   "dst": "proc-create-csolution-github-action"
+  },
+  {
+   "src": "rule-scope-create-csolution-github-action",
+   "rel": "constrains",
+   "dst": "proc-create-csolution-github-action"
+  },
+  {
+   "src": "rule-no-installation-or-acquisition-evaluate-ethos-u-variants",
+   "rel": "constrains",
+   "dst": "proc-evaluate-ethos-u-variants"
+  },
+  {
+   "src": "rule-critical-blockers-evaluate-ethos-u-variants",
+   "rel": "constrains",
+   "dst": "proc-evaluate-ethos-u-variants"
+  },
+  {
+   "src": "rule-fail-fast-evaluate-ethos-u-variants",
+   "rel": "constrains",
+   "dst": "proc-evaluate-ethos-u-variants"
+  },
+  {
+   "src": "rule-configuration-source-evaluate-ethos-u-variants",
+   "rel": "constrains",
+   "dst": "proc-evaluate-ethos-u-variants"
+  },
+  {
+   "src": "rule-comparable-inputs-evaluate-ethos-u-variants",
+   "rel": "constrains",
+   "dst": "proc-evaluate-ethos-u-variants"
+  },
+  {
+   "src": "rule-estimates-evaluate-ethos-u-variants",
+   "rel": "constrains",
+   "dst": "proc-evaluate-ethos-u-variants"
+  },
+  {
+   "src": "rule-no-fabrication-evaluate-ethos-u-variants",
+   "rel": "constrains",
+   "dst": "proc-evaluate-ethos-u-variants"
+  },
+  {
+   "src": "rule-output-safety-evaluate-ethos-u-variants",
+   "rel": "constrains",
+   "dst": "proc-evaluate-ethos-u-variants"
+  },
+  {
+   "src": "rule-no-fabrication-apply-confirmed-pdsc-proposal",
+   "rel": "constrains",
+   "dst": "proc-apply-confirmed-pdsc-proposal"
+  },
+  {
+   "src": "rule-critical-blockers-apply-confirmed-pdsc-proposal",
+   "rel": "constrains",
+   "dst": "proc-apply-confirmed-pdsc-proposal"
+  },
+  {
+   "src": "rule-scope-apply-confirmed-pdsc-proposal",
+   "rel": "constrains",
+   "dst": "proc-apply-confirmed-pdsc-proposal"
+  },
+  {
+   "src": "rule-no-fabrication-generate-debug-description",
+   "rel": "constrains",
+   "dst": "proc-generate-debug-description"
+  },
+  {
+   "src": "rule-portability-generate-debug-description",
+   "rel": "constrains",
+   "dst": "proc-generate-debug-description"
+  },
+  {
+   "src": "rule-portability-generate-debug-description",
+   "rel": "constrains",
+   "dst": "proc-generate-debug-sequences"
+  },
+  {
+   "src": "rule-portability-generate-debug-description",
+   "rel": "constrains",
+   "dst": "proc-generate-trace-sequences"
+  },
+  {
+   "src": "rule-critical-blockers-generate-debug-description",
+   "rel": "constrains",
+   "dst": "proc-generate-debug-description"
+  },
+  {
+   "src": "rule-scope-generate-debug-description",
+   "rel": "constrains",
+   "dst": "proc-generate-debug-description"
+  },
+  {
+   "src": "rule-no-fabrication-generate-debug-sequences",
+   "rel": "constrains",
+   "dst": "proc-generate-debug-sequences"
+  },
+  {
+   "src": "rule-critical-blockers-generate-debug-sequences",
+   "rel": "constrains",
+   "dst": "proc-generate-debug-sequences"
+  },
+  {
+   "src": "rule-scope-generate-debug-sequences",
+   "rel": "constrains",
+   "dst": "proc-generate-debug-sequences"
+  },
+  {
+   "src": "rule-no-fabrication-generate-trace-sequences",
+   "rel": "constrains",
+   "dst": "proc-generate-trace-sequences"
+  },
+  {
+   "src": "rule-critical-blockers-generate-trace-sequences",
+   "rel": "constrains",
+   "dst": "proc-generate-trace-sequences"
+  },
+  {
+   "src": "rule-scope-generate-trace-sequences",
+   "rel": "constrains",
+   "dst": "proc-generate-trace-sequences"
+  },
+  {
+   "src": "rule-no-fabrication-manage-pdsc-debugvars",
+   "rel": "constrains",
+   "dst": "proc-manage-pdsc-debugvars"
+  },
+  {
+   "src": "rule-critical-blockers-manage-pdsc-debugvars",
+   "rel": "constrains",
+   "dst": "proc-manage-pdsc-debugvars"
+  },
+  {
+   "src": "rule-scope-manage-pdsc-debugvars",
+   "rel": "constrains",
+   "dst": "proc-manage-pdsc-debugvars"
+  },
+  {
+   "src": "rule-no-fabrication-prepare-pdsc-sequence-change",
+   "rel": "constrains",
+   "dst": "proc-prepare-pdsc-sequence-change"
+  },
+  {
+   "src": "rule-critical-blockers-prepare-pdsc-sequence-change",
+   "rel": "constrains",
+   "dst": "proc-prepare-pdsc-sequence-change"
+  },
+  {
+   "src": "rule-scope-prepare-pdsc-sequence-change",
+   "rel": "constrains",
+   "dst": "proc-prepare-pdsc-sequence-change"
+  },
+  {
+   "src": "rule-no-fabrication-validate-pdsc-sequence-xml",
+   "rel": "constrains",
+   "dst": "proc-validate-pdsc-sequence-xml"
+  },
+  {
+   "src": "rule-critical-blockers-validate-pdsc-sequence-xml",
+   "rel": "constrains",
+   "dst": "proc-validate-pdsc-sequence-xml"
+  },
+  {
+   "src": "rule-scope-validate-pdsc-sequence-xml",
+   "rel": "constrains",
+   "dst": "proc-validate-pdsc-sequence-xml"
+  },
+  {
+   "src": "rule-no-fabrication-add-cmsis-target",
+   "rel": "constrains",
+   "dst": "proc-add-cmsis-target"
+  },
+  {
+   "src": "rule-no-invented-layer-add-cmsis-target",
+   "rel": "constrains",
+   "dst": "proc-add-cmsis-target"
+  },
+  {
+   "src": "rule-pack-copy-invariant-add-cmsis-target",
+   "rel": "constrains",
+   "dst": "proc-add-cmsis-target"
+  },
+  {
+   "src": "rule-user-choice-add-cmsis-target",
+   "rel": "constrains",
+   "dst": "proc-add-cmsis-target"
+  },
+  {
+   "src": "rule-hardware-identity-add-cmsis-target",
+   "rel": "constrains",
+   "dst": "proc-add-cmsis-target"
+  },
+  {
+   "src": "rule-schema-integrity-add-cmsis-target",
+   "rel": "constrains",
+   "dst": "proc-add-cmsis-target"
+  },
+  {
+   "src": "rule-target-selection-add-cmsis-target",
+   "rel": "constrains",
+   "dst": "proc-add-cmsis-target"
+  },
+  {
+   "src": "rule-tool-integrity-add-cmsis-target",
+   "rel": "constrains",
+   "dst": "proc-add-cmsis-target"
+  },
+  {
+   "src": "rule-portability-add-cmsis-target",
+   "rel": "constrains",
+   "dst": "proc-add-cmsis-target"
+  },
+  {
+   "src": "rule-critical-blockers-add-cmsis-target",
+   "rel": "constrains",
+   "dst": "proc-add-cmsis-target"
+  },
+  {
+   "src": "rule-scope-add-cmsis-target",
+   "rel": "constrains",
+   "dst": "proc-add-cmsis-target"
+  },
+  {
+   "src": "rule-no-fabrication-check-cmsis-environment",
+   "rel": "constrains",
+   "dst": "proc-check-cmsis-environment"
+  },
+  {
+   "src": "rule-portability-check-cmsis-environment",
+   "rel": "constrains",
+   "dst": "proc-check-cmsis-environment"
+  },
+  {
+   "src": "rule-critical-blockers-check-cmsis-environment",
+   "rel": "constrains",
+   "dst": "proc-check-cmsis-environment"
+  },
+  {
+   "src": "rule-scope-check-cmsis-environment",
+   "rel": "constrains",
+   "dst": "proc-check-cmsis-environment"
+  },
+  {
+   "src": "rule-scope-check-cmsis-environment",
+   "rel": "constrains",
+   "dst": "proc-check-zephyr-environment"
+  },
+  {
+   "src": "rule-no-fabrication-check-zephyr-environment",
+   "rel": "constrains",
+   "dst": "proc-check-zephyr-environment"
+  },
+  {
+   "src": "rule-portability-check-zephyr-environment",
+   "rel": "constrains",
+   "dst": "proc-check-zephyr-environment"
+  },
+  {
+   "src": "rule-critical-blockers-check-zephyr-environment",
+   "rel": "constrains",
+   "dst": "proc-check-zephyr-environment"
+  },
+  {
+   "src": "rule-no-fabrication-identify-cmsis-board-layer",
+   "rel": "constrains",
+   "dst": "proc-identify-cmsis-board-layer"
+  },
+  {
+   "src": "rule-exact-packs-identify-cmsis-board-layer",
+   "rel": "constrains",
+   "dst": "proc-identify-cmsis-board-layer"
+  },
+  {
+   "src": "rule-compatibility-identify-cmsis-board-layer",
+   "rel": "constrains",
+   "dst": "proc-identify-cmsis-board-layer"
+  },
+  {
+   "src": "rule-target-selection-identify-cmsis-board-layer",
+   "rel": "constrains",
+   "dst": "proc-identify-cmsis-board-layer"
+  },
+  {
+   "src": "rule-command-integrity-identify-cmsis-board-layer",
+   "rel": "constrains",
+   "dst": "proc-identify-cmsis-board-layer"
+  },
+  {
+   "src": "rule-no-selection-or-copy-identify-cmsis-board-layer",
+   "rel": "constrains",
+   "dst": "proc-identify-cmsis-board-layer"
+  },
+  {
+   "src": "rule-portability-identify-cmsis-board-layer",
+   "rel": "constrains",
+   "dst": "proc-identify-cmsis-board-layer"
+  },
+  {
+   "src": "rule-critical-blockers-identify-cmsis-board-layer",
+   "rel": "constrains",
+   "dst": "proc-identify-cmsis-board-layer"
+  },
+  {
+   "src": "rule-scope-identify-cmsis-board-layer",
+   "rel": "constrains",
+   "dst": "proc-identify-cmsis-board-layer"
+  },
+  {
+   "src": "rule-no-fabrication-identify-cmsis-board-support",
+   "rel": "constrains",
+   "dst": "proc-identify-cmsis-board-support"
+  },
+  {
+   "src": "rule-portability-identify-cmsis-board-support",
+   "rel": "constrains",
+   "dst": "proc-identify-cmsis-board-support"
+  },
+  {
+   "src": "rule-exactly-one-gate-identify-cmsis-board-support",
+   "rel": "constrains",
+   "dst": "proc-identify-cmsis-board-support"
+  },
+  {
+   "src": "rule-critical-blockers-identify-cmsis-board-support",
+   "rel": "constrains",
+   "dst": "proc-identify-cmsis-board-support"
+  },
+  {
+   "src": "rule-scope-identify-cmsis-board-support",
+   "rel": "constrains",
+   "dst": "proc-identify-cmsis-board-support"
+  },
+  {
+   "src": "rule-no-fabrication-identify-zephyr-board",
+   "rel": "constrains",
+   "dst": "proc-identify-zephyr-board"
+  },
+  {
+   "src": "rule-portability-identify-zephyr-board",
+   "rel": "constrains",
+   "dst": "proc-identify-zephyr-board"
+  },
+  {
+   "src": "rule-critical-blockers-identify-zephyr-board",
+   "rel": "constrains",
+   "dst": "proc-identify-zephyr-board"
+  },
+  {
+   "src": "rule-scope-identify-zephyr-board",
+   "rel": "constrains",
+   "dst": "proc-identify-zephyr-board"
+  },
+  {
+   "src": "rule-no-fabrication-start-zephyr-project",
+   "rel": "constrains",
+   "dst": "proc-start-zephyr-project"
+  },
+  {
+   "src": "rule-portability-start-zephyr-project",
+   "rel": "constrains",
+   "dst": "proc-start-zephyr-project"
+  },
+  {
+   "src": "rule-critical-blockers-start-zephyr-project",
+   "rel": "constrains",
+   "dst": "proc-start-zephyr-project"
+  },
+  {
+   "src": "rule-scope-start-zephyr-project",
+   "rel": "constrains",
+   "dst": "proc-start-zephyr-project"
+  },
+  {
+   "src": "rule-unnamed-start-zephyr-project",
+   "rel": "constrains",
+   "dst": "proc-start-zephyr-project"
+  },
+  {
+   "src": "rule-unnamed-start-zephyr-project-2",
+   "rel": "constrains",
+   "dst": "proc-start-zephyr-project"
+  },
+  {
+   "src": "rule-unnamed-start-zephyr-project-3",
+   "rel": "constrains",
+   "dst": "proc-start-zephyr-project"
+  },
+  {
+   "src": "rule-unnamed-start-zephyr-project-4",
+   "rel": "constrains",
+   "dst": "proc-start-zephyr-project"
+  },
+  {
+   "src": "rule-unnamed-start-zephyr-project-5",
+   "rel": "constrains",
+   "dst": "proc-start-zephyr-project"
+  },
+  {
+   "src": "rule-unnamed-start-zephyr-project-6",
+   "rel": "constrains",
+   "dst": "proc-start-zephyr-project"
+  },
+  {
+   "src": "rule-unnamed-start-zephyr-project-7",
+   "rel": "constrains",
+   "dst": "proc-start-zephyr-project"
+  },
+  {
+   "src": "rule-unnamed-start-zephyr-project-8",
+   "rel": "constrains",
+   "dst": "proc-start-zephyr-project"
+  },
+  {
+   "src": "rule-unnamed-start-zephyr-project-9",
+   "rel": "constrains",
+   "dst": "proc-start-zephyr-project"
+  }
+ ]
+}

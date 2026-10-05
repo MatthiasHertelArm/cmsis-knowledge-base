@@ -1,0 +1,12 @@
+---
+id: "rule-no-install"
+type: "rule"
+domain: "general"
+title: "No installation or environment changes"
+severity: "must"
+status: "draft"
+canonical: true
+constrains: ["proc-check-pyocd-availability", "proc-evaluate-ethos-u-variants"]
+---
+
+_Kanonischer Text: wird von Hand geschrieben._
