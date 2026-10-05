@@ -22,6 +22,7 @@ python3 tools/adapters2ku.py "$W/docs/debug-adapter-registry" units/docs/debug-a
 DOC_UNITS=(--units units/docs)
 # Closed GitHub issues of the tools, digested in own words (stage2/issues_prompt.md, mode S).
 python3 tools/issues2ku.py stage2/issues-out units/issues "$W/issues/batches"
+python3 tools/review_csv.py units/issues issues-to-review.csv
 DOC_UNITS+=(--units units/issues)
 if [ -n "${CCBYSA:-}" ]; then
   python3 tools/doc2ku.py sources/docs-ccbysa.yml "$W/docs" units/docs-ccbysa --fetch
