@@ -510,3 +510,16 @@ sources:
     license: Apache-2.0
     domain: bring-up
     url: "https://docs.zephyrproject.org/latest/{dir}/index.html"
+
+  # devtools: how to run packchk, svdconv and packgen (their message tables are the error catalog), and ctrace.
+  - name: devtools-docs
+    prefix: devt
+    repo: Open-CMSIS-Pack/devtools
+    dir: ../devtools
+    include: ["tools/packchk/README.md", "tools/svdconv/SVDConv/README.md", "tools/packgen/README.md", "tools/ctrace/README.md",
+              "tools/ctrace/docs/architecture.md", "tools/ctrace/docs/constraints.md", "tools/ctrace/docs/ctf-format.md",
+              "tools/ctrace/docs/multi-source-design.md", "tools/ctrace/docs/message-system-design.md"]
+    license: Apache-2.0
+    domain: pack
+    domains:
+      - {paths: ["tools/ctrace/*"], domain: trace}
