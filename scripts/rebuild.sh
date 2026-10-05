@@ -17,6 +17,8 @@ python3 tools/errcat_merge.py units/troubleshooting stage2/errcat-out
 python3 tools/review_csv.py units/troubleshooting messages-to-review.csv
 # Documentation of open-licence repositories, one unit per section (sources/docs.yml).
 python3 tools/doc2ku.py sources/docs.yml "$W/docs" units/docs --fetch
+# One unit per debug adapter of the CMSIS debug adapter registry (cloned by doc2ku as a docs source).
+python3 tools/adapters2ku.py "$W/docs/debug-adapter-registry" units/docs/debug-adapters
 DOC_UNITS=(--units units/docs)
 # Closed GitHub issues of the tools, digested in own words (stage2/issues_prompt.md, mode S).
 python3 tools/issues2ku.py stage2/issues-out units/issues

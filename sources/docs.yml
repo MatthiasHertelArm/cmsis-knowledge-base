@@ -187,6 +187,24 @@ sources:
     license: MIT
     domain: rtos
 
+  # The ThreadX middleware: file systems, USB, networking, flash wear levelling, trace.
+  - name: threadx-middleware
+    prefix: txmw
+    repo: eclipse-threadx/rtos-docs
+    dir: rtos-docs
+    # Introduction, installation, functional description and drivers of each product; the service (API)
+    # chapters, the add-on protocols and the trace event tables would add 2,000 units for few users.
+    include: ["rtos-docs/filex/chapter[12356].md", "rtos-docs/filex/overview-filex.md",
+              "rtos-docs/usbx/usbx-device-stack-[123].md", "rtos-docs/usbx/usbx-host-stack-[123].md", "rtos-docs/usbx/overview-usbx.md",
+              "rtos-docs/netx-duo/chapter[1235].md", "rtos-docs/netx-duo/overview-netx-duo.md",
+              "rtos-docs/levelx/chapter*.md", "rtos-docs/tracex/chapter[1-5].md", "rtos-docs/tracex/chapter1[01].md",
+              "rtos-docs/threadx-modules/chapter*.md"]
+    exclude: ["*/index.md", "*/about-this-guide.md"]
+    license: MIT
+    domain: rtos
+    domains:
+      - {paths: ["rtos-docs/tracex/*"], domain: trace}
+
   # ── Drivers, DSP, data flow ─────────────────────────────────────────────────
   - name: cmsis-driver-impl
     prefix: drvimpl
@@ -411,3 +429,10 @@ sources:
     include: ["README.md", "script/README.md", "Board/*/README.md"]
     license: Apache-2.0
     domain: edge-ai
+
+  - name: debug-adapter-registry
+    prefix: dar
+    repo: Open-CMSIS-Pack/debug-adapter-registry
+    include: ["README.md"]
+    license: Apache-2.0
+    domain: debug
