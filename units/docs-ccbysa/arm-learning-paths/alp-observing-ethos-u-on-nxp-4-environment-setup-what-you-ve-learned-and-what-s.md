@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-nxp-4-environment-setup-what-you-ve-learned-and-what-s"
 type: "concept"
 domain: "edge-ai"
-title: "4 environment setup: What you've learned and what's next"
+title: "Deploy ExecuTorch firmware on NXP FRDM i.MX 93 for Ethos-U65 acceleration: Set up the ExecuTorch build environment: What you've learned and what's next"
 summary: "With your build environment configured and the ExecuTorch source checked out, the next step is building and installing the ExecuTorch package."
 status: "draft"
 collection: "arm-learning-paths"

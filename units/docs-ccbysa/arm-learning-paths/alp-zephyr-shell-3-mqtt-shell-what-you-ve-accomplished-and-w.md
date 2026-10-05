@@ -2,7 +2,7 @@
 id: "alp-zephyr-shell-3-mqtt-shell-what-you-ve-accomplished-and-w"
 type: "concept"
 domain: "rtos"
-title: "3 mqtt shell: What you've accomplished and what's next"
+title: "Create an interactive shell for Zephyr RTOS on Arm Cortex-M: Build and run the Zephyr MQTT shell on Arm Cortex-M: What you've accomplished and what's next"
 summary: "You now have a working Zephyr shell over MQTT on the FRDM-MCXN947."
 status: "draft"
 collection: "arm-learning-paths"

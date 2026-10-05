@@ -2,7 +2,7 @@
 id: "alp-introduction-to-tinyml-on-arm-4-build-model-run-the-model-on-the-corstone"
 type: "concept"
 domain: "edge-ai"
-title: "4 build model: Run the model on the Corstone-320 FVP"
+title: "Introduction to TinyML on Arm using PyTorch and ExecuTorch: Build a simple PyTorch model: Run the model on the Corstone-320 FVP"
 summary: "The final step is to take the Python-defined model and run it on the Corstone-320 FVP. This was done upon running the run.sh script in a previous section."
 status: "draft"
 collection: "arm-learning-paths"

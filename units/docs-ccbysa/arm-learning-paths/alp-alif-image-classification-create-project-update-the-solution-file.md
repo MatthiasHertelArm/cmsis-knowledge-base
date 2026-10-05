@@ -2,7 +2,7 @@
 id: "alp-alif-image-classification-create-project-update-the-solution-file"
 type: "concept"
 domain: "edge-ai"
-title: "create project: Update the solution file"
+title: "Run image classification on an Alif Ensemble E8 DevKit using ExecuTorch and Ethos-U85: Create the image classification firmware project: Update the solution fil"
 summary: "Open alif.csolution.yml and make the following changes."
 status: "draft"
 collection: "arm-learning-paths"

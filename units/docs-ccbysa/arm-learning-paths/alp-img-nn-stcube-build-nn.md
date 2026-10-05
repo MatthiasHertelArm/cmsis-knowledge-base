@@ -2,7 +2,7 @@
 id: "alp-img-nn-stcube-build-nn"
 type: "concept"
 domain: "edge-ai"
-title: "build nn"
+title: "Build and run an image classification NN model on an STM32L4 Discovery board: Build an image classification NN model trained with the CIFAR-10 dataset"
 summary: "Follow all these steps within the Jupyter notebook opened in the previous page. Click Run to execute each step."
 status: "draft"
 collection: "arm-learning-paths"

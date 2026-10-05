@@ -2,7 +2,7 @@
 id: "pyocd-using-session-options-priority-layers"
 type: "concept"
 domain: "debug"
-title: "using session options: Priority layers"
+title: "Using session options: Priority layers"
 summary: "Session options have a priority based on their source. The OptionsManager class implements these priorities as an ordered sequence of layers from front (high priority) to back (low priority). Each layer is a dict of option name to value."
 status: "draft"
 collection: "pyocd"

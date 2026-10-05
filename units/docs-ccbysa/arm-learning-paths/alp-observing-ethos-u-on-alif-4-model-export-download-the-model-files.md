@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-4-model-export-download-the-model-files"
 type: "concept"
 domain: "edge-ai"
-title: "4 model export: Download the model files"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: (Optional) Export PyTorch model to ExecuTorch format: Download the model files"
 summary: "To export an MNIST PyTorch model to ExecuTorch .pte format, start by downloading the model files."
 status: "draft"
 collection: "arm-learning-paths"

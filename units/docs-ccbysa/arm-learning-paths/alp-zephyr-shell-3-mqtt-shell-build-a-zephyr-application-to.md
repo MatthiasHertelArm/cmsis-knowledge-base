@@ -2,7 +2,7 @@
 id: "alp-zephyr-shell-3-mqtt-shell-build-a-zephyr-application-to"
 type: "concept"
 domain: "rtos"
-title: "3 mqtt shell: Build a Zephyr application to enable the MQTT shell backend"
+title: "Create an interactive shell for Zephyr RTOS on Arm Cortex-M: Build and run the Zephyr MQTT shell on Arm Cortex-M: Build a Zephyr application to enable the MQTT "
 summary: "Start by building a minimal Zephyr application that enables the MQTT shell backend."
 status: "draft"
 collection: "arm-learning-paths"

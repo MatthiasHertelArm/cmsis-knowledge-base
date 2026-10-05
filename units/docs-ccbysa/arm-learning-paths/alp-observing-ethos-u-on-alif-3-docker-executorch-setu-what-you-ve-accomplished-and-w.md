@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-3-docker-executorch-setu-what-you-ve-accomplished-and-w"
 type: "concept"
 domain: "edge-ai"
-title: "3 docker executorch setup: What you've accomplished and what's next"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: (Optional) Set up a Docker development environment: What you've accomplished and what's "
 summary: "You've now created a Docker environment for model export. The container has Python and PyTorch, ExecuTorch, and Ethos-U Vela installed. You've also mounted models and output directories on the container for sharing files with the host."
 status: "draft"
 collection: "arm-learning-paths"

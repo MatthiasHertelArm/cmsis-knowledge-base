@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-3-docker-executorch-setu-install-docker-desktop"
 type: "concept"
 domain: "edge-ai"
-title: "3 docker executorch setup: Install Docker Desktop"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: (Optional) Set up a Docker development environment: Install Docker Desktop"
 summary: "To train and export an MNIST model to ExecuTorch .pte format, you'll need to create a Docker environment."
 status: "draft"
 collection: "arm-learning-paths"

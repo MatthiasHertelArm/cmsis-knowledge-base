@@ -2,7 +2,7 @@
 id: "alp-alif-image-classification-image-preparation-image-requirements"
 type: "concept"
 domain: "edge-ai"
-title: "image preparation: Image requirements"
+title: "Run image classification on an Alif Ensemble E8 DevKit using ExecuTorch and Ethos-U85: Prepare a test image: Image requirements"
 summary: "MobileNetV2 expects a specific input format:"
 status: "draft"
 collection: "arm-learning-paths"

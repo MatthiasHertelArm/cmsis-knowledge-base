@@ -2,7 +2,7 @@
 id: "alp-cmsisdsp-dev-with-python-how-to-4-write-a-simple-voice-activity"
 type: "concept"
 domain: "project"
-title: "how to 4: Write a simple voice activity detection"
+title: "Getting started with CMSIS-DSP using Python: Write a simple VAD: Write a simple voice activity detection"
 summary: "To remove the noise between speech segments, you need to detect when voice is present. Voice activity detection (VAD) can be complex, but for this Learning Path, you'll implement a simple energy-based approach."
 status: "draft"
 collection: "arm-learning-paths"

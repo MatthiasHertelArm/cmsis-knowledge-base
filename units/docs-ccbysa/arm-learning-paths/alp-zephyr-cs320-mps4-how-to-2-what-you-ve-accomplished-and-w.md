@@ -2,7 +2,7 @@
 id: "alp-zephyr-cs320-mps4-how-to-2-what-you-ve-accomplished-and-w"
 type: "concept"
 domain: "rtos"
-title: "how to 2: What you've accomplished and what's next"
+title: "Port Zephyr RTOS and run applications on the Arm Corstone-320 MPS4 platform: Add Zephyr board support for the Arm Corstone-320 MPS4 platform: What you've accomp"
 summary: "You've now created and updated board support files, including device tree and Kconfig configuration, to port Zephyr RTOS to the Corstone-320 MPS4 platform."
 status: "draft"
 collection: "arm-learning-paths"

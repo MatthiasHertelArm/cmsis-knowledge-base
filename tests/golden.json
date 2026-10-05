@@ -220,7 +220,7 @@
       "expect": [
         "pyocd-semihosting-enabling",
         "pyocd-command-reference-semihosting",
-        "pyocd-api-examples-semihosting"
+        "pyocd-python-api-examples-semihosting"
       ]
     },
     {

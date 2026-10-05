@@ -74,3 +74,19 @@ sources:
     include: ["aapcs32/aapcs32.rst", "semihosting/semihosting.rst"]
     license: CC-BY-SA-4.0
     domain: core
+
+  # Memfault's Interrupt blog: Cortex-M faults, GDB, linker scripts, build systems, Zephyr; link roundups,
+  # Linux and Memfault-product posts are left out.
+  - name: interrupt-blog
+    prefix: intr
+    repo: memfault/interrupt
+    dir: interrupt
+    sparse: [_posts]
+    include: ["_posts/*.md"]
+    format: jekyll
+    exclude_tags: [roundup, linux, memfault, monitoring, python, rust, android]
+    license: CC-BY-SA-4.0
+    domain: debug
+    url: "https://interrupt.memfault.com/blog/{stem}"
+    stem_strip: "^\\d{4}-\\d{2}-\\d{2}-"
+    id_from_path: false

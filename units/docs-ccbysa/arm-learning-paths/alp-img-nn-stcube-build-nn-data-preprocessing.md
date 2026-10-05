@@ -2,7 +2,7 @@
 id: "alp-img-nn-stcube-build-nn-data-preprocessing"
 type: "concept"
 domain: "edge-ai"
-title: "build nn: Data preprocessing"
+title: "Build and run an image classification NN model on an STM32L4 Discovery board: Build an image classification NN model trained with the CIFAR-10 dataset: Data pre"
 summary: "To create the NN model, there are certain data pre-processing steps that need to be performed."
 status: "draft"
 collection: "arm-learning-paths"

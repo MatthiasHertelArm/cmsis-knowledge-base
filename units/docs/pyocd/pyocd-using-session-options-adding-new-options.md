@@ -2,7 +2,7 @@
 id: "pyocd-using-session-options-adding-new-options"
 type: "concept"
 domain: "debug"
-title: "using session options: Adding new options"
+title: "Using session options: Adding new options"
 summary: "Session options are defined by an instance of OptionInfo (from pyocd.core.options) that specifies the name, type(s), default value, and a help string. At runtime, the complete set of options is in the pyocd.core.options.OPTIONS_INFO dict."
 status: "draft"
 collection: "pyocd"

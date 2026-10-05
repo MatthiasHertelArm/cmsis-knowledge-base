@@ -2,7 +2,7 @@
 id: "pyocd-using-session-options-name-and-value-modifications"
 type: "concept"
 domain: "debug"
-title: "using session options: Name and value modifications"
+title: "Using session options: Name and value modifications"
 summary: "Several changes are applied to option names and values when they are set. First, the names are normalised."
 status: "draft"
 collection: "pyocd"

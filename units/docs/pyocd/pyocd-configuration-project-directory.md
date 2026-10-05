@@ -2,7 +2,7 @@
 id: "pyocd-configuration-project-directory"
 type: "concept"
 domain: "debug"
-title: "configuration: Project directory"
+title: "Configuration: Project directory"
 summary: "To help pyOCD automatically find configuration files and other resources, it has the concept of the project directory."
 status: "draft"
 collection: "pyocd"

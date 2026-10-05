@@ -2,7 +2,7 @@
 id: "alp-zephyr-shell-3-mqtt-shell-optional-switch-to-a-different"
 type: "concept"
 domain: "rtos"
-title: "3 mqtt shell: (Optional) Switch to a different board"
+title: "Create an interactive shell for Zephyr RTOS on Arm Cortex-M: Build and run the Zephyr MQTT shell on Arm Cortex-M: (Optional) Switch to a different board"
 summary: "The application is portable across any Zephyr-supported board with Ethernet, because the MQTT backend is selected through Kconfig and there's no board-specific code in main.c. You don't need to recreate the project to test it on another board."
 status: "draft"
 collection: "arm-learning-paths"

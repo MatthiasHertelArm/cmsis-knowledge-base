@@ -2,7 +2,7 @@
 id: "pyocd-user-scripts-introduction"
 type: "concept"
 domain: "debug"
-title: "user scripts: Introduction"
+title: "User scripts: Introduction"
 summary: "pyOCD has support for customization through what are called user scripts. These are Python scripts that are loaded by pyOCD before it connects to the target."
 status: "draft"
 collection: "pyocd"

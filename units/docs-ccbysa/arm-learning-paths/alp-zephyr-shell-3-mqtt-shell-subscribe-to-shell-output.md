@@ -2,7 +2,7 @@
 id: "alp-zephyr-shell-3-mqtt-shell-subscribe-to-shell-output"
 type: "concept"
 domain: "rtos"
-title: "3 mqtt shell: Subscribe to shell output"
+title: "Create an interactive shell for Zephyr RTOS on Arm Cortex-M: Build and run the Zephyr MQTT shell on Arm Cortex-M: Subscribe to shell output"
 summary: "Narrow the subscription to your board's response topic only. Replace 1a2b3c with your device ID:"
 status: "draft"
 collection: "arm-learning-paths"

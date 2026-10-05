@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-3-docker-executorch-setu-start-the-development-containe"
 type: "concept"
 domain: "edge-ai"
-title: "3 docker executorch setup: Start the development container"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: (Optional) Set up a Docker development environment: Start the development container"
 summary: "You'll see the following command prompt:"
 status: "draft"
 collection: "arm-learning-paths"

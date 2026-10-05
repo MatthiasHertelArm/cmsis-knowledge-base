@@ -2,7 +2,7 @@
 id: "pyocd-user-scripts-examples"
 type: "concept"
 domain: "debug"
-title: "user scripts: Examples"
+title: "User scripts: Examples"
 summary: "This example user script shows how to add a new memory region."
 status: "draft"
 collection: "pyocd"

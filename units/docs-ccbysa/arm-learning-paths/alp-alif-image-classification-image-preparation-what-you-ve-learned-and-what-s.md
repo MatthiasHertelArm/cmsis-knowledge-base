@@ -2,7 +2,7 @@
 id: "alp-alif-image-classification-image-preparation-what-you-ve-learned-and-what-s"
 type: "concept"
 domain: "edge-ai"
-title: "image preparation: What you've learned and what's next"
+title: "Run image classification on an Alif Ensemble E8 DevKit using ExecuTorch and Ethos-U85: Prepare a test image: What you've learned and what's next"
 summary: "You've created a Python script that converts a test image into a C header with the proper normalization and quantization for MobileNetV2 input."
 status: "draft"
 collection: "arm-learning-paths"

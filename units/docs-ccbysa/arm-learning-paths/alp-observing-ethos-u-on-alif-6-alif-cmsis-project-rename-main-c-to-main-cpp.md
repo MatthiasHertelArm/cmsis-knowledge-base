@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-6-alif-cmsis-project-rename-main-c-to-main-cpp"
 type: "concept"
 domain: "edge-ai"
-title: "6 alif cmsis project: Rename main.c to main.cpp"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: Create the Alif E8 CMSIS project: Rename main.c to main.cpp"
 summary: "ExecuTorch is a C++ library, so the source file needs a .cpp extension."
 status: "draft"
 collection: "arm-learning-paths"

@@ -2,7 +2,7 @@
 id: "alp-zephyr-shell-3-mqtt-shell-create-the-mosquitto-docker-co"
 type: "concept"
 domain: "rtos"
-title: "3 mqtt shell: Create the Mosquitto Docker Compose project"
+title: "Create an interactive shell for Zephyr RTOS on Arm Cortex-M: Build and run the Zephyr MQTT shell on Arm Cortex-M: Create the Mosquitto Docker Compose project"
 summary: "After building the Zephyr application, you'll run an Eclipse Mosquitto broker in Docker."
 status: "draft"
 collection: "arm-learning-paths"

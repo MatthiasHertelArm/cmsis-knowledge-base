@@ -2,7 +2,7 @@
 id: "alp-zephyr-shell-3-mqtt-shell-find-the-device-id"
 type: "concept"
 domain: "rtos"
-title: "3 mqtt shell: Find the device ID"
+title: "Create an interactive shell for Zephyr RTOS on Arm Cortex-M: Build and run the Zephyr MQTT shell on Arm Cortex-M: Find the device ID"
 summary: "The MQTT shell backend derives its client ID from the board's hardware UID, so each board connects with topics under <device_id>/sh/rx and <device_id>/sh/tx."
 status: "draft"
 collection: "arm-learning-paths"

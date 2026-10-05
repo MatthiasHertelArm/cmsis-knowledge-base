@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-nxp-4-environment-setup-for-macos-build-executorch-in"
 type: "concept"
 domain: "edge-ai"
-title: "4 environment setup: For macOS: build ExecuTorch in a Docker container"
+title: "Deploy ExecuTorch firmware on NXP FRDM i.MX 93 for Ethos-U65 acceleration: Set up the ExecuTorch build environment: For macOS: build ExecuTorch in a Docker cont"
 summary: "On macOS, it’s easiest to build ExecuTorch in an Ubuntu container."
 status: "draft"
 collection: "arm-learning-paths"

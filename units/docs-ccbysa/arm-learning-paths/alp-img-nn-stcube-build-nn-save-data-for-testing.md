@@ -2,7 +2,7 @@
 id: "alp-img-nn-stcube-build-nn-save-data-for-testing"
 type: "concept"
 domain: "edge-ai"
-title: "build nn: Save Data for Testing"
+title: "Build and run an image classification NN model on an STM32L4 Discovery board: Build an image classification NN model trained with the CIFAR-10 dataset: Save Dat"
 summary: "Finally, save the validation data and the labels for testing. This code block will sample 50 images from the dataset and save them in CSV format. Execute the code block to save the test data."
 status: "draft"
 collection: "arm-learning-paths"

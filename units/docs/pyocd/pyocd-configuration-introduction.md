@@ -2,7 +2,7 @@
 id: "pyocd-configuration-introduction"
 type: "concept"
 domain: "debug"
-title: "configuration: Introduction"
+title: "Configuration: Introduction"
 summary: "pyOCD allows you to control many aspects of its behaviour by setting session options. There are multiple ways to set these options."
 status: "draft"
 collection: "pyocd"

@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-6-alif-cmsis-project-update-the-linker-script"
 type: "concept"
 domain: "edge-ai"
-title: "6 alif cmsis project: Update the linker script"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: Create the Alif E8 CMSIS project: Update the linker script"
 summary: "Open device/ensemble/RTE/Device/AE822FA0E5597LS0_M55_HP/linker_gnu_mram.ld.src."
 status: "draft"
 collection: "arm-learning-paths"

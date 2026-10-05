@@ -2,7 +2,7 @@
 id: "alp-training-inference-pytorch-fine-tune-2-about-the-script"
 type: "concept"
 domain: "edge-ai"
-title: "fine tune 2: Build the model / About the script"
+title: "Edge AI on Arm: PyTorch and ExecuTorch rock-paper-scissors: Train and Test the rock-paper-scissors Model: Build the model / About the script"
 summary: "The script handles the entire workflow: data generation, model training, and a simple command-line game."
 status: "draft"
 collection: "arm-learning-paths"

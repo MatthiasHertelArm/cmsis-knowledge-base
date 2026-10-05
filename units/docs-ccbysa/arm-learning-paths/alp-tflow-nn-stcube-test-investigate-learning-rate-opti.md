@@ -2,7 +2,7 @@
 id: "alp-tflow-nn-stcube-test-investigate-learning-rate-opti"
 type: "concept"
 domain: "edge-ai"
-title: "test: Investigate learning rate (optional)"
+title: "Build and run a letter recognition NN model on an STM32L4 Discovery board: Train the model: Investigate learning rate (optional)"
 summary: "For training the model, you used the default learning rate. But how will the model change with different learning rates?"
 status: "draft"
 collection: "arm-learning-paths"

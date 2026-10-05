@@ -2,7 +2,7 @@
 id: "alp-alif-image-classification-create-project-duplicate-the-blinky-project"
 type: "concept"
 domain: "edge-ai"
-title: "create project: Duplicate the Blinky project"
+title: "Run image classification on an Alif Ensemble E8 DevKit using ExecuTorch and Ethos-U85: Create the image classification firmware project: Duplicate the Blinky pr"
 summary: "Start by copying the working Blinky project as a template:"
 status: "draft"
 collection: "arm-learning-paths"

@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-3-docker-executorch-setu-build-the-docker-image"
 type: "concept"
 domain: "edge-ai"
-title: "3 docker executorch setup: Build the Docker image"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: (Optional) Set up a Docker development environment: Build the Docker image"
 summary: "Build the image from the executorch-alif directory:"
 status: "draft"
 collection: "arm-learning-paths"

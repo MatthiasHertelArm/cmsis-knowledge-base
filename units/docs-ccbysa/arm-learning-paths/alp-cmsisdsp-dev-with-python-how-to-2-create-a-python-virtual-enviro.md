@@ -2,7 +2,7 @@
 id: "alp-cmsisdsp-dev-with-python-how-to-2-create-a-python-virtual-enviro"
 type: "concept"
 domain: "project"
-title: "how to 2: Create a Python virtual environment"
+title: "Getting started with CMSIS-DSP using Python: Set up environment: Create a Python virtual environment"
 summary: "To follow this Learning Path, you'll need to install a few additional Python packages alongside CMSIS-DSP."
 status: "draft"
 collection: "arm-learning-paths"

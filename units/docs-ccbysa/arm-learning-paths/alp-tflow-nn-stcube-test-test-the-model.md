@@ -2,7 +2,7 @@
 id: "alp-tflow-nn-stcube-test-test-the-model"
 type: "concept"
 domain: "edge-ai"
-title: "test: Test the model"
+title: "Build and run a letter recognition NN model on an STM32L4 Discovery board: Train the model: Test the model"
 summary: "To test the model you trained, run the code block shown below."
 status: "draft"
 collection: "arm-learning-paths"

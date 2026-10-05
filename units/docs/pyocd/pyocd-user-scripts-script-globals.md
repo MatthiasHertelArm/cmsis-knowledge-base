@@ -2,7 +2,7 @@
 id: "pyocd-user-scripts-script-globals"
 type: "concept"
 domain: "debug"
-title: "user scripts: Script globals"
+title: "User scripts: Script globals"
 summary: "A number of useful symbols are made available in the global namespace of user scripts. These include both target related objects, as well as parts of the pyOCD Python API."
 status: "draft"
 collection: "pyocd"

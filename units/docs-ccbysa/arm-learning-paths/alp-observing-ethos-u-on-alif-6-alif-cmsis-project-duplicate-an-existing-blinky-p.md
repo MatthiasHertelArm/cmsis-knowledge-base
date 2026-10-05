@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-6-alif-cmsis-project-duplicate-an-existing-blinky-p"
 type: "concept"
 domain: "edge-ai"
-title: "6 alif cmsis project: Duplicate an existing Blinky project"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: Create the Alif E8 CMSIS project: Duplicate an existing Blinky project"
 summary: "Start by copying a working Blinky project as a template, and renaming the project file inside the new directory:"
 status: "draft"
 collection: "arm-learning-paths"

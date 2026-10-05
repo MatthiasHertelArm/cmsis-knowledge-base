@@ -2,7 +2,7 @@
 id: "alp-alif-image-classification-image-preparation-try-a-different-image"
 type: "concept"
 domain: "edge-ai"
-title: "image preparation: Try a different image"
+title: "Run image classification on an Alif Ensemble E8 DevKit using ExecuTorch and Ethos-U85: Prepare a test image: Try a different image"
 summary: "To classify a different image, change the filename in prepare_image.py:"
 status: "draft"
 collection: "arm-learning-paths"

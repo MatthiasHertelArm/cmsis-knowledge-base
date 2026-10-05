@@ -2,7 +2,7 @@
 id: "pyocd-using-session-options-accessing-options"
 type: "concept"
 domain: "debug"
-title: "using session options: Accessing options"
+title: "Using session options: Accessing options"
 summary: "Options are quite easy to use from within Python code. The Session object has an options property which returns a dict-like OptionsManager object that is used to access options for that session."
 status: "draft"
 collection: "pyocd"

@@ -2,7 +2,7 @@
 id: "pyocd-user-scripts-delegate-functions"
 type: "concept"
 domain: "debug"
-title: "user scripts: Delegate functions"
+title: "User scripts: Delegate functions"
 summary: "This section documents all functions that user scripts can provide to modify pyOCD's behaviour. Some are simply notifications, while others allow for overriding of default behaviour. Collectively, these are called delegate functions."
 status: "draft"
 collection: "pyocd"

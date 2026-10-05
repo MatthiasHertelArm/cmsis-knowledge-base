@@ -2,7 +2,7 @@
 id: "alp-avh-ppocr-end-to-end-workflow-deploy-paddleocr-text-recognit"
 type: "concept"
 domain: "edge-ai"
-title: "end to end workflow: Deploy PaddleOCR text recognition model on the Corstone-300 FVP included with Arm Virtual Hardware"
+title: "Deploy PaddlePaddle on Arm Cortex-M with Arm Virtual Hardware: Deploy the PaddleOCR model: Deploy PaddleOCR text recognition model on the Corstone-300 FVP inclu"
 summary: "Start by launching the Arm Virtual Hardware AMI."
 status: "draft"
 collection: "arm-learning-paths"

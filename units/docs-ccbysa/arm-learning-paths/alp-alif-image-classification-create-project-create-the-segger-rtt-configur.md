@@ -2,7 +2,7 @@
 id: "alp-alif-image-classification-create-project-create-the-segger-rtt-configur"
 type: "concept"
 domain: "edge-ai"
-title: "create project: Create the SEGGER RTT configuration"
+title: "Run image classification on an Alif Ensemble E8 DevKit using ExecuTorch and Ethos-U85: Create the image classification firmware project: Create the SEGGER RTT c"
 summary: "RTT (Real-Time Transfer) works through the J-Link debug probe, reading and writing a memory buffer through the debug interface. It's faster than UART and doesn't require extra wiring. Create the configuration file mv2_runner/SEGGER_RTT_Conf.h:"
 status: "draft"
 collection: "arm-learning-paths"

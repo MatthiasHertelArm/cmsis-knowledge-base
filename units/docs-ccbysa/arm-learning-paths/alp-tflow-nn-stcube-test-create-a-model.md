@@ -2,7 +2,7 @@
 id: "alp-tflow-nn-stcube-test-create-a-model"
 type: "concept"
 domain: "edge-ai"
-title: "test: Create a model"
+title: "Build and run a letter recognition NN model on an STM32L4 Discovery board: Train the model: Create a model"
 summary: "Now you will train a multi-layer perceptron model with the dataset. Define a multi-layer perceptron model with 3 dense layers."
 status: "draft"
 collection: "arm-learning-paths"

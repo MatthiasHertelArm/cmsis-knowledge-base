@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-6-alif-cmsis-project-what-you-ve-accomplished-and-w"
 type: "concept"
 domain: "edge-ai"
-title: "6 alif cmsis project: What you've accomplished and what's next"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: Create the Alif E8 CMSIS project: What you've accomplished and what's next"
 summary: "You've now created the mnist_executorch firmware project, configured CMSIS packs, and set up the linker to include ExecuTorch libraries with the correct archive flags."
 status: "draft"
 collection: "arm-learning-paths"

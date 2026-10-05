@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-6-alif-cmsis-project-add-the-source-files"
 type: "concept"
 domain: "edge-ai"
-title: "6 alif cmsis project: Add the source files"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: Create the Alif E8 CMSIS project: Add the source files"
 summary: "The application code is split across three files:"
 status: "draft"
 collection: "arm-learning-paths"

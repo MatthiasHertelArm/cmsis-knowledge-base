@@ -2,7 +2,7 @@
 id: "alp-cmsisdsp-dev-with-python-how-to-2-launch-jupyter-and-set-up-your"
 type: "concept"
 domain: "project"
-title: "how to 2: Launch Jupyter and set up your notebook"
+title: "Getting started with CMSIS-DSP using Python: Set up environment: Launch Jupyter and set up your notebook"
 summary: "You can now launch the Jupyter notebook with the following command:"
 status: "draft"
 collection: "arm-learning-paths"

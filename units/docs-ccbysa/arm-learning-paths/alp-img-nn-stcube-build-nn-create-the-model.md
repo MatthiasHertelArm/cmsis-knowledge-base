@@ -2,7 +2,7 @@
 id: "alp-img-nn-stcube-build-nn-create-the-model"
 type: "concept"
 domain: "edge-ai"
-title: "build nn: Create the Model"
+title: "Build and run an image classification NN model on an STM32L4 Discovery board: Build an image classification NN model trained with the CIFAR-10 dataset: Create t"
 summary: "You are going to create a small convolutional neural network for image classification. The image size of CIFAR10 is 32 by 32, and the number of color channels is 3."
 status: "draft"
 collection: "arm-learning-paths"

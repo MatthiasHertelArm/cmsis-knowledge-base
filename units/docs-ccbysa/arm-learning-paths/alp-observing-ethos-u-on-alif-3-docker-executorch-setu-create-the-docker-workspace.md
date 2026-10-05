@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-3-docker-executorch-setu-create-the-docker-workspace"
 type: "concept"
 domain: "edge-ai"
-title: "3 docker executorch setup: Create the Docker workspace"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: (Optional) Set up a Docker development environment: Create the Docker workspace"
 summary: "Create a folder for the Docker files, model scripts, and generated output:"
 status: "draft"
 collection: "arm-learning-paths"

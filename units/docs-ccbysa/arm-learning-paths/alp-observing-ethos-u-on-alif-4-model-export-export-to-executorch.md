@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-4-model-export-export-to-executorch"
 type: "concept"
 domain: "edge-ai"
-title: "4 model export: Export to ExecuTorch"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: (Optional) Export PyTorch model to ExecuTorch format: Export to ExecuTorch"
 summary: "Export the trained model to .pte format for Ethos-U85:"
 status: "draft"
 collection: "arm-learning-paths"

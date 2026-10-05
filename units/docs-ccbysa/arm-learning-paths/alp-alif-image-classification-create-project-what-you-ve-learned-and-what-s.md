@@ -2,7 +2,7 @@
 id: "alp-alif-image-classification-create-project-what-you-ve-learned-and-what-s"
 type: "concept"
 domain: "edge-ai"
-title: "create project: What you've learned and what's next"
+title: "Run image classification on an Alif Ensemble E8 DevKit using ExecuTorch and Ethos-U85: Create the image classification firmware project: What you've learned and"
 summary: "You've created the mv2_runner firmware project, configured CMSIS packs, and set up the linker to include ExecuTorch libraries with the correct archive flags."
 status: "draft"
 collection: "arm-learning-paths"

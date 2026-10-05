@@ -2,7 +2,7 @@
 id: "pyocd-configuration-config-file"
 type: "concept"
 domain: "debug"
-title: "configuration: Config file"
+title: "Configuration: Config file"
 summary: "pyOCD supports a YAML configuration file that lets you set session options that either apply to all probes or to a single probe, based on the probe's unique ID."
 status: "draft"
 collection: "pyocd"

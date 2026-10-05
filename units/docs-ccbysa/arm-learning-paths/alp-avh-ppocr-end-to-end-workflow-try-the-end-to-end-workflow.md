@@ -2,7 +2,7 @@
 id: "alp-avh-ppocr-end-to-end-workflow-try-the-end-to-end-workflow"
 type: "concept"
 domain: "edge-ai"
-title: "end to end workflow: Try the end-to-end workflow"
+title: "Deploy PaddlePaddle on Arm Cortex-M with Arm Virtual Hardware: Deploy the PaddleOCR model: Try the end-to-end workflow"
 summary: "This section provides hands-on instructions for you to deploy pre-trained PaddlePaddle models on the Corstone-300 Fixed Virtual Platform (FVP) included with Arm Virtual Hardware."
 status: "draft"
 collection: "arm-learning-paths"

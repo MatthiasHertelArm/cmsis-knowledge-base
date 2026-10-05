@@ -2,7 +2,7 @@
 id: "alp-tflow-nn-stcube-features-extract-features"
 type: "concept"
 domain: "edge-ai"
-title: "features: Extract features"
+title: "Build and run a letter recognition NN model on an STM32L4 Discovery board: Feature extraction: Extract features"
 summary: "First, extract the features from the collected dataset and save the features for training."
 status: "draft"
 collection: "arm-learning-paths"

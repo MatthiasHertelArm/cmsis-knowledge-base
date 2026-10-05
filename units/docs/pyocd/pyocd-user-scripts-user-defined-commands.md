@@ -2,7 +2,7 @@
 id: "pyocd-user-scripts-user-defined-commands"
 type: "concept"
 domain: "debug"
-title: "user scripts: User-defined commands"
+title: "User scripts: User-defined commands"
 summary: "New commands accessible from the commander subcommand or gdbserver monitor commands can be easily created in a user script."
 status: "draft"
 collection: "pyocd"

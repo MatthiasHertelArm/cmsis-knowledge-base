@@ -2,7 +2,7 @@
 id: "alp-alif-image-classification-create-project-configure-the-project-file"
 type: "concept"
 domain: "edge-ai"
-title: "create project: Configure the project file"
+title: "Run image classification on an Alif Ensemble E8 DevKit using ExecuTorch and Ethos-U85: Create the image classification firmware project: Configure the project f"
 summary: "Replace the contents of mv2_runner/mv2_runner.cproject.yml with the following configuration:"
 status: "draft"
 collection: "arm-learning-paths"

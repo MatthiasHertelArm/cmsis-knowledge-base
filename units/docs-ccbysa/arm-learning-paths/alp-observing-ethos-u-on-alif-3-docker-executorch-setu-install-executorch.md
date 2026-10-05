@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-3-docker-executorch-setu-install-executorch"
 type: "concept"
 domain: "edge-ai"
-title: "3 docker executorch setup: Install ExecuTorch"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: (Optional) Set up a Docker development environment: Install ExecuTorch"
 summary: "After activating the environment, install ExecuTorch:"
 status: "draft"
 collection: "arm-learning-paths"

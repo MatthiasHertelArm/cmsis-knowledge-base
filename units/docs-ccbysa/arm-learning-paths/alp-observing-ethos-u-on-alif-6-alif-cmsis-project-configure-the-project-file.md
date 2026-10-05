@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-6-alif-cmsis-project-configure-the-project-file"
 type: "concept"
 domain: "edge-ai"
-title: "6 alif cmsis project: Configure the project file"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: Create the Alif E8 CMSIS project: Configure the project file"
 summary: "The mnist_executorch/mnist_executorch.cproject.yml file describes the MNIST application: its source files, components, include paths, and build options."
 status: "draft"
 collection: "arm-learning-paths"

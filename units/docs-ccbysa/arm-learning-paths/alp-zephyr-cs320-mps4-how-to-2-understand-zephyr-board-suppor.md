@@ -2,7 +2,7 @@
 id: "alp-zephyr-cs320-mps4-how-to-2-understand-zephyr-board-suppor"
 type: "concept"
 domain: "rtos"
-title: "how to 2: Understand Zephyr board support architecture"
+title: "Port Zephyr RTOS and run applications on the Arm Corstone-320 MPS4 platform: Add Zephyr board support for the Arm Corstone-320 MPS4 platform: Understand Zephyr "
 summary: "Zephyr organizes hardware support in the following hierarchy:"
 status: "draft"
 collection: "arm-learning-paths"

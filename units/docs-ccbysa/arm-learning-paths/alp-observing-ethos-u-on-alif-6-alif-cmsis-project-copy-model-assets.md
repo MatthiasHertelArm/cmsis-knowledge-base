@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-6-alif-cmsis-project-copy-model-assets"
 type: "concept"
 domain: "edge-ai"
-title: "6 alif cmsis project: Copy model assets"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: Create the Alif E8 CMSIS project: Copy model assets"
 summary: "Create an assets directory and copy the model header into the project:"
 status: "draft"
 collection: "arm-learning-paths"

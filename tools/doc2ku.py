@@ -302,6 +302,17 @@ def hugo_to_md(t):
     return re.sub(r"(?m)^(#{1,6} .*?)\s*\{#[\w.-]+\}\s*$", r"\1", t)
 
 
+def liquid_to_md(t):
+    """Jekyll pages: Liquid tags and diagram blocks go, a link to another post keeps its slug as text."""
+    t = re.sub(r"(?s)\{%\s*blockdiag\s*%\}.*?\{%\s*endblockdiag\s*%\}", "", t)
+    t = re.sub(r"(?s)\{%\s*comment\s*%\}.*?\{%\s*endcomment\s*%\}", "", t)
+    t = re.sub(r"\{%\s*post_url\s+\d{4}-\d{2}-\d{2}-([\w-]+)\s*%\}", r"https://interrupt.memfault.com/blog/\1", t)
+    t = re.sub(r"\{%-?\s*(?:raw|endraw)\s*-?%\}", "", t)
+    t = re.sub(r"\{%[^%]*%\}", "", t)
+    t = re.sub(r"(?s)<!--.*?-->", "", t)
+    return t
+
+
 def as_list(v):
     return [str(x) for x in v] if isinstance(v, list) else [str(v)] if v else []
 
@@ -455,7 +466,7 @@ def matches(path, globs):
 def page_url_of(src, rel, page_id):
     tpl = src.get("url")
     if tpl:
-        stem = Path(rel).stem.lstrip("_")
+        stem = re.sub(src.get("stem_strip", "^$"), "", Path(rel).stem.lstrip("_"))
         if stem.lower() in ("index", "readme"):
             stem = ""
         page_id = "index" if page_id == "mainpage" else page_id
@@ -492,6 +503,12 @@ def convert(src, repo, out, used):
             body, fm = strip_front_matter(text)
             if fmt == "hugo":
                 body = hugo_to_md(body)
+            if fmt == "jekyll":
+                body = liquid_to_md(body)
+            tags = {str(x).lower() for x in as_list(fm.get("tags"))}
+            if (src.get("exclude_tags") and tags & set(src["exclude_tags"])) or \
+                    (src.get("include_tags") and not tags & set(src["include_tags"])):
+                continue
             body = doxmd_to_md(body) if fmt in ("doxmd", "doxtxt") else rst_to_md(body) if f.suffix == ".rst" else html_to_md(body)
             title = str(fm.get("title", "")).strip()
             if src.get("path_index"):
@@ -500,7 +517,7 @@ def convert(src, repo, out, used):
                     body = path_overview(fm, steps) + "\n" + body
                 elif pfm.get("title") and title:
                     title = f"{pfm['title']}: {title}"
-            if title and not re.search(r"(?m)^# ", body):
+            if title and not any(h[0] == 1 for h in headings(body)):
                 body = f"# {title}\n" + body
             pages = [(f.stem, "", body)]
         for page_id, _title, md in pages:

@@ -2,7 +2,7 @@
 id: "alp-zephyr-shell-3-mqtt-shell-send-shell-commands-using-mosq"
 type: "concept"
 domain: "rtos"
-title: "3 mqtt shell: Send shell commands using Mosquitto"
+title: "Create an interactive shell for Zephyr RTOS on Arm Cortex-M: Build and run the Zephyr MQTT shell on Arm Cortex-M: Send shell commands using Mosquitto"
 summary: "You'll now send shell commands to the board using the Mosquitto command-line tools."
 status: "draft"
 collection: "arm-learning-paths"

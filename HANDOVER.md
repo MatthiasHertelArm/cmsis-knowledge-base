@@ -106,3 +106,11 @@ Golden set: `tests/golden.json`, 47 queries over all domains, run with `tests/ev
 | Title aliases | The index adds to each unit's trigger column the words of identifiers in its title (EventRecorderInitialize → Event Recorder Initialize, ARM_USART_Send → ARM USART Send) and the other spelling of a few compounds (setup / set up, timestamp / time stamp): MRR 0.760 → 0.789 |
 
 Issue digests get no prior of their own: a negative one helped the documentation questions but hurt the issue questions more. Open points: older issues describe the cbuildgen era (CMSIS-Toolbox 1.x) and say so in `versions`; nothing removes them when a release makes them obsolete. The extracted units are not deduplicated yet; a few repeat each other (unclocked peripheral reads in three procedures).
+
+## Update 5 Oct 2026, evening: share-alike sources as a separate build; vectors measured
+
+| Item | State |
+|---|---|
+| CC BY-SA collection | 2,203 units in `units/docs-ccbysa`: Memfault's Interrupt blog 1,127 (Cortex-M faults, GDB, linker scripts, build systems, Zephyr; link roundups, Linux, Python, Rust and Memfault-product posts left out), Arm Learning Paths 819, install guides 77, FreeRTOS Kernel Book 132, AAPCS32 and semihosting 48 |
+| Second build | `build/knowledge.ccbysa.db` (87 MB, git-ignored) holds the default units plus the share-alike ones, for trying them before decision 4: point `knowledge.indexPath` at it. On the golden set it scores lower (hit@1 0.60, MRR 0.733) because its units answer the same questions as the expected ones, often well (the Interrupt HardFault article, the TF-M learning path); the golden set has no question aimed at them yet |
+| Vectors | `tests/eval_search.py` runs the golden set through the prototype search with and without embeddings: BM25 alone hit@1 0.62, MRR 0.749; with vectors 0.62, 0.727. So the extension's BM25-only search loses nothing today; embeddings are not worth an ONNX runtime in the extension yet |

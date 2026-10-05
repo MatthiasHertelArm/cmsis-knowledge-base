@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-4-model-export-build-executorch-static-librar"
 type: "concept"
 domain: "edge-ai"
-title: "4 model export: Build ExecuTorch static libraries"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: (Optional) Export PyTorch model to ExecuTorch format: Build ExecuTorch static libraries"
 summary: "The firmware links against ExecuTorch runtime libraries. Build the bare-metal Cortex-M libraries inside the container:"
 status: "draft"
 collection: "arm-learning-paths"

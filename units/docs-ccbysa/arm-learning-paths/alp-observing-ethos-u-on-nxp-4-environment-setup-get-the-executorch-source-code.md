@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-nxp-4-environment-setup-get-the-executorch-source-code"
 type: "concept"
 domain: "edge-ai"
-title: "4 environment setup: Get the ExecuTorch source code"
+title: "Deploy ExecuTorch firmware on NXP FRDM i.MX 93 for Ethos-U65 acceleration: Set up the ExecuTorch build environment: Get the ExecuTorch source code"
 summary: "Clone ExecuTorch and initialize its submodules:"
 status: "draft"
 collection: "arm-learning-paths"

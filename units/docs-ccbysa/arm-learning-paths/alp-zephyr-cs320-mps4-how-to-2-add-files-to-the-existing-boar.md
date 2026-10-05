@@ -2,7 +2,7 @@
 id: "alp-zephyr-cs320-mps4-how-to-2-add-files-to-the-existing-boar"
 type: "concept"
 domain: "rtos"
-title: "how to 2: Add files to the existing board directory"
+title: "Port Zephyr RTOS and run applications on the Arm Corstone-320 MPS4 platform: Add Zephyr board support for the Arm Corstone-320 MPS4 platform: Add files to the e"
 summary: "The boards/arm/mps4/ directory already exists in the Zephyr tree with support for the Corstone-315 and Corstone-320 FVP variants. In this section, you'll add the Corstone-320 FPGA variant by modifying three existing files and creating three new ones."
 status: "draft"
 collection: "arm-learning-paths"

@@ -2,7 +2,7 @@
 id: "alp-alif-image-classification-image-preparation-create-the-preprocessing-scrip"
 type: "concept"
 domain: "edge-ai"
-title: "image preparation: Create the preprocessing script"
+title: "Run image classification on an Alif Ensemble E8 DevKit using ExecuTorch and Ethos-U85: Prepare a test image: Create the preprocessing script"
 summary: "Create a directory for the image and script:"
 status: "draft"
 collection: "arm-learning-paths"

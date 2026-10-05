@@ -2,7 +2,7 @@
 id: "alp-tflow-nn-stcube-features-feature-based-model"
 type: "concept"
 domain: "edge-ai"
-title: "features: Feature based model"
+title: "Build and run a letter recognition NN model on an STM32L4 Discovery board: Feature extraction: Feature based model"
 summary: "Create a new multi-layer perceptron model for the features. The new model has 1592 parameters because it uses a smaller input than the previous model. Train the model and check the accuracy."
 status: "draft"
 collection: "arm-learning-paths"

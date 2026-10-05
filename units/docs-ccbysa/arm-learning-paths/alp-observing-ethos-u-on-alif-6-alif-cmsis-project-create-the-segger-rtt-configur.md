@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-6-alif-cmsis-project-create-the-segger-rtt-configur"
 type: "concept"
 domain: "edge-ai"
-title: "6 alif cmsis project: Create the SEGGER RTT configuration"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: Create the Alif E8 CMSIS project: Create the SEGGER RTT configuration"
 summary: "Real-Time Transfer (RTT) works through the J-Link debug probe, reading and writing a memory buffer through the debug interface. It's faster than UART and doesn't require extra wiring."
 status: "draft"
 collection: "arm-learning-paths"

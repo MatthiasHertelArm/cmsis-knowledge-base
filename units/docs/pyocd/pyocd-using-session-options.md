@@ -2,7 +2,7 @@
 id: "pyocd-using-session-options"
 type: "concept"
 domain: "debug"
-title: "using session options"
+title: "Using session options"
 summary: "Session options are used to configure pyOCD. The configuration documentation has user level documentation of how to set session options. For a full list of built-in options see the session options reference."
 status: "draft"
 collection: "pyocd"

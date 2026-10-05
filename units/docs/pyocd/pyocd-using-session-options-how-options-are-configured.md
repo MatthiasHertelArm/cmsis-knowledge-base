@@ -2,7 +2,7 @@
 id: "pyocd-using-session-options-how-options-are-configured"
 type: "concept"
 domain: "debug"
-title: "using session options: How options are configured"
+title: "Using session options: How options are configured"
 summary: "Loading of options from YAML files is handled automatically when the Session object is created. Probe-specific options are automatically set, too."
 status: "draft"
 collection: "pyocd"

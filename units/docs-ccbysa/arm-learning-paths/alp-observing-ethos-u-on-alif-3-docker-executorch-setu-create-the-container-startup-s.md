@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-3-docker-executorch-setu-create-the-container-startup-s"
 type: "concept"
 domain: "edge-ai"
-title: "3 docker executorch setup: Create the container startup script"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: (Optional) Set up a Docker development environment: Create the container startup script"
 summary: "After building the image, create the container startup script:"
 status: "draft"
 collection: "arm-learning-paths"

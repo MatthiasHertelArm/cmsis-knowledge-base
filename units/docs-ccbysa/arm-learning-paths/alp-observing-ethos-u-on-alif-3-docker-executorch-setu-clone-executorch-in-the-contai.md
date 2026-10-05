@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-3-docker-executorch-setu-clone-executorch-in-the-contai"
 type: "concept"
 domain: "edge-ai"
-title: "3 docker executorch setup: Clone ExecuTorch in the container"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: (Optional) Set up a Docker development environment: Clone ExecuTorch in the container"
 summary: "Inside the Docker container, clone ExecuTorch v1.0.0:"
 status: "draft"
 collection: "arm-learning-paths"

@@ -2,7 +2,7 @@
 id: "alp-zephyr-cs320-mps4-how-to-2-understand-the-arm-corstone-32"
 type: "concept"
 domain: "rtos"
-title: "how to 2: Understand the Arm Corstone-320 MPS4 platform"
+title: "Port Zephyr RTOS and run applications on the Arm Corstone-320 MPS4 platform: Add Zephyr board support for the Arm Corstone-320 MPS4 platform: Understand the Arm"
 summary: "The Arm Corstone SSE-320 FPGA Image for MPS4 (FI101) provides an FPGA implementation that runs on the MPS4 board. The image includes an Arm Cortex-M85 processor, an Arm Ethos-U85 NPU, and an Arm CoreLink DMA-350 direct memory access (DMA) controller."
 status: "draft"
 collection: "arm-learning-paths"

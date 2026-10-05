@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-3-docker-executorch-setu-verify-docker-installation"
 type: "concept"
 domain: "edge-ai"
-title: "3 docker executorch setup: Verify Docker installation"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: (Optional) Set up a Docker development environment: Verify Docker installation"
 summary: "After installation, start Docker Desktop and verify that Docker is available from your terminal:"
 status: "draft"
 collection: "arm-learning-paths"

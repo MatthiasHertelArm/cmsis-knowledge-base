@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-3-docker-executorch-setu-set-up-arm-ethos-u-dependencie"
 type: "concept"
 domain: "edge-ai"
-title: "3 docker executorch setup: Set up Arm Ethos-U dependencies"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: (Optional) Set up a Docker development environment: Set up Arm Ethos-U dependencies"
 summary: "This script sets up the following dependencies: - TOSA Libraries - Ethos-U SDK structure - CMake toolchain files"
 status: "draft"
 collection: "arm-learning-paths"

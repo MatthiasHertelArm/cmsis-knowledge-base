@@ -2,7 +2,7 @@
 id: "alp-introduction-to-tinyml-on-arm-4-build-model-define-a-small-neural-network"
 type: "concept"
 domain: "edge-ai"
-title: "4 build model: Define a small neural network using Python"
+title: "Introduction to TinyML on Arm using PyTorch and ExecuTorch: Build a simple PyTorch model: Define a small neural network using Python"
 summary: "With your development environment set up, you can create a simple PyTorch model to test the setup."
 status: "draft"
 collection: "arm-learning-paths"

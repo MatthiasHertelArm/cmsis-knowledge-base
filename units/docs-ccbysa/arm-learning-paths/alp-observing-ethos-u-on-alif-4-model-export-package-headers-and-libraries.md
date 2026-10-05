@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-4-model-export-package-headers-and-libraries"
 type: "concept"
 domain: "edge-ai"
-title: "4 model export: Package headers and libraries"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: (Optional) Export PyTorch model to ExecuTorch format: Package headers and libraries"
 summary: "Bundle the ExecuTorch headers and libraries into et_bundle.tar.gz:"
 status: "draft"
 collection: "arm-learning-paths"

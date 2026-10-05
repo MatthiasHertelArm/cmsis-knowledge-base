@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-6-alif-cmsis-project-update-the-solution-file"
 type: "concept"
 domain: "edge-ai"
-title: "6 alif cmsis project: Update the solution file"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: Create the Alif E8 CMSIS project: Update the solution file"
 summary: "The alif.csolution.yml file describes the whole CMSIS workspace: available projects, targets, devices, packs, and flash settings."
 status: "draft"
 collection: "arm-learning-paths"

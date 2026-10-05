@@ -2,7 +2,7 @@
 id: "alp-observing-ethos-u-on-alif-4-model-export-add-calibration-input"
 type: "concept"
 domain: "edge-ai"
-title: "4 model export: Add calibration input"
+title: "Run MNIST on an Alif E8 Ensemble DevKit using ExecuTorch and Ethos-U85: (Optional) Export PyTorch model to ExecuTorch format: Add calibration input"
 summary: "The model is exported with int8 quantization, so the compiler needs a representative MNIST input during export."
 status: "draft"
 collection: "arm-learning-paths"
