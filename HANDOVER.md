@@ -102,6 +102,7 @@ Golden set: `tests/golden.json`, 47 queries over all domains, run with `tests/ev
 | Stage 2 | Run on all 24 cmsis-skills procedures and the 7 of the extension (`stage2/out_v2`, `stage2/out_cda`): summaries within 40 words (lint errors 13 → 0), short triggers, verification, stop conditions; 48 procedure rules refined against the canonical ones; 64 extracted units. The skill description of stage 1 stays searchable (`description`, indexed with the triggers): without it the short triggers lost words such as HardFault, and the debug procedure fell out of the top ten |
 | Documentation | 45 sources, 4,687 units: Zephyr board and SoC porting, getting started, tracing and pinctrl added; Arm-Examples with a licence: Helium optimization guide, SystemView, AVH VSI, CMSIS MLEK packs, Ethos-U integration |
 | Index | 5,893 knowledge units, 67.6 MB with embeddings, lint clean |
-| Golden set | 58 queries (11 aim at issue digests): hit@1 0.64, hit@5 0.90, MRR 0.760 |
+| Golden set | 58 queries (11 aim at issue digests): hit@1 0.67, hit@5 0.91, MRR 0.789 |
+| Title aliases | The index adds to each unit's trigger column the words of identifiers in its title (EventRecorderInitialize → Event Recorder Initialize, ARM_USART_Send → ARM USART Send) and the other spelling of a few compounds (setup / set up, timestamp / time stamp): MRR 0.760 → 0.789 |
 
 Issue digests get no prior of their own: a negative one helped the documentation questions but hurt the issue questions more. Open points: older issues describe the cbuildgen era (CMSIS-Toolbox 1.x) and say so in `versions`; nothing removes them when a release makes them obsolete. The extracted units are not deduplicated yet; a few repeat each other (unclocked peripheral reads in three procedures).

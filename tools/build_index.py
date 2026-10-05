@@ -48,6 +48,23 @@ def lint(meta, p):
     return errs
 
 
+def title_aliases(title):
+    """Woerter des Titels, wie ein Mensch sie schreibt: EventRecorderInitialize -> Event Recorder Initialize,
+    osThreadNew -> os Thread New, ARM_USART_Send -> ARM USART Send; Setup -> set up."""
+    out = []
+    for w in re.findall(r"[A-Za-z][A-Za-z0-9_]*", title):
+        parts = [x for x in re.split(r"_|(?<=[a-z0-9])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])", w) if x]
+        if len(parts) > 1:
+            out.append(" ".join(parts))
+    for one, two in (("setup", "set up"), ("timestamp", "time stamp"), ("bootloader", "boot loader"),
+                     ("startup", "start up"), ("pinout", "pin out"), ("workspace", "work space")):
+        if re.search(rf"(?i)\b{one}", title):
+            out.append(two)
+        elif re.search(rf"(?i)\b{two}\b", title):
+            out.append(one)
+    return out
+
+
 class Resolver:
     """Loest applies_to-Werte gegen Entity-IDs auf. Akzeptiert csolution-Schreibweisen."""
 
@@ -143,7 +160,8 @@ def main():
             db.execute("INSERT INTO nodes_fts VALUES(?,?,?,?,?,?)",
                        (nid, meta["title"], meta.get("summary", ""), body,
                         " ".join(meta.get("symptoms") or []),
-                        " ".join((meta.get("triggers") or []) + ([meta["description"]] if meta.get("description") else []))))
+                        " ".join((meta.get("triggers") or []) + ([meta["description"]] if meta.get("description") else [])
+                                 + title_aliases(meta["title"]))))
             for rel in RELATIONS:
                 for dst in meta.get(rel) or []:
                     db.execute("INSERT OR IGNORE INTO edges VALUES(?,?,?,NULL)", (nid, rel, dst))
