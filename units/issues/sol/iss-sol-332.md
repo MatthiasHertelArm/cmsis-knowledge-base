@@ -12,6 +12,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/332
 resolution: "fixed-in-release"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-solution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Use CMSIS Solution nightly of 2026-07-14 or later; it saves pending changes per 
 
 Resolution: fixed-in-release
 
-From [Open-CMSIS-Pack/vscode-cmsis-solution #332](https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/332), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-solution #332](https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/332), summarized in own words; confidence high, checked against the thread, not reviewed yet.

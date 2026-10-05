@@ -6,8 +6,6 @@ title: "cbuild: GCC link fails with undefined references between static librarie
 summary: "GNU ld scans an archive only once in command-line order, so libraries that reference each other circularly (many small component libraries) fail to link. cbuild passed the libraries without a rescan group."
 status: "draft"
 tool: "cbuild"
-symptoms: ["undefined reference to"]
-symptom_regex: "undefined\\s+reference\\s+to"
 collection: "issues-devtools"
 source: "https://github.com/Open-CMSIS-Pack/devtools/issues/914"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/914"
@@ -15,14 +13,11 @@ resolution: "fixed-in-release"
 versions: "Reported with 1.7"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cbuild"], "toolchain": ["GCC"]}
 license: "own summary of a GitHub issue"
 mode: "S"
 ---
-
-## Symptom
-
-`undefined reference to`
 
 ## Cause
 
@@ -38,4 +33,4 @@ Resolution: fixed-in-release
 
 Versions: Reported with 1.7
 
-From [Open-CMSIS-Pack/devtools #914](https://github.com/Open-CMSIS-Pack/devtools/issues/914), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #914](https://github.com/Open-CMSIS-Pack/devtools/issues/914), summarized in own words; confidence high, checked against the thread, not reviewed yet.

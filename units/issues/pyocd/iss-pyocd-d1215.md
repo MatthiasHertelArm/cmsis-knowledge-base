@@ -12,6 +12,7 @@ doc_source: "https://github.com/pyocd/pyOCD/discussions/1215"
 resolution: "configuration"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "device": ["nRF52840_xxAA"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Create a 1 KiB file filled with 0xFF, set the byte at offset 0x208 to 0x00 (the 
 
 Resolution: configuration
 
-From [pyocd/pyOCD discussion 1215](https://github.com/pyocd/pyOCD/discussions/1215), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD discussion 1215](https://github.com/pyocd/pyOCD/discussions/1215), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

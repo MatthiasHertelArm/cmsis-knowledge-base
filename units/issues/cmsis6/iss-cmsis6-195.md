@@ -12,6 +12,7 @@ doc_source: "https://github.com/ARM-software/CMSIS_6/issues/195"
 resolution: "workaround"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-core"], "core": ["Cortex-M55"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Re-assert AIRCR.SYSRESETREQ inside the wait loop of NVIC_SystemReset; maintainer
 
 Resolution: workaround
 
-From [ARM-software/CMSIS_6 #195](https://github.com/ARM-software/CMSIS_6/issues/195), summarized in own words; confidence medium, not reviewed yet.
+From [ARM-software/CMSIS_6 #195](https://github.com/ARM-software/CMSIS_6/issues/195), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

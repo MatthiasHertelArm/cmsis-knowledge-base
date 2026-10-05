@@ -14,6 +14,7 @@ versions: "ATfE 21.1.1"
 issue_state: "open"
 confidence: "low"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["other"], "toolchain": ["Clang"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -35,4 +36,4 @@ Versions: ATfE 21.1.1
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [Open-CMSIS-Pack/devtools #2314](https://github.com/Open-CMSIS-Pack/devtools/issues/2314), summarized in own words; confidence low, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #2314](https://github.com/Open-CMSIS-Pack/devtools/issues/2314), summarized in own words; confidence low, checked against the thread, not reviewed yet.

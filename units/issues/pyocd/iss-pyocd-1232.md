@@ -15,6 +15,7 @@ resolution: "fixed-in-release"
 versions: "fixed 0.32.1"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: fixed-in-release
 
 Versions: fixed 0.32.1
 
-From [pyocd/pyOCD #1232](https://github.com/pyocd/pyOCD/issues/1232), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #1232](https://github.com/pyocd/pyOCD/issues/1232), summarized in own words; confidence high, checked against the thread, not reviewed yet.

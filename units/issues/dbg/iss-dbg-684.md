@@ -9,9 +9,10 @@ tool: "pyocd"
 collection: "issues-dbg"
 source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/684"
 doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/684"
-resolution: "fixed-in-release"
-confidence: "high"
+resolution: "workaround"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"], "family": ["Microchip"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -23,10 +24,10 @@ A core access point discovered during CoreSight discovery (a hidden core) had no
 
 ## Fix
 
-Use a pyOCD with the fix (PR 1865, in develop since December 2025).
+Use a pyOCD build with PR 1865 (validated by the original reporter, merged into the develop branch; no release named). The earlier PR 1801 covered only the internal pack support, not cbuild-run targets.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: workaround
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #684](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/684), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #684](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/684), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

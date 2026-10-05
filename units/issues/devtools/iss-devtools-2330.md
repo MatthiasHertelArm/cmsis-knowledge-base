@@ -12,6 +12,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/2330"
 resolution: "fixed-in-release"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Schema extended; the allowed forms are now described in the define: section of t
 
 Resolution: fixed-in-release
 
-From [Open-CMSIS-Pack/devtools #2330](https://github.com/Open-CMSIS-Pack/devtools/issues/2330), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #2330](https://github.com/Open-CMSIS-Pack/devtools/issues/2330), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

@@ -11,9 +11,10 @@ symptom_regex: "C\\s+Error:\\s+'.*?'\\s+object\\s+has\\s+no\\s+attribute\\s+'.*?
 collection: "issues-dbg"
 source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/662"
 doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/662"
-resolution: "fixed-in-release"
-confidence: "high"
+resolution: "workaround"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,10 +30,10 @@ pyOCD assumed every flash algorithm has an RW section and failed on a missing se
 
 ## Fix
 
-Use a pyOCD nightly or release after December 2025 that skips absent sections.
+Use a CMSIS Debugger nightly build whose pyOCD skips absent flash algorithm sections (confirmed by the user); no release is named.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: workaround
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #662](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/662), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #662](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/662), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

@@ -15,6 +15,7 @@ resolution: "fixed-in-release"
 versions: "affected 0.26.0"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "family": ["Kinetis"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: fixed-in-release
 
 Versions: affected 0.26.0
 
-From [pyocd/pyOCD #865](https://github.com/pyocd/pyOCD/issues/865), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #865](https://github.com/pyocd/pyOCD/issues/865), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

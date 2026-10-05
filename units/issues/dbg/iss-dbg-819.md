@@ -9,9 +9,10 @@ tool: "cmsis-debugger"
 collection: "issues-dbg"
 source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/819"
 doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/819"
-resolution: "fixed-in-release"
+resolution: "workaround"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cmsis-debugger"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -23,10 +24,10 @@ One unreadable SCVD (missing file, broken path in the cbuild-run file, syntax er
 
 ## Fix
 
-Update CMSIS Debugger; unreadable SCVD files are now skipped and the others are shown. Check the SCVD paths in the cbuild-run file if a component is missing.
+Use a CMSIS Debugger build in which unreadable SCVD files are skipped and the other components are shown (implemented; no release named). Check the SCVD files and their paths in the cbuild-run file if a component is missing.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: workaround
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #819](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/819), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #819](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/819), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

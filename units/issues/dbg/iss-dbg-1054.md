@@ -10,9 +10,9 @@ collection: "issues-dbg"
 source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1054"
 doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1054"
 resolution: "fixed-in-release"
-versions: "0.44.1 and earlier fine, 0.45.0 affected"
-confidence: "high"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"], "device": ["Nuvoton M55M1"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -24,12 +24,10 @@ pyOCD 0.45.0 rejects a flash algorithm whose RAMstart lies outside every explici
 
 ## Fix
 
-Use a pyOCD build with the relaxed check (pyOCD PR 2012, shipped in the CMSIS Debugger nightly and later releases). Alternatively the DFP can declare a memory element that covers the algorithm RAM.
+Use a pyOCD with pyOCD PR 2012, tested in a CMSIS Debugger nightly build, where programming the M55M1 worked again.
 
 ## Source
 
 Resolution: fixed-in-release
 
-Versions: 0.44.1 and earlier fine, 0.45.0 affected
-
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #1054](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1054), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #1054](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1054), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

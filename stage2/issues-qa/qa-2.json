@@ -1,0 +1,801 @@
+[
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/143",
+  "verdict": "unsupported",
+  "problems": [
+   "The thread shows no fix or release: the maintainer only said adaptions were needed to follow the schema pattern; 'newer than 0.9.0' and 'fixed-in-release' are not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The name pattern of cpackget 0.9.0 ([a-zA-Z][0-9a-zA-Z_\\-]+) required a letter as first character, whereas the pack schema allows digits, underscores and dashes in any position ([-_A-Za-z0-9]+).",
+  "fix_fixed": "No fix in the thread; the maintainer planned to adapt cpackget to the pack schema's name pattern.",
+  "versions_fixed": "0.9.0",
+  "resolution_fixed": "unresolved"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/122",
+  "verdict": "partly",
+  "problems": [
+   "No release with the proxy fix is named; the maintainer only offered an untested build v0.8.1-alpha.1 from a personal fork",
+   "Resolution 'fixed-in-release' is not confirmed: the reporter never reported back on the test build"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "cpackget 0.8.0 (toolbox 1.1.0) has a bug in its proxy handling, while 0.7.0 worked through the same proxy. For https URLs only HTTPS_PROXY applies, and it needs a proxy with a valid certificate; HTTP_PROXY has no effect.",
+  "fix_fixed": "Set HTTPS_PROXY to the proxy (with a valid certificate). For the 0.8.0 proxy bug the maintainer offered a test build v0.8.1-alpha.1 from a personal fork, not confirmed in the thread; cpackget 0.7.0 from toolbox 1.0.0 still worked for the reporter.",
+  "versions_fixed": "cpackget 0.8.0 (toolbox 1.1.0) affected; 0.7.0 (toolbox 1.0.0) works",
+  "resolution_fixed": "unresolved"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/98",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/90",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/68",
+  "verdict": "partly",
+  "problems": [
+   "That cpackget ignores Windows system proxy settings was the reporter's guess; the maintainer only pointed to the proxy notes and the reporter confirmed $http_proxy works",
+   "'Later releases remove failed downloads' is not confirmed: PR #69 was only expected in the next release"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The proxy was not configured the way cpackget expects; with the http_proxy environment variable set (see cpackget's 'working behind a proxy' notes) the download works. The failed download left a 0-byte pack in .Download that was reused on the next run instead of downloaded again, because cpackget only removed the file when unzipping failed.",
+  "fix_fixed": "Set http_proxy for the shell and delete the empty pack file from .Download. PR #69 removes the file after HTTP errors too, expected in the next release.",
+  "versions_fixed": "0.4.0",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/57",
+  "verdict": "partly",
+  "problems": [
+   "Symptom line names 'cpackget update-index'; the thread's message suggests 'cpackget --force index https://keil.com/pack/index.pidx'",
+   "'In 2022', 'fixed 2022' and version 0.4.x are not in the thread",
+   "Running cpackget update-index as a fix and the later correction of the message are not in the thread",
+   "Resolution 'fixed-in-release': the thread only shows PR #60 opened"
+  ],
+  "symptoms_ok": false,
+  "cause_fixed": "cpackget looked up the pdsc entry in index.pidx by vendor, name and the requested version, but the index lists only the latest version of each pack, so an older version cannot be found while its pdsc is not yet in .Web. It should look up vendor and name only.",
+  "fix_fixed": "Install the latest version of the pack first, so that its pdsc lands in .Web; the older version then installs. PR #60 changes the lookup to vendor and name.",
+  "versions_fixed": "",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/56",
+  "verdict": "partly",
+  "problems": [
+   "Version '2022' is not in the thread",
+   "'Later releases handle the read-only flag when replacing files' is not in the thread; the maintainer was preparing a PR that sets read-only on all files of the pack root",
+   "'Let cpackget manage the folder' is not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "Files in the pack root are meant to be read-only. The folder had been set up by MDK's Pack Installer, and cpackget could not overwrite its read-only index.pidx.",
+  "fix_fixed": "Remove the read-only attribute from the files in the pack root.",
+  "versions_fixed": "MDK 5.36 Pack Installer created the folder",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/43",
+  "verdict": "partly",
+  "problems": [
+   "Versions '2022' and 'after 0.4.x' are not in the thread",
+   "Resolution 'fixed-in-release': the maintainer only said 'Let me fix that'"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "cpackget checked the requested version against the pdsc already registered in .Local (local_repository.pidx) before extracting the pdsc of the pack being installed.",
+  "fix_fixed": "Remove the pack's entry from local_repository.pidx before installing the pack file; the maintainer said he would fix the check.",
+  "versions_fixed": "",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/36",
+  "verdict": "partly",
+  "problems": [
+   "The reporter's CMSIS_PACK_ROOT was /c/CMSIS_PACKS, which reached cpackget as C:/CMSIS_PACKS; the lost-backslash case is a related finding of the maintainer, not the reporter's cause",
+   "Version 0.3.x is not in the thread",
+   "'Use cmd/PowerShell' is not advised in the thread",
+   "The maintainer called the escaped path a temporary workaround, not a user error"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "In git-bash/MinGW a CMSIS_PACK_ROOT such as /c/CMSIS_PACKS reaches cpackget as C:/CMSIS_PACKS with forward slashes, and cpackget list then fails to parse the installed pack paths. An unquoted C:\\PACKS in export or -R also loses its backslashes, which bash treats as escape characters, and becomes C:PACKS.",
+  "fix_fixed": "Set the pack root with doubled backslashes (export CMSIS_PACK_ROOT=c:\\\\CMSIS_PACKS) or quote it (cpackget -R \"C:\\PACKS\").",
+  "versions_fixed": "",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/542",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/526",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/406",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/404",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/394",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/360",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/336",
+  "verdict": "partly",
+  "problems": [
+   "The date 2026-06-30 of the CI build is not in the thread; it only says CI artifacts fixed the issue",
+   "Restoring the removed nodes from version control is not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "Saving the Software Components view for one context removed the packs: and components: nodes from .clayer.yml files used only by other contexts, so their board layer no longer referenced the BSP/DFP packs.",
+  "fix_fixed": "Fixed in a CMSIS Solution CI build after 1.68.0 (validated from CI artifacts); no release is named.",
+  "versions_fixed": "1.68.0 and 1.68.1-9-11630ad affected",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/332",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/330",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/323",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/322",
+  "verdict": "partly",
+  "problems": [
+   "Fixing the folder permissions as an alternative is not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "Activation of the extension failed when its solution roots watcher tried to read a workspace folder it had no permission for (EPERM on a .pytest_cache folder), so the CMSIS View stayed on Loading.",
+  "fix_fixed": "Use the CMSIS Solution nightly of 2026-07-01 or later, which the reporter confirmed resolves it.",
+  "versions_fixed": "1.66.0, 1.67.2 and 1.68.0 affected",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/313",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/311",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/310",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/302",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/271",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/265",
+  "verdict": "partly",
+  "problems": [
+   "Version 1.67.2 is not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "With an unsaved target change from Manage Solution, Build saved the changes and started cbuild and cbuild setup concurrently (the database generation had been split off from cbuild setup); when cbuild finished first, the later setup removed its outputs.",
+  "fix_fixed": "Use CMSIS Solution nightly of 2026-06-10 or later; with VS Code set to save files before running a task, Build now saves the files and runs csolution convert before building. On older versions save explicitly before building.",
+  "versions_fixed": "",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/255",
+  "verdict": "partly",
+  "problems": [
+   "The cause (stale local-pack information while cbuild-pack.yml pinned the local pack) is not in the thread; the maintainer could not reproduce it with the nightly and guessed it was fixed as part of #250"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "After a local repository was used for ARM::SDS@3.0.0-dev (which created its entry in cbuild-pack.yml) and the released pack was then installed, the pack lock could not be removed and the installed pack was shown incorrectly; the thread names no root cause and suspects it was fixed along with #250.",
+  "fix_fixed": "Use CMSIS Solution nightly of 2026-06-10 or later; then the lock can be resolved and the installed version selected.",
+  "versions_fixed": "1.67.2",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/245",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/200",
+  "verdict": "partly",
+  "problems": [
+   "The cause (a race between the views' RPC calls and the problem collection) is not in the thread, which only reports the fix in a nightly"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "No cause in the thread: while the Software Components view was open, problems of the solution were not shown in the PROBLEMS view although the status bar indicated an error.",
+  "fix_fixed": "Fixed in CMSIS Solution nightly of 2026-04-21.",
+  "versions_fixed": "",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/188",
+  "verdict": "partly",
+  "problems": [
+   "Restoring the original debug-adapters.yml is not in the thread",
+   "That uncaught errors kept the tasks and launch update from completing is the maintainer's assumption, stated as fact"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "A modified debug-adapters.yml led to runtime errors in processing the debug adapter registry that were apparently not caught; the maintainer assumed loading only completes once the tasks.json and launch.json update does, so loading never ended.",
+  "fix_fixed": "Fixed by #199: the solution loads and the problem is reported the usual VS Code way.",
+  "versions_fixed": "1.67.2",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/186",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/131",
+  "verdict": "partly",
+  "problems": [
+   "Reloading the window on older versions is not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The RPC daemon kept the environment it was started with, so changes to cmsis-csolution.environmentVariables only reached processes started afterwards.",
+  "fix_fixed": "Fixed (validated with CI artifacts): changing a value in cmsis-csolution.environmentVariables now restarts the RPC server.",
+  "versions_fixed": "",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/110",
+  "verdict": "partly",
+  "problems": [
+   "'Early 2026 builds' is not in the thread; it only says the fix was verified"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "File items in the outline tree did not get the layerUri attribute, so removing a file from a layer deleted the file but left its reference in the clayer.yml.",
+  "fix_fixed": "Fixed (verified in the thread): removing a file from the Solution Outline also removes its .clayer.yml entry; no build or release is named.",
+  "versions_fixed": "",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/70",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/46",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/30",
+  "verdict": "partly",
+  "problems": [
+   "The symptom 'unknown selected context(s)' belongs to a separate problem in the same thread (a target-type added to the project context), not to the endless loading",
+   "Correcting the project path in the csolution.yml is not stated in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "A csolution.yml that lists a project file that does not exist left the load process hanging, so Loading Solution never stopped.",
+  "fix_fixed": "Fixed: the outline now shows 'Solution cannot be loaded' instead of Loading (validated with the CMSIS Solution nightly of 2026-03-23).",
+  "versions_fixed": "vscode-cmsis-solution 1.60.0, CMSIS-Toolbox 2.11",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/27",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/22",
+  "verdict": "partly",
+  "problems": [
+   "The date 2026-03-13 of the devtools nightly is not in the thread, which only links a workflow run",
+   "'The matching extension build' is not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "A csolution RPC bug, fixed in devtools PR 2394: when Manage Software Components was opened a second time, only the selected components were listed.",
+  "fix_fixed": "Fixed by devtools PR 2394, verified against the latest csolution RPC build and included in the latest devtools nightly at the time.",
+  "versions_fixed": "CMSIS Solution 1.66",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2611",
+  "verdict": "partly",
+  "problems": [
+   "'Closed as a duplicate' is not in the thread; it only points to #2612, which suggests adding the option to cdefault",
+   "The compiler fault is stated as fact; the thread says it seems to be a compiler issue awaiting confirmation",
+   "Adding the option via misc: in the project is not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "AC6 and ATfE optimise functions with the noreturn attribute (threads) so that they use or destroy the link register without emitting the matching debug information (.cfi_undefined 14), which seems to be a compiler issue (not yet confirmed). GDB then cannot stop unwinding the stack.",
+  "fix_fixed": "Compile debug builds with -funwind-tables: the code keeps LR on the stack (slightly more stack) and unwinding works reliably. The issue proposes adding it by default for AC6 and CLANG when debug: on, and #2612 suggests adding it to cdefault.",
+  "versions_fixed": "",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2603",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2569",
+  "verdict": "partly",
+  "problems": [
+   "'Shipped after 3.3.50' is not in the thread; the corrected message was offered for validation in a CMSIS-Toolbox nightly"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The real limit for generating enumerated value lists in the SfrCC/MDK5 output is a field width of 6 bits (64 entries), chosen to keep the combo-box control usable; the M227 message wrongly named 256 entries.",
+  "fix_fixed": "The M227 message was corrected to state the field width and the 6-bit limit (available in a CMSIS-Toolbox nightly). Unlisted values can be described with an enumeratedValue carrying isDefault true; SVDConv expands it for SfrCC/MDK5, while other tools can interpret it directly for fields wider than 6 bits.",
+  "versions_fixed": "svdconv 3.3.39 and 3.3.50 affected",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2527",
+  "verdict": "partly",
+  "problems": [
+   "'2.14.x nightly' is not in the thread; it names the CMSIS-Toolbox nightly included in the CMSIS Solution extension of 2026-07-28"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "Layer detection required device: to be given and did not derive the device from the board's mounted device.",
+  "fix_fixed": "Use the CMSIS-Toolbox nightly (as included in the CMSIS Solution extension of 2026-07-28 or later): the device is derived from the board and the layer selection appears. The pack that holds the layer must still be installed.",
+  "versions_fixed": "CMSIS-Toolbox 2.14 affected",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2510",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2491",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2480",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2433",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2363",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2339",
+  "verdict": "partly",
+  "problems": [
+   "The mechanism (UTF-8 strings from YAML and JSON passed to std::filesystem without conversion to the code page) is not in this thread; it comes from the related issue #2335"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "csolution 2.11.0 on Windows corrupts non-ASCII characters in file names and paths (an encoding issue), so it cannot find the referenced cproject.yml. CMake also restricts the characters of target names, which are formed from project names, target types, build types and execute names.",
+  "fix_fixed": "Workaround: enable the Windows option 'Beta: Use Unicode UTF-8 for worldwide language support' (system-wide, may affect legacy tools). Keep project names, target types, build types and execute names ASCII. A documentation note was requested.",
+  "versions_fixed": "2.11.0",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2335",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2330",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2325",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2318",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2286",
+  "verdict": "partly",
+  "problems": [
+   "The cleanup on switching target sets was added to nightly builds of the CMSIS Solution extension, not to toolbox builds",
+   "The unescaped +AVH* as root cause is only the reporter's finding; the maintainer could not reproduce it, so 'user-error' is not established"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The reporter traced the corrupted cbuild-pack.yml (resolved-packs: - {}) to for-context: +AVH* written without escaping the leading plus; the maintainer could not reproduce the problem.",
+  "fix_fixed": "Write the value as \\+AVH* in for-context:. The report could no longer be reproduced with nightly CMSIS Solution extension builds, which clean up when switching between target sets.",
+  "versions_fixed": "2.12",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2235",
+  "verdict": "partly",
+  "problems": [
+   "Versions '2.9', 'after 2.9' and 'October 2025 nightly' are not in the thread; it only names PR #2129 as the change that added the quotes and 'the latest nightly' as the fix",
+   "Symptom names TrafficLight.map; the thread shows TrafficLight.axf.map"
+  ],
+  "symptoms_ok": false,
+  "cause_fixed": "Quotation marks around the map file path, introduced by devtools PR #2129, ended up literally in the armlink --list option, so the link step broke.",
+  "fix_fixed": "Fixed in the then latest CMSIS-Toolbox nightly; the reporter confirmed building with CMake 4.1.2 and a correctly generated map file. Update the toolbox.",
+  "versions_fixed": "",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2234",
+  "verdict": "partly",
+  "problems": [
+   "Lowering created-for as an alternative is not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The created-for: node of the solution names a minimum CMSIS-Toolbox version that is higher than the version of the CMSIS-Toolbox manifest in use (not the csolution executable version).",
+  "fix_fixed": "Use a CMSIS-Toolbox at least as new as created-for. Newer csolution builds name the file, the required and the current version; the message stays an error on the command line but is a warning in RPC mode (VS Code), where a schema error still stops processing.",
+  "versions_fixed": "new message in csolution 2.11.0+p28",
+  "resolution_fixed": "configuration"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2142",
+  "verdict": "partly",
+  "problems": [
+   "'Toolbox nightly from July 2025' and 'seen around 2.9' are not in the thread",
+   "That the fix no longer passes --quiet is not in the thread; the proposed solution is cut off and only the nightly validation is shown"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "Ninja buffers the output of nested builds until the subprocess ends; with ninja --quiet on the nested build of an execute: step the pre-build output was reordered and appeared after the compiler output, although the step really ran first.",
+  "fix_fixed": "Fixed in a CMSIS-Toolbox nightly build, confirmed by the reporter; the real order of execution was always correct.",
+  "versions_fixed": "",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2141",
+  "verdict": "partly",
+  "problems": [
+   "Changing or removing the dependency logic of the inner CMakeLists is not in the thread; the maintainer only explained that it decides when FCARM runs"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "always: was honoured and the step did run (the log prints Executing: <context>-<execute name> unconditionally). The step runs CMake over the example's own FCARM/CMakeLists.txt, which checks dependencies and calls FCARM only when they require it.",
+  "fix_fixed": "Nothing to fix in cbuild: always: works as documented, and whether FCARM is invoked is decided by the CMakeLists.txt that the execute step builds.",
+  "versions_fixed": "CMSIS-Toolbox 2.10, CMSIS Solution 1.55.1",
+  "resolution_fixed": "not-a-bug"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2139",
+  "verdict": "partly",
+  "problems": [
+   "'For AC6 the image still comes from the hex file' contradicts the last comment: with an explicit load: image+symbols the AXF still got image+symbols next to the HEX image, which the reporter said should be symbols only; the thread ends there",
+   "'Toolbox builds after 2.10' is not in the thread, which only names PR #2171"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "With fromelf, converting an image with several load regions to --bin creates a directory instead of a single file, so the expected .bin file seems missing. A load: given for a project-context without type: was applied to all generated types, including hex and bin.",
+  "fix_fixed": "PR #2171 makes the project-context load: apply only to the generated ELF and no longer allows type: there. Per the agreed rule, with AC6 and a generated HEX the image should come from the HEX and the symbols from the AXF; the reporter found an explicit load: image+symbols still did not follow it, and the thread ends there.",
+  "versions_fixed": "CMSIS-Toolbox 2.10",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2127",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2099",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2093",
+  "verdict": "unsupported",
+  "problems": [
+   "'Narrowed afterwards' and resolution 'fixed-in-release' are not in the thread; it ends with a maintainer locating the attribute loop that issues the warning (introduced in #1109)"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The https check of packchk 2.9.0 (an attribute loop introduced in #1109) also flags xmlns namespace declarations of extension elements. A namespace URL is only an identifier and cannot be changed without breaking its consumers; only schemaLocation should need https.",
+  "fix_fixed": "No fix in the thread. A schemaLocation should use https; the warning on the namespace URL itself cannot be removed from the pdsc.",
+  "versions_fixed": "packchk 2.9.0",
+  "resolution_fixed": "unresolved"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2041",
+  "verdict": "partly",
+  "problems": [
+   "'April 2025' is not in the thread",
+   "Versions '2.8 to 2.9 timeframe' are not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "csolution listed in debug-topology only the processors used by the selected contexts, but pyOCD examines the complete device at connect and needs the full topology; flash algorithms were filtered the same way (#2026).",
+  "fix_fixed": "Fixed by devtools PR #2046, in CMSIS-Toolbox nightly #444 and later: debug-topology lists all processors of the device. Update the toolbox.",
+  "versions_fixed": "",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2026",
+  "verdict": "partly",
+  "problems": [
+   "'April 2025' is not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "csolution collects device data through the RTE model per Pname of the selected contexts, so it wrote a pname for each algorithm even where the pack gave no Pname, which restricted a shared algorithm to a single core.",
+  "fix_fixed": "Fixed by devtools PR #2039, in CMSIS-Toolbox nightly #435 and later: pname is only written when the pack specifies it.",
+  "versions_fixed": "CMSIS-Toolbox 2.8.0",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1952",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1906",
+  "verdict": "partly",
+  "problems": [
+   "'Fixed in 2.1.5' is not supported: the fix was seen in the build 2.1.5-6-gd958da1 of a CMSIS-Toolbox nightly (manifest 2.6.1-38), which comes after the 2.1.5 tag; no release is named"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The pack server answers a plain client with a JavaScript redirect page and serves the file only once a cookie has been set, so a client without cookie handling never gets the pack although a browser does.",
+  "fix_fixed": "Fixed by cookie support in cpackget, seen in cpackget 2.1.5-6-gd958da1 from the CMSIS-Toolbox nightly 2.6.1-38; update the toolbox. In that nightly a failed cbuild setup also no longer writes cbuild-run.yml.",
+  "versions_fixed": "cpackget 2.1.4-46-g97fca47 affected; fix seen in 2.1.5-6-gd958da1 (toolbox nightly 2.6.1-38)",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1904",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1900",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1889",
+  "verdict": "partly",
+  "problems": [
+   "'Released in 2.7.0' is not in the thread; it only shows the nightly of 2024-12-09",
+   "Deleting the tmp directory as a workaround is not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "After the active target type changed, the CMake cache in tmp still belonged to the previous context, so CMake refused the new source directory.",
+  "fix_fixed": "Use a CMSIS-Toolbox nightly from 2024-12-09 or later: switching the target type now cleans the context and sets it up again.",
+  "versions_fixed": "cbuild 2.6.1-25-g3f083c7 affected",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1826",
+  "verdict": "partly",
+  "problems": [
+   "'Fixed in CMSIS-Toolbox 2.7.0' is not in the thread; it only shows the nightly of 2024-12-10 building on Linux",
+   "Using a newer pack or correcting the path in the pack is not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "Older packs have backslashes in path names, which csolution passed unchanged into the generated CMake file; on Linux and macOS this breaks the CMake syntax.",
+  "fix_fixed": "Use a CMSIS-Toolbox nightly from 2024-12-10 or later, with which the example builds on Linux; the request was that csolution converts backslashes to forward slashes.",
+  "versions_fixed": "CMSIS-Toolbox 2.6.1 affected",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1812",
+  "verdict": "partly",
+  "problems": [
+   "'Defect fixed in later 2.6.x/2.7 builds' is not in the thread, which ends asking whether the issue can be closed",
+   "Version 2.6.1 is wrong: the report names csolution 2.6.0"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "All contexts that share the generator id, base-dir and cgen-file (and multi-core, secure/non-secure and map: siblings) are processed together, and a defect did not load packs additionally required by the unselected siblings, causing a false dependency failure.",
+  "fix_fixed": "Workaround: select all sibling contexts, here by leaving out -c, for example csolution run Network.csolution.yml -g CubeMX. csolution list generators <solution> -v shows the siblings.",
+  "versions_fixed": "csolution 2.6.0",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1809",
+  "verdict": "partly",
+  "problems": [
+   "'Released with CMSIS-Toolbox 2.7.0' is not in the thread; it names cbuild PR #343 and a nightly of 05.12.2024, which the reporter could not test",
+   "The new cleanup behaviour (tmp deleted, out only for the selected contexts) was a proposal; the thread does not confirm what PR #343 implements"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "Clean with cmsis-toolbox 2.6.0/2.6.1 depended on the files of all targets, so RTE files missing for a target that was never built caused errors and out and tmp were not cleaned. RTE files are meant to be kept in version control.",
+  "fix_fixed": "A fix was provided in cbuild PR #343 (CMSIS-Toolbox nightly of 05.12.2024; proposed behaviour: delete tmpdir, and outdir only for the selected contexts), not confirmed by the reporter. Commit the RTE folder and run cbuild setup <solution> --packs; the reporter's own template change to the new compiler-selection format also made clean work.",
+  "versions_fixed": "cmsis-toolbox 2.6.0 and 2.6.1 affected; 2.4.0 works",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1801",
+  "verdict": "partly",
+  "problems": [
+   "An editor holding tmp was only asked about; the reproduced cause was the tmp directory opened in Bash"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The tmp directory was open as the working directory of a Bash shell, so with CMSIS-Toolbox 2.6.1 the rebuild could not delete it on Windows.",
+  "fix_fixed": "Leave the tmp directory in the shell before rebuilding; with the changed cleanup strategy of CMSIS-Toolbox 2.7.0 (cbuild PR #343) the same steps no longer give an error.",
+  "versions_fixed": "2.6.1 affected; 2.7.0 works",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1715",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1711",
+  "verdict": "partly",
+  "problems": [
+   "Version 2.6.0 is not in the thread; it names the nightly cmsis-toolbox-windows-amd64-2024-09-03",
+   "Version 2.5.0 as affected is not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "GCC cannot generate a CMSE import library when the secure project has no non-secure callable entry functions and fails the link; AC6 only warns.",
+  "fix_fixed": "Set secure-only in the trustzone: node under processor:, so no import library is generated for that project; validated with the CMSIS-Toolbox nightly of 2024-09-03.",
+  "versions_fixed": "",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1683",
+  "verdict": "partly",
+  "problems": [
+   "'Later toolbox versions hide the duplicate' is stated as fact; the thread only announces that the duplicates will be removed from subsequent components"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "Since CMSIS-Toolbox 2.5.0 the default CMake generator (cbuild2cmake) builds per component, so the same source file listed by two components would give multiple objects with the same symbols at link time. The check is intended; in cbuildgen mode it is only a warning.",
+  "fix_fixed": "Fix the pack so the file belongs to one component. Short term: run cbuild with --cbuildgen, or pin the toolbox to 2.4.0 in vcpkg-configuration.json (the CMSIS Solution Build button cannot pass --cbuildgen). The maintainers announced that duplicated files would be hidden from subsequent components.",
+  "versions_fixed": "2.5.0",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1674",
+  "verdict": "partly",
+  "problems": [
+   "Removing compiler: from the layer is not in the thread",
+   "That a layer sets AC6 is not stated; the thread only says the problem occurs for reference applications with layers"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "In CMSIS-Toolbox 2.5.0, for projects with layers the compiler given with --toolchain GCC was redefined back to AC6 from the yml input, and that redefinition was rejected.",
+  "fix_fixed": "Solved in a CMSIS-Toolbox release after 2.5.0 (an internal release at the time); update the toolbox.",
+  "versions_fixed": "2.5.0",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1671",
+  "verdict": "partly",
+  "problems": [
+   "'The board is defined with a different vendor attribute than the pack vendor' contradicts the thread: the board's vendor is ABOV like the pack vendor; only the Dvendor is 'ABOV Semiconductor'"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "csolution 2.5.0 built the board id with the device vendor (Dvendor 'ABOV Semiconductor') instead of the board's vendor 'ABOV', so the board ABOV::StarterKit-A31G112CL:V1.1 was not found.",
+  "fix_fixed": "Use a csolution nightly after 2.5.0, which computes the board id correctly; csolution list boards -f A31G112 then prints ABOV::StarterKit-A31G112CL:V1.1.",
+  "versions_fixed": "2.5.0",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1668",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1659",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1658",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1650",
+  "verdict": "partly",
+  "problems": [
+   "'Custom variant' contradicts the thread: Custom is the Csub of ARM::CMSIS Driver:USART:Custom, and there is no Cvariant",
+   "The auto-selection is presented as current behaviour; the thread then states that :Csub is not selected automatically, and a later nightly made CMSIS:OS Tick require :SysTick",
+   "Version 2.5.0: the report names 2.5.0-devint5"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "csolution 2.5.0-devint5 resolved the partly specified ARM::CMSIS Driver:USART to its best match ARM::CMSIS Driver:USART:Custom from ARM::CMSIS (Custom is a Csub). The documented rule is that :Csub is not selected for the user; after a later nightly partial identifiers such as CMSIS:OS Tick no longer resolved without their Csub.",
+  "fix_fixed": "Write the full identifier including the Csub where the component has one, for example CMSIS:OS Tick:SysTick, as done for the csolution-examples in PR #41 and other Open-CMSIS-Pack projects.",
+  "versions_fixed": "CMSIS-Toolbox 2.5.0-devint5",
+  "resolution_fixed": "configuration"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1649",
+  "verdict": "partly",
+  "problems": [
+   "That the fix is in the final 2.5.0 is not stated; the thread only shows the regression fixed in a PR build of cbuild, which the maintainers wanted before the release"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "A regression in the 2.5.0 pre-release (2.5.0-devint5): with --context-set, the output of csolution list packs began with an info line about cbuild-set.yml, which cbuild passed to cpackget as a pack name.",
+  "fix_fixed": "Fixed in a cbuild PR, validated on Windows; the maintainers aimed to ship it before the 2.5.0 release.",
+  "versions_fixed": "CMSIS-Toolbox 2.5.0-devint5",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1646",
+  "verdict": "partly",
+  "problems": [
+   "'A later 2.5.x build' is not in the thread, which only says the problem is fixed"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "csolution 2.5.0 enforced a registered toolchain (GCC_TOOLCHAIN_<major>_<minor>_<patch> environment variable) even for csolution convert, which before did not need one; the agreed behaviour is to check it only when cbuild invokes the toolchain.",
+  "fix_fixed": "Fixed (confirmed in the thread, no version named); update csolution. Otherwise register the toolchain via the GCC_TOOLCHAIN_<major>_<minor>_<patch> environment variable.",
+  "versions_fixed": "2.5.0",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1620",
+  "verdict": "partly",
+  "problems": [
+   "The symptom line is not in the thread, which only describes the error in words",
+   "'From 2.6 on' is not in the thread; it only says 'works'"
+  ],
+  "symptoms_ok": false,
+  "cause_fixed": "Layer variables referenced in layers: must be defined; there is no implicit skipping of an optional layer.",
+  "fix_fixed": "Define the variable as an empty string in the target-type (variables: - Shield-Layer: \"\"); a layer entry with an empty path is ignored. The thread asked that layer detection list this empty variable in the cbuild-idx configurations, which was then reported to work.",
+  "versions_fixed": "CMSIS-Toolbox 2.5.0-devint3",
+  "resolution_fixed": "configuration"
+ }
+]

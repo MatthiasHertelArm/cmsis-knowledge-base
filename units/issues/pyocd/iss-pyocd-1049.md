@@ -12,6 +12,7 @@ doc_source: "https://github.com/pyocd/pyOCD/issues/1049"
 resolution: "workaround"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "device": ["ATSAML21J18A"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Run `pyocd pack -c` to clear the cache and `pyocd pack -u` to update the index, 
 
 Resolution: workaround
 
-From [pyocd/pyOCD #1049](https://github.com/pyocd/pyOCD/issues/1049), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #1049](https://github.com/pyocd/pyOCD/issues/1049), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

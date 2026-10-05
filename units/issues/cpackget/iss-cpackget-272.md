@@ -13,6 +13,7 @@ resolution: "user-error"
 versions: "cpackget 2.0.0"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cpackget"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: user-error
 
 Versions: cpackget 2.0.0
 
-From [Open-CMSIS-Pack/cpackget #272](https://github.com/Open-CMSIS-Pack/cpackget/issues/272), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/cpackget #272](https://github.com/Open-CMSIS-Pack/cpackget/issues/272), summarized in own words; confidence high, checked against the thread, not reviewed yet.

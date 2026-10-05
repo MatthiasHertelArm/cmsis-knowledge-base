@@ -16,6 +16,7 @@ versions: "csolution 1.68.1"
 issue_state: "open"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-solution", "cbuild"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -41,4 +42,4 @@ Versions: csolution 1.68.1
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [Open-CMSIS-Pack/vscode-cmsis-solution #352](https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/352), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-solution #352](https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/352), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

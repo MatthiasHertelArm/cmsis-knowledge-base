@@ -12,6 +12,7 @@ doc_source: "https://github.com/pyocd/pyOCD/issues/1091"
 resolution: "user-error"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Pass `-O swv_clock=<hz>` with the correct spelling.
 
 Resolution: user-error
 
-From [pyocd/pyOCD #1091](https://github.com/pyocd/pyOCD/issues/1091), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #1091](https://github.com/pyocd/pyOCD/issues/1091), summarized in own words; confidence high, checked against the thread, not reviewed yet.

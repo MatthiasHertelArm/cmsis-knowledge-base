@@ -3,7 +3,7 @@ id: "iss-pyocd-1424"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: File path containing '@' breaks flash/load"
-summary: "The load command treats '@<address>' after a file name as a load address, so a directory name with '@' is cut apart."
+summary: "The flash/load command treats an '@<address>' suffix on a file name as the load address, so a path containing '@' is split and the rest parsed as an integer."
 status: "draft"
 tool: "pyocd"
 symptoms: ["invalid literal for int() with base 0:"]
@@ -11,10 +11,10 @@ symptom_regex: "invalid\\s+literal\\s+for\\s+int\\(\\)\\s+with\\s+base\\s+\\S+:"
 collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/1424"
 doc_source: "https://github.com/pyocd/pyOCD/issues/1424"
-resolution: "fixed-in-release"
-versions: "0.33"
-confidence: "medium"
+resolution: "unresolved"
+confidence: "low"
 cause_origin: "issue-digest"
+checked: "unsupported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -26,16 +26,14 @@ mode: "S"
 
 ## Cause
 
-The load command treats '@<address>' after a file name as a load address, so a directory name with '@' is cut apart.
+The flash/load command treats an '@<address>' suffix on a file name as the load address, so a path containing '@' is split and the rest parsed as an integer.
 
 ## Fix
 
-The maintainer planned to check whether the full argument is an existing file first. Meanwhile avoid '@' in paths or use --base-address.
+No fix in the thread; the maintainer planned to check whether a file with the full argument exists before processing the '@' suffix.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: unresolved
 
-Versions: 0.33
-
-From [pyocd/pyOCD #1424](https://github.com/pyocd/pyOCD/issues/1424), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #1424](https://github.com/pyocd/pyOCD/issues/1424), summarized in own words; confidence low, corrected against the thread, not reviewed yet.

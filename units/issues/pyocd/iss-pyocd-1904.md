@@ -14,6 +14,7 @@ doc_source: "https://github.com/pyocd/pyOCD/issues/1904"
 resolution: "workaround"
 confidence: "low"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,10 +30,10 @@ The pack listed in the index has a newer version than what the vendor's pdsc or 
 
 ## Fix
 
-Workaround reported: rename the locally downloaded pdsc/pack to the expected version, or use --pack with the pack file. Retrying after the index was corrected also worked for some packs.
+Workaround reported: rename the locally cached pdsc to the version pyOCD expects (for example Holtek.HT32_DFP.1.0.75.pdsc to 1.0.76.pdsc). Retrying later worked for others once the versions matched.
 
 ## Source
 
 Resolution: workaround
 
-From [pyocd/pyOCD #1904](https://github.com/pyocd/pyOCD/issues/1904), summarized in own words; confidence low, not reviewed yet.
+From [pyocd/pyOCD #1904](https://github.com/pyocd/pyOCD/issues/1904), summarized in own words; confidence low, corrected against the thread, not reviewed yet.

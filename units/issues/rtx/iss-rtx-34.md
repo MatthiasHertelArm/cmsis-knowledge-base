@@ -12,6 +12,7 @@ doc_source: "https://github.com/ARM-software/CMSIS-RTX/issues/34"
 resolution: "not-a-bug"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-rtx"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Use a semaphore initialised with one token when different threads acquire and re
 
 Resolution: not-a-bug
 
-From [ARM-software/CMSIS-RTX #34](https://github.com/ARM-software/CMSIS-RTX/issues/34), summarized in own words; confidence medium, not reviewed yet.
+From [ARM-software/CMSIS-RTX #34](https://github.com/ARM-software/CMSIS-RTX/issues/34), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

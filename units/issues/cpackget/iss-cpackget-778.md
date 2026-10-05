@@ -3,7 +3,7 @@ id: "iss-cpackget-778"
 type: "troubleshooting"
 domain: "pack"
 title: "cpackget: cpackget init: 'remote server is offline or cannot be reached' though browser works"
-summary: "cpackget checks connectivity by downloading a small index file first."
+summary: "Before downloading, cpackget checks the connection by fetching the Keil.vidx index; the error means that download failed."
 status: "draft"
 tool: "cpackget"
 symptoms: ["E: \"https://www.keil.com/pack/keil.vidx\": remote server is offline or cannot be reached"]
@@ -12,9 +12,10 @@ collection: "issues-cpackget"
 source: "https://github.com/Open-CMSIS-Pack/cpackget/issues/778"
 doc_source: "https://github.com/Open-CMSIS-Pack/cpackget/issues/778"
 resolution: "configuration"
-versions: "cpackget 2.2.1 / CMSIS-Toolbox 2.14.1"
+versions: "CMSIS-Toolbox 2.14.1"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cpackget"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -26,16 +27,16 @@ mode: "S"
 
 ## Cause
 
-cpackget checks connectivity by downloading a small index file first. In the reported case the machine had an empty /etc/resolv.conf (systemd-resolved setup), so Go could not resolve host names even though curl with redirects seemed to work elsewhere. Proxy and CA-store problems produce the same message.
+Before downloading, cpackget checks the connection by fetching the Keil.vidx index; the error means that download failed. In the reported case the DNS configuration was broken: /etc/resolv.conf was empty on a system using systemd-resolved, although curl requests to the pack URLs worked. Proxy settings and missing CA certificates were suggested as other possible causes.
 
 ## Fix
 
-Check name resolution (on systemd-resolved link /etc/resolv.conf to the resolved stub file), then check HTTP_PROXY/HTTPS_PROXY/NO_PROXY and the system CA bundle, and test the keil.com pack URLs with curl -L. Not a cpackget defect.
+Fix the name resolution, for example on systemd-resolved link /run/systemd/resolve/resolv.conf to /etc/resolv.conf. Otherwise test the keil.com pack URLs with curl -L and check HTTP_PROXY/HTTPS_PROXY/NO_PROXY and the CA store, as the maintainers suggested. Not a cpackget defect.
 
 ## Source
 
 Resolution: configuration
 
-Versions: cpackget 2.2.1 / CMSIS-Toolbox 2.14.1
+Versions: CMSIS-Toolbox 2.14.1
 
-From [Open-CMSIS-Pack/cpackget #778](https://github.com/Open-CMSIS-Pack/cpackget/issues/778), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/cpackget #778](https://github.com/Open-CMSIS-Pack/cpackget/issues/778), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

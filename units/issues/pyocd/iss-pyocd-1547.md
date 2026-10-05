@@ -3,7 +3,7 @@ id: "iss-pyocd-1547"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: i.MX RT685 pack: debug sequence parse error on 'U' integer suffix and no cores discovered"
-summary: "The NXP pack uses C-style 'U' suffixes in debug sequence literals, which pyOCD's parser rejected."
+summary: "The NXP pack uses C-style 'U' suffixes on integer literals in a debug sequence, which pyOCD's parser rejected."
 status: "draft"
 tool: "pyocd"
 symptoms: ["Unexpected token Token('IDENT', 'U') at line 3, column 34.", "C No cores were discovered! [__main__]"]
@@ -11,10 +11,11 @@ symptom_regex: "Unexpected\\s+token\\s+Token\\('.*?',\\s+'.*?'\\)\\s+at\\s+line\
 collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/1547"
 doc_source: "https://github.com/pyocd/pyOCD/issues/1547"
-resolution: "fixed-in-release"
-versions: "0.35"
-confidence: "high"
+resolution: "workaround"
+versions: "NXP.MIMXRT685S_DFP 16.0.0"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"], "device": ["MIMXRT685S"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -27,16 +28,16 @@ mode: "S"
 
 ## Cause
 
-The NXP pack uses C-style 'U' suffixes in debug sequence literals, which pyOCD's parser rejected. Later, DebugPortStart was bound to a named core, so pyOCD did not run it and the debug AP stayed locked.
+The NXP pack uses C-style 'U' suffixes on integer literals in a debug sequence, which pyOCD's parser rejected. After that, DebugPortStart was assigned to the named core cm33; pyOCD did not support core-specific DebugPort* sequences, so the debug unlock sequence did not run and the CM33 access port stayed disabled.
 
 ## Fix
 
-Parser fix in change #1548. For the second problem remove Pname="cm33" from the DebugPortStart sequence in the pdsc (use an expanded pack directory) until core-specific port sequences are supported. Use the .FLM from the pack, not the .cfx.
+Parser fix in pull request #1548 (installable from the branch). For the second problem remove Pname="cm33" from the DebugPortStart sequence in the pdsc and pass the expanded pack directory to --pack, until core-specific port sequences are supported. Use the .FLM extracted from the pack, not NXP's .cfx.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: workaround
 
-Versions: 0.35
+Versions: NXP.MIMXRT685S_DFP 16.0.0
 
-From [pyocd/pyOCD #1547](https://github.com/pyocd/pyOCD/issues/1547), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #1547](https://github.com/pyocd/pyOCD/issues/1547), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

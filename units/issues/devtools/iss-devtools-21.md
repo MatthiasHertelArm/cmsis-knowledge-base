@@ -12,8 +12,10 @@ collection: "issues-devtools"
 source: "https://github.com/Open-CMSIS-Pack/devtools/issues/21"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/21"
 resolution: "configuration"
-confidence: "high"
+versions: "GCC 7.5.0 fails, GCC 8.3.0 works"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cbuild"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,10 +31,12 @@ The sources use std::filesystem, which needs GCC 8 or newer; GCC 7.5 does not pr
 
 ## Fix
 
-Build with GCC 8 or later (the README was corrected).
+Build with GCC 8 or later (a README change, PR #27, was proposed to state this).
 
 ## Source
 
 Resolution: configuration
 
-From [Open-CMSIS-Pack/devtools #21](https://github.com/Open-CMSIS-Pack/devtools/issues/21), summarized in own words; confidence high, not reviewed yet.
+Versions: GCC 7.5.0 fails, GCC 8.3.0 works
+
+From [Open-CMSIS-Pack/devtools #21](https://github.com/Open-CMSIS-Pack/devtools/issues/21), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

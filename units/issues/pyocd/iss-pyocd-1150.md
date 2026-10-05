@@ -15,6 +15,7 @@ resolution: "workaround"
 versions: "seen with pyocd 0.30.3"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "device": ["STM32G071RB"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -39,4 +40,4 @@ Resolution: workaround
 
 Versions: seen with pyocd 0.30.3
 
-From [pyocd/pyOCD #1150](https://github.com/pyocd/pyOCD/issues/1150), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #1150](https://github.com/pyocd/pyOCD/issues/1150), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

@@ -13,6 +13,7 @@ resolution: "not-a-bug"
 versions: "schema 1.1 to 1.2"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: not-a-bug
 
 Versions: schema 1.1 to 1.2
 
-From [Open-CMSIS-Pack/devtools #528](https://github.com/Open-CMSIS-Pack/devtools/issues/528), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #528](https://github.com/Open-CMSIS-Pack/devtools/issues/528), summarized in own words; confidence high, checked against the thread, not reviewed yet.

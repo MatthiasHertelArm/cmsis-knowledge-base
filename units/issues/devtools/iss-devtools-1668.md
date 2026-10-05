@@ -15,6 +15,7 @@ resolution: "fixed-in-release"
 versions: "2.5.0"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -39,4 +40,4 @@ Resolution: fixed-in-release
 
 Versions: 2.5.0
 
-From [Open-CMSIS-Pack/devtools #1668](https://github.com/Open-CMSIS-Pack/devtools/issues/1668), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #1668](https://github.com/Open-CMSIS-Pack/devtools/issues/1668), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

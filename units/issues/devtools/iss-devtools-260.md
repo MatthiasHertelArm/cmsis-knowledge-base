@@ -14,6 +14,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/260"
 resolution: "user-error"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -35,4 +36,4 @@ Put add-paths under the individual file entry or at group level, with correct in
 
 Resolution: user-error
 
-From [Open-CMSIS-Pack/devtools #260](https://github.com/Open-CMSIS-Pack/devtools/issues/260), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #260](https://github.com/Open-CMSIS-Pack/devtools/issues/260), summarized in own words; confidence high, checked against the thread, not reviewed yet.

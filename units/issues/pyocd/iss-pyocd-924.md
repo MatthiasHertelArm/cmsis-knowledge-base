@@ -14,6 +14,7 @@ doc_source: "https://github.com/pyocd/pyOCD/issues/924"
 resolution: "user-error"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -35,4 +36,4 @@ Select the real device with -t, using a name from the pack given in the config (
 
 Resolution: user-error
 
-From [pyocd/pyOCD #924](https://github.com/pyocd/pyOCD/issues/924), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #924](https://github.com/pyocd/pyOCD/issues/924), summarized in own words; confidence high, checked against the thread, not reviewed yet.

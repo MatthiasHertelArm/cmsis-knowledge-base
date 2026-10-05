@@ -15,6 +15,7 @@ resolution: "fixed-in-release"
 versions: "0.19.0 affected; fix merged on master afterwards"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: fixed-in-release
 
 Versions: 0.19.0 affected; fix merged on master afterwards
 
-From [pyocd/pyOCD #675](https://github.com/pyocd/pyOCD/issues/675), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #675](https://github.com/pyocd/pyOCD/issues/675), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

@@ -10,8 +10,9 @@ collection: "issues-toolbox"
 source: "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/95"
 doc_source: "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/95"
 resolution: "configuration"
-confidence: "high"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["csolution"], "toolchain": ["GCC"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -23,10 +24,10 @@ CMake falls back to a gcc from PATH if the compiler is not registered.
 
 ## Fix
 
-Register the compiler with an environment variable such as GCC_TOOLCHAIN_<major>_<minor>_<patch> pointing to its bin folder, and verify with cbuild list toolchains.
+Register the compiler with the environment variable GCC_TOOLCHAIN_<major>_<minor>_<patch> holding the absolute path to its bin directory (Toolchain Registration); another user fixed it by correcting the path and environment variables.
 
 ## Source
 
 Resolution: configuration
 
-From [Open-CMSIS-Pack/cmsis-toolbox #95](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/95), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/cmsis-toolbox #95](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/95), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

@@ -3,7 +3,7 @@ id: "iss-cpackget-511"
 type: "troubleshooting"
 domain: "pack"
 title: "cpackget: cpackget add fails with 'zip: not a valid zip file' (corrupt cached pack)"
-summary: "The cached file in .Download is incomplete or corrupted (interrupted or failed download, sometimes 0 bytes) and cpackget reuses the cache."
+summary: "The pack file cached in .Download was damaged by a failed download, and cpackget used that cached file."
 status: "draft"
 tool: "cpackget"
 symptoms: ["E: Can't decompress \"<packs>/.Download/ARM.CMSIS.6.1.0.pack\": zip: not a valid zip file", "E: fail to decompress file"]
@@ -12,8 +12,9 @@ collection: "issues-cpackget"
 source: "https://github.com/Open-CMSIS-Pack/cpackget/issues/511"
 doc_source: "https://github.com/Open-CMSIS-Pack/cpackget/issues/511"
 resolution: "workaround"
-confidence: "high"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cpackget"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -26,14 +27,14 @@ mode: "S"
 
 ## Cause
 
-The cached file in .Download is incomplete or corrupted (interrupted or failed download, sometimes 0 bytes) and cpackget reuses the cache.
+The pack file cached in .Download was damaged by a failed download, and cpackget used that cached file.
 
 ## Fix
 
-Remove the bad cache entry with cpackget rm --purge ARM::CMSIS@6.1.0 (or delete the file in .Download) and run cpackget add again; if it recurs run with -v and check the network/proxy.
+Run cpackget rm --purge ARM::CMSIS@6.1.0 to drop the cached pack, then cpackget add ARM::CMSIS@6.1.0 again; if it still fails, rerun with -v to get a log.
 
 ## Source
 
 Resolution: workaround
 
-From [Open-CMSIS-Pack/cpackget #511](https://github.com/Open-CMSIS-Pack/cpackget/issues/511), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/cpackget #511](https://github.com/Open-CMSIS-Pack/cpackget/issues/511), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

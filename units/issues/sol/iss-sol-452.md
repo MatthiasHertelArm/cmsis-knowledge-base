@@ -3,7 +3,7 @@ id: "iss-sol-452"
 type: "troubleshooting"
 domain: "project"
 title: "CMSIS Solution: Generator start floods output with 'Input redirection is not supported'"
-summary: "The generator's Windows launch script contained TIMEOUT commands that fail when stdin is redirected, as done when started from the extension."
+summary: "The generator's Windows launch script contained TIMEOUT statements, which probably produce the repeated error when the extension starts the generator; the cgen.yml was still written and the application built."
 status: "draft"
 tool: "cmsis-solution"
 symptoms: ["ERROR: Input redirection is not supported, exiting the process immediately."]
@@ -14,6 +14,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/452
 resolution: "fixed-in-release"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cmsis-solution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -25,14 +26,14 @@ mode: "S"
 
 ## Cause
 
-The generator's Windows launch script contained TIMEOUT commands that fail when stdin is redirected, as done when started from the extension. The cgen.yml was still written.
+The generator's Windows launch script contained TIMEOUT statements, which probably produce the repeated error when the extension starts the generator; the cgen.yml was still written and the application built.
 
 ## Fix
 
-Use the updated generator launch script in a CMSIS-Toolbox nightly after 2026-06-09.
+Use the CMSIS Solution nightly of 2026-06-09 or later, which bundles a CMSIS-Toolbox nightly with the updated generator launch script.
 
 ## Source
 
 Resolution: fixed-in-release
 
-From [Open-CMSIS-Pack/vscode-cmsis-solution #452](https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/452), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-solution #452](https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/452), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

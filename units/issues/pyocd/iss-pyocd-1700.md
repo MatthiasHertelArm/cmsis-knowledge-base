@@ -10,9 +10,10 @@ collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/1700"
 doc_source: "https://github.com/pyocd/pyOCD/issues/1700"
 resolution: "fixed-in-release"
-versions: "fixed 0.37/0.38"
-confidence: "high"
+versions: "v0.38.0 named as the latest release with the change"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"], "device": ["STM32H750VBTx"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -24,12 +25,12 @@ Double-buffered flash programming can stall on the bus of devices with strict ti
 
 ## Fix
 
-Upgrade to 0.37 or later, which disables double buffering by default; a built-in H743 target also worked better than the pack loader. Always verify flash after programming.
+Upgrade to a current pyOCD (v0.38.0 when the issue was closed), which disables double buffering for flash algorithms by default. A built-in stm32h743xx target adapted to the H750 flash layout also programmed reliably, unlike the pack's flash loader.
 
 ## Source
 
 Resolution: fixed-in-release
 
-Versions: fixed 0.37/0.38
+Versions: v0.38.0 named as the latest release with the change
 
-From [pyocd/pyOCD #1700](https://github.com/pyocd/pyOCD/issues/1700), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #1700](https://github.com/pyocd/pyOCD/issues/1700), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

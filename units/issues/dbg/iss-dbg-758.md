@@ -13,6 +13,7 @@ resolution: "fixed-in-release"
 versions: "CMSIS Debugger 1.3.0 affected; 0.45 more robust"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "family": ["T2G-B-H"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: fixed-in-release
 
 Versions: CMSIS Debugger 1.3.0 affected; 0.45 more robust
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #758](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/758), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #758](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/758), summarized in own words; confidence high, checked against the thread, not reviewed yet.

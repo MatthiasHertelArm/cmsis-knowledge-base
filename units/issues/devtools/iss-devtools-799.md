@@ -12,8 +12,9 @@ source: "https://github.com/Open-CMSIS-Pack/devtools/issues/799"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/799"
 resolution: "workaround"
 versions: "1.5.0"
-confidence: "high"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cbuild"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,7 +30,7 @@ A converted solution with target-types but no build-type makes csolution generat
 
 ## Fix
 
-Workaround: declare a build-type in csolution.yml (build-types: - type: any), or create the missing directory. Making target-type mandatory was discussed, and the cbuildgen behaviour was fixed in 1.7.0 (see the same symptom in the related issue).
+Workaround: declare a build-type in csolution.yml (build-types: - type: any), or create the missing RTE/_Target_1 directory. Making target-type mandatory was discussed.
 
 ## Source
 
@@ -37,4 +38,4 @@ Resolution: workaround
 
 Versions: 1.5.0
 
-From [Open-CMSIS-Pack/devtools #799](https://github.com/Open-CMSIS-Pack/devtools/issues/799), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #799](https://github.com/Open-CMSIS-Pack/devtools/issues/799), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

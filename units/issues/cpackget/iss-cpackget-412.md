@@ -3,7 +3,7 @@ id: "iss-cpackget-412"
 type: "troubleshooting"
 domain: "pack"
 title: "cpackget: cpackget download of an NXP pack fails with 404 although curl works"
-summary: "The pack server rejected requests that carried cpackget's own User-Agent string (introduced in 2.1.5), while a generic Go User-Agent worked."
+summary: "The NXP pack server answered 404 to requests with the User-Agent cpackget/v2.1.5, while the same download with a generic Go User-Agent worked; a cpackget change (PR 359) was suspected as the regression."
 status: "draft"
 tool: "cpackget"
 symptoms: ["D: bad status: 404 Not Found", "E: \"https://mcuxpresso.nxp.com/cmsis_pack/repo/NXP.MCXN947_DFP.19.0.0.pack\": bad request"]
@@ -15,6 +15,7 @@ resolution: "fixed-in-release"
 versions: "cpackget 2.1.5"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cpackget"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -27,11 +28,11 @@ mode: "S"
 
 ## Cause
 
-The pack server rejected requests that carried cpackget's own User-Agent string (introduced in 2.1.5), while a generic Go User-Agent worked.
+The NXP pack server answered 404 to requests with the User-Agent cpackget/v2.1.5, while the same download with a generic Go User-Agent worked; a cpackget change (PR 359) was suspected as the regression.
 
 ## Fix
 
-The server-side rule was corrected by the vendor; retry the download. No change on the client was needed.
+NXP fixed the problem on their side, and the thread's wording ('also fixed') suggests a cpackget change as well without naming it; retry the download.
 
 ## Source
 
@@ -39,4 +40,4 @@ Resolution: fixed-in-release
 
 Versions: cpackget 2.1.5
 
-From [Open-CMSIS-Pack/cpackget #412](https://github.com/Open-CMSIS-Pack/cpackget/issues/412), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/cpackget #412](https://github.com/Open-CMSIS-Pack/cpackget/issues/412), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

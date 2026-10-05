@@ -14,6 +14,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/347"
 resolution: "user-error"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cbuild", "csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -35,4 +36,4 @@ Write the type list as a YAML sequence: for-type: [.GCC, .GCC_STATUS] or one ent
 
 Resolution: user-error
 
-From [Open-CMSIS-Pack/devtools #347](https://github.com/Open-CMSIS-Pack/devtools/issues/347), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #347](https://github.com/Open-CMSIS-Pack/devtools/issues/347), summarized in own words; confidence high, checked against the thread, not reviewed yet.

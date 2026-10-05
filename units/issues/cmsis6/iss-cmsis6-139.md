@@ -3,7 +3,7 @@ id: "iss-cmsis6-139"
 type: "troubleshooting"
 domain: "core"
 title: "CMSIS-Core: cmsis_gcc.h: #pragma clang system_header gives an error with -Werror"
-summary: "A clang pragma was left in the GCC header."
+summary: "A clang pragma was left in the GCC header cmsis_gcc.h, which GCC rejects under -Werror=unknown-pragmas."
 status: "draft"
 tool: "cmsis-core"
 symptoms: ["Include/cmsis_gcc.h:28: error: ignoring '#pragma clang system_header' [-Werror=unknown-pragmas]"]
@@ -11,10 +11,11 @@ symptom_regex: "Include/cmsis_gcc\\.h:\\S+:\\s+error:\\s+ignoring\\s+'.*?'\\s+\\
 collection: "issues-cmsis6"
 source: "https://github.com/ARM-software/CMSIS_6/issues/139"
 doc_source: "https://github.com/ARM-software/CMSIS_6/issues/139"
-resolution: "fixed-in-release"
-versions: "6.0.0"
-confidence: "high"
+resolution: "workaround"
+versions: "arm-none-eabi-gcc 13.2.1"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cmsis-core"], "toolchain": ["GCC"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -26,16 +27,16 @@ mode: "S"
 
 ## Cause
 
-A clang pragma was left in the GCC header.
+A clang pragma was left in the GCC header cmsis_gcc.h, which GCC rejects under -Werror=unknown-pragmas.
 
 ## Fix
 
-Use a CMSIS_6 release including PR 141 (GCC system_header pragma).
+Replace it with `#pragma GCC system_header` in cmsis_gcc.h, as proposed in PR #141; no merge or release is shown.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: workaround
 
-Versions: 6.0.0
+Versions: arm-none-eabi-gcc 13.2.1
 
-From [ARM-software/CMSIS_6 #139](https://github.com/ARM-software/CMSIS_6/issues/139), summarized in own words; confidence high, not reviewed yet.
+From [ARM-software/CMSIS_6 #139](https://github.com/ARM-software/CMSIS_6/issues/139), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

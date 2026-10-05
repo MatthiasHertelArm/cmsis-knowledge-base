@@ -12,6 +12,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/606
 resolution: "user-error"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-debugger"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Pause the target after the kernel started; the threads then show.
 
 Resolution: user-error
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #606](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/606), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #606](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/606), summarized in own words; confidence high, checked against the thread, not reviewed yet.

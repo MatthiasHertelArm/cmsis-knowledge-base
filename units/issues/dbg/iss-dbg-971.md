@@ -10,9 +10,9 @@ collection: "issues-dbg"
 source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/971"
 doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/971"
 resolution: "fixed-in-release"
-versions: "pyOCD 0.44 and 0.45"
-confidence: "high"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -20,16 +20,14 @@ mode: "S"
 
 ## Cause
 
-The default post-load reset for cbuild-run targets is a hardware reset. With a default or faulty ResetHardware sequence the debug connection is lost right after, the board uninit steps fail, and load returns non-zero although programming worked; the CMSIS Load pre-launch task then shows an error pop-up.
+The default post-load reset for cbuild-run targets is a hardware reset. With the default ResetHardware sequence the debug connection can be lost right after it, the board uninit steps then fail, and load exits non-zero although programming worked; the CMSIS Load pre-launch task then shows an error pop-up.
 
 ## Fix
 
-Use a pyOCD with PR 1971 (hardware reset done after uninit; other reset types only report problems as information and exit 0). Or choose the reset type via load-setup post-reset in the solution.
+Use a pyOCD with PR 1971: a hardware post-load reset runs after board uninit, and for other reset types failures are reported as information with exit code 0 when flashing succeeded.
 
 ## Source
 
 Resolution: fixed-in-release
 
-Versions: pyOCD 0.44 and 0.45
-
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #971](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/971), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #971](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/971), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

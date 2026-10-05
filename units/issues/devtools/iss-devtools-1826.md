@@ -3,7 +3,7 @@ id: "iss-devtools-1826"
 type: "troubleshooting"
 domain: "project"
 title: "cbuild: Build with an old pack fails on Linux and macOS because of backslashes in paths"
-summary: "Older packs have backslashes in file paths of the pdsc, which csolution passed unchanged into the generated CMake file; on Windows this works, elsewhere it breaks the CMake syntax."
+summary: "Older packs have backslashes in path names, which csolution passed unchanged into the generated CMake file; on Linux and macOS this breaks the CMake syntax."
 status: "draft"
 tool: "cbuild"
 symptoms: ["CMake Error at CMakeLists.txt:43:\n  Parse error.  Function missing ending \")\".  Instead found bad character\n  with text \"\\\"."]
@@ -12,9 +12,10 @@ collection: "issues-devtools"
 source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1826"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1826"
 resolution: "fixed-in-release"
-versions: "2.6.1, fixed in 2.7.0"
-confidence: "high"
+versions: "CMSIS-Toolbox 2.6.1 affected"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cbuild", "csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -28,16 +29,16 @@ mode: "S"
 
 ## Cause
 
-Older packs have backslashes in file paths of the pdsc, which csolution passed unchanged into the generated CMake file; on Windows this works, elsewhere it breaks the CMake syntax.
+Older packs have backslashes in path names, which csolution passed unchanged into the generated CMake file; on Linux and macOS this breaks the CMake syntax.
 
 ## Fix
 
-Fixed in CMSIS-Toolbox 2.7.0 (backslashes converted to forward slashes). On older versions use a newer version of the pack or correct the path in the pack.
+Use a CMSIS-Toolbox nightly from 2024-12-10 or later, with which the example builds on Linux; the request was that csolution converts backslashes to forward slashes.
 
 ## Source
 
 Resolution: fixed-in-release
 
-Versions: 2.6.1, fixed in 2.7.0
+Versions: CMSIS-Toolbox 2.6.1 affected
 
-From [Open-CMSIS-Pack/devtools #1826](https://github.com/Open-CMSIS-Pack/devtools/issues/1826), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #1826](https://github.com/Open-CMSIS-Pack/devtools/issues/1826), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

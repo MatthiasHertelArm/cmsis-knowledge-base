@@ -14,6 +14,7 @@ doc_source: "https://github.com/pyocd/pyOCD/discussions/1380"
 resolution: "workaround"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "device": ["MIMXRT1166"], "core": ["Cortex-M7"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -36,4 +37,4 @@ Install the device through its CMSIS-Pack as described in the target support doc
 
 Resolution: workaround
 
-From [pyocd/pyOCD discussion 1380](https://github.com/pyocd/pyOCD/discussions/1380), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD discussion 1380](https://github.com/pyocd/pyOCD/discussions/1380), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

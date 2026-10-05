@@ -11,10 +11,11 @@ symptom_regex: "E:\\s+open\\s+<packs>\\S+:\\s+The\\s+system\\s+cannot\\s+find\\s
 collection: "issues-cpackget"
 source: "https://github.com/Open-CMSIS-Pack/cpackget/issues/696"
 doc_source: "https://github.com/Open-CMSIS-Pack/cpackget/issues/696"
-resolution: "fixed-in-release"
-versions: "fixed after 2.2.0"
-confidence: "high"
+resolution: "workaround"
+versions: "affected up to cpackget 2.2.0; validated with 2.2.0-4-g487974c"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cpackget"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -30,12 +31,12 @@ cpackget copied the full version including +meta into local_repository.pidx and,
 
 ## Fix
 
-Update to cpackget 2.2.0-4 or later (CMSIS-Toolbox nightly of March 2026): meta information is stripped on add, and rm removes the local_repository entry even when the pdsc file no longer exists.
+Use a cpackget newer than 2.2.0 with the change (validated with build 2.2.0-4-g487974c): meta information is stripped on add, and rm removes the local_repository entry even when the pdsc file no longer exists. Otherwise remove the entry from local_repository.pidx by hand or put the pdsc file back.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: workaround
 
-Versions: fixed after 2.2.0
+Versions: affected up to cpackget 2.2.0; validated with 2.2.0-4-g487974c
 
-From [Open-CMSIS-Pack/cpackget #696](https://github.com/Open-CMSIS-Pack/cpackget/issues/696), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/cpackget #696](https://github.com/Open-CMSIS-Pack/cpackget/issues/696), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

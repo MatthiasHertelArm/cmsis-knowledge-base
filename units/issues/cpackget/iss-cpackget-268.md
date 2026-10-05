@@ -14,6 +14,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/cpackget/issues/268"
 resolution: "fixed-in-release"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cpackget"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,10 +30,10 @@ Build metadata after + must be ignored for comparison (SemVer), but cpackget com
 
 ## Fix
 
-Use a cpackget with the fix (PR 273, March 2024) or omit the +meta part from the pack specification.
+Use a cpackget with PR #273 (validated in a CI build), or leave the +meta part out of the pack specification.
 
 ## Source
 
 Resolution: fixed-in-release
 
-From [Open-CMSIS-Pack/cpackget #268](https://github.com/Open-CMSIS-Pack/cpackget/issues/268), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/cpackget #268](https://github.com/Open-CMSIS-Pack/cpackget/issues/268), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

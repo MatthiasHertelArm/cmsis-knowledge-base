@@ -10,9 +10,10 @@ collection: "issues-cpackget"
 source: "https://github.com/Open-CMSIS-Pack/cpackget/issues/174"
 doc_source: "https://github.com/Open-CMSIS-Pack/cpackget/issues/174"
 resolution: "configuration"
-versions: "2023"
+versions: "macOS 13.4"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cpackget"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -24,12 +25,12 @@ gen-pack looked in a different default than cpackget; the default is ~/.cache/ar
 
 ## Fix
 
-Set CMSIS_PACK_ROOT explicitly, or remove the stray differently-cased folder and let cpackget recreate ~/.cache/arm/packs.
+Use a gen-pack with the aligned default (gen-pack#37). If the pack folder has a different case, remove ~/.cache/arm and let cpackget recreate it; setting CMSIS_PACK_ROOT explicitly avoids relying on the defaults.
 
 ## Source
 
 Resolution: configuration
 
-Versions: 2023
+Versions: macOS 13.4
 
-From [Open-CMSIS-Pack/cpackget #174](https://github.com/Open-CMSIS-Pack/cpackget/issues/174), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/cpackget #174](https://github.com/Open-CMSIS-Pack/cpackget/issues/174), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

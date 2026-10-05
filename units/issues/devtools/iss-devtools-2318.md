@@ -13,6 +13,7 @@ resolution: "configuration"
 versions: "Keil::STM32F4xx_DFP 2.17.1"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["csolution"], "family": ["STM32F4 Series"], "toolchain": ["GCC"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: configuration
 
 Versions: Keil::STM32F4xx_DFP 2.17.1
 
-From [Open-CMSIS-Pack/devtools #2318](https://github.com/Open-CMSIS-Pack/devtools/issues/2318), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #2318](https://github.com/Open-CMSIS-Pack/devtools/issues/2318), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

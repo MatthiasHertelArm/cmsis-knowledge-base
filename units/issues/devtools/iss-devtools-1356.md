@@ -15,6 +15,7 @@ resolution: "not-a-bug"
 versions: "2.2.1"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -30,7 +31,7 @@ A pack in use (for example a BSP) lists other packs under requirements in its pd
 
 ## Fix
 
-Informational. Add the named pack to packs: if a component or dependency is not resolved; otherwise the warning can be ignored. The text was reworded to name the pack that requires it.
+Informational: add the named pack to packs: when a component or dependency is not resolved. The message was reworded (PR #1364) to name the pack that requires it.
 
 ## Source
 
@@ -38,4 +39,4 @@ Resolution: not-a-bug
 
 Versions: 2.2.1
 
-From [Open-CMSIS-Pack/devtools #1356](https://github.com/Open-CMSIS-Pack/devtools/issues/1356), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #1356](https://github.com/Open-CMSIS-Pack/devtools/issues/1356), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

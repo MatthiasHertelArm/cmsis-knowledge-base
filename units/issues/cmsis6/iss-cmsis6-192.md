@@ -12,6 +12,7 @@ doc_source: "https://github.com/ARM-software/CMSIS_6/issues/192"
 resolution: "user-error"
 confidence: "low"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-view"], "toolchain": ["AC6"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Give the library a heap or avoid heap-using library functions per the Arm C libr
 
 Resolution: user-error
 
-From [ARM-software/CMSIS_6 #192](https://github.com/ARM-software/CMSIS_6/issues/192), summarized in own words; confidence low, not reviewed yet.
+From [ARM-software/CMSIS_6 #192](https://github.com/ARM-software/CMSIS_6/issues/192), summarized in own words; confidence low, checked against the thread, not reviewed yet.

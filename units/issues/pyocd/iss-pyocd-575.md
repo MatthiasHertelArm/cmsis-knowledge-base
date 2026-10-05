@@ -3,16 +3,17 @@ id: "iss-pyocd-575"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: STLink probe appears and disappears with 'The device has no langid' on Windows"
-summary: "Probe discovery used a custom USB match that opened every device; on Windows reading the string descriptor failed at times, so the probe list flickered between filled and empty."
+summary: "On Windows, STLink discovery through the custom USB match function intermittently failed to read the STLink's USB device fields ('The device has no langid'), so the probe list alternated between found and empty."
 status: "draft"
 tool: "pyocd"
 collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/575"
 doc_source: "https://github.com/pyocd/pyOCD/issues/575"
 resolution: "fixed-in-release"
-versions: "0.19 to 0.20"
+versions: "STLink V2-1 firmware v2J32"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -20,16 +21,16 @@ mode: "S"
 
 ## Cause
 
-Probe discovery used a custom USB match that opened every device; on Windows reading the string descriptor failed at times, so the probe list flickered between filled and empty.
+On Windows, STLink discovery through the custom USB match function intermittently failed to read the STLink's USB device fields ('The device has no langid'), so the probe list alternated between found and empty.
 
 ## Fix
 
-Upgrade to a pyOCD release that fixed probe enumeration (confirmed by the reporter after the maintainer's change); a workaround was to match the ST-Link VID/PID directly.
+Use a pyOCD version with the maintainer's permanent fix, which the reporter confirmed (no release named). The reporter's workaround was to find the STLink by VID 0x0483 / PID 0x374b in get_all_connected_devices instead of the custom match.
 
 ## Source
 
 Resolution: fixed-in-release
 
-Versions: 0.19 to 0.20
+Versions: STLink V2-1 firmware v2J32
 
-From [pyocd/pyOCD #575](https://github.com/pyocd/pyOCD/issues/575), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #575](https://github.com/pyocd/pyOCD/issues/575), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

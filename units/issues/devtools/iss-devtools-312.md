@@ -14,6 +14,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/312"
 resolution: "configuration"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cbuild"], "toolchain": ["AC6"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -35,4 +36,4 @@ Add misc: - ASM: - -masm=auto to the build type (written as a single option with
 
 Resolution: configuration
 
-From [Open-CMSIS-Pack/devtools #312](https://github.com/Open-CMSIS-Pack/devtools/issues/312), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #312](https://github.com/Open-CMSIS-Pack/devtools/issues/312), summarized in own words; confidence high, checked against the thread, not reviewed yet.

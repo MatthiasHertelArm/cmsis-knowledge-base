@@ -3,7 +3,7 @@ id: "iss-pyocd-696"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: Debug start on Windows hangs with 'Waiting for a debug probe to be connected...'"
-summary: "On Windows, STLink and CMSIS-DAP v2 probes need a libusb DLL next to the Python executable, and it must match the Python architecture (32 or 64 bit); without it no probe is found."
+summary: "On Windows pyOCD found no libusb library, so STLink and CMSIS-DAP v2 probes were unsupported and the server kept waiting for a probe; 'pip install libusb' did not provide the DLL."
 status: "draft"
 tool: "pyocd"
 symptoms: ["Waiting for a debug probe to be connected..."]
@@ -14,6 +14,7 @@ doc_source: "https://github.com/pyocd/pyOCD/issues/696"
 resolution: "configuration"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -25,14 +26,14 @@ mode: "S"
 
 ## Cause
 
-On Windows, STLink and CMSIS-DAP v2 probes need a libusb DLL next to the Python executable, and it must match the Python architecture (32 or 64 bit); without it no probe is found.
+On Windows pyOCD found no libusb library, so STLink and CMSIS-DAP v2 probes were unsupported and the server kept waiting for a probe; 'pip install libusb' did not provide the DLL.
 
 ## Fix
 
-Download libusb, put the DLL of the matching bitness next to python.exe as the README says, then run `pyocd list` to check.
+Download libusb from libusb.info and place its DLL next to python.exe, matching the 32- or 64-bit architecture of the Python installation (maintainer's advice, not confirmed in the thread).
 
 ## Source
 
 Resolution: configuration
 
-From [pyocd/pyOCD #696](https://github.com/pyocd/pyOCD/issues/696), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #696](https://github.com/pyocd/pyOCD/issues/696), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

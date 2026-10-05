@@ -15,6 +15,7 @@ resolution: "workaround"
 versions: "broken 0.35.0 and 0.35.1"
 confidence: "low"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: workaround
 
 Versions: broken 0.35.0 and 0.35.1
 
-From [pyocd/pyOCD #1553](https://github.com/pyocd/pyOCD/issues/1553), summarized in own words; confidence low, not reviewed yet.
+From [pyocd/pyOCD #1553](https://github.com/pyocd/pyOCD/issues/1553), summarized in own words; confidence low, checked against the thread, not reviewed yet.

@@ -3,15 +3,16 @@ id: "iss-dbg-664"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: Internal pyOCD targets fail to program after double buffering was disabled"
-summary: "Disabling double buffering changed the buffer address the algorithm uses, and algorithms of some internal targets relied on the old begin_data location."
+summary: "After double buffering was disabled by default, the flash algorithms of some pyOCD internal targets used a different buffer address, so programming failed."
 status: "draft"
 tool: "pyocd"
 collection: "issues-dbg"
 source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/664"
 doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/664"
-resolution: "fixed-in-release"
+resolution: "workaround"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -19,14 +20,14 @@ mode: "S"
 
 ## Cause
 
-Disabling double buffering changed the buffer address the algorithm uses, and algorithms of some internal targets relied on the old begin_data location.
+After double buffering was disabled by default, the flash algorithms of some pyOCD internal targets used a different buffer address, so programming failed.
 
 ## Fix
 
-Use a pyOCD containing PR 1898 (double buffering kept for internal targets, page_buffers cleaned up, STM32H7 excluded).
+Use a pyOCD build with PR 1898: double buffering is enabled again by default for internal targets, begin_data is replaced by a single page_buffers entry, and STM32H7xx internal targets keep only one buffer. It was tested on several boards; no release is named.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: workaround
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #664](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/664), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #664](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/664), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

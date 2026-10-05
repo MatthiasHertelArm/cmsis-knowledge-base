@@ -12,9 +12,10 @@ collection: "issues-cpackget"
 source: "https://github.com/Open-CMSIS-Pack/cpackget/issues/609"
 doc_source: "https://github.com/Open-CMSIS-Pack/cpackget/issues/609"
 resolution: "workaround"
-versions: "--insecure-skip-verify added in 2025/2026 releases"
-confidence: "high"
+versions: "Debian 12 (bookworm) affected; Debian 13 and Ubuntu Server 24.04 work; --insecure-skip-verify verified with a CMSIS-Toolbox nightly build"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cpackget"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -30,12 +31,12 @@ The pack server's certificate chain ends in a root CA that is missing from the C
 
 ## Fix
 
-Update ca-certificates or the OS image so the issuing root is trusted. If that is impossible, use a cpackget/CMSIS-Toolbox build that has the --insecure-skip-verify option and accept the risk: cpackget add <pack> --insecure-skip-verify.
+Use an OS image whose CA store trusts the issuing root (the error did not occur on Debian 13 or Ubuntu Server 24.04). Otherwise use a cpackget with the --insecure-skip-verify option, at your own risk: cpackget add <pack> --insecure-skip-verify (verified with a CMSIS-Toolbox nightly build; the CMSIS-Toolbox release tested before lacked the option).
 
 ## Source
 
 Resolution: workaround
 
-Versions: --insecure-skip-verify added in 2025/2026 releases
+Versions: Debian 12 (bookworm) affected; Debian 13 and Ubuntu Server 24.04 work; --insecure-skip-verify verified with a CMSIS-Toolbox nightly build
 
-From [Open-CMSIS-Pack/cpackget #609](https://github.com/Open-CMSIS-Pack/cpackget/issues/609), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/cpackget #609](https://github.com/Open-CMSIS-Pack/cpackget/issues/609), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

@@ -12,9 +12,9 @@ collection: "issues-devtools"
 source: "https://github.com/Open-CMSIS-Pack/devtools/issues/30"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/30"
 resolution: "fixed-in-release"
-versions: "2021"
-confidence: "high"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cbuild"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -31,12 +31,10 @@ Locally referenced packs were not supported by the early build tools.
 
 ## Fix
 
-Support was added shortly after the report (devtools PR 33); use a current CMSIS-Toolbox.
+Support for local packs was added in devtools PR #33 (verified by the reporter on the main branch); use a tool version that contains it.
 
 ## Source
 
 Resolution: fixed-in-release
 
-Versions: 2021
-
-From [Open-CMSIS-Pack/devtools #30](https://github.com/Open-CMSIS-Pack/devtools/issues/30), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #30](https://github.com/Open-CMSIS-Pack/devtools/issues/30), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

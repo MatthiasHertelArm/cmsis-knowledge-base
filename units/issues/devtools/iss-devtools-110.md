@@ -14,6 +14,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/110"
 resolution: "workaround"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["packchk"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -30,10 +31,10 @@ The case-sensitivity check trims leading ./ characters with find_first_not_of, w
 
 ## Fix
 
-Use the older PackChk from CMSIS 5 until a fixed devtools packchk is used, or avoid names starting with a dot.
+For the time being use the PackChk binary from CMSIS_5 (develop branch, CMSIS/Utilities); the maintainer named the code fix (use find("./") instead), no release is shown.
 
 ## Source
 
 Resolution: workaround
 
-From [Open-CMSIS-Pack/devtools #110](https://github.com/Open-CMSIS-Pack/devtools/issues/110), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #110](https://github.com/Open-CMSIS-Pack/devtools/issues/110), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

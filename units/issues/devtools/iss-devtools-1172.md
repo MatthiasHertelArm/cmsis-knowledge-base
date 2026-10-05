@@ -13,6 +13,7 @@ resolution: "workaround"
 issue_state: "open"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cpackget", "csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: workaround
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [Open-CMSIS-Pack/devtools #1172](https://github.com/Open-CMSIS-Pack/devtools/issues/1172), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #1172](https://github.com/Open-CMSIS-Pack/devtools/issues/1172), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

@@ -3,16 +3,17 @@ id: "iss-toolbox-195"
 type: "troubleshooting"
 domain: "project"
 title: "cbuild: Files in nested groups are compiled without -g and -O options"
-summary: "cbuild 2.6.1 did not pass the project-level compile options to files placed in sub-groups, so no debug info was produced and breakpoints failed."
+summary: "cbuild 2.6.1 did not pass the -g and -O compile options to files placed in nested sub-groups, so no debug info was produced and breakpoints could not be set."
 status: "draft"
 tool: "cbuild"
 collection: "issues-toolbox"
 source: "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/195"
 doc_source: "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/195"
 resolution: "fixed-in-release"
-versions: "2.6.1"
-confidence: "high"
+versions: "cbuild 2.6.1 affected"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cbuild"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -20,16 +21,16 @@ mode: "S"
 
 ## Cause
 
-cbuild 2.6.1 did not pass the project-level compile options to files placed in sub-groups, so no debug info was produced and breakpoints failed.
+cbuild 2.6.1 did not pass the -g and -O compile options to files placed in nested sub-groups, so no debug info was produced and breakpoints could not be set.
 
 ## Fix
 
-Use a toolbox newer than 2.6.1 (nightly of December 2024 and later); or temporarily avoid nested groups.
+Use a CMSIS-Toolbox nightly with the fix, which the reporter confirmed; no release is named. Until then keep such files out of nested groups.
 
 ## Source
 
 Resolution: fixed-in-release
 
-Versions: 2.6.1
+Versions: cbuild 2.6.1 affected
 
-From [Open-CMSIS-Pack/cmsis-toolbox #195](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/195), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/cmsis-toolbox #195](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/195), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

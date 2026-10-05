@@ -15,6 +15,7 @@ resolution: "user-error"
 versions: "0.12 to 0.14"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: user-error
 
 Versions: 0.12 to 0.14
 
-From [pyocd/pyOCD #487](https://github.com/pyocd/pyOCD/issues/487), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #487](https://github.com/pyocd/pyOCD/issues/487), summarized in own words; confidence high, checked against the thread, not reviewed yet.

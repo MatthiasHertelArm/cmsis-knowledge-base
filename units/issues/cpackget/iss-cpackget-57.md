@@ -3,39 +3,31 @@ id: "iss-cpackget-57"
 type: "troubleshooting"
 domain: "pack"
 title: "cpackget: cpackget add of an older pack version fails with 'URL for the pack cannot be determined'"
-summary: "In 2022 cpackget searched index.pidx for vendor, name and the requested version, but the index only lists the latest version of each pack; the pdsc should have been located by vendor and name and the version taken from its releases."
+summary: "cpackget looked up the pdsc entry in index.pidx by vendor, name and the requested version, but the index lists only the latest version of each pack, so an older version cannot be found while its pdsc is not yet …"
 status: "draft"
 tool: "cpackget"
-symptoms: ["E: URL for the pack cannot be determined. Please consider updating the public index. Ex: cpackget update-index"]
-symptom_regex: "E:\\s+URL\\s+for\\s+the\\s+pack\\s+cannot\\s+be\\s+determined\\.\\s+Please\\s+consider\\s+updating\\s+the\\s+public\\s+index\\.\\s+Ex:\\s+cpackget\\s+update\\-index"
 collection: "issues-cpackget"
 source: "https://github.com/Open-CMSIS-Pack/cpackget/issues/57"
 doc_source: "https://github.com/Open-CMSIS-Pack/cpackget/issues/57"
-resolution: "fixed-in-release"
-versions: "0.4.x"
-confidence: "high"
+resolution: "workaround"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cpackget"]}
 license: "own summary of a GitHub issue"
 mode: "S"
 ---
 
-## Symptom
-
-`E: URL for the pack cannot be determined. Please consider updating the public index. Ex: cpackget update-index`
-
 ## Cause
 
-In 2022 cpackget searched index.pidx for vendor, name and the requested version, but the index only lists the latest version of each pack; the pdsc should have been located by vendor and name and the version taken from its releases.
+cpackget looked up the pdsc entry in index.pidx by vendor, name and the requested version, but the index lists only the latest version of each pack, so an older version cannot be found while its pdsc is not yet in .Web. It should look up vendor and name only.
 
 ## Fix
 
-Use a cpackget release after 0.4.x (fixed 2022), or run cpackget update-index. The message itself was later corrected to name update-index.
+Install the latest version of the pack first, so that its pdsc lands in .Web; the older version then installs. PR #60 changes the lookup to vendor and name.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: workaround
 
-Versions: 0.4.x
-
-From [Open-CMSIS-Pack/cpackget #57](https://github.com/Open-CMSIS-Pack/cpackget/issues/57), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/cpackget #57](https://github.com/Open-CMSIS-Pack/cpackget/issues/57), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

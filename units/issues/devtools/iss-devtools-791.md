@@ -14,6 +14,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/791"
 resolution: "configuration"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["packchk"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,10 +30,10 @@ Xerces-C picks up libcurl when it is installed, but packchk is linked with -stat
 
 ## Fix
 
-Build Xerces with its option network=OFF (packchk does not need network access); alternatively uninstall the libcurl development files.
+Build Xerces with its option network=OFF; packchk is agreed to need no network support.
 
 ## Source
 
 Resolution: configuration
 
-From [Open-CMSIS-Pack/devtools #791](https://github.com/Open-CMSIS-Pack/devtools/issues/791), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #791](https://github.com/Open-CMSIS-Pack/devtools/issues/791), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

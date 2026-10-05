@@ -14,6 +14,7 @@ versions: "Broken in 1.72, working in 1.70, fixed in nightly 2026-10-02"
 issue_state: "open"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-solution", "csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -35,4 +36,4 @@ Versions: Broken in 1.72, working in 1.70, fixed in nightly 2026-10-02
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [Open-CMSIS-Pack/vscode-cmsis-solution #550](https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/550), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-solution #550](https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/550), summarized in own words; confidence high, checked against the thread, not reviewed yet.

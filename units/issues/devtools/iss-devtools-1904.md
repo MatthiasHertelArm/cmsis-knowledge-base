@@ -13,6 +13,7 @@ resolution: "fixed-in-release"
 versions: "LLVM 19.1.1 with toolbox before 2.7.0"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cbuild"], "core": ["Cortex-M55"], "toolchain": ["CLANG"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: fixed-in-release
 
 Versions: LLVM 19.1.1 with toolbox before 2.7.0
 
-From [Open-CMSIS-Pack/devtools #1904](https://github.com/Open-CMSIS-Pack/devtools/issues/1904), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #1904](https://github.com/Open-CMSIS-Pack/devtools/issues/1904), summarized in own words; confidence high, checked against the thread, not reviewed yet.

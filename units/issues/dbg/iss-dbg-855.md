@@ -12,6 +12,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/855
 resolution: "workaround"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-debugger"], "device": ["Nuvoton M55M1"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Update the Nu-Link2 firmware to the latest release from Nuvoton.
 
 Resolution: workaround
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #855](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/855), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #855](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/855), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

@@ -12,6 +12,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/166
 resolution: "workaround"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -23,10 +24,10 @@ pyOCD monitor commands change the CPU state without GDB async records, so the GU
 
 ## Fix
 
-Use "monitor reset halt" and the adapter reset button (resetDeviceCommands/customResetCommands such as monitor reset halt hardware). Step once to resync.
+Use 'monitor reset halt' instead of 'monitor reset', or configure the reset button with resetDeviceCommands such as 'monitor reset halt hardware'; a single step afterwards brings the GUI back in sync.
 
 ## Source
 
 Resolution: workaround
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #166](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/166), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #166](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/166), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

@@ -16,6 +16,7 @@ versions: "Regression from v0.44.0; still present in v0.45.1."
 issue_state: "open"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "device": ["ATSAM4LS8C"], "core": ["Cortex-M4"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -41,4 +42,4 @@ Versions: Regression from v0.44.0; still present in v0.45.1.
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [pyocd/pyOCD #2031](https://github.com/pyocd/pyOCD/issues/2031), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #2031](https://github.com/pyocd/pyOCD/issues/2031), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

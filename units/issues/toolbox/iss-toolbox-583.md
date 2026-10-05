@@ -13,6 +13,7 @@ resolution: "fixed-in-release"
 versions: "missing before 2.13.x nightly; Clang 22 tested"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["csolution"], "toolchain": ["CLANG"], "core": ["Cortex-M7"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: fixed-in-release
 
 Versions: missing before 2.13.x nightly; Clang 22 tested
 
-From [Open-CMSIS-Pack/cmsis-toolbox #583](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/583), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/cmsis-toolbox #583](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/583), summarized in own words; confidence high, checked against the thread, not reviewed yet.

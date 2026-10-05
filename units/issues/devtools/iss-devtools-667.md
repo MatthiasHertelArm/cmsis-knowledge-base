@@ -11,8 +11,9 @@ source: "https://github.com/Open-CMSIS-Pack/devtools/issues/667"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/667"
 resolution: "fixed-in-release"
 versions: "fixed in 1.5.0"
-confidence: "high"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["csolution"], "toolchain": ["IAR"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -24,7 +25,7 @@ The .icf extension was not recognized as a linker script, so the cprj entry got 
 
 ## Fix
 
-Fixed in CMSIS-Toolbox 1.5.0; on older versions rename or set the category manually.
+Fixed in CMSIS-Toolbox 1.5.0, which recognizes .icf as a linker script.
 
 ## Source
 
@@ -32,4 +33,4 @@ Resolution: fixed-in-release
 
 Versions: fixed in 1.5.0
 
-From [Open-CMSIS-Pack/devtools #667](https://github.com/Open-CMSIS-Pack/devtools/issues/667), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #667](https://github.com/Open-CMSIS-Pack/devtools/issues/667), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

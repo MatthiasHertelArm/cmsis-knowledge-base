@@ -15,6 +15,7 @@ resolution: "workaround"
 versions: "0.14.3"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "device": ["STM32F401RETx"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: workaround
 
 Versions: 0.14.3
 
-From [pyocd/pyOCD #497](https://github.com/pyocd/pyOCD/issues/497), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #497](https://github.com/pyocd/pyOCD/issues/497), summarized in own words; confidence high, checked against the thread, not reviewed yet.

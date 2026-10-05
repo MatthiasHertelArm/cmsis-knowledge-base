@@ -11,10 +11,11 @@ symptom_regex: "W\\s+Failed\\s+to\\s+add\\s+data\\s+chunk:\\s+no\\s+memory\\s+re
 collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/1589"
 doc_source: "https://github.com/pyocd/pyOCD/issues/1589"
-resolution: "fixed-in-release"
+resolution: "workaround"
 versions: "0.35.1"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"], "device": ["HC32L130F8UA"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -30,12 +31,12 @@ The built-in memory map for the part covered only the first 32 KB of flash.
 
 ## Fix
 
-Fixed by change #1590; use a release containing it, or use the vendor pack with the specific part name.
+Use the vendor pack with the specific part name (--pack HDSC.HC32L130.1.0.1.pack --target hc32l130f8ua), which flashes and runs. PR #1590 seemed to fix the built-in target; this was not confirmed.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: workaround
 
 Versions: 0.35.1
 
-From [pyocd/pyOCD #1589](https://github.com/pyocd/pyOCD/issues/1589), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #1589](https://github.com/pyocd/pyOCD/issues/1589), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

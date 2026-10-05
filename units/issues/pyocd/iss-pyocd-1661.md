@@ -3,7 +3,7 @@ id: "iss-pyocd-1661"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: RTT control block not found when its ID string straddles a 32-byte boundary"
-summary: "The control block search code read memory in chunks and missed an ID string that crossed a chunk boundary."
+summary: "pyOCD's RTT control block search failed when the control block ID string crossed a 32-byte boundary."
 status: "draft"
 tool: "pyocd"
 symptoms: ["C Control block not found [__main__]"]
@@ -12,8 +12,9 @@ collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/1661"
 doc_source: "https://github.com/pyocd/pyOCD/issues/1661"
 resolution: "fixed-in-release"
-confidence: "high"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -25,14 +26,14 @@ mode: "S"
 
 ## Cause
 
-The control block search code read memory in chunks and missed an ID string that crossed a chunk boundary.
+pyOCD's RTT control block search failed when the control block ID string crossed a 32-byte boundary.
 
 ## Fix
 
-Workaround: start the search 16 bytes later (change -a address by 0x10) or force 16-byte alignment of the block. Fixed by change #1669 in a later release.
+Workaround: shift the search start by 16 bytes (one of -a 0x20000000 or -a 0x20000010 works) or align the control block to 16 bytes. The fix (#1669) is merged into pyOCD's develop branch.
 
 ## Source
 
 Resolution: fixed-in-release
 
-From [pyocd/pyOCD #1661](https://github.com/pyocd/pyOCD/issues/1661), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #1661](https://github.com/pyocd/pyOCD/issues/1661), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

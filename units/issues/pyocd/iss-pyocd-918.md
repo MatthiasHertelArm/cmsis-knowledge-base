@@ -3,16 +3,16 @@ id: "iss-pyocd-918"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: Flashing an nRF52 via ST-LINK V2 fails with 'STLink error (29)' after a tool update"
-summary: "ST-LINK firmware versions (V2J37S7 in this case) refuse to operate on non-STM32 targets; the earlier firmware worked."
+summary: "ST-Link firmware V2J37S7 apparently refuses to work with non-STM32 devices (the maintainer's belief); with V2J34S7 the nRF52832 could be flashed again."
 status: "draft"
 tool: "pyocd"
 collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/918"
 doc_source: "https://github.com/pyocd/pyOCD/issues/918"
 resolution: "workaround"
-versions: "seen July 2020"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"], "device": ["nRF52832"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -20,16 +20,14 @@ mode: "S"
 
 ## Cause
 
-ST-LINK firmware versions (V2J37S7 in this case) refuse to operate on non-STM32 targets; the earlier firmware worked.
+ST-Link firmware V2J37S7 apparently refuses to work with non-STM32 devices (the maintainer's belief); with V2J34S7 the nRF52832 could be flashed again.
 
 ## Fix
 
-Flash an older ST-LINK firmware such as V2J34S7, or use a CMSIS-DAP/J-Link probe for non-ST targets.
+Downgrade the ST-Link firmware to an older version such as V2J34S7.
 
 ## Source
 
 Resolution: workaround
 
-Versions: seen July 2020
-
-From [pyocd/pyOCD #918](https://github.com/pyocd/pyOCD/issues/918), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #918](https://github.com/pyocd/pyOCD/issues/918), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

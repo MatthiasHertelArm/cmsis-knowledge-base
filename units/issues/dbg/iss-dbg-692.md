@@ -12,6 +12,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/692
 resolution: "workaround"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Disable the memory cache with -Ocache.enable_memory=false in the pyOCD arguments
 
 Resolution: workaround
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #692](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/692), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #692](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/692), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

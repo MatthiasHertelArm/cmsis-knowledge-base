@@ -15,6 +15,7 @@ resolution: "workaround"
 versions: "0.35.1"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "device": ["MSPM0G3507"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: workaround
 
 Versions: 0.35.1
 
-From [pyocd/pyOCD #1585](https://github.com/pyocd/pyOCD/issues/1585), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #1585](https://github.com/pyocd/pyOCD/issues/1585), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

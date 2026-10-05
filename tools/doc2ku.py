@@ -224,6 +224,12 @@ def rst_inline(t):
 def rst_to_md(text):
     lines = text.replace("\t", "    ").splitlines()
     out, levels, i = [], [], 0
+    # A Zephyr board page names its board in a directive, and its first title is "Overview": the board
+    # becomes the page title and every section moves one level down.
+    board = next((m.group(1) for m in (re.match(r"^\.\.\s+zephyr:board::\s*(\S+)", x) for x in lines) if m), None)
+    offset = 1 if board else 0
+    if board:
+        out += [f"# {board}", ""]
     while i < len(lines):
         line = lines[i]
         nxt = lines[i + 1] if i + 1 < len(lines) else ""
@@ -235,7 +241,7 @@ def rst_to_md(text):
                 levels.append(key)
             if over and out and RST_ADORN.match(out[-1] or ""):
                 out.pop()
-            out += ["", "#" * min(levels.index(key) + 1, 6) + " " + rst_inline(line.strip()), ""]
+            out += ["", "#" * min(levels.index(key) + 1 + offset, 6) + " " + rst_inline(line.strip()), ""]
             i += 2
             continue
         if RST_ADORN.match(line) and i + 2 < len(lines) and RST_ADORN.match(lines[i + 2] or ""):
@@ -593,6 +599,9 @@ def main(cfg, docs, out, only=None, get=False):
         if not repo.exists() and get:
             print(f"{src['name']:28s} cloning {src['repo']}")
             fetch(src, repo)
+        elif repo.exists() and get and src.get("sparse"):
+            # A second source on the same sparse clone adds its paths.
+            subprocess.run(["git", "-C", str(repo), "sparse-checkout", "add"] + list(src["sparse"]), check=False)
         if not repo.exists():
             print(f"{src['name']:28s} missing clone {repo}")
             continue

@@ -12,9 +12,10 @@ collection: "issues-cpackget"
 source: "https://github.com/Open-CMSIS-Pack/cpackget/issues/776"
 doc_source: "https://github.com/Open-CMSIS-Pack/cpackget/issues/776"
 resolution: "workaround"
-versions: "cpackget 2.2.1"
+versions: "CMSIS-Toolbox 2.14.1, cpackget 2.2.1"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cpackget"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -27,16 +28,16 @@ mode: "S"
 
 ## Cause
 
-A pack registered via its pdsc file stays in .Local/local_repository.pidx after the pdsc is deleted. The rm attempt in the report used a name that did not match the entry (and a pdsc path with a typo), hence the refusal.
+A pack registered via its pdsc file stays in .Local/local_repository.pidx after the pdsc is deleted. In the report, removing by packID with the version failed, and the attempt by pdsc path had a typo (.pds instead of .pdsc).
 
 ## Fix
 
-Remove the entry with cpackget rm using the exact packID (vendor::name, optionally with the version) or the exact pdsc path as shown by cpackget list; if that still fails, delete the matching pdsc line from <CMSIS_PACK_ROOT>/.Local/local_repository.pidx by hand. The maintainers documented this and made no tool change.
+Remove the entry with cpackget rm using the packID without version (for example ARM::SDS) or the exact pdsc path as shown by cpackget list; both worked in the maintainer's test with cpackget 2.2.1 although the pdsc no longer existed. Deleting the pdsc line from local_repository.pidx by hand also works. The maintainers added a note to the documentation and made no tool change.
 
 ## Source
 
 Resolution: workaround
 
-Versions: cpackget 2.2.1
+Versions: CMSIS-Toolbox 2.14.1, cpackget 2.2.1
 
-From [Open-CMSIS-Pack/cpackget #776](https://github.com/Open-CMSIS-Pack/cpackget/issues/776), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/cpackget #776](https://github.com/Open-CMSIS-Pack/cpackget/issues/776), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

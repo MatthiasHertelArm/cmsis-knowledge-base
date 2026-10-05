@@ -12,6 +12,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/428
 resolution: "fixed-in-release"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-debugger"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Use CMSIS Debugger 1.0.0 or later with CMSIS Solution templates that add cmsis/c
 
 Resolution: fixed-in-release
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #428](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/428), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #428](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/428), summarized in own words; confidence high, checked against the thread, not reviewed yet.

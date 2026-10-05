@@ -12,9 +12,10 @@ collection: "issues-devtools"
 source: "https://github.com/Open-CMSIS-Pack/devtools/issues/786"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/786"
 resolution: "fixed-in-release"
-versions: "fixed in packchk 1.4.0"
-confidence: "high"
+versions: "packchk 1.4.0"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["packchk"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -31,12 +32,12 @@ packchk looks for the schema in ./, ../etc/ and ../../etc/ relative to the execu
 
 ## Fix
 
-Place PACK.xsd in one of those folders or pass --xsd <file>. Since packchk 1.4.0 error M218 states the searched folders and M219 reports a bad --xsd path.
+Place PACK.xsd in one of those folders or pass --xsd <file>. From packchk 1.4.0 error M218 names the searched folders; a later development build words it with the executable path and adds M219 for a --xsd file that is not found.
 
 ## Source
 
 Resolution: fixed-in-release
 
-Versions: fixed in packchk 1.4.0
+Versions: packchk 1.4.0
 
-From [Open-CMSIS-Pack/devtools #786](https://github.com/Open-CMSIS-Pack/devtools/issues/786), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #786](https://github.com/Open-CMSIS-Pack/devtools/issues/786), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

@@ -12,6 +12,7 @@ doc_source: "https://github.com/pyocd/pyOCD/issues/1808"
 resolution: "fixed-in-release"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "toolchain": ["IAR"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Fixed in a pyOCD commit that adds the extension; use a release containing it.
 
 Resolution: fixed-in-release
 
-From [pyocd/pyOCD #1808](https://github.com/pyocd/pyOCD/issues/1808), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #1808](https://github.com/pyocd/pyOCD/issues/1808), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

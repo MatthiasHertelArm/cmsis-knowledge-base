@@ -3,7 +3,7 @@ id: "iss-dbg-685"
 type: "troubleshooting"
 domain: "debug"
 title: "GDB: GDB warnings \"pc ... in read in CU, but not in symtab\" with Arm Compiler images"
-summary: "GDB treats all addresses in a CU address table as code addresses, including const objects placed in code sections of AC6 images, then fails a cross-check; reading objects such as osRtxConfig triggers it."
+summary: "The warnings come from GDB with AC6-built images and showed with RTOS views enabled."
 status: "draft"
 tool: "gdb"
 symptoms: ["warning: (Internal error: pc 0x8020a6d8 in read in CU, but not in symtab.)", "warning: (Error: pc 0x8020a6d8 in address map, but not in symtab.)"]
@@ -12,9 +12,9 @@ collection: "issues-dbg"
 source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/685"
 doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/685"
 resolution: "workaround"
-versions: "AC6 .axf images"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["gdb"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -27,16 +27,14 @@ mode: "S"
 
 ## Cause
 
-GDB treats all addresses in a CU address table as code addresses, including const objects placed in code sections of AC6 images, then fails a cross-check; reading objects such as osRtxConfig triggers it. The debug info itself looks fine.
+The warnings come from GDB with AC6-built images and showed with RTOS views enabled. A maintainer's tentative reading: the AC6 debug info looks sensible, but GDB treats every address in a CU's .debug_addr table as a code address, including const data placed in code sections, and a cross-check against the symbol table then fails.
 
 ## Fix
 
-The warnings are harmless. CMSIS Debugger 1.3.0 filters this GDB output from the console; GDB CLI use outside VS Code still shows it.
+The warnings are harmless. Discarding them from the Debug Console through the CMSIS Debugger debug tracker was proposed and is addressed in PR #688 (no release named); GDB used from the command line outside VS Code still shows them.
 
 ## Source
 
 Resolution: workaround
 
-Versions: AC6 .axf images
-
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #685](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/685), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #685](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/685), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

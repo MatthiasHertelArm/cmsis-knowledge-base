@@ -9,9 +9,10 @@ tool: "cmsis-debugger"
 collection: "issues-dbg"
 source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/103"
 doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/103"
-resolution: "fixed-in-release"
-confidence: "high"
+resolution: "workaround"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cmsis-debugger"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -23,10 +24,10 @@ The adapter killed the GDB server immediately, before pyOCD could turn off debug
 
 ## Fix
 
-Use CDT GDB Adapter with a server kill delay (PRs 405/175); keep automaticallyKillServer.
+Use a CDT GDB Adapter with the server kill delay (PRs 405 and 175), which together with automaticallyKillServer gives pyOCD time to disconnect cleanly; it was tested with a not yet public build, no release named. Until then, reset or power-cycle the board after disconnecting.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: workaround
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #103](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/103), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #103](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/103), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

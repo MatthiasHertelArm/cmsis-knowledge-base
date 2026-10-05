@@ -13,6 +13,7 @@ resolution: "workaround"
 versions: "1.6.1"
 confidence: "low"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cbuild"], "toolchain": ["IAR"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: workaround
 
 Versions: 1.6.1
 
-From [Open-CMSIS-Pack/devtools #870](https://github.com/Open-CMSIS-Pack/devtools/issues/870), summarized in own words; confidence low, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #870](https://github.com/Open-CMSIS-Pack/devtools/issues/870), summarized in own words; confidence low, checked against the thread, not reviewed yet.

@@ -12,9 +12,9 @@ collection: "issues-toolbox"
 source: "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/394"
 doc_source: "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/394"
 resolution: "fixed-in-release"
-versions: "before July 2025 nightlies"
-confidence: "high"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cbuild"], "toolchain": ["AC6"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -30,12 +30,10 @@ No dependency flags were passed for armclang ASM files, so the assembly source h
 
 ## Fix
 
-Rebuild the solution as a workaround. Fixed by adding dependency flags for AC6 assembler files in the toolbox nightly of mid July 2025.
+Rebuild the solution as a workaround. The maintainer proposed setting the ASM dependency flags in the AC6 build configuration, and the reporter confirmed that a later toolbox nightly fixes it; no release is named.
 
 ## Source
 
 Resolution: fixed-in-release
 
-Versions: before July 2025 nightlies
-
-From [Open-CMSIS-Pack/cmsis-toolbox #394](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/394), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/cmsis-toolbox #394](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/394), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

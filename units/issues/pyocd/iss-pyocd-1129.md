@@ -3,7 +3,7 @@ id: "iss-pyocd-1129"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: PowerShell window closes after pyocd list, flash or reset on Windows"
-summary: "The crash comes from PowerShell's own console key reader (PSReadLine) after pyocd has used the console, not from the probe or target."
+summary: "PowerShell itself crashes: its console key reader (PSConsoleReadLine.ReadKey) throws ArgumentOutOfRangeException a moment after commands such as pyocd list, json or reset return."
 status: "draft"
 tool: "pyocd"
 symptoms: ["Unhandled exception. System.ArgumentOutOfRangeException: Console key values must be between 0 and 255 inclusive. (Parameter 'key')"]
@@ -12,10 +12,11 @@ collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/1129"
 doc_source: "https://github.com/pyocd/pyOCD/issues/1129"
 resolution: "workaround"
-versions: "pyOCD 0.29 to 0.32 on Windows 10/11"
+versions: "pyOCD 0.29.0 to 0.32.1; Windows PowerShell 5.1, PowerShell 7.2"
 issue_state: "open"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -27,18 +28,18 @@ mode: "S"
 
 ## Cause
 
-The crash comes from PowerShell's own console key reader (PSReadLine) after pyocd has used the console, not from the probe or target. It reproduces with Windows PowerShell 5.1 and 7.x but not with cmd.exe.
+PowerShell itself crashes: its console key reader (PSConsoleReadLine.ReadKey) throws ArgumentOutOfRangeException a moment after commands such as pyocd list, json or reset return. Seen with Windows PowerShell 5.1 and PowerShell 7.2, not with cmd.exe.
 
 ## Fix
 
-Run pyocd from cmd.exe (also works when started from a PowerShell window), or use a different terminal. Commands such as 'pyocd --version' are harmless; the crash follows probe-accessing commands.
+Run pyocd from cmd.exe (this also works inside a PowerShell window). pyocd --version and the interactive pyocd commander do not trigger it.
 
 ## Source
 
 Resolution: workaround
 
-Versions: pyOCD 0.29 to 0.32 on Windows 10/11
+Versions: pyOCD 0.29.0 to 0.32.1; Windows PowerShell 5.1, PowerShell 7.2
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [pyocd/pyOCD #1129](https://github.com/pyocd/pyOCD/issues/1129), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #1129](https://github.com/pyocd/pyOCD/issues/1129), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

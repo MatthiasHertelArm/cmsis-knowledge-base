@@ -9,9 +9,10 @@ tool: "cmsis-debugger"
 collection: "issues-dbg"
 source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/130"
 doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/130"
-resolution: "fixed-in-release"
-confidence: "high"
+resolution: "workaround"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cmsis-debugger"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -23,10 +24,10 @@ GDB accepts all and fails at continue with "Command aborted" after sending ^runn
 
 ## Fix
 
-Update CDT GDB Adapter (PR 415); remove surplus breakpoints. Workaround: set breakpoint always-inserted on in initCommands.
+Keep the number of breakpoints within the hardware limit (an improved error message asks to remove breakpoints). A CDT GDB Adapter fix for the late error (PR 415) was implemented but still needed tests; no release is named. Possible workaround: 'set breakpoint always-inserted on' in initCommands, which however uncovers other breakpoint management issues.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: workaround
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #130](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/130), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #130](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/130), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

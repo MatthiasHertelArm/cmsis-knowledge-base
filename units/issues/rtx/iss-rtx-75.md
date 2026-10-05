@@ -12,6 +12,7 @@ doc_source: "https://github.com/ARM-software/CMSIS-RTX/issues/75"
 resolution: "configuration"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-rtx"], "toolchain": ["AC6"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Let the project build the .S files with armclang (set the assembler syntax with 
 
 Resolution: configuration
 
-From [ARM-software/CMSIS-RTX #75](https://github.com/ARM-software/CMSIS-RTX/issues/75), summarized in own words; confidence medium, not reviewed yet.
+From [ARM-software/CMSIS-RTX #75](https://github.com/ARM-software/CMSIS-RTX/issues/75), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

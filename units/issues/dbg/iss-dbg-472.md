@@ -14,6 +14,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/472
 resolution: "fixed-in-release"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -36,4 +37,4 @@ Check the path of the --cbuild-run file. From pyOCD 0.39.0 the missing file ends
 
 Resolution: fixed-in-release
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #472](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/472), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #472](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/472), summarized in own words; confidence high, checked against the thread, not reviewed yet.

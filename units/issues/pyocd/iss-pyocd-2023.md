@@ -3,7 +3,7 @@ id: "iss-pyocd-2023"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: Flash load after halting a running target fails with IPSR=3 or flash init timeout"
-summary: "Flash algorithms assume the core starts from a reset state."
+summary: "Flash algorithms typically assume the device has been reset before they run; loading after only halting a running application is not supported, and the algorithm then faults or times out."
 status: "draft"
 tool: "pyocd"
 symptoms: ["target was not halted as expected after calling flash algorithm routine (IPSR=3)", "flash init timed out"]
@@ -13,8 +13,9 @@ source: "https://github.com/pyocd/pyOCD/issues/2023"
 doc_source: "https://github.com/pyocd/pyOCD/issues/2023"
 resolution: "configuration"
 versions: "0.45.0"
-confidence: "high"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -27,7 +28,7 @@ mode: "S"
 
 ## Cause
 
-Flash algorithms assume the core starts from a reset state. Halting a running application and then loading leaves its MPU, stack limits and other state active, so the RAM-resident algorithm faults or never finishes.
+Flash algorithms typically assume the device has been reset before they run; loading after only halting a running application is not supported, and the algorithm then faults or times out.
 
 ## Fix
 
@@ -39,4 +40,4 @@ Resolution: configuration
 
 Versions: 0.45.0
 
-From [pyocd/pyOCD #2023](https://github.com/pyocd/pyOCD/issues/2023), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #2023](https://github.com/pyocd/pyOCD/issues/2023), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

@@ -13,6 +13,7 @@ resolution: "fixed-in-release"
 versions: "RTOS Views 0.0.12 affected"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-debugger"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: fixed-in-release
 
 Versions: RTOS Views 0.0.12 affected
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #599](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/599), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #599](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/599), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

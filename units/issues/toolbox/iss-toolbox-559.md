@@ -12,6 +12,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/559"
 resolution: "configuration"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["csolution"], "toolchain": ["AC6"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Declare the file with category: object in the group (file: <name>, category: obj
 
 Resolution: configuration
 
-From [Open-CMSIS-Pack/cmsis-toolbox #559](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/559), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/cmsis-toolbox #559](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/559), summarized in own words; confidence high, checked against the thread, not reviewed yet.

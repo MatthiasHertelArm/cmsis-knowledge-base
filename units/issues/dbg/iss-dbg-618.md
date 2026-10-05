@@ -13,6 +13,7 @@ resolution: "fixed-in-release"
 versions: "DFP 2.0.2 to 2.0.4 affected"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "device": ["Alif DevKit-E8"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: fixed-in-release
 
 Versions: DFP 2.0.2 to 2.0.4 affected
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #618](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/618), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #618](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/618), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

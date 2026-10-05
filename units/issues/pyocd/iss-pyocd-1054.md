@@ -15,6 +15,7 @@ resolution: "workaround"
 versions: "seen with 0.28.3, ST-Link V2J37M27"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: workaround
 
 Versions: seen with 0.28.3, ST-Link V2J37M27
 
-From [pyocd/pyOCD #1054](https://github.com/pyocd/pyOCD/issues/1054), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #1054](https://github.com/pyocd/pyOCD/issues/1054), summarized in own words; confidence high, checked against the thread, not reviewed yet.

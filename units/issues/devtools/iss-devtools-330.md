@@ -12,8 +12,10 @@ collection: "issues-devtools"
 source: "https://github.com/Open-CMSIS-Pack/devtools/issues/330"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/330"
 resolution: "user-error"
-confidence: "high"
+versions: "csolution 0.9.5"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,10 +31,12 @@ mode: "S"
 
 ## Fix
 
-List the valid names with csolution -s <file> list contexts and pass one in full. The help text was updated to say build-type and target-type are not optional.
+List the valid names with csolution -s <file> list contexts and pass one in full. A help text saying build-type and target-type are not optional was proposed.
 
 ## Source
 
 Resolution: user-error
 
-From [Open-CMSIS-Pack/devtools #330](https://github.com/Open-CMSIS-Pack/devtools/issues/330), summarized in own words; confidence high, not reviewed yet.
+Versions: csolution 0.9.5
+
+From [Open-CMSIS-Pack/devtools #330](https://github.com/Open-CMSIS-Pack/devtools/issues/330), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

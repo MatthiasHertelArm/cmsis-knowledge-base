@@ -16,6 +16,7 @@ versions: "0.26.1"
 issue_state: "open"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "device": ["MKV11Z128VFM7"], "core": ["Cortex-M0+"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -41,4 +42,4 @@ Versions: 0.26.1
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [pyocd/pyOCD #874](https://github.com/pyocd/pyOCD/issues/874), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #874](https://github.com/pyocd/pyOCD/issues/874), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

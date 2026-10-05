@@ -3,16 +3,16 @@ id: "iss-pyocd-855"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: gdb and SWV together on a CMSIS-DAP probe corrupt each other's responses"
-summary: "The SWO polling thread and the transfer thread shared the probe so that their DAP responses were mixed up on probes with SWO via DAP_SWO_Data."
+summary: "The SWO polling thread (DAP_SWO_Data) and the transfer thread used the same probe endpoint without synchronisation, so their DAP responses were mixed up on probes without a separate SWO streaming endpoint."
 status: "draft"
 tool: "pyocd"
 collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/855"
 doc_source: "https://github.com/pyocd/pyOCD/issues/855"
 resolution: "fixed-in-release"
-versions: "affected 0.2x"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -20,16 +20,14 @@ mode: "S"
 
 ## Cause
 
-The SWO polling thread and the transfer thread shared the probe so that their DAP responses were mixed up on probes with SWO via DAP_SWO_Data.
+The SWO polling thread (DAP_SWO_Data) and the transfer thread used the same probe endpoint without synchronisation, so their DAP responses were mixed up on probes without a separate SWO streaming endpoint.
 
 ## Fix
 
-Fixed in a pyOCD release after 0.26; upgrade.
+The maintainer reported it fixed; the thread names no version or change.
 
 ## Source
 
 Resolution: fixed-in-release
 
-Versions: affected 0.2x
-
-From [pyocd/pyOCD #855](https://github.com/pyocd/pyOCD/issues/855), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #855](https://github.com/pyocd/pyOCD/issues/855), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

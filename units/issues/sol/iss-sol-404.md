@@ -14,6 +14,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/404
 resolution: "user-error"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-solution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -36,4 +37,4 @@ Unset CMSIS_COMPILER_ROOT or point it at the folder of the toolbox the extension
 
 Resolution: user-error
 
-From [Open-CMSIS-Pack/vscode-cmsis-solution #404](https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/404), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-solution #404](https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/404), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

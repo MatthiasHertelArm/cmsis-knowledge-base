@@ -12,6 +12,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/cpackget/issues/387"
 resolution: "user-error"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cpackget"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Run cpackget update-index -a; it prints a warning per pdsc no longer present in 
 
 Resolution: user-error
 
-From [Open-CMSIS-Pack/cpackget #387](https://github.com/Open-CMSIS-Pack/cpackget/issues/387), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/cpackget #387](https://github.com/Open-CMSIS-Pack/cpackget/issues/387), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

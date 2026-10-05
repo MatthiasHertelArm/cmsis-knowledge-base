@@ -12,6 +12,7 @@ doc_source: "https://github.com/pyocd/pyOCD/issues/585"
 resolution: "user-error"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Install 64-bit Python (or match the DLL bitness to the interpreter) and place li
 
 Resolution: user-error
 
-From [pyocd/pyOCD #585](https://github.com/pyocd/pyOCD/issues/585), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #585](https://github.com/pyocd/pyOCD/issues/585), summarized in own words; confidence high, checked against the thread, not reviewed yet.

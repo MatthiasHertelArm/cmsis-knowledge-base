@@ -9,9 +9,10 @@ tool: "cmsis-debugger"
 collection: "issues-dbg"
 source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/326"
 doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/326"
-resolution: "fixed-in-release"
+resolution: "workaround"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cmsis-debugger"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -23,10 +24,10 @@ The adapter passed through GDB messages, which differ by OS (a drive-joining tex
 
 ## Fix
 
-Update CDT GDB Adapter (PR 413 unifies the message). Start the GDB server first.
+Start the GDB server before the attach request. PR 413 of the CDT GDB Adapter aligns the Windows message with the clearer macOS one; it was tested during review, no release is named.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: workaround
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #326](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/326), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #326](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/326), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

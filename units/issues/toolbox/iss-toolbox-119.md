@@ -13,6 +13,7 @@ resolution: "fixed-in-release"
 versions: "before 2.4.0"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cbuild"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: fixed-in-release
 
 Versions: before 2.4.0
 
-From [Open-CMSIS-Pack/cmsis-toolbox #119](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/119), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/cmsis-toolbox #119](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/119), summarized in own words; confidence high, checked against the thread, not reviewed yet.

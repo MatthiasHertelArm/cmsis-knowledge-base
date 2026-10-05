@@ -12,6 +12,7 @@ doc_source: "https://github.com/pyocd/pyOCD/issues/801"
 resolution: "not-a-bug"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "device": ["LPC55S69"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Pass `-t lpc55s69`, or flash DAPLink firmware to the probe so the board is auto-
 
 Resolution: not-a-bug
 
-From [pyocd/pyOCD #801](https://github.com/pyocd/pyOCD/issues/801), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #801](https://github.com/pyocd/pyOCD/issues/801), summarized in own words; confidence high, checked against the thread, not reviewed yet.

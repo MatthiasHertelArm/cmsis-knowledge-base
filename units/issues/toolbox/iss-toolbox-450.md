@@ -14,6 +14,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/450"
 resolution: "workaround"
 confidence: "low"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cbuild"], "toolchain": ["AC6"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -35,4 +36,4 @@ Harmless. No fix planned; migrate such files to GNU assembler syntax or the armc
 
 Resolution: workaround
 
-From [Open-CMSIS-Pack/cmsis-toolbox #450](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/450), summarized in own words; confidence low, not reviewed yet.
+From [Open-CMSIS-Pack/cmsis-toolbox #450](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/450), summarized in own words; confidence low, checked against the thread, not reviewed yet.

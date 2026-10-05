@@ -10,9 +10,9 @@ collection: "issues-devtools"
 source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1308"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1308"
 resolution: "fixed-in-release"
-versions: "2.2.x, fixed in 2.3.0"
-confidence: "high"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cbuild"], "toolchain": ["CLANG"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -24,12 +24,10 @@ The CLANG toolchain file used an -mfpu option that crashes the compiler, a wrong
 
 ## Fix
 
-Fixed in CMSIS-Toolbox 2.3.0 (confirmed with 2.3.0-dev0): the CLANG cmake file drops -mfpu and uses sysroot so the compiler finds its runtime.
+Use CMSIS-Toolbox 2.3.0-dev0 or later, confirmed to work with LLVM 17. Before that, the workaround was a CLANG cmake file without -mfpu that uses a sysroot option instead of the -isystem paths.
 
 ## Source
 
 Resolution: fixed-in-release
 
-Versions: 2.2.x, fixed in 2.3.0
-
-From [Open-CMSIS-Pack/devtools #1308](https://github.com/Open-CMSIS-Pack/devtools/issues/1308), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #1308](https://github.com/Open-CMSIS-Pack/devtools/issues/1308), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

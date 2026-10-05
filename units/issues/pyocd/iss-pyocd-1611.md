@@ -9,10 +9,12 @@ tool: "pyocd"
 collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/1611"
 doc_source: "https://github.com/pyocd/pyOCD/issues/1611"
-resolution: "workaround"
+resolution: "user-error"
+versions: "pyOCD 0.35.1"
 issue_state: "open"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"], "family": ["STM32G0 Series"], "device": ["STM32G071KBUx"], "core": ["Cortex-M0+"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -24,12 +26,14 @@ STM32 option bytes live in flash and are protected by lock registers. A plain me
 
 ## Fix
 
-Either program them via pyOCD's flash classes (MemoryLoader.program_binary_data or MemoryLoader.add_data and commit), or follow the reference-manual sequence: unlock FLASH_KEYR then FLASH_OPTKEYR, write the new value to FLASH_OPTR, start the update in FLASH_CR, and expect a reset from OBL_LAUNCH. The session is invalid afterwards, so open a new one. Make sure flash is not busy first.
+Program them through the flash controller. The maintainer suggested pyOCD's flash classes (MemoryLoader.program_binary_data, or MemoryLoader.add_data and commit); the user got it working with the reference-manual sequence: unlock FLASH_KEYR then FLASH_OPTKEYR, write the new value to FLASH_OPTR, start the update in FLASH_CR, and expect a reset from OBL_LAUNCH. An exception is raised and the session object is unusable afterwards, so create a new one. With firmware already in the chip the first FLASH_KEYR write raised a transfer fault until a chip erase was done.
 
 ## Source
 
-Resolution: workaround
+Resolution: user-error
+
+Versions: pyOCD 0.35.1
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [pyocd/pyOCD #1611](https://github.com/pyocd/pyOCD/issues/1611), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #1611](https://github.com/pyocd/pyOCD/issues/1611), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

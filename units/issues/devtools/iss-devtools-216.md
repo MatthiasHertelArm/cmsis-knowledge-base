@@ -14,6 +14,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/216"
 resolution: "configuration"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["packchk"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -36,4 +37,4 @@ Add an example, or suppress the message with packchk -x M379.
 
 Resolution: configuration
 
-From [Open-CMSIS-Pack/devtools #216](https://github.com/Open-CMSIS-Pack/devtools/issues/216), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #216](https://github.com/Open-CMSIS-Pack/devtools/issues/216), summarized in own words; confidence high, checked against the thread, not reviewed yet.

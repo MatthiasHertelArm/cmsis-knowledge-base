@@ -12,6 +12,7 @@ doc_source: "https://github.com/ARM-software/CMSIS_6/issues/287"
 resolution: "not-a-bug"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-core"], "toolchain": ["GCC"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Accept the figure or make the stack NOLOAD, which loses the stack at the end of 
 
 Resolution: not-a-bug
 
-From [ARM-software/CMSIS_6 #287](https://github.com/ARM-software/CMSIS_6/issues/287), summarized in own words; confidence medium, not reviewed yet.
+From [ARM-software/CMSIS_6 #287](https://github.com/ARM-software/CMSIS_6/issues/287), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

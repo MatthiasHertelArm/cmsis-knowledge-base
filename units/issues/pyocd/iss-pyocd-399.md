@@ -3,7 +3,7 @@ id: "iss-pyocd-399"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: pyocd does not list an nRF52 board that only has a J-Link firmware"
-summary: "The pyOCD of that time only spoke CMSIS-DAP over USB."
+summary: "pyOCD at that time supported only the CMSIS-DAP protocol."
 status: "draft"
 tool: "pyocd"
 symptoms: ["No available boards are connected"]
@@ -12,9 +12,10 @@ collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/399"
 doc_source: "https://github.com/pyocd/pyOCD/issues/399"
 resolution: "configuration"
-versions: "0.11.x"
+versions: "0.11.2"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"], "family": ["nRF52 Series"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -26,16 +27,16 @@ mode: "S"
 
 ## Cause
 
-The pyOCD of that time only spoke CMSIS-DAP over USB. A board whose on-board interface runs J-Link firmware is invisible to it.
+pyOCD at that time supported only the CMSIS-DAP protocol. A board whose interface runs J-Link firmware is invisible to it.
 
 ## Fix
 
-Flash CMSIS-DAP interface firmware to the board's debug MCU (from the vendor) or use a CMSIS-DAP probe; newer pyOCD versions also support J-Link probes.
+Install the CMSIS-DAP interface firmware from Nordic on the board's interface MCU; pyOCD then sees the board.
 
 ## Source
 
 Resolution: configuration
 
-Versions: 0.11.x
+Versions: 0.11.2
 
-From [pyocd/pyOCD #399](https://github.com/pyocd/pyOCD/issues/399), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #399](https://github.com/pyocd/pyOCD/issues/399), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

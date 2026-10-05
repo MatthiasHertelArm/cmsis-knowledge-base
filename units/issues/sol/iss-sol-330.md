@@ -15,6 +15,7 @@ resolution: "fixed-in-release"
 versions: "1.68.0"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-solution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -39,4 +40,4 @@ Resolution: fixed-in-release
 
 Versions: 1.68.0
 
-From [Open-CMSIS-Pack/vscode-cmsis-solution #330](https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/330), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-solution #330](https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/330), summarized in own words; confidence high, checked against the thread, not reviewed yet.

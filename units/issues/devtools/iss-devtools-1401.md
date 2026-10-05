@@ -13,6 +13,7 @@ resolution: "workaround"
 versions: "2.3.0-dev0"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: workaround
 
 Versions: 2.3.0-dev0
 
-From [Open-CMSIS-Pack/devtools #1401](https://github.com/Open-CMSIS-Pack/devtools/issues/1401), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #1401](https://github.com/Open-CMSIS-Pack/devtools/issues/1401), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

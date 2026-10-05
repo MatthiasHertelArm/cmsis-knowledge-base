@@ -11,10 +11,11 @@ symptom_regex: "<pack>\\S+<vendor>\\.<name>\\.pdsc\\s+\\(Line\\s+\\S+\\)\\s+\\\\
 collection: "issues-devtools"
 source: "https://github.com/Open-CMSIS-Pack/devtools/issues/800"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/800"
-resolution: "workaround"
+resolution: "unresolved"
 versions: "packchk 1.3.98"
 confidence: "low"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["packchk"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -31,12 +32,12 @@ packchk compares the canonical file path against the pack root with a plain stri
 
 ## Fix
 
-Run packchk on a pdsc whose path has no ./ or ../ segments (call the script with a normalized absolute path). A fix normalizing the paths was proposed in the thread.
+A test fix that evaluates ./ and ../ in the path comparison was proposed (devtools-external PR 509); the thread does not show it merged or released.
 
 ## Source
 
-Resolution: workaround
+Resolution: unresolved
 
 Versions: packchk 1.3.98
 
-From [Open-CMSIS-Pack/devtools #800](https://github.com/Open-CMSIS-Pack/devtools/issues/800), summarized in own words; confidence low, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #800](https://github.com/Open-CMSIS-Pack/devtools/issues/800), summarized in own words; confidence low, corrected against the thread, not reviewed yet.

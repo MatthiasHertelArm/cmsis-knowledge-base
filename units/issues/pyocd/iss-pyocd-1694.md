@@ -3,7 +3,7 @@ id: "iss-pyocd-1694"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: Executable built with PyInstaller reports 'No connected debug probes'"
-summary: "PyInstaller does not bundle pyOCD's probe plugins (entry points), the libusb DLL and native extensions by default, so no probe backend loads."
+summary: "PyInstaller does not collect pyOCD's probe and RTOS plug-ins (package entry points) and package data by default, so the built executable finds no probe."
 status: "draft"
 tool: "pyocd"
 symptoms: ["No connected debug probes"]
@@ -12,9 +12,10 @@ collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/1694"
 doc_source: "https://github.com/pyocd/pyOCD/issues/1694"
 resolution: "workaround"
-versions: "seen on 0.36"
+versions: "seen on 0.36; binaries from v0.38.0"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -26,16 +27,16 @@ mode: "S"
 
 ## Cause
 
-PyInstaller does not bundle pyOCD's probe plugins (entry points), the libusb DLL and native extensions by default, so no probe backend loads.
+PyInstaller does not collect pyOCD's probe and RTOS plug-ins (package entry points) and package data by default, so the built executable finds no probe.
 
 ## Fix
 
-Collect the 'pyocd.probe' and 'pyocd.rtos' entry points, pyocd and pylink package data and the libusb DLL in the .spec file. Releases from 0.38.0 provide prebuilt binaries.
+Collect the 'pyocd.probe' and 'pyocd.rtos' entry points and add the pyocd and pylink package folders as data in the .spec file. On another PC the ST-Link driver may also be needed. Releases from v0.38.0 include prebuilt binaries.
 
 ## Source
 
 Resolution: workaround
 
-Versions: seen on 0.36
+Versions: seen on 0.36; binaries from v0.38.0
 
-From [pyocd/pyOCD #1694](https://github.com/pyocd/pyOCD/issues/1694), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #1694](https://github.com/pyocd/pyOCD/issues/1694), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

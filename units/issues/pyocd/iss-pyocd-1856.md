@@ -15,6 +15,7 @@ resolution: "fixed-in-release"
 versions: "worked 0.36.0, broken above"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "device": ["AIR001"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: fixed-in-release
 
 Versions: worked 0.36.0, broken above
 
-From [pyocd/pyOCD #1856](https://github.com/pyocd/pyOCD/issues/1856), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #1856](https://github.com/pyocd/pyOCD/issues/1856), summarized in own words; confidence high, checked against the thread, not reviewed yet.

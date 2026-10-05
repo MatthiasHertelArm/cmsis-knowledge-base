@@ -16,6 +16,7 @@ versions: "pyocd-gdbserver 0.8.x"
 issue_state: "open"
 confidence: "low"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd", "gdb"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -41,4 +42,4 @@ Versions: pyocd-gdbserver 0.8.x
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [pyocd/pyOCD #317](https://github.com/pyocd/pyOCD/issues/317), summarized in own words; confidence low, not reviewed yet.
+From [pyocd/pyOCD #317](https://github.com/pyocd/pyOCD/issues/317), summarized in own words; confidence low, checked against the thread, not reviewed yet.

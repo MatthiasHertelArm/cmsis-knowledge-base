@@ -12,6 +12,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/584"
 resolution: "not-a-bug"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cbuild"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Fix the pack description so compiler variants have mutually exclusive file names
 
 Resolution: not-a-bug
 
-From [Open-CMSIS-Pack/cmsis-toolbox #584](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/584), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/cmsis-toolbox #584](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/584), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

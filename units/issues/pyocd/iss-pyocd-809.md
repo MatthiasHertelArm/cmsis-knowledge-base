@@ -13,6 +13,7 @@ resolution: "fixed-in-release"
 versions: "pip 20.0 and 20.0.1"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: fixed-in-release
 
 Versions: pip 20.0 and 20.0.1
 
-From [pyocd/pyOCD #809](https://github.com/pyocd/pyOCD/issues/809), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #809](https://github.com/pyocd/pyOCD/issues/809), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

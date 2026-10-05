@@ -3,16 +3,17 @@ id: "iss-devtools-1809"
 type: "troubleshooting"
 domain: "project"
 title: "cbuild: cbuild clean fails with missing RTE files on a multi-target project"
-summary: "Cleaning relied on files of all targets, including RTE files of targets that were never set up, so it errored and left out and tmp in place."
+summary: "Clean with cmsis-toolbox 2.6.0/2.6.1 depended on the files of all targets, so RTE files missing for a target that was never built caused errors and out and tmp were not cleaned."
 status: "draft"
 tool: "cbuild"
 collection: "issues-devtools"
 source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1809"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1809"
 resolution: "fixed-in-release"
-versions: "2.6.0 and 2.6.1, fixed in 2.7.0"
+versions: "cmsis-toolbox 2.6.0 and 2.6.1 affected; 2.4.0 works"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cbuild"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -20,16 +21,16 @@ mode: "S"
 
 ## Cause
 
-Cleaning relied on files of all targets, including RTE files of targets that were never set up, so it errored and left out and tmp in place. RTE files should also be kept in version control.
+Clean with cmsis-toolbox 2.6.0/2.6.1 depended on the files of all targets, so RTE files missing for a target that was never built caused errors and out and tmp were not cleaned. RTE files are meant to be kept in version control.
 
 ## Fix
 
-Cleanup strategy changed in cbuild (released with CMSIS-Toolbox 2.7.0): tmp is deleted, and out files only for the selected contexts. Also commit the RTE folder and run cbuild setup --packs.
+A fix was provided in cbuild PR #343 (CMSIS-Toolbox nightly of 05.12.2024; proposed behaviour: delete tmpdir, and outdir only for the selected contexts), not confirmed by the reporter. Commit the RTE folder and run cbuild setup <solution> --packs; the reporter's own template change to the new compiler-selection format also made clean work.
 
 ## Source
 
 Resolution: fixed-in-release
 
-Versions: 2.6.0 and 2.6.1, fixed in 2.7.0
+Versions: cmsis-toolbox 2.6.0 and 2.6.1 affected; 2.4.0 works
 
-From [Open-CMSIS-Pack/devtools #1809](https://github.com/Open-CMSIS-Pack/devtools/issues/1809), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #1809](https://github.com/Open-CMSIS-Pack/devtools/issues/1809), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

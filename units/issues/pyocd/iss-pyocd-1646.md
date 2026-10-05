@@ -12,9 +12,10 @@ collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/1646"
 doc_source: "https://github.com/pyocd/pyOCD/issues/1646"
 resolution: "fixed-in-release"
-versions: "broken 0.35/0.36, fixed 0.37.0"
-confidence: "high"
+versions: "broken in 0.36; 0.34.3 and 0.35.0 work; fixed in 0.37.0"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"], "core": ["Cortex-M0"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -37,6 +38,6 @@ Fixed in 0.37.0 by writing the Thumb bit before running algorithm functions; upg
 
 Resolution: fixed-in-release
 
-Versions: broken 0.35/0.36, fixed 0.37.0
+Versions: broken in 0.36; 0.34.3 and 0.35.0 work; fixed in 0.37.0
 
-From [pyocd/pyOCD #1646](https://github.com/pyocd/pyOCD/issues/1646), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #1646](https://github.com/pyocd/pyOCD/issues/1646), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

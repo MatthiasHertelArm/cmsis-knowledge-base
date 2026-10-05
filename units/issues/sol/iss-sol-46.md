@@ -12,6 +12,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/46"
 resolution: "fixed-in-release"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-solution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Fixed in nightly of 2026-03-24; device and board information now show.
 
 Resolution: fixed-in-release
 
-From [Open-CMSIS-Pack/vscode-cmsis-solution #46](https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/46), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-solution #46](https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/46), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

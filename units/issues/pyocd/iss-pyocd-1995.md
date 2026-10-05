@@ -14,6 +14,7 @@ doc_source: "https://github.com/pyocd/pyOCD/issues/1995"
 resolution: "fixed-in-release"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -35,4 +36,4 @@ Fixed upstream; use a pyOCD release that includes the correction.
 
 Resolution: fixed-in-release
 
-From [pyocd/pyOCD #1995](https://github.com/pyocd/pyOCD/issues/1995), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #1995](https://github.com/pyocd/pyOCD/issues/1995), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

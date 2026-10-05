@@ -11,11 +11,12 @@ symptom_regex: "Flash\\s+pages\\s+\\(\\S+\\s+bytes\\)\\s+do\\s+not\\s+fit\\s+eve
 collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/665"
 doc_source: "https://github.com/pyocd/pyOCD/issues/665"
-resolution: "not-a-bug"
-versions: "seen with Keil.STM32L0xx_DFP and Keil.STM32H7xx_DFP 3.1.1"
+resolution: "unresolved"
+versions: "pyOCD 0.20.1; Keil.STM32L0xx_DFP; Keil.STM32H7xx_DFP 3.1.1"
 issue_state: "open"
 confidence: "low"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"], "family": ["STM32L0 Series", "STM32H7 Series"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -31,14 +32,14 @@ The flash algorithm in the Keil STM32 device packs declares a page size larger t
 
 ## Fix
 
-The pack needs fixing by the pack vendor; update to a pack version with a corrected algorithm. Pyocd planned workarounds for such pack mistakes.
+The pack's flash algorithm has to be fixed by the vendor: the maintainer reported it to Keil, who planned a fixed pack, and planned pyocd workarounds for such pack mistakes.
 
 ## Source
 
-Resolution: not-a-bug
+Resolution: unresolved
 
-Versions: seen with Keil.STM32L0xx_DFP and Keil.STM32H7xx_DFP 3.1.1
+Versions: pyOCD 0.20.1; Keil.STM32L0xx_DFP; Keil.STM32H7xx_DFP 3.1.1
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [pyocd/pyOCD #665](https://github.com/pyocd/pyOCD/issues/665), summarized in own words; confidence low, not reviewed yet.
+From [pyocd/pyOCD #665](https://github.com/pyocd/pyOCD/issues/665), summarized in own words; confidence low, corrected against the thread, not reviewed yet.

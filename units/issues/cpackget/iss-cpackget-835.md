@@ -15,6 +15,7 @@ resolution: "fixed-in-release"
 versions: "fixed in CMSIS-Toolbox nightly 2026-09-16"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cpackget", "vidx2pidx"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: fixed-in-release
 
 Versions: fixed in CMSIS-Toolbox nightly 2026-09-16
 
-From [Open-CMSIS-Pack/cpackget #835](https://github.com/Open-CMSIS-Pack/cpackget/issues/835), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/cpackget #835](https://github.com/Open-CMSIS-Pack/cpackget/issues/835), summarized in own words; confidence high, checked against the thread, not reviewed yet.

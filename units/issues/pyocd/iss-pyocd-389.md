@@ -15,6 +15,7 @@ resolution: "fixed-in-release"
 versions: "0.11.x to 0.13.0b1"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "device": ["MK66FN2M0xxx18"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -39,4 +40,4 @@ Resolution: fixed-in-release
 
 Versions: 0.11.x to 0.13.0b1
 
-From [pyocd/pyOCD #389](https://github.com/pyocd/pyOCD/issues/389), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #389](https://github.com/pyocd/pyOCD/issues/389), summarized in own words; confidence high, checked against the thread, not reviewed yet.

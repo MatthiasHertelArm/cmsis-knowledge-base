@@ -3,7 +3,7 @@ id: "iss-pyocd-241"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: 'The device has no langid' on Linux is an USB permission problem"
-summary: "pyusb stores an empty language list when the descriptor read is denied, and then raises ValueError."
+summary: "pyusb catches the error when reading the langids and stores an empty tuple, then raises ValueError."
 status: "draft"
 tool: "pyocd"
 symptoms: ["uncaught exception: The device has no langid"]
@@ -12,9 +12,10 @@ collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/241"
 doc_source: "https://github.com/pyocd/pyOCD/issues/241"
 resolution: "configuration"
-versions: "0.7.1"
+versions: "pyOCD 0.7.1; pyusb 1.0.0"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -26,16 +27,16 @@ mode: "S"
 
 ## Cause
 
-pyusb stores an empty language list when the descriptor read is denied, and then raises ValueError. The real cause is missing access rights to the USB device.
+pyusb catches the error when reading the langids and stores an empty tuple, then raises ValueError. The real cause is missing access rights to the USB device ([Errno 13] Access denied).
 
 ## Fix
 
-Add a udev rule for the probe or run as root; later pyOCD versions handle the error and log a permission hint.
+Run pyocd-gdbserver as root (sudo); the issue was closed because PR #262 addresses it, without a release named.
 
 ## Source
 
 Resolution: configuration
 
-Versions: 0.7.1
+Versions: pyOCD 0.7.1; pyusb 1.0.0
 
-From [pyocd/pyOCD #241](https://github.com/pyocd/pyOCD/issues/241), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #241](https://github.com/pyocd/pyOCD/issues/241), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

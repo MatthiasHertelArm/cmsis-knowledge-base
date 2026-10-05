@@ -12,6 +12,7 @@ doc_source: "https://github.com/pyocd/pyOCD/discussions/1367"
 resolution: "configuration"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Create a Python package that exports an entry point in the group pyocd.rtos or p
 
 Resolution: configuration
 
-From [pyocd/pyOCD discussion 1367](https://github.com/pyocd/pyOCD/discussions/1367), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD discussion 1367](https://github.com/pyocd/pyOCD/discussions/1367), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

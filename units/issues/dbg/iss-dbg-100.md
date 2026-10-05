@@ -3,7 +3,7 @@ id: "iss-dbg-100"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: pyOCD without libusb on macOS cannot connect to CMSIS-DAPv2 probes"
-summary: "The bundled pyOCD did not contain libusb."
+summary: "The bundled pyOCD did not contain libusb, so probes that need it (such as ULINKplus with firmware v2) could not connect on macOS; HID probes were not affected."
 status: "draft"
 tool: "pyocd"
 symptoms: ["0001425 W STLink, CMSIS-DAPv2 and PicoProbe probes are not supported because no libusb library was found. [common]"]
@@ -11,9 +11,10 @@ symptom_regex: "STLink,\\s+CMSIS\\-DAPv2\\s+and\\s+PicoProbe\\s+probes\\s+are\\s
 collection: "issues-dbg"
 source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/100"
 doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/100"
-resolution: "fixed-in-release"
-confidence: "high"
+resolution: "workaround"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -25,14 +26,14 @@ mode: "S"
 
 ## Cause
 
-The bundled pyOCD did not contain libusb.
+The bundled pyOCD did not contain libusb, so probes that need it (such as ULINKplus with firmware v2) could not connect on macOS; HID probes were not affected.
 
 ## Fix
 
-Use CMSIS Debugger 0.2+ which bundles libusb.
+Use a CMSIS Debugger version with the change from #124, after which macOS users could connect; the thread names no release.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: workaround
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #100](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/100), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #100](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/100), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

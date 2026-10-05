@@ -12,9 +12,10 @@ collection: "issues-devtools"
 source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1812"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1812"
 resolution: "workaround"
-versions: "2.6.1"
+versions: "csolution 2.6.0"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -30,12 +31,12 @@ All contexts that share the generator id, base-dir and cgen-file (and multi-core
 
 ## Fix
 
-Workaround: run the generator for all sibling contexts by leaving out -c, for example csolution run <solution> -g CubeMX. csolution list generators -v shows the siblings. Defect fixed in later 2.6.x/2.7 builds.
+Workaround: select all sibling contexts, here by leaving out -c, for example csolution run Network.csolution.yml -g CubeMX. csolution list generators <solution> -v shows the siblings.
 
 ## Source
 
 Resolution: workaround
 
-Versions: 2.6.1
+Versions: csolution 2.6.0
 
-From [Open-CMSIS-Pack/devtools #1812](https://github.com/Open-CMSIS-Pack/devtools/issues/1812), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #1812](https://github.com/Open-CMSIS-Pack/devtools/issues/1812), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

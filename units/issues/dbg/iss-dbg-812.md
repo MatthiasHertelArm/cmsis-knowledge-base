@@ -14,6 +14,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/812
 resolution: "workaround"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-debugger"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -35,4 +36,4 @@ Reload or restart the VS Code window after the update. Newer versions show a war
 
 Resolution: workaround
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #812](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/812), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #812](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/812), summarized in own words; confidence high, checked against the thread, not reviewed yet.

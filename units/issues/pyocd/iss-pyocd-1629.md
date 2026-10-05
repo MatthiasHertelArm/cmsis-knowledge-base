@@ -3,7 +3,7 @@ id: "iss-pyocd-1629"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: flash algorithm not halting (IPSR=3) when its RAM load address is invalid for the MCU"
-summary: "IPSR=3 means the core ended in the HardFault handler while running the flash algorithm init."
+summary: "The flash algorithm did not reach its expected halt."
 status: "draft"
 tool: "pyocd"
 symptoms: ["C target was not halted as expected after calling flash algorithm routine (IPSR=3) [__main__]"]
@@ -15,6 +15,7 @@ resolution: "configuration"
 issue_state: "open"
 confidence: "low"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"], "device": ["LPC55S36"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -26,11 +27,11 @@ mode: "S"
 
 ## Cause
 
-IPSR=3 means the core ended in the HardFault handler while running the flash algorithm init. One user found the cause was that the algorithm was loaded at RAM address 0x20000000, which did not exist in their MCU's memory design, so the init routine crashed. On NXP LPC55S36 revision D1 the same message was reported with a new chip ROM; no fix was found there.
+The flash algorithm did not reach its expected halt. For one user with another chip the algorithm was loaded at 0x20000000, which is not valid memory on that MCU, so its init routine did not run correctly. For the LPC55S36 RevD1 board in the report the reporter suspected changes in the new chip ROM; that case stayed unsolved.
 
 ## Fix
 
-Check that the flash algorithm's load address and stack lie in RAM that really exists on the device, and change the algorithm's load address to a valid RAM region.
+Check that the flash algorithm is loaded into RAM that exists on the device and move its load address if not; that fixed it for the other user.
 
 ## Source
 
@@ -38,4 +39,4 @@ Resolution: configuration
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [pyocd/pyOCD #1629](https://github.com/pyocd/pyOCD/issues/1629), summarized in own words; confidence low, not reviewed yet.
+From [pyocd/pyOCD #1629](https://github.com/pyocd/pyOCD/issues/1629), summarized in own words; confidence low, corrected against the thread, not reviewed yet.

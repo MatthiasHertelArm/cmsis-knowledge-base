@@ -15,6 +15,7 @@ resolution: "user-error"
 versions: "2.5.0"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cbuild", "csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: user-error
 
 Versions: 2.5.0
 
-From [Open-CMSIS-Pack/devtools #1731](https://github.com/Open-CMSIS-Pack/devtools/issues/1731), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #1731](https://github.com/Open-CMSIS-Pack/devtools/issues/1731), summarized in own words; confidence high, checked against the thread, not reviewed yet.

@@ -13,6 +13,7 @@ resolution: "configuration"
 versions: "CMake 4.2.1 vs 3.x"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cbuild"], "toolchain": ["AC6"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: configuration
 
 Versions: CMake 4.2.1 vs 3.x
 
-From [Open-CMSIS-Pack/cmsis-toolbox #538](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/538), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/cmsis-toolbox #538](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/538), summarized in own words; confidence high, checked against the thread, not reviewed yet.

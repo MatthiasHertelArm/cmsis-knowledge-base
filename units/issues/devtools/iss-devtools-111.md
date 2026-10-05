@@ -14,6 +14,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/111"
 resolution: "fixed-in-release"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["packchk"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -30,10 +31,10 @@ The directory test was inverted when the check was ported to RteFsUtils.
 
 ## Fix
 
-Use a packchk version containing the fix (1.3.9x); in the meantime use the older PackChk binary from CMSIS 5.
+Fixed and verified with #123; in the meantime use the PackChk binary from the CMSIS_5 develop branch (CMSIS/Utilities). The thread names no release.
 
 ## Source
 
 Resolution: fixed-in-release
 
-From [Open-CMSIS-Pack/devtools #111](https://github.com/Open-CMSIS-Pack/devtools/issues/111), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #111](https://github.com/Open-CMSIS-Pack/devtools/issues/111), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

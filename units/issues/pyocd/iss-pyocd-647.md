@@ -3,7 +3,7 @@ id: "iss-pyocd-647"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: pyocd cmd W32 to a flash address fails with NameError flashPtr"
-summary: "A coding bug in the flash write path used an undefined variable in the alignment check (the check should have tested the address against the minimum write length)."
+summary: "program_phrase() in pyOCD's flash code tested an undefined variable flashPtr in its alignment check instead of the address, so a W32 to a flash address raised NameError."
 status: "draft"
 tool: "pyocd"
 symptoms: ["uncaught exception: name 'flashPtr' is not defined"]
@@ -12,9 +12,9 @@ collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/647"
 doc_source: "https://github.com/pyocd/pyOCD/issues/647"
 resolution: "fixed-in-release"
-versions: "early 2019 builds"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"], "family": ["nRF51 Series"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -26,16 +26,14 @@ mode: "S"
 
 ## Cause
 
-A coding bug in the flash write path used an undefined variable in the alignment check (the check should have tested the address against the minimum write length).
+program_phrase() in pyOCD's flash code tested an undefined variable flashPtr in its alignment check instead of the address, so a W32 to a flash address raised NameError.
 
 ## Fix
 
-Use a pyOCD release containing the fix; to program flash use `pyocd flash` or the flash loader rather than raw memory writes.
+The maintainers took the bug on; the reporter's correction is to check address % min_len in program_phrase(). Use a pyOCD version that carries the correction.
 
 ## Source
 
 Resolution: fixed-in-release
 
-Versions: early 2019 builds
-
-From [pyocd/pyOCD #647](https://github.com/pyocd/pyOCD/issues/647), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #647](https://github.com/pyocd/pyOCD/issues/647), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

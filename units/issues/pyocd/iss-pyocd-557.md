@@ -15,6 +15,7 @@ resolution: "workaround"
 versions: "GNU Arm Embedded 8-2018-q4-major, Windows"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd", "gdb"], "toolchain": ["GCC"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: workaround
 
 Versions: GNU Arm Embedded 8-2018-q4-major, Windows
 
-From [pyocd/pyOCD #557](https://github.com/pyocd/pyOCD/issues/557), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #557](https://github.com/pyocd/pyOCD/issues/557), summarized in own words; confidence high, checked against the thread, not reviewed yet.

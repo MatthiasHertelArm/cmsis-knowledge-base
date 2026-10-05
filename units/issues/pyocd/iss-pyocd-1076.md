@@ -16,6 +16,7 @@ versions: "0.29.0 on Linux"
 issue_state: "open"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -41,4 +42,4 @@ Versions: 0.29.0 on Linux
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [pyocd/pyOCD #1076](https://github.com/pyocd/pyOCD/issues/1076), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #1076](https://github.com/pyocd/pyOCD/issues/1076), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

@@ -9,10 +9,10 @@ tool: "packchk"
 collection: "issues-devtools"
 source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1052"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1052"
-resolution: "fixed-in-release"
-versions: "before 1.4"
+resolution: "workaround"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["packchk"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -24,12 +24,10 @@ The RTE model only reports a missing component (M504) for require expressions; c
 
 ## Fix
 
-packchk was extended to check all references; as a quick test temporarily change accept to require to see M504 messages for missing components.
+As a check, temporarily change accept to require to see M504 messages for missing components. The maintainers planned to extend packchk to check all references; the thread ends with a request for a test version, no release.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: workaround
 
-Versions: before 1.4
-
-From [Open-CMSIS-Pack/devtools #1052](https://github.com/Open-CMSIS-Pack/devtools/issues/1052), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #1052](https://github.com/Open-CMSIS-Pack/devtools/issues/1052), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

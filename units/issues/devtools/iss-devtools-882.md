@@ -14,6 +14,7 @@ resolution: "fixed-in-release"
 versions: "Seen in 1.6.0; fixed in 1.7.0"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cbuild"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: fixed-in-release
 
 Versions: Seen in 1.6.0; fixed in 1.7.0
 
-From [Open-CMSIS-Pack/devtools #882](https://github.com/Open-CMSIS-Pack/devtools/issues/882), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #882](https://github.com/Open-CMSIS-Pack/devtools/issues/882), summarized in own words; confidence high, checked against the thread, not reviewed yet.

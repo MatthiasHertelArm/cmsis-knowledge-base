@@ -12,6 +12,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/126
 resolution: "fixed-in-release"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Use a pyOCD that sets the Thumb bit in xPSR before algorithm calls.
 
 Resolution: fixed-in-release
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #126](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/126), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #126](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/126), summarized in own words; confidence high, checked against the thread, not reviewed yet.

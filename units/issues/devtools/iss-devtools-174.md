@@ -14,6 +14,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/174"
 resolution: "user-error"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cbuild", "csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -36,4 +37,4 @@ Declare one build-type per compiler (compiler: AC6, compiler: GCC) in csolution.
 
 Resolution: user-error
 
-From [Open-CMSIS-Pack/devtools #174](https://github.com/Open-CMSIS-Pack/devtools/issues/174), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #174](https://github.com/Open-CMSIS-Pack/devtools/issues/174), summarized in own words; confidence high, checked against the thread, not reviewed yet.

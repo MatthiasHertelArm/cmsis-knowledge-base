@@ -3,7 +3,7 @@ id: "iss-pyocd-226"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: Flashing two boards at the same time on Linux fails with USB Resource busy"
-summary: "Old pyOCD claimed all matching probes during enumeration, so a second instance collided with the first."
+summary: "pyOCD lacked support for simultaneous access to several devices, so a second instance failed with 'Resource busy' when claiming a USB interface while enumerating the boards."
 status: "draft"
 tool: "pyocd"
 symptoms: ["usb.core.USBError: [Errno 16] Resource busy"]
@@ -12,9 +12,10 @@ collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/226"
 doc_source: "https://github.com/pyocd/pyOCD/issues/226"
 resolution: "fixed-in-release"
-versions: "0.7.x"
+versions: "pyOCD 0.6.1 affected"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -26,16 +27,16 @@ mode: "S"
 
 ## Cause
 
-Old pyOCD claimed all matching probes during enumeration, so a second instance collided with the first.
+pyOCD lacked support for simultaneous access to several devices, so a second instance failed with 'Resource busy' when claiming a USB interface while enumerating the boards.
 
 ## Fix
 
-Use a version containing simultaneous multi-device access (PR #268) and select each probe by its unique id.
+Use a pyOCD version containing PR #268, which adds simultaneous device access; the reporter confirmed that two devices then worked concurrently.
 
 ## Source
 
 Resolution: fixed-in-release
 
-Versions: 0.7.x
+Versions: pyOCD 0.6.1 affected
 
-From [pyocd/pyOCD #226](https://github.com/pyocd/pyOCD/issues/226), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #226](https://github.com/pyocd/pyOCD/issues/226), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

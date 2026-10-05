@@ -14,6 +14,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/68"
 resolution: "fixed-in-release"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cmsis-debugger"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,10 +30,10 @@ The adapter did not handle GDB breakpoint notifications, so CLI breakpoints did 
 
 ## Fix
 
-Update CDT GDB Adapter beyond 2.0.x as announced in that thread.
+Use a CDT GDB Adapter extension release that handles the breakpoint-created notification; the thread announces it for the next release without naming a version.
 
 ## Source
 
 Resolution: fixed-in-release
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #68](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/68), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #68](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/68), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

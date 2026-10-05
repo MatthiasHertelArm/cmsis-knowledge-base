@@ -11,8 +11,9 @@ source: "https://github.com/Open-CMSIS-Pack/devtools/issues/614"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/614"
 resolution: "configuration"
 versions: "csolution 1.3.0"
-confidence: "high"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cbuild"], "family": ["STM32F1 Series"], "toolchain": ["AC6"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -24,7 +25,7 @@ armclang assembles with GNU syntax by default (-masm=gnu), but device startup fi
 
 ## Fix
 
-Add the assembler option -masm=auto under misc: ASM: (for example in cdefault.yml build-types). Note that Arm Compiler will remove -masm in a later release, so port the file to GNU syntax long term.
+Add the assembler option -masm=auto under misc: ASM: (for example in cdefault.yml build-types). Note that the -masm option will be removed in a future Arm Compiler release.
 
 ## Source
 
@@ -32,4 +33,4 @@ Resolution: configuration
 
 Versions: csolution 1.3.0
 
-From [Open-CMSIS-Pack/devtools #614](https://github.com/Open-CMSIS-Pack/devtools/issues/614), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #614](https://github.com/Open-CMSIS-Pack/devtools/issues/614), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

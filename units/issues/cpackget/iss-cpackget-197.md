@@ -9,9 +9,10 @@ tool: "cpackget"
 collection: "issues-cpackget"
 source: "https://github.com/Open-CMSIS-Pack/cpackget/issues/197"
 doc_source: "https://github.com/Open-CMSIS-Pack/cpackget/issues/197"
-resolution: "fixed-in-release"
-confidence: "high"
+resolution: "workaround"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cpackget"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -23,10 +24,10 @@ The concurrent download scheduler spawned more workers than configured and did n
 
 ## Fix
 
-Use a cpackget with the semaphore-based scheduler (fixed September 2023); as a workaround run update-index -a -C 0 to disable concurrency.
+Use a cpackget with the semaphore-based download scheduler; the thread names no release. Workaround: run update-index -a -C 0 to disable concurrent downloads.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: workaround
 
-From [Open-CMSIS-Pack/cpackget #197](https://github.com/Open-CMSIS-Pack/cpackget/issues/197), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/cpackget #197](https://github.com/Open-CMSIS-Pack/cpackget/issues/197), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

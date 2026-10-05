@@ -3,7 +3,7 @@ id: "iss-pyocd-632"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: pip install pyocd fails in setup.py egg_info on Debian with bad marshal data"
-summary: "The installed setuptools was older than 40, which pyOCD's setup (setuptools_scm based) needs."
+summary: "The installed setuptools was older than 40, which pyOCD's setup.py requires (its setup_requires for setuptools >= 40.0 had no effect)."
 status: "draft"
 tool: "pyocd"
 symptoms: ["ERROR: Complete output from command python setup.py egg_info:"]
@@ -12,9 +12,10 @@ collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/632"
 doc_source: "https://github.com/pyocd/pyOCD/issues/632"
 resolution: "user-error"
-versions: "pyocd 0.2x with setuptools below 40"
-confidence: "high"
+versions: "setuptools below 40; pip 19.1"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -26,16 +27,16 @@ mode: "S"
 
 ## Cause
 
-The installed setuptools was older than 40, which pyOCD's setup (setuptools_scm based) needs.
+The installed setuptools was older than 40, which pyOCD's setup.py requires (its setup_requires for setuptools >= 40.0 had no effect).
 
 ## Fix
 
-Upgrade pip and setuptools first (`pip install -U pip setuptools`), then reinstall pyOCD; `pip install --force-reinstall setuptools_scm_git_archive` can also repair a corrupt helper package.
+Upgrade setuptools (e.g. pip install -U pip setuptools), then install pyOCD again; pip install --force-reinstall setuptools_scm_git_archive was suggested for a corrupt helper package.
 
 ## Source
 
 Resolution: user-error
 
-Versions: pyocd 0.2x with setuptools below 40
+Versions: setuptools below 40; pip 19.1
 
-From [pyocd/pyOCD #632](https://github.com/pyocd/pyOCD/issues/632), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #632](https://github.com/pyocd/pyOCD/issues/632), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

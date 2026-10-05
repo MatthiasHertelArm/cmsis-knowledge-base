@@ -15,6 +15,7 @@ resolution: "user-error"
 versions: "1.6.0"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: user-error
 
 Versions: 1.6.0
 
-From [Open-CMSIS-Pack/cmsis-toolbox #34](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/34), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/cmsis-toolbox #34](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/34), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

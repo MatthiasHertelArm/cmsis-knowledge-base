@@ -14,6 +14,7 @@ doc_source: "https://github.com/pyocd/pyOCD/issues/1817"
 resolution: "workaround"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "device": ["STM32F103C6"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -35,4 +36,4 @@ Add the region yourself in a pyocd_user.py script: load the unprocessed pack alg
 
 Resolution: workaround
 
-From [pyocd/pyOCD #1817](https://github.com/pyocd/pyOCD/issues/1817), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #1817](https://github.com/pyocd/pyOCD/issues/1817), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

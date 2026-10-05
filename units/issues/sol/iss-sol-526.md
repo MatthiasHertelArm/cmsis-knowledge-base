@@ -12,6 +12,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/526
 resolution: "fixed-in-release"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-solution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Fixed in the CMSIS Solution nightly of 2026-09-18 by using the load value of the
 
 Resolution: fixed-in-release
 
-From [Open-CMSIS-Pack/vscode-cmsis-solution #526](https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/526), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-solution #526](https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/526), summarized in own words; confidence high, checked against the thread, not reviewed yet.

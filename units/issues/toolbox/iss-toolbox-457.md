@@ -13,6 +13,7 @@ resolution: "workaround"
 versions: "cbridge with toolbox 2.12.0"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cbridge"], "family": ["STM32F4 Series"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: workaround
 
 Versions: cbridge with toolbox 2.12.0
 
-From [Open-CMSIS-Pack/cmsis-toolbox #457](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/457), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/cmsis-toolbox #457](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/457), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

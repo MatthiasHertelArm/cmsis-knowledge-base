@@ -13,6 +13,7 @@ resolution: "user-error"
 versions: "3.3.49"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["svdconv"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: user-error
 
 Versions: 3.3.49
 
-From [Open-CMSIS-Pack/devtools #2433](https://github.com/Open-CMSIS-Pack/devtools/issues/2433), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #2433](https://github.com/Open-CMSIS-Pack/devtools/issues/2433), summarized in own words; confidence high, checked against the thread, not reviewed yet.

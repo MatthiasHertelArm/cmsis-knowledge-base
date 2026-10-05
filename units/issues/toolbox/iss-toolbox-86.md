@@ -15,6 +15,7 @@ resolution: "user-error"
 versions: "packchk 1.4.1"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["packchk"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: user-error
 
 Versions: packchk 1.4.1
 
-From [Open-CMSIS-Pack/cmsis-toolbox #86](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/86), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/cmsis-toolbox #86](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/86), summarized in own words; confidence high, checked against the thread, not reviewed yet.

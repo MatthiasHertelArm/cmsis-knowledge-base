@@ -13,6 +13,7 @@ resolution: "workaround"
 issue_state: "open"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: workaround
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [pyocd/pyOCD #1264](https://github.com/pyocd/pyOCD/issues/1264), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #1264](https://github.com/pyocd/pyOCD/issues/1264), summarized in own words; confidence high, checked against the thread, not reviewed yet.

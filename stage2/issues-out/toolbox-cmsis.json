@@ -937,7 +937,7 @@
   "confidence": "medium"
  },
  {
-  "issue": "https://github.com/ARM-software/CMSIS_6/issues/66",
+  "issue": "https://github.com/ARM-software/CMSIS_6/issues/261",
   "tool": "other",
   "title": "Devcontainer postCreate fails with \"vcpkg: command not found\"",
   "symptoms": [

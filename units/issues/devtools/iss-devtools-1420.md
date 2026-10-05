@@ -14,6 +14,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1420"
 resolution: "not-a-bug"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -35,4 +36,4 @@ Set optimize: at only one level, for example only in the build-type of the solut
 
 Resolution: not-a-bug
 
-From [Open-CMSIS-Pack/devtools #1420](https://github.com/Open-CMSIS-Pack/devtools/issues/1420), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #1420](https://github.com/Open-CMSIS-Pack/devtools/issues/1420), summarized in own words; confidence high, checked against the thread, not reviewed yet.

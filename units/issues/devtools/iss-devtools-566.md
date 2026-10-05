@@ -3,7 +3,7 @@ id: "iss-devtools-566"
 type: "troubleshooting"
 domain: "project"
 title: "csolution: Switching the compiler to GCC gives no component found with identifier errors"
-summary: "The components listed in the project (for example Keil::Compiler&ARM Compiler:... or ARM::Device:Definition) exist only for Arm Compiler, so they cannot be resolved for another toolchain."
+summary: "Some components listed in the project have toolchain-specific files (for example assembler sources) and are not available for GCC, so csolution cannot resolve them after the compiler is switched; GCC itself is supported by the tools."
 status: "draft"
 tool: "csolution"
 symptoms: ["error csolution: no component was found with identifier 'ARM::Device:Definition'", "error csolution: no component was found with identifier 'Keil::Compiler&ARM Compiler:I/O:STDERR&User'"]
@@ -12,8 +12,9 @@ collection: "issues-devtools"
 source: "https://github.com/Open-CMSIS-Pack/devtools/issues/566"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/566"
 resolution: "user-error"
-confidence: "high"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["csolution"], "toolchain": ["GCC"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -26,14 +27,14 @@ mode: "S"
 
 ## Cause
 
-The components listed in the project (for example Keil::Compiler&ARM Compiler:... or ARM::Device:Definition) exist only for Arm Compiler, so they cannot be resolved for another toolchain.
+Some components listed in the project have toolchain-specific files (for example assembler sources) and are not available for GCC, so csolution cannot resolve them after the compiler is switched; GCC itself is supported by the tools.
 
 ## Fix
 
-Make compiler-specific components conditional with for-compiler: AC6 (and provide a GCC equivalent such as retargeting sources); the toolbox itself supports GCC.
+Replace or remove the components that are only available for Arm Compiler when building with GCC.
 
 ## Source
 
 Resolution: user-error
 
-From [Open-CMSIS-Pack/devtools #566](https://github.com/Open-CMSIS-Pack/devtools/issues/566), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #566](https://github.com/Open-CMSIS-Pack/devtools/issues/566), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

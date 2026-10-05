@@ -3,7 +3,7 @@ id: "iss-pyocd-371"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: hidapi 'Unable to open device' on macOS with system Python"
-summary: "With the Python shipped by macOS (or one with an empty hidapi path) the HID device path came back empty so the CMSIS-DAP interface could not be opened."
+summary: "With the Python shipped by macOS the HID device path came back empty, so the CMSIS-DAP interface could not be opened."
 status: "draft"
 tool: "pyocd"
 symptoms: ["uncaught exception: Unable to open device"]
@@ -12,9 +12,10 @@ collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/371"
 doc_source: "https://github.com/pyocd/pyOCD/issues/371"
 resolution: "workaround"
-versions: "pyocd master of mid-2018"
+versions: "pyOCD master (0.10.1.dev27)"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -26,16 +27,16 @@ mode: "S"
 
 ## Cause
 
-With the Python shipped by macOS (or one with an empty hidapi path) the HID device path came back empty so the CMSIS-DAP interface could not be opened.
+With the Python shipped by macOS the HID device path came back empty, so the CMSIS-DAP interface could not be opened.
 
 ## Fix
 
-Use a different Python install such as one from Homebrew, and reinstall pyOCD and hidapi with its pip.
+Use a Python installed with Homebrew instead of the macOS system Python, and install pyOCD into it.
 
 ## Source
 
 Resolution: workaround
 
-Versions: pyocd master of mid-2018
+Versions: pyOCD master (0.10.1.dev27)
 
-From [pyocd/pyOCD #371](https://github.com/pyocd/pyOCD/issues/371), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #371](https://github.com/pyocd/pyOCD/issues/371), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

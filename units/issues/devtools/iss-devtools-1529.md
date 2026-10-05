@@ -12,9 +12,10 @@ collection: "issues-devtools"
 source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1529"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1529"
 resolution: "fixed-in-release"
-versions: "2.5.0"
-confidence: "high"
+versions: "CMSIS-Toolbox 2.4.0"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -30,12 +31,12 @@ The rule that a layer is unused when none of its provided connections are consum
 
 ## Fix
 
-Fixed in a toolbox release after 2.5.0: a project stays valid even if none of its provided connections are consumed; the rule remains for layers.
+The implementation was changed so a project stays valid even if none of its provided connections are consumed; the rule remains for layers. The thread names no release with the change.
 
 ## Source
 
 Resolution: fixed-in-release
 
-Versions: 2.5.0
+Versions: CMSIS-Toolbox 2.4.0
 
-From [Open-CMSIS-Pack/devtools #1529](https://github.com/Open-CMSIS-Pack/devtools/issues/1529), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #1529](https://github.com/Open-CMSIS-Pack/devtools/issues/1529), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

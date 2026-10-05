@@ -14,6 +14,7 @@ doc_source: "https://github.com/pyocd/pyOCD/issues/1075"
 resolution: "user-error"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -35,4 +36,4 @@ Run the installed `pyocd` executable or `python -m pyocd`. For development, inst
 
 Resolution: user-error
 
-From [pyocd/pyOCD #1075](https://github.com/pyocd/pyOCD/issues/1075), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #1075](https://github.com/pyocd/pyOCD/issues/1075), summarized in own words; confidence high, checked against the thread, not reviewed yet.

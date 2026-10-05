@@ -11,10 +11,11 @@ symptom_regex: "cpackget\\s+was\\s+not\\s+found,\\s+missing\\s+packs\\s+cannot\\
 collection: "issues-devtools"
 source: "https://github.com/Open-CMSIS-Pack/devtools/issues/374"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/374"
-resolution: "fixed-in-release"
-versions: "fixed in 1.1.0"
+resolution: "workaround"
+versions: "cbuild 0.9.1 / cbuildgen 0.11.2, still seen in 1.0.0; fixes offered in 1.1.0"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cbuild"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -31,12 +32,12 @@ cbuildgen read the version of a locally referenced pack from the local_repositor
 
 ## Fix
 
-Fixed in CMSIS-Toolbox 1.0.0/1.1.0 (the pack version is read from the pdsc; cbuildgen packlist and the exit code were fixed in 1.1.0). Workaround: keep the version in the pidx equal to the pdsc.
+Workaround: update the version in local_repository.pidx to match the pdsc. Fixes for cbuildgen packlist (PR #442) and the exit code (cbuild PR #9) were offered for testing in CMSIS-Toolbox 1.1.0, not confirmed in the thread.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: workaround
 
-Versions: fixed in 1.1.0
+Versions: cbuild 0.9.1 / cbuildgen 0.11.2, still seen in 1.0.0; fixes offered in 1.1.0
 
-From [Open-CMSIS-Pack/devtools #374](https://github.com/Open-CMSIS-Pack/devtools/issues/374), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #374](https://github.com/Open-CMSIS-Pack/devtools/issues/374), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

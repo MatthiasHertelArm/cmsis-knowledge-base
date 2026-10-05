@@ -11,10 +11,11 @@ symptom_regex: "E:\\s+invalid\\s+dimensions"
 collection: "issues-cpackget"
 source: "https://github.com/Open-CMSIS-Pack/cpackget/issues/570"
 doc_source: "https://github.com/Open-CMSIS-Pack/cpackget/issues/570"
-resolution: "fixed-in-release"
-versions: "clearer message from 2.1.8 nightly 2025-09-10"
-confidence: "high"
+resolution: "workaround"
+versions: "clearer message in cpackget nightly 2.1.8-45-g83198e5 (2025-09-10)"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cpackget"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -30,12 +31,12 @@ The license text is shown in a text window that needs a minimum terminal size. I
 
 ## Fix
 
-Enlarge the terminal (about 50 columns by 8 rows or more) and repeat the command; newer cpackget prints 'increase window size to display license information and obtain user response to at least 50x8'. Alternatively pass --agree-embedded-license.
+Enlarge the terminal to at least 50 columns by 8 rows and repeat the command. The cpackget nightly 2.1.8-45-g83198e5 (2025-09-10) checks the size first and prints 'increase window size to display license information and obtain user response to at least 50x8'.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: workaround
 
-Versions: clearer message from 2.1.8 nightly 2025-09-10
+Versions: clearer message in cpackget nightly 2.1.8-45-g83198e5 (2025-09-10)
 
-From [Open-CMSIS-Pack/cpackget #570](https://github.com/Open-CMSIS-Pack/cpackget/issues/570), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/cpackget #570](https://github.com/Open-CMSIS-Pack/cpackget/issues/570), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

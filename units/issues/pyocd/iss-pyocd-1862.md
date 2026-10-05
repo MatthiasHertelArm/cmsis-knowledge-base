@@ -12,8 +12,10 @@ collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/1862"
 doc_source: "https://github.com/pyocd/pyOCD/issues/1862"
 resolution: "fixed-in-release"
-confidence: "high"
+versions: "Python 3.14; hidapi 0.15.0"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,10 +31,12 @@ hidapi had no wheel for Python 3.14 so pip compiled it and needed a C++ build to
 
 ## Fix
 
-Use a recent pyOCD: hidapi 0.15.0 and a newer libusb-package ship Python 3.14 wheels, so install works without a compiler. Otherwise use an older Python.
+Install again now that hidapi 0.15.0 and a newer libusb-package ship Python 3.14 wheels, so pip no longer has to compile hidapi.
 
 ## Source
 
 Resolution: fixed-in-release
 
-From [pyocd/pyOCD #1862](https://github.com/pyocd/pyOCD/issues/1862), summarized in own words; confidence high, not reviewed yet.
+Versions: Python 3.14; hidapi 0.15.0
+
+From [pyocd/pyOCD #1862](https://github.com/pyocd/pyOCD/issues/1862), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

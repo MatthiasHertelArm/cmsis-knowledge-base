@@ -15,6 +15,7 @@ resolution: "user-error"
 issue_state: "open"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "device": ["STM32L476RGTx"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: user-error
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [pyocd/pyOCD #661](https://github.com/pyocd/pyOCD/issues/661), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #661](https://github.com/pyocd/pyOCD/issues/661), summarized in own words; confidence high, checked against the thread, not reviewed yet.

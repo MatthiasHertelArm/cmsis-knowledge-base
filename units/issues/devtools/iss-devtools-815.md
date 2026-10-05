@@ -12,6 +12,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/815"
 resolution: "workaround"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["svdconv"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Give the enumeratedValues container a name different from its field name and ref
 
 Resolution: workaround
 
-From [Open-CMSIS-Pack/devtools #815](https://github.com/Open-CMSIS-Pack/devtools/issues/815), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #815](https://github.com/Open-CMSIS-Pack/devtools/issues/815), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

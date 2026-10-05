@@ -12,8 +12,9 @@ collection: "issues-cmsis6"
 source: "https://github.com/ARM-software/CMSIS_6/issues/259"
 doc_source: "https://github.com/ARM-software/CMSIS_6/issues/259"
 resolution: "fixed-in-release"
-confidence: "high"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cmsis-core"], "toolchain": ["GCC"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,10 +30,10 @@ The linker symbol __StackSeal is 64 bit but was declared as uint32_t in the star
 
 ## Fix
 
-Declare extern uint64_t __STACK_SEAL in startup_Device.c (PR 260, plus Cortex_DFP).
+Declare __STACK_SEAL as extern uint64_t in the startup file; the reporter opened PRs for the CMSIS_6 template (#260) and for Cortex_DFP (#22).
 
 ## Source
 
 Resolution: fixed-in-release
 
-From [ARM-software/CMSIS_6 #259](https://github.com/ARM-software/CMSIS_6/issues/259), summarized in own words; confidence high, not reviewed yet.
+From [ARM-software/CMSIS_6 #259](https://github.com/ARM-software/CMSIS_6/issues/259), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

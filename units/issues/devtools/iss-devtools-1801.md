@@ -3,7 +3,7 @@ id: "iss-devtools-1801"
 type: "troubleshooting"
 domain: "project"
 title: "cbuild: cbuild --rebuild cannot remove tmp directory"
-summary: "The tmp directory was in use (opened as working directory in a shell or an editor), so Windows could not delete it."
+summary: "The tmp directory was open as the working directory of a Bash shell, so with CMSIS-Toolbox 2.6.1 the rebuild could not delete it on Windows."
 status: "draft"
 tool: "cbuild"
 symptoms: ["Error removing directory \"<project>/tmp\".", "error cbuild: error cleaning '<project>/<name>.cbuild-idx.yml'"]
@@ -12,9 +12,10 @@ collection: "issues-devtools"
 source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1801"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1801"
 resolution: "fixed-in-release"
-versions: "2.6.1"
+versions: "2.6.1 affected; 2.7.0 works"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cbuild"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -27,16 +28,16 @@ mode: "S"
 
 ## Cause
 
-The tmp directory was in use (opened as working directory in a shell or an editor), so Windows could not delete it.
+The tmp directory was open as the working directory of a Bash shell, so with CMSIS-Toolbox 2.6.1 the rebuild could not delete it on Windows.
 
 ## Fix
 
-Close terminals and editors that sit in tmp; with the changed cleanup in CMSIS-Toolbox 2.7.0 the error no longer occurred.
+Leave the tmp directory in the shell before rebuilding; with the changed cleanup strategy of CMSIS-Toolbox 2.7.0 (cbuild PR #343) the same steps no longer give an error.
 
 ## Source
 
 Resolution: fixed-in-release
 
-Versions: 2.6.1
+Versions: 2.6.1 affected; 2.7.0 works
 
-From [Open-CMSIS-Pack/devtools #1801](https://github.com/Open-CMSIS-Pack/devtools/issues/1801), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #1801](https://github.com/Open-CMSIS-Pack/devtools/issues/1801), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

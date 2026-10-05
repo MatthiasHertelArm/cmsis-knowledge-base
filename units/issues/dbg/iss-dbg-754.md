@@ -9,11 +9,12 @@ tool: "cmsis-debugger"
 collection: "issues-dbg"
 source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/754"
 doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/754"
-resolution: "workaround"
-versions: "Fixed by Memory Inspector 1.3.0; seen with Memory Inspector 1.2.0 and CMSIS Debugger 1.3.0"
+resolution: "fixed-in-release"
+versions: "Memory Inspector 1.2.0 and CMSIS Debugger 1.3.0; fixed by Memory Inspector 1.3.0"
 issue_state: "open"
 confidence: "low"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cmsis-debugger"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,10 +30,10 @@ Update the Memory Inspector extension to 1.3.0 or later; the entry then appears 
 
 ## Source
 
-Resolution: workaround
+Resolution: fixed-in-release
 
-Versions: Fixed by Memory Inspector 1.3.0; seen with Memory Inspector 1.2.0 and CMSIS Debugger 1.3.0
+Versions: Memory Inspector 1.2.0 and CMSIS Debugger 1.3.0; fixed by Memory Inspector 1.3.0
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #754](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/754), summarized in own words; confidence low, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #754](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/754), summarized in own words; confidence low, corrected against the thread, not reviewed yet.

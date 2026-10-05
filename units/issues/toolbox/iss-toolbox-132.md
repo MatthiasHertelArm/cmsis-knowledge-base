@@ -13,6 +13,7 @@ resolution: "not-a-bug"
 versions: "toolbox 2.4.0"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cbuild"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: not-a-bug
 
 Versions: toolbox 2.4.0
 
-From [Open-CMSIS-Pack/cmsis-toolbox #132](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/132), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/cmsis-toolbox #132](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/132), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

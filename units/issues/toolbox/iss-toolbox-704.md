@@ -12,10 +12,11 @@ collection: "issues-toolbox"
 source: "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/704"
 doc_source: "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/704"
 resolution: "user-error"
-versions: "Seen with CMSIS-Toolbox 2.14.x."
+versions: "CMSIS-Toolbox/cbuild 2.14.x"
 issue_state: "open"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cbuild"], "toolchain": ["AC6", "GCC"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -27,18 +28,18 @@ mode: "S"
 
 ## Cause
 
-Two separate effects. In the reported project the target-set of the non-secure-only target pointed at the Release project context while the Debug set was selected, so the wrong context was built. In addition, --rebuild with --active cleans every context of the solution, not only those of the selected target-set, which deletes prebuilt secure artifacts that the non-secure image consumes.
+Two separate effects. In the reported project the target-set of the non-secure-only target pointed at the Release project context while the Debug set was selected, so the wrong context was built. In addition, --rebuild with --active cleans all contexts, not only those of the selected target-set, which deletes the prebuilt secure artifacts that the non-secure image consumes.
 
 ## Fix
 
-Make each target-set reference the project contexts of its own build type (CM33_ns.Debug in the Debug set). When using --rebuild, build the secure image again afterwards (or build the non-secure context directly with --context), because the clean step also removes images owned by the other target type.
+Make each target-set reference the project contexts of its own build type (CM33_ns.Debug in the Debug set). Building the non-secure context directly with --context does not remove the secure artifacts. The --rebuild cleaning behaviour has no fix in the thread.
 
 ## Source
 
 Resolution: user-error
 
-Versions: Seen with CMSIS-Toolbox 2.14.x.
+Versions: CMSIS-Toolbox/cbuild 2.14.x
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [Open-CMSIS-Pack/cmsis-toolbox #704](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/704), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/cmsis-toolbox #704](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/704), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

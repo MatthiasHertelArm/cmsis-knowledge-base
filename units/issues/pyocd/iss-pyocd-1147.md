@@ -16,6 +16,7 @@ versions: "pyOCD 0.30.3 and earlier"
 issue_state: "open"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "family": ["STM32L4 Series"], "device": ["STM32L4S5VITx"], "core": ["Cortex-M4"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -41,4 +42,4 @@ Versions: pyOCD 0.30.3 and earlier
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [pyocd/pyOCD #1147](https://github.com/pyocd/pyOCD/issues/1147), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #1147](https://github.com/pyocd/pyOCD/issues/1147), summarized in own words; confidence high, checked against the thread, not reviewed yet.

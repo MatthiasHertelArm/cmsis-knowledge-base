@@ -13,6 +13,7 @@ resolution: "configuration"
 issue_state: "open"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-core"], "core": ["Cortex-M33", "Cortex-M85"], "toolchain": ["GCC", "AC6", "LLVM", "IAR"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: configuration
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [ARM-software/CMSIS_6 #159](https://github.com/ARM-software/CMSIS_6/issues/159), summarized in own words; confidence medium, not reviewed yet.
+From [ARM-software/CMSIS_6 #159](https://github.com/ARM-software/CMSIS_6/issues/159), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

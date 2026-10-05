@@ -13,6 +13,7 @@ resolution: "fixed-in-release"
 versions: "fixed in toolbox 2.13.0"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cbridge"], "family": ["STM32H5 Series"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: fixed-in-release
 
 Versions: fixed in toolbox 2.13.0
 
-From [Open-CMSIS-Pack/cmsis-toolbox #455](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/455), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/cmsis-toolbox #455](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/455), summarized in own words; confidence high, checked against the thread, not reviewed yet.

@@ -15,6 +15,7 @@ resolution: "workaround"
 versions: "0.36.0 with Python 3.12.2"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: workaround
 
 Versions: 0.36.0 with Python 3.12.2
 
-From [pyocd/pyOCD #1682](https://github.com/pyocd/pyOCD/issues/1682), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #1682](https://github.com/pyocd/pyOCD/issues/1682), summarized in own words; confidence high, checked against the thread, not reviewed yet.

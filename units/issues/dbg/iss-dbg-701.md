@@ -11,9 +11,10 @@ symptom_regex: "STLink\\s+error\\s+\\(\\S+\\):\\s+Unknown\\s+command"
 collection: "issues-dbg"
 source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/701"
 doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/701"
-resolution: "fixed-in-release"
-confidence: "high"
+resolution: "workaround"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"], "device": ["STM32H743ZITx"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,10 +30,10 @@ In pre-reset mode pyOCD ran its post-reset recovery on a device that was not yet
 
 ## Fix
 
-Use a pyOCD with PR 2036.
+Use a pyOCD build with PR 2036; the thread names no release.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: workaround
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #701](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/701), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #701](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/701), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

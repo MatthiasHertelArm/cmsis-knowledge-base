@@ -11,8 +11,9 @@ collection: "issues-dbg"
 source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/370"
 doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/370"
 resolution: "fixed-in-release"
-confidence: "high"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,10 +30,10 @@ pyOCD printed bare SWD/JTAG status for typical wiring or clock problems.
 
 ## Fix
 
-Use a pyOCD with PR 1804: messages read like "SWD/JTAG communication failure (No ACK received); check USB cable, reduce debugger clock". Check cable, power, and lower the debug clock.
+Use a pyOCD with PR 1804 and the follow-up commit that adds the hint to the unexpected-ACK case: messages read like 'SWD/JTAG communication failure (No ACK received); check USB cable, reduce debugger clock'. Check the USB cable and lower the debug clock. A probe connected while pyOCD waits for it is now picked up.
 
 ## Source
 
 Resolution: fixed-in-release
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #370](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/370), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #370](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/370), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

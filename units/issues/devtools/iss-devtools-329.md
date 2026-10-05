@@ -11,10 +11,10 @@ symptom_regex: "Not\\s+Semantic\\s+Versioning:\\s+'.*?'"
 collection: "issues-devtools"
 source: "https://github.com/Open-CMSIS-Pack/devtools/issues/329"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/329"
-resolution: "fixed-in-release"
-versions: "fixed in packchk 1.3.9x"
+resolution: "unresolved"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["packchk"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -30,12 +30,10 @@ packchk's own version parser did not accept dot-separated pre-release identifier
 
 ## Fix
 
-Fixed by checking versions with the regular expression of PACK.xsd (PackVersionType); use a packchk release containing it.
+The maintainer was changing packchk to check versions with the PackVersionType regular expression of PACK.xsd; the thread does not confirm a merged fix or a release.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: unresolved
 
-Versions: fixed in packchk 1.3.9x
-
-From [Open-CMSIS-Pack/devtools #329](https://github.com/Open-CMSIS-Pack/devtools/issues/329), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #329](https://github.com/Open-CMSIS-Pack/devtools/issues/329), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

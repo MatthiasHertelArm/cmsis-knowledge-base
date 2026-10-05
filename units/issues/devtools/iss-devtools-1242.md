@@ -12,9 +12,10 @@ collection: "issues-devtools"
 source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1242"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1242"
 resolution: "workaround"
-versions: "MDK 5.39"
-confidence: "high"
+versions: "uVision 5.39"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["cpackget"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -31,12 +32,12 @@ The MDK Pack Installer (uVision 5.39) called cpackget without quoting the pack p
 
 ## Fix
 
-Not a cpackget defect: running cpackget add "<path with spaces>\Vendor.Pack.1.0.0.pack" with quotes works. The problem was tracked as a product bug of the Pack Installer; meanwhile install from a path without spaces or from the command line.
+Not a cpackget defect: cpackget add "<path with spaces>\Vendor.Pack.1.0.0.pack" with quotes works. The Pack Installer bug is tracked against MDK; meanwhile use the PackInstaller of MDK 5.38a or the updated version from knowledge article KA005531.
 
 ## Source
 
 Resolution: workaround
 
-Versions: MDK 5.39
+Versions: uVision 5.39
 
-From [Open-CMSIS-Pack/devtools #1242](https://github.com/Open-CMSIS-Pack/devtools/issues/1242), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #1242](https://github.com/Open-CMSIS-Pack/devtools/issues/1242), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

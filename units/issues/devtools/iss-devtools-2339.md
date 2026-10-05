@@ -3,15 +3,17 @@ id: "iss-devtools-2339"
 type: "troubleshooting"
 domain: "project"
 title: "csolution: csolution cannot find cproject.yml when names contain non-ASCII characters on Windows"
-summary: "csolution passes UTF-8 strings from YAML and JSON to std::filesystem without conversion to the Windows code page, so paths with non-ASCII characters get corrupted."
+summary: "csolution 2.11.0 on Windows corrupts non-ASCII characters in file names and paths (an encoding issue), so it cannot find the referenced cproject.yml."
 status: "draft"
 tool: "csolution"
 collection: "issues-devtools"
 source: "https://github.com/Open-CMSIS-Pack/devtools/issues/2339"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/2339"
 resolution: "workaround"
-confidence: "high"
+versions: "2.11.0"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -19,14 +21,16 @@ mode: "S"
 
 ## Cause
 
-csolution passes UTF-8 strings from YAML and JSON to std::filesystem without conversion to the Windows code page, so paths with non-ASCII characters get corrupted. CMake additionally restricts target names (project, build type, target type, execute names) to a limited character set.
+csolution 2.11.0 on Windows corrupts non-ASCII characters in file names and paths (an encoding issue), so it cannot find the referenced cproject.yml. CMake also restricts the characters of target names, which are formed from project names, target types, build types and execute names.
 
 ## Fix
 
-Workaround: enable the Windows option Beta Use Unicode UTF-8 for worldwide language support (system-wide, may affect legacy tools). Keep project, type and execute names ASCII. A documentation note was requested.
+Workaround: enable the Windows option 'Beta: Use Unicode UTF-8 for worldwide language support' (system-wide, may affect legacy tools). Keep project names, target types, build types and execute names ASCII. A documentation note was requested.
 
 ## Source
 
 Resolution: workaround
 
-From [Open-CMSIS-Pack/devtools #2339](https://github.com/Open-CMSIS-Pack/devtools/issues/2339), summarized in own words; confidence high, not reviewed yet.
+Versions: 2.11.0
+
+From [Open-CMSIS-Pack/devtools #2339](https://github.com/Open-CMSIS-Pack/devtools/issues/2339), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

@@ -15,6 +15,7 @@ resolution: "fixed-in-release"
 versions: "introduced 0.42.0, fixed 0.44.1"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "core": ["Cortex-M0+"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: fixed-in-release
 
 Versions: introduced 0.42.0, fixed 0.44.1
 
-From [pyocd/pyOCD #1962](https://github.com/pyocd/pyOCD/issues/1962), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #1962](https://github.com/pyocd/pyOCD/issues/1962), summarized in own words; confidence high, checked against the thread, not reviewed yet.

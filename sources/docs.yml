@@ -455,3 +455,58 @@ sources:
       - {dir: ocp-vidx2pidx, repo: Open-CMSIS-Pack/vidx2pidx, include: ["README.md"], domain: pack}
     license: Apache-2.0
     domain: project
+
+  - name: cmsis-ethos-u
+    prefix: ethu
+    repo: ARM-software/CMSIS-Ethos-U
+    dir: arm-CMSIS-Ethos-U
+    include: ["README.md", "overview/README.md", "documentation/doxygen/*/src/*.md", "examples/Test-Ethos-U/*.md"]
+    format: doxmd
+    license: Apache-2.0
+    domain: edge-ai
+
+  # Smaller ARM-software repositories: RTOS2 validation, CMSIS-CV, the generic Cortex-M DFP, AVH MLOps, Arm-2D.
+  - name: arm-software-readmes
+    prefix: armsw
+    repo: ARM-software/various
+    multi:
+      - {dir: arm-CMSIS-RTOS2_Validation, repo: ARM-software/CMSIS-RTOS2_Validation, include: ["README.md", "Project/README.md"], domain: rtos}
+      - {dir: arm-CMSIS-CV, repo: ARM-software/CMSIS-CV, include: ["README.md", "Documentation/Doxygen/src/mainpage.md", "Examples/README.md", "cmsiscv_nodes/nodes/README.md"], domain: edge-ai}
+      - {dir: arm-Cortex_DFP, repo: ARM-software/Cortex_DFP, include: ["README.md"], domain: core}
+      - {dir: arm-AVH-MLOps, repo: ARM-software/AVH-MLOps, include: ["README.md"], domain: edge-ai}
+      - {dir: arm-Arm-2D, repo: ARM-software/Arm-2D, sparse: [documentation, README.md], include: ["README.md"], domain: optimization}
+    license: Apache-2.0
+    domain: project
+
+  # Embedded file system and TLS: littlefs (design and on-disk format), the Mbed TLS knowledge base.
+  - name: littlefs
+    prefix: lfs
+    repo: littlefs-project/littlefs
+    include: ["README.md", "DESIGN.md", "SPEC.md"]
+    license: BSD-3-Clause
+    domain: project
+
+  - name: mbedtls-kb
+    prefix: mbedtls
+    repo: Mbed-TLS/mbedtls-docs
+    include: ["kb/**/*.md", "getting_started/**/*.md", "getting_started/*.md"]
+    exclude: ["*/index.md", "kb/licensing/*", "kb/development/contribution-structure.md"]
+    license: Apache-2.0
+    domain: security
+
+  # Zephyr board pages of boards that also have a CMSIS board support pack: wiring, flashing, debugging.
+  - name: zephyr-boards
+    prefix: zepb
+    repo: zephyrproject-rtos/zephyr
+    dir: zephyr
+    sparse: [boards/st/nucleo_f401re, boards/st/nucleo_f446re, boards/st/nucleo_f756zg, boards/st/nucleo_h743zi,
+             boards/st/nucleo_h563zi, boards/st/nucleo_g474re, boards/st/nucleo_l476rg, boards/st/nucleo_l552ze_q,
+             boards/st/nucleo_wb55rg, boards/st/nucleo_wl55jc, boards/st/b_u585i_iot02a, boards/st/stm32n6570_dk,
+             boards/st/nucleo_f429zi, boards/st/nucleo_c031c6, boards/nxp/lpcxpresso55s69, boards/nxp/mimxrt1060_evk,
+             boards/nxp/mimxrt1064_evk, boards/nxp/mimxrt1050_evk, boards/nxp/frdm_mcxn947, boards/nxp/frdm_k64f,
+             boards/arm/mps3, boards/arm/mps2, boards/alif, boards/infineon/kit_xmc72_evk, boards/raspberrypi/rpi_pico,
+             boards/raspberrypi/rpi_pico2, boards/nordic/nrf52840dk, boards/nordic/nrf5340dk, boards/renesas/ek_ra8m1]
+    include: ["boards/*/*/doc/*.rst", "boards/*/*/*/doc/*.rst"]
+    license: Apache-2.0
+    domain: bring-up
+    url: "https://docs.zephyrproject.org/latest/{dir}/index.html"

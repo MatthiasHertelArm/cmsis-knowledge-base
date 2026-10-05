@@ -10,9 +10,10 @@ collection: "issues-devtools"
 source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1430"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1430"
 resolution: "fixed-in-release"
-versions: "2.2.1 to 2.3.0"
-confidence: "high"
+versions: "csolution 2.2.1, 2.3.0+p1"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -24,12 +25,12 @@ Local repository packs were added to the pack list without version filtering and
 
 ## Fix
 
-Fixed in CMSIS-Toolbox 2.4: local packs are visible wherever installed packs are used and take precedence when their version is equal or larger within the requested range.
+Fixed in csolution: local packs are visible wherever installed packs are used and take precedence when their version is equal or larger within the requested range. The thread names no release.
 
 ## Source
 
 Resolution: fixed-in-release
 
-Versions: 2.2.1 to 2.3.0
+Versions: csolution 2.2.1, 2.3.0+p1
 
-From [Open-CMSIS-Pack/devtools #1430](https://github.com/Open-CMSIS-Pack/devtools/issues/1430), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #1430](https://github.com/Open-CMSIS-Pack/devtools/issues/1430), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

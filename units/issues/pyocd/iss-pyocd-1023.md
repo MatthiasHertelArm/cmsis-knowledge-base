@@ -14,6 +14,7 @@ versions: "pyOCD 0.29, ARM Linux (Raspberry Pi, aarch64)"
 issue_state: "open"
 confidence: "low"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -35,4 +36,4 @@ Versions: pyOCD 0.29, ARM Linux (Raspberry Pi, aarch64)
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [pyocd/pyOCD #1023](https://github.com/pyocd/pyOCD/issues/1023), summarized in own words; confidence low, not reviewed yet.
+From [pyocd/pyOCD #1023](https://github.com/pyocd/pyOCD/issues/1023), summarized in own words; confidence low, checked against the thread, not reviewed yet.

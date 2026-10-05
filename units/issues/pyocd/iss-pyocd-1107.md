@@ -16,6 +16,7 @@ versions: "Embedded CDT before 6.1.1"
 issue_state: "open"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -41,4 +42,4 @@ Versions: Embedded CDT before 6.1.1
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [pyocd/pyOCD #1107](https://github.com/pyocd/pyOCD/issues/1107), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #1107](https://github.com/pyocd/pyOCD/issues/1107), summarized in own words; confidence high, checked against the thread, not reviewed yet.

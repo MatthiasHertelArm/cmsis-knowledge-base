@@ -13,6 +13,7 @@ resolution: "workaround"
 versions: "LLVM Embedded Toolchain 22.1.0"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["csolution"], "core": ["Cortex-M55"], "toolchain": ["CLANG"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: workaround
 
 Versions: LLVM Embedded Toolchain 22.1.0
 
-From [Open-CMSIS-Pack/devtools #2491](https://github.com/Open-CMSIS-Pack/devtools/issues/2491), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #2491](https://github.com/Open-CMSIS-Pack/devtools/issues/2491), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

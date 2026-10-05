@@ -12,6 +12,7 @@ doc_source: "https://github.com/pyocd/pyOCD/discussions/1088"
 resolution: "configuration"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Use a vendor-defined usage page with a vendor usage, a 64-byte report size and b
 
 Resolution: configuration
 
-From [pyocd/pyOCD discussion 1088](https://github.com/pyocd/pyOCD/discussions/1088), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD discussion 1088](https://github.com/pyocd/pyOCD/discussions/1088), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

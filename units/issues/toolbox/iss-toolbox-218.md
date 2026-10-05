@@ -12,6 +12,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/218"
 resolution: "configuration"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cbuild"], "toolchain": ["GCC"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Use the cdefault.yml shipped with toolbox 2.7 or newer, which adds -Wl,-print-me
 
 Resolution: configuration
 
-From [Open-CMSIS-Pack/cmsis-toolbox #218](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/218), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/cmsis-toolbox #218](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/218), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

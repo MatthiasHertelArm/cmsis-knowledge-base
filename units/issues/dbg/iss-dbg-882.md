@@ -3,16 +3,16 @@ id: "iss-dbg-882"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: RTT broken on single-core devices when control block is found by ELF symbol"
-summary: "pyOCD handled the pname of a single-core target wrongly, so the symbol lookup of the RTT control block in the ELF failed."
+summary: "pyOCD handled the pname of a single-core target wrongly, so the lookup of the RTT control block by its ELF symbol failed."
 status: "draft"
 tool: "pyocd"
 collection: "issues-dbg"
 source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/882"
 doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/882"
 resolution: "fixed-in-release"
-versions: "fixed in pyOCD 0.43.1"
-confidence: "high"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -20,16 +20,14 @@ mode: "S"
 
 ## Cause
 
-pyOCD handled the pname of a single-core target wrongly, so the symbol lookup of the RTT control block in the ELF failed.
+pyOCD handled the pname of a single-core target wrongly, so the lookup of the RTT control block by its ELF symbol failed.
 
 ## Fix
 
-Update to pyOCD 0.43.1 / CMSIS Debugger 1.4.1 or later; as an alternative give the control block address explicitly.
+Update to pyOCD 0.43.1 / CMSIS Debugger 1.4.1 or later, which contain pyOCD PR #1923.
 
 ## Source
 
 Resolution: fixed-in-release
 
-Versions: fixed in pyOCD 0.43.1
-
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #882](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/882), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #882](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/882), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

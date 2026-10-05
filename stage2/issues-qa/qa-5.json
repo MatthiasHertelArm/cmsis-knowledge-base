@@ -1,0 +1,852 @@
+[
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1549",
+  "verdict": "partly",
+  "problems": [
+   "'fixed-in-release': the thread only has the maintainer's intent to revert the API change, no release or merged fix"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "pyOCD 0.35.0 changed the DPConnector constructor signature, breaking callers (such as NXP SPSDK) that passed only the probe.",
+  "fix_fixed": "Pass the debug port explicitly as the second argument (DPConnector(probe, probe.session.board.target.dp)), as done on the SPSDK side; the maintainer said he would find a way to revert the API change.",
+  "versions_fixed": "0.35.0",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1547",
+  "verdict": "partly",
+  "problems": [
+   "versions '0.35' not named in the thread (only pack NXP.MIMXRT685S_DFP 16.0.0)",
+   "'fixed-in-release': the parse fix is only a pull request (#1548) tested from a branch; core-specific DebugPortStart support was only planned"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The NXP pack uses C-style 'U' suffixes on integer literals in a debug sequence, which pyOCD's parser rejected. After that, DebugPortStart was assigned to the named core cm33; pyOCD did not support core-specific DebugPort* sequences, so the debug unlock sequence did not run and the CM33 access port stayed disabled.",
+  "fix_fixed": "Parser fix in pull request #1548 (installable from the branch). For the second problem remove Pname=\"cm33\" from the DebugPortStart sequence in the pdsc and pass the expanded pack directory to --pack, until core-specific port sequences are supported. Use the .FLM extracted from the pack, not NXP's .cfx.",
+  "versions_fixed": "NXP.MIMXRT685S_DFP 16.0.0",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1518",
+  "verdict": "unsupported",
+  "problems": [
+   "the thread has no resolution, only an agreed plan; 'workaround' label is wrong",
+   "'Check for a release with the change' is not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "SemihostAgent._get_string() decodes target data as UTF-8 regardless of whether the file was opened as binary, so non-UTF-8 binary data written via semihosting raises an exception.",
+  "fix_fixed": "No fix in the thread. Maintainer and reporter agreed that _get_string() should return bytes and only text-mode files be encoded/decoded, and that target libraries (picolibc) should open files in binary mode by default.",
+  "versions_fixed": "",
+  "resolution_fixed": "unresolved"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1499",
+  "verdict": "partly",
+  "problems": [
+   "versions '0.34' not named in the thread (only pack Keil.STM32H7xx_DFP 3.0.0)"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The board ID table appears to assign a wrong target name (stm32h745zihx) to the DISCO-H745I board.",
+  "fix_fixed": "Pass the right target explicitly, e.g. -t STM32H745XIHx. Flash loading then still failed (flash algorithm not halted, IPSR=3) and the thread leaves that open.",
+  "versions_fixed": "Keil.STM32H7xx_DFP 3.0.0",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1498",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1496",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1486",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1472",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1437",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1424",
+  "verdict": "unsupported",
+  "problems": [
+   "the thread has no resolution, only a planned change; 'fixed-in-release' is wrong",
+   "version '0.33' not in the thread",
+   "workarounds 'avoid @ in paths' and '--base-address' are not in the thread (the thread mentions --address only as the reason for the suffix)"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The flash/load command treats an '@<address>' suffix on a file name as the load address, so a path containing '@' is split and the rest parsed as an integer.",
+  "fix_fixed": "No fix in the thread; the maintainer planned to check whether a file with the full argument exists before processing the '@' suffix.",
+  "versions_fixed": "",
+  "resolution_fixed": "unresolved"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1400",
+  "verdict": "partly",
+  "problems": [
+   "'fixed in 6.4.3' stated as fact; the thread only says the upstream fix will be in 6.4.3, not yet released",
+   "omits that setting log.showSignature only locally did not help"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "setuptools_scm 6.4.2 fails on GPG-signed commits when git log shows signatures; the upstream fix (pypa/setuptools_scm#548) was due in 6.4.3, not yet released at the time.",
+  "fix_fixed": "Disable signatures globally with 'git config --global log.showSignature false' before installing (setting it only in the repository did not help), or use setuptools_scm 6.4.3 once it is released.",
+  "versions_fixed": "setuptools_scm 6.4.2",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1395",
+  "verdict": "partly",
+  "problems": [
+   "'fixed-in-release'/'upgrade': the thread only shows VID/PID matching as a commit on develop and PR #1399 under review, no release",
+   "attributes VID/PID matching to change #1399; the thread names commit a926e94 on develop"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "pyOCD matches probes by product and interface name strings rather than VID/PID, and this WCH-Link (2a86:8011) is not fully USB compliant: it fails to answer string descriptor requests properly in some conditions.",
+  "fix_fixed": "Matching by VID/PID pair was added on the develop branch (commit a926e94; PR #1399 discussed). Workaround on Linux: edit hidapi_backend.py to also accept 'WCH-Link' in the product name and run with PYOCD_USB_BACKEND=hidapiusb (with hidapi installed instead of hid).",
+  "versions_fixed": "0.33.1",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1363",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1345",
+  "verdict": "partly",
+  "problems": [
+   "version '0.33' not in the thread (only 0.32.3 as the version with the correct base class)",
+   "'fixed-in-release': the maintainer only says it should be fixed in PR #1350 and asks for a test",
+   "'in a refactor' is not stated"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "GenericMemAPTarget inherits from CoreSightComponent instead of CoreSightCoreComponent (as it did in 0.32.3), so DebugContext's isinstance check fails when a session is opened.",
+  "fix_fixed": "The maintainer said pull request #1350 should fix it; not confirmed in the thread.",
+  "versions_fixed": "0.32.3",
+  "resolution_fixed": "unresolved"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1327",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1322",
+  "verdict": "partly",
+  "problems": [
+   "'Use 0.33.1 (which dropped the bundled libusb)': the thread only has the maintainer's plan to release 0.33.1 with the revert, not that it fixed the error",
+   "'updating ST-Link firmware helped some users': it helped one user only until the probe was replugged",
+   "omits the confirmed workaround of staying on v0.32.3"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "Appeared with v0.33.0, which newly provisioned libusb through the libusb-package dependency; v0.32.3 with a separately installed libusb worked. The maintainer could not reproduce it.",
+  "fix_fixed": "Stay on v0.32.3; the maintainer planned v0.33.1 to revert the bundled libusb. Updating the ST-Link firmware helped one user only until the probe was replugged. Generic checks suggested: USB access rights, connect directly rather than via a hub, try another port or cable, make sure nothing else uses the device, try the system libusb.",
+  "versions_fixed": "0.33.0, 0.32.3",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1313",
+  "verdict": "partly",
+  "problems": [
+   "'use a CMSIS-DAP firmware on the Pico' is not suggested in the thread; the picoprobe author reports signal-integrity problems with a Pico as CMSIS-DAP too"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "Probable signal-integrity trouble; the picoprobe code speeds up SWD by assuming positive acknowledgements from the target, and the firmware leaves the pins at a fast slew rate.",
+  "fix_fixed": "Lower the SWD clock (-f 400000) and replug the probe when problems show; -Opicoprobe.safeswd=True disables the assumed acknowledgements (much slower).",
+  "versions_fixed": "0.32.3",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1303",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1257",
+  "verdict": "partly",
+  "problems": [
+   "the cause is stated as fact; the maintainer only says packets look out of order or mixed up and that the VM may work because of lower USB performance",
+   "option given without a value; the working form in the thread is -Ocmsis_dap.limit_packets=1"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "Command packets appear to get out of order, dropped or mixed up between pyOCD on macOS and a custom CMSIS-DAP firmware (private DAPLink fork on a K22F); the maintainer suspected the Ubuntu VM worked only because of lower USB performance.",
+  "fix_fixed": "Add -Ocmsis_dap.limit_packets=1 (the =True form was not accepted until change #1259); the maintainer also suggested rebasing the firmware on the current DAPLink develop branch.",
+  "versions_fixed": "0.32.1",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1247",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1232",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1225",
+  "verdict": "partly",
+  "problems": [
+   "'Use a vendor tool' is not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The CY8CKIT-059 has KitProg (v1), which has no CMSIS-DAP mode; pyOCD supports only KitProg2 in CMSIS-DAP mode and KitProg3. PSoC 5LP devices are not really supported by pyOCD either (no CMSIS-Pack, no flash programming).",
+  "fix_fixed": "No fix for this kit in pyOCD; only KitProg2 (switched to CMSIS-DAP mode with its button) or KitProg3 probes are detected.",
+  "versions_fixed": "",
+  "resolution_fixed": "not-a-bug"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1206",
+  "verdict": "partly",
+  "problems": [
+   "'recover the device (reset or erase)' is not in the thread; the maintainer even doubts that connect under reset works on LPC55xx"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The target was not responding on SWD because the application had muxed one of the SWD pins to another function (the maintainer notes 'No ACK received' usually means low-power sleep or muxed SWD pins).",
+  "fix_fixed": "Remove the application's pin configuration that reassigns the SWD pin; then flashing works.",
+  "versions_fixed": "0.31.0, 0.30.3",
+  "resolution_fixed": "user-error"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1202",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1192",
+  "verdict": "partly",
+  "problems": [
+   "debug sequences are presented as usable; the thread says they exist only on the maintainer's feature branch, not upstream"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The built-in STM32L475 target had wrong addresses for the DBGMCU APB1FZR2 and APB2FZR freeze registers.",
+  "fix_fixed": "Fixed by change #1193. For other STM32 parts (e.g. L496) use the CMSIS pack target and write DBGMCU registers from a user script (did_connect hook); debug sequence support was only on the maintainer's feature/debug_sequences branch.",
+  "versions_fixed": "",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1164",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1163",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1159",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1143",
+  "verdict": "partly",
+  "problems": [
+   "the mechanism of the 0.32.0 fix (tolerate strings, fall back to protocol 1.0.0) is only the plan discussed in the thread; the thread only says the issue is resolved in 0.32.0"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "Some probe firmwares (Microchip EDBG, Particle DAPLink) put a vendor firmware revision in the DAP_Info field that pre-2.1 CMSIS-DAP specs loosely called firmware version but that means protocol version; pyOCD tried to parse it as numbers.",
+  "fix_fixed": "Upgrade to pyOCD 0.32.0 or later, where the maintainer says this is resolved (the change discussed was to handle the parse error and default to CMSIS-DAP protocol 1.0.0 for unknown values).",
+  "versions_fixed": "fixed in 0.32.0",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1136",
+  "verdict": "partly",
+  "problems": [
+   "'fell back to generic handling' is a mechanism the thread does not give",
+   "'Use a pyOCD release that includes the LPC5526 target' and 'fixed-in-release' are not in the thread; only the reporter's local built-in target is shown"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "LPC5526 had no built-in pyOCD target, unlike the LPC55S28 whose target uses the LPC5500 family code (which carries a comment the reporter suspected matches this case); flashing a blank part failed with a memory transfer fault while erase always worked.",
+  "fix_fixed": "Add a built-in target for the LPC5526 like the LPC55S28 one; the reporter did this and could then flash, erase and debug.",
+  "versions_fixed": "0.30.3",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1126",
+  "verdict": "partly",
+  "problems": [
+   "'Fixed in a pyOCD 0.30.x patch release' is not in the thread; the maintainer only promises a new version with the fix from PR #1128"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The Picoprobe probe class raised NoBackendError while enumerating probes when no libusb backend was installed, instead of just reporting no probes.",
+  "fix_fixed": "Fixed by PR #1128, which the maintainer planned to ship in a new version soon; installing libusb avoids the error.",
+  "versions_fixed": "0.30.0",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1121",
+  "verdict": "partly",
+  "problems": [
+   "'later releases include the improved detection' and 'fixed-in-release' are not in the thread; only a maintainer branch tested by the reporter is shown"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "pyOCD recognises HID CMSIS-DAP probes by 'CMSIS-DAP' in the product name; the WCH-Link's product string lacks it, hidapi does not report interface names, and the WCH-Link's HID interface string descriptor is broken, so the probe was ignored on macOS (Windows with pyocd 0.29.0 listed it).",
+  "fix_fixed": "Install the maintainer's branch that also looks for 'CMSIS-DAP' in the hidapi device path (pip install -U git+https://github.com/flit/pyOCD@bugfix/hidapi_uid_and_if_name); the reporter confirmed the probe is then found.",
+  "versions_fixed": "0.30.3.dev0 (macOS), 0.29.0 (Windows)",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1116",
+  "verdict": "unsupported",
+  "problems": [
+   "the thread has no comment beyond a cc and no fix or release; 'Fixed in a pyOCD 0.30.x patch release' is invented",
+   "version 'affected 0.30.0' is not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The Picoprobe enumeration code passes the result of a USB search to PicoLink without checking it, so it dereferences None when a probe UID is given but no Picoprobe is connected.",
+  "fix_fixed": "",
+  "versions_fixed": "",
+  "resolution_fixed": "unresolved"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1114",
+  "verdict": "unsupported",
+  "problems": [
+   "the thread only has 'Will fix shortly'; 'fixed shortly after 0.30.0, upgrade to a later 0.30.x' is invented"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "A trace log statement in the CMSIS-DAP probe connect() accesses protocol.name while the protocol is None.",
+  "fix_fixed": "",
+  "versions_fixed": "0.30",
+  "resolution_fixed": "unresolved"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1089",
+  "verdict": "partly",
+  "problems": [
+   "'included in the next release after 0.29' and version 'seen with 0.29' are not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "pyOCD maps probe serial-number prefixes to Mbed board IDs, and a bug in the CMSIS-DAP board identification code matched the custom serial string to a u-blox board.",
+  "fix_fixed": "Fixed via change #1090. Board ID background is documented on the pyOCD wiki page 'Board IDs'.",
+  "versions_fixed": "",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1075",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1054",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1049",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1026",
+  "verdict": "partly",
+  "problems": [
+   "recommends '--connect=under-reset' although the thread reports it made no change"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "A nominally identical second board worked, so the reporter put it down to a hardware fault on the first hand-soldered prototype; the maintainer notes Cortex-M7 STM32F7/H7 parts have been problematic and did not rule out an ST-Link V3 issue in pyOCD.",
+  "fix_fixed": "Test with a second board or probe before suspecting pyOCD, and keep the ST-Link V3 firmware updated (early versions had bugs). Connecting under reset did not help here.",
+  "versions_fixed": "ST-Link V3J7M2",
+  "resolution_fixed": "not-a-bug"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1004",
+  "verdict": "partly",
+  "problems": [
+   "version 'binaries shipped in releases after the 0.2x line' is invented; the thread only says 'our most recent releases'"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "Pointing PyInstaller at pyocd/tools/pyocd.py breaks its relative imports; later problems came from prettytable's pkg_resources distribution lookup and the SVD data zip not being bundled.",
+  "fix_fixed": "Use the prebuilt binary distributions included in the pyOCD release assets instead of building your own.",
+  "versions_fixed": "0.28.1.dev54 (reporter's source build)",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/996",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/995",
+  "verdict": "partly",
+  "problems": [
+   "'Use a pyOCD release that includes ... PR #1018 (after 0.28)': the maintainer only asked the reporter to verify that #1018 fixes it; no release or confirmation",
+   "'reconnect rework' describes #1018, which the thread does not"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "After a reset PSoC6 drops back to JTAG mode and loses DAP state, so the DAP must be fully re-initialised; since 0.28.0 dp.init() goes through the shared probe proxy, which increments its connect count and then turns the SWJ switch sequence into a no-op.",
+  "fix_fixed": "Pull request #1018 is meant to fix reconnecting; the maintainer asked the reporter to verify it. The reporter's tested workaround in the PSoC6 target code re-initialises the DAP after reset (SWJ sequence, reset_did_occur on the APs, read DP IDR, clear sticky errors, power up debug).",
+  "versions_fixed": "0.28.0",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/986",
+  "verdict": "partly",
+  "problems": [
+   "'a pyOCD release after 0.28.x' and version 'seen with 0.28.x' are not in the thread; only a maintainer commit the reporter tested is shown"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "A string/bytes conversion bug in SemihostAgent._get_string() (six.ensure_str(bytes(bytearray(''))...)) raises TypeError for semihosting write requests under Python 3.",
+  "fix_fixed": "Fixed by the maintainer's commit, which the reporter confirmed works. Before that, replacing the failing line in _get_string() with target_str = \"\" removed the error.",
+  "versions_fixed": "",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/973",
+  "verdict": "partly",
+  "problems": [
+   "the sleep diagnosis is the maintainer's likely explanation, never confirmed; 'configuration' resolution is not shown",
+   "'--connect=under-reset if the reset line is wired' misstates the thread: it failed because the nRF52840 nRESET pin is disabled unless UICR.PSELRESET is programmed",
+   "'reset the part so it wakes' is not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "No response at all to the first SWD read; the maintainer says this most often means the MCU is asleep in a low-power mode (WFI/WFE) that disables debug, and the default Mbed build neither enables debug nor disables sleep on idle.",
+  "fix_fixed": "Build with the Mbed debug profile so debug stays enabled and automatic sleep is off. --connect=under-reset did not help because the nRF52840 does not expose nRESET on a pin unless UICR.PSELRESET is programmed; otherwise try to connect while the firmware is awake or as the MCU powers on.",
+  "versions_fixed": "0.28.1, 0.28.2",
+  "resolution_fixed": "unresolved"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/969",
+  "verdict": "partly",
+  "problems": [
+   "'Update to a release that contains the maintainer's patch': the patch is the reporter's and the maintainer only intends to ship it; no release shown",
+   "'avoid --elf on the affected dev build' is not in the thread",
+   "omits the second bug (self.target.elf should be self.session.target.elf)"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "Regression in commands/commander.py: the os module is not imported and self.target.elf should be self.session.target.elf, so --elf crashes.",
+  "fix_fixed": "Apply the reporter's patch (import os, use self.session.target.elf); the maintainer said he would ship a fix with it shortly.",
+  "versions_fixed": "0.28.1.dev6",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/963",
+  "verdict": "partly",
+  "problems": [
+   "cause stated as fact; the maintainer only says it 'may be related' to changed CMSIS-DAP name checks",
+   "'fixed-in-release' with PR #991: the PR is for Atmel-ICE and only 'maybe' fixes this; no release or confirmation"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "Since pyocd 0.24.0 the Atmel EDBG CMSIS-DAP probe is not detected (0.23.0 detects it); the maintainer suspected changes to the checks for CMSIS-DAP names.",
+  "fix_fixed": "Downgrade to pyocd 0.23.0 (adapting to its older Python API), which detects the probe. A pull request adding Atmel-ICE support (#991) might fix it too; not confirmed.",
+  "versions_fixed": "0.27.3 and 0.24.0 affected; 0.23.0 works",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/925",
+  "verdict": "partly",
+  "problems": [
+   "the 32/64-bit mismatch is the maintainer's guess stated as cause; a later comment says the bitness of the installed libraries made no difference",
+   "'reinstall J-Link matching the Python bitness' is not in the thread; the maintainer only suggested reinstalling the J-Link package"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "pylink-square, used by pyOCD for J-Link probes, fails to load the SEGGER J-Link library while pyOCD looks for probes. The maintainer suspected a 32/64-bit mismatch; a later commenter found the library bitness made no difference and links it to a pylink-square library-loading problem on Linux (square/pylink#33).",
+  "fix_fixed": "Uninstalling the J-Link software removed the error, but this disables J-Link probes in pyOCD; the maintainer also suggested reinstalling the J-Link driver package.",
+  "versions_fixed": "0.27.1.dev28; pylink-square 1.2.0",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/924",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/923",
+  "verdict": "partly",
+  "problems": [
+   "'download its .pack manually and use --pack' is not in the thread",
+   "version 'seen 2020' is not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The index and pack descriptor downloads failed because of a server-side problem at the pack host, not a pyOCD bug; some pdsc URLs returned HTML pages.",
+  "fix_fixed": "Retry: the maintainers worked around it on the server and reported it fixed (a retest during the server change could still fail). Failures for a few vendors (e.g. Qorvo) are known and outside pyOCD's control.",
+  "versions_fixed": "",
+  "resolution_fixed": "not-a-bug"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/921",
+  "verdict": "partly",
+  "problems": [
+   "'user-error' does not follow: the thread puts it on the distribution package missing a dependency"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The Arch AUR package did not install python-future, which pylink-square (a pyOCD dependency) requires and which pip would have installed.",
+  "fix_fixed": "Install the missing python-future package, or install pyOCD with pip (e.g. in an isolated environment); report it to the distribution package maintainer.",
+  "versions_fixed": "0.27.2",
+  "resolution_fixed": "not-a-bug"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/911",
+  "verdict": "unsupported",
+  "problems": [
+   "the thread only has 'I'll try to get a fix out soon'; 'upgrade to the next 0.27.x patch, where the maintainer fixed it' is invented",
+   "'used a lock attribute before it was created' is a mechanism the thread does not give"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "Regression in 0.27: JLinkProbe lacks the _lock attribute that DebugProbe.lock() uses, so opening a session with a J-Link fails.",
+  "fix_fixed": "The previous pyOCD version worked for the reporter; the maintainer said he would get a fix out soon.",
+  "versions_fixed": "0.27",
+  "resolution_fixed": "unresolved"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/893",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/887",
+  "verdict": "partly",
+  "problems": [
+   "version 'seen 2020 with 0.26-0.27' is not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The Rust Reqwest/RusTLS libraries used by cmsis-pack-manager could not download several pdsc files from the Keil server (unexpected end of file), so the index lacked the STM32 packs.",
+  "fix_fixed": "Download the DFP from the Keil CMSIS-Pack list and pass it with --pack.",
+  "versions_fixed": "",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/881",
+  "verdict": "partly",
+  "problems": [
+   "LPC55S28 target support is PR #885 in the thread; #884 is the single-core change for the lpc55s69 target",
+   "'a pyOCD release' is not shown; the reporter tested the development head",
+   "omits that a chip-erase hang remained after the halt failure was resolved"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The LPC55xx boot ROM needs custom handling to halt after reset; the LPC552x had no built-in target so that logic was not used, and the -t lpc55s69 workaround fails because the LPC552x is single-core while the LPC55S69 target assumes two cores.",
+  "fix_fixed": "Use pyOCD with the later changes: the single-core handling of PR #884 resolved the halt failure, and #885 added LPC55S28 support with an updated flash algorithm. The reporter still saw a chip-erase hang with the development head.",
+  "versions_fixed": "0.24.0, 0.25.0, 0.26.1",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/877",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/855",
+  "verdict": "partly",
+  "problems": [
+   "'a pyOCD release after 0.26' and version 'affected 0.2x' are not in the thread; the maintainer only says 'Should be fixed now!'"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The SWO polling thread (DAP_SWO_Data) and the transfer thread used the same probe endpoint without synchronisation, so their DAP responses were mixed up on probes without a separate SWO streaming endpoint.",
+  "fix_fixed": "The maintainer reported it fixed; the thread names no version or change.",
+  "versions_fixed": "",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/848",
+  "verdict": "partly",
+  "problems": [
+   "'fixed-in-release' does not follow: the API was intentionally replaced and only the documentation example was fixed (#849); the user changes the script"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "get_region_by_name() was removed from MemoryMap after 0.24 in favour of a general lookup; the user-script example still used the old name.",
+  "fix_fixed": "Use target.memory_map.get_first_matching_region(name=\"flexspi\") (keyword arguments match any region attribute); the documentation example was fixed in #849.",
+  "versions_fixed": "0.24 and later",
+  "resolution_fixed": "not-a-bug"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/839",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/822",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/813",
+  "verdict": "partly",
+  "problems": [
+   "'Later versions of pyOCD and cmsis-pack-manager fixed the download' is not in the thread",
+   "'check with pyocd list --targets --pack <file>' is not in the thread",
+   "version 'seen early 2020' is not in the thread",
+   "omits that one user still got 'Target type not recognized' with --pack"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "cmsis-pack-manager could not fetch the STM32 pdsc files from keil.com (a problem deep in RustLS; curl downloads them fine), so the device was not in the local index.",
+  "fix_fixed": "Download the DFP from the Keil CMSIS-Pack list and pass it to pyOCD with --pack. One user still got 'Target type not recognized' with --pack and with a pack: entry in the config file; that stayed open in the thread.",
+  "versions_fixed": "",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/809",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/808",
+  "verdict": "unsupported",
+  "problems": [
+   "the fix contradicts the thread: the reporter tried the newer DAPLink build and flashing still failed",
+   "the old firmware as the cause is only the NXP engineer's suggestion and is refuted by that test; the thread has no resolution"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "",
+  "fix_fixed": "",
+  "versions_fixed": "0.24.1",
+  "resolution_fixed": "unresolved"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/805",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/802",
+  "verdict": "partly",
+  "problems": [
+   "the stale name is in the LPC1768 target's set_reset_catch (target_LPC1768.py), not in the flash loader",
+   "'a release after 0.24.1' is not stated; the thread says #821 was merged to master"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "Regression after CATCH_CORE_RESET was renamed: the LPC1768 built-in target's set_reset_catch still used the old name, so reset-and-halt during flashing raised AttributeError.",
+  "fix_fixed": "Fixed by PR #821, merged to master; use a pyOCD version that includes it.",
+  "versions_fixed": "0.24.1",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/801",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/800",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/755",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/727",
+  "verdict": "partly",
+  "problems": [
+   "the too-parallel index download is a later, separate problem in the thread; the maintainer says the download failure described by this issue is fixed",
+   "'firmware left on the chip' is the reporter's guess stated as cause",
+   "omits the maintainer's DBGMCU explanation for 'No cores were discovered' on STM32F7/H7",
+   "version 'seen 2019' is not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The STM32F7/H7/G0 pdsc downloads failed during the index update (the maintainer later says this is fixed; a separate problem is that cmsis-pack-manager parallelises the index download so much that Keil and NXP servers block it, cmsis-pack-manager#190). For 'No cores were discovered', STM32F7/H7 need DBGMCU writes to enable clocks, which packs do through debug sequences that pyOCD did not yet support.",
+  "fix_fixed": "Download the DFP from the Keil pack list and pass it with --pack. The reporter also needed to update the ST-Link firmware and erase the flash before pyOCD connected reliably. Until debug sequences are supported, configure DBGMCU.CR in a pyOCD user script.",
+  "versions_fixed": "Keil.STM32F7xx_DFP 2.12.0",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/725",
+  "verdict": "unsupported",
+  "problems": [
+   "'Update the interface firmware' is not offered as a fix; the thread waits for a firmware or driver fix",
+   "the Mbed composite driver workaround is called invalid in the thread because that driver is outdated and unstable on Windows 10; the thread has no resolution"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The mbed LPC1768 interface firmware (rev 141212) exposes only the USB mass-storage interface under Windows 10; the CMSIS-DAP HID interface never appears, so no debugger can see the probe and pyOCD cannot fix it.",
+  "fix_fixed": "",
+  "versions_fixed": "0.22.0; interface firmware rev 141212",
+  "resolution_fixed": "unresolved"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/713",
+  "verdict": "partly",
+  "problems": [
+   "'fixed in 0.22.0' is not in the thread; it only says fixed on master"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "Bug in the PSoC6 (CY8C6xxA) target class in 0.21.0, a duplicate of #680.",
+  "fix_fixed": "Fixed on master; use a pyOCD version after 0.21.0 that includes the fix.",
+  "versions_fixed": "0.21.0",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/708",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/707",
+  "verdict": "partly",
+  "problems": [
+   "'read in smaller chunks' is not in the thread",
+   "'user-error' does not follow; the thread treats it as a 32-bit Python limit and the fix is switching to 64-bit Python"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "A 32-bit Python process ran out of memory while building the buffer for a large savemem block read (pyOCD represents data as lists of integers).",
+  "fix_fixed": "Use 64-bit Python; the reporter confirmed it works there.",
+  "versions_fixed": "Python 2.7 32-bit",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/680",
+  "verdict": "partly",
+  "problems": [
+   "'accessed an options attribute that did not exist yet during init' is a mechanism the thread does not give; the traceback shows the target object being used where Target.__init__ reads session.options"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "Regression after 0.16.1 in the PSoC6 target classes (CY8C6xxA, CY8C6xx7): core creation passes the target object where Target.__init__ expects the session, so reading session.options fails.",
+  "fix_fixed": "Upgrade to pyOCD 0.22.0 or later.",
+  "versions_fixed": "affected 0.21.0; fixed in 0.22.0",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/678",
+  "verdict": "partly",
+  "problems": [
+   "version 'seen with 0.21.x' is not in the thread",
+   "the fix in the thread is the reporter changing the target name in board_ids.py to upper case, not choosing a name from 'pyocd pack --find'"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "A case-sensitive comparison somewhere in the pack target lookup, although pyOCD is meant to compare target types case-insensitively; the maintainer reproduced it with pyocd pack --find.",
+  "fix_fixed": "Use the target name in upper case; the reporter changed the board's target name in pyocd/board/board_ids.py to upper case and the error went away.",
+  "versions_fixed": "NXP.MIMXRT1064_DFP 10.0.0",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/675",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/674",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/654",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/652",
+  "verdict": "partly",
+  "problems": [
+   "'BadZipFile does not exist in the Python 2 zipfile module' is not in the thread; the maintainer says he still has to investigate the BadZipFile error",
+   "'fix released after this report' is only a promised release",
+   "'Prefer Python 3' is not in the thread",
+   "version 'pyocd 0.20.0' is not given as the reporter's version"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "cmsis-pack-manager constructed a wrong download URL for packs whose URL lacked a trailing slash (ARMmbed/cmsis-pack-manager#95), so the downloaded pack was garbage and reading it ended in the BadZipFile AttributeError, which the maintainer still had to investigate.",
+  "fix_fixed": "Update cmsis-pack-manager once the release with the fix is out; pyocd pack --clean removes the error but also the pack. Meanwhile download the pack manually and pass it with --pack (e.g. pyocd gdbserver --pack <file>) or list it under pack: in pyocd.yaml.",
+  "versions_fixed": "Python 2.7.15rc1; Keil.STM32L4xx_DFP 2.2.0",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/643",
+  "verdict": "partly",
+  "problems": [
+   "'the old pyocd-flashtool does not know pack targets at all' contradicts the thread: its usage line lists --pack; it failed because --pack was not passed",
+   "version '0.20.0' is not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The pack was only supplied to the gdbserver invocation; --pack does not install the pack, so every pyOCD tool invocation needs it.",
+  "fix_fixed": "Pass --pack <file> to every pyOCD invocation, or list the packs once under pack: in a pyocd.yaml in the working directory (or pass --config); with that, pyocd flash found the target.",
+  "versions_fixed": "Keil.STM32L4xx_DFP 2.2.0",
+  "resolution_fixed": "configuration"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/634",
+  "verdict": "partly",
+  "problems": [
+   "'fixed-in-release' / 'a pyOCD build with the fix': the maintainer only says he will fix it quickly"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The pack-target code fails on Python 2.7 only: the generated target __init__ is treated as an unbound method of _PackTargetMethods. A typo (isinstane) was also found in pack_target.py.",
+  "fix_fixed": "Use Python 3, where the error does not occur (the maintainer recommends 3.7), and correct the isinstane typo in pack_target.py by hand; the maintainer said he would fix it quickly.",
+  "versions_fixed": "0.19.1.dev61",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/632",
+  "verdict": "partly",
+  "problems": [
+   "version 'pyocd 0.2x' is not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The installed setuptools was older than 40, which pyOCD's setup.py requires (its setup_requires for setuptools >= 40.0 had no effect).",
+  "fix_fixed": "Upgrade setuptools (e.g. pip install -U pip setuptools), then install pyOCD again; pip install --force-reinstall setuptools_scm_git_archive was suggested for a corrupt helper package.",
+  "versions_fixed": "setuptools below 40; pip 19.1",
+  "resolution_fixed": "user-error"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/624",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/613",
+  "verdict": "partly",
+  "problems": [
+   "'0.20.0 era' is not in the thread; it only shows change #616 confirmed by the reporter, no release"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "ST-Link firmware older than V2J28 reports a USB interface name truncated to an odd number of bytes, which pyusb cannot decode as UTF-16.",
+  "fix_fixed": "Use pyOCD with change #616, which the reporter confirmed fixes it; ST-Link firmware V2J28 or later does not trigger the crash.",
+  "versions_fixed": "ST-Link firmware V2J27 and below",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/612",
+  "verdict": "unsupported",
+  "problems": [
+   "the thread has no fix: the maintainer only says it will be fixed shortly by supporting different erase/program sizes",
+   "'0.20.0' and 'development builds before 0.20.0' are not in the thread"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The STM32F401RE has 128 kB sectors, so the flash algorithm and its data buffer do not fit in the available RAM; the pack sector parsing also mishandled the (start, size) tuples, causing the TypeError.",
+  "fix_fixed": "No fix in the thread. Unpacking the tuple in cmsis_pack.py removes the TypeError, but the region then has no flash algorithm; the maintainer planned to support separate erase and program sizes for pack flash algorithms.",
+  "versions_fixed": "Keil.STM32F4xx_DFP 2.13.0",
+  "resolution_fixed": "unresolved"
+ }
+]

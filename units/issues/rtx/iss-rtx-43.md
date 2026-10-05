@@ -14,6 +14,7 @@ doc_source: "https://github.com/ARM-software/CMSIS-RTX/issues/43"
 resolution: "configuration"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-rtx"], "core": ["Cortex-A7"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -35,4 +36,4 @@ Use irq_armv7a.S for Cortex-A, compile it in ARM mode without -mthumb and with p
 
 Resolution: configuration
 
-From [ARM-software/CMSIS-RTX #43](https://github.com/ARM-software/CMSIS-RTX/issues/43), summarized in own words; confidence high, not reviewed yet.
+From [ARM-software/CMSIS-RTX #43](https://github.com/ARM-software/CMSIS-RTX/issues/43), summarized in own words; confidence high, checked against the thread, not reviewed yet.

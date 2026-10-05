@@ -13,6 +13,7 @@ resolution: "fixed-in-release"
 versions: "Seen with 2.0.0-dev0; improved in 2.0.0-dev2"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: fixed-in-release
 
 Versions: Seen with 2.0.0-dev0; improved in 2.0.0-dev2
 
-From [Open-CMSIS-Pack/devtools #973](https://github.com/Open-CMSIS-Pack/devtools/issues/973), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #973](https://github.com/Open-CMSIS-Pack/devtools/issues/973), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

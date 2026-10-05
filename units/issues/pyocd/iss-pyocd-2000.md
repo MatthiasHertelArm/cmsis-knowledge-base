@@ -3,7 +3,7 @@ id: "iss-pyocd-2000"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: CMSIS-DAP v2 probe without USB serial number is listed but 'not found' when opening"
-summary: "A probe with no USB serial string gets a generated unique ID in the probe list, but the open path compared that ID against the real (missing) serial number and failed to match the device."
+summary: "pyocd list shows a generated unique ID for a CMSIS-DAP v2 probe that has no USB serial number, but opening the probe by that ID fails with 'not found'."
 status: "draft"
 tool: "pyocd"
 symptoms: ["Probe NKBA2RU557ZLCOPTYPWHIX3IZUQ5ZH7B not found [__main__]"]
@@ -13,8 +13,9 @@ source: "https://github.com/pyocd/pyOCD/issues/2000"
 doc_source: "https://github.com/pyocd/pyOCD/issues/2000"
 resolution: "fixed-in-release"
 versions: "seen on 0.44.1"
-confidence: "high"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -26,7 +27,7 @@ mode: "S"
 
 ## Cause
 
-A probe with no USB serial string gets a generated unique ID in the probe list, but the open path compared that ID against the real (missing) serial number and failed to match the device.
+pyocd list shows a generated unique ID for a CMSIS-DAP v2 probe that has no USB serial number, but opening the probe by that ID fails with 'not found'. The reporter suspected the lookup by the generated ID when the probe is opened; the thread gives no confirmed root cause.
 
 ## Fix
 
@@ -38,4 +39,4 @@ Resolution: fixed-in-release
 
 Versions: seen on 0.44.1
 
-From [pyocd/pyOCD #2000](https://github.com/pyocd/pyOCD/issues/2000), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #2000](https://github.com/pyocd/pyOCD/issues/2000), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

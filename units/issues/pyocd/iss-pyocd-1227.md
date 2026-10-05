@@ -14,6 +14,7 @@ doc_source: "https://github.com/pyocd/pyOCD/issues/1227"
 resolution: "configuration"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "device": ["RP2040"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -35,4 +36,4 @@ Update the probe's DAPLink firmware to release 0254 or later.
 
 Resolution: configuration
 
-From [pyocd/pyOCD #1227](https://github.com/pyocd/pyOCD/issues/1227), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #1227](https://github.com/pyocd/pyOCD/issues/1227), summarized in own words; confidence high, checked against the thread, not reviewed yet.

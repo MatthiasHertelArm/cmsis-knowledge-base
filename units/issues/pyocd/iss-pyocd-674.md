@@ -15,6 +15,7 @@ resolution: "fixed-in-release"
 versions: "pyocd 0.21.0 with cmsis-pack-manager below 0.2.8"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -39,4 +40,4 @@ Resolution: fixed-in-release
 
 Versions: pyocd 0.21.0 with cmsis-pack-manager below 0.2.8
 
-From [pyocd/pyOCD #674](https://github.com/pyocd/pyOCD/issues/674), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #674](https://github.com/pyocd/pyOCD/issues/674), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

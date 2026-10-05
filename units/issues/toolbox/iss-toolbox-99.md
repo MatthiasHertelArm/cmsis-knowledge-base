@@ -14,6 +14,7 @@ resolution: "workaround"
 versions: "toolbox 2.2.1"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cbuild"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: workaround
 
 Versions: toolbox 2.2.1
 
-From [Open-CMSIS-Pack/cmsis-toolbox #99](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/99), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/cmsis-toolbox #99](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/99), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

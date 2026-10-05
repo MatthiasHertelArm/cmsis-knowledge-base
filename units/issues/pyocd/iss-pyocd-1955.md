@@ -15,6 +15,7 @@ resolution: "fixed-in-release"
 versions: "broken 0.44.0, fixed 0.44.1"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "family": ["SAML11"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: fixed-in-release
 
 Versions: broken 0.44.0, fixed 0.44.1
 
-From [pyocd/pyOCD #1955](https://github.com/pyocd/pyOCD/issues/1955), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #1955](https://github.com/pyocd/pyOCD/issues/1955), summarized in own words; confidence high, checked against the thread, not reviewed yet.

@@ -15,6 +15,7 @@ resolution: "fixed-in-release"
 versions: "6.0.0"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-core"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: fixed-in-release
 
 Versions: 6.0.0
 
-From [ARM-software/CMSIS_6 #120](https://github.com/ARM-software/CMSIS_6/issues/120), summarized in own words; confidence high, not reviewed yet.
+From [ARM-software/CMSIS_6 #120](https://github.com/ARM-software/CMSIS_6/issues/120), summarized in own words; confidence high, checked against the thread, not reviewed yet.

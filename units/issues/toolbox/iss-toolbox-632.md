@@ -15,6 +15,7 @@ resolution: "fixed-in-release"
 versions: "seen in 2.14.0; gone in 2.14.1 nightly"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cbuild"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: fixed-in-release
 
 Versions: seen in 2.14.0; gone in 2.14.1 nightly
 
-From [Open-CMSIS-Pack/cmsis-toolbox #632](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/632), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/cmsis-toolbox #632](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/632), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

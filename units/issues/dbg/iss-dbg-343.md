@@ -15,6 +15,7 @@ resolution: "user-error"
 versions: "CMSIS Debugger 0.3.1"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -39,4 +40,4 @@ Resolution: user-error
 
 Versions: CMSIS Debugger 0.3.1
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #343](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/343), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #343](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/343), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

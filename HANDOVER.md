@@ -124,3 +124,29 @@ Issue digests get no prior of their own: a negative one helped the documentation
 | Index | 6,346 knowledge units, 72 MB |
 | Golden set | 68 queries: hit@1 0.60  hit@5 0.91  MRR 0.742  failures 0 |
 | Extension (pr/2.7.0-knowledge, uncommitted) | Search: question words out of BM25, procedure prior 0.001, none for routing units, exact messages ordered by line. Browser: filter and overview by collection. 1138 unit tests pass; installed locally as 2.5.10 (needs a window reload) |
+
+## Update 5 Oct 2026, close: every issue digest checked against its thread
+
+A check of 80 digests found that the readers had added things: invented versions and dates, extra
+workarounds, "fixed in release" where the thread only shows a pull request, guesses stated as fact.
+So all 583 were checked by seven more readers after `stage2/issues_qa_prompt.md`
+(`stage2/issues-qa/*.json`): supported 265, partly 293, unsupported 25; six symptom lines were not
+in the thread. `issues2ku.py` applies the results: the corrected cause, fix, versions and resolution,
+"The thread gives no confirmed fix" where it has none, symptoms dropped when not in the thread, three
+digests dropped, and `checked` in each unit. One reader had also put a wrong issue number on a
+digest; `issues2ku.py` now skips a URL that is not among the threads the readers got. Result: 580
+issue units, confidence high 159, medium 367, low 54.
+
+More documentation in this last round: Zephyr board pages of 30 boards that also have a CMSIS board
+pack (overview, hardware, programming and debugging; the board name from the `zephyr:board`
+directive is the page title), CMSIS-Ethos-U, littlefs, the Mbed TLS knowledge base, and READMEs of
+smaller ARM-software repositories.
+
+| Item | State |
+|---|---|
+| Index | 6,974 knowledge units, 76 MB, lint clean, kb tests green |
+| Golden set | 72 queries: hit@1 0.60, hit@5 0.90, MRR 0.735 |
+
+Open: a human review of the issue digests, starting with `checked: unsupported` and `confidence:
+low`; the error catalog's review list; decision 4 for the share-alike sources; an agent-task
+benchmark (HANDOVER next steps, level 2).

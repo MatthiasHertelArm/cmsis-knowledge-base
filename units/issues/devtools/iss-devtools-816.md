@@ -12,8 +12,9 @@ collection: "issues-devtools"
 source: "https://github.com/Open-CMSIS-Pack/devtools/issues/816"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/816"
 resolution: "fixed-in-release"
-confidence: "high"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,10 +30,10 @@ The regular expression for the component ID in the yml schema did not allow a hy
 
 ## Fix
 
-Fixed in the release after 1.5.0 (same fix as for the Arm-Packs:: case). Until then omit the vendor or disable the schema check with --no-check-schema.
+Fixed in the next tools release (duplicate of devtools #805); update the tools.
 
 ## Source
 
 Resolution: fixed-in-release
 
-From [Open-CMSIS-Pack/devtools #816](https://github.com/Open-CMSIS-Pack/devtools/issues/816), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #816](https://github.com/Open-CMSIS-Pack/devtools/issues/816), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

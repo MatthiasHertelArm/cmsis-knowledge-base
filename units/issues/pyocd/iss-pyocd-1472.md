@@ -14,6 +14,7 @@ doc_source: "https://github.com/pyocd/pyOCD/issues/1472"
 resolution: "workaround"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -35,4 +36,4 @@ Add the libusb DLL and the cmsis_pack_manager native module as data/binaries in 
 
 Resolution: workaround
 
-From [pyocd/pyOCD #1472](https://github.com/pyocd/pyOCD/issues/1472), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #1472](https://github.com/pyocd/pyOCD/issues/1472), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

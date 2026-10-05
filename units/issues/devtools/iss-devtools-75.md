@@ -3,7 +3,7 @@ id: "iss-devtools-75"
 type: "troubleshooting"
 domain: "pack"
 title: "packchk: ERROR M310 Filename mismatch for an example doc attribute with ../ segments"
-summary: "packchk did not resolve ../ segments of the doc attribute relative to the example folder before comparing the names."
+summary: "packchk did not resolve the ../ segments of the example's doc attribute relative to the example folder before comparing the names."
 status: "draft"
 tool: "packchk"
 symptoms: ["*** ERROR M310: <pack>.pdsc (Line 465)\n  Filename mismatch (case sensitive):"]
@@ -11,9 +11,10 @@ symptom_regex: "<pack>\\.pdsc\\s+\\(Line\\s+\\S+\\)\\\\s+Filename\\s+mismatch\\s
 collection: "issues-devtools"
 source: "https://github.com/Open-CMSIS-Pack/devtools/issues/75"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/75"
-resolution: "fixed-in-release"
-confidence: "medium"
+resolution: "unresolved"
+confidence: "low"
 cause_origin: "issue-digest"
+checked: "unsupported"
 applies_to: {"tool": ["packchk"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -26,14 +27,14 @@ mode: "S"
 
 ## Cause
 
-packchk did not resolve ../ segments of the doc attribute relative to the example folder before comparing the names.
+packchk did not resolve the ../ segments of the example's doc attribute relative to the example folder before comparing the names.
 
 ## Fix
 
-Fixed in a later packchk release (issue labelled fixed); note that packchk itself does not run a schema check, validate with PACK.xsd separately.
+The thread gives no confirmed fix.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: unresolved
 
-From [Open-CMSIS-Pack/devtools #75](https://github.com/Open-CMSIS-Pack/devtools/issues/75), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #75](https://github.com/Open-CMSIS-Pack/devtools/issues/75), summarized in own words; confidence low, corrected against the thread, not reviewed yet.

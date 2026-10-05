@@ -15,6 +15,7 @@ resolution: "user-error"
 versions: "intervaltree 2.1.0 (Python 2 install)"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "family": ["STM32L4 Series"], "core": ["Cortex-M4"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: user-error
 
 Versions: intervaltree 2.1.0 (Python 2 install)
 
-From [pyocd/pyOCD #654](https://github.com/pyocd/pyOCD/issues/654), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #654](https://github.com/pyocd/pyOCD/issues/654), summarized in own words; confidence high, checked against the thread, not reviewed yet.

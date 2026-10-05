@@ -450,6 +450,32 @@
         "txmw-chapter-5-levelx-nor-support",
         "txmw-chapter-5-levelx-nor-support-nor-driver-requirements"
       ]
+    },
+    {
+      "q": "flash and debug the B-U585I-IOT02A with Zephyr",
+      "expect": [
+        "zepb-b-u585i-iot02a-programming-and-debugging"
+      ]
+    },
+    {
+      "q": "LPCXpresso55S69 Zephyr programming and debugging",
+      "expect": [
+        "zepb-lpcxpresso55s69-programming-and-debugging"
+      ]
+    },
+    {
+      "q": "configure Mbed TLS with a configuration file",
+      "expect": [
+        "mbedtls-how-to-configure-mbed-tls-the-configuration-file",
+        "mbedtls-how-to-configure-mbed-tls",
+        "mbedtls-how-to-configure-mbed-tls-alternative-configuration-files"
+      ]
+    },
+    {
+      "q": "littlefs directories design",
+      "expect": [
+        "lfs-design-directories"
+      ]
     }
   ]
 }

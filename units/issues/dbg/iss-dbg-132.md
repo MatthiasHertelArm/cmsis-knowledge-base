@@ -12,8 +12,9 @@ collection: "issues-dbg"
 source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/132"
 doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/132"
 resolution: "fixed-in-release"
-confidence: "high"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"], "device": ["Alif E7"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,10 +30,10 @@ The AP address classes lacked apid handling for APv2.
 
 ## Fix
 
-Use a pyOCD from the CMSIS Debugger 0.2/1.0 era or later.
+Use a pyOCD whose AP address classes handle apid, first in the standalone build v0.0.0-standalone-cbuild3.
 
 ## Source
 
 Resolution: fixed-in-release
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #132](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/132), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #132](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/132), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

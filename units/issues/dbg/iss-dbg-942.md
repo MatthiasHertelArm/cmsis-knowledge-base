@@ -11,9 +11,10 @@ symptom_regex: "Invalid\\s+\\.cbuild\\-run\\.yml\\s+file\\s+'.*?'"
 collection: "issues-dbg"
 source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/942"
 doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/942"
-resolution: "fixed-in-release"
-confidence: "high"
+resolution: "user-error"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,10 +30,10 @@ The --cbuild-run option was pointed at the cbuild.yml build description instead 
 
 ## Fix
 
-Pass the file ending in .cbuild-run.yml. pyOCD later improved the wording (PR 2003).
+Pass the file ending in .cbuild-run.yml. A clearer error message was implemented in pyOCD PR 2003; no release is named.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: user-error
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #942](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/942), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #942](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/942), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

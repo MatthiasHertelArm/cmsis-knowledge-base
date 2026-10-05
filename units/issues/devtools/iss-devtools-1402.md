@@ -12,9 +12,10 @@ collection: "issues-devtools"
 source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1402"
 doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1402"
 resolution: "fixed-in-release"
-versions: "2.3.0-dev0"
-confidence: "high"
+versions: "2.3.0-dev0, fixed in 2.3.0"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -30,12 +31,12 @@ The cbuild-pack.yml was written by an older toolbox (2.2) that used selected-by,
 
 ## Fix
 
-Fixed in CMSIS-Toolbox 2.3.0, which accepts both keys. Alternatively delete the stale cbuild-pack.yml and run convert again.
+Fixed in CMSIS-Toolbox 2.3.0, which copes with both keys.
 
 ## Source
 
 Resolution: fixed-in-release
 
-Versions: 2.3.0-dev0
+Versions: 2.3.0-dev0, fixed in 2.3.0
 
-From [Open-CMSIS-Pack/devtools #1402](https://github.com/Open-CMSIS-Pack/devtools/issues/1402), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #1402](https://github.com/Open-CMSIS-Pack/devtools/issues/1402), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

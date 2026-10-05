@@ -14,6 +14,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/22"
 resolution: "user-error"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["packchk"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -36,4 +37,4 @@ Add the folder containing packchk (for example Utilities/Linux64) to PATH, or ru
 
 Resolution: user-error
 
-From [Open-CMSIS-Pack/devtools #22](https://github.com/Open-CMSIS-Pack/devtools/issues/22), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #22](https://github.com/Open-CMSIS-Pack/devtools/issues/22), summarized in own words; confidence high, checked against the thread, not reviewed yet.

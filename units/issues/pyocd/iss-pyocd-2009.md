@@ -12,6 +12,7 @@ doc_source: "https://github.com/pyocd/pyOCD/issues/2009"
 resolution: "fixed-in-release"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Update to a pyOCD release that includes the fix for the hidapi read timeout (cha
 
 Resolution: fixed-in-release
 
-From [pyocd/pyOCD #2009](https://github.com/pyocd/pyOCD/issues/2009), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #2009](https://github.com/pyocd/pyOCD/issues/2009), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

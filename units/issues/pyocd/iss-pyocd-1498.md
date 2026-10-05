@@ -15,6 +15,7 @@ resolution: "configuration"
 versions: "0.34.3"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: configuration
 
 Versions: 0.34.3
 
-From [pyocd/pyOCD #1498](https://github.com/pyocd/pyOCD/issues/1498), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #1498](https://github.com/pyocd/pyOCD/issues/1498), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

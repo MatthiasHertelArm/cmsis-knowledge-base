@@ -11,11 +11,12 @@ symptom_regex: "Unhandled\\s+exception\\s+in\\s+handleMsg:"
 collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/309"
 doc_source: "https://github.com/pyocd/pyOCD/issues/309"
-resolution: "workaround"
-versions: "DAPLink 0243, pyOCD 0.8 era"
+resolution: "unresolved"
+versions: "DAPLink interface 0243"
 issue_state: "open"
-confidence: "medium"
+confidence: "low"
 cause_origin: "issue-digest"
+checked: "unsupported"
 applies_to: {"tool": ["pyocd"], "device": ["MK64FN1M0xxx12"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -31,14 +32,14 @@ On macOS closing a serial port sends a break, and DAPLink treats a serial break 
 
 ## Fix
 
-Avoid closing the serial terminal during a debug session on macOS (or use a terminal that does not send break on close). Newer DAPLink may allow disabling reset-on-break; no pyocd setting existed.
+No fix in the thread: a DAPLink option to disable reset-on-break and reset detection in pyOCD were only proposed, and the issue still existed later. The reporter used OpenOCD instead, where the session stops but does not crash.
 
 ## Source
 
-Resolution: workaround
+Resolution: unresolved
 
-Versions: DAPLink 0243, pyOCD 0.8 era
+Versions: DAPLink interface 0243
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [pyocd/pyOCD #309](https://github.com/pyocd/pyOCD/issues/309), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #309](https://github.com/pyocd/pyOCD/issues/309), summarized in own words; confidence low, corrected against the thread, not reviewed yet.

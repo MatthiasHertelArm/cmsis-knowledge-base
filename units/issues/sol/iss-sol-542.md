@@ -12,6 +12,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/542
 resolution: "workaround"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-solution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Run Developer: Reload Window after the environment was activated; this makes ${e
 
 Resolution: workaround
 
-From [Open-CMSIS-Pack/vscode-cmsis-solution #542](https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/542), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-solution #542](https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/542), summarized in own words; confidence high, checked against the thread, not reviewed yet.

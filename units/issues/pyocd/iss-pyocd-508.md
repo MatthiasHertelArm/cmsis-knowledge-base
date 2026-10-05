@@ -3,7 +3,7 @@ id: "iss-pyocd-508"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: pip install pyocd 0.14.x fails in CI because of a non-UTF-8 locale"
-summary: "setup.py read a text file with the default encoding."
+summary: "setup.py read README.md with the default encoding, which was ASCII in the CI container, so a non-ASCII byte made decoding fail."
 status: "draft"
 tool: "pyocd"
 symptoms: ["Command \"python setup.py egg_info\" failed with error code 1"]
@@ -13,8 +13,9 @@ source: "https://github.com/pyocd/pyOCD/issues/508"
 doc_source: "https://github.com/pyocd/pyOCD/issues/508"
 resolution: "fixed-in-release"
 versions: "0.14.3 affected; 0.15.0 fixed"
-confidence: "high"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -26,11 +27,11 @@ mode: "S"
 
 ## Cause
 
-setup.py read a text file with the default encoding. In containers with a C or POSIX locale (and on Windows with a legacy code page) decoding failed.
+setup.py read README.md with the default encoding, which was ASCII in the CI container, so a non-ASCII byte made decoding fail.
 
 ## Fix
 
-Upgrade to pyOCD 0.15.0 or later, or set a UTF-8 locale (for example LANG and LC_ALL) before running pip.
+Upgrade to pyOCD 0.15.0, which the maintainer said should fix it (#495), or declare a UTF-8 locale before calling pip.
 
 ## Source
 
@@ -38,4 +39,4 @@ Resolution: fixed-in-release
 
 Versions: 0.14.3 affected; 0.15.0 fixed
 
-From [pyocd/pyOCD #508](https://github.com/pyocd/pyOCD/issues/508), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #508](https://github.com/pyocd/pyOCD/issues/508), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

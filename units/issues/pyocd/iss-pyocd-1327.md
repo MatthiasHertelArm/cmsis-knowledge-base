@@ -15,6 +15,7 @@ resolution: "fixed-in-release"
 versions: "0.33.1"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "family": ["i.MX RT"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: fixed-in-release
 
 Versions: 0.33.1
 
-From [pyocd/pyOCD #1327](https://github.com/pyocd/pyOCD/issues/1327), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #1327](https://github.com/pyocd/pyOCD/issues/1327), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

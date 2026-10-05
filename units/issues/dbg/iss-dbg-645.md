@@ -14,6 +14,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/645
 resolution: "not-a-bug"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["gdb"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -35,4 +36,4 @@ Ignore it: only the PSP/MSP alias register values of paused threads may be wrong
 
 Resolution: not-a-bug
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #645](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/645), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #645](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/645), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

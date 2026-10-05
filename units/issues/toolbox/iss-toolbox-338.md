@@ -15,6 +15,7 @@ resolution: "fixed-in-release"
 versions: "CLANG 20.1.0"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cbuild"], "toolchain": ["CLANG"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: fixed-in-release
 
 Versions: CLANG 20.1.0
 
-From [Open-CMSIS-Pack/cmsis-toolbox #338](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/338), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/cmsis-toolbox #338](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/338), summarized in own words; confidence high, checked against the thread, not reviewed yet.

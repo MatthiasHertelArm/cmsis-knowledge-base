@@ -12,6 +12,7 @@ doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/684"
 resolution: "workaround"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cbuild"], "toolchain": ["IAR"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Use CMake 3.25 or newer (a bump of the minimum for IAR was suggested), and make 
 
 Resolution: workaround
 
-From [Open-CMSIS-Pack/devtools #684](https://github.com/Open-CMSIS-Pack/devtools/issues/684), summarized in own words; confidence medium, not reviewed yet.
+From [Open-CMSIS-Pack/devtools #684](https://github.com/Open-CMSIS-Pack/devtools/issues/684), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

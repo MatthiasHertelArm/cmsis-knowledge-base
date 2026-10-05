@@ -13,6 +13,7 @@ doc_source: "https://github.com/pyocd/pyOCD/issues/1202"
 resolution: "workaround"
 confidence: "low"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -34,4 +35,4 @@ Connect with -O dap_protocol=swd. The device identity (variant) selected may als
 
 Resolution: workaround
 
-From [pyocd/pyOCD #1202](https://github.com/pyocd/pyOCD/issues/1202), summarized in own words; confidence low, not reviewed yet.
+From [pyocd/pyOCD #1202](https://github.com/pyocd/pyOCD/issues/1202), summarized in own words; confidence low, checked against the thread, not reviewed yet.

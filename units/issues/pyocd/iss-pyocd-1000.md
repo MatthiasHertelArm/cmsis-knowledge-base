@@ -12,10 +12,11 @@ collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/1000"
 doc_source: "https://github.com/pyocd/pyOCD/issues/1000"
 resolution: "workaround"
-versions: "pyOCD dev builds late 2020; seen on SAM4L and nRF5340"
+versions: "pyOCD dev version 5a52ccc; seen on SAM4L and nRF5340"
 issue_state: "open"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd", "gdb"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -31,14 +32,14 @@ The core was not halted when gdb connected (here a watchdog reset the target aft
 
 ## Fix
 
-Make sure the core is halted when gdb attaches: disable or freeze the watchdog while debugging (for example the debug-halt option of the watchdog), then restart pyocd gdbserver.
+Make sure the core is halted when gdb attaches: disable the watchdog, or configure it to stop while debugging.
 
 ## Source
 
 Resolution: workaround
 
-Versions: pyOCD dev builds late 2020; seen on SAM4L and nRF5340
+Versions: pyOCD dev version 5a52ccc; seen on SAM4L and nRF5340
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [pyocd/pyOCD #1000](https://github.com/pyocd/pyOCD/issues/1000), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #1000](https://github.com/pyocd/pyOCD/issues/1000), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

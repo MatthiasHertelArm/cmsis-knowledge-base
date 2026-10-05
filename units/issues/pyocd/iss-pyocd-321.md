@@ -15,6 +15,7 @@ resolution: "user-error"
 versions: "0.8.1a1"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: user-error
 
 Versions: 0.8.1a1
 
-From [pyocd/pyOCD #321](https://github.com/pyocd/pyOCD/issues/321), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #321](https://github.com/pyocd/pyOCD/issues/321), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

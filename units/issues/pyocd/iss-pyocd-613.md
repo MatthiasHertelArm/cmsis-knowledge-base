@@ -3,7 +3,7 @@ id: "iss-pyocd-613"
 type: "troubleshooting"
 domain: "debug"
 title: "pyOCD: pyocd list -p crashes with a utf16 decode error on old ST-Link firmware"
-summary: "ST-Link firmware older than V2J28 reports a USB interface name with an odd number of bytes, which cannot be decoded as UTF-16."
+summary: "ST-Link firmware older than V2J28 reports a USB interface name truncated to an odd number of bytes, which pyusb cannot decode as UTF-16."
 status: "draft"
 tool: "pyocd"
 symptoms: ["0000387:ERROR:__main__:uncaught exception: 'utf16' codec can't decode byte 0x6c in position 30: truncated data"]
@@ -11,10 +11,11 @@ symptom_regex: "\\S+:ERROR:__main__:uncaught\\s+exception:\\s+'.*?'\\s+codec\\s+
 collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/613"
 doc_source: "https://github.com/pyocd/pyOCD/issues/613"
-resolution: "fixed-in-release"
+resolution: "workaround"
 versions: "ST-Link firmware V2J27 and below"
-confidence: "high"
+confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -26,16 +27,16 @@ mode: "S"
 
 ## Cause
 
-ST-Link firmware older than V2J28 reports a USB interface name with an odd number of bytes, which cannot be decoded as UTF-16.
+ST-Link firmware older than V2J28 reports a USB interface name truncated to an odd number of bytes, which pyusb cannot decode as UTF-16.
 
 ## Fix
 
-Update pyOCD to a version with the workaround (change #616, 0.20.0 era); updating the ST-Link firmware also helps.
+Use pyOCD with change #616, which the reporter confirmed fixes it; ST-Link firmware V2J28 or later does not trigger the crash.
 
 ## Source
 
-Resolution: fixed-in-release
+Resolution: workaround
 
 Versions: ST-Link firmware V2J27 and below
 
-From [pyocd/pyOCD #613](https://github.com/pyocd/pyOCD/issues/613), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #613](https://github.com/pyocd/pyOCD/issues/613), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

@@ -14,6 +14,7 @@ doc_source: "https://github.com/pyocd/pyOCD/issues/1163"
 resolution: "configuration"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "family": ["STM32L4 Series"], "device": ["STM32L4A6VGTx"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -35,4 +36,4 @@ Search with `pyocd pack --find <part>` and install or select the full device nam
 
 Resolution: configuration
 
-From [pyocd/pyOCD #1163](https://github.com/pyocd/pyOCD/issues/1163), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #1163](https://github.com/pyocd/pyOCD/issues/1163), summarized in own words; confidence high, checked against the thread, not reviewed yet.

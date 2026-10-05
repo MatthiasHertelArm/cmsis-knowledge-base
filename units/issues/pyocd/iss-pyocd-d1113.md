@@ -15,6 +15,7 @@ resolution: "configuration"
 versions: "pyOCD 0.30.0"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "device": ["STM32H750"], "core": ["Cortex-M7"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: configuration
 
 Versions: pyOCD 0.30.0
 
-From [pyocd/pyOCD discussion 1113](https://github.com/pyocd/pyOCD/discussions/1113), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD discussion 1113](https://github.com/pyocd/pyOCD/discussions/1113), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

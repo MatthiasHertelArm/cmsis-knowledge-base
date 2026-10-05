@@ -15,6 +15,7 @@ resolution: "fixed-in-release"
 versions: "error in 2.12.0; warning in later nightlies"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["csolution"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: fixed-in-release
 
 Versions: error in 2.12.0; warning in later nightlies
 
-From [Open-CMSIS-Pack/cmsis-toolbox #469](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/469), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/cmsis-toolbox #469](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/469), summarized in own words; confidence high, checked against the thread, not reviewed yet.

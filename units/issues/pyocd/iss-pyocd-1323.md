@@ -13,6 +13,7 @@ resolution: "configuration"
 issue_state: "open"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["pyocd"], "device": ["STM32H750"], "core": ["Cortex-M7"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: configuration
 
 The issue is still open: the fix is a workaround, a later release may change it.
 
-From [pyocd/pyOCD #1323](https://github.com/pyocd/pyOCD/issues/1323), summarized in own words; confidence high, not reviewed yet.
+From [pyocd/pyOCD #1323](https://github.com/pyocd/pyOCD/issues/1323), summarized in own words; confidence high, checked against the thread, not reviewed yet.

@@ -13,6 +13,7 @@ resolution: "fixed-in-release"
 versions: "CDT GDB Adapter 2.9.0 affected, fixed in 2.9.1"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-debugger"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -32,4 +33,4 @@ Resolution: fixed-in-release
 
 Versions: CDT GDB Adapter 2.9.0 affected, fixed in 2.9.1
 
-From [Open-CMSIS-Pack/vscode-cmsis-debugger #1049](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1049), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-debugger #1049](https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1049), summarized in own words; confidence high, checked against the thread, not reviewed yet.

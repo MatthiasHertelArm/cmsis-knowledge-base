@@ -12,9 +12,9 @@ collection: "issues-pyocd"
 source: "https://github.com/pyocd/pyOCD/issues/1556"
 doc_source: "https://github.com/pyocd/pyOCD/issues/1556"
 resolution: "workaround"
-versions: "0.35"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "partly"
 applies_to: {"tool": ["pyocd"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -30,12 +30,10 @@ Probe enumeration reads cmsis_dap.prefer_v1 before command-line options are pars
 
 ## Fix
 
-Renumber the probe's USB interfaces so the v2 interface is below 10, or use a different libusb build. Use a config file for prefer_v1.
+Give the probe's CMSIS-DAP v2 interface a number below 10 (the reporter planned to reorder the USB interfaces), or replace the libusb DLL in the installed libusb-package with a fixed build. The -O cmsis_dap.prefer_v1 option will not take effect for load or gdbserver until sessions are restructured.
 
 ## Source
 
 Resolution: workaround
 
-Versions: 0.35
-
-From [pyocd/pyOCD #1556](https://github.com/pyocd/pyOCD/issues/1556), summarized in own words; confidence medium, not reviewed yet.
+From [pyocd/pyOCD #1556](https://github.com/pyocd/pyOCD/issues/1556), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

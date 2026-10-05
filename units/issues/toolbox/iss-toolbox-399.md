@@ -15,6 +15,7 @@ resolution: "workaround"
 versions: "cpackget 2.1.8"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cpackget"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -38,4 +39,4 @@ Resolution: workaround
 
 Versions: cpackget 2.1.8
 
-From [Open-CMSIS-Pack/cmsis-toolbox #399](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/399), summarized in own words; confidence high, not reviewed yet.
+From [Open-CMSIS-Pack/cmsis-toolbox #399](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/399), summarized in own words; confidence high, checked against the thread, not reviewed yet.

@@ -12,6 +12,7 @@ doc_source: "https://github.com/ARM-software/CMSIS_6/issues/312"
 resolution: "fixed-in-release"
 confidence: "high"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-core"], "toolchain": ["TI Clang"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Define __PROGRAM_START as _c_int00 (and __INITIAL_SP as __stack) before includin
 
 Resolution: fixed-in-release
 
-From [ARM-software/CMSIS_6 #312](https://github.com/ARM-software/CMSIS_6/issues/312), summarized in own words; confidence high, not reviewed yet.
+From [ARM-software/CMSIS_6 #312](https://github.com/ARM-software/CMSIS_6/issues/312), summarized in own words; confidence high, checked against the thread, not reviewed yet.

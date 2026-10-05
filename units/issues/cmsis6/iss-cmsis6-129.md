@@ -12,6 +12,7 @@ doc_source: "https://github.com/ARM-software/CMSIS_6/issues/129"
 resolution: "user-error"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-core"], "core": ["Cortex-M0+"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Use the device header and startup file from the DFP or SDK, or write a minimal o
 
 Resolution: user-error
 
-From [ARM-software/CMSIS_6 #129](https://github.com/ARM-software/CMSIS_6/issues/129), summarized in own words; confidence medium, not reviewed yet.
+From [ARM-software/CMSIS_6 #129](https://github.com/ARM-software/CMSIS_6/issues/129), summarized in own words; confidence medium, checked against the thread, not reviewed yet.

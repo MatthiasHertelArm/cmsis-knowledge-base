@@ -12,6 +12,7 @@ doc_source: "https://github.com/ARM-software/CMSIS_6/issues/235"
 resolution: "user-error"
 confidence: "medium"
 cause_origin: "issue-digest"
+checked: "supported"
 applies_to: {"tool": ["cmsis-core"]}
 license: "own summary of a GitHub issue"
 mode: "S"
@@ -29,4 +30,4 @@ Build .c files as C; CMSIS does not support compiling them as C++ even with exte
 
 Resolution: user-error
 
-From [ARM-software/CMSIS_6 #235](https://github.com/ARM-software/CMSIS_6/issues/235), summarized in own words; confidence medium, not reviewed yet.
+From [ARM-software/CMSIS_6 #235](https://github.com/ARM-software/CMSIS_6/issues/235), summarized in own words; confidence medium, checked against the thread, not reviewed yet.
