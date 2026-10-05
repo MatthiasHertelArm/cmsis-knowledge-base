@@ -474,7 +474,7 @@
     {
       "q": "littlefs directories design",
       "expect": [
-        "lfs-design-directories"
+        "lfs-littlefs-design-directories"
       ]
     }
   ]

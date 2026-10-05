@@ -23,6 +23,7 @@ SPLIT_CHARS = 12_000
 MIN_CHARS = 160
 SUMMARY_WORDS = 40
 ID_MAX = 90
+GENERIC_STEMS = {"readme", "design", "spec", "index", "overview", "introduction", "guide", "docs", "main", "mainpage", "usage"}
 PAGE_SKIP = re.compile(r"(?i)^(revision history|release notes|change ?log|history)$")
 # Document boilerplate: says nothing about the subject.
 SECTION_SKIP = re.compile(r"(?i)^(\d+(\.\d+)*\.?\s+)?(acknowledge?ments?|change control|change history|document history|revision history|"
@@ -531,7 +532,10 @@ def convert(src, repo, out, used):
                 continue
             page_url = page_url_of(src, rel, page_id)
             page_title, secs = sections(md)
-            page_title = page_title or Path(rel).stem.replace("_", " ").replace("-", " ")
+            if not page_title:
+                # No H1: the file name, and for a generic one (README, DESIGN, SPEC) the source's name in front.
+                stem = Path(rel).stem.replace("_", " ").replace("-", " ")
+                page_title = f"{src['name']} {stem}" if stem.lower() in GENERIC_STEMS else stem
             for path, text_ in secs:
                 if prose_chars(text_) < MIN_CHARS or (path and SECTION_SKIP.match(path[-1].strip())):
                     continue

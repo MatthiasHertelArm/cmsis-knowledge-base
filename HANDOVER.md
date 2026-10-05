@@ -145,7 +145,7 @@ smaller ARM-software repositories.
 | Item | State |
 |---|---|
 | Index | 7,117 knowledge units (with the devtools READMEs, the ctrace design notes, and Zephyr's debugging, TF-M and power-management services), 77.5 MB, lint clean, kb tests green |
-| Golden set | 72 queries: hit@1 0.60, hit@5 0.89, MRR 0.734 |
+| Golden set | 72 queries: hit@1 0.60, hit@5 0.90, MRR 0.741 (pages without a title now carry the source name, e.g. "littlefs DESIGN") |
 | Review lists | `messages-to-review.csv` (397 error catalog units), `issues-to-review.csv` (580 issue digests, unsupported first) |
 
 Open: a human review of the issue digests, starting with `checked: unsupported` and `confidence:
