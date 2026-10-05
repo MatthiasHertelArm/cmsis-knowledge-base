@@ -18,12 +18,12 @@ The `<solution-name>.cbuild-pack.yml` file contains the [pack information](#lock
 
 `cbuild-pack:`                                                     | Content
 :------------------------------------------------------------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `resolved-packs:`                               | List of packs used to create the project contexts.
+    `resolved-packs:`                               | List of packs used to create the project contexts.
 
 `resolved-packs:`                                                  | Content
 :------------------------------------------------------------------|:------------------------------------
 `- resolved-pack:`                                                 | [pack name](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#pack-name-conventions) used.
-&nbsp;&nbsp;&nbsp; `selected-by-pack:`                             | List of [components](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#component-name-conventions) included from the pack.
+    `selected-by-pack:`                             | List of [components](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#component-name-conventions) included from the pack.
 
 **Example:**
 

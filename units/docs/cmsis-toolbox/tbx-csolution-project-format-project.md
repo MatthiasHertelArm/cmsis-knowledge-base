@@ -18,31 +18,31 @@ The `project:` node is the start of a `*.cproject.yml` file and can contain the 
 
 `project:`                                                      |              | Content
 :---------------------------------------------------------------|:-------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `description:`                               |   Optional   | Brief description text of this project.
-&nbsp;&nbsp;&nbsp; [`output:`](#output)                         |   Optional   | Configure the generated output files.
-&nbsp;&nbsp;&nbsp; [`generators:`](#generators)                 |   Optional   | Control the directory structure for generator output.
-&nbsp;&nbsp;&nbsp; [`rte:`](#rte)                               |   Optional   | Control the directory structure for [RTE (run-time environment)](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/build-overview.md#rte-directory-structure) files.
-&nbsp;&nbsp;&nbsp; [`packs:`](#packs)                           |   Optional   | Defines packs that are required for this project.
-&nbsp;&nbsp;&nbsp; [`language-C:`](#language-c)                 |   Optional   | Set the language standard for C source file compilation.
-&nbsp;&nbsp;&nbsp; [`language-CPP:`](#language-cpp)             |   Optional   | Set the language standard for C++ source file compilation.
-&nbsp;&nbsp;&nbsp; [`optimize:`](#optimize)                     |   Optional   | Optimize level for code generation.
-&nbsp;&nbsp;&nbsp; [`link-time-optimize:`](#link-time-optimize) |   Optional   | Enable optimization at linker level.
-&nbsp;&nbsp;&nbsp; [`linker:`](#linker)                         |   Optional   | Instructions for the linker.
-&nbsp;&nbsp;&nbsp; [`debug:`](#debug)                           |   Optional   | Generation of debug information.
-&nbsp;&nbsp;&nbsp; [`define:`](#define)                         |   Optional   | Define symbol settings for C/C++ code generation.
-&nbsp;&nbsp;&nbsp; [`define-asm:`](#define-asm)                 |   Optional   | Define symbol settings for Assembler code generation.
-&nbsp;&nbsp;&nbsp; [`undefine:`](#undefine)                     |   Optional   | Remove preprocessor (#define) symbols.
-&nbsp;&nbsp;&nbsp; [`add-path:`](#add-path)                     |   Optional   | Additional include file paths.
-&nbsp;&nbsp;&nbsp; [`del-path:`](#del-path)                     |   Optional   | Remove specific include file paths.
-&nbsp;&nbsp;&nbsp; [`misc:`](#misc)                             |   Optional   | Literal tool-specific controls.
-&nbsp;&nbsp;&nbsp; [`device:`](#device)                         |   Optional   | Specify processor core.
-&nbsp;&nbsp;&nbsp; [`processor:`](#processor)                   |   Optional   | Processor specific settings.
-&nbsp;&nbsp;&nbsp; [`setups:`](#setups)                         |   Optional   | Configurations specific to a compiler, target-type, and/or built-type.
-&nbsp;&nbsp;&nbsp; [`groups:`](#groups)                         | **Required** | List of source file groups along with source files.
-&nbsp;&nbsp;&nbsp; [`components:`](#components)                 |   Optional   | List of software components used.
-&nbsp;&nbsp;&nbsp; [`layers:`](#layers)                         |   Optional   | List of software layers that belong to the project.
-&nbsp;&nbsp;&nbsp; [`connections:`](#connections)               |   Optional   | List of consumed and provided resources.
-&nbsp;&nbsp;&nbsp; [`executes:`](#executes)                     |   Optional   | Additional pre or post build steps using external tools.
+    `description:`                               |   Optional   | Brief description text of this project.
+    [`output:`](#output)                         |   Optional   | Configure the generated output files.
+    [`generators:`](#generators)                 |   Optional   | Control the directory structure for generator output.
+    [`rte:`](#rte)                               |   Optional   | Control the directory structure for [RTE (run-time environment)](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/build-overview.md#rte-directory-structure) files.
+    [`packs:`](#packs)                           |   Optional   | Defines packs that are required for this project.
+    [`language-C:`](#language-c)                 |   Optional   | Set the language standard for C source file compilation.
+    [`language-CPP:`](#language-cpp)             |   Optional   | Set the language standard for C++ source file compilation.
+    [`optimize:`](#optimize)                     |   Optional   | Optimize level for code generation.
+    [`link-time-optimize:`](#link-time-optimize) |   Optional   | Enable optimization at linker level.
+    [`linker:`](#linker)                         |   Optional   | Instructions for the linker.
+    [`debug:`](#debug)                           |   Optional   | Generation of debug information.
+    [`define:`](#define)                         |   Optional   | Define symbol settings for C/C++ code generation.
+    [`define-asm:`](#define-asm)                 |   Optional   | Define symbol settings for Assembler code generation.
+    [`undefine:`](#undefine)                     |   Optional   | Remove preprocessor (#define) symbols.
+    [`add-path:`](#add-path)                     |   Optional   | Additional include file paths.
+    [`del-path:`](#del-path)                     |   Optional   | Remove specific include file paths.
+    [`misc:`](#misc)                             |   Optional   | Literal tool-specific controls.
+    [`device:`](#device)                         |   Optional   | Specify processor core.
+    [`processor:`](#processor)                   |   Optional   | Processor specific settings.
+    [`setups:`](#setups)                         |   Optional   | Configurations specific to a compiler, target-type, and/or built-type.
+    [`groups:`](#groups)                         | **Required** | List of source file groups along with source files.
+    [`components:`](#components)                 |   Optional   | List of software components used.
+    [`layers:`](#layers)                         |   Optional   | List of software layers that belong to the project.
+    [`connections:`](#connections)               |   Optional   | List of consumed and provided resources.
+    [`executes:`](#executes)                     |   Optional   | Additional pre or post build steps using external tools.
 
 **Example:**
 

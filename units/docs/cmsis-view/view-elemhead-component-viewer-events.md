@@ -16,36 +16,12 @@ Is the enclosing element for objects that define the output for \erecorder.
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    `<component_viewer>` | 
-    elem_component_viewer | 
-  
-
-  | 
-    Child Element | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    \spref{elem_event,event} | 
-    Define an event. | 
-    EventType | 
-    0..* | 
-  
-
-  | 
-    \spref{elem_group,group} | 
-    Create an event group. | 
-    GroupType | 
-    0..* | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| `<component_viewer>` | elem_component_viewer |  |  |
+| Child Element | Description | Type | Occurrence |
+| \spref{elem_event,event} | Define an event. | EventType | 0..* |
+| \spref{elem_group,group} | Create an event group. | GroupType | 0..* |
 
 
  
@@ -78,39 +54,10 @@ Define groups of software components that are shown together.
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    events | 
-    elem_events | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    name | 
-    Define the name of a group. This name is used for filtering. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    Child Element | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    \refelem{elem_group_component,component} | 
-    Component within the group. | 
-    ComponentType | 
-    0..* |
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| events | elem_events |  |  |
+| Attributes | Description | Type | Use |
+| name | Define the name of a group. This name is used for filtering. | xs:string | required |
+| Child Element | Description | Type | Occurrence |
+| \refelem{elem_group_component,component} | Component within the group. | ComponentType | 0..* |

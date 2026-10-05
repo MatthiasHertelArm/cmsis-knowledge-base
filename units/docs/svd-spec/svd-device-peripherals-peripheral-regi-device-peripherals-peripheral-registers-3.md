@@ -55,29 +55,11 @@ The bit-field **BIT1,** described as a test field, has the size of `8` bits and 
 **/device/peripherals/peripheral/registers/.../register/fields**
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    `<register>` | 
-    elem_register | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    `<field>` | 
-    Define the bit-field properties of a register. | 
-    fieldType  | 
-    1..*  | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| `<register>` | elem_register |  |  |
+| Child Elements | Description | Type | Occurrence |
+| `<field>` | Define the bit-field properties of a register. | fieldType | 1..* |
 
 
 

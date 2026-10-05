@@ -18,7 +18,7 @@ Remove symbol #define statements from the command line of the development tools.
 
 `undefine:`                                          | Content
 :----------------------------------------------------|:------------------------------------
-&nbsp;&nbsp; `- <symbol-name>`                       | Remove #define symbol
+   `- <symbol-name>`                       | Remove #define symbol
 
 **Examples:**
 

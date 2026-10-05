@@ -16,25 +16,8 @@ Grouping element for parts. No more than one such group can exist in a Part Pack
 
 
 
-  | 
-    Parent | 
-    Chain | 
-  
-
-  | 
-    package | 
-    /package | 
-  
-	
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    part | 
-    Description of the part | 
-    PartType | 
-    1..* |
+| Parent | Chain |  |  |
+|---|---|---|---|
+| package | /package |  |  |
+| Child Elements | Description | Type | Occurrence |
+| part | Description of the part | PartType | 1..* |

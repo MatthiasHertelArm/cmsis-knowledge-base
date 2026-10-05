@@ -58,93 +58,15 @@ Describes flow control like **if** and **while** blocks for debug access sequenc
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    sequence | 
-    element_sequence | 
-  
-
-  | 
-    control | 
-    element_seq_control | 
-  
-
-  | 
-    Attribute | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    if | 
-    
-      Expression describing the condition under which to execute this sequence block.
-      The block is skipped if the condition resolved to `false`. Defaults to
-      `true` if not set.
-      Refer to Expression Rules for the syntax.
-     | 
-    ExpressionType | 
-    optional | 
-  
-
-  | 
-    while | 
-    
-      Expression describing a while-condition. The execution of the block contents is
-      repeated while the condition resolves to `true`, or until an optional
-      **timeout** is reached.
-      Refer to Expression Rules for the syntax.
-     | 
-    ExpressionType | 
-    optional | 
-  
-
-  | 
-    timeout | 
-    
-      Timeout in microseconds for a **block** with a **while** condition. A debugger must
-      extend the timeout to the closest possible time granularity. If the timeout is reached,
-      the current iteration including a last evaluation of the **while** condition must
-      finish. A value of `0` disables the timeout.
-
-      This attribute defaults to `0`.
-     | 
-    xs:unsignedInt | 
-    optional | 
-  
-
-  | 
-    info | 
-    Descriptive text to display for example for error diagnostics. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    control | 
-    
-      Describe a debug access sequence flow control element.
-     | 
-    SequenceControlType | 
-    0..* | 
-  
-
-  | 
-    block | 
-    
-      Describe a block of debug accesses.
-     | 
-    SequenceBlockType | 
-    0..* |
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| sequence | element_sequence |  |  |
+| control | element_seq_control |  |  |
+| Attribute | Description | Type | Use |
+| if | Expression describing the condition under which to execute this sequence block. The block is skipped if the condition resolved to `false`. Defaults to `true` if not set. Refer to Expression Rules for the syntax. | ExpressionType | optional |
+| while | Expression describing a while-condition. The execution of the block contents is repeated while the condition resolves to `true`, or until an optional **timeout** is reached. Refer to Expression Rules for the syntax. | ExpressionType | optional |
+| timeout | Timeout in microseconds for a **block** with a **while** condition. A debugger must extend the timeout to the closest possible time granularity. If the timeout is reached, the current iteration including a last evaluation of the **while** condition must finish. A value of `0` disables the timeout. This attribute defaults to `0`. | xs:unsignedInt | optional |
+| info | Descriptive text to display for example for error diagnostics. | xs:string | optional |
+| Child Elements | Description | Type | Occurrence |
+| control | Describe a debug access sequence flow control element. | SequenceControlType | 0..* |
+| block | Describe a block of debug accesses. | SequenceBlockType | 0..* |

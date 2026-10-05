@@ -15,99 +15,26 @@ mode: "V"
 Read values of scalar variables or arrays from application program that runs in the target system. A redefinition of a \elem{read} element is not permitted and creates an error.
 
 \elem{read} manages a \elem{member} variable with the following name:
-  - **_name_._count**  &mdash;         number of element in an array `(0 .. n-1)`.
+  - **_name_._count**  —         number of element in an array `(0 .. n-1)`.
 
 Refer to predefined_variable.
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    `<object>` | 
-    elem_object | 
-  
-
-  | 
-    \refelem{elem_list,list} | 
-    elem_list | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    name | 
-    Name of variable. Can be used in scvd_expression. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    type | 
-    Data type read from memory, following types are possible:
-          - scalar_data_type, no pointers allowed
-          - complex_data_type defined with `<typedef>` | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    size | 
-    Is an scvd_expression representing the array size or the number of values to read from target. 
-        The maximum array size is limited to `512`. Default value is `1`.  | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    symbol | 
-    Symbol name to access memory in the target system which is used to calculate a memory address.
-    xs:string | 
-    optional | 
-  
-
-  | 
-    offset | 
-    Offset to the \attr{symbol} address. If no \attr{symbol} is not specified, then it is the memory address. Default value is `0`.
-    xs:string | 
-    optional | 
-  
-
-  | 
-    const | 
-    Variables with \attr{const} set to `"1"` are constants that are read only once after debugger start. Default value is `0`.
-    xs:int | 
-    optional | 
-  
-
-  | 
-    info | 
-    Descriptive text with additional information (comment). | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    cond | 
-    Conditional execution: element is executed when expression result is not `0`. Default value is `1`. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    endian | 
-    Endianness for scalar data types. `endian="L"` &mdash; little endian. `endian="B"` &mdash; big endian. Default is **automatic.**
-    xs:string | 
-    optional | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| `<object>` | elem_object |  |  |
+| \refelem{elem_list,list} | elem_list |  |  |
+| Attributes | Description | Type | Use |
+| name | Name of variable. Can be used in scvd_expression. | xs:string | required |
+| type | Data type read from memory, following types are possible: - scalar_data_type, no pointers allowed - complex_data_type defined with `<typedef>` | xs:string | required |
+| size | Is an scvd_expression representing the array size or the number of values to read from target. The maximum array size is limited to `512`. Default value is `1`. | xs:string | optional |
+| symbol | Symbol name to access memory in the target system which is used to calculate a memory address. xs:string | optional |  |
+| offset | Offset to the \attr{symbol} address. If no \attr{symbol} is not specified, then it is the memory address. Default value is `0`. xs:string | optional |  |
+| const | Variables with \attr{const} set to `"1"` are constants that are read only once after debugger start. Default value is `0`. xs:int | optional |  |
+| info | Descriptive text with additional information (comment). | xs:string | optional |
+| cond | Conditional execution: element is executed when expression result is not `0`. Default value is `1`. | xs:string | optional |
+| endian | Endianness for scalar data types. `endian="L"` — little endian. `endian="B"` — big endian. Default is **automatic.** xs:string | optional |  |
 
 
 

@@ -33,7 +33,7 @@ Turn the skill-based RAG of the CMSIS Developer Assistant into a knowledge base 
 
 ## Known issues
 
-1. **csolution messages have no cause/fix.** 134 units carry the symptom and the triggering source line only. Example of how to fill them: `board mounted device STM32U585AIIx not found` was reproduced with CMSIS-Toolbox 2.12.0 when the STM32U5 DFP is not installed or `packs:` lists only the BSP.
+1. **Message causes are unreviewed.** Since 5 Oct every message unit has a cause and fix read from the devtools source (see the update below), but none was reproduced with a tool run and none is reviewed. Example of how to confirm one: `board mounted device STM32U585AIIx not found` was reproduced with CMSIS-Toolbox 2.12.0 when the STM32U5 DFP is not installed or `packs:` lists only the BSP.
 2. **13 procedure summaries exceed 40 words.** They come from the skill descriptions. Stage 2 fixes this, but has only run on 4 of 24 procedures.
 3. **`requires` edges mean "mentions".** Stage 1 creates them from any reference. One cycle exists (check-pyocd-availability, pyocd-detect-debug-topology). Stage 2 should type each mention.
 4. **Message codes collide across tools** (M302 in packchk and svdconv). The tool context resolves it; agents should pass `tools`.
@@ -80,3 +80,16 @@ Added so that the knowledge tools can stand in for the skills the extension ship
 | Index | 562 knowledge units; `build/knowledge.2026-10-04.db` is the build before this change |
 
 Not done: cmsis-help has no unit; the three older own skills got a short description (`agents/openai.yaml`) in the extension so their summaries fit; the 13 long summaries of known issue 2 are unchanged. A stray pair of quotes in one summary (debug-access-knowledge) went away with the frontmatter fix. Building with embeddings needs a Python whose sqlite3 loads extensions: the python.org framework build does not, `uv venv --python 3.12` does.
+
+## Update 5 Oct 2026, evening: documentation and the message causes
+
+| Item | State |
+|---|---|
+| Documentation | 4,415 concept units from 40 sources in `sources/docs.yml` (Apache-2.0 3,310, MIT 636, BSD-3-Clause 469): CMSIS-Toolbox, Open-CMSIS-Pack and SVD specifications, CMSIS-Core, -RTOS2, -Driver (API, implementations, validation), RTX, -View, -Compiler, -DSP, -NN, -Stream, -DAP, -FreeRTOS, -Zephyr, SDS, AVH, pyOCD, CMSIS Debugger, cpackget, gen-pack, csolution-examples, the extension's guides, ThreadX, Zephyr (kernel, devicetree, Kconfig, west, test, debug, logging, shell, Cortex-M), TF-M, MCUboot, Unity, CMock, Ceedling, TFLite Micro, ExecuTorch Arm backend, Vela, ML Embedded Evaluation Kit, LLVM Embedded Toolchain |
+| CC BY-SA documentation | 1,076 units in `units/docs-ccbysa`: FreeRTOS Kernel Book 132, Arm Learning Paths for embedded 819 (Linux, container and cloud paths left out), install guides 77, AAPCS32 and semihosting 48. Not in the index; decision 4 |
+| Message causes | 383 of 397 message units got cause, fix and evidence (file:line in devtools@30f5e817) from a reading of the source; confidence high 178, medium 181, low 24; 14 stay open (codes no code path raises). Units carry `cause_origin: source-analysis`, `confidence`, `evidence`, and `doc_cause` where the README text was replaced. The analysis also found misleading or dead messages; they are in the units' `## Note` |
+| Review list | `messages-to-review.csv`, 397 rows, least certain first |
+| Index | 4,977 knowledge units, 61.5 MB with embeddings; `build/knowledge.2026-10-05-1526.db` is the build before |
+| Search | An exact message on an earlier line of tool output now ranks before one on a later line (the cause before "processing context failed"); the same rule is in the extension |
+
+Not done: no golden set yet, so search quality was checked with 29 hand-picked questions only. The error catalog's titles now show the whole message; ids are unchanged.

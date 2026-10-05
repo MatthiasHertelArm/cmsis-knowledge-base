@@ -53,126 +53,25 @@ the attribute \elem{Pname}. If the information is relevant to all processors, no
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    family | 
-    element_family | 
-  
-
-  | 
-    subFamily | 
-    element_subFamily | 
-  
-
-  | 
-    device | 
-    element_device | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    Pname | 
-    Processor identifier. This attribute **is mandatory for devices that embed multiple processors**. 
-	      Each processor needs a unique identifier and must be used consistently in the **Pname** attribute of the elements within the scope of the current device family section.
-        Only alphabetical characters, decimal digits, '-' and '_' are allowed.
-     | 
-    RestrictedString | 
-    required for all multi-core devices | 
-  
-
-  | 
-    Punits | 
-    Specifies the number of processor units in a symmetric multi-processor core (MPCore). Defaults to single-core CPU (`1`) when left empty. | 
-    InstancesType | 
-    required for all multi-core devices | 
-  
-
-  | 
-    Dcore | 
-    Specifies the processor core. Use predefined values as listed in the table Device Cores. | 
-    DcoreEnum | 
-    required | 
-  
-
-  | 
-    Dfpu | 
-    Specifies whether a hardware Floating Point Unit is present in the processor.  Use predefined values as listed in the table Device FPU. | 
-    DfpuEnum | 
-    required | 
-  
-
-  | 
-    Dmpu | 
-    Specifies whether an Arm-based Memory Protection Unit is present in the processor. Do not use this in case of custom MPUs. Use predefined values as listed in the table Device MPU. | 
-    DmpuEnum | 
-    required | 
-  
-
-  | 
-    Dtz | 
-    Specifies whether an Armv8-M based device implements TrustZone. Use predefined values as listed in the table Device TZ. | 
-    DtzEnum | 
-    required for ARMv8-M based devices | 
-  
-
-  | 
-    Ddsp | 
-    Specifies whether a device supports the DSP instructions set. Use predefined values as listed in the table Device DSP. | 
-    DdspEnum | 
-    required | 
-  
-
-  | 
-    Dmve | 
-    Specifies whether a device supports the M-Profile Vector instruction set extension. Use predefined values as listed in the table Device MVE. | 
-    DmveEnum | 
-    required for ARMv8.1-M based devices | 
-  
-
-  | 
-    Dcdecp | 
-    Specifies whether a device implements Custom Datapath Extension Coprocessors and which coprocessor interfaces can be used. See (**CDE**). Possible values are explained in Custom Datapath Extensions. | 
-    DcdecpEnum | 
-    required for ARMv8.1-M based devices with CDE support | 
-  
-
-  | 
-    Dpacbti | 
-    Specifies whether a device implements Pointer Authentication/Branch Target Identification (PAC/BTI) instructions. Possible values are explained in Device PAC/BTI. | 
-    DpacbtiEnum | 
-    required for ARMv8.1-M based devices with PAC/BTI support | 
-  
-
-  | 
-    Dendian | 
-    Specifies the endianess of the processor. Use predefined values as listed in the table Endinaness. | 
-    DendianEnum | 
-    required | 
-  
-
-  | 
-    Dclock | 
-    Specifies the max clock frequency of the processor subsystem | 
-    xs:unsignedInt | 
-    required | 
-  
-
-  | 
-    DcoreVersion | 
-    Hardware revision of the processor core | 
-    xs:string | 
-    required | 
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| family | element_family |  |  |
+| subFamily | element_subFamily |  |  |
+| device | element_device |  |  |
+| Attributes | Description | Type | Use |
+| Pname | Processor identifier. This attribute **is mandatory for devices that embed multiple processors**. Each processor needs a unique identifier and must be used consistently in the **Pname** attribute of the elements within the scope of the current device family section. Only alphabetical characters, decimal digits, '-' and '_' are allowed. | RestrictedString | required for all multi-core devices |
+| Punits | Specifies the number of processor units in a symmetric multi-processor core (MPCore). Defaults to single-core CPU (`1`) when left empty. | InstancesType | required for all multi-core devices |
+| Dcore | Specifies the processor core. Use predefined values as listed in the table Device Cores. | DcoreEnum | required |
+| Dfpu | Specifies whether a hardware Floating Point Unit is present in the processor. Use predefined values as listed in the table Device FPU. | DfpuEnum | required |
+| Dmpu | Specifies whether an Arm-based Memory Protection Unit is present in the processor. Do not use this in case of custom MPUs. Use predefined values as listed in the table Device MPU. | DmpuEnum | required |
+| Dtz | Specifies whether an Armv8-M based device implements TrustZone. Use predefined values as listed in the table Device TZ. | DtzEnum | required for ARMv8-M based devices |
+| Ddsp | Specifies whether a device supports the DSP instructions set. Use predefined values as listed in the table Device DSP. | DdspEnum | required |
+| Dmve | Specifies whether a device supports the M-Profile Vector instruction set extension. Use predefined values as listed in the table Device MVE. | DmveEnum | required for ARMv8.1-M based devices |
+| Dcdecp | Specifies whether a device implements Custom Datapath Extension Coprocessors and which coprocessor interfaces can be used. See ([**CDE**](https://developer.arm.com/documentation/ddi0607/ab/)). Possible values are explained in Custom Datapath Extensions. | DcdecpEnum | required for ARMv8.1-M based devices with CDE support |
+| Dpacbti | Specifies whether a device implements Pointer Authentication/Branch Target Identification (PAC/BTI) instructions. Possible values are explained in Device PAC/BTI. | DpacbtiEnum | required for ARMv8.1-M based devices with PAC/BTI support |
+| Dendian | Specifies the endianess of the processor. Use predefined values as listed in the table Endinaness. | DendianEnum | required |
+| Dclock | Specifies the max clock frequency of the processor subsystem | xs:unsignedInt | required |
+| DcoreVersion | Hardware revision of the processor core | xs:string | required |
 
 
 
@@ -199,563 +98,100 @@ Contact cmsis@arm.com to ask for an extension. These values can be used in the e
 
 
 
-  | 
-    Dvendor | 
-    Description | 
-    Web Link | 
-  
-
-  | 
-    NO_VENDOR:0 | 
-    No Vendor | 
-     | 
-  
-
-  | 
-    3PEAK:177 | 
-    3PEAK | 
-    https://www.3peakic.com.cn/ | 
-  
-
-  | 
-    ABOV Semiconductor:126 | 
-    ABOV Semiconductor | 
-    http://www.abov.co.kr/en/ | 
-  
-
-  | 
-    Active-Semi:140 | 
-    Active-Semi | 
-    http://www.active-semi.com | 
-  
-
-  | 
-    Alif Semiconductor:165 | 
-    Alif Semiconductor | 
-    http://www.alifsemi.com | 
-  
-
-  | 
-    Ambiq Micro:120 | 
-    Ambiq Micro | 
-    http://www.ambiqmicro.com | 
-  
-
-  | 
-    Amiccom:147 | 
-    Amiccom | 
-    http://www.amiccom.com.tw | 
-  
-
-  | 
-    Analog Devices:1 | 
-    Analog Devices | 
-    http://www.analog.com | 
-  
-
-  | 
-    APEXMIC:153 | 
-    Apex Microeletronics Co., Ltd. | 
-    http://www.apexmic.com | 
-  
-
-  | 
-    ARM:82 | 
-    ARM Ltd. | 
-    http://www.arm.com | 
-  
-
-  | 
-    ArmChina:160 | 
-    Arm China | 
-    http://www.armchina.com | 
-  
-
-  | 
-    ArteryTek:143 | 
-    ArteryTek | 
-    http://www.arterytek.com | 
-  
-
-  | 
-    Atmel:3 | 
-    Atmel Corporation (now Microchip) | 
-    http://www.microchip.com | 
-  
-
-  | 
-    Autochips:150 | 
-    Autochips Inc. | 
-    http://www.autochips.com/index_en.aspx | 
-  
-
-  | 
-    BOYAMICRO:182 | 
-    BOYAMICRO | 
-    https://www.boyamicro.com | 
-  
-
-  | 
-    BrainChip:168 | 
-    BrainChip Inc | 
-    https://brainchipinc.com | 
-  
-
-  | 
-    Cmsemicon:161 | 
-    Cmsemicon | 
-    http://www.mcu.com.cn | 
-  
-
-  | 
-    CSR:118 | 
-    CSR | 
-    http://www.csr.com | 
-  
-
-  | 
-    Cypress:19 | 
-    Cypress Semiconductor | 
-    http://www.cypress.com | 
-  
-
-  | 
-    Dialog Semiconductor:113 | 
-    Dialog Semiconductor | 
-    http://www.dialog-semiconductor.com | 
-  
-
-  | 
-    ELAN:162 | 
-    ELAN | 
-    http://www.emc.com.tw | 
-  
-
-  | 
-    Elmos Semiconductor AG:138 | 
-    Elmos Semiconductor AG | 
-    http://www.elmos.com | 
-  
-
-  | 
-    ESMT:190 | 
-    Elite Semiconductor Microelectronics Technology Inc. | 
-    https://www.esmt.com.tw/en | 
-  
-
-  | 
-    e-peas:167 | 
-	e-peas semicondcutors | 
-	https://e-peas.com | 
-  
-
-  | 
-    EtaCompute:157 | 
-	Eta Compute Inc. | 
-	https://www.etacompute.com | 
-  
-
-  | 
-    FMD:169 | 
-    FMD | 
-    https://www.fremontmicro.com/ | 
-  
-
-  | 
-    FMSH:159 | 
-    Shanghai Fudan Microelectronics Group Co., Ltd | 
-    http://www.fmsh.com | 
-  
-
-  | 
-    Geehy:163 | 
-    Geehy | 
-    https://www.geehy.com/ | 
-  
-
-  | 
-    Generic:5 | 
-    Generic: Not a vendor specific device | 
-     | 
-  
-
-  | 
-    Generalplus:151 | 
-    Generalplus Technology Inc. | 
-    http://www.generalplus.com | 
-  
-
-  | 
-    GigaDevice:123 | 
-    GigaDevice | 
-    http://www.gigadevice.com | 
-  
-
-  | 
-    Goodix:155 | 
-    Goodix | 
-    https://www.goodix.com | 
-  
-
-  | 
-    HDSC:145 | 
-    HUADA Semiconductor | 
-    http://www.hdsc.com.cn | 
-  
-
-  | 
-    Hilscher:88 | 
-    Hilscher Gesellschaft für Systemautomation mbH | 
-    http://www.hilscher.com | 
-  
-
-  | 
-    Himax:178 | 
-    Himax Technologies, Inc. | 
-    https://www.himax.com.tw/ | 
-  
-
-  | 
-    Holtek:106 | 
-    Holtek Microelectronics | 
-    http://www.holtek.com.tw | 
-  
-
-  | 
-    HrdWyr:188 | 
-    HrdWyr | 
-    https://www.hrdwyr.com | 
-  
-
-  | 
-    Infineon:7 | 
-    Infineon Technologies | 
-    http://www.infineon.com | 
-  
-
-  | 
-    Jonzic:174 | 
-    Shanghai Jonzic Electronic Co., Ltd | 
-    http://www.jonzic.cn | 
-  
-
-  | 
-    LAPIS Technology:10 | 
-    LAPIS Technology | 
-    http://www.lapis-tech.com | 
-  
-
-  | 
-    Linear Technolgy:136 | 
-    Linear Technolgy | 
-    http://www.linear.com/ | 
-  
-
-  | 
-    Linkedsemi:175 | 
-    LinkedSemi Microelectronics (Xiamen) Co., Ltd | 
-    https://www.linkedsemi.com/ | 
-  
-
-  | 
-    Maxim:23 | 
-    Maxim Integrated | 
-    http://www.maximintegrated.com | 
-  
-
-  | 
-    MediaTek:129 | 
-    MediaTek | 
-    http://www.mediatek.com | 
-  
-
-  | 
-    MegaChips:128 | 
-    MegaChips | 
-    http://www.megachips.com | 
-  
-
-  | 
-    Megawin:70 | 
-    Megawin | 
-    http://www.megawin.com.tw | 
-  
-
-  | 
-    Microchip:3 | 
-    Microchip (previously Atmel) | 
-    http://www.microchip.com | 
-  
-
-  | 
-    Micronas:30 | 
-    TDK-Micronas GmbH | 
-    https://www.micronas.tdk.com | 
-  
-
-  | 
-    MicroSemi:112 | 
-    Microsemi | 
-    http://www.microsemi.com | 
-  
-
-  | 
-    Milandr:99 | 
-    Milandr | 
-    http://www.milandr.ru | 
-  
-
-  | 
-    MindMotion:132 | 
-    MindMotion | 
-    http://www.mindmotion.com.cn | 
-  
-
-  | 
-    MinebeaMitsumi:181 | 
-    MinebeaMitsumi | 
-    http://www.minebeamitsumi.com | 
-  
-
-  | 
-    Nationstech:184 | 
-    Nations Technologies Inc. | 
-    https://www.nationstech.com | 
-  
-
-  | 
-    Nordic Semiconductor:54 | 
-    Nordic Semiconductor | 
-    http://www.nordicsemi.com | 
-  
-
-  | 
-    NSING:185 | 
-    NSING Technologies Pte. Ltd. | 
-    https://www.nsing.com.sg | 
-  
-
-  | 
-    Nuvoton:18 | 
-    Nuvoton Technolgy Corp. | 
-    http://www.nuvoton.com | 
-  
-
-  | 
-    NXP:11 | 
-    NXP | 
-    http://www.nxp.com | 
-  
-
-  | 
-    ONSemiconductor:141 | 
-    ON Semiconductor | 
-    https://www.onsemi.com | 
-  
-
-  | 
-    Panasonic:131 | 
-    Panasonic | 
-    http://www.panasonic.com/industrial | 
-  
-
-  | 
-    Puya:176 | 
-    Puya | 
-    https://www.puyasemi.com/ | 
-  
-
-  | 
-    Qorvo:189 | 
-    Qorvo | 
-    https://www.qorvo.com/ | 
-  
-
-  | 
-    Realtek Semiconductor:124 | 
-    Realtek Semiconductor | 
-    http://www.realtek.com | 
-  
-
-  | 
-    Redpine Signals:125 | 
-    Repine Signals | 
-    http://www.redpinesignals.com | 
-  
-
-  | 
-    RelChip:146 | 
-    RelChip  | 
-    http://www.relchip.com/ | 
-  
-
-  | 
-    Renesas:117 | 
-    Renesas | 
-    http://www.renesas.com | 
-  
-
-  | 
-    ROHM:103 | 
-    ROHM | 
-    http://www.rohm.com | 
-  
-
-  | 
-    RPi:170 | 
-    Raspberry Pi Foundation | 
-    https://www.raspberrypi.org/ | 
-  
-
-  | 
-    Samsung:47 | 
-    Samsung Semiconductor | 
-    http://www.samsung.com | 
-  
-
-  | 
-    SILAN:164 | 
-    Hangzhou Silan Microelectronics Co., Ltd. | 
-    http://www.silan.com.cn/ | 
-  
-
-  | 
-    Silergy Corp:139 | 
-    Silergy Corporation | 
-    http://silergy.com/ | 
-  
-
-  | 
-    Silicon Labs:21 | 
-    Silicon Labs | 
-    http://www.silabs.com | 
-  
-
-  | 
-    Sinemicro:179 | 
-    Anhui Sine Microelectronics Co., Ltd | 
-    https://www.sinemicro.com | 
-  
-
-  | 
-    Sinowealth:149 | 
-    Sino Wealth Electronic Ltd. | 
-    http://www.sinowealth.com | 
-  
-
-  | 
-    SmartChip:156 | 
-    SmartChip | 
-     | 
-  
-
-  | 
-    Socionext:171 | 
-    Socionext | 
-    https://www.socionext.com | 
-  
-
-  | 
-    Spansion:100 | 
-    Spansion (previously Fujitsu) | 
-    http://www.spansion.com | 
-  
-
-  | 
-    STMicroelectronics:13 | 
-    STMicroelectronics | 
-    http://www.st.com | 
-  
-
-  | 
-    Synwit:144 | 
-    Synwit Technology Co.,LTD. | 
-    http://www.synwit.cn | 
-  
-
-  | 
-    Texas Instruments:16 | 
-    Texas Instruments | 
-    http://www.ti.com | 
-  
-
-  | 
-    ThinkTech:172 | 
-    ThinkTech | 
-    http://www.ThinkTech.net.cn | 
-  
-
-  | 
-    Toshiba:92 | 
-    Toshiba Semiconductor | 
-    http://toshiba.semicon-storage.com | 
-  
-
-  | 
-    Triad Semiconductor:104 | 
-    Triad Semiconductor | 
-    http://www.triadsemi.com | 
-  
-
-  | 
-    Unisoc:152 | 
-    Unisoc Communications, Inc. | 
-    http://www.unisoc.com | 
-  
-
-  | 
-    Vorago:137 | 
-    Vorago Technologies | 
-    http://www.voragotech.com | 
-  
-
-  | 
-    Watech:183 | 
-    Suzhou Watech Electronics Co., Ltd. | 
-    https://www.watechelectronics.com/ | 
-  
-
-  | 
-    Weltrend:148 | 
-    Weltrend | 
-    http://www.weltrend.com.tw | 
-  
-
-  | 
-    WIZnet:122 | 
-    WIZnet | 
-    http://www.wiznet.co.kr | 
-  
-
-  | 
-    Xiamen PengPai Microelectronics Co. Ltd:166 | 
-    Pai IC | 
-    https://www.pai-ic.com | 
-  
-
-  | 
-    XMC:158 | 
-    Wuhan Xinxin Semiconductor Manufacturing Co., Ltd. | 
-    http://www.xmcwh.com/ | 
-  
-
-  | 
-    XYD:186 | 
-    Xiamen XYDFAB Integrated Circuit Co., Ltd | 
-    http://www.xfabsemi.com/ | 
-  
-
-  | 
-    YTMicro:180 | 
-    YTMicro | 
-    http://www.ytmicro.com/ | 
-  
-
-  | 
-    Zilog:89 | 
-    Zilog | 
-    http://zilog.com/ | 
-  
+| Dvendor | Description | Web Link |
+|---|---|---|
+| NO_VENDOR:0 | No Vendor |  |
+| 3PEAK:177 | 3PEAK | https://www.3peakic.com.cn/ |
+| ABOV Semiconductor:126 | ABOV Semiconductor | http://www.abov.co.kr/en/ |
+| Active-Semi:140 | Active-Semi | http://www.active-semi.com |
+| Alif Semiconductor:165 | Alif Semiconductor | http://www.alifsemi.com |
+| Ambiq Micro:120 | Ambiq Micro | http://www.ambiqmicro.com |
+| Amiccom:147 | Amiccom | http://www.amiccom.com.tw |
+| Analog Devices:1 | Analog Devices | http://www.analog.com |
+| APEXMIC:153 | Apex Microeletronics Co., Ltd. | http://www.apexmic.com |
+| ARM:82 | ARM Ltd. | http://www.arm.com |
+| ArmChina:160 | Arm China | http://www.armchina.com |
+| ArteryTek:143 | ArteryTek | http://www.arterytek.com |
+| Atmel:3 | Atmel Corporation (now Microchip) | http://www.microchip.com |
+| Autochips:150 | Autochips Inc. | http://www.autochips.com/index_en.aspx |
+| BOYAMICRO:182 | BOYAMICRO | https://www.boyamicro.com |
+| BrainChip:168 | BrainChip Inc | https://brainchipinc.com |
+| Cmsemicon:161 | Cmsemicon | http://www.mcu.com.cn |
+| CSR:118 | CSR | http://www.csr.com |
+| Cypress:19 | Cypress Semiconductor | http://www.cypress.com |
+| Dialog Semiconductor:113 | Dialog Semiconductor | http://www.dialog-semiconductor.com |
+| ELAN:162 | ELAN | http://www.emc.com.tw |
+| Elmos Semiconductor AG:138 | Elmos Semiconductor AG | http://www.elmos.com |
+| ESMT:190 | Elite Semiconductor Microelectronics Technology Inc. | https://www.esmt.com.tw/en |
+| e-peas:167 | e-peas semicondcutors | https://e-peas.com |
+| EtaCompute:157 | Eta Compute Inc. | https://www.etacompute.com |
+| FMD:169 | FMD | https://www.fremontmicro.com/ |
+| FMSH:159 | Shanghai Fudan Microelectronics Group Co., Ltd | http://www.fmsh.com |
+| Geehy:163 | Geehy | https://www.geehy.com/ |
+| Generic:5 | Generic: Not a vendor specific device |  |
+| Generalplus:151 | Generalplus Technology Inc. | http://www.generalplus.com |
+| GigaDevice:123 | GigaDevice | http://www.gigadevice.com |
+| Goodix:155 | Goodix | https://www.goodix.com |
+| HDSC:145 | HUADA Semiconductor | http://www.hdsc.com.cn |
+| Hilscher:88 | Hilscher Gesellschaft für Systemautomation mbH | http://www.hilscher.com |
+| Himax:178 | Himax Technologies, Inc. | https://www.himax.com.tw/ |
+| Holtek:106 | Holtek Microelectronics | http://www.holtek.com.tw |
+| HrdWyr:188 | HrdWyr | https://www.hrdwyr.com |
+| Infineon:7 | Infineon Technologies | http://www.infineon.com |
+| Jonzic:174 | Shanghai Jonzic Electronic Co., Ltd | http://www.jonzic.cn |
+| LAPIS Technology:10 | LAPIS Technology | http://www.lapis-tech.com |
+| Linear Technolgy:136 | Linear Technolgy | http://www.linear.com/ |
+| Linkedsemi:175 | LinkedSemi Microelectronics (Xiamen) Co., Ltd | https://www.linkedsemi.com/ |
+| Maxim:23 | Maxim Integrated | http://www.maximintegrated.com |
+| MediaTek:129 | MediaTek | http://www.mediatek.com |
+| MegaChips:128 | MegaChips | http://www.megachips.com |
+| Megawin:70 | Megawin | http://www.megawin.com.tw |
+| Microchip:3 | Microchip (previously Atmel) | http://www.microchip.com |
+| Micronas:30 | TDK-Micronas GmbH | https://www.micronas.tdk.com |
+| MicroSemi:112 | Microsemi | http://www.microsemi.com |
+| Milandr:99 | Milandr | http://www.milandr.ru |
+| MindMotion:132 | MindMotion | http://www.mindmotion.com.cn |
+| MinebeaMitsumi:181 | MinebeaMitsumi | http://www.minebeamitsumi.com |
+| Nationstech:184 | Nations Technologies Inc. | https://www.nationstech.com |
+| Nordic Semiconductor:54 | Nordic Semiconductor | http://www.nordicsemi.com |
+| NSING:185 | NSING Technologies Pte. Ltd. | https://www.nsing.com.sg |
+| Nuvoton:18 | Nuvoton Technolgy Corp. | http://www.nuvoton.com |
+| NXP:11 | NXP | http://www.nxp.com |
+| ONSemiconductor:141 | ON Semiconductor | https://www.onsemi.com |
+| Panasonic:131 | Panasonic | http://www.panasonic.com/industrial |
+| Puya:176 | Puya | https://www.puyasemi.com/ |
+| Qorvo:189 | Qorvo | https://www.qorvo.com/ |
+| Realtek Semiconductor:124 | Realtek Semiconductor | http://www.realtek.com |
+| Redpine Signals:125 | Repine Signals | http://www.redpinesignals.com |
+| RelChip:146 | RelChip | http://www.relchip.com/ |
+| Renesas:117 | Renesas | http://www.renesas.com |
+| ROHM:103 | ROHM | http://www.rohm.com |
+| RPi:170 | Raspberry Pi Foundation | https://www.raspberrypi.org/ |
+| Samsung:47 | Samsung Semiconductor | http://www.samsung.com |
+| SILAN:164 | Hangzhou Silan Microelectronics Co., Ltd. | http://www.silan.com.cn/ |
+| Silergy Corp:139 | Silergy Corporation | http://silergy.com/ |
+| Silicon Labs:21 | Silicon Labs | http://www.silabs.com |
+| Sinemicro:179 | Anhui Sine Microelectronics Co., Ltd | https://www.sinemicro.com |
+| Sinowealth:149 | Sino Wealth Electronic Ltd. | http://www.sinowealth.com |
+| SmartChip:156 | SmartChip |  |
+| Socionext:171 | Socionext | https://www.socionext.com |
+| Spansion:100 | Spansion (previously Fujitsu) | http://www.spansion.com |
+| STMicroelectronics:13 | STMicroelectronics | http://www.st.com |
+| Synwit:144 | Synwit Technology Co.,LTD. | http://www.synwit.cn |
+| Texas Instruments:16 | Texas Instruments | http://www.ti.com |
+| ThinkTech:172 | ThinkTech | http://www.ThinkTech.net.cn |
+| Toshiba:92 | Toshiba Semiconductor | http://toshiba.semicon-storage.com |
+| Triad Semiconductor:104 | Triad Semiconductor | http://www.triadsemi.com |
+| Unisoc:152 | Unisoc Communications, Inc. | http://www.unisoc.com |
+| Vorago:137 | Vorago Technologies | http://www.voragotech.com |
+| Watech:183 | Suzhou Watech Electronics Co., Ltd. | https://www.watechelectronics.com/ |
+| Weltrend:148 | Weltrend | http://www.weltrend.com.tw |
+| WIZnet:122 | WIZnet | http://www.wiznet.co.kr |
+| Xiamen PengPai Microelectronics Co. Ltd:166 | Pai IC | https://www.pai-ic.com |
+| XMC:158 | Wuhan Xinxin Semiconductor Manufacturing Co., Ltd. | http://www.xmcwh.com/ |
+| XYD:186 | Xiamen XYDFAB Integrated Circuit Co., Ltd | http://www.xfabsemi.com/ |
+| YTMicro:180 | YTMicro | http://www.ytmicro.com/ |
+| Zilog:89 | Zilog | http://zilog.com/ |
 
 
 
@@ -769,26 +205,11 @@ The table lists the predefined Flash algorithm style. These values can be used i
 
 
 
-  | 
-    style= | 
-    Description | 
-  
-
-  | 
-    Keil | 
-    flashAlgorithm as defined by Arm/Keil | 
-  
-
-  | 
-    IAR | 
-    Flash Programming Algorithm as defined by IAR | 
-  
-
-  | 
-    CMSIS | 
-    To be agreed under CMSIS | 
-  
-
+| style= | Description |
+|---|---|
+| Keil | flashAlgorithm as defined by Arm/Keil |
+| IAR | Flash Programming Algorithm as defined by IAR |
+| CMSIS | To be agreed under CMSIS |
 
 
 
@@ -807,190 +228,44 @@ These values can be used in the elements:
 	
 
 
-  | 
-    Dcore= | 
-    Description | 
-  
-
-  | 
-    Cortex-M0 | 
-    Arm Cortex-M0 processor based device | 
-  
-
-  | 
-    Cortex-M0+ | 
-    Arm Cortex-M0+ processor based device | 
-  
-
-  | 
-    Cortex-M1 | 
-    Arm Cortex-M1 processor based device | 
-  
-
-  | 
-    Cortex-M3 | 
-    Arm Cortex-M3 processor based device | 
-  
-
-  | 
-    Cortex-M4 | 
-    Arm Cortex-M4 processor based device | 
-  
-
-  | 
-    Cortex-M7 | 
-    Arm Cortex-M7 processor based device | 
-  
-
-  | 
-    Cortex-M23 | 
-    Arm Cortex-M23 processor based device | 
-  
-
-  | 
-    Cortex-M33 | 
-    Arm Cortex-M33 processor based device | 
-  
-
-  | 
-    Cortex-M35P | 
-    Arm Cortex-M35P processor based device | 
-  
-
-  | 
-    Cortex-M52 | 
-    Arm Cortex-M52 processor based device | 
-  
-
-  | 
-    Cortex-M55 | 
-    Arm Cortex-M55 processor based device | 
-  
-  
-  | 
-    Cortex-M85 | 
-    Arm Cortex-M85 processor based device | 
-  
-
-  | 
-    Star-MC1 | 
-    ArmChina STAR-MC1 processor based device | 
-  
-
-  | 
-    Star-MC3 | 
-    ArmChina STAR-MC3 processor based device | 
-  
-
-  | 
-    SC000 | 
-    SecurCore SC000 based on technology of Cortex-M0. | 
-  
-
-  | 
-    SC300 | 
-    SecurCore SC300 based on technology of Cortex-M3. | 
-  
-
-  | 
-    ARMV8MBL | 
-    Processor ArmV8MBL compliant with the Armv8-M Baseline Architecture. | 
-  
-
-  | 
-    ARMV8MML | 
-    Processor ArmV8MML compliant with the Armv8-M Mainline Architecture. | 
-  
-
-  | 
-    ARMV81MML | 
-    Processor ArmV81MML compliant with the Armv8.1-M Mainline Architecture. | 
-  
-
-  | 
-    Cortex-R4 | 
-    Arm Cortex-R4 processor based device | 
-  
-
-  | 
-    Cortex-R5 | 
-    Arm Cortex-R5 processor based device | 
-  
-
-  | 
-    Cortex-R7 | 
-    Arm Cortex-R7 processor based device | 
-  
-
-  | 
-    Cortex-R8 | 
-    Arm Cortex-R8 processor based device | 
-  
-
-  | 
-    Cortex-A5 | 
-    Arm Cortex-A5 processor based device | 
-  
-
-  | 
-    Cortex-A7 | 
-    Arm Cortex-A7 processor based device | 
-  
-
-  | 
-    Cortex-A8 | 
-    Arm Cortex-A8 processor based device | 
-  
-
-  | 
-    Cortex-A9 | 
-    Arm Cortex-A9 processor based device | 
-  
-
-  | 
-    Cortex-A15 | 
-    Arm Cortex-A15 processor based device | 
-  
-
-  | 
-    Cortex-A17 | 
-    Arm Cortex-A17 processor based device | 
-  
-
-  | 
-    Cortex-A32 | 
-    Arm Cortex-A32 processor based device | 
-  
-
-  | 
-    Cortex-A35 | 
-    Arm Cortex-A35 processor based device | 
-  
-
-  | 
-    Cortex-A53 | 
-    Arm Cortex-A53 processor based device | 
-  
-
-  | 
-    Cortex-A57 | 
-    Arm Cortex-A57 processor based device | 
-  
-
-  | 
-    Cortex-A72 | 
-    Arm Cortex-A72 processor based device | 
-  
-
-  | 
-    Cortex-A73 | 
-    Arm Cortex-A73 processor based device | 
-  
-
-  | 
-    * | 
-    Device based on any processor | 
-  
+| Dcore= | Description |
+|---|---|
+| Cortex-M0 | [Arm Cortex-M0](https://developer.arm.com/processors/cortex-m0) processor based device |
+| Cortex-M0+ | [Arm Cortex-M0+](https://developer.arm.com/processors/cortex-m0-plus) processor based device |
+| Cortex-M1 | [Arm Cortex-M1](https://developer.arm.com/processors/cortex-m1) processor based device |
+| Cortex-M3 | [Arm Cortex-M3](https://developer.arm.com/processors/cortex-m3) processor based device |
+| Cortex-M4 | [Arm Cortex-M4](https://developer.arm.com/processors/cortex-m4) processor based device |
+| Cortex-M7 | [Arm Cortex-M7](https://developer.arm.com/processors/cortex-m7) processor based device |
+| Cortex-M23 | [Arm Cortex-M23](https://developer.arm.com/processors/cortex-m23) processor based device |
+| Cortex-M33 | [Arm Cortex-M33](https://developer.arm.com/processors/cortex-m33) processor based device |
+| Cortex-M35P | [Arm Cortex-M35P](https://developer.arm.com/processors/cortex-m35p) processor based device |
+| Cortex-M52 | [Arm Cortex-M52](https://developer.arm.com/processors/cortex-m52) processor based device |
+| Cortex-M55 | [Arm Cortex-M55](https://developer.arm.com/processors/cortex-m55) processor based device |
+| Cortex-M85 | [Arm Cortex-M85](https://developer.arm.com/processors/cortex-m85) processor based device |
+| Star-MC1 | [ArmChina STAR-MC1](https://www.armchina.com/mountain?infoId=160) processor based device |
+| Star-MC3 | [ArmChina STAR-MC3](https://www.armchina.com/mountain?infoId=240) processor based device |
+| SC000 | SecurCore [SC000](https://developer.arm.com/processors/securcore%20sc000) based on technology of Cortex-M0. |
+| SC300 | SecurCore [SC300](https://developer.arm.com/processors/securcore%20sc300) based on technology of Cortex-M3. |
+| ARMV8MBL | Processor [ArmV8MBL](http://developer.arm.com/products/architecture/m-profile) compliant with the Armv8-M Baseline Architecture. |
+| ARMV8MML | Processor [ArmV8MML](http://developer.arm.com/products/architecture/m-profile) compliant with the Armv8-M Mainline Architecture. |
+| ARMV81MML | Processor [ArmV81MML](http://developer.arm.com/products/architecture/m-profile) compliant with the Armv8.1-M Mainline Architecture. |
+| Cortex-R4 | [Arm Cortex-R4](https://developer.arm.com/processors/cortex-r4) processor based device |
+| Cortex-R5 | [Arm Cortex-R5](https://developer.arm.com/processors/cortex-r5) processor based device |
+| Cortex-R7 | [Arm Cortex-R7](https://developer.arm.com/processors/cortex-r7) processor based device |
+| Cortex-R8 | [Arm Cortex-R8](https://developer.arm.com/processors/cortex-r8) processor based device |
+| Cortex-A5 | [Arm Cortex-A5](https://developer.arm.com/processors/cortex-a5) processor based device |
+| Cortex-A7 | [Arm Cortex-A7](https://developer.arm.com/processors/cortex-a7) processor based device |
+| Cortex-A8 | [Arm Cortex-A8](https://developer.arm.com/processors/cortex-a8) processor based device |
+| Cortex-A9 | [Arm Cortex-A9](https://developer.arm.com/processors/cortex-a9) processor based device |
+| Cortex-A15 | [Arm Cortex-A15](https://developer.arm.com/processors/cortex-a15) processor based device |
+| Cortex-A17 | [Arm Cortex-A17](https://developer.arm.com/processors/cortex-a17) processor based device |
+| Cortex-A32 | [Arm Cortex-A32](https://developer.arm.com/processors/cortex-a32) processor based device |
+| Cortex-A35 | [Arm Cortex-A35](https://developer.arm.com/processors/cortex-a35) processor based device |
+| Cortex-A53 | [Arm Cortex-A53](https://developer.arm.com/processors/cortex-a53) processor based device |
+| Cortex-A57 | [Arm Cortex-A57](https://developer.arm.com/processors/cortex-a57) processor based device |
+| Cortex-A72 | [Arm Cortex-A72](https://developer.arm.com/processors/cortex-a72) processor based device |
+| Cortex-A73 | [Arm Cortex-A73](https://developer.arm.com/processors/cortex-a73) processor based device |
+| * | Device based on any processor |
 
 
 
@@ -1009,30 +284,12 @@ The tokens can be used in the elements:
 
 
 
-  | 
-    Dfpu= | 
-    Description | 
-  
-
-  | 
-    NO_FPU | 
-    Hardware Floating Point Unit not present | 
-  
-
-  | 
-    FPU | 
-    Hardware Floating Point Unit present | 
-  
-
-  | 
-    SP_FPU | 
-    Single Precision Hardware Floating Point Unit present | 
-  
-
-  | 
-    DP_FPU | 
-    Double Precision Hardware Floating Point Unit present | 
-  
+| Dfpu= | Description |
+|---|---|
+| NO_FPU | Hardware Floating Point Unit not present |
+| FPU | Hardware Floating Point Unit present |
+| SP_FPU | Single Precision Hardware Floating Point Unit present |
+| DP_FPU | Double Precision Hardware Floating Point Unit present |
 
 
 
@@ -1050,20 +307,10 @@ The values can be used in the elements:
 
 
 
-  | 
-    Dmpu= | 
-    Description | 
-  
-
-  | 
-    NO_MPU | 
-    No Memory Protection Unit is present | 
-  
-
-  | 
-    MPU | 
-    Memory Protection Unit is present | 
-  
+| Dmpu= | Description |
+|---|---|
+| NO_MPU | No Memory Protection Unit is present |
+| MPU | Memory Protection Unit is present |
 
 
 
@@ -1083,20 +330,10 @@ The values can be used in the elements:
 
 
 
-  | 
-    Dtz= | 
-    Description | 
-  
-
-  | 
-    NO_TZ | 
-    No TrustZone is present | 
-  
-
-  | 
-    TZ | 
-    TrustZone is present | 
-  
+| Dtz= | Description |
+|---|---|
+| NO_TZ | No TrustZone is present |
+| TZ | TrustZone is present |
 
 
 
@@ -1113,30 +350,12 @@ The values can be used in the elements:
 
 
 
-  | 
-    Dsecure= | 
-    Description | 
-  
-
-  | 
-    Non-secure | 
-    Application is built to run in non-secure mode. | 
-  
-
-  | 
-    Secure | 
-    Application is built to run in secure mode. | 
-  
-
-  | 
-    TZ-disabled | 
-    Application is built with TrustZone security disabled. | 
-  
-
-  | 
-    Secure-only | 
-    Application is built to run in secure mode without any provisions to switch to non-secure code nor for non-secure callable entry points. | 
-  
+| Dsecure= | Description |
+|---|---|
+| Non-secure | Application is built to run in non-secure mode. |
+| Secure | Application is built to run in secure mode. |
+| TZ-disabled | Application is built with TrustZone security disabled. |
+| Secure-only | Application is built to run in secure mode without any provisions to switch to non-secure code nor for non-secure callable entry points. |
 
 
 
@@ -1155,20 +374,10 @@ The values can be used in the elements:
 
 
 
-  | 
-    Ddsp= | 
-    Description | 
-  
-
-  | 
-    NO_DSP | 
-    No DSP instructions supported | 
-  
-
-  | 
-    DSP | 
-    DSP instructions supported | 
-  
+| Ddsp= | Description |
+|---|---|
+| NO_DSP | No DSP instructions supported |
+| DSP | DSP instructions supported |
 
 
 
@@ -1186,25 +395,11 @@ The values can be used in the elements:
 
 
 
-  | 
-    Dmve= | 
-    Description | 
-  
-
-  | 
-    NO_MVE | 
-    No MVE instructions supported | 
-  
-
-  | 
-    MVE | 
-    Integer MVE instructions supported | 
-  
-
-  | 
-    FP_MVE | 
-    Floating point and Integer MVE instructions supported | 
-  
+| Dmve= | Description |
+|---|---|
+| NO_MVE | No MVE instructions supported |
+| MVE | Integer MVE instructions supported |
+| FP_MVE | Floating point and Integer MVE instructions supported |
 
 
 
@@ -1222,20 +417,10 @@ The values can be used in the elements:
 
 
 
-  | 
-    Dcdecp= | 
-    Description | 
-  
-
-  | 
-    BitN = 0 | 
-    CDE co-processor interface disabled at BitN. | 
-  
-
-  | 
-    BitN = 1 | 
-    CDE co-processor interface enabled at BitN. | 
-  
+| Dcdecp= | Description |
+|---|---|
+| BitN = 0 | CDE co-processor interface disabled at BitN. |
+| BitN = 1 | CDE co-processor interface enabled at BitN. |
 
 
 
@@ -1258,20 +443,10 @@ The values can be used in the elements:
 
 
 
-  | 
-    DpacbtiEnum= | 
-    Description | 
-  
-
-  | 
-    NO_PACBTI | 
-    Non-NOP-space PAC/BTI instruction are not support. | 
-  
-
-  | 
-    PACBTI | 
-    Non-NOP-space PAC/BTI instructions are supported. | 
-  
+| DpacbtiEnum= | Description |
+|---|---|
+| NO_PACBTI | Non-NOP-space PAC/BTI instruction are not support. |
+| PACBTI | Non-NOP-space PAC/BTI instructions are supported. |
 
 
 
@@ -1289,21 +464,8 @@ The values can be used in the elements:
 
 
 
-  | 
-    Dendian= | 
-    Description | 
-  
-
-  | 
-    Little-endian | 
-    The least significant byte of a multi-byte access is located at the specified address. | 
-  
-
-  | 
-    Big-endian | 
-    The most significant byte of a multi-byte access is located at the specified address. | 
-  
-
-  | 
-    Configurable | 
-    The byte ordering of multi-byte accesses is configurable. |
+| Dendian= | Description |
+|---|---|
+| Little-endian | The least significant byte of a multi-byte access is located at the specified address. |
+| Big-endian | The most significant byte of a multi-byte access is located at the specified address. |
+| Configurable | The byte ordering of multi-byte accesses is configurable. |

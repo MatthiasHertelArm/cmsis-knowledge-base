@@ -20,15 +20,15 @@ Refer to [MLOps Integration](https://open-cmsis-pack.github.io/cmsis-toolbox/YML
 
 `cbuild-mlops:`                                             | Content
 :-----------------------------------------------------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `description:`                           | Descriptive text of the ML model under development.
-&nbsp;&nbsp;&nbsp; `processor:`                             | Processor information for the ML model.
-&nbsp;&nbsp;&nbsp; `npu:`                                   | NPU type and MAC configuration (only present for devices with NPU).
-&nbsp;&nbsp;&nbsp; `vela:`                                  | Vela INI file and option string (only present for Ethos-U NPUs).
-&nbsp;&nbsp;&nbsp; `model:`                                 | Layer location and custom properties for ML model generation. Custom properties may contain scalar values, lists, and nested maps.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `clayer:`                | Path to the ML model layer, relative to the generated `*.cbuild-mlops.yml` file.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<key>:`                 | Custom property preserved from the input `model:` node after recursive variable expansion.
-&nbsp;&nbsp;&nbsp; `hardware:`                              | Hardware test configuration (active target, `cbuild-run` file, and output image list).
-&nbsp;&nbsp;&nbsp; `simulator:`                             | Simulator test configuration (active target, output image list, and FVP invocation details).
+    `description:`                           | Descriptive text of the ML model under development.
+    `processor:`                             | Processor information for the ML model.
+    `npu:`                                   | NPU type and MAC configuration (only present for devices with NPU).
+    `vela:`                                  | Vela INI file and option string (only present for Ethos-U NPUs).
+    `model:`                                 | Layer location and custom properties for ML model generation. Custom properties may contain scalar values, lists, and nested maps.
+       `clayer:`                | Path to the ML model layer, relative to the generated `*.cbuild-mlops.yml` file.
+       `<key>:`                 | Custom property preserved from the input `model:` node after recursive variable expansion.
+    `hardware:`                              | Hardware test configuration (active target, `cbuild-run` file, and output image list).
+    `simulator:`                             | Simulator test configuration (active target, output image list, and FVP invocation details).
 
 **Example:**
 

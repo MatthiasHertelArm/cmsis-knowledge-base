@@ -3,7 +3,7 @@ id: "view-xml-elements"
 type: "concept"
 domain: "trace"
 title: "XML elements"
-summary: "The top level elements of an SCVD file are: - <componentviewer> &mdash; the root element enclosing all other elements - <component> &mdash; defines the component for which the viewer is created - <typedefs> &mdash; definitions for data types …"
+summary: "The top level elements of an SCVD file are: - <component_viewer> — the root element enclosing all other elements - <component> — defines the component for which the viewer is created - <typedefs> — definitions for data types …"
 status: "draft"
 collection: "cmsis-view"
 source: "ARM-software/CMSIS-View@fef5aca:Documentation/Doxygen/src/ref_scvd.txt"
@@ -13,11 +13,11 @@ mode: "V"
 ---
 
 The top level elements of an SCVD file are:
- - `<component_viewer>` &mdash; the root element enclosing all other elements
- - `<component>` &mdash; defines the component for which the viewer is created
- - `<typedefs>` &mdash; definitions for data types and structures of the software component.
- - `<objects>` &mdash; defines the data collection and the output for software component objects.
- - `<events>` &mdash; defines the output for events (system and thread information).
+ - `<component_viewer>` — the root element enclosing all other elements
+ - `<component>` — defines the component for which the viewer is created
+ - `<typedefs>` — definitions for data types and structures of the software component.
+ - `<objects>` — defines the data collection and the output for software component objects.
+ - `<events>` — defines the output for events (system and thread information).
 
 The overall XML structure of an SCVD file is shown below.
 

@@ -16,7 +16,7 @@ _Part of: Extended Options_
 
 Configures the behavior for connecting pyOCD to the hardware target.
 
-&nbsp;                                            |              | Description
+                                             |              | Description
 :-------------------------------------------------|:-------------|:------------------------------------
 `connect:`                                        |   Optional   | Selects the connect mode: `pre-reset`, `under-reset`, `attach` (default), `halt`.
 

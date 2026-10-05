@@ -16,29 +16,11 @@ Describes the system topology.
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    platform | 
-    /system_description/platform | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    sdf_element_topology_link | 
-    Describes how CoreSight devices and cores are connected. | 
-    complexType | 
-    0..* |   
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| platform | /system_description/platform |  |  |
+| Child Elements | Description | Type | Occurrence |
+| sdf_element_topology_link | Describes how CoreSight devices and cores are connected. | complexType | 0..* |
 
 
 

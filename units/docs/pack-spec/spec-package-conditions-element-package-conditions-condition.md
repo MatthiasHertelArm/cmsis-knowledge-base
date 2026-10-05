@@ -18,64 +18,16 @@ If a condition resolves to `false`, then the component or file description is ig
 
 
 
-  | 
-    Parent | 
-    Chain | 
-  
-
-  | 
-    conditions | 
-    /package/conditions | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    id | 
-    Condition identifier which is unique within a software pack. The condition identifier is referenced by other elements with the attribute **condition. | **
-    xs:string | 
-    required | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    description | 
-    Descriptive (comment) text that explains the condition in an human readable way. | 
-    xs:string | 
-    0..1 | 
-  
-
-  | 
-    accept1 | 
-    At least one accept must be true to signal a true for the complete condition (**OR-Rule) | **
-    FilterType | 
-    0..* | 
-  
-
-  | 
-    require1 | 
-    All require must be true to signal a true for the complete condition (**AND-Rule). | **
-    FilterType | 
-    0..* | 
-  
-
-  | 
-    deny1 | 
-    If one deny is true the complete condition becomes false. This element overrules require and accept (**AND-NOT-Rule). | **
-    FilterType | 
-    0..* | 
-  
+| Parent | Chain |  |  |
+|---|---|---|---|
+| conditions | /package/conditions |  |  |
+| Attributes | Description | Type | Use |
+| id | Condition identifier which is unique within a software pack. The condition identifier is referenced by other elements with the attribute **condition. | xs:string | required |
+| Child Elements | Description | Type | Occurrence |
+| description | Descriptive (comment) text that explains the condition in an human readable way. | xs:string | 0..1 |
+| accept 1 | At least one accept must be true to signal a true for the complete condition (**OR-Rule) | FilterType | 0..* |
+| require 1 | All require must be true to signal a true for the complete condition (**AND-Rule). | FilterType | 0..* |
+| deny 1 | If one deny is true the complete condition becomes false. This element overrules require and accept (**AND-NOT-Rule). | FilterType | 0..* |
 
 
 **Note:**

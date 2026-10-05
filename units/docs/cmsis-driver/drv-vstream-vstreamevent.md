@@ -28,28 +28,12 @@ The following events can be signaled:
 
 
 
-| 
-   Parameter **event_flags**    |  Bit  |  Description  |                                               
-
-
-| 
-   VSTREAM_EVENT_DATA      |   0   |  Occurs when a new block of incoming data is available
-  or when a block of outgoing data was streamed out. | 
-
-
-| 
-   VSTREAM_EVENT_OVERFLOW  |   1   |  Occurs when a block of incoming data begins to be overwritten
-  because it was not released in time using the vStreamReleaseBlock function. | 
-
-
-| 
-   VSTREAM_EVENT_UNDERFLOW |   2   |  Occurs when a block of outgoing data was not ready
-  (committed with vStreamReleaseBlock function) before streaming out required it. | 
-
-
-| 
-   VSTREAM_EVENT_EOS       |   3   |  Occurs when a streaming interface reached end of stream. | 
-
+| Parameter **event_flags** | Bit | Description |
+|---|---|---|
+| VSTREAM_EVENT_DATA | 0 | Occurs when a new block of incoming data is available or when a block of outgoing data was streamed out. |
+| VSTREAM_EVENT_OVERFLOW | 1 | Occurs when a block of incoming data begins to be overwritten because it was not released in time using the vStreamReleaseBlock function. |
+| VSTREAM_EVENT_UNDERFLOW | 2 | Occurs when a block of outgoing data was not ready (committed with vStreamReleaseBlock function) before streaming out required it. |
+| VSTREAM_EVENT_EOS | 3 | Occurs when a streaming interface reached end of stream. |
 
 
 

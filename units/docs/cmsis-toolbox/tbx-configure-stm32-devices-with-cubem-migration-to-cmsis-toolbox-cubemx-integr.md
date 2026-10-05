@@ -43,7 +43,7 @@ The [Generator Integration](https://open-cmsis-pack.github.io/cmsis-toolbox/Cube
 
 New `STM32*_DFP` software packs containing release information **Updated for new CMSIS-Toolbox CubeMX integration** require migration. The steps below describe the migration process of a previous CubeMX configuration.
 
-1. In &micro;Vision open the dialog *Manage - Run-Time Environment*.
+1. In µVision open the dialog *Manage - Run-Time Environment*.
 
 2. Remove all components from the `Device` Cclass, as CubeMX now manages the STM32 device firmware.
 3. Close *Manage - Run-Time Environment* with *OK*.

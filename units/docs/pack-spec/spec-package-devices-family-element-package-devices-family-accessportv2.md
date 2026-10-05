@@ -49,86 +49,15 @@ An **accessportV2** must be later selected via **__apid**. It is not possible to
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    family | 
-    element_family | 
-  
-
-  | 
-    subFamily | 
-    element_subFamily | 
-  
-
-  | 
-    device | 
-    element_device | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    __apid | 
-    
-      Unique ID of this element with respect to other access port elements.
-      It must be used consistently in references within the scope of the parent section.
-     | 
-    xs:unsignedInt | 
-    required | 
-  
-
-  | 
-    __dp | 
-    
-      Unique ID of the **debugport** used to access this access port.
-      Optional if exactly one **debugport** exists.
-     | 
-    xs:unsignedInt | 
-    optional | 
-  
-
-  | 
-    address | 
-    
-      The address to select this access port in its parent's address space for a target access.
-     | 
-    NonNegativeInteger | 
-    required | 
-  
-
-  | 
-    HPROT | 
-    
-      Value for HPROT (AHB Protection Control) bits.
-     | 
-    NonNegativeInteger | 
-    optional | 
-  
-
-  | 
-    SPROT | 
-    
-      Value for SPROT (Secure Protection Control) bit.
-     | 
-    NonNegativeInteger | 
-    optional | 
-  
-
-  | 
-    parent | 
-    
-      Reference to the **__apid** of the parent access port if the system contains nested APv2 access ports.
-
-      **parent** must not be specified if the access port is directly connected to the **debugport**.
-     | 
-    xs:unsignedInt | 
-    optional |
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| family | element_family |  |  |
+| subFamily | element_subFamily |  |  |
+| device | element_device |  |  |
+| Attributes | Description | Type | Use |
+| __apid | Unique ID of this element with respect to other access port elements. It must be used consistently in references within the scope of the parent section. | xs:unsignedInt | required |
+| __dp | Unique ID of the **debugport** used to access this access port. Optional if exactly one **debugport** exists. | xs:unsignedInt | optional |
+| address | The address to select this access port in its parent's address space for a target access. | NonNegativeInteger | required |
+| HPROT | Value for HPROT (AHB Protection Control) bits. | NonNegativeInteger | optional |
+| SPROT | Value for SPROT (Secure Protection Control) bit. | NonNegativeInteger | optional |
+| parent | Reference to the **__apid** of the parent access port if the system contains nested APv2 access ports. **parent** must not be specified if the access port is directly connected to the **debugport**. | xs:unsignedInt | optional |

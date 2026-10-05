@@ -28,32 +28,9 @@ mode: "V"
 **/language**
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    requirements | 
-    element_requirements | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    name | 
-    Name of the programming language (i.e. "C", "C++") | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    version | 
-    Version of the language standard (i.e. 90, 99, etc.). The setting will be reflected in the compiler commandline. | 
-    xs:string | 
-    required |
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| requirements | element_requirements |  |  |
+| Attributes | Description | Type | Use |
+| name | Name of the programming language (i.e. "C", "C++") | xs:string | required |
+| version | Version of the language standard (i.e. 90, 99, etc.). The setting will be reflected in the compiler commandline. | xs:string | required |

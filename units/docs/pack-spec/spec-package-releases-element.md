@@ -31,25 +31,8 @@ It contains the full release history of the Pack.
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    package | 
-    element_package | 
-  
-
-  | 
-    Child Element | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    release | 
-    Contains the version number of the release with some brief information about the main changes in that specific release. | 
-    xs:string  | 
-    1..*  |
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| package | element_package |  |  |
+| Child Element | Description | Type | Occurrence |
+| release | Contains the version number of the release with some brief information about the main changes in that specific release. | xs:string | 1..* |

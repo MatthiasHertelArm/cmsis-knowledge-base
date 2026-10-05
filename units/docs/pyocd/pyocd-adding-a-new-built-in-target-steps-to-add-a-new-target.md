@@ -3,7 +3,7 @@ id: "pyocd-adding-a-new-built-in-target-steps-to-add-a-new-target"
 type: "concept"
 domain: "debug"
 title: "Adding a new built-in target: Steps to add a new target"
-summary: "The target source file name must follow the pattern \"target\\\\<device>.py\", where \"\\<device>\" is the device's Dname or Dvariant part number value from the appropriate CMSIS Device Family Pack (DFP). For instance, targetLPC54608J512ET180.py."
+summary: "The target source file name must follow the pattern \"target\\\\<device>.py\", where \"\\<device>\" is the device's Dname or Dvariant part number value from the appropriate CMSIS Device Family Pack (DFP). For instance, target_LPC54608J512ET180.py."
 status: "draft"
 collection: "pyocd"
 source: "pyocd/pyOCD@d1974ff:docs/adding_new_targets.md"
@@ -15,7 +15,7 @@ mode: "V"
 1. Create a new `CoreSightTarget` subclass in a file under `pyocd/target/builtin/`. You can copy one of the
     existing target files like `pyocd/target/builtin/target_ncs36510.py` and rename the class.
 
-    The target source file name must follow the pattern "target\_\<device>.py", where "\<device>" is the
+    The target source file name must follow the pattern "target\_\`<device>`.py", where "\`<device>`" is the
     device's `Dname` or `Dvariant` part number value from the appropriate CMSIS Device Family Pack (DFP). For
     instance, `target_LPC54608J512ET180.py`. You may substitute an "x" for certain fields in the part number,
     such as a package or pin count code, temperature code, or memory size (if multiple memory sizes are

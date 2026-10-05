@@ -16,25 +16,8 @@ Grouping element for examples. No more than one such group can exist in a Pack.
 
 
 
-  | 
-    Parent | 
-    Chain | 
-  
-
-  | 
-    package | 
-    /package | 
-  
-	
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    example | 
-    Description of fully specified project | 
-    ExampleType | 
-    1..*  |
+| Parent | Chain |  |  |
+|---|---|---|---|
+| package | /package |  |  |
+| Child Elements | Description | Type | Occurrence |
+| example | Description of fully specified project | ExampleType | 1..* |

@@ -12,77 +12,19 @@ license: "Apache-2.0"
 mode: "V"
 ---
 
-| 
-    Parents | 
-    Element Chain | 
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| scanchain | /system_description/platform/scanchain |  |  |
+| dap | /system_description/platform/scanchain/dap |  |  |
+| Child Elements | Description | Type | Occurrence |
+| sdf_element_device | Describes a single nested device associated with this device. | complexType | 0..* |
+| sdf_element_device_info_items | Describes a sequence of device information items. | complexType | 0..* |
+| sdf_element_config_items | Configuration items specific to this device. | complexType | 0..* |
+| Attributes | Description | Type | Use |
+| name | Unique name of the device. | xs:string | required |
+| type | Specifies the device type (see below). | xs:string | required |
+| irLength | Specifies the IR length of the device (default value: 4). | xs:string | optional |
 
-  | 
-    scanchain | 
-    /system_description/platform/scanchain | 
-  
-
-  | 
-    dap | 
-    /system_description/platform/scanchain/dap | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    sdf_element_device | 
-    Describes a single nested device associated with this device. | 
-    complexType | 
-    0..* |   
-  
-
-  | 
-    sdf_element_device_info_items | 
-    Describes a sequence of device information items. | 
-    complexType | 
-    0..* |   
-  
-
-  | 
-    sdf_element_config_items | 
-    Configuration items specific to this device. | 
-    complexType | 
-    0..* |   
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    name | 
-    Unique name of the device. | 
-    xs:string | 
-    required | 
-  
-  
-  | 
-    type | 
-    Specifies the device type (see below). | 
-    xs:string | 
-    required | 
-  
-  
-  | 
-    irLength | 
-    Specifies the IR length of the device (default value: 4). | 
-    xs:string | 
-    optional | 
-  
-  
 
 
 Depending on the context, a device type can be one of the following types:

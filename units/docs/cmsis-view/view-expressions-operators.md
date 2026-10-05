@@ -23,9 +23,9 @@ determines the evaluation order.
  _.member_                     |     2      | Type member
  **typedef_name:member:enum**       |     2      | Enumerator value; refer to `<enum>`
  **typedef_name:member**            |     2      | Type-member selector for use in __Offset_of intrinsic; refer to `<member>`
- Unary +, Unary &mdash;             |     3      | Unary plus or minus applied to the following operand 
+ Unary +, Unary —             |     3      | Unary plus or minus applied to the following operand 
  \* / %                             |     4      | Multiplication, Division, or Modulo
- +  &mdash;                         |     5      | Addition, Subtraction
+ +  —                         |     5      | Addition, Subtraction
  <<  >>                             |     6      | Shift left, Shift right
  & \| ^                             |     7      | Binary AND, OR, XOR
  == != > >= < <=                    |     8      | Comparisons
@@ -35,7 +35,7 @@ determines the evaluation order.
 
 **Note:**
  - Because the character **&** is reserved in XML, it is required for logical operations to use **\&** instead.
- - Use **\&quot;** whenever this quote is not part of an XML structure.
+ - Use **\"** whenever this quote is not part of an XML structure.
 
 **Code** **Examples**
 ```

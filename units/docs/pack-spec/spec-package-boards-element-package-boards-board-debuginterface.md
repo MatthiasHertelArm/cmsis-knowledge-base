@@ -28,34 +28,9 @@ describes virtual hardware there maybe no debug entries listed.
 
 
 
-  | 
-    Parent | 
-    Chain | 
-  
-
-  | 
-    board | 
-    element_board | 
-  
-	
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    adapter | 
-    String describing the debug adapter. Common adapters are: `JTAG/SW` (for all adapters supporting JTAG and Serial-Wire Debug), 
-	`CMSIS-DAP`, `OpenSDA`, `J-Link`, `ST-Link`, `Nu-Link`. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    connector | 
-    String describing the debug connector. Usually one of these: `10-pin Cortex Debug Connector`, `20-pin Arm Standard JTAG Connector`, 
-	`20-pin Cortex Debug + ETM Connector`, `Mini-USB`, `Micro-USB`. | 
-    xs:string | 
-    optional |
+| Parent | Chain |  |  |
+|---|---|---|---|
+| board | element_board |  |  |
+| Attributes | Description | Type | Use |
+| adapter | String describing the debug adapter. Common adapters are: `JTAG/SW` (for all adapters supporting JTAG and Serial-Wire Debug), `CMSIS-DAP`, `OpenSDA`, `J-Link`, `ST-Link`, `Nu-Link`. | xs:string | optional |
+| connector | String describing the debug connector. Usually one of these: `10-pin Cortex Debug Connector`, `20-pin Arm Standard JTAG Connector`, `20-pin Cortex Debug + ETM Connector`, `Mini-USB`, `Micro-USB`. | xs:string | optional |

@@ -3,7 +3,7 @@ id: "view-elemhead-component-viewer-objects-8"
 type: "concept"
 domain: "trace"
 title: "\\elemhead{component_viewer/objects/object/out/.../item/print}"
-summary: "printspec are supported using the \" \" element. It works as child element of <item> \"item\" and allows conditional output formats."
+summary: "print_spec are supported using the \" \" element. It works as child element of <item> \"item\" and allows conditional output formats."
 status: "draft"
 collection: "cmsis-view"
 source: "ARM-software/CMSIS-View@fef5aca:Documentation/Doxygen/src/ref_scvd.txt"
@@ -18,58 +18,15 @@ output formats.
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    `<item>` | 
-    elem_item | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    cond | 
-    Conditional execution: element is executed when expression result is not `0`. If executed all consecutive "
-" elements are skipped. Default value is `1`. | 
-    xs:string | 
-    required | 
-  
-  
-  | 
-    property | 
-    Shown in the **Property** column of the \cviewer window. Use specifiers to format the output. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    value | 
-    Shown in the **Value** column of the \cviewer window. Use specifiers to format the output. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    bold | 
-    Output in the **Value** column is displayed in **bold** when expression result is not `0`. Default value is `0`. See also alert_bold. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    alert | 
-    Output in the **Value** column is displayed in **red** when expression result is not `0`. Default value is `0`. See also alert_bold. | 
-    xs:string | 
-    optional | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| `<item>` | elem_item |  |  |
+| Attributes | Description | Type | Use |
+| cond | Conditional execution: element is executed when expression result is not `0`. If executed all consecutive " " elements are skipped. Default value is `1`. | xs:string | required |
+| property | Shown in the **Property** column of the \cviewer window. Use specifiers to format the output. | xs:string | required |
+| value | Shown in the **Value** column of the \cviewer window. Use specifiers to format the output. | xs:string | required |
+| bold | Output in the **Value** column is displayed in **bold** when expression result is not `0`. Default value is `0`. See also alert_bold. | xs:string | optional |
+| alert | Output in the **Value** column is displayed in **red** when expression result is not `0`. Default value is `0`. See also alert_bold. | xs:string | optional |
 
 
  

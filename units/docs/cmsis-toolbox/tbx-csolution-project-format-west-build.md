@@ -20,12 +20,12 @@ Use the command `west build` to generate images from application source code spe
 
 `west:`                                                   |              | Content
 :---------------------------------------------------------|:-------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `app-path:`                            | **Required** | Path to the application source directory.
-&nbsp;&nbsp;&nbsp; `project-id:`                          |   Optional   | Project identifier (default: last sub-dir name of `app-path`).
-&nbsp;&nbsp;&nbsp; `board:`                               |   Optional   | Board name used for west build invocation (default: [variable `$west-board$`](#variable-west-board)).
-&nbsp;&nbsp;&nbsp; [`device:`](#device)                   |   Optional   | Specify the processor core for execution of the generated image (used in `*.cbuild-run.yml`).
-&nbsp;&nbsp;&nbsp; [`west-defs:`](#west-defs)             |   Optional   | Defines in `CMake` format. The `west-defs:` from build and target-type are added.
-&nbsp;&nbsp;&nbsp; `west-opt:`                            |   Optional   | Options for the `west` tool (default: empty).
+    `app-path:`                            | **Required** | Path to the application source directory.
+    `project-id:`                          |   Optional   | Project identifier (default: last sub-dir name of `app-path`).
+    `board:`                               |   Optional   | Board name used for west build invocation (default: [variable `$west-board$`](#variable-west-board)).
+    [`device:`](#device)                   |   Optional   | Specify the processor core for execution of the generated image (used in `*.cbuild-run.yml`).
+    [`west-defs:`](#west-defs)             |   Optional   | Defines in `CMake` format. The `west-defs:` from build and target-type are added.
+    `west-opt:`                            |   Optional   | Options for the `west` tool (default: empty).
 
 ### `west-defs:`
 

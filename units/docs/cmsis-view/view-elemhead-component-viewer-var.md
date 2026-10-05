@@ -18,60 +18,16 @@ A redefinition of a \elem{var} element using the same **name** is not permitted 
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    `<typedef>` | 
-    elem_typedef | 
-  
-
-  | 
-    `<object>` | 
-    elem_object | 
-  
-
-  | 
-    \refelem{elem_list,list} | 
-    elem_list | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    name | 
-    Name of variable. The name can be used in scvd_expression. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    value | 
-    Expression that specifies the initial value. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    type | 
-    scalar_data_type or pointer to complex_data_type to access chained lists. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    info | 
-    Descriptive text with additional information (comment). | 
-    xs:string | 
-    optional | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| `<typedef>` | elem_typedef |  |  |
+| `<object>` | elem_object |  |  |
+| \refelem{elem_list,list} | elem_list |  |  |
+| Attributes | Description | Type | Use |
+| name | Name of variable. The name can be used in scvd_expression. | xs:string | optional |
+| value | Expression that specifies the initial value. | xs:string | optional |
+| type | scalar_data_type or pointer to complex_data_type to access chained lists. | xs:string | optional |
+| info | Descriptive text with additional information (comment). | xs:string | optional |
 
 
 

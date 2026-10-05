@@ -2,7 +2,7 @@
 id: "ts-packchk-m372"
 type: "troubleshooting"
 domain: "error-catalog"
-title: "packchk M372: misspelled, did you mean"
+title: "packchk M372: … Feature for '…': '…' misspelled, did you mean '…' (…)."
 status: "draft"
 tool: "packchk"
 severity: "error"
@@ -10,11 +10,14 @@ code: "M372"
 symptoms: ["M372", "%SECTION% Feature for '%MCU%': '%FEATURE%' misspelled, did you mean '%KNOWNFEATURE%' (%DESCR%)."]
 symptom_regex: "^.+? Feature for '.+?': '.+?' misspelled, did you mean '.+?' \\(.+?\\)\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e81:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e81:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
+cause_origin: "source-analysis"
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:191", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:793-805", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:839-851", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:210"]
 ---
 
 ## Symptom
@@ -28,4 +31,17 @@ This feature _'FEATURE'_ resembles the feature _'KNOWNFEATURE'_. Correct the 
 
 ## Fix
 
-_siehe Cause_
+Write the type with the spelling suggested in the message, e.g. type="UART" instead of type="Uart".
+
+## Note
+
+For board features the name in the message is the feature's name attribute, not the board name (ValidateSyntax.cpp:1225).
+
+## Evidence
+
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
+
+- `tools/packchk/src/PackChk_Msgs.cpp:191`
+- `tools/packchk/src/ValidateSyntax.cpp:793-805`
+- `tools/packchk/src/ValidateSyntax.cpp:839-851`
+- `tools/packchk/README.md:210`

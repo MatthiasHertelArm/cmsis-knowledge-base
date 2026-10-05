@@ -16,72 +16,18 @@ Describes how CoreSight devices and cores are connected.
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| topology | /system_description/platform/topology |  |  |
+| Attributes | Description | Type | Use |
+| name | Unique name for the link. | xs:string | optional |
+| type | Specifies the link type. Can be on of the following: ATB, CoreTrace, or CTITrigger. | xs:string | required |
+| master | Unique name of the master device in the link. | xs:string | required |
+| slave | Unique name of the slave device in the link. | xs:string | required |
+| mater_interface | Specifies the mater interface number. | xs:string | optional |
+| slave_interface | Specifies the slave interface number. | xs:string | optional |
+| trigger | Specifies the trigger number. | xs:string | optional |
 
-  | 
-    topology | 
-    /system_description/platform/topology | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    name | 
-    Unique name for the link. | 
-    xs:string | 
-    optional | 
-  
-  
-  | 
-    type | 
-    Specifies the link type. Can be on of the following: ATB, CoreTrace, or CTITrigger. | 
-    xs:string | 
-    required | 
-  
-  
-  | 
-    master | 
-    Unique name of the master device in the link. | 
-    xs:string | 
-    required | 
-  
-  
-  | 
-    slave | 
-    Unique name of the slave device in the link. | 
-    xs:string | 
-    required | 
-  
-  
-  | 
-    mater_interface | 
-    Specifies the mater interface number. | 
-    xs:string | 
-    optional | 
-  
-  
-  | 
-    slave_interface | 
-    Specifies the slave interface number. | 
-    xs:string | 
-    optional | 
-  
-  
-  | 
-    trigger | 
-    Specifies the trigger number. | 
-    xs:string | 
-    optional | 
-  
-  
 
 
 **Example:**

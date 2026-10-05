@@ -30,36 +30,12 @@ Clusters define a set of registers. You can either use the \tagem{cluster} or th
 **/device/peripherals/peripheral/registers**
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    peripheral | 
-    elem_peripheral | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    cluster | 
-    Define the sequence of register clusters. | 
-    clusterType  | 
-    0..* | 
-  
-
-  | 
-    register | 
-    Define the sequence of registers. | 
-    registerType  | 
-    1..* | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| peripheral | elem_peripheral |  |  |
+| Child Elements | Description | Type | Occurrence |
+| cluster | Define the sequence of register clusters. | clusterType | 0..* |
+| register | Define the sequence of registers. | registerType | 1..* |
 
 
 

@@ -24,8 +24,8 @@ value in the `*.yml` files.
 Element      |              | Description
 :------------|:-------------|:---------------------
 `vendor`     |   Optional   | Name of the board vendor-defined in `<boards><board>` element of the board support pack (BSP).
-`Bname`      | **Required** | Board name (name attribute) as defined in the \<board\> element of the BSP.
-`revision`   |   Optional   | Board revision (revision attribute) as defined in the \<board\> element of the BSP.
+`Bname`      | **Required** | Board name (name attribute) as defined in the `<board>` element of the BSP.
+`revision`   |   Optional   | Board revision (revision attribute) as defined in the `<board>` element of the BSP.
 
 !!! Note
     When a `board:` is specified, the `device:` specification can be omitted, however it is possible to overwrite the device setting in the BSP with an explicit `device:` setting.

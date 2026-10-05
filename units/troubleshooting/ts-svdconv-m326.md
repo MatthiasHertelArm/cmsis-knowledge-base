@@ -10,11 +10,14 @@ code: "M326"
 symptoms: ["M326", "Endianess is not set, using default (little)"]
 symptom_regex: "^Endianess is not set, using default \\(little\\)$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e81:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e81:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
+cause_origin: "source-analysis"
+confidence: "high"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCpu.cpp:102", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCpu.cpp:321", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCpu.cpp:322", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/unittests/src/SvdCpuModelTest.cpp:112", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:145"]
 ---
 
 ## Symptom
@@ -24,8 +27,18 @@ mode: "V"
 
 ## Cause
 
-_offen, im Review ergänzen_
+The <cpu> section has no <endian> element; svdconv assumes little-endian.
 
 ## Fix
 
-_offen, im Review ergänzen_
+Add <endian>little</endian> to <cpu> (other allowed values: big, selectable, other).
+
+## Evidence
+
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+
+- `tools/svdconv/SVDModel/src/SvdCpu.cpp:102`
+- `tools/svdconv/SVDModel/src/SvdCpu.cpp:321`
+- `tools/svdconv/SVDModel/src/SvdCpu.cpp:322`
+- `tools/svdconv/test/unittests/src/SvdCpuModelTest.cpp:112`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:145`

@@ -14,16 +14,8 @@ mode: "V"
 
 These session options are available when the STLink debug probe plugin is active.
 
-<table>
 
-<tr><th>Option Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
 
-<tr><td>stlink.v3_prescaler</td>
-<td>int</td>
-<td>1</td>
-<td>
-Sets the HCLK prescaler of an STLinkV3, changing performance versus power tradeoff.
-The value must be one of 1=high performance (default), 2=normal, or 4=low power.
-</td></tr>
-
-</table>
+| Option Name | Type | Default | Description |
+|---|---|---|---|
+| stlink.v3_prescaler | int | 1 | Sets the HCLK prescaler of an STLinkV3, changing performance versus power tradeoff. The value must be one of 1=high performance (default), 2=normal, or 4=low power. |

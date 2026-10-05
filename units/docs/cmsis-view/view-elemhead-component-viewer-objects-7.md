@@ -17,102 +17,22 @@ The \attr{property} and \attr{value} can consist of ASCII characters and format 
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    `<out>` | 
-    elem_out | 
-  
-
-  | 
-    \refelem{elem_listout,list} | 
-    elem_listout | 
-  
-
-  | 
-    `<item>` | 
-    elem_item (self reference) | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    property | 
-    Shown in the **Property** column of the \cviewer window. Use specifiers to format the output. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    value | 
-    Shown in the **Value** column of the \cviewer window. Use specifiers to format the output. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    info | 
-    Descriptive text, comment. Shown when hovered over the item in the \cviewer window. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    cond | 
-    Conditional execution: element is executed when expression result is not `0`. Default value is `1`. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    bold | 
-    Output in the **Value** column is displayed in **bold** when expression result is not `0`. Default value is `0`. See also alert_bold. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    alert | 
-    Output in the **Value** column is displayed in **red** when expression result is not `0`. Default value is `0`. See also alert_bold. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    Child Element | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    `<item>` | 
-    Output a single line. An \elem{item} in an \elem{item} creates a tree structure in \cviewer. | 
-    ItemType | 
-    0..* | 
-  
-
-  | 
-    \refelem{elem_listout,list} | 
-    Read complex variables, arrays, or linked lists. Walk through `<readlist>` arrays.  | 
-    ListType | 
-    0..* | 
-  
-
-  | 
-    \spref{elem_print,print} | 
-    Use different output formats for single line output lines. See print_spec.  | 
-    PrintType | 
-    0..* | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| `<out>` | elem_out |  |  |
+| \refelem{elem_listout,list} | elem_listout |  |  |
+| `<item>` | elem_item (self reference) |  |  |
+| Attributes | Description | Type | Use |
+| property | Shown in the **Property** column of the \cviewer window. Use specifiers to format the output. | xs:string | optional |
+| value | Shown in the **Value** column of the \cviewer window. Use specifiers to format the output. | xs:string | optional |
+| info | Descriptive text, comment. Shown when hovered over the item in the \cviewer window. | xs:string | optional |
+| cond | Conditional execution: element is executed when expression result is not `0`. Default value is `1`. | xs:string | optional |
+| bold | Output in the **Value** column is displayed in **bold** when expression result is not `0`. Default value is `0`. See also alert_bold. | xs:string | optional |
+| alert | Output in the **Value** column is displayed in **red** when expression result is not `0`. Default value is `0`. See also alert_bold. | xs:string | optional |
+| Child Element | Description | Type | Occurrence |
+| `<item>` | Output a single line. An \elem{item} in an \elem{item} creates a tree structure in \cviewer. | ItemType | 0..* |
+| \refelem{elem_listout,list} | Read complex variables, arrays, or linked lists. Walk through `<readlist>` arrays. | ListType | 0..* |
+| \spref{elem_print,print} | Use different output formats for single line output lines. See print_spec. | PrintType | 0..* |
 
 
  

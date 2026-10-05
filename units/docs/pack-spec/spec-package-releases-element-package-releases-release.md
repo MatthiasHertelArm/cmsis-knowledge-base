@@ -59,69 +59,13 @@ This list must be strictly ordered by `version`, with the highest release `versi
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    releases | 
-    element_releases | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    version | 
-    Version number of the release.  The version format is described in Version Type. | 
-    VersionType | 
-    required | 
-  
-
-  | 
-    date | 
-    Release date (specified as YYYY-MM-DD, for example 2014-12-14 (14th December 2014). Note: release date is only user information. The version number identifies the latest pack. | 
-    xs:date | 
-    optional | 
-  
-
-  | 
-    tag | 
-    In case the repository element is specified, the tag attribute is used to specify the repository tag that corresponds to this release of the pack. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    url | 
-    HTTPS URL specifying the location of the pack of the specified version. This can be used to override the default location being `\<url>/\<vendor>.\<name>.\<version>.pack</td>`
-    xs:anyURI | 
-    optional | 
-  
-
-  | 
-    deprecated | 
-    Pack is no longer officially supported after the set date. It will be excluded from checks for update.
-        Deprecated packs may remain available for download from the server. Tools will continue to work but may provide indicators
-        highlighting end of support for the pack and its content. Not recommended for use with new projects.
-        Note this attribute is only relevant when set for the latest release located on top of the releases section.
-     | 
-    xs:date | 
-    optional | 
-  
-
-  | 
-    replacement | 
-    Specifies the vendor and name of the Pack that shall be used instead.
-        Use in conjunction with the deprecated attribute.
-        E.g. the maintainer of the Pack A.X_DFP changes from vendor **A** to vendor **B.** In this case the attribute deprecated
-        gets set in the A.X_DFP.pdsc and the replacement attribute set to B.X_DFP. Tools use this information to
-        redirect users to a supported pack.
-     | 
-    xs:string | 
-    optional |
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| releases | element_releases |  |  |
+| Attributes | Description | Type | Use |
+| version | Version number of the release. The version format is described in Version Type. | VersionType | required |
+| date | Release date (specified as YYYY-MM-DD, for example 2014-12-14 (14th December 2014). Note: release date is only user information. The version number identifies the latest pack. | xs:date | optional |
+| tag | In case the repository element is specified, the tag attribute is used to specify the repository tag that corresponds to this release of the pack. | xs:string | optional |
+| url | HTTPS URL specifying the location of the pack of the specified version. This can be used to override the default location being `\`<url>`/\`<vendor>`.\`<name>`.\`<version>`.pack | xs:anyURI | optional |
+| deprecated | Pack is no longer officially supported after the set date. It will be excluded from checks for update. Deprecated packs may remain available for download from the server. Tools will continue to work but may provide indicators highlighting end of support for the pack and its content. Not recommended for use with new projects. Note this attribute is only relevant when set for the latest release located on top of the releases section. | xs:date | optional |
+| replacement | Specifies the vendor and name of the Pack that shall be used instead. Use in conjunction with the deprecated attribute. E.g. the maintainer of the Pack A.X_DFP changes from vendor **A** to vendor **B.** In this case the attribute deprecated gets set in the A.X_DFP.pdsc and the replacement attribute set to B.X_DFP. Tools use this information to redirect users to a supported pack. | xs:string | optional |

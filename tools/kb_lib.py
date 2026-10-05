@@ -16,6 +16,7 @@ from pathlib import Path
 import yaml
 
 RRF_K = 60
+FIRST_LINE_BONUS = 0.05     # exakter Treffer in der ersten Zeile vor einem in spaeteren Zeilen
 
 
 def tokens(text):
@@ -194,14 +195,20 @@ class KB:
     def search(self, query, domain=None, types=None, ctx=None, k=8, budget=800):
         # Tool-Ausgabe wie "error csolution: ..." oder "<datei> - error csolution: ...": Praefix weg, je Zeile pruefen
         lines = [re.sub(r"^.*?\b(?:error|warning|info)\s+[\w.-]+:\s*", "", l).strip() for l in query.splitlines()] or [query]
-        exact = [i for i, rx in self.symptoms if any(rx.search(l) for l in lines if l)]
+        # Erste passende Zeile je Einheit: in Tool-Ausgabe ist der erste Fehler die Ursache, spaetere folgen daraus
+        first = {}
+        for i, rx in self.symptoms:
+            hit = next((n for n, l in enumerate(lines) if l and rx.search(l)), None)
+            if hit is not None:
+                first[i] = hit
+        exact = sorted(first, key=first.get)
         lists = [self._bm25(query, 60), self._knn(query, 60)]
         score = {}
         for lst in lists:
             for rank, nid in enumerate(lst):
                 score[nid] = score.get(nid, 0) + 1 / (RRF_K + rank + 1)
         for nid in exact:
-            score[nid] = score.get(nid, 0) + 1.0
+            score[nid] = score.get(nid, 0) + 1.0 + FIRST_LINE_BONUS * (1 - first[nid] / len(lines))
         rows = []
         for nid in sorted(score, key=lambda x: -score[x]):
             r = self.db.execute("SELECT id,type,domain,title,summary,body,meta FROM nodes WHERE id=?", (nid,)).fetchone()

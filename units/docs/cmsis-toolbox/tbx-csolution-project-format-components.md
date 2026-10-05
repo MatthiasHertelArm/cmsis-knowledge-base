@@ -19,23 +19,24 @@ Add software components to a project or a software layer. Used in `*.cproject.ym
 `components:`                                                   |              | Content
 :---------------------------------------------------------------|:-------------|:------------------------------------
 `- component:`                                                  | **Required** | Name of the software component.
-&nbsp;&nbsp;&nbsp; [`for-context:`](#for-context)               |   Optional   | Include component for a list of *build* and *target* types.
-&nbsp;&nbsp;&nbsp; [`not-for-context:`](#not-for-context)       |   Optional   | Exclude component for a list of *build* and *target* types.
-&nbsp;&nbsp;&nbsp; [`language-C:`](#language-c)                 |   Optional   | Set the language standard for C source file compilation.
-&nbsp;&nbsp;&nbsp; [`language-CPP:`](#language-cpp)             |   Optional   | Set the language standard for C++ source file compilation.
-&nbsp;&nbsp;&nbsp; [`optimize:`](#optimize)                     |   Optional   | Optimize level for code generation.
-&nbsp;&nbsp;&nbsp; [`link-time-optimize:`](#link-time-optimize) |   Optional   | Enable optimization at linker level.
-&nbsp;&nbsp;&nbsp; [`debug:`](#debug)                           |   Optional   | Generation of debug information.
-&nbsp;&nbsp;&nbsp; [`warnings:`](#warnings)                     |   Optional   | Control generation of compiler diagnostics.
-&nbsp;&nbsp;&nbsp; [`define:`](#define)                         |   Optional   | Define symbol settings for C/C++ code generation.
-&nbsp;&nbsp;&nbsp; [`define-asm:`](#define-asm)                 |   Optional   | Define symbol settings for Assembler code generation.
-&nbsp;&nbsp;&nbsp; [`undefine:`](#undefine)                     |   Optional   | Remove define symbol settings for code generation.
-&nbsp;&nbsp;&nbsp; [`add-path:`](#add-path)                     |   Optional   | Additional include file paths for C/C++ source files.
-&nbsp;&nbsp;&nbsp; [`add-path-asm:`](#add-path-asm)             |   Optional   | Additional include file paths for assembly source files.
-&nbsp;&nbsp;&nbsp; [`del-path:`](#del-path)                     |   Optional   | Remove specific include file paths.
-&nbsp;&nbsp;&nbsp; [`misc:`](#misc)                             |   Optional   | Literal tool-specific controls.
-&nbsp;&nbsp;&nbsp; [`instances:`](#instances)                   |   Optional   | Add multiple instances of component configuration files (default: 1)
-&nbsp;&nbsp;&nbsp; `build-scope:`                               |   Optional   | Control inclusion of component source files.<br>(default: `include` for executable builds, `exclude` for library builds)
+    [`for-context:`](#for-context)               |   Optional   | Include component for a list of *build* and *target* types.
+    [`not-for-context:`](#not-for-context)       |   Optional   | Exclude component for a list of *build* and *target* types.
+    [`language-C:`](#language-c)                 |   Optional   | Set the language standard for C source file compilation.
+    [`language-CPP:`](#language-cpp)             |   Optional   | Set the language standard for C++ source file compilation.
+    [`optimize:`](#optimize)                     |   Optional   | Optimize level for code generation.
+    [`link-time-optimize:`](#link-time-optimize) |   Optional   | Enable optimization at linker level.
+    [`debug:`](#debug)                           |   Optional   | Generation of debug information.
+    [`warnings:`](#warnings)                     |   Optional   | Control generation of compiler diagnostics.
+    [`define:`](#define)                         |   Optional   | Define symbol settings for C/C++ code generation.
+    [`define-asm:`](#define-asm)                 |   Optional   | Define symbol settings for Assembler code generation.
+    [`undefine:`](#undefine)                     |   Optional   | Remove define symbol settings for code generation.
+    [`add-path:`](#add-path)                     |   Optional   | Additional include file paths for C/C++ source files.
+    [`add-path-asm:`](#add-path-asm)             |   Optional   | Additional include file paths for assembly source files.
+    [`del-path:`](#del-path)                     |   Optional   | Remove specific include file paths.
+    [`misc:`](#misc)                             |   Optional   | Literal tool-specific controls.
+    [`instances:`](#instances)                   |   Optional   | Add multiple instances of component configuration files (default: 1)
+    `build-scope:`                               |   Optional   | Control inclusion of component source files.
+(default: `include` for executable builds, `exclude` for library builds)
 
 **Example:**
 

@@ -16,58 +16,15 @@ A clayer section provides the information for accessing a software layer that is
 
 
 
-  | 
-    Parent | 
-    Chain | 
-  
-
-  | 
-    csolution | 
-    element_csolution | 
-  
-	
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    type | 
-    Type of the clayer | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    path | 
-    Path to the directory that contains the software layer. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    file | 
-    Name of the `*.clayer.yml` file (optional with relative path to the directory specified with path). | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    copy-to | 
-    Path that used to copy the software layer into the *csolution project* (default is attribute path). | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    condition | 
-    Enter the **id** of a condition. The clayer is available and will be listed only when the filter condition is true
-    (no component dependencies are evaluated). | 
-    xs:string | 
-    optional | 
-  
+| Parent | Chain |  |  |
+|---|---|---|---|
+| csolution | element_csolution |  |  |
+| Attributes | Description | Type | Use |
+| type | Type of the clayer | xs:string | required |
+| path | Path to the directory that contains the software layer. | xs:string | required |
+| file | Name of the `*.clayer.yml` file (optional with relative path to the directory specified with path). | xs:string | required |
+| copy-to | Path that used to copy the software layer into the *csolution project* (default is attribute path). | xs:string | optional |
+| condition | Enter the **id** of a condition. The clayer is available and will be listed only when the filter condition is true (no component dependencies are evaluated). | xs:string | optional |
 
 
 

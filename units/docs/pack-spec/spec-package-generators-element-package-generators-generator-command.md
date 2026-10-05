@@ -31,38 +31,10 @@ argument.
 
 
 
-  | 
-    Parent | 
-    Element Chain | 
-  
-
-  | 
-    exe | 
-    element_gen_exe | 
-  
-
-  | 
-    Current | 
-    Description | 
-    Type | 
-  
-
-  | 
-    command | 
-    generator command line | 
-    xs:string | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    host | 
-    Specifies the host operating system. Possible values are `all,` `win,` `linux,` `mac,` `other.` Only available
-        with element exe. | 
-    xs:string | 
-    optional |
+| Parent | Element Chain |  |  |
+|---|---|---|---|
+| exe | element_gen_exe |  |  |
+| Current | Description | Type |  |
+| command | generator command line | xs:string |  |
+| Attributes | Description | Type | Use |
+| host | Specifies the host operating system. Possible values are `all,` `win,` `linux,` `mac,` `other.` Only available with element exe. | xs:string | optional |

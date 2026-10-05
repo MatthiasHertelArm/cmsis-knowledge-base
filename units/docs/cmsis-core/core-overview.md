@@ -28,7 +28,7 @@ The following sections provide details about the CMSIS-Core (Cortex-M):
 
  - using_pg explains the project setup and shows a simple program example.
 \if ARMv8M
- - Using TrustZone&reg; for Armv8-M describes how to use the security extensions available in the Armv8-M architecture.
+ - Using TrustZone® for Armv8-M describes how to use the security extensions available in the Armv8-M architecture.
 \endif
  - cmsis_core_files describes the files of the CMSIS-Core (Cortex-M) in detail and explains how to adapt template files provided by Arm to silicon vendor devices.
  - coreMISRA_Exceptions_pg describes the violations to the MISRA standard.

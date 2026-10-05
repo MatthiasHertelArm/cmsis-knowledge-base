@@ -20,9 +20,9 @@ processed by pyOCD to present debug views and decode register reads/writes.
 `system-descriptions:`                            |              | Content
 :-------------------------------------------------|:-------------|:------------------------------------
 `- file:`                                         | **Required** | Specifies the file name including the path.
-&nbsp;&nbsp;&nbsp; `type:`                        | **Required** | Specifies the file type (see table below).
-&nbsp;&nbsp;&nbsp; `info:`                        |   Optional   | Brief description of the file.
-&nbsp;&nbsp;&nbsp; `pname:`                       |   Optional   | File is used only for a specific processor; default is for all processors.
+    `type:`                        | **Required** | Specifies the file type (see table below).
+    `info:`                        |   Optional   | Brief description of the file.
+    `pname:`                       |   Optional   | File is used only for a specific processor; default is for all processors.
 
 `type:` | Description
 :-------|:------------------

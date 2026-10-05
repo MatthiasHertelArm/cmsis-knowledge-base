@@ -22,13 +22,13 @@ This section lists options that are specific for the [Segger J-Link](https://www
 
 debugger:                                                  |              | Description
 :----------------------------------------------------------|:-------------|:-----------------------------------------------
-&nbsp;&nbsp;&nbsp; `name:`                                 | **Required** | Identifies the debug adapter with `J-Link Server`.
-&nbsp;&nbsp;&nbsp; `clock:`                                |   Optional   | Debug clock speed in Hz.
-&nbsp;&nbsp;&nbsp; `protocol:`                             |   Optional   | Debug protocol (jtag or swd).
-&nbsp;&nbsp;&nbsp; [`stdio:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/JLink-Debugger.md#stdio)     |   Optional   | Extended Option: Standard I/O service configuration.
-&nbsp;&nbsp;&nbsp; [`trace:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/JLink-Debugger.md#trace)     |   Optional   | Extended Option: Trace configuration.
-&nbsp;&nbsp;&nbsp; [`connect:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/JLink-Debugger.md#connect) |   Optional   | Extended Option: Connect mode to hardware.
-&nbsp;&nbsp;&nbsp; [`reset:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/JLink-Debugger.md#reset)     |   Optional   | Extended Option: Reset type configuration for various cores.
+    `name:`                                 | **Required** | Identifies the debug adapter with `J-Link Server`.
+    `clock:`                                |   Optional   | Debug clock speed in Hz.
+    `protocol:`                             |   Optional   | Debug protocol (jtag or swd).
+    [`stdio:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/JLink-Debugger.md#stdio)     |   Optional   | Extended Option: Standard I/O service configuration.
+    [`trace:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/JLink-Debugger.md#trace)     |   Optional   | Extended Option: Trace configuration.
+    [`connect:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/JLink-Debugger.md#connect) |   Optional   | Extended Option: Connect mode to hardware.
+    [`reset:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/JLink-Debugger.md#reset)     |   Optional   | Extended Option: Reset type configuration for various cores.
 
 **Examples:**
 

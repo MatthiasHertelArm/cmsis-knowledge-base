@@ -16,113 +16,23 @@ This element specifies a part. At least one part element must be specified per p
 
 
 
-  | 
-    Parent | 
-    Chain | 
-  
-
-  | 
-    parts | 
-    element_parts | 
-  
-	
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    Hvendor | 
-    Defines the vendor this part is shipped by. It is a mandatory part of the part ID and will be inherited from the package vendor if not specified. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    Hname | 
-    The part name used by the part vendor to identify and group a specific set of parts | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    Hclass | 
-    Defines the part class to which the part belongs. | 
-    HclassType | 
-    optional | 
-  
-
-  | 
-    Hgroup | 
-    Defines the part group to which the part belongs. | 
-    HgroupType | 
-    optional | 
-  
-
-  | 
-    Hsub | 
-    Defines the part subgroup. | 
-    HsubType | 
-    optional | 
-  
-
-  | 
-    Hvariant | 
-    Specifies the exact part name (e.g. the commercial/selling name) in case the one indicated in the **Hname** is not enough to uniquely identify the part. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    Hrevision | 
-    Revision of the part that is suited to be used. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    description | 
-    Brief summary of the part (maximum 256 characters, recommended 128 characters). | 
-    BriefDescType | 
-    0..1 | 
-  
-
-  | 
-    feature | 
-	Describes the features of the part. | 
-	DeviceFeatureType | 
-	0..* | 
-  
-
-  | 
-    book | 
-	Specifies documents that are relevant for the part. | 
-	BookType | 
-	0..* | 
-  
-
-  | 
-    image | 
-	Specifies the part pictures. | 
-	ComplexType | 
-	0..1 | 
-  
-
-  | 
-    environment | 
-    Specifies tool specific settings. | 
-    EnvironmentType | 
-    0..* | 
-  
+| Parent | Chain |  |  |
+|---|---|---|---|
+| parts | element_parts |  |  |
+| Attributes | Description | Type | Use |
+| Hvendor | Defines the vendor this part is shipped by. It is a mandatory part of the part ID and will be inherited from the package vendor if not specified. | xs:string | optional |
+| Hname | The part name used by the part vendor to identify and group a specific set of parts | xs:string | required |
+| Hclass | Defines the part class to which the part belongs. | HclassType | optional |
+| Hgroup | Defines the part group to which the part belongs. | HgroupType | optional |
+| Hsub | Defines the part subgroup. | HsubType | optional |
+| Hvariant | Specifies the exact part name (e.g. the commercial/selling name) in case the one indicated in the **Hname** is not enough to uniquely identify the part. | xs:string | optional |
+| Hrevision | Revision of the part that is suited to be used. | xs:string | optional |
+| Child Elements | Description | Type | Occurrence |
+| description | Brief summary of the part (maximum 256 characters, recommended 128 characters). | BriefDescType | 0..1 |
+| feature | Describes the features of the part. | DeviceFeatureType | 0..* |
+| book | Specifies documents that are relevant for the part. | BookType | 0..* |
+| image | Specifies the part pictures. | ComplexType | 0..1 |
+| environment | Specifies tool specific settings. | EnvironmentType | 0..* |
 
 
 

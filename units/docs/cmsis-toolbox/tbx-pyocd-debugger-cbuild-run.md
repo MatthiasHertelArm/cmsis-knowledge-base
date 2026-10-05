@@ -20,17 +20,17 @@ configuration and highlights the nodes relevant to pyOCD. The contents of each n
 
 `cbuild-run:`                                                     |              | Content
 :-----------------------------------------------------------------|:-------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; [`board-pack:`](#board-pack)                   |   Optional   | Identifies the board pack used.
-&nbsp;&nbsp;&nbsp; [`board-pack-path:`](#board-pack-path)         |   Optional   | Path to the board pack on the host computer.
-&nbsp;&nbsp;&nbsp; [`device:`](#device)                           | **Required** | Identifies the device.
-&nbsp;&nbsp;&nbsp; [`device-pack:`](#device-pack)                 |   Optional   | Identifies the device pack used.
-&nbsp;&nbsp;&nbsp; [`device-pack-path:`](#device-pack-path)       |   Optional   | Path to the device pack on the host computer.
-&nbsp;&nbsp;&nbsp; [`output:`](#output)                           |   Optional   | Lists the images (ELF, HEX, BIN) in this solution.
-&nbsp;&nbsp;&nbsp; [`system-resources:`](#system-resources)       |   Optional   | Lists target system resources.
-&nbsp;&nbsp;&nbsp; [`system-descriptions:`](#system-descriptions) |   Optional   | Lists target's description files for peripherals and software components.
-&nbsp;&nbsp;&nbsp; [`debugger:`](#debugger)                       |   Optional   | Configures the debugger.
-&nbsp;&nbsp;&nbsp; [`debug-vars:`](#debug-vars)                   |   Optional   | Debug variables.
-&nbsp;&nbsp;&nbsp; [`debug-sequences:`](#debug-sequences)         |   Optional   | Debug sequences.
-&nbsp;&nbsp;&nbsp; [`programming:`](#programming)                 |   Optional   | Lists flash algorithms for programming.
-&nbsp;&nbsp;&nbsp; [`flash-info:`](#flash-info)                   |   Optional   | Lists flash information for flash programming using debug sequences.
-&nbsp;&nbsp;&nbsp; [`debug-topology:`](#debug-topology)           |   Optional   | Debug topology.
+    [`board-pack:`](#board-pack)                   |   Optional   | Identifies the board pack used.
+    [`board-pack-path:`](#board-pack-path)         |   Optional   | Path to the board pack on the host computer.
+    [`device:`](#device)                           | **Required** | Identifies the device.
+    [`device-pack:`](#device-pack)                 |   Optional   | Identifies the device pack used.
+    [`device-pack-path:`](#device-pack-path)       |   Optional   | Path to the device pack on the host computer.
+    [`output:`](#output)                           |   Optional   | Lists the images (ELF, HEX, BIN) in this solution.
+    [`system-resources:`](#system-resources)       |   Optional   | Lists target system resources.
+    [`system-descriptions:`](#system-descriptions) |   Optional   | Lists target's description files for peripherals and software components.
+    [`debugger:`](#debugger)                       |   Optional   | Configures the debugger.
+    [`debug-vars:`](#debug-vars)                   |   Optional   | Debug variables.
+    [`debug-sequences:`](#debug-sequences)         |   Optional   | Debug sequences.
+    [`programming:`](#programming)                 |   Optional   | Lists flash algorithms for programming.
+    [`flash-info:`](#flash-info)                   |   Optional   | Lists flash information for flash programming using debug sequences.
+    [`debug-topology:`](#debug-topology)           |   Optional   | Debug topology.

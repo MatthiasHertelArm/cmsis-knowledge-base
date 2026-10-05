@@ -50,73 +50,17 @@ The book element contains the location, the name and the extension of the file. 
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    family | 
-    element_family | 
-  
-
-  | 
-    subFamily | 
-    element_subFamily | 
-  
-
-  | 
-    device | 
-    element_device | 
-  
-
-  | 
-    part | 
-    element_part | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    Pname | 
-    Processor identifier. This attribute **is mandatory for devices that embed multiple processors and where the book refers to a single processor only**.
-        Only alphabetical characters, decimal digits, '-' and '_' are allowed.
-        
-
-
-        Must not be used for package/parts/part. | 
-    RestrictedString | 
-    optional | 
-  
-
-  | 
-    name | 
-    File name of the document including the extension. The document path is relative to the package base folder. 
-        Directory/file names are case-sensitive. The link to a document on an external web site is also allowed. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    title | 
-    Book title. Can be used for being displayed in various environments. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    public | 
-    Set publishing permissions for the documentation. If \tagem{public} is `true`, then the vendor gives permission 
-        to extract the documentation from the pack and publish it on a web-page. Links to web pages are assumed to be public.
-        The default value is `true`. | 
-    xs:boolean | 
-    optional | 
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| family | element_family |  |  |
+| subFamily | element_subFamily |  |  |
+| device | element_device |  |  |
+| part | element_part |  |  |
+| Attributes | Description | Type | Use |
+| Pname | Processor identifier. This attribute **is mandatory for devices that embed multiple processors and where the book refers to a single processor only**. Only alphabetical characters, decimal digits, '-' and '_' are allowed. Must not be used for package/parts/part. | RestrictedString | optional |
+| name | File name of the document including the extension. The document path is relative to the package base folder. Directory/file names are case-sensitive. The link to a document on an external web site is also allowed. | xs:string | required |
+| title | Book title. Can be used for being displayed in various environments. | xs:string | required |
+| public | Set publishing permissions for the documentation. If \tagem{public} is `true`, then the vendor gives permission to extract the documentation from the pack and publish it on a web-page. Links to web pages are assumed to be public. The default value is `true`. | xs:boolean | optional |
 
 
 

@@ -3,7 +3,7 @@ id: "drv-ethernet-mac-interface-arm-eth-mac-control"
 type: "concept"
 domain: "drivers"
 title: "Ethernet MAC Interface: ARM_ETH_MAC_Control"
-summary: "The function ARMETHMACControl controls the Ethernet MAC interface and executes various operations. After initialization, the Ethernet transceiver and receiver are disabled."
+summary: "The function ARM_ETH_MAC_Control controls the Ethernet MAC interface and executes various operations. After initialization, the Ethernet transceiver and receiver are disabled."
 status: "draft"
 collection: "cmsis-driver"
 source: "ARM-software/CMSIS_6@26206e4:CMSIS/Documentation/Doxygen/Driver/src/Driver_ETH_MAC.c"
@@ -43,33 +43,21 @@ The values can be ORed in the following way:
 
 
 
-| Parameter **arg** CONFIGURE  | 
-
-| Parameter **arg**                    |                Bit     |             Category      | Description                              | 
-
-| ARM_ETH_MAC_SPEED_10M           |    0..1    | Link Speed    | Set the link speed to `10 [Mbps]`  | 
-
-| ARM_ETH_MAC_SPEED_100M          |                                                                  Set the link speed to `100 [Mbps]` | 
-
-| ARM_ETH_MAC_SPEED_1G            |                                                                  Set the link speed to `1  [Gbps]`  | 
-
-| ARM_ETH_MAC_DUPLEX_HALF         |    2       | Link Mode     | Set the link mode to half duplex         | 
-
-| ARM_ETH_MAC_DUPLEX_FULL         |                                                                  Set the link mode to full duplex         | 
-
-| n.a.                                 |                3       |             n.a.          | **reserved**                             | 
-                      
-| ARM_ETH_MAC_LOOPBACK            |                4       |     Loopback Test Mode    | Set the interface into a Loop-back test mode | 
-
-| ARM_ETH_MAC_CHECKSUM_OFFLOAD_RX |                5       | Receiver Checksum offload | Enable Receiver Checksum offload         | 
-
-| ARM_ETH_MAC_CHECKSUM_OFFLOAD_TX |                6       | Transmitter Checksum offload | Enable Transmitter Checksum offload   | 
-
-| ARM_ETH_MAC_ADDRESS_BROADCAST   |                7       | Broadcast Frame address   | Accept frames with Broadcast address     | 
-
-| ARM_ETH_MAC_ADDRESS_MULTICAST   |                8       | Multicast Frame address   | Accept frames with any Multicast address | 
-
-| ARM_ETH_MAC_ADDRESS_ALL         |                9       | Any Frame address         | Accept frames with any address (Promiscuous Mode) | 
+| Parameter **arg** CONFIGURE |  |  |  |
+|---|---|---|---|
+| Parameter **arg** | Bit | Category | Description |
+| ARM_ETH_MAC_SPEED_10M | 0..1 | Link Speed | Set the link speed to `10 [Mbps]` |
+| ARM_ETH_MAC_SPEED_100M | Set the link speed to `100 [Mbps]` |  |  |
+| ARM_ETH_MAC_SPEED_1G | Set the link speed to `1 [Gbps]` |  |  |
+| ARM_ETH_MAC_DUPLEX_HALF | 2 | Link Mode | Set the link mode to half duplex |
+| ARM_ETH_MAC_DUPLEX_FULL | Set the link mode to full duplex |  |  |
+| n.a. | 3 | n.a. | **reserved** |
+| ARM_ETH_MAC_LOOPBACK | 4 | Loopback Test Mode | Set the interface into a Loop-back test mode |
+| ARM_ETH_MAC_CHECKSUM_OFFLOAD_RX | 5 | Receiver Checksum offload | Enable Receiver Checksum offload |
+| ARM_ETH_MAC_CHECKSUM_OFFLOAD_TX | 6 | Transmitter Checksum offload | Enable Transmitter Checksum offload |
+| ARM_ETH_MAC_ADDRESS_BROADCAST | 7 | Broadcast Frame address | Accept frames with Broadcast address |
+| ARM_ETH_MAC_ADDRESS_MULTICAST | 8 | Multicast Frame address | Accept frames with any Multicast address |
+| ARM_ETH_MAC_ADDRESS_ALL | 9 | Any Frame address | Accept frames with any address (Promiscuous Mode) |
 
 
 
@@ -78,13 +66,11 @@ The **arg** values can be ORed.
 
 
 
-| Parameter **arg** for FLUSH  | 
-
-| Parameter **arg**           |     Bit     |      Category      |  Description                   | 
-
-| ARM_ETH_MAC_FLUSH_RX   |     1       |   Receive buffer   |  Flush the Receive buffer      | 
-
-| ARM_ETH_MAC_FLUSH_TX   |     2       |   Transmit buffer  |  Flush the Transmit buffer     | 
+| Parameter **arg** for FLUSH |  |  |  |
+|---|---|---|---|
+| Parameter **arg** | Bit | Category | Description |
+| ARM_ETH_MAC_FLUSH_RX | 1 | Receive buffer | Flush the Receive buffer |
+| ARM_ETH_MAC_FLUSH_TX | 2 | Transmit buffer | Flush the Transmit buffer |
 
 
 
@@ -93,17 +79,13 @@ The **arg** values can be ORed.
 
 
 
-| Parameter **arg** for VLAN Filter | 
-
-| Parameter **arg**                      |               Bit     |              Category     |  Description                                 | 
-
-| **value**                              |               0..15   |              VLAN Tag     |  Set VLAN Tag value                          | 
-
-| `0`                              |   16      |  Use of VLAN  |  Compare the complete 16-bit VLAN Tag value  | 
-
-| ARM_ETH_MAC_VLAN_FILTER_ID_ONLY   |                                                                 Compare only the 12-bit VLAN Identifier      | 
-
-| `0`                              |               0..16   |              Disable      |  Disable the VLAN Filter                     | 
+| Parameter **arg** for VLAN Filter |  |  |  |
+|---|---|---|---|
+| Parameter **arg** | Bit | Category | Description |
+| **value** | 0..15 | VLAN Tag | Set VLAN Tag value |
+| `0` | 16 | Use of VLAN | Compare the complete 16-bit VLAN Tag value |
+| ARM_ETH_MAC_VLAN_FILTER_ID_ONLY | Compare only the 12-bit VLAN Identifier |  |  |
+| `0` | 0..16 | Disable | Disable the VLAN Filter |
 
 
 

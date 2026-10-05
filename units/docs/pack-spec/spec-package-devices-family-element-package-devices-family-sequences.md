@@ -41,67 +41,12 @@ Container for debug access sequences for this device.
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    family | 
-    element_family | 
-  
-
-  | 
-    subFamily | 
-    element_subFamily | 
-  
-
-  | 
-    device | 
-    element_device | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    traceSetup | 
-    
-      If **full**, all trace sink and trace data path setup is done by debug access sequences.
-      In this case, a debugger is not expected to configure trace sinks or the CoreSight trace
-      data path using a priori knowledge of CoreSight trace components.
-
-      
-
-      If **legacy**, a debugger is expected to have knowledge of CoreSight trace
-      components. In this case, the **TraceStart** and **TraceStop** sequences are intended
-      only for device-specific trace setup and teardown steps.
-
-      
-
-      Default value is `legacy`. However, the expectation is that future DFPs set it to `full`
-      and provide the full trace setup in sequences. The default value will change with the next
-      major version update of this specification.
-     | 
-    xs:boolean | 
-    optional | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    sequence | 
-    
-      Describe a debug access sequence.
-     | 
-    SequenceType | 
-    1..* |
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| family | element_family |  |  |
+| subFamily | element_subFamily |  |  |
+| device | element_device |  |  |
+| Attributes | Description | Type | Use |
+| traceSetup | If **full**, all trace sink and trace data path setup is done by debug access sequences. In this case, a debugger is not expected to configure trace sinks or the CoreSight trace data path using a priori knowledge of CoreSight trace components. If **legacy**, a debugger is expected to have knowledge of CoreSight trace components. In this case, the **TraceStart** and **TraceStop** sequences are intended only for device-specific trace setup and teardown steps. Default value is `legacy`. However, the expectation is that future DFPs set it to `full` and provide the full trace setup in sequences. The default value will change with the next major version update of this specification. | xs:boolean | optional |
+| Child Elements | Description | Type | Occurrence |
+| sequence | Describe a debug access sequence. | SequenceType | 1..* |

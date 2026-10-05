@@ -28,48 +28,11 @@ Attribute `top` displays the 'top' side of the part (or the main part picture).
 
 
 
-  | 
-    Parent | 
-    Chain | 
-  
-
-  | 
-    part | 
-    element_part | 
-  
-	
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    top | 
-    Specifies the path to the top (or the main) part image. The path is relative to the pack base directory or a link to an image on an external web site. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    bottom | 
-    Specifies the path to the bottom part image. The path is relative to the pack base directory or a link to an image on an external web site. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    perspective | 
-    Specifies the path to a perspective part image. The path is relative to the pack base directory or a link to an image on an external web site. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    public | 
-    Set publishing permissions for the image. If \tagem{public} is `true`, then the vendor gives permission
-        to extract the image file from the Pack and publish it on a web-page. Links to web pages are assumed to be public.
-        If no \tagem{public} tag is available, it is assumed that publishing is allowed (default value is `true`). | 
-    xs:boolean | 
-    optional |
+| Parent | Chain |  |  |
+|---|---|---|---|
+| part | element_part |  |  |
+| Attributes | Description | Type | Use |
+| top | Specifies the path to the top (or the main) part image. The path is relative to the pack base directory or a link to an image on an external web site. | xs:string | required |
+| bottom | Specifies the path to the bottom part image. The path is relative to the pack base directory or a link to an image on an external web site. | xs:string | optional |
+| perspective | Specifies the path to a perspective part image. The path is relative to the pack base directory or a link to an image on an external web site. | xs:string | optional |
+| public | Set publishing permissions for the image. If \tagem{public} is `true`, then the vendor gives permission to extract the image file from the Pack and publish it on a web-page. Links to web pages are assumed to be public. If no \tagem{public} tag is available, it is assumed that publishing is allowed (default value is `true`). | xs:boolean | optional |

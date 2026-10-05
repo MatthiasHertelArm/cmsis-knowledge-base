@@ -23,15 +23,15 @@ Template File                       | Description
 :-----------------------------------|:----------------------------------------
 📂 CMSIS/Core/Template/Device_M     | Folder with CMSIS-Core device file templates ([See on GitHub](https://github.com/ARM-software/CMSIS_6/tree/main/CMSIS/Core/Template/Device_M/))
  ┣ 📂 Config                        | Template configuration files
- &emsp;  ┣ 📄 Device_ac6.sct   | linker_sct_pg template
- &emsp;  ┣ 📄 Device_gcc.ld    | Linker description file for GNU GCC Arm Embedded Compiler
- &emsp;  ┗ 📄 partition_Device.h |partition_h_pg template
+    ┣ 📄 Device_ac6.sct   | linker_sct_pg template
+    ┣ 📄 Device_gcc.ld    | Linker description file for GNU GCC Arm Embedded Compiler
+    ┗ 📄 partition_Device.h |partition_h_pg template
  ┣ 📂 Include                       | Template header files
- &emsp;  ┣ 📄 Device.h         | device_h_pg template
- &emsp;  ┗ 📄 system_Device.h  | system_Device_sec
+    ┣ 📄 Device.h         | device_h_pg template
+    ┗ 📄 system_Device.h  | system_Device_sec
  ┗ 📂 Source                        | Template C files
- &emsp;  ┣ 📄 startup_Device.c | startup_c_pg template
- &emsp;  ┗ 📄 system_Device.c  | system_Device_sec
+    ┣ 📄 startup_Device.c | startup_c_pg template
+    ┗ 📄 system_Device.c  | system_Device_sec
 
 **Adapt Template Files to a Device**
 

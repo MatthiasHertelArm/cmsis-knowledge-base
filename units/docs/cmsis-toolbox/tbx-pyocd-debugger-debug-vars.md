@@ -18,7 +18,7 @@ Contains the definition and default values for debug sequence variables. The def
 
 `debug-vars:`                                             |              | Content
 :---------------------------------------------------------|--------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `vars:`                                |   Optional   | Initial values for variables used in [`debug-sequences:`](#debug-sequences).
+    `vars:`                                |   Optional   | Initial values for variables used in [`debug-sequences:`](#debug-sequences).
 
 **Example:**
 

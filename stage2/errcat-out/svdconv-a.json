@@ -1,0 +1,984 @@
+[
+  {
+    "id": "ts-svdconv-m105",
+    "cause": "While generating the CMSIS device header, svdconv puts all registers and clusters of a peripheral or cluster that start in the same 32-bit word (address with the two low bits cleared) into one union, and that union holds at most 32 members per access size. NAME is the register that did not fit (for 32-bit registers the message already appears from the 31st member on), so far too many registers share one word address, usually through wrong <addressOffset> values or many alternate registers at one address.",
+    "fix": "Give each register its correct <addressOffset> so that only intended aliases share an address, and keep intentional aliases (<alternateRegister>, <alternateGroup>) at one word address well below 30. The overlap messages M339/M365 name the registers that collide.",
+    "evidence": [
+      "tools/svdconv/SVDGenerator/src/HeaderData_RegStructure.cpp:29",
+      "tools/svdconv/SVDGenerator/src/HeaderData_RegStructure.cpp:42",
+      "tools/svdconv/SVDGenerator/src/HeaderData_RegStructure.cpp:43",
+      "tools/svdconv/SVDGenerator/src/HeaderData_RegStructure.cpp:61",
+      "tools/svdconv/SVDGenerator/src/HeaderData_RegStructure.cpp:62",
+      "tools/svdconv/SVDGenerator/include/HeaderData.h:31",
+      "tools/svdconv/SVDGenerator/src/HeaderData_Register.cpp:49",
+      "tools/svdconv/SVDGenerator/src/HeaderData_Register.cpp:130",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:42"
+    ],
+    "confidence": "medium",
+    "note": "Only raised with --generate=header. The guard 'regItems > MAX_REGS' lets a 33rd entry be written into a 32-entry array (off by one)."
+  },
+  {
+    "id": "ts-svdconv-m106",
+    "cause": "",
+    "fix": "",
+    "evidence": [
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:43",
+      "tools/svdconv/SVDConv/README.md:224"
+    ],
+    "confidence": "unknown",
+    "note": "No LogMsg call for this code exists in svdconv at 30f5e81; the code is only defined in the message table, so this version cannot print it. packchk reuses the number M106 for a different message."
+  },
+  {
+    "id": "ts-svdconv-m108",
+    "cause": "",
+    "fix": "",
+    "evidence": [
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:45",
+      "tools/svdconv/SVDConv/README.md:226"
+    ],
+    "confidence": "unknown",
+    "note": "No LogMsg call for this code exists in svdconv at 30f5e81; the code is only defined in the message table, so this version cannot print it. There is no SfrDis (disassembly) code in this tree; packchk's M108 ('Reading PDSC File failed!') is unrelated."
+  },
+  {
+    "id": "ts-svdconv-m132",
+    "cause": "",
+    "fix": "",
+    "evidence": [
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:62",
+      "tools/svdconv/SVDConv/README.md:240",
+      "tools/svdconv/SVDGenerator/src/SfrccInterface.cpp:108",
+      "tools/svdconv/SVDGenerator/src/SfrccInterface.cpp:119"
+    ],
+    "confidence": "unknown",
+    "note": "No LogMsg call for this code exists in svdconv at 30f5e81; the code is only defined in the message table, so this version cannot print it. The SfrCC2 interface reports through M109, M124, M125, M127, M128 and, on hosts other than Windows, M133."
+  },
+  {
+    "id": "ts-svdconv-m217",
+    "cause": "A <name>, <description> or register <displayName> contains two question marks followed by another character ('??x'), which a C compiler may read as a trigraph once the text lands in the generated header. svdconv flags any character after '??', not only the nine trigraph characters, and keeps the text unchanged.",
+    "fix": "Rewrite the text so that '??' is never followed by another character, for example use a single '?' or words such as 'unknown'.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdUtils.cpp:1155",
+      "tools/svdconv/SVDModel/src/SvdUtils.cpp:1186",
+      "tools/svdconv/SVDModel/src/SvdUtils.cpp:1189",
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:217",
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:231",
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:234",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:84"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m219",
+    "cause": "The CMSIS header or partition generator (--generate=header, --generate=partition) met a layout it cannot express in C, wrote '#error \"MSG\"' into the generated file and reports it here; MSG names the problem. Typical texts are 'Unaligned Registers are not supported', 'Cannot generate Register or Cluster ...: Address ... is lower than actual address in struct' (overlapping members), 'Peripheral size ... greater than <dimIncrement>', 'Enumerated Value ... already defined as Value ...' and 'SAU Regions Config / SAU Setup: Number of SAU regions not set'.",
+    "fix": "Fix the element MSG points to: place a register at an address that is a multiple of its <size>; remove overlaps by correcting <addressOffset>, <size> or the peripheral array's <dimIncrement>; give each <enumeratedValue> a unique <name>; set <sauNumRegions> in <cpu> (1 to 255) before generating the partition file. Look at the validation messages printed earlier (for example M339, M364), which usually name the same cause.",
+    "evidence": [
+      "tools/svdconv/SVDGenerator/src/HeaderGenerator.cpp:654",
+      "tools/svdconv/SVDGenerator/src/HeaderGenerator.cpp:657",
+      "tools/svdconv/SVDGenerator/src/HeaderData_Register.cpp:123",
+      "tools/svdconv/SVDGenerator/src/HeaderData_RegStructure.cpp:608",
+      "tools/svdconv/SVDGenerator/src/HeaderData_Peripheral.cpp:130",
+      "tools/svdconv/SVDGenerator/src/HeaderData_EnumValues.cpp:354",
+      "tools/svdconv/SVDGenerator/src/PartitionData.cpp:239",
+      "tools/svdconv/SVDGenerator/src/PartitionData.cpp:884",
+      "tools/svdconv/test/integtests/src/SvdConvIntegTests.cpp:255",
+      "tools/svdconv/test/integtests/src/SvdConvIntegTests.cpp:283"
+    ],
+    "confidence": "high",
+    "note": "Test CheckSauNumRegions_Errors expects two M219 after M364 when generating the partition file."
+  },
+  {
+    "id": "ts-svdconv-m220",
+    "cause": "While generating the CMSIS header, the bit mask computed for a field came out even. That happens when the field width is 0 (for example <bitWidth>0</bitWidth>, or <lsb> exactly one above <msb>) and can also happen for a 64-bit field; svdconv adds the comment 'Even number for MASK detected!' next to the field's _Msk define.",
+    "fix": "Correct the field's bit position so that it is at least one bit wide, for example <bitRange>[7:4]</bitRange> with the most significant bit first, or a <bitWidth> of 1 or more.",
+    "evidence": [
+      "tools/svdconv/SVDGenerator/src/HeaderGenerator.cpp:660",
+      "tools/svdconv/SVDGenerator/src/HeaderGenerator.cpp:663",
+      "tools/svdconv/SVDGenerator/src/HeaderGenerator.cpp:784",
+      "tools/svdconv/SVDGenerator/src/HeaderGenerator.cpp:846",
+      "tools/svdconv/SVDGenerator/src/HeaderData_PosMask.cpp:224",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:173",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:491"
+    ],
+    "confidence": "medium",
+    "note": "The other source of M220 ('Peripheral unaligned address', HeaderData_RegStructure.cpp:753) is unreachable because 'unaligned' is always 0 (line 37). The field check M313 only rejects negative widths, so a zero-width field reaches the generator."
+  },
+  {
+    "id": "ts-svdconv-m226",
+    "cause": "",
+    "fix": "",
+    "evidence": [
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:93",
+      "tools/svdconv/SVDConv/README.md:272"
+    ],
+    "confidence": "unknown",
+    "note": "No LogMsg call for this code exists in svdconv at 30f5e81; the code is only defined in the message table, so this version cannot print it. Problems during SFD generation are reported as M227 and M516 to M518."
+  },
+  {
+    "id": "ts-svdconv-m227",
+    "cause": "A field wider than 6 bits has <enumeratedValues> with values. The System Viewer (SFD) file builds a drop-down list of values only for fields of up to 6 bits, so the list for this field is left out; MSG names the field and its width.",
+    "fix": "Nothing in the SVD must change; the field itself is still generated. If the warning should go away, remove the <enumeratedValues> from fields wider than 6 bits, or correct the field's bit range if it is really 6 bits or narrower.",
+    "evidence": [
+      "tools/svdconv/SVDGenerator/src/SfdData_SingleItems.cpp:954",
+      "tools/svdconv/SVDGenerator/src/SfdData_SingleItems.cpp:962",
+      "tools/svdconv/SVDModel/include/SvdUtils.h:31",
+      "tools/svdconv/test/integtests/src/SvdConvIntegTests.cpp:382",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:94"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-svdconv-m244",
+    "cause": "A peripheral's <disableCondition> uses a name svdconv cannot resolve. Each operand is looked up as a path that starts with a peripheral name and goes down through clusters to a register and field (separated by '->' or '.'); NAME is the first part of the path that does not exist and MSG is the expression read so far. The disable condition is then dropped.",
+    "fix": "Write each operand as a full path to an existing register or field using the <name>s of peripheral, cluster, register and field, for example <disableCondition>DCB-&gt;DSCSR-&gt;CDS == 0</disableCondition> ('->' must be escaped as '-&gt;' in XML). Check the spelling of each part.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdCExpression.cpp:59",
+      "tools/svdconv/SVDModel/src/SvdCExpression.cpp:85",
+      "tools/svdconv/SVDModel/src/SvdCExpression.cpp:87",
+      "tools/svdconv/SVDModel/include/SvdItem.h:256",
+      "tools/svdconv/SVDModel/src/SvdCExpressionParser.cpp:110",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:147",
+      "tools/svdconv/test/data/disablecondition/DisableCondTest.svd:32",
+      "tools/svdconv/test/data/disablecondition/DisableCondTest.svd:85"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m245",
+    "cause": "",
+    "fix": "",
+    "evidence": [
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:112"
+    ],
+    "confidence": "unknown",
+    "note": "No LogMsg call for this code exists in svdconv at 30f5e81; the code is only defined in the message table, so this version cannot print it. Not listed in the README either."
+  },
+  {
+    "id": "ts-svdconv-m246",
+    "cause": "A peripheral contains more than one <disableCondition>; only one is allowed (the schema also allows at most one) and svdconv ignores the extra one. The message carries no line number or peripheral name.",
+    "fix": "Keep a single <disableCondition> per peripheral and combine several conditions in it with && or ||.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:147",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:154",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:159",
+      "tools/svdconv/SVDModel/src/SvdCExpressionParser.cpp:198",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:113"
+    ],
+    "confidence": "medium",
+    "note": "LogMsg(\"M246\") is called without a line number, so the output does not say which peripheral is affected; search the file for <disableCondition>."
+  },
+  {
+    "id": "ts-svdconv-m247",
+    "cause": "While writing the System Viewer (SFD) file, an operand of a peripheral's <disableCondition> resolved to an SVD element that is neither a register nor a field, and svdconv wrote '<Error in expression Object>' in its place. Such operands are normally rejected earlier with M248; M247 is the fallback when that check did not apply.",
+    "fix": "Change the operand to a path that ends at a register or field, for example PERIPH->REG or PERIPH->REG->FIELD (escaped as -&gt; in XML).",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdCExpression.cpp:162",
+      "tools/svdconv/SVDModel/src/SvdCExpression.cpp:163",
+      "tools/svdconv/SVDModel/src/SvdCExpression.cpp:94",
+      "tools/svdconv/SVDGenerator/src/SfdData_SingleItems.cpp:221"
+    ],
+    "confidence": "low"
+  },
+  {
+    "id": "ts-svdconv-m248",
+    "cause": "A name in a peripheral's <disableCondition> resolves to a peripheral or cluster instead of a register or field, for example 'DCB == 0' or a path that stops at a cluster. Only register and field values can be evaluated, so the disable condition is dropped.",
+    "fix": "Extend the path down to a register or field, for example DCB->DSCSR->CDS == 0 or DCB->DSCSR_Clust->DSCSR->CDS == 0 (with '->' escaped as '-&gt;' in XML).",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdCExpression.cpp:94",
+      "tools/svdconv/SVDModel/src/SvdCExpression.cpp:104",
+      "tools/svdconv/SVDModel/src/SvdCExpression.cpp:35",
+      "tools/svdconv/test/data/disablecondition/DisableCondTest.svd:85"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m301",
+    "cause": "Two <interrupt> elements have the same <value> (interrupt number) but different <name>s; interrupt numbers are unique across the whole device. The first definition (at LINE) is kept and the second is not used.",
+    "fix": "Give each interrupt its correct <value>. If two peripherals really share one interrupt line, use the same <name> and <value> in both, which svdconv accepts (it only notes this with the low-level warning M304).",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:186",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:207",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:213",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:216",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:120"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m302",
+    "cause": "A register's own <size> is not a width svdconv supports. The code accepts 8, 16, 24, 32 and 64 bits although the message names only 8, 16 and 32, and the register is dropped even though the message is a warning (an error with --strict).",
+    "fix": "Set the register's <size> to its access width, normally 8, 16 or 32 on Cortex-M devices. A register with fewer implemented bits still uses the full access width and simply has fields only for the implemented bits.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:85",
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:94",
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:95",
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:96",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:121",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:233"
+    ],
+    "confidence": "medium",
+    "note": "Message text is incomplete: 24 and 64 are accepted too."
+  },
+  {
+    "id": "ts-svdconv-m305",
+    "cause": "A <name> contains a character that is not allowed in a C identifier: space, backslash, ':', ';', '.', ',', '#', '?', '(', ')', '+', '-', '*' or '/'. svdconv replaces each such character with '_' (one message per character) and continues with the changed name; names of <enumeratedValue>s are not checked this way.",
+    "fix": "Use only letters, digits and '_' in <name> (the dim placeholder %s is fine), and put human-readable text into <description> or, for registers, <displayName>.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdUtils.cpp:1099",
+      "tools/svdconv/SVDModel/src/SvdUtils.cpp:1105",
+      "tools/svdconv/SVDModel/src/SvdUtils.cpp:1111",
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:217",
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:222",
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:227",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:124"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m306",
+    "cause": "The root <device> element has no schemaVersion attribute, which the SVD schema requires to tell which SVD version the file follows. Warning by default, error with --strict.",
+    "fix": "Add the attribute to the root element, for example <device schemaVersion=\"1.3\">.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:50",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:152",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:922",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:924",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:125",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:234"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m308",
+    "cause": "An element with <dim> (register, cluster, field or peripheral) has a comma-separated <dimIndex> list whose number of entries differs from <dim>.",
+    "fix": "Make <dim> equal to the number of <dimIndex> entries, for example <dim>3</dim> with <dimIndex>A,B,C</dimIndex>, and check that <dimIncrement> matches the spacing of the instances.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdDimension.cpp:193",
+      "tools/svdconv/SVDModel/src/SvdDimension.cpp:212",
+      "tools/svdconv/SVDModel/src/SvdDimension.cpp:564",
+      "tools/svdconv/SVDModel/src/SvdDimension.cpp:567",
+      "tools/svdconv/test/unittests/src/SvdModelValidationTest.cpp:283",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:127"
+    ],
+    "confidence": "high",
+    "note": "Ranges such as 0-3 or A-D are not counted here: a range whose length differs from <dim> silently yields no index list and no M308."
+  },
+  {
+    "id": "ts-svdconv-m309",
+    "cause": "A field's bit offset (from <bitOffset>, <lsb> or <bitRange>) is above 63, the highest bit svdconv handles. The field is dropped.",
+    "fix": "Give the field's position relative to bit 0 of its own register, for example <bitRange>[7:4]</bitRange> or <bitOffset>4</bitOffset><bitWidth>4</bitWidth>; a field always lies inside the register's <size>.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdField.cpp:481",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:482",
+      "tools/svdconv/SVDModel/include/SvdField.h:13",
+      "tools/svdconv/SVDModel/include/SvdField.h:14",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:128"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m310",
+    "cause": "A field's width (from <bitWidth>, or <msb> - <lsb> + 1) is more than 64 bits. The field is dropped.",
+    "fix": "Set the field's <bitWidth> (or <lsb>/<msb>, <bitRange>) to the real width of the bit field; it must fit into its register's <size>.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdField.cpp:90",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:175",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:486",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:487",
+      "tools/svdconv/SVDModel/include/SvdField.h:13",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:129"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m311",
+    "cause": "A field has no complete bit position: none of <bitRange>, the pair <lsb>+<msb> or the pair <bitOffset>+<bitWidth> is given in full (for example only <lsb>, or <bitOffset> without <bitWidth>). The text speaks of MSB or LSB == -1 whichever style is used. The field is dropped.",
+    "fix": "Give the field one complete bit position, for example <bitRange>[7:4]</bitRange>, or <lsb>4</lsb><msb>7</msb>, or <bitOffset>4</bitOffset><bitWidth>4</bitWidth>. svdconv needs <bitWidth> together with <bitOffset> although the schema marks it optional.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdField.cpp:84",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:98",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:114",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:173",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:473",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:474",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:130"
+    ],
+    "confidence": "medium",
+    "note": "Misleading text: it is raised whenever offset or width is missing, not only for <lsb>/<msb>."
+  },
+  {
+    "id": "ts-svdconv-m312",
+    "cause": "A peripheral has no <addressBlock>, neither its own nor one inherited through derivedFrom. Without it svdconv cannot check that the registers lie in the peripheral's address range (M344) or that peripherals do not overlap (M352); the peripheral itself is kept.",
+    "fix": "Add an address block that covers the peripheral's registers, for example <addressBlock><offset>0x0</offset><size>0x400</size><usage>registers</usage></addressBlock>.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1505",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1507",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:378",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:868",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:131"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m313",
+    "cause": "A field's <lsb> is more than one above its <msb> (or a <bitRange> is written with the low bit first), so the computed width msb - lsb + 1 is negative. The field is dropped.",
+    "fix": "Write the most significant bit first: <bitRange>[7:4]</bitRange>, or <lsb>4</lsb><msb>7</msb>.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdField.cpp:114",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:175",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:176",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:491",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:492",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:132"
+    ],
+    "confidence": "medium",
+    "note": "If <lsb> is exactly <msb>+1 the width is 0 and M313 is not raised; the header generator then warns with M220. 'BitWith' in the text is a typo."
+  },
+  {
+    "id": "ts-svdconv-m314",
+    "cause": "An <addressBlock> lacks <offset> or <size>, and no derivedFrom source supplies it. The block is dropped.",
+    "fix": "Give every address block all three elements: <offset> relative to the peripheral's <baseAddress>, <size> in bytes and <usage>.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdAddressBlock.cpp:116",
+      "tools/svdconv/SVDModel/src/SvdAddressBlock.cpp:128",
+      "tools/svdconv/SVDModel/src/SvdAddressBlock.cpp:129",
+      "tools/svdconv/test/unittests/src/SvdModelValidationTest.cpp:102",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:133"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-svdconv-m315",
+    "cause": "An <addressBlock> has <size> 0. The block is dropped.",
+    "fix": "Set <size> to the number of bytes the block spans (for example 0x400), or remove the block.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdAddressBlock.cpp:133",
+      "tools/svdconv/SVDModel/src/SvdAddressBlock.cpp:134",
+      "tools/svdconv/test/unittests/src/SvdModelValidationTest.cpp:123",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:134"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-svdconv-m316",
+    "cause": "An element that needs a name has no <name> or an empty one; LEVEL says which (device, peripheral, cluster, register, field, enumeratedValue, cpu or interrupt). Registers, clusters and fields that are dim lists are exempt. The element is dropped.",
+    "fix": "Add a <name> that is a C identifier to the element at the reported line, for example <name>CTRL</name>.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:644",
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:1186",
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:1189",
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:1193",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:135"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m322",
+    "cause": "An element's <description> is the placeholder text 'no description available' (in any case). svdconv deletes the description. Warning by default, error with --strict.",
+    "fix": "Write a real description of the element, or leave <description> out.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:1283",
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:1284",
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:1285",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:141",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:236"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m324",
+    "cause": "A field's bit range does not fit into its register: the field is wider than the register's effective <size>, or bit offset + width goes beyond it; LINE is the register's line. The field is dropped. M345 reports the same condition from the register's own check, and M324 appears for fields that check did not reach.",
+    "fix": "Correct the field's bit position (<bitRange>, <lsb>/<msb> or <bitOffset>/<bitWidth>) or the register's <size>, which may be inherited from the peripheral or device, so that every field lies within bits 0 to size-1.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdField.cpp:498",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:510",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:511",
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:624",
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:634",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:143"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m325",
+    "cause": "The <cpu> section has no <revision>, or its value is not of the form rNpM (for example r0p1, both numbers 0 to 255); a malformed value is also reported as M204.",
+    "fix": "Add the core revision to <cpu>, for example <revision>r0p1</revision>.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdCpu.cpp:58",
+      "tools/svdconv/SVDModel/src/SvdCpu.cpp:65",
+      "tools/svdconv/SVDModel/src/SvdCpu.cpp:98",
+      "tools/svdconv/SVDModel/src/SvdCpu.cpp:318",
+      "tools/svdconv/SVDModel/src/SvdUtils.cpp:246",
+      "tools/svdconv/test/unittests/src/SvdCpuModelTest.cpp:102",
+      "tools/svdconv/test/unittests/src/SvdCpuModelTest.cpp:112",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:144"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-svdconv-m326",
+    "cause": "The <cpu> section has no <endian> element; svdconv assumes little-endian.",
+    "fix": "Add <endian>little</endian> to <cpu> (other allowed values: big, selectable, other).",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdCpu.cpp:102",
+      "tools/svdconv/SVDModel/src/SvdCpu.cpp:321",
+      "tools/svdconv/SVDModel/src/SvdCpu.cpp:322",
+      "tools/svdconv/test/unittests/src/SvdCpuModelTest.cpp:112",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:145"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-svdconv-m327",
+    "cause": "The <cpu> section has no <nvicPrioBits>, or its value is outside 2..8; svdconv uses 4. The value becomes __NVIC_PRIO_BITS in the generated header.",
+    "fix": "Add <nvicPrioBits> with the number of NVIC priority bits the device implements, for example <nvicPrioBits>3</nvicPrioBits>.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdCpu.cpp:129",
+      "tools/svdconv/SVDModel/src/SvdCpu.cpp:326",
+      "tools/svdconv/SVDModel/src/SvdCpu.cpp:327",
+      "tools/svdconv/SVDGenerator/src/HeaderGenerator.cpp:220",
+      "tools/svdconv/test/unittests/src/SvdCpuModelTest.cpp:125",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:146"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-svdconv-m328",
+    "cause": "A peripheral or cluster (LEVEL) contains no registers or clusters, and no derivedFrom source supplies any. svdconv drops the element.",
+    "fix": "Add the registers to the peripheral's <registers> or into the <cluster>, derive the element from one that has them (derivedFrom=\"NAME\"), or remove the empty element.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1483",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1489",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1490",
+      "tools/svdconv/SVDModel/src/SvdCluster.cpp:515",
+      "tools/svdconv/SVDModel/src/SvdCluster.cpp:517",
+      "tools/svdconv/SVDModel/src/SvdDerivedFrom.cpp:119",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:147"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m329",
+    "cause": "The <cpu> section has no <name>, or a name svdconv does not know (then M202 is reported as well). svdconv falls back to Cortex-M3 and its limits, for example 240 external interrupts.",
+    "fix": "Set <cpu><name> to a supported core, for example CM0, CM0PLUS, CM3, CM4, CM7, CM23, CM33, CM35P, CM55 or CM85.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdCpu.cpp:89",
+      "tools/svdconv/SVDModel/src/SvdCpu.cpp:332",
+      "tools/svdconv/SVDModel/src/SvdUtils.cpp:795",
+      "tools/svdconv/SVDModel/include/EnumStringTables.h:16",
+      "tools/svdconv/test/unittests/src/SvdInterruptTest.cpp:211",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:148"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-svdconv-m330",
+    "cause": "An <interrupt> has no <value> (its interrupt number). The interrupt is dropped.",
+    "fix": "Add the interrupt number, counted from 0 for the first device-specific interrupt, for example <interrupt><name>UART0</name><value>5</value></interrupt>.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdInterrupt.cpp:113",
+      "tools/svdconv/SVDModel/src/SvdInterrupt.cpp:142",
+      "tools/svdconv/test/unittests/src/SvdInterruptTest.cpp:172",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:149"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-svdconv-m331",
+    "cause": "An <interrupt>'s <value> is equal to or above the number of external interrupts the core in <cpu><name> supports (for example 240 for CM3, 480 for CM33). The message prints that limit minus 1, the highest number allowed. The interrupt is dropped.",
+    "fix": "Check the <value>: it counts from 0 for the first device interrupt, not from exception number 16. Also check <cpu><name>; if it is missing or unknown, svdconv assumes CM3 with 240 interrupts.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdInterrupt.cpp:132",
+      "tools/svdconv/SVDModel/src/SvdInterrupt.cpp:160",
+      "tools/svdconv/SVDModel/src/SvdInterrupt.cpp:161",
+      "tools/svdconv/test/unittests/src/SvdInterruptTest.cpp:107",
+      "tools/svdconv/test/unittests/src/SvdInterruptTest.cpp:217",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:150"
+    ],
+    "confidence": "high",
+    "note": "Wording: 'Number 240 greater or equal CM3 maximum Interrupts: 239' reads as if 239 were not allowed; 239 is the highest valid number."
+  },
+  {
+    "id": "ts-svdconv-m333",
+    "cause": "Two <enumeratedValue>s in the same <enumeratedValues> container of a field have the same <value>; USAGE shows the container's usage. The later one is dropped. Warning by default, error with --strict.",
+    "fix": "Give each enumeratedValue in a container a distinct <value>, or delete the duplicate. If a value means something different on read and on write, use two containers, one with <usage>read</usage> and one with <usage>write</usage>.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdField.cpp:374",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:400",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:403",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:627",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:152",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:240"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m335",
+    "cause": "An <enumeratedValue>'s <value> is larger than the largest number the field can hold (2^width - 1). The enumerated value is dropped. Warning by default, error with --strict.",
+    "fix": "Correct the <value> or the field's width. The value is the raw content of the field, not shifted to the field's bit position in the register.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdField.cpp:525",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:622",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:623",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:154",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:242"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m336",
+    "cause": "Two elements in the same scope have the same name; LEVEL says which: registers or clusters with the same <name> (and <alternateGroup>) in one peripheral or cluster, fields with the same <name> in one register, two <interrupt>s with the same <name> but different <value>s, or the same index twice in a <dimIndex> list. Except for <dimIndex>, the later element is dropped.",
+    "fix": "Rename or delete one of the two elements (LINE gives the first one). Registers that share a name on purpose need different <alternateGroup>s; an interrupt shared by two peripherals must have the same <value> in both.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:800",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:819",
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:529",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:201",
+      "tools/svdconv/SVDModel/src/SvdDimension.cpp:540",
+      "tools/svdconv/test/unittests/src/SvdModelValidationTest.cpp:284",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:155"
+    ],
+    "confidence": "high",
+    "note": "The 'Enumerated Values Container' variant (SvdField.cpp:440) is not reached: its only caller is commented out (SvdField.cpp:596)."
+  },
+  {
+    "id": "ts-svdconv-m337",
+    "cause": "Two <enumeratedValue>s in the same <enumeratedValues> container have the same <name>; this applies to field enumerations and to the <dimArrayIndex> enumeration of a register, cluster or peripheral array. The later one is dropped. Warning by default, error with --strict.",
+    "fix": "Give each enumeratedValue in a container a unique <name>, or delete the duplicate.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdField.cpp:416",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:423",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:620",
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:552",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1401",
+      "tools/svdconv/SVDModel/src/SvdCluster.cpp:422",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:156",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:243"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m338",
+    "cause": "Two fields of one register share at least one bit. svdconv checks the read view and the write view separately: a read-only field and a write-only field may overlap, but two fields that are both readable or both writable may not (fields without <access> count as read-write). The later field is dropped.",
+    "fix": "Correct the bit ranges so the fields do not overlap. If the same bits mean different things on read and on write, describe them as two fields with <access>read-only</access> and <access>write-only</access>.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:494",
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:510",
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:642",
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:646",
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:1107",
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:1116",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:157"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m339",
+    "cause": "Two registers placed directly in a peripheral start at the same address with the same access, and the later one has neither an <alternateRegister> naming the other nor an <alternateGroup>. A read-only and a write-only register may share an address; overlaps inside clusters or dim arrays, partial overlaps and overlaps between registers of different access are reported as warning M365 instead.",
+    "fix": "If the address is wrong, correct the later register's <addressOffset>. If both registers are views of the same address, add <alternateRegister>NAME2</alternateRegister> (the register named in the message) or an <alternateGroup> to the later register.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:653",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:671",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:732",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:739",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1071",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:553",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:158"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m340",
+    "cause": "The input has no <device> root element: the root element has another name, or the XML could not be parsed at all (then XML errors and M111 'Reading SVD File failed' come first).",
+    "fix": "Pass an SVD file whose root element is <device schemaVersion=\"1.3\">, and repair any XML syntax errors reported before this message.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdModel.cpp:46",
+      "tools/svdconv/SVDModel/src/SvdModel.cpp:84",
+      "tools/svdconv/SVDModel/src/SvdModel.cpp:85",
+      "tools/svdconv/SVDConv/src/SVDConv.cpp:214",
+      "tools/svdconv/SVDConv/src/SVDConv.cpp:218",
+      "tools/svdconv/SVDConv/src/SVDConv.cpp:245",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:159"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m341",
+    "cause": "The parsed input holds more than one <device> element at the top level. svdconv reads one file per run and an XML document has a single root element, so this does not normally occur.",
+    "fix": "Keep exactly one <device> per .svd file and describe further devices in files of their own.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdModel.cpp:83",
+      "tools/svdconv/SVDModel/src/SvdModel.cpp:87",
+      "tools/svdconv/SVDModel/src/SvdModel.cpp:88",
+      "tools/svdconv/SVDConv/src/SVDConv.cpp:210",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:160"
+    ],
+    "confidence": "low",
+    "note": "Not reachable with one well-formed input file."
+  },
+  {
+    "id": "ts-svdconv-m342",
+    "cause": "A cluster that is a dim list (name with %s, expanded into separately named clusters) also has a <headerStructName>; svdconv would ignore the header struct name.",
+    "fix": "Remove <headerStructName> from clusters that are dim lists.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdCluster.cpp:582",
+      "tools/svdconv/SVDModel/src/SvdCluster.cpp:591",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:161"
+    ],
+    "confidence": "low",
+    "note": "The only raise site is inside '#if 0' (SvdCluster.cpp:582), so svdconv at 30f5e81 never prints M342; cause and fix come from that disabled code and apply to older builds."
+  },
+  {
+    "id": "ts-svdconv-m343",
+    "cause": "Two peripherals have the same base address, and the later one has no <alternatePeripheral> naming a peripheral already at that address. If it has an <alternatePeripheral> that names none of them, M348 is printed first.",
+    "fix": "Correct the later peripheral's <baseAddress>. If it really is another view of the same hardware, add <alternatePeripheral>NAME2</alternatePeripheral> to it, naming the peripheral given in the message.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:541",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:558",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:579",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:582",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:619",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:162"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m344",
+    "cause": "A register's byte range (its offset in the peripheral, cluster offsets included, plus <size>/8) does not lie completely inside any of the peripheral's <addressBlock>s with <usage>registers</usage>; blocks with usage buffer or reserved do not count. TEXT lists the register's range and every address block. Warning by default, error with --strict.",
+    "fix": "Extend an address block, or add one with <usage>registers</usage>, so that it covers the register; or correct the register's <addressOffset> or <size> if the register is misplaced.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:868",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:874",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:928",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:972",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:163",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:247"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m345",
+    "cause": "A field's bit offset plus width exceeds the register's effective <size> (which may be inherited from the peripheral or device), so the field does not fit into its register. The field is dropped.",
+    "fix": "Correct the field's bit position (<bitRange>, <lsb>/<msb> or <bitOffset>/<bitWidth>) or the register's <size> so that every field lies within bits 0 to size-1.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:612",
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:634",
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:635",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:164"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m348",
+    "cause": "A peripheral with <alternatePeripheral>, or a register with <alternateRegister>, shares its address with another element, but no element at that address has the name given. svdconv then also reports the overlap itself (M343 for peripherals, M339 or M365 for registers). Warning by default, error with --strict.",
+    "fix": "Set <alternatePeripheral> or <alternateRegister> to the <name> of the element that occupies the same address (shown in the overlap message that follows), or correct the address if the two should not overlap.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:578",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:579",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:671",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:729",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:167",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:248"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m349",
+    "cause": "An element's <alternatePeripheral>, <alternateCluster> or <alternateRegister> names the element itself. Warning by default, error with --strict.",
+    "fix": "Set it to the name of the other element that shares the address, or remove it if there is none.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:744",
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:747",
+      "tools/svdconv/SVDModel/src/SvdCluster.cpp:509",
+      "tools/svdconv/SVDModel/src/SvdCluster.cpp:511",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1543",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1545",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:168",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:249"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m350",
+    "cause": "A peripheral's base address is not a multiple of 4.",
+    "fix": "Check <baseAddress>; Cortex-M peripherals normally start on a 4-byte boundary. If the address is right, the warning can be accepted.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:551",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:552",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:553",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:169"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m352",
+    "cause": "An <addressBlock> of one peripheral overlaps an address block of another peripheral (absolute range = <baseAddress> + <offset>, <size> bytes). A peripheral that has an <alternatePeripheral> is not checked from its own side, and pairs where one names the other as alternate are skipped; other overlapping pairs are usually reported once from each side.",
+    "fix": "Correct the <baseAddress> or the address block's <offset>/<size> so the ranges do not overlap. If one peripheral is an alias of the other, mark it with <alternatePeripheral>.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:686",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:704",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:721",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:734",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:749",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:171"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m353",
+    "cause": "A peripheral's <groupName> ends with an underscore.",
+    "fix": "Remove the trailing '_' from <groupName>, for example <groupName>UART</groupName>.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1554",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1555",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:172"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m354",
+    "cause": "An <interrupt> has the name of a Cortex-M core exception (for example NonMaskableInt, HardFault, MemoryManagement, BusFault, UsageFault, SecureFault, SVCall, DebugMonitor, PendSV, SysTick), as provided for the core in <cpu><name>. Core exceptions come from the CPU type and must not be listed; the interrupt is dropped.",
+    "fix": "Delete <interrupt> entries for core exceptions and list only the device-specific interrupts, numbered from 0.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:648",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:671",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:674",
+      "tools/svdconv/SVDModel/src/SvdCpu.cpp:280",
+      "tools/svdconv/SVDModel/src/SvdTypes.cpp:83",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:173"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m355",
+    "cause": "No <interrupt> in the device has a <value> below 16. svdconv takes this as a sign that interrupts were numbered by exception number (first device interrupt = 16) instead of from 0.",
+    "fix": "Number device interrupts from 0, i.e. subtract 16 from exception numbers. If the device really has no interrupt numbered below 16, the message can be ignored.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:658",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:667",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:679",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:680",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:174"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m357",
+    "cause": "",
+    "fix": "",
+    "evidence": [
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:176",
+      "tools/svdconv/SVDConv/README.md:351",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:674",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:680"
+    ],
+    "confidence": "unknown",
+    "note": "No LogMsg call for this code exists in svdconv at 30f5e81; the related checks raised today are M354 (core exception listed as interrupt) and M355 (no interrupt below 16)."
+  },
+  {
+    "id": "ts-svdconv-m358",
+    "cause": "Two <addressBlock>s of the same peripheral overlap. svdconv keeps both for compatibility. Warning by default, error with --strict.",
+    "fix": "Merge the blocks into one, or change their <offset>/<size> so they do not overlap.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1227",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1247",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1263",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:177",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:251"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m359",
+    "cause": "An <addressBlock> has no <usage>, and no derivedFrom source supplies one. The block is dropped.",
+    "fix": "Add <usage>registers</usage> (or buffer, or reserved) to the block.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdAddressBlock.cpp:138",
+      "tools/svdconv/SVDModel/src/SvdAddressBlock.cpp:139",
+      "tools/svdconv/test/unittests/src/SvdModelValidationTest.cpp:111",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:178"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-svdconv-m360",
+    "cause": "An <addressBlock>'s <offset> or <size> (TAG) is larger than 0x1000000 (16 MiB). svdconv treats such a number as probably miscalculated but keeps it. Warning by default, error with --strict.",
+    "fix": "Check the value: <offset> is relative to the peripheral's <baseAddress>, not an absolute address, and <size> is the block length in bytes.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdAddressBlock.cpp:14",
+      "tools/svdconv/SVDModel/src/SvdAddressBlock.cpp:49",
+      "tools/svdconv/SVDModel/src/SvdAddressBlock.cpp:65",
+      "tools/svdconv/test/unittests/src/SvdModelValidationTest.cpp:147",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:179",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:252"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-svdconv-m361",
+    "cause": "An element's <name>, or a register's <displayName>, is 'reserved' (in any case). Reserved space must not be described as an element, so svdconv drops it. Warning by default, error with --strict.",
+    "fix": "Delete the element. Unused addresses and bits need no description; the header generator fills gaps with reserved members on its own.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:1210",
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:1211",
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:1240",
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:1241",
+      "tools/svdconv/SVDGenerator/src/HeaderData_Cluster.cpp:94",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:180",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:253"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m362",
+    "cause": "An element's <description> is just 'reserved' (in any case), which marks a placeholder for an unused register, field or value. svdconv only warns and keeps the element.",
+    "fix": "Delete the element if it only describes unused space, or write a description of what it really does.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:1279",
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:1280",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:181"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m363",
+    "cause": "<cpu> contains <sauRegionsConfig> but no <sauNumRegions>. The SAU region configuration is dropped.",
+    "fix": "Add <sauNumRegions> to <cpu> with the number of SAU regions the device implements (1 to 255; 0 together with configured regions gives M387).",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdCpu.cpp:196",
+      "tools/svdconv/SVDModel/src/SvdCpu.cpp:336",
+      "tools/svdconv/SVDModel/src/SvdCpu.cpp:338",
+      "tools/svdconv/test/unittests/src/SvdCpuModelTest.cpp:331",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:182"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-svdconv-m364",
+    "cause": "<cpu><sauNumRegions> is greater than 255, the most svdconv allows. The value is discarded together with the SAU region configuration, so generating the partition file then also reports M219 ('Number of SAU regions not set').",
+    "fix": "Set <sauNumRegions> to the number of SAU regions the device really implements (at most 255).",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdCpu.cpp:347",
+      "tools/svdconv/SVDModel/src/SvdCpu.cpp:349",
+      "tools/svdconv/SVDModel/src/SvdCpu.cpp:350",
+      "tools/svdconv/SVDModel/include/SvdCpu.h:11",
+      "tools/svdconv/test/unittests/src/SvdCpuModelTest.cpp:355",
+      "tools/svdconv/test/integtests/src/SvdConvIntegTests.cpp:255",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:183"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-svdconv-m365",
+    "cause": "Two registers occupy the same address or overlapping bytes, and the later one has no matching <alternateRegister> or <alternateGroup>. This warning variant of M339 is used when the clash is not a plain same-address one between top-level registers: one register is in a cluster or a dim array/list, the start addresses differ (partial overlap), or the access types differ (for example read-write against read-only).",
+    "fix": "Correct <addressOffset> or <size> if the overlap is a mistake. If the registers are intended views of the same address, add <alternateRegister> naming the other register (NAME2 in the message) or an <alternateGroup> to the later register.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:653",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:671",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:732",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:737",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1071",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:184"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m366",
+    "cause": "In a register array or list (<dim>), the register's <size> is larger than the distance between instances, <dimIncrement> times the device's <addressUnitBits> (the message calls it 'addressBitsUnits'), so consecutive instances would overlap. The register is dropped.",
+    "fix": "Set <dimIncrement> to the address distance between instances in address units (bytes on Cortex-M), for example <dimIncrement>4</dimIncrement> for 32-bit registers, or correct the register's <size>.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:719",
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:722",
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:723",
+      "tools/svdconv/SVDModel/src/SvdDimension.cpp:304",
+      "tools/svdconv/SVDModel/src/SvdDimension.cpp:312",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:185"
+    ],
+    "confidence": "medium",
+    "note": "The message names 'addressBitsUnits', which is not an SVD element; the schema element is <addressUnitBits> under <device>."
+  },
+  {
+    "id": "ts-svdconv-m367",
+    "cause": "A field's effective <access> does not fit its register's effective access: a read-only register may only contain read-only fields, a write-only or writeOnce register only write-only or writeOnce fields, while a read-write register accepts any field access. Access not set at any level counts as read-write.",
+    "fix": "Make the field's <access> consistent with the register's: correct the field's <access>, or set the register's <access> to read-write when it holds both readable and writable fields.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdField.cpp:516",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:519",
+      "tools/svdconv/SVDModel/src/SvdField.cpp:520",
+      "tools/svdconv/SVDModel/src/SvdUtils.cpp:1514",
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:1116",
+      "libs/errlog/src/ErrLog.cpp:24",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:186"
+    ],
+    "confidence": "medium",
+    "note": "LogMsg(\"M367\", lineNo) passes no names, so the output shows the literal placeholders <NAME>, <ACCESS>, <NAME2>, <ACCESS2>; use the line number to find the field."
+  },
+  {
+    "id": "ts-svdconv-m368",
+    "cause": "Two clusters in the same peripheral or cluster start at the same address, and the later one has no <alternateCluster> naming a cluster already at that address.",
+    "fix": "Correct the later cluster's <addressOffset>, or, if both clusters are alternative views of the same registers, add <alternateCluster>NAME2</alternateCluster> to the later one.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:757",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:769",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:779",
+      "tools/svdconv/SVDModel/src/SvdPeripheral.cpp:789",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:187"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m369",
+    "cause": "An <enumeratedValue> has neither a <value> nor <isDefault>true</isDefault>. The enumerated value is dropped.",
+    "fix": "Add the value, for example <value>0x1</value> or <value>#01</value>, or mark the catch-all entry with <isDefault>true</isDefault>.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdEnum.cpp:266",
+      "tools/svdconv/SVDModel/src/SvdEnum.cpp:281",
+      "tools/svdconv/SVDModel/src/SvdEnum.cpp:282",
+      "tools/svdconv/test/unittests/src/SvdModelValidationTest.cpp:166",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:188"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-svdconv-m370",
+    "cause": "A register has no <addressOffset> (the message calls it <offset>), and no derivedFrom source supplies one. The register is dropped.",
+    "fix": "Add <addressOffset> with the register's offset from the peripheral's base address or from the enclosing cluster, for example <addressOffset>0x04</addressOffset>.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:692",
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:694",
+      "tools/svdconv/SVDModel/src/SvdRegister.cpp:695",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:189"
+    ],
+    "confidence": "medium",
+    "note": "The message names <offset>, but the register element is <addressOffset>."
+  },
+  {
+    "id": "ts-svdconv-m371",
+    "cause": "A cluster's <headerStructName> equals the name svdconv derives from the hierarchy anyway (the names of peripheral and enclosing clusters joined with '_', for example TIM1_CH). svdconv drops the redundant headerStructName. Warning by default, error with --strict.",
+    "fix": "Remove <headerStructName> from the cluster, or set it to a different type name if a specific one is wanted.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdCluster.cpp:569",
+      "tools/svdconv/SVDModel/src/SvdCluster.cpp:570",
+      "tools/svdconv/SVDModel/src/SvdCluster.cpp:571",
+      "tools/svdconv/SVDModel/src/SvdItem.cpp:497",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:190",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:254"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-svdconv-m372",
+    "cause": "A name that must be unique across the whole device is used twice; TAG says which: a peripheral <name>, a peripheral or cluster <headerStructName>, a cluster's derived type name, or an <enumeratedValues> <headerEnumName>. An element derived from the first one (derivedFrom) is exempt. The later element is dropped.",
+    "fix": "Rename one of the two (LINE gives the first), or use derivedFrom when the second element is meant to reuse the first one's definition.",
+    "evidence": [
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:381",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:390",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:398",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:415",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:440",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:446",
+      "tools/svdconv/SVDModel/src/SvdDevice.cpp:480",
+      "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:191"
+    ],
+    "confidence": "medium"
+  }
+]

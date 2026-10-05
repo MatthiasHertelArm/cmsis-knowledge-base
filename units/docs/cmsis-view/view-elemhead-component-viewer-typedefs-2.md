@@ -16,72 +16,17 @@ Define the member of a `<typedef>`; typically a **struct,** **class** member, or
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    `<typedef>` | 
-    elem_typedef | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    name | 
-    Name of member variable. Is shown as text in the \cviewer. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    type | 
-    scalar_data_type or pointer to complex_data_type to access chained lists. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    offset | 
-    Offset to base address in `[Bytes]`. Use the uVision debug dialog **Symbols** to find the offset. You can use scvd_expression. For imported members, the offset is recalculated. Refer to the description of \attr{import} in `<typedef>`.
-     | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    size | 
-    Size in target memory in `[Bytes]`. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    info | 
-    Descriptive text with additional information (comment). | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    Child Element | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    `<enum>` | 
-    Name of an enumeration that is displayed as text instead of a value. | 
-    EnumType | 
-    0..* | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| `<typedef>` | elem_typedef |  |  |
+| Attributes | Description | Type | Use |
+| name | Name of member variable. Is shown as text in the \cviewer. | xs:string | required |
+| type | scalar_data_type or pointer to complex_data_type to access chained lists. | xs:string | required |
+| offset | Offset to base address in `[Bytes]`. Use the uVision debug dialog **Symbols** to find the offset. You can use scvd_expression. For imported members, the offset is recalculated. Refer to the description of \attr{import} in `<typedef>`. | xs:string | required |
+| size | Size in target memory in `[Bytes]`. | xs:string | optional |
+| info | Descriptive text with additional information (comment). | xs:string | optional |
+| Child Element | Description | Type | Occurrence |
+| `<enum>` | Name of an enumeration that is displayed as text instead of a value. | EnumType | 0..* |
 
 
  

@@ -25,6 +25,6 @@ The following directories and files relevant to CMSIS-Driver are present in the 
 📂 CMSIS                          | CMSIS Base software components folder
  ┣ 📂 Documentation/html/Driver   | A local copy of this CMSIS-Driver documentation
  ┣ 📂 Driver                      | Directory with CMSIS-Driver component, see cmsis_driver_files
-&emsp;  ┣ 📂 DriverTemplates | Driver Template files (Driver__interface_.c)
-&emsp;  ┣ 📂 Include         | API header files (Driver__interface_.h, %Driver_Common.h)
-&emsp;  ┗ 📂 VIO             | Implementation of virtual Input/Output interface (vio_interface_gr)
+   ┣ 📂 DriverTemplates | Driver Template files (Driver__interface_.c)
+   ┣ 📂 Include         | API header files (Driver__interface_.h, %Driver_Common.h)
+   ┗ 📂 VIO             | Implementation of virtual Input/Output interface (vio_interface_gr)

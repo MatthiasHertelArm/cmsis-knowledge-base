@@ -20,7 +20,7 @@ FreeRTOS, Zephyr, embOS,and Keil RTX5.
 
 (figure: RTOS Views with FreeRTOS)
 
-> &#128221; **Note:**
+> 📝 **Note:**
 >
 > - This is not a live view. It only gets updated when the program execution is stopped.
 > - To enable the view, you need to go to the debug view and press Ctrl/Cmd - Shift - P. Select

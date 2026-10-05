@@ -22,104 +22,22 @@ The child elements of the `<list>` element are executed therefore multiple times
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    `<object>` | 
-    elem_object | 
-  
-
-  | 
-    \refelem{elem_list,list} | 
-    elem_list | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    name | 
-    The name of a loop variable that is defined previously defined with the element `<var>`. When **limit** is specified, this variable is incremented by `1` with every loop iteration. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    start | 
-    Expression that specifies the initial value of the loop variable. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    limit | 
-    Expression that specifies the limit value of the loop variable. The loop is terminated when `limit` >= `loop variable`. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    while | 
-    Expression that terminates loop execution when the result is `0`.  Default value is `1`. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    cond | 
-    Conditional execution: element is executed when expression result is not `0`. Default value is `1`. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    Child Element | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    \refelem{elem_list,list} | 
-    Iterate a loop (for or while construct). | 
-    ListTypeO | 
-    0..* | 
-  
-
-  | 
-    `<readlist>` | 
-    Read a list of structured variables (arrays or linked list) from application program. | 
-    ReadlistType | 
-    0..* | 
-  
-
-  | 
-    `<read>` | 
-    Read scalar variables or arrays from application program. | 
-    ReadType | 
-    0..* | 
-  
-
-  | 
-    `<var>` | 
-    Define temporary variables. | 
-    VarType | 
-    0..* | 
-  
-
-  | 
-    `<calc>` | 
-    Calculate temporary variables. | 
-    CalcType | 
-    0..* | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| `<object>` | elem_object |  |  |
+| \refelem{elem_list,list} | elem_list |  |  |
+| Attributes | Description | Type | Use |
+| name | The name of a loop variable that is defined previously defined with the element `<var>`. When **limit** is specified, this variable is incremented by `1` with every loop iteration. | xs:string | required |
+| start | Expression that specifies the initial value of the loop variable. | xs:string | required |
+| limit | Expression that specifies the limit value of the loop variable. The loop is terminated when `limit` >= `loop variable`. | xs:string | optional |
+| while | Expression that terminates loop execution when the result is `0`. Default value is `1`. | xs:string | optional |
+| cond | Conditional execution: element is executed when expression result is not `0`. Default value is `1`. | xs:string | optional |
+| Child Element | Description | Type | Occurrence |
+| \refelem{elem_list,list} | Iterate a loop (for or while construct). | ListTypeO | 0..* |
+| `<readlist>` | Read a list of structured variables (arrays or linked list) from application program. | ReadlistType | 0..* |
+| `<read>` | Read scalar variables or arrays from application program. | ReadType | 0..* |
+| `<var>` | Define temporary variables. | VarType | 0..* |
+| `<calc>` | Calculate temporary variables. | CalcType | 0..* |
 
 
 

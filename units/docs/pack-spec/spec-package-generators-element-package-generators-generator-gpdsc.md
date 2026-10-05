@@ -31,26 +31,8 @@ Only one such element can exist in \`<generator>`.
 
 
 
-  | 
-    Parent | 
-    Chain | 
-  
-
-  | 
-    generator | 
-    element_generator | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    name | 
-	Path and name of the GPDSC that the generator creates and updates.
-	 | 
-	xs:string | 
-	required |
+| Parent | Chain |  |  |
+|---|---|---|---|
+| generator | element_generator |  |  |
+| Attributes | Description | Type | Use |
+| name | Path and name of the GPDSC that the generator creates and updates. | xs:string | required |

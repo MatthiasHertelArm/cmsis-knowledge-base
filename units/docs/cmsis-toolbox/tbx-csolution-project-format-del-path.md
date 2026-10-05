@@ -18,7 +18,7 @@ Remove include paths (that are defined at the cproject level) from the command l
 
 `del-paths:`                                               | Content
 :----------------------------------------------------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `- <path-name>`                         | Named path to be removed; `*` for all
+    `- <path-name>`                         | Named path to be removed; `*` for all
 
 **Example:**
 

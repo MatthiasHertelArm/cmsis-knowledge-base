@@ -38,55 +38,14 @@ the SAU regions are disabled, the protection level is non-secure (`n`).
 **/device/cpu/sauRegionsConfig**
 
 
-    | 
-        Parent Element | 
-        Element Chain | 
-    
-
-    | 
-        `<cpu>` | 
-        elem_cpu | 
-    
-
-    | 
-        Attributes | 
-        Description | 
-        Type | 
-        Use | 
-    
-
-    | 
-        enabled | 
-        Specify whether the Secure Attribution Units are enabled. The following values can be used:
-            `true`,`false`,`1`, and `0`.
-         | 
-        xs:boolean | 
-        optional | 
-    
-
-    | 
-        protectionWhenDisabled | 
-        Set the protection mode for disabled regions.
-           When the complete SAU is disabled, the whole memory is treated either `"s"`=secure or `"n"`=non-secure.
-           This value is inherited by the \tagem{region} element. Refer to element `<protection>` for details and predefined values.
-         | 
-        xs:string | 
-        optional | 
-    
-
-    | 
-        Child Elements | 
-        Description | 
-        Type | 
-        Occurrence | 
-    
-
-    | 
-        `<region>` | 
-        Group to configure SAU regions. | 
-        xs:string | 
-        0..* | 
-    
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| `<cpu>` | elem_cpu |  |  |
+| Attributes | Description | Type | Use |
+| enabled | Specify whether the Secure Attribution Units are enabled. The following values can be used: `true`,`false`,`1`, and `0`. | xs:boolean | optional |
+| protectionWhenDisabled | Set the protection mode for disabled regions. When the complete SAU is disabled, the whole memory is treated either `"s"`=secure or `"n"`=non-secure. This value is inherited by the \tagem{region} element. Refer to element ` ` for details and predefined values. | xs:string | optional |
+| Child Elements | Description | Type | Occurrence |
+| `<region>` | Group to configure SAU regions. | xs:string | 0..* |
 
 
 

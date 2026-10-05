@@ -24,9 +24,9 @@ Allows control of the directory structure for building output files and temporar
 
 `output-dirs:`                     |              | Content
 :----------------------------------|:-------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `outdir:`       |  Optional    | Specifies the directory for the build output files (ELF, binary, MAP files).
-&nbsp;&nbsp;&nbsp; `tmpdir:`       |  Optional    | Specifies the directory for the interim temporary files.
-&nbsp;&nbsp;&nbsp; `intdir:`       |  Optional    | Legacy node, applied instead of `tmpdir:` when using `cbuild` with option `--cbuildgen`.
+    `outdir:`       |  Optional    | Specifies the directory for the build output files (ELF, binary, MAP files).
+    `tmpdir:`       |  Optional    | Specifies the directory for the interim temporary files.
+    `intdir:`       |  Optional    | Legacy node, applied instead of `tmpdir:` when using `cbuild` with option `--cbuildgen`.
 
 Without an active target selection, the default settings for `output-dirs:` are:
 
@@ -76,8 +76,8 @@ The `generators:` node can be added at various levels of the `*.yml` input files
 
 `generators:`                  |            | Content
 :------------------------------|:-----------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `base-dir:` |  Optional  | Base directory for unspecified generators; default: `$ProjectDir()$/generated`.
-&nbsp;&nbsp;&nbsp; `options:`  |  Optional  | Specific generator options; allows explicit directory configuration for a generator.
+    `base-dir:` |  Optional  | Base directory for unspecified generators; default: `$ProjectDir()$/generated`.
+    `options:`  |  Optional  | Specific generator options; allows explicit directory configuration for a generator.
 
 !!! Note
     The base directory is extended for each generator with `/<generator-id>`; `<generator-id>` is defined by the `id` in the generator element of the PDSC file.
@@ -87,9 +87,9 @@ The `generators:` node can be added at various levels of the `*.yml` input files
 `options:`                     |            | Content
 :------------------------------|:-----------|:------------------------------------
 `- generator:`                 |  Optional  | Identifier of the generator tool, specified with `id` in the [generators element](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_generators_pg.html#element_generator) of the PDSC file.
-&nbsp;&nbsp;&nbsp; `path:`     |  Optional  | Specifies the directory for generated files. Relative paths used the location of the `*.cproject.yml` or `*.clayer.yml` file as the base directory.
-&nbsp;&nbsp;&nbsp; `name:`     |  Optional  | Specifies the base name of the [generator import file](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/YML-CBuild-Format.md#generator-import-file) (added in CMSIS-Toolbox 2.4.0); typically used for a board layer.
-&nbsp;&nbsp;&nbsp; `map:`      |  Optional  | Mapping of the *csolution project* to a generator-specific run-time context name (added in CMSIS-Toolbox 2.4.0).
+    `path:`     |  Optional  | Specifies the directory for generated files. Relative paths used the location of the `*.cproject.yml` or `*.clayer.yml` file as the base directory.
+    `name:`     |  Optional  | Specifies the base name of the [generator import file](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/YML-CBuild-Format.md#generator-import-file) (added in CMSIS-Toolbox 2.4.0); typically used for a board layer.
+    `map:`      |  Optional  | Mapping of the *csolution project* to a generator-specific run-time context name (added in CMSIS-Toolbox 2.4.0).
 
 **Example:**
 
@@ -115,7 +115,7 @@ Allows to control the directory structure for [RTE (run-time environment)](https
 
 `rte:`                         |            | Content
 :------------------------------|:-----------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `base-dir:` |  Optional  | Base directory for unspecified generators; default: `$ProjectDir()$/RTE`.
+    `base-dir:` |  Optional  | Base directory for unspecified generators; default: `$ProjectDir()$/RTE`.
 
 ```yml
 rte:

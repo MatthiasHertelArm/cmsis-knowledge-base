@@ -1,0 +1,74 @@
+---
+id: "zep-custom-kconfig-preprocessor-functi-devicetree-related-functions"
+type: "concept"
+domain: "project"
+title: "Custom Kconfig Preprocessor Functions: Devicetree-related Functions"
+summary: "The functions listed below are used to get devicetree information into Kconfig. The int version of each function returns the value as a decimal integer, while the hex version returns a hexadecimal value starting with 0x."
+status: "draft"
+collection: "zephyr"
+source: "zephyrproject-rtos/zephyr@8f62a4a:doc/build/kconfig/preprocessor-functions.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/build/kconfig/preprocessor-functions.rst"
+license: "Apache-2.0"
+mode: "V"
+---
+
+The functions listed below are used to get devicetree information into Kconfig.
+The `*_int` version of each function returns the value as a decimal integer,
+while the `*_hex` version returns a hexadecimal value starting with `0x`.
+
+```none
+
+$(dt_alias_enabled,<node alias>)
+$(dt_chosen_bool_prop, <property in /chosen>, <prop>)
+$(dt_chosen_enabled,<property in /chosen>)
+$(dt_chosen_has_compat,<property in /chosen>,<compatible string>)
+$(dt_chosen_label,<property in /chosen>)
+$(dt_chosen_partition,addr_hex,<chosen>[,<index>,<unit>])
+$(dt_chosen_partition,addr_int,<chosen>[,<index>,<unit>])
+$(dt_chosen_path,<property in /chosen>)
+$(dt_chosen_reg_addr_hex,<property in /chosen>[,<index>,<unit>])
+$(dt_chosen_reg_addr_int,<property in /chosen>[,<index>,<unit>])
+$(dt_chosen_reg_size_hex,<property in /chosen>[,<index>,<unit>])
+$(dt_chosen_reg_size_int,<property in /chosen>[,<index>,<unit>])
+$(dt_class_enabled,<class name>)
+$(dt_compat_all_has_prop,<compatible string>,<prop>[,<value>])
+$(dt_compat_any_has_prop,<compatible string>,<prop>[,<value>])
+$(dt_compat_any_on_bus,<compatible string>,<prop>)
+$(dt_compat_enabled,<compatible string>)
+$(dt_compat_enabled_num,<compatible string>)
+$(dt_compat_on_bus,<compatible string>,<bus>)
+$(dt_gpio_hogs_enabled)
+$(dt_has_compat,<compatible string>)
+$(dt_highest_controller_irq_number,<node path>,<cell>)
+$(dt_node_array_prop_has_val,<node path>,<prop>,<value>)
+$(dt_node_array_prop_hex,<node path>,<prop>,<index>[,<unit>])
+$(dt_node_array_prop_int,<node path>,<prop>,<index>[,<unit>])
+$(dt_node_bool_prop,<node path>,<prop>)
+$(dt_node_has_compat,<node path>,<compatible string>)
+$(dt_node_has_prop,<node path>,<prop>)
+$(dt_node_int_prop_hex,<node path>,<prop>[,<unit>])
+$(dt_node_int_prop_int,<node path>,<prop>[,<unit>])
+$(dt_node_parent,<node path>)
+$(dt_node_ph_array_prop_hex,<node path>,<prop>,<index>,<cell>[,<unit>])
+$(dt_node_ph_array_prop_int,<node path>,<prop>,<index>,<cell>[,<unit>])
+$(dt_node_ph_prop_path,<node path>,<prop>)
+$(dt_node_reg_addr_hex,<node path>[,<index>,<unit>])
+$(dt_node_reg_addr_int,<node path>[,<index>,<unit>])
+$(dt_node_reg_size_hex,<node path>[,<index>,<unit>])
+$(dt_node_reg_size_int,<node path>[,<index>,<unit>])
+$(dt_node_str_prop_equals,<node path>,<prop>,<value>)
+$(dt_nodelabel_array_prop_has_val, <node label>, <prop>, <value>)
+$(dt_nodelabel_bool_prop,<node label>,<prop>)
+$(dt_nodelabel_enabled,<node label>)
+$(dt_nodelabel_enabled_with_compat,<node label>,<compatible string>)
+$(dt_nodelabel_exists,<node label>)
+$(dt_nodelabel_has_compat,<node label>,<compatible string>)
+$(dt_nodelabel_has_prop,<node label>,<prop>)
+$(dt_nodelabel_path,<node label>)
+$(dt_nodelabel_reg_addr_hex,<node label>[,<index>,<unit>])
+$(dt_nodelabel_reg_addr_int,<node label>[,<index>,<unit>])
+$(dt_nodelabel_reg_size_hex,<node label>[,<index>,<unit>])
+$(dt_nodelabel_reg_size_int,<node label>[,<index>,<unit>])
+$(dt_path_enabled,<node path>)
+$(dt_partition_mtd,<node path>)
+```

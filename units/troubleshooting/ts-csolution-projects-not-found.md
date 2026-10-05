@@ -9,10 +9,13 @@ severity: "error"
 symptoms: ["projects not found"]
 symptom_regex: "^projects not found$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e81:tools/projmgr/src/ProjMgr.cpp:505"
+source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:505"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+cause_origin: "source-analysis"
+confidence: "high"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:505", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1286", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestSolution/missing_projects.csolution.yml:3", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:5198"]
 ---
 
 ## Symptom
@@ -21,14 +24,23 @@ mode: "V"
 
 ## Cause
 
-_offen, im Review ergänzen_
+The csolution.yml lists no project: `projects:` is missing or empty and there is no `west:` or `cmake:` entry. Only a solution whose target sets contain `images:` without any `project-context:` (an image-only solution) may do without projects.
 
 ## Fix
 
-_offen, im Review ergänzen_
+Add the projects under `projects:` in the csolution.yml, e.g. `projects:` followed by `  - project: ./blinky/blinky.cproject.yml`.
 
-## Trigger im Quelltext
+## Trigger in the source
 
 ```cpp
 if (!IsSolutionImageOnly() && cprojects.empty() && m_parser.GetCsolution().westApps.empty() && m_parser.GetCsolution().cmakeApps.empty()) {
 ```
+
+## Evidence
+
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+
+- `tools/projmgr/src/ProjMgr.cpp:505`
+- `tools/projmgr/src/ProjMgr.cpp:1286`
+- `tools/projmgr/test/data/TestSolution/missing_projects.csolution.yml:3`
+- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:5198`

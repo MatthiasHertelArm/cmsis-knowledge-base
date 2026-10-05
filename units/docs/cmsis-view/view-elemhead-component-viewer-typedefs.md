@@ -16,25 +16,8 @@ Is the enclosing element for data type definitions.
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    `<component_viewer>` | 
-    elem_component_viewer | 
-  
-
-  | 
-    Child Element | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    `<typedef>` | 
-    Define complex data types. | 
-    TypedefType | 
-    1..* |
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| `<component_viewer>` | elem_component_viewer |  |  |
+| Child Element | Description | Type | Occurrence |
+| `<typedef>` | Define complex data types. | TypedefType | 1..* |

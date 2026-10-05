@@ -12,53 +12,10 @@ license: "Apache-2.0"
 mode: "V"
 ---
 
-| 
-      \#define | 
-      Value Range | 
-      Default | 
-      Description | 
-    
-
-    | 
-      SCB_CSR_AIRCR_INIT | 
-      0 .. 1 | 
-      1 | 
-      Setup behaviour of Sleep and Exception Handling
-           - 0: not setup of CSR and AIRCR registers; the values below are not relevant
-           - 1: setup of CSR and AIRCR registers with values below | 
-    
-
-    | 
-      CSR_INIT_DEEPSLEEPS_VAL | 
-      0 .. 1 | 
-      1 | 
-      value for SCB_CSR register bit DEEPSLEEPS
-           - 0: Deep Sleep can be enabled by Secure and Non-Secure state
-           - 1: Deep Sleep can be enabled by Secure state only | 
-    
-
-    | 
-      AIRCR_INIT_SYSRESETREQS_VAL | 
-      0 .. 1 | 
-      1 | 
-      value for SCB_AIRCR register bit SYSRESETREQS
-           - 0: System reset request accessible from Secure and Non-Secure state
-           - 1: System reset request accessible from Secure state only | 
-    
-
-    | 
-      AIRCR_INIT_PRIS_VAL | 
-      0 .. 1 | 
-      1 | 
-      value for SCB_AIRCR register bit PRIS
-           - 0: Priority of Non-Secure exceptions is Not altered
-           - 1: Priority of Non-Secure exceptions is Lowered to 0x80-0xFF | 
-    
-
-    | 
-      AIRCR_INIT_BFHFNMINS_VAL | 
-      0 .. 1 | 
-      0 | 
-      value for SCB_AIRCR register bit BFHFNMINS
-           - 0: BusFault, HardFault, and NMI target are Secure state
-           - 1: BusFault, HardFault, and NMI target are Non-Secure state |
+| \#define | Value Range | Default | Description |
+|---|---|---|---|
+| SCB_CSR_AIRCR_INIT | 0 .. 1 | 1 | Setup behaviour of Sleep and Exception Handling - 0: not setup of CSR and AIRCR registers; the values below are not relevant - 1: setup of CSR and AIRCR registers with values below |
+| CSR_INIT_DEEPSLEEPS_VAL | 0 .. 1 | 1 | value for SCB_CSR register bit DEEPSLEEPS - 0: Deep Sleep can be enabled by Secure and Non-Secure state - 1: Deep Sleep can be enabled by Secure state only |
+| AIRCR_INIT_SYSRESETREQS_VAL | 0 .. 1 | 1 | value for SCB_AIRCR register bit SYSRESETREQS - 0: System reset request accessible from Secure and Non-Secure state - 1: System reset request accessible from Secure state only |
+| AIRCR_INIT_PRIS_VAL | 0 .. 1 | 1 | value for SCB_AIRCR register bit PRIS - 0: Priority of Non-Secure exceptions is Not altered - 1: Priority of Non-Secure exceptions is Lowered to 0x80-0xFF |
+| AIRCR_INIT_BFHFNMINS_VAL | 0 .. 1 | 0 | value for SCB_AIRCR register bit BFHFNMINS - 0: BusFault, HardFault, and NMI target are Secure state - 1: BusFault, HardFault, and NMI target are Non-Secure state |

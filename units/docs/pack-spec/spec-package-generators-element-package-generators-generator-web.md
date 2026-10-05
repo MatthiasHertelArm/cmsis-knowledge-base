@@ -26,39 +26,10 @@ This element contains information about the web generation application.
 
 
 
-  | 
-    Parent | 
-    Chain | 
-  
-
-  | 
-    generator | 
-    element_generator | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    url | 
-    Specifies the URL of the web service.
-    URL | 
-    required | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    argument | 
-    Arguments passed along to the web service. | 
-    GeneratorCommandArgumentType | 
-    0..* |
+| Parent | Chain |  |  |
+|---|---|---|---|
+| generator | element_generator |  |  |
+| Attributes | Description | Type | Use |
+| url | Specifies the URL of the web service. URL | required |  |
+| Child Elements | Description | Type | Occurrence |
+| argument | Arguments passed along to the web service. | GeneratorCommandArgumentType | 0..* |

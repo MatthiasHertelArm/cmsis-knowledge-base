@@ -24,7 +24,7 @@ algorithms used for device programming. The following syntax is used to specify 
 Element       |          | Description
 :-------------|:---------|:---------------------
 `Dvendor`     | Optional | Name (without enum field) of the device vendor-defined in `<devices><family>` element of the software pack.
-`Dname`       | Optional | Device name (Dname attribute) or, when used, the variant name (Dvariant attribute) as defined in the \<devices\> element.
+`Dname`       | Optional | Device name (Dname attribute) or, when used, the variant name (Dvariant attribute) as defined in the `<devices>` element.
 `Pname`       | Optional | Processor identifier (Pname attribute) as defined in the `<devices>` element.
 
 !!! Note

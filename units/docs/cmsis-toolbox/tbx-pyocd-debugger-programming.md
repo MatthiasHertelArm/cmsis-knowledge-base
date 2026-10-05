@@ -21,11 +21,11 @@ programming flash on the target.
 `programming:`                                    |              | Content
 :-------------------------------------------------|:-------------|:------------------------------------
 `- algorithm:`                                    | **Required** | Programming algorithm file including the path.
-&nbsp;&nbsp;&nbsp; `start:`                       | **Required** | Start address of memory covered by the programming algorithm.
-&nbsp;&nbsp;&nbsp; `size:`                        | **Required** | Size of memory covered by the programming algorithm.
-&nbsp;&nbsp;&nbsp; `ram-start:`                   | **Required** | Start address of RAM where the algorithm will be executed from.
-&nbsp;&nbsp;&nbsp; `ram-size:`                    | **Required** | Maximum size of RAM available for executing the programming algorithm.
-&nbsp;&nbsp;&nbsp; `pname:`                       |   Optional   | Specifies the processor for the execution of the algorithm.
+    `start:`                       | **Required** | Start address of memory covered by the programming algorithm.
+    `size:`                        | **Required** | Size of memory covered by the programming algorithm.
+    `ram-start:`                   | **Required** | Start address of RAM where the algorithm will be executed from.
+    `ram-size:`                    | **Required** | Maximum size of RAM available for executing the programming algorithm.
+    `pname:`                       |   Optional   | Specifies the processor for the execution of the algorithm.
 
 **Example:**
 

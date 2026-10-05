@@ -3,7 +3,7 @@ id: "view-elemhead-component-viewer-typedefs-elemhead-component-viewer-typedefs-
 type: "concept"
 domain: "trace"
 title: "\\elemhead{component_viewer/typedefs/typedef/member}: \\elemhead{component_viewer/typedefs/typedef/member/enum}"
-summary: "Defines an enumeration name that is displayed as text instead of a value. A symbolic enumerator name represents a constant value that can be referenced using the syntax typedefname:membername:enumname."
+summary: "Defines an enumeration name that is displayed as text instead of a value. A symbolic enumerator name represents a constant value that can be referenced using the syntax typedef_name:member_name:enum_name."
 status: "draft"
 collection: "cmsis-view"
 source: "ARM-software/CMSIS-View@fef5aca:Documentation/Doxygen/src/ref_scvd.txt"
@@ -17,43 +17,13 @@ A symbolic enumerator name represents a constant value that can be referenced us
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    `<member>` | 
-    elem_member | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    name | 
-    Name of enumeration. Is shown as text in the \cviewer. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    value | 
-    Expression that specifies the enum value. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    info | 
-    Descriptive text with additional information (comment). | 
-    xs:string | 
-    optional | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| `<member>` | elem_member |  |  |
+| Attributes | Description | Type | Use |
+| name | Name of enumeration. Is shown as text in the \cviewer. | xs:string | required |
+| value | Expression that specifies the enum value. | xs:string | optional |
+| info | Descriptive text with additional information (comment). | xs:string | optional |
 
 
  

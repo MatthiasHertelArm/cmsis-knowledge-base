@@ -19,11 +19,11 @@ Describes the image data format, typically used for a camera data stream.
 `content:`                                             | Image metadata for `content:` node
 :------------------------------------------------------|:---------------------------------------------------
 `- image:`                                             | Image (camera data) format specification
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `pixel_format:`   | Pixel format identifier (required)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `width:`          | Number of pixels per row (required, integer >= 1)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `height:`         | Number of rows (required, integer >= 1)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `stride_bytes:`   | Bytes per row for single-plane formats (optional, see note)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `planes:`         | Per-plane stride for multi-plane formats (optional, 2..3 entries, see note)
+       `pixel_format:`   | Pixel format identifier (required)
+       `width:`          | Number of pixels per row (required, integer >= 1)
+       `height:`         | Number of rows (required, integer >= 1)
+       `stride_bytes:`   | Bytes per row for single-plane formats (optional, see note)
+       `planes:`         | Per-plane stride for multi-plane formats (optional, 2..3 entries, see note)
 
 `planes:`                            | Per-plane metadata entry
 :------------------------------------|---------------------------------------------------

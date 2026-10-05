@@ -20,9 +20,9 @@ This section lists options that are specific for the Arm Debugger.
 
 debugger:                            |              | Description
 :------------------------------------|:-------------|:-----------------------------------------------
-&nbsp;&nbsp;&nbsp; `name:`           | **Required** | Identifies the debug adapter with `<adapter>@Arm-Debugger`.
-&nbsp;&nbsp;&nbsp; `clock-armdbg`    |   Optional   | Debug clock speed. Possible values: auto (default), 50MHz, 33MHz, 25MHz, 20MHz, 10MHz, 5MHz, 2MHz, 1MHz, 500kHz, 200kHz, 100kHz, 50kHz, 20kHz, 10kHz, 5kHz
-&nbsp;&nbsp;&nbsp; `protocol-armdbg` |   Optional   | Debug protocol. Possible values: auto (default), JTAG, SWD
+    `name:`           | **Required** | Identifies the debug adapter with `<adapter>@Arm-Debugger`.
+    `clock-armdbg`    |   Optional   | Debug clock speed. Possible values: auto (default), 50MHz, 33MHz, 25MHz, 20MHz, 10MHz, 5MHz, 2MHz, 1MHz, 500kHz, 200kHz, 100kHz, 50kHz, 20kHz, 10kHz, 5kHz
+    `protocol-armdbg` |   Optional   | Debug protocol. Possible values: auto (default), JTAG, SWD
 
 **Example:**
 

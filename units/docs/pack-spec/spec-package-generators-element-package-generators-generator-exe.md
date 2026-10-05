@@ -29,33 +29,9 @@ This element contains information about the generation binary/executable.
 
 
 
-  | 
-    Parent | 
-    Chain | 
-  
-
-  | 
-    generator | 
-    element_generator | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    command | 
-    Invocation command for the generator tool. Command line options should be passed via `\<arguments>.`
-    GeneratorCommandType | 
-    1..4 | 
-  
-
-  | 
-    argument | 
-    Arguments passed along with the `\<command>` of the format `\<argument` `switch="-data">myFileName\</argument>.`
-        Path information for files can be specified absolute or relative to the location (path) of the GPDSC file.
-    GeneratorCommandArgumentType | 
-    1..* |
+| Parent | Chain |  |  |
+|---|---|---|---|
+| generator | element_generator |  |  |
+| Child Elements | Description | Type | Occurrence |
+| command | Invocation command for the generator tool. Command line options should be passed via `\<arguments>.` GeneratorCommandType | 1..4 |  |
+| argument | Arguments passed along with the `\<command>` of the format `\<argument` `switch="-data">myFileName\</argument>.` Path information for files can be specified absolute or relative to the location (path) of the GPDSC file. GeneratorCommandArgumentType | 1..* |  |

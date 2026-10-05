@@ -16,47 +16,11 @@ Grouping element containing a choice of at least one bundle or component. No mor
 
 
 
-  | 
-    Parent | 
-    Element Chain | 
-  
-
-  | 
-    package | 
-    /package | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    generator | 
-    Specifies the generator ID of the generator that has been used to generate all components within this section. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    bundle | 
-    Grouping element for a collection of inter-operable components belonging to the same Cclass.
-      The components section must not be empty. At least one bundle or component is required. | 
-    ComponentType | 
-    0..* | 
-  
-
-  | 
-    component | 
-    component description element. The components section must not be empty. At least one component or bundle is required. | 
-    ComponentType | 
-    0..* |
+| Parent | Element Chain |  |  |
+|---|---|---|---|
+| package | /package |  |  |
+| Attributes | Description | Type | Use |
+| generator | Specifies the generator ID of the generator that has been used to generate all components within this section. | xs:string | optional |
+| Child Elements | Description | Type | Occurrence |
+| bundle | Grouping element for a collection of inter-operable components belonging to the same Cclass. The components section must not be empty. At least one bundle or component is required. | ComponentType | 0..* |
+| component | component description element. The components section must not be empty. At least one component or bundle is required. | ComponentType | 0..* |

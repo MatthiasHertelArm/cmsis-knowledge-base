@@ -18,25 +18,8 @@ size of all previous \`<block>` and \`<gap>` elements of this flash device.
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    flashinfo | 
-    element_flashinfo | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    size | 
-    Gap size in bytes. | 
-    NonNegativeInteger | 
-    required |
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| flashinfo | element_flashinfo |  |  |
+| Attributes | Description | Type | Use |
+| size | Gap size in bytes. | NonNegativeInteger | required |

@@ -9,10 +9,13 @@ severity: "error"
 symptoms: ["check <args> was not found"]
 symptom_regex: "^check <args> was not found$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e81:tools/projmgr/src/ProjMgr.cpp:460"
+source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:460"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+cause_origin: "source-analysis"
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:448-465"]
 ---
 
 ## Symptom
@@ -21,14 +24,20 @@ mode: "V"
 
 ## Cause
 
-_offen, im Review ergänzen_
+`csolution check` was followed by a subcommand other than `pack-updates`, the only one it knows. The text `<args>` is printed literally, not replaced by what was typed.
 
 ## Fix
 
-_offen, im Review ergänzen_
+Use `csolution check pack-updates <name>.csolution.yml`.
 
-## Trigger im Quelltext
+## Trigger in the source
 
 ```cpp
 if (it == handlers.end()) {
 ```
+
+## Evidence
+
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
+
+- `tools/projmgr/src/ProjMgr.cpp:448-465`

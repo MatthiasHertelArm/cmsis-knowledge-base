@@ -18,10 +18,10 @@ The `*.ctrace-run.yml` file starts with the node `ctrace-run:`. It is generated 
 
 `ctrace-run:`                                            |             | Content
 :--------------------------------------------------------|:------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `generated-by:`                       |  Optional   | Tool and version that generated the file.
-&nbsp;&nbsp;&nbsp; `ctrace-setup:`                       |  Optional   | Copy of [`setup`](#file-structure-of-ctraceyml) node in the `*.ctrace.yml` file.
-&nbsp;&nbsp;&nbsp; `ctrace-disable:`                     |**Required** | Per-processor register values that disable trace features before applying `ctrace-refs:`.
-&nbsp;&nbsp;&nbsp; `ctrace-refs:`                        |**Required** | List of [references](#references) in the `*.ctrace.yml` file.
+    `generated-by:`                       |  Optional   | Tool and version that generated the file.
+    `ctrace-setup:`                       |  Optional   | Copy of [`setup`](#file-structure-of-ctraceyml) node in the `*.ctrace.yml` file.
+    `ctrace-disable:`                     |**Required** | Per-processor register values that disable trace features before applying `ctrace-refs:`.
+    `ctrace-refs:`                        |**Required** | List of [references](#references) in the `*.ctrace.yml` file.
 
 The `ctrace-setup` node uses the same format as the [`setup`](#file-structure-of-ctraceyml) node in the `*.ctrace.yml` file and preserves the original user input for consumers of the `*.ctrace-run.yml` file. Consumers may read settings that do not resolve to a `ref` or register write. For example, the `ctrace` decoder uses `timestamps:clock` as a trace-formatting hint, while pyOCD reads `synchronization:sync-on-run` to control built-in trace-capture behavior.
 
@@ -30,26 +30,26 @@ The `ctrace-disable:` node contains register values that disable trace features 
 `ctrace-disable:`                                       |             | Content
 :--------------------------------------------------------|:------------|:------------------------------------
 `- pname:`                                              |  Optional   | Processor name.
-&nbsp;&nbsp;&nbsp; `regs:`                               |**Required** | Register writes that disable trace features for this processor.
+    `regs:`                               |**Required** | Register writes that disable trace features for this processor.
 
 The `ref:` node references the trace generation configuration in the file `*.ctrace.yml` and contains register values that represent the setup for trace sources. The `regs:` entries use the [register access format](#register-accesses). A single-core system has no `pname:` value; a multi-processor always includes a `pname:` value in the `ref:` node.
 
 `ctrace-refs:`                                           |             | Content
 :--------------------------------------------------------|:------------|:------------------------------------
 `- ref:`                                                 |**Required** | [Reference](#references) to a node in the `*.ctrace.yml` file that generated the register setup.
-&nbsp;&nbsp;&nbsp; `type:`                               |**Required** | Trace source type.
-&nbsp;&nbsp;&nbsp; `pname:`                              |  Optional   | Processor name the reference resolves to for multi-core systems.
-&nbsp;&nbsp;&nbsp; `stream:`                             |  Optional   | Stream ID (CoreSight ATB ID).
-&nbsp;&nbsp;&nbsp; `index:`                              |  Optional   | Index or list of indices of ITM channels or DWT comparators used by setting.
-&nbsp;&nbsp;&nbsp; `info:`                               |  Optional   | Additional information (for example alignment extension).
-&nbsp;&nbsp;&nbsp; `warning:`                            |  Optional   | Warning message.
-&nbsp;&nbsp;&nbsp; `error:`                              |  Optional   | Error message when setup cannot be completed.
-&nbsp;&nbsp;&nbsp; `label:`                              |  Optional   | User-defined short label for Trace Compass
-&nbsp;&nbsp;&nbsp; `address:`                            |  Optional   | Resolved address for the setting. May be resolved from a symbol.
-&nbsp;&nbsp;&nbsp; `size:`                               |  Optional   | Size, in bytes, of the capture data. May be extracted from symbol information.
-&nbsp;&nbsp;&nbsp; `symbol-file:`                        |  Optional   | Absolute path to the symbol file used in this reference.
-&nbsp;&nbsp;&nbsp; `data-type:`                          |  Optional   | Type of displayed data: `unsigned`, `signed`, or `float`. Default: `unsigned`.
-&nbsp;&nbsp;&nbsp; `regs:`                               |  Optional   | Register setup.
+    `type:`                               |**Required** | Trace source type.
+    `pname:`                              |  Optional   | Processor name the reference resolves to for multi-core systems.
+    `stream:`                             |  Optional   | Stream ID (CoreSight ATB ID).
+    `index:`                              |  Optional   | Index or list of indices of ITM channels or DWT comparators used by setting.
+    `info:`                               |  Optional   | Additional information (for example alignment extension).
+    `warning:`                            |  Optional   | Warning message.
+    `error:`                              |  Optional   | Error message when setup cannot be completed.
+    `label:`                              |  Optional   | User-defined short label for Trace Compass
+    `address:`                            |  Optional   | Resolved address for the setting. May be resolved from a symbol.
+    `size:`                               |  Optional   | Size, in bytes, of the capture data. May be extracted from symbol information.
+    `symbol-file:`                        |  Optional   | Absolute path to the symbol file used in this reference.
+    `data-type:`                          |  Optional   | Type of displayed data: `unsigned`, `signed`, or `float`. Default: `unsigned`.
+    `regs:`                               |  Optional   | Register setup.
 
 The trace source types are: `dwt`, `event`, `exception`, `itm`, `pmu`, `overflow`, `pcsample`, `global_ts`.
 
@@ -85,8 +85,8 @@ Trace Component | Base Address | Description
 `regs:`                                                  |             | Content
 :--------------------------------------------------------|:------------|:------------------------------------
 `- name:`                                                |**Required** | Symbolic name of the register.
-&nbsp;&nbsp;&nbsp; `value:`                              |**Required** | Value to write in this register.
-&nbsp;&nbsp;&nbsp; `mask:`                               | Optional    | Bit mask for value write (default: `0xFFFFFFFF`).
+    `value:`                              |**Required** | Value to write in this register.
+    `mask:`                               | Optional    | Bit mask for value write (default: `0xFFFFFFFF`).
 
 When applying `ctrace-disable:` writes to DWT comparators, the debugger preserves active watchpoints.
 

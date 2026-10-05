@@ -31,12 +31,12 @@ The structure of the `executes:` node is:
 `executes:`                                               |              | Content
 :---------------------------------------------------------|:-------------|:------------------------------------
 `- execute:`                                              | **Required** | The identifier is used as a CMake target name and must not contain spaces and special characters; recommended is less than 32 characters.
-&nbsp;&nbsp;&nbsp; `run:`                                 | **Required** | Command string with the name of the program or script (optionally with path) along with argument string.
-&nbsp;&nbsp;&nbsp; `always:`                              |   Optional   | When present, the build step always runs and bypasses check for outdated `output:` files.
-&nbsp;&nbsp;&nbsp; `input:`                               |   Optional   | A list of input files (may contain [Access Sequences](#access-sequences)).
-&nbsp;&nbsp;&nbsp; `output:`                              |   Optional   | A list of output files (may contain [Access Sequences](#access-sequences)).
-&nbsp;&nbsp;&nbsp; [`for-context:`](#for-context)         |   Optional   | Run command for a list of *build* and *target* types (only supported in `*.cproject.yml`).
-&nbsp;&nbsp;&nbsp; [`not-for-context:`](#not-for-context) |   Optional   | Exclude run command for a list of *build* and *target* types  (only supported in `*.cproject.yml`).
+    `run:`                                 | **Required** | Command string with the name of the program or script (optionally with path) along with argument string.
+    `always:`                              |   Optional   | When present, the build step always runs and bypasses check for outdated `output:` files.
+    `input:`                               |   Optional   | A list of input files (may contain [Access Sequences](#access-sequences)).
+    `output:`                              |   Optional   | A list of output files (may contain [Access Sequences](#access-sequences)).
+    [`for-context:`](#for-context)         |   Optional   | Run command for a list of *build* and *target* types (only supported in `*.cproject.yml`).
+    [`not-for-context:`](#not-for-context) |   Optional   | Exclude run command for a list of *build* and *target* types  (only supported in `*.cproject.yml`).
 
 The `run:` command string uses these sequences to access input files and output files:
 

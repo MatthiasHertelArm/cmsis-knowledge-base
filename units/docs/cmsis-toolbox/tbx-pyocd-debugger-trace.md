@@ -47,11 +47,11 @@ Configuration for the SWO trace output in UART mode.
 `trace:`                                 |              | Description
 :----------------------------------------|:-------------|:------------------------------------
 `- swo-uart:`                            | **Required** | Transport mode is SWO UART. This node does not have a value.
-&nbsp;&nbsp;&nbsp; `mode:`               |   Optional   | Trace: `off` (default), `server`, `file`.
-&nbsp;&nbsp;&nbsp; `server-port:`        |   Optional   | Set TCP/IP port number of trace server in `server` mode (default: 5555).
-&nbsp;&nbsp;&nbsp; `file:`               |   Optional   | Explicit path and name of the trace output file in `file` mode. Default: `<solution-name>+<target-type>@<target-set>.SWO.raw`.
-&nbsp;&nbsp;&nbsp; `input-clock:`        | **Required** | Trace input clock frequency in Hz.
-&nbsp;&nbsp;&nbsp; `output-clock:`       |   Optional   | Trace output clock frequency, i.e. the baudrate, for the SWO output.
+    `mode:`               |   Optional   | Trace: `off` (default), `server`, `file`.
+    `server-port:`        |   Optional   | Set TCP/IP port number of trace server in `server` mode (default: 5555).
+    `file:`               |   Optional   | Explicit path and name of the trace output file in `file` mode. Default: `<solution-name>+<target-type>@<target-set>.SWO.raw`.
+    `input-clock:`        | **Required** | Trace input clock frequency in Hz.
+    `output-clock:`       |   Optional   | Trace output clock frequency, i.e. the baudrate, for the SWO output.
 
 #### `trace-buffer`
 
@@ -65,9 +65,9 @@ and configured through the `device-settings:` or the `*.dbgconf` file.
 `trace:`                                 |              | Description
 :----------------------------------------|:-------------|:------------------------------------
 `- trace-buffer:`                        | **Required** | Transport mode is (on-chip) trace buffer. See [Selecting Trace Buffers](https://open-cmsis-pack.github.io/cmsis-toolbox/pyOCD-Debugger/Experimental-Features.md#selecting-trace-buffers) for value rules.
-&nbsp;&nbsp;&nbsp; `mode:`               |   Optional   | Trace: `off` (default), `server`, `file`.
-&nbsp;&nbsp;&nbsp; `server-port:`        |   Optional   | Set TCP/IP port number of trace server in `server` mode (default: 5555).
-&nbsp;&nbsp;&nbsp; `file:`               |   Optional   | Explicit path and name of the trace output file in `file` mode. Default: `<solution-name>+<target-type>@<target-set>.TB.raw`.
+    `mode:`               |   Optional   | Trace: `off` (default), `server`, `file`.
+    `server-port:`        |   Optional   | Set TCP/IP port number of trace server in `server` mode (default: 5555).
+    `file:`               |   Optional   | Explicit path and name of the trace output file in `file` mode. Default: `<solution-name>+<target-type>@<target-set>.TB.raw`.
 
 #### Trace Clocks
 

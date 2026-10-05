@@ -23,9 +23,9 @@ Each different license that is used in a project context has a separate section.
 `licenses:`                                              | Content
 :--------------------------------------------------------|:------------------------------------
 `- license:`                                             | License identifier or short description.
-&nbsp;&nbsp;&nbsp; `license-agreement:`                  | File category according to Open-CMSIS-Pack specification
-&nbsp;&nbsp;&nbsp; [`packs:`](#packs)                    | List of software [packs](#packs) used to generate this project context.
-&nbsp;&nbsp;&nbsp; [`components:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#components)   | List of software [components](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#components) used to generate this project context.
+    `license-agreement:`                  | File category according to Open-CMSIS-Pack specification
+    [`packs:`](#packs)                    | List of software [packs](#packs) used to generate this project context.
+    [`components:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#components)   | List of software [components](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#components) used to generate this project context.
 
 **Example:**
 

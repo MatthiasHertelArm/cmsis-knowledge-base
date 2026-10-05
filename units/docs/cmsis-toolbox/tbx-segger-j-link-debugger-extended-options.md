@@ -21,8 +21,8 @@ J-Link supports a standard I/O service that connects to character I/O functions.
 `stdio:`                      |              | Description
 :-----------------------------|:-------------|:------------------------------------
 `- mode:`                     | **Required** | Redirect output: `off` (default), `server`, `console`, `monitor`.
-&nbsp;&nbsp;&nbsp; `pname:`   |   Optional   | Identifies the processor (not required for single core system).
-&nbsp;&nbsp;&nbsp; `port:`    |   Optional   | Set TCP/IP port number of Telnet Server (default: 4444, 4445, ... incremented for each processor).
+    `pname:`   |   Optional   | Identifies the processor (not required for single core system).
+    `port:`    |   Optional   | Set TCP/IP port number of Telnet Server (default: 4444, 4445, ... incremented for each processor).
 
 Standard I/O Mode | Description
 :-----------------|:--------------------------------------
@@ -44,7 +44,7 @@ Configures the behavior for connecting J-Link to the hardware target for interac
 
 `connect:`                                                |              | Description
 :---------------------------------------------------------|:-------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `mode:`                                | **Required** | Selects the connect mode: `attach`, `halt` (default).
+    `mode:`                                | **Required** | Selects the connect mode: `attach`, `halt` (default).
 
 Connect Mode  | Description
 :-------------|:--------------------------------------
@@ -58,7 +58,7 @@ Configures the reset behavior for each core when a reset is requested during int
 `reset:`                                                  |              | Description
 :---------------------------------------------------------|:-------------|:------------------------------------
 `- pname:`                                                |   Optional   | Identifies the processor (not required for single core system).
-&nbsp;&nbsp;&nbsp; `type:`                                | **Required** | Selects the reset type: `hardware`, `system` (default), `core`.
+    `type:`                                | **Required** | Selects the reset type: `hardware`, `system` (default), `core`.
 
 Reset Types   | Description
 :-------------|:--------------------------------------
@@ -115,10 +115,10 @@ trace:
 `trace:`                                  |              | Description
 :-----------------------------------------|:-------------|:------------------------------------
 `- swo-uart:`                             | **Required** | Transport mode is SWO UART. This node does not have a value.
-&nbsp;&nbsp;&nbsp; `mode:`                |   Optional   | Trace: `off` (default), `server`.
-&nbsp;&nbsp;&nbsp; `input-clock:`         | **Required** | Trace input clock frequency in Hz.
-&nbsp;&nbsp;&nbsp; `output-clock:`        |   Optional   | Trace output clock frequency in Hz, i.e. the baudrate, for the SWO output.
-&nbsp;&nbsp;&nbsp; `server-port:`         |   Optional   | Set TCP/IP port number of trace server in `server` mode (default: 5555).
+    `mode:`                |   Optional   | Trace: `off` (default), `server`.
+    `input-clock:`         | **Required** | Trace input clock frequency in Hz.
+    `output-clock:`        |   Optional   | Trace output clock frequency in Hz, i.e. the baudrate, for the SWO output.
+    `server-port:`         |   Optional   | Set TCP/IP port number of trace server in `server` mode (default: 5555).
 
 #### Trace Clocks
 

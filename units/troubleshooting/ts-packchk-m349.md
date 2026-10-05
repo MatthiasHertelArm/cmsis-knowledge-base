@@ -10,11 +10,14 @@ code: "M349"
 symptoms: ["M349", "Examples found, but no board description(s) found"]
 symptom_regex: "^Examples found, but no board description\\(s\\) found$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e81:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e81:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
+cause_origin: "source-analysis"
+confidence: "low"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:167", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:190"]
 ---
 
 ## Symptom
@@ -28,4 +31,15 @@ Example projects have been found for a board that was not defined. Correct the e
 
 ## Fix
 
-_siehe Cause_
+Define the boards that the examples reference with <boards><board name="..." vendor="..."> in this pack, or pass the BSP that defines them with -i; otherwise correct the example's <board> reference.
+
+## Note
+
+No raise site for M349 at 30f5e81; fix inferred from the message and README. Missing boards for examples are reported per example as M324.
+
+## Evidence
+
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence low, not reviewed yet:
+
+- `tools/packchk/src/PackChk_Msgs.cpp:167`
+- `tools/packchk/README.md:190`

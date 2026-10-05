@@ -36,32 +36,9 @@ for the content of the pack for both the US and the EU.
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    package | 
-    element_package | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    ECCN-EU | 
-    Defines the Export Control Classification Number for the European Union (EU) | 
-    ECCNEUCodeEnum | 
-    1..1 | 
-  
-
-  | 
-    ECCN-US | 
-    Defines the Export Control Classification Number for the United States (US) | 
-    ECCNUSCodeEnum | 
-    1..1 |
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| package | element_package |  |  |
+| Child Elements | Description | Type | Occurrence |
+| ECCN-EU | Defines the [Export Control Classification Number](https://www.bis.gov/licensing/classify-your-item) for the European Union (EU) | ECCNEUCodeEnum | 1..1 |
+| ECCN-US | Defines the [Export Control Classification Number](https://www.bis.gov/regulations/ear/interactive-commerce-control-list) for the United States (US) | ECCNUSCodeEnum | 1..1 |

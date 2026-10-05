@@ -84,10 +84,11 @@ Currently, PE Micro probes connected via the network are not accessible.
 
 ### STLink
 
-<div class="alert alert-warning">
+
+
 Recent STLink firmware versions will only allow access to STM32 targets. If you are using a target
 from a silicon vendor other than ST Micro, please use a different debug probe.
-</div>
+
 
 No host resident drivers need to be installed to use STLink probes; only libusb is required.
 

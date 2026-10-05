@@ -2,7 +2,11 @@
 # Order and modes follow docs/design/04_quellenliste.md. Each source is a git clone in .work/docs/<dir>.
 #   include/exclude: globs relative to the repository root
 #   format: md (default) | doxmd (doxygen-flavoured Markdown) | doxtxt (doxygen comment files and doxygen Markdown)
-#   url: published page, {stem} = file name without extension, {page} = doxygen page id; default: the file on GitHub
+#   url: published page, {stem} = file name without extension, {page} = doxygen page id, {dir} = folder of the file
+#        (minus dir_strip), {name} = name of that folder; default: the file on GitHub
+#   sparse: paths of a sparse clone, for large repositories (doc2ku.py --fetch)
+#   format hugo (Hugo shortcodes), path_index (title prefix and overview from the folder's _index.md) and
+#   id_from_path (ids from folder and file name) serve the Arm Learning Paths in docs-ccbysa.yml
 #   domains: path rules that override the default domain
 sources:
   - name: cmsis-toolbox
@@ -164,3 +168,200 @@ sources:
     include: ["docs/agent-resources/cmsis-embedded-guide.md", "docs/agent-resources/troubleshooting/*.md", "docs/agent-resources/tool-contract.md"]
     license: Apache-2.0
     domain: debug
+
+  # ── RTOS ────────────────────────────────────────────────────────────────────
+  - name: cmsis-freertos
+    prefix: cfrt
+    repo: ARM-software/CMSIS-FreeRTOS
+    include: ["Documentation/Doxygen/src/*.md", "CMSIS/RTOS2/FreeRTOS/Examples/README.md", "CMSIS/RTOS2/FreeRTOS/RefApp/README.md"]
+    format: doxmd
+    license: Apache-2.0
+    domain: rtos
+
+  - name: threadx
+    prefix: threadx
+    repo: eclipse-threadx/rtos-docs
+    dir: rtos-docs
+    include: ["rtos-docs/threadx/*.md"]
+    exclude: ["*/index.md", "*/about-this-guide.md"]
+    license: MIT
+    domain: rtos
+
+  # ── Drivers, DSP, data flow ─────────────────────────────────────────────────
+  - name: cmsis-driver-impl
+    prefix: drvimpl
+    repo: ARM-software/CMSIS-Driver
+    include: ["Documentation/Doxygen/src/*.md", "Shield/**/README.md", "WiFi/*/Validation/README.md"]
+    format: doxmd
+    license: Apache-2.0
+    domain: drivers
+
+  - name: cmsis-dsp
+    prefix: dsp
+    repo: ARM-software/CMSIS-DSP
+    include: ["Documentation/Doxygen/src/*.md", "README.md"]
+    format: doxmd
+    license: Apache-2.0
+    domain: optimization
+
+  - name: cmsis-nn
+    prefix: nn
+    repo: ARM-software/CMSIS-NN
+    include: ["Documentation/Doxygen/src/mainpage.md", "README.md"]
+    format: doxmd
+    license: Apache-2.0
+    domain: optimization
+
+  - name: cmsis-stream
+    prefix: stream
+    repo: ARM-software/CMSIS-Stream
+    include: ["Documentation/*.md", "README.md", "platform/*/README.md"]
+    license: Apache-2.0
+    domain: cmsis-stream
+
+  # ── Test ───────────────────────────────────────────────────────────────────
+  - name: unity
+    prefix: unity
+    repo: ThrowTheSwitch/Unity
+    include: ["docs/Unity*.md", "README.md", "extras/*/readme.md"]
+    exclude: ["*ChangeLog*", "*KnownIssues*"]
+    license: MIT
+    domain: test
+
+  - name: cmock
+    prefix: cmock
+    repo: ThrowTheSwitch/CMock
+    include: ["docs/CMock_*.md", "README.md"]
+    license: MIT
+    domain: test
+
+  # ── Boot and update ────────────────────────────────────────────────────────
+  - name: mcuboot
+    prefix: mcuboot
+    repo: mcu-tools/mcuboot
+    include: ["docs/design.md", "docs/imgtool.md", "docs/signed_images.md", "docs/encrypted_images.md", "docs/serial_recovery.md",
+              "docs/PORTING.md", "docs/readme-zephyr.md", "docs/ecdsa.md", "docs/custom_crypto.md", "docs/compression_format.md", "README.md"]
+    license: Apache-2.0
+    domain: boot-update
+
+  # ── Edge AI ────────────────────────────────────────────────────────────────
+  - name: tflite-micro
+    prefix: tflm
+    repo: tensorflow/tflite-micro
+    include: ["tensorflow/lite/micro/docs/*.md", "tensorflow/lite/micro/cortex_m_*/README.md", "tensorflow/lite/micro/kernels/README.md",
+              "tensorflow/lite/micro/benchmarks/README.md", "debugging_output.md"]
+    license: Apache-2.0
+    domain: edge-ai
+
+  - name: ml-examples
+    prefix: mlx
+    repo: ARM-software/ML-examples
+    include: ["ethos-u-corstone-300/README.md", "pruning-clustering-ethos-u/README.md", "rnn-unrolling-tflite/README.md"]
+    license: Apache-2.0
+    domain: edge-ai
+
+  - name: zephyr
+    prefix: zep
+    repo: zephyrproject-rtos/zephyr
+    sparse: [doc/build/dts, doc/build/kconfig, doc/develop/debug, doc/develop/test, doc/develop/west, doc/hardware/arch,
+             doc/kernel, doc/services/logging, doc/services/shell]
+    include: ["doc/kernel/**/*.rst", "doc/build/dts/*.rst", "doc/build/kconfig/*.rst", "doc/develop/west/*.rst",
+              "doc/develop/test/*.rst", "doc/develop/debug/*.rst", "doc/services/logging/*.rst", "doc/services/shell/*.rst",
+              "doc/hardware/arch/arm_cortex_m.rst", "doc/hardware/arch/semihost.rst"]
+    exclude: ["*/index.rst", "doc/develop/west/release-notes.rst", "doc/develop/west/west-apis.rst"]
+    license: Apache-2.0
+    domain: rtos
+    domains:
+      - {paths: ["doc/build/*", "doc/develop/west/*"], domain: project}
+      - {paths: ["doc/develop/test/*"], domain: test}
+      - {paths: ["doc/develop/debug/*", "doc/services/*"], domain: debug}
+
+  - name: executorch-arm
+    prefix: etarm
+    repo: pytorch/executorch
+    sparse: [backends/arm/README.md, docs/source, examples/arm]
+    include: ["docs/source/embedded-arm-*.md", "docs/source/backends/arm-ethos-u/**/*.md", "docs/source/backends/arm-cortex-m/*.md",
+              "backends/arm/README.md", "examples/arm/README.md", "examples/arm/ethos-u-porting-guide.md", "examples/arm/custom_operators.md",
+              "examples/arm/*_ethos_u/README.md", "examples/arm/*_cortex_m/README.md"]
+    license: BSD-3-Clause
+    domain: edge-ai
+
+  - name: cmsis-dap
+    prefix: dap
+    repo: ARM-software/CMSIS-DAP
+    include: ["Documentation/Doxygen/src/*.md", "Documentation/Doxygen/src/*.txt"]
+    format: doxtxt
+    license: Apache-2.0
+    domain: debug
+    url: "https://arm-software.github.io/CMSIS-DAP/latest/{page}.html"
+    anchors: false
+
+  - name: cmsis-driver-validation
+    prefix: dv
+    repo: ARM-software/CMSIS-Driver_Validation
+    include: ["Documentation/Doxygen/src/*.txt", "README.md"]
+    format: doxtxt
+    license: Apache-2.0
+    domain: drivers
+    url: "https://arm-software.github.io/CMSIS-Driver_Validation/latest/{page}.html"
+    anchors: false
+
+  - name: cpackget
+    prefix: cpg
+    repo: Open-CMSIS-Pack/cpackget
+    include: ["README.md"]
+    license: Apache-2.0
+    domain: pack
+
+  - name: ceedling
+    prefix: ceed
+    repo: ThrowTheSwitch/Ceedling
+    include: ["docs/mkdocs/**/*.md", "docs/mkdocs/*.md"]
+    exclude: ["docs/mkdocs/project/*", "docs/mkdocs/development/*", "docs/mkdocs/help.md"]
+    license: MIT
+    domain: test
+    url: "https://throwtheswitch.github.io/Ceedling/{dir}/{stem}/"
+    dir_strip: "docs/mkdocs"
+
+  # Trusted Firmware-M: the secure side of Armv8-M (TrustZone, PSA services, secure boot).
+  - name: tf-m
+    prefix: tfm
+    repo: TrustedFirmware-M/trusted-firmware-m
+    dir: trusted-firmware-m
+    sparse: [docs]
+    include: ["docs/introduction/*.rst", "docs/getting_started/*.rst", "docs/building/*.rst", "docs/configuration/**/*.rst",
+              "docs/configuration/*.rst", "docs/integration_guide/**/*.rst", "docs/integration_guide/*.rst",
+              "docs/design_docs/**/*.rst", "docs/design_docs/*.rst", "docs/platform/**/*.rst", "docs/glossary.rst"]
+    exclude: ["*/index.rst", "docs/platform/arm/rse/*"]
+    license: BSD-3-Clause
+    domain: security
+    url: "https://trustedfirmware-m.readthedocs.io/en/latest/{dir}/{stem}.html"
+    dir_strip: "docs/"
+
+  - name: llvm-embedded-toolchain
+    prefix: llvmet
+    repo: ARM-software/LLVM-embedded-toolchain-for-Arm
+    include: ["README.md", "docs/*.md"]
+    exclude: ["docs/contributing.md", "docs/building-from-source.md"]
+    license: Apache-2.0
+    domain: project
+
+  # Ethos-U NPU: the Vela compiler and the ML Embedded Evaluation Kit (both on gitlab.arm.com).
+  - name: ethos-u-vela
+    prefix: vela
+    repo: artificial-intelligence/ethos-u/ethos-u-vela
+    host: https://gitlab.arm.com
+    dir: ethos-u-vela
+    include: ["README.md", "OPTIONS.md", "PERFORMANCE.md", "SUPPORTED_OPS.md", "DEBUG_DB.md", "BUGS.md"]
+    license: Apache-2.0
+    domain: edge-ai
+
+  - name: mlek
+    prefix: mlek
+    repo: artificial-intelligence/ethos-u/ml-embedded-evaluation-kit
+    host: https://gitlab.arm.com
+    dir: ml-embedded-evaluation-kit
+    sparse: [docs]
+    include: ["docs/**/*.md", "docs/*.md"]
+    license: Apache-2.0
+    domain: edge-ai

@@ -9,10 +9,13 @@ severity: "error"
 symptoms: ["file is missing and required due to use of --frozen-packs option"]
 symptom_regex: "^file is missing and required due to use of \\-\\-frozen\\-packs option$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e81:tools/projmgr/src/ProjMgrYamlParser.cpp:66"
+source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:66"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+cause_origin: "source-analysis"
+confidence: "high"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:59-68", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:1336-1351"]
 ---
 
 ## Symptom
@@ -21,14 +24,21 @@ mode: "V"
 
 ## Cause
 
-_offen, im Review ergänzen_
+`--frozen-packs` was given, but the pack lock file `<name>.cbuild-pack.yml` next to the csolution.yml does not exist; frozen packs require it. The message is prefixed with the expected file path.
 
 ## Fix
 
-_offen, im Review ergänzen_
+Run once without `--frozen-packs` to create the cbuild-pack.yml, commit it, and use `--frozen-packs` afterwards (e.g. in CI).
 
-## Trigger im Quelltext
+## Trigger in the source
 
 ```cpp
 } else if (frozenPacks) {
 ```
+
+## Evidence
+
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+
+- `tools/projmgr/src/ProjMgrYamlParser.cpp:59-68`
+- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:1336-1351`

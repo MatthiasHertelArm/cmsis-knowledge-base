@@ -31,25 +31,8 @@ This element is optional.
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    package | 
-    element_package | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    description | 
-    Describes or defines a component class or class-group combination. | 
-    TaxonomyDescriptionType | 
-    1..*  |
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| package | element_package |  |  |
+| Child Elements | Description | Type | Occurrence |
+| description | Describes or defines a component class or class-group combination. | TaxonomyDescriptionType | 1..* |

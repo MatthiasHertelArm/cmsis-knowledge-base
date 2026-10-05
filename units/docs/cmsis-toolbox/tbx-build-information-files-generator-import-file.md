@@ -18,13 +18,13 @@ The `*.cgen.yml` file lists the generated *csolution project* part and starts wi
 
 `generator-import:`                                                             | Content
 :-------------------------------------------------------------------------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `generated-by:`                                              | Tool name that generated this file
-&nbsp;&nbsp;&nbsp; [`for-device:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#device-name-conventions) | Device information, used for consistency check (device selection is in `*.csolution.yml`).
-&nbsp;&nbsp;&nbsp; [`for-board:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#board-name-conventions)   | Board information, used for consistency check (board selection is in `*.csolution.yml`).
-&nbsp;&nbsp;&nbsp; [`packs:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#packs)                        | Defines packs that are required for this layer.
-&nbsp;&nbsp;&nbsp; [`define:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#define)                      | Define symbol settings for code generation.
-&nbsp;&nbsp;&nbsp; [`undefine:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#undefine)                  | Remove define symbol settings for code generation.
-&nbsp;&nbsp;&nbsp; [`add-path:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#add-path)                  | Additional include file paths.
-&nbsp;&nbsp;&nbsp; [`del-path:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#del-path)                  | Remove specific include file paths.
-&nbsp;&nbsp;&nbsp; [`groups:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#groups)                      | List of source file groups along with source files.
-&nbsp;&nbsp;&nbsp; [`components:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#components)              | List of software components used.
+    `generated-by:`                                              | Tool name that generated this file
+    [`for-device:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#device-name-conventions) | Device information, used for consistency check (device selection is in `*.csolution.yml`).
+    [`for-board:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#board-name-conventions)   | Board information, used for consistency check (board selection is in `*.csolution.yml`).
+    [`packs:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#packs)                        | Defines packs that are required for this layer.
+    [`define:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#define)                      | Define symbol settings for code generation.
+    [`undefine:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#undefine)                  | Remove define symbol settings for code generation.
+    [`add-path:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#add-path)                  | Additional include file paths.
+    [`del-path:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#del-path)                  | Remove specific include file paths.
+    [`groups:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#groups)                      | List of source file groups along with source files.
+    [`components:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#components)              | List of software components used.

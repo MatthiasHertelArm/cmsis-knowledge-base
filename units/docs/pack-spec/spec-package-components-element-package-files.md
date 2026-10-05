@@ -42,35 +42,10 @@ The group **files** can appear in various Pack elements. This group is the frame
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    api | 
-    /package/apis/api | 
-  
-
-  | 
-    component | 
-    /package/components/component | 
-  
-
-  | 
-    component | 
-    /package/components/bundle/component | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    file | 
-    Frame for the individual file of a component.
-    group | 
-    1..* |
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| api | /package/apis/api |  |  |
+| component | /package/components/component |  |  |
+| component | /package/components/bundle/component |  |  |
+| Child Elements | Description | Type | Occurrence |
+| file | Frame for the individual file of a component. group | 1..* |  |

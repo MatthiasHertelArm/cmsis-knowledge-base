@@ -20,9 +20,9 @@ Refer to the section ["Configure Related Projects"](https://open-cmsis-pack.gith
 `target-set:`                                         |              | Content
 :-----------------------------------------------------|:-------------|:------------------------------------
 `- set:`                                              | **Required** | Start of a configuration, optional with name. The default set is unnamed.
-&nbsp;&nbsp;&nbsp; `info:`                            |   Optional   | Brief description of the configuration.
-&nbsp;&nbsp;&nbsp; [`images:`](#images)               |   Optional   | List of images that belong to this set.
-&nbsp;&nbsp;&nbsp; [`debugger:`](#debugger)           |   Optional   | Debugger configuration for this set.
+    `info:`                            |   Optional   | Brief description of the configuration.
+    [`images:`](#images)               |   Optional   | List of images that belong to this set.
+    [`debugger:`](#debugger)           |   Optional   | Debugger configuration for this set.
 
 #### `images:`
 
@@ -31,12 +31,12 @@ The `images:` node under `target-set:` specifies the projects with build-type an
 `images:`                                             |              | Content
 :-----------------------------------------------------|:-------------|:------------------------------------
 `- project-context:`                                  |   Optional   | Project output or with optional build-type to use. Format: `<project_name>[.build_type]`
-&nbsp;&nbsp;&nbsp; `image:`                           |   Optional   | Additional image file to load.
-&nbsp;&nbsp;&nbsp; [`load:`](#load)                   |   Optional   | Load mode of the image file for programmers and debug tools.
-&nbsp;&nbsp;&nbsp; `info:`                            |   Optional   | Brief description of the image file.
-&nbsp;&nbsp;&nbsp; [`type:`](#type)                   |   Optional   | Specifies an explicit file of the image type.
-&nbsp;&nbsp;&nbsp; `load-offset:`                     |   Optional   | Offset applied when loading a image file with `type: bin` (for pyOCD only).
-&nbsp;&nbsp;&nbsp; [`device:`](#device)               |   Optional   | For image files a pname can be specified to denote the processor that runs the image.
+    `image:`                           |   Optional   | Additional image file to load.
+    [`load:`](#load)                   |   Optional   | Load mode of the image file for programmers and debug tools.
+    `info:`                            |   Optional   | Brief description of the image file.
+    [`type:`](#type)                   |   Optional   | Specifies an explicit file of the image type.
+    `load-offset:`                     |   Optional   | Offset applied when loading a image file with `type: bin` (for pyOCD only).
+    [`device:`](#device)               |   Optional   | For image files a pname can be specified to denote the processor that runs the image.
 
 !!! Note
     - Each list node must contain either `image:` or `project-context:` (but not both).
@@ -49,10 +49,10 @@ Specifies the load mode for an `image:` file or the output of a `project-context
 
 `load:`                              | Description
 :------------------------------------|:-------------
-&nbsp;&nbsp;&nbsp; `image+symbols`   | Load both the binary image and the debug symbol information (default for `project-context` and `image` with file type elf).
-&nbsp;&nbsp;&nbsp; `symbols`         | Load only the debug symbol information.
-&nbsp;&nbsp;&nbsp; `image`           | Load only the binary image (default `image` for other file types).
-&nbsp;&nbsp;&nbsp; `none`            | No content is loaded for this image, however it is part of the build process.
+    `image+symbols`   | Load both the binary image and the debug symbol information (default for `project-context` and `image` with file type elf).
+    `symbols`         | Load only the debug symbol information.
+    `image`           | Load only the binary image (default `image` for other file types).
+    `none`            | No content is loaded for this image, however it is part of the build process.
 
 For example, set `load: none` on a `project-context:` when its output is embedded in another project image and must not be programmed separately.
 

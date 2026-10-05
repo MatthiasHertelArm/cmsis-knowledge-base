@@ -16,72 +16,17 @@ A template section provide one or more project templates for starting a new *cso
 
 
 
-  | 
-    Parent | 
-    Chain | 
-  
-
-  | 
-    csolution | 
-    element_csolution | 
-  
-	
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    name | 
-    Name of the template | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    path | 
-    Path to the directory that contains the template. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    file | 
-    Name of the `*.csolution.yml` file (optional with relative path to the directory specified with path). | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    copy-to | 
-    Path that used to copy the template into the *csolution project* (default is attribute path). | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    condition | 
-    Enter the **id** of a condition. The template is available and will be listed only when the filter condition is true
-    (no component dependencies are evaluated). | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    description | 
-    Briefly documents the purpose and scope of the template (maximum 256 characters, recommended 128 characters). | 
-    BriefDescType | 
-    1 | 
-  
+| Parent | Chain |  |  |
+|---|---|---|---|
+| csolution | element_csolution |  |  |
+| Attributes | Description | Type | Use |
+| name | Name of the template | xs:string | required |
+| path | Path to the directory that contains the template. | xs:string | required |
+| file | Name of the `*.csolution.yml` file (optional with relative path to the directory specified with path). | xs:string | required |
+| copy-to | Path that used to copy the template into the *csolution project* (default is attribute path). | xs:string | optional |
+| condition | Enter the **id** of a condition. The template is available and will be listed only when the filter condition is true (no component dependencies are evaluated). | xs:string | optional |
+| Child Elements | Description | Type | Occurrence |
+| description | Briefly documents the purpose and scope of the template (maximum 256 characters, recommended 128 characters). | BriefDescType | 1 |
 
 
 

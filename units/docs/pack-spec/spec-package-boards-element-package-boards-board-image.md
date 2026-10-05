@@ -29,55 +29,12 @@ Attribute `large` displays the 'top' side of the board.
 
 
 
-  | 
-    Parent | 
-    Chain | 
-  
-
-  | 
-    board | 
-    element_board | 
-  
-	
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    large | 
-    Specifies the path to a large image. The path is relative to the pack base directory or a link to an image on an external web site. Attribute 'large' displays the 'top' side of the board. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    small | 
-    Specifies the path to a small image. The path is relative to the pack base directory or a link to an image on an external web site. Attribute 'small' displays the 'top' side of the board at a lower resolution than in 'large' attribute. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    bottom | 
-    Specifies the path to a bottom image. The path is relative to the pack base directory or a link to an image on an external web site. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    perspective | 
-    Specifies the path to a perspective image. The path is relative to the pack base directory or a link to an image on an external web site. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    public | 
-    Set publishing permissions for the documentation. If \tagem{public} is `true`, then the vendor gives permission 
-        to extract the documentation from the Pack and publish it on a web-page. Links to web pages are assumed to be public.
-        If no \tagem{public} tag is available, it is assumed that publishing is allowed (default value is `true`). | 
-    xs:boolean | 
-    optional |
+| Parent | Chain |  |  |
+|---|---|---|---|
+| board | element_board |  |  |
+| Attributes | Description | Type | Use |
+| large | Specifies the path to a large image. The path is relative to the pack base directory or a link to an image on an external web site. Attribute 'large' displays the 'top' side of the board. | xs:string | optional |
+| small | Specifies the path to a small image. The path is relative to the pack base directory or a link to an image on an external web site. Attribute 'small' displays the 'top' side of the board at a lower resolution than in 'large' attribute. | xs:string | optional |
+| bottom | Specifies the path to a bottom image. The path is relative to the pack base directory or a link to an image on an external web site. | xs:string | optional |
+| perspective | Specifies the path to a perspective image. The path is relative to the pack base directory or a link to an image on an external web site. | xs:string | optional |
+| public | Set publishing permissions for the documentation. If \tagem{public} is `true`, then the vendor gives permission to extract the documentation from the Pack and publish it on a web-page. Links to web pages are assumed to be public. If no \tagem{public} tag is available, it is assumed that publishing is allowed (default value is `true`). | xs:boolean | optional |

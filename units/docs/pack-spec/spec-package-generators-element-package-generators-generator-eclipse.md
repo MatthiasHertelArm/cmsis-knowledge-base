@@ -26,53 +26,12 @@ This element contains information about the Eclipse based generation tool.
 
 
 
-  | 
-    Parent | 
-    Chain | 
-  
-
-  | 
-    generator | 
-    element_generator | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    plugin | 
-    Name of the plugin. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    class | 
-    Plugin's class name. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    method | 
-    Method used to launch the plugin. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    argument | 
-    Arguments passed to the plugin. | 
-    GeneratorCommandArgumentType | 
-    1..* |
+| Parent | Chain |  |  |
+|---|---|---|---|
+| generator | element_generator |  |  |
+| Attributes | Description | Type | Use |
+| plugin | Name of the plugin. | xs:string | required |
+| class | Plugin's class name. | xs:string | required |
+| method | Method used to launch the plugin. | xs:string | required |
+| Child Elements | Description | Type | Occurrence |
+| argument | Arguments passed to the plugin. | GeneratorCommandArgumentType | 1..* |

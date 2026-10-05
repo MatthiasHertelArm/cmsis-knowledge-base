@@ -18,11 +18,11 @@ The `processor:` keyword specifies the processor features used in this project.
 
 `processor:`                            | Content
 :---------------------------------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `fpu:`               | Select usage of FPU instructions: `dp` (double precision) \| `sp` (single precision) \| `off` (disabled).
-&nbsp;&nbsp;&nbsp; `dsp:`               | Select usage of SIMD instructions: `on` (enabled) \| `off` (disabled).
-&nbsp;&nbsp;&nbsp; `mve:`               | Select usage of M-Profile vector extension: `fp` (floating point and integer instructions) \| `int` (integer instructions) \| `off` (disabled).
-&nbsp;&nbsp;&nbsp; `trustzone:`         | Select TrustZone mode: `secure` \| `secure-only` \| `non-secure` \| `off`.
-&nbsp;&nbsp;&nbsp; `branch-protection:` | Select Branch Protection mode: `bti` (branch target identification) \| `bti-signret` (branch target identification and pointer authentication) \| `off` (disabled).
+    `fpu:`               | Select usage of FPU instructions: `dp` (double precision) \| `sp` (single precision) \| `off` (disabled).
+    `dsp:`               | Select usage of SIMD instructions: `on` (enabled) \| `off` (disabled).
+    `mve:`               | Select usage of M-Profile vector extension: `fp` (floating point and integer instructions) \| `int` (integer instructions) \| `off` (disabled).
+    `trustzone:`         | Select TrustZone mode: `secure` \| `secure-only` \| `non-secure` \| `off`.
+    `branch-protection:` | Select Branch Protection mode: `bti` (branch target identification) \| `bti-signret` (branch target identification and pointer authentication) \| `off` (disabled).
 
 The default setting enables the available features of the device. For example `fpu: dp` is selected for devices that offer double precision floating point hardware.
 

@@ -31,59 +31,15 @@ Since Dfamily and DsubFamily are volatile, it is recommended to use Dname attrib
 
 
 
-  | 
-    Parent | 
-    Chain | 
-  
-
-  | 
-    board | 
-    element_board | 
-  
-	
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    deviceIndex | 
-    Index number of the device (in case more than one device is present on the board). | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    Dvendor | 
-    Vendor name of the target device specified by **Dname.** Use predefined values as listed in the table Device Vendor. If no compatible device exists for the device mounted on the board or if no device is mounted on the board, use predefined value "NO_VENDOR:0".
-	This element is required if at least one of the following attributs is defined: **Dname,** **DsubFamily,** **Dfamily. | **
-    DeviceVendorEnum | 
-    required | 
-  
-
-  | 
-    Dname***** | 
-	Name of the target device used on the board. Requires **Dvendor** to be specified. | 
-	xs:string | 
-	optional | 
-  
-
-  | 
-    Dfamily | 
-	Name of the target device family used on the board. Requires **Dvendor** to be specified. | 
-	xs:string | 
-	optional | 
-  
-
-  | 
-    DsubFamily | 
-	Name of the target device sub-family used on the board. Requires **Dvendor** to be specified. | 
-	xs:string | 
-	optional | 
-  
-
+| Parent | Chain |  |  |
+|---|---|---|---|
+| board | element_board |  |  |
+| Attributes | Description | Type | Use |
+| deviceIndex | Index number of the device (in case more than one device is present on the board). | xs:string | optional |
+| Dvendor | Vendor name of the target device specified by **Dname.** Use predefined values as listed in the table Device Vendor. If no compatible device exists for the device mounted on the board or if no device is mounted on the board, use predefined value "NO_VENDOR:0". This element is required if at least one of the following attributs is defined: **Dname,** **DsubFamily,** **Dfamily. | DeviceVendorEnum | required |
+| Dname***** | Name of the target device used on the board. Requires **Dvendor** to be specified. | xs:string | optional |
+| Dfamily | Name of the target device family used on the board. Requires **Dvendor** to be specified. | xs:string | optional |
+| DsubFamily | Name of the target device sub-family used on the board. Requires **Dvendor** to be specified. | xs:string | optional |
 
 
 

@@ -64,226 +64,37 @@ Two timer peripheral descriptions are specified for the same memory block. No re
 **/device/peripherals/peripheral**
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    peripherals | 
-    elem_peripherals | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    derivedFrom | 
-    Specify the peripheral name from which to inherit data.
-        Elements specified subsequently override inherited values.  | 
-    dimableIdentifierType | 
-    0..1 | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-      | 
-    Refer to dimElementGroup_gr for details about the colored elements. | 
-  
-
-  | 
-    dim | 
-    Define the number of elements in an array. | 
-    scaledNonNegativeInteger | 
-    0..1  | 
-  
-
-  | 
-    dimIncrement | 
-    Specify the address increment, in `Bytes`, between two neighboring array members in the address map. | 
-    scaledNonNegativeInteger | 
-    0..1  | 
-  
-
-  | 
-    dimIndex | 
-    Do not define on peripheral level. By default, \tagem{dimIndex} is an integer value starting at `0`. | 
-    dimIndexType | 
-    0..1  | 
-  
-
-  | 
-    dimName | 
-    Specify the name of the C-type structure. If not defined, then the entry of the \tagem{name} element is used. | 
-    idnetifierType | 
-    0..1  | 
-  
-
-  | 
-    `<dimArrayIndex>` | 
-    Grouping element to create enumerations in the header file. | 
-    dimArrayIndexType | 
-    0..1  | 
-  
-
-  | 
-    name  | 
-    The string identifies the peripheral. Peripheral names are required to be unique for a device.
-        The name needs to be an ANSI C identifier to generate the header file.
-        You can use the placeholder _[%%s]_ to create arrays. | 
-    dimableIdentifierType | 
-    1..1  | 
-  
-
-  | 
-    version  | 
-    The string specifies the version of this peripheral description.  | 
-    xs:string  | 
-    0..1  | 
-  
-
-  | 
-    description  | 
-    The string provides an overview of the purpose and functionality of the peripheral. | 
-    xs:string  | 
-    0..1  | 
-  
-
-  | 
-    alternatePeripheral | 
-    All address blocks in the memory space of a device are assigned to a unique peripheral by default. If multiple
-		peripherals describe the same address blocks, then this needs to be specified explicitly. A peripheral redefining an address block needs to
-		specify the name of the peripheral that is listed first in the description. | 
-    dimaleIdentifierType  | 
-    0..1  | 
-  
-
-  | 
-    groupName  | 
-    Define a name under which the System Viewer is showing this peripheral. | 
-    xs:Name  | 
-    0..1  | 
-  
-
-  | 
-    prependToName  | 
-    Define a string as prefix. All register names of this peripheral get this prefix. | 
-    identifierType  | 
-    0..1  | 
-  
-
-  | 
-    appendToName  | 
-    Define a string as suffix. All register names of this peripheral get this suffix. | 
-    identifierType  | 
-    0..1  | 
-  
-
-  | 
-    headerStructName | 
-    Specify the base name of C structures. The headerfile generator uses the name of a peripheral as the base name for the C structure type.
-        If \tagem{headerStructName} element is specfied, then this string is used instead of the peripheral name; useful when multiple peripherals get derived and a generic type name should be used. | 
-    dimableIdentifierType  | 
-    0..1  | 
-  
-
-  | 
-    disableCondition  | 
-    Define a C-language compliant logical expression returning a TRUE or FALSE result.
-        If TRUE, refreshing the display for this peripheral is disabled and related accesses by the debugger are suppressed.
-        \n \n Only constants and references to other registers contained in the description are allowed:
-        \tagem{peripheral}->\tagem{register}->\tagem{field}, for example, (System->ClockControl->apbEnable == 0).
-        The following operators are allowed in the expression [&&,||, ==, !=, >>, <<, &, |].
-        **Warning:**
-        Use this feature only in cases where accesses from the debugger to registers of
-        un-clocked peripherals result in severe debugging failures. SVD is intended to provide
-        static information and does not include any run-time computation or functions.
-        Such capabilities can be added by the tools, and is beyond the scope of this
-        description language. | 
-    stringType  | 
-    0..1  | 
-  
-
-  | 
-    baseAddress  | 
-    Lowest address reserved or used by the peripheral. | 
-    scaledNonNegativeInteger  | 
-    1..1  | 
-  
-
-  | 
-      | 
-    Refer to registerPropertiesGroup_gr for details about the colored elements. | 
-  
-
-  | 
-    size | 
-    Define the default bit-width of any register contained in the device (implicit inheritance). | 
-    scaledNonNegativeInteger | 
-    0..1 | 
-  
-
-  | 
-    access | 
-    Define default access rights for all registers. | 
-    accessType | 
-    0..1 | 
-  
-
-  | 
-    protection | 
-    Define default protection rights for all registers. | 
-    protectionStringType | 
-    0..1  | 
-  
-
-  | 
-    resetValue  | 
-    Define the default value for all registers at RESET. | 
-    scaledNonNegativeInteger  | 
-    0..1  | 
-  
-
-  | 
-    resetMask | 
-    Identify which register bits have a defined reset value. | 
-    scaledNonNegativeInteger | 
-    0..1 | 
-  
-
-  | 
-    `<addressBlock>` | 
-    Specify an address range uniquely mapped to this peripheral. A peripheral must
-        have at least one address block, but can allocate multiple distinct address ranges.
-        If a peripheral is derived from another peripheral, the addressBlock is not mandatory. | 
-    addressBlockType | 
-    0/1..* | 
-  
-
-  | 
-    `<interrupt>` | 
-    A peripheral can have multiple associated interrupts. This entry allows the debugger
-        to show interrupt names instead of interrupt numbers. | 
-    interruptType  | 
-    0..*  | 
-  
-
-  | 
-    `<registers>`  | 
-    Group to enclose register definitions. | 
-    registersType | 
-    0..1  | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| peripherals | elem_peripherals |  |  |
+| Attributes | Description | Type | Occurrence |
+| derivedFrom | Specify the peripheral name from which to inherit data. Elements specified subsequently override inherited values. | dimableIdentifierType | 0..1 |
+| Child Elements | Description | Type | Occurrence |
+|   | Refer to dimElementGroup_gr for details about the colored elements. |  |  |
+| dim | Define the number of elements in an array. | scaledNonNegativeInteger | 0..1 |
+| dimIncrement | Specify the address increment, in `Bytes`, between two neighboring array members in the address map. | scaledNonNegativeInteger | 0..1 |
+| dimIndex | Do not define on peripheral level. By default, \tagem{dimIndex} is an integer value starting at `0`. | dimIndexType | 0..1 |
+| dimName | Specify the name of the C-type structure. If not defined, then the entry of the \tagem{name} element is used. | idnetifierType | 0..1 |
+| `<dimArrayIndex>` | Grouping element to create enumerations in the header file. | dimArrayIndexType | 0..1 |
+| name | The string identifies the peripheral. Peripheral names are required to be unique for a device. The name needs to be an ANSI C identifier to generate the header file. You can use the placeholder [%%s] to create arrays. | dimableIdentifierType | 1..1 |
+| version | The string specifies the version of this peripheral description. | xs:string | 0..1 |
+| description | The string provides an overview of the purpose and functionality of the peripheral. | xs:string | 0..1 |
+| alternatePeripheral | All address blocks in the memory space of a device are assigned to a unique peripheral by default. If multiple peripherals describe the same address blocks, then this needs to be specified explicitly. A peripheral redefining an address block needs to specify the name of the peripheral that is listed first in the description. | dimaleIdentifierType | 0..1 |
+| groupName | Define a name under which the System Viewer is showing this peripheral. | xs:Name | 0..1 |
+| prependToName | Define a string as prefix. All register names of this peripheral get this prefix. | identifierType | 0..1 |
+| appendToName | Define a string as suffix. All register names of this peripheral get this suffix. | identifierType | 0..1 |
+| headerStructName | Specify the base name of C structures. The headerfile generator uses the name of a peripheral as the base name for the C structure type. If \tagem{headerStructName} element is specfied, then this string is used instead of the peripheral name; useful when multiple peripherals get derived and a generic type name should be used. | dimableIdentifierType | 0..1 |
+| disableCondition | Define a C-language compliant logical expression returning a TRUE or FALSE result. If TRUE, refreshing the display for this peripheral is disabled and related accesses by the debugger are suppressed. \n \n Only constants and references to other registers contained in the description are allowed: \tagem{peripheral}->\tagem{register}->\tagem{field}, for example, (System->ClockControl->apbEnable == 0). The following operators are allowed in the expression [&&,\|\|, ==, !=, >>, <<, &, \|]. **Warning:** Use this feature only in cases where accesses from the debugger to registers of un-clocked peripherals result in severe debugging failures. SVD is intended to provide static information and does not include any run-time computation or functions. Such capabilities can be added by the tools, and is beyond the scope of this description language. | stringType | 0..1 |
+| baseAddress | Lowest address reserved or used by the peripheral. | scaledNonNegativeInteger | 1..1 |
+|   | Refer to registerPropertiesGroup_gr for details about the colored elements. |  |  |
+| size | Define the default bit-width of any register contained in the device (implicit inheritance). | scaledNonNegativeInteger | 0..1 |
+| access | Define default access rights for all registers. | accessType | 0..1 |
+| protection | Define default protection rights for all registers. | protectionStringType | 0..1 |
+| resetValue | Define the default value for all registers at RESET. | scaledNonNegativeInteger | 0..1 |
+| resetMask | Identify which register bits have a defined reset value. | scaledNonNegativeInteger | 0..1 |
+| `<addressBlock>` | Specify an address range uniquely mapped to this peripheral. A peripheral must have at least one address block, but can allocate multiple distinct address ranges. If a peripheral is derived from another peripheral, the addressBlock is not mandatory. | addressBlockType | 0/1..* |
+| `<interrupt>` | A peripheral can have multiple associated interrupts. This entry allows the debugger to show interrupt names instead of interrupt numbers. | interruptType | 0..* |
+| `<registers>` | Group to enclose register definitions. | registersType | 0..1 |
 
 
 

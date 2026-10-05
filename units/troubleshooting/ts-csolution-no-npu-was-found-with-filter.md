@@ -2,17 +2,20 @@
 id: "ts-csolution-no-npu-was-found-with-filter"
 type: "troubleshooting"
 domain: "error-catalog"
-title: "csolution: no NPU was found with filter"
+title: "csolution: no NPU was found with filter '…'"
 status: "draft"
 tool: "csolution"
 severity: "error"
 symptoms: ["no NPU was found with filter '<…>'"]
 symptom_regex: "^no NPU was found with filter '.+?'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e81:tools/projmgr/src/ProjMgrWorker.cpp:4436"
+source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4436"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+cause_origin: "source-analysis"
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4407", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4436"]
 ---
 
 ## Symptom
@@ -21,14 +24,21 @@ mode: "V"
 
 ## Cause
 
-_offen, im Review ergänzen_
+`csolution list npus -f <words>` found NPUs, but no entry matched all filter words; `<…>` is the filter. A word matches either the NPU line (type and MACs) or one of its device lines (vendor, device, processor, core); matching is case-insensitive.
 
 ## Fix
 
-_offen, im Review ergänzen_
+Loosen the filter, e.g. `-f U55` or a device name part, or run without `-f`.
 
-## Trigger im Quelltext
+## Trigger in the source
 
 ```cpp
 if (npusVec.empty()) {
 ```
+
+## Evidence
+
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
+
+- `tools/projmgr/src/ProjMgrWorker.cpp:4407`
+- `tools/projmgr/src/ProjMgrWorker.cpp:4436`

@@ -23,39 +23,10 @@ The element specifies the devices mounted on the board. Exactly one device must 
 
 
 
-  | 
-    Parent | 
-    Chain | 
-  
-
-  | 
-    board | 
-    element_board | 
-  
-	
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    deviceIndex | 
-    Index number of the device (in case more than one device is present on the board). | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    Dvendor | 
-    Is the name of vendor of the device specified by `Dname`. Use predefined values as listed in the table Device Vendor. If no device is mounted on the board, use predefined value "NO_VENDOR:0". | 
-    DeviceVendorEnum | 
-    required | 
-  
-
-  | 
-    Dname | 
-	Is the name of the target device used on the board. If the device is specified by a variant this string needs to be assigned to the Dname attribute. If no device is mounted on the board, use value "NO_MCU". | 
-	xs:string | 
-	required |
+| Parent | Chain |  |  |
+|---|---|---|---|
+| board | element_board |  |  |
+| Attributes | Description | Type | Use |
+| deviceIndex | Index number of the device (in case more than one device is present on the board). | xs:string | optional |
+| Dvendor | Is the name of vendor of the device specified by `Dname`. Use predefined values as listed in the table Device Vendor. If no device is mounted on the board, use predefined value "NO_VENDOR:0". | DeviceVendorEnum | required |
+| Dname | Is the name of the target device used on the board. If the device is specified by a variant this string needs to be assigned to the Dname attribute. If no device is mounted on the board, use value "NO_MCU". | xs:string | required |

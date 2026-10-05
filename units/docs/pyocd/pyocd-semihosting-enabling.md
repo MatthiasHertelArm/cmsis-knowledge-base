@@ -20,8 +20,8 @@ To use semihosting with pyOCD, it first must be enabled. This can be done in sev
 
 Assuming the default routing options and telnet port number are acceptable, no further configuration is required. When
 
-<div class="alert alert-info">
+
+
 Currently semihosting only works when pyOCD's gdbserver is running and the target is resumed, with the gdbserver
-waiting for it to halt. However, the <code>pyocd.debug.semihost.SemihostAgent</code> class is reusable if a custom
+waiting for it to halt. However, the `pyocd.debug.semihost.SemihostAgent` class is reusable if a custom
 target control loop is implemented.
-</div>

@@ -16,38 +16,14 @@ Grouping element for csolution. No more than one such group can exist in a packa
 
 
 
-  | 
-    Parent | 
-    Chain | 
-  
+| Parent | Chain |  |  |
+|---|---|---|---|
+| package | /package |  |  |
+| Child Elements | Description | Type | Occurrence |
+| clayer | Description of a clayer; a software layer collects source files and software components along with configuration files for re-use in different projects. | ClayerType | 0..* |
+| template | Description of project templates that are used in an IDE to start new *csolution projects*. | ClayerType | 0..* |
 
-  | 
-    package | 
-    /package | 
-  
-	
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
 
-  | 
-    clayer | 
-    Description of a clayer; a software layer collects source files and software components along with configuration files for re-use in different projects. | 
-    ClayerType | 
-    0..*  | 
-  
-
-  | 
-    template | 
-    Description of project templates that are used in an IDE to start new *csolution projects*. | 
-    ClayerType | 
-    0..*  | 
-  
-
- 
 
 **Example:**
 

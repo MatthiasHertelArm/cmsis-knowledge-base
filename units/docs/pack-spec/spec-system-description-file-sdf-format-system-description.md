@@ -12,50 +12,14 @@ license: "Apache-2.0"
 mode: "V"
 ---
 
-| 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    root | 
-    description root point for SDF | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    schemaVersion | 
-    Version of sdf_schema.xsd the description is compatible with | 
-    xs:decimal | 
-    required |   
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    sdf_element_debug_and_trace_config | 
-    Description how to configure debug and trace. | 
-    complexType | 
-    1..1 | 
-  
-
-  | 
-    sdf_element_platform | 
-    Overall platform description. | 
-    complexType | 
-    1..1 | 
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| root | description root point for SDF |  |  |
+| Attributes | Description | Type | Use |
+| schemaVersion | Version of sdf_schema.xsd the description is compatible with | xs:decimal | required |
+| Child Elements | Description | Type | Occurrence |
+| sdf_element_debug_and_trace_config | Description how to configure debug and trace. | complexType | 1..1 |
+| sdf_element_platform | Overall platform description. | complexType | 1..1 |
 
 
 

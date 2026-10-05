@@ -93,12 +93,12 @@ Refer to [Linker Script Management](https://open-cmsis-pack.github.io/cmsis-tool
 `linker:`                                                   |            | Content
 :-----------------------------------------------------------|:-----------|:--------------------------------
 `- regions:`                                                |  Optional  | Path and file name of `<regions_file>.h`, used to generate a Linker Script.
-&nbsp;&nbsp;&nbsp;`script:`                                 |  Optional  | Explicit file name of the Linker Script, overrules files provided with [`file:`](#files) or components.
-&nbsp;&nbsp;&nbsp;`auto:`                                   |  Optional  | Request [automatic Linker Script generation](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/build-overview.md#automatic-linker-script-generation).
-&nbsp;&nbsp;&nbsp;[`define:`](#define)                      |  Optional  | Define symbol settings for the linker script file preprocessor.
-&nbsp;&nbsp;&nbsp;[`for-compiler:`](#for-compiler)          |  Optional  | Include Linker Script for the specified toolchain.
-&nbsp;&nbsp;&nbsp;[`for-context:`](#for-context)            |  Optional  | Include Linker Script for a list of *build* and *target* type names.
-&nbsp;&nbsp;&nbsp;[`not-for-context:`](#not-for-context)    |  Optional  | Exclude Linker Script for a list of *build* and *target* type names.
+   `script:`                                 |  Optional  | Explicit file name of the Linker Script, overrules files provided with [`file:`](#files) or components.
+   `auto:`                                   |  Optional  | Request [automatic Linker Script generation](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/build-overview.md#automatic-linker-script-generation).
+   [`define:`](#define)                      |  Optional  | Define symbol settings for the linker script file preprocessor.
+   [`for-compiler:`](#for-compiler)          |  Optional  | Include Linker Script for the specified toolchain.
+   [`for-context:`](#for-context)            |  Optional  | Include Linker Script for a list of *build* and *target* type names.
+   [`not-for-context:`](#not-for-context)    |  Optional  | Exclude Linker Script for a list of *build* and *target* type names.
 
 !!! Note
     - The `linker:` node must have at least `regions:`, `script:`, `auto:`, or `define:`.
@@ -154,8 +154,8 @@ Configure the generated output files.
 
 `output:`                              |            | Content
 :--------------------------------------|:-----------|:--------------------------------
-&nbsp;&nbsp;&nbsp; `base-name:`        |  Optional  | Specify a common base name for all output files.
-&nbsp;&nbsp;&nbsp; `type:`             |  Optional  | A list of output types for code generation (see list below).
+    `base-name:`        |  Optional  | Specify a common base name for all output files.
+    `type:`             |  Optional  | A list of output types for code generation (see list below).
 
 `type:`           | Description
 :-----------------|:-------------

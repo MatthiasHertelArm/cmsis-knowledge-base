@@ -3,7 +3,7 @@ id: "core-trustzone-setup-partition-device-h-region-isr-setup-partition-gen-h"
 type: "concept"
 domain: "core"
 title: "TrustZone setup: partition_<Device>.h: Region/ISR setup: partition_gen.h"
-summary: "The partitiongen.h header file can be generated using CMSIS-Zone."
+summary: "The partition_gen.h header file can be generated using CMSIS-Zone."
 status: "draft"
 collection: "cmsis-core"
 source: "ARM-software/CMSIS_6@26206e4:CMSIS/Documentation/Doxygen/Core/src/core_partition_device_h.md"
@@ -26,53 +26,13 @@ The partition_<Device>.h file includes the partition_gen.h file with configurati
 
 
 
-    | 
-      \#define | 
-      Value Range | 
-      Default | 
-      Description | 
-    
-
-    | 
-      SAU_REGIONS_MAX | 
-      0 .. tbd | 
-      8 | 
-      maximum number of SAU regions | 
-    
-
-    | 
-      SAU_INIT_REGION<number> | 
-      0 .. 1 | 
-      0 | 
-      initialize SAU region or not
-           - 0: do not initialize SAU region
-           - 1: initialize SAU region | 
-    
-
-    | 
-      SAU_INIT_START<number> | 
-      0x00000000 .. 0xFFFFFFE0\n
-          [in steps of 32] | 
-      0x00000000 | 
-      region start address | 
-    
-
-    | 
-      SAU_INIT_END<number> | 
-      0x00000000 .. 0xFFFFFFE0\n
-          [in steps of 32] | 
-      0x00000000 | 
-      region start address | 
-    
-
-    | 
-      SAU_INIT_NSC<number> | 
-      0 .. 1 | 
-      0 | 
-      SAU region attribute
-           - 0: Non-Secure
-           - 1: Secure, Non-Secure callable | 
-    
+| \#define | Value Range | Default | Description |
+|---|---|---|---|
+| SAU_REGIONS_MAX | 0 .. tbd | 8 | maximum number of SAU regions |
+| SAU_INIT_REGION<number> | 0 .. 1 | 0 | initialize SAU region or not - 0: do not initialize SAU region - 1: initialize SAU region |
+| SAU_INIT_START<number> | 0x00000000 .. 0xFFFFFFE0\n [in steps of 32] | 0x00000000 | region start address |
+| SAU_INIT_END<number> | 0x00000000 .. 0xFFFFFFE0\n [in steps of 32] | 0x00000000 | region start address |
+| SAU_INIT_NSC<number> | 0 .. 1 | 0 | SAU region attribute - 0: Non-Secure - 1: Secure, Non-Secure callable |
 
 
 
@@ -132,22 +92,9 @@ Each interrupt has a configuration bit that defines the execution in Secure or N
 
 
 
-    | 
-      \#define | 
-      Value Range | 
-      Default | 
-      Description | 
-    
-
-    | 
-      NVIC_INIT_ITNS<number> | 
-      0x00000000 .. 0xFFFFFFFF\n
-          [each bit represents an interrupt] | 
-      0x00000000 | 
-      Interrupt vector target
-           - 0: Secure state
-           - 1: Non-Secure state | 
-    
+| \#define | Value Range | Default | Description |
+|---|---|---|---|
+| NVIC_INIT_ITNS<number> | 0x00000000 .. 0xFFFFFFFF\n [each bit represents an interrupt] | 0x00000000 | Interrupt vector target - 0: Secure state - 1: Non-Secure state |
 
 
 

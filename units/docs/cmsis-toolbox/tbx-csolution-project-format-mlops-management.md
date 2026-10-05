@@ -23,19 +23,19 @@ When `mlops:` is present, the CMSIS-Toolbox generates an additional information 
 
 `mlops:`                                                 |              | Content
 :--------------------------------------------------------|:-------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `description:`                        |   Optional   | Descriptive text of the ML model under development.
-&nbsp;&nbsp;&nbsp; [`npu:`](#npu)                        |   Optional   | Select the NPU type and MAC configuration.
-&nbsp;&nbsp;&nbsp; [`vela:`](#vela)                      |   Optional   | Vela configuration (only applicable for Ethos-U NPUs).
-&nbsp;&nbsp;&nbsp; [`model:`](#model)                    |   Optional   | Location and custom properties for ML model generation.
-&nbsp;&nbsp;&nbsp; [`hardware:`](#hardware)              |   Optional   | Select the hardware target-set used for tests.
-&nbsp;&nbsp;&nbsp; [`simulator:`](#simulator)            |   Optional   | Select the simulator target-set used for tests.
+    `description:`                        |   Optional   | Descriptive text of the ML model under development.
+    [`npu:`](#npu)                        |   Optional   | Select the NPU type and MAC configuration.
+    [`vela:`](#vela)                      |   Optional   | Vela configuration (only applicable for Ethos-U NPUs).
+    [`model:`](#model)                    |   Optional   | Location and custom properties for ML model generation.
+    [`hardware:`](#hardware)              |   Optional   | Select the hardware target-set used for tests.
+    [`simulator:`](#simulator)            |   Optional   | Select the simulator target-set used for tests.
 
 ### `npu:`
 
 `npu:`                                                   |              | Content
 :--------------------------------------------------------|:-------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `type:`                               |   Optional   | NPU type name (default: first NPU from the selected device features).
-&nbsp;&nbsp;&nbsp; `macs:`                               |   Optional   | MAC configuration (default: first MAC configuration from the selected device features).
+    `type:`                               |   Optional   | NPU type name (default: first NPU from the selected device features).
+    `macs:`                               |   Optional   | MAC configuration (default: first MAC configuration from the selected device features).
 
 ### `vela:`
 
@@ -43,17 +43,17 @@ The `vela:` node is only relevant for Ethos-U NPUs.
 
 `vela:`                                                  |              | Content
 :--------------------------------------------------------|:-------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `ini:`                                |   Optional   | Explicit Vela INI file (default: use INI file provided by the device/DFP).
-&nbsp;&nbsp;&nbsp; `system:`                             |   Optional   | System configuration selector from the Vela INI file.
-&nbsp;&nbsp;&nbsp; `memory:`                             |   Optional   | Memory configuration selector from the Vela INI file.
-&nbsp;&nbsp;&nbsp; `misc:`                               |   Optional   | Additional Vela command-line options (literal string).
+    `ini:`                                |   Optional   | Explicit Vela INI file (default: use INI file provided by the device/DFP).
+    `system:`                             |   Optional   | System configuration selector from the Vela INI file.
+    `memory:`                             |   Optional   | Memory configuration selector from the Vela INI file.
+    `misc:`                               |   Optional   | Additional Vela command-line options (literal string).
 
 ### `model:`
 
 `model:`                                                 |              | Content
 :--------------------------------------------------------|:-------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `clayer:`                             |   Optional   | Path to the layer that contains the ML model under development. The path is resolved and emitted relative to the generated `*.cbuild-mlops.yml` file.
-&nbsp;&nbsp;&nbsp; `<key>:`                              |   Optional   | Custom information (value, list, or sub-groups) for ML model generation. Information is exported in the `model:` node of the generated `*.cbuild-mlops.yml` file.
+    `clayer:`                             |   Optional   | Path to the layer that contains the ML model under development. The path is resolved and emitted relative to the generated `*.cbuild-mlops.yml` file.
+    `<key>:`                              |   Optional   | Custom information (value, list, or sub-groups) for ML model generation. Information is exported in the `model:` node of the generated `*.cbuild-mlops.yml` file.
 
 !!! Note
     [`Variables`](#variables) may be used as values for `clayer:` and custom information in `<key>`, including values in lists and grouped settings. Variables are expanded at every level. An undefined variable expands to an empty string.
@@ -62,13 +62,13 @@ The `vela:` node is only relevant for Ethos-U NPUs.
 
 `hardware:`                                              |              | Content
 :--------------------------------------------------------|:-------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `target:`                             |   Optional   | Explicit target selection in the format `<target-type>[@<target-set>]` (default: first `target-types:` entry and its first target-set).
+    `target:`                             |   Optional   | Explicit target selection in the format `<target-type>[@<target-set>]` (default: first `target-types:` entry and its first target-set).
 
 ### `simulator:`
 
 `simulator:`                                             |              | Content
 :--------------------------------------------------------|:-------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `target:`                             |   Optional   | Explicit target selection in the format `<target-type>[@<target-set>]` (default: last `target-types:` entry and its first target-set; typically a target using an Arm FVP debugger).
+    `target:`                             |   Optional   | Explicit target selection in the format `<target-type>[@<target-set>]` (default: last `target-types:` entry and its first target-set; typically a target using an Arm FVP debugger).
 
 **Example:**
 

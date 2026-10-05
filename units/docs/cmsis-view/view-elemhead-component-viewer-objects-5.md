@@ -18,8 +18,8 @@ The structured element is based on a data type that is defined with `<typedef>`.
 
 The individual data type elements of the \elem{readlist} are referenced using **_name[index].member_**.  
 \elem{readlist} manages two predefined member variables with the following names:
-  - **_name_._count**       &mdash; number of list items. Used as index limit, valid index values are: `(0 .. number-1)`.
-  - **_name[index]_._addr** &mdash; start address of the list item that was read from target memory.
+  - **_name_._count**       — number of list items. Used as index limit, valid index values are: `(0 .. number-1)`.
+  - **_name[index]_._addr** — start address of the list item that was read from target memory.
 
 The attribute \attr{symbol} together with \attr{offset} specifies the start address in target memory of the list. When attribute \attr{based}:
   - is not specified or false (`based="1"`) the target memory content is interpreted as a structured element.
@@ -35,106 +35,22 @@ The attribute \attr{symbol} together with \attr{offset} specifies the start addr
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    `<object>` | 
-    /component_viewer/objects/object | 
-  
-
-  | 
-    \refelem{elem_list,list} | 
-    /component_viewer/objects/object/.../list | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    name | 
-    Name of the list variable for usage in scvd_expression. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    type | 
-    A scalar data type or complex data type defined with `<typedef>`.
-    xs:string | 
-    required | 
-  
-
-  | 
-    count | 
-    Number of list items to read from an array. Default value is `1`.  | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    next | 
-    Name of a _member_ element in the list that is used as next pointer. This is used to read a linked list. \elem{readlist} stops reading on a `NULL` pointer.
-        The maximum number of list items is limited to `1024`.  | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    symbol | 
-    Symbol name used to calculate the memory address in the target system.
-    xs:string | 
-    optional | 
-  
-
-  | 
-    offset | 
-    Offset to the memory address specified with \attr{symbol} address. If \attr{symbol} is not specified it is the memory address. 
-        Default value is `0`.
-    xs:string | 
-    optional | 
-  
-
-  | 
-    const | 
-    When `const="1"` the memory is read when the `<object>` is created the first time. Default value is `0`.
-    xs:int | 
-    optional | 
-  
-
-  | 
-    info | 
-    Descriptive text with additional information (comment). | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    cond | 
-    Conditional execution: element is executed when expression result is not `0`. Default value is `1`. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    init | 
-    When `init="1"` previous read items in the list are discarded. Default value is `0`. | 
-    xs:boolean | 
-    optional | 
-  
-
-  | 
-    based | 
-    When `based="1"` the \attr{symbol} and \attr{offset} specifies a pointer (or pointer array). Default value is `0`. | 
-    xs:boolean | 
-    optional | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| `<object>` | /component_viewer/objects/object |  |  |
+| \refelem{elem_list,list} | /component_viewer/objects/object/.../list |  |  |
+| Attributes | Description | Type | Use |
+| name | Name of the list variable for usage in scvd_expression. | xs:string | required |
+| type | A scalar data type or complex data type defined with `<typedef>`. xs:string | required |  |
+| count | Number of list items to read from an array. Default value is `1`. | xs:string | optional |
+| next | Name of a member element in the list that is used as next pointer. This is used to read a linked list. \elem{readlist} stops reading on a `NULL` pointer. The maximum number of list items is limited to `1024`. | xs:string | optional |
+| symbol | Symbol name used to calculate the memory address in the target system. xs:string | optional |  |
+| offset | Offset to the memory address specified with \attr{symbol} address. If \attr{symbol} is not specified it is the memory address. Default value is `0`. xs:string | optional |  |
+| const | When `const="1"` the memory is read when the `<object>` is created the first time. Default value is `0`. xs:int | optional |  |
+| info | Descriptive text with additional information (comment). | xs:string | optional |
+| cond | Conditional execution: element is executed when expression result is not `0`. Default value is `1`. | xs:string | optional |
+| init | When `init="1"` previous read items in the list are discarded. Default value is `0`. | xs:boolean | optional |
+| based | When `based="1"` the \attr{symbol} and \attr{offset} specifies a pointer (or pointer array). Default value is `0`. | xs:boolean | optional |
 
 
 

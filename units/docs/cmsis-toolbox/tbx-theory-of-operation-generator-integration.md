@@ -47,9 +47,9 @@ For generators with no `<generator>` element in the *.PDSC file, the `global.gen
 `generator:`                                         |            | Content
 :----------------------------------------------------|:-----------|:------------------------------------
 `- id:`                                              |**Required**| `<generator-id>` referred in the `*.PDSC` file
-&nbsp;&nbsp;&nbsp; `download-url:`                   |  Optional  | URL for downloading the generator
-&nbsp;&nbsp;&nbsp; `run:`                            |**Required**| Name and location of the utility that starts the generator
-&nbsp;&nbsp;&nbsp; `path:`                           |**Required**| Output directory of the generator. Contains the file `*.cgen.yml`.
+    `download-url:`                   |  Optional  | URL for downloading the generator
+    `run:`                            |**Required**| Name and location of the utility that starts the generator
+    `path:`                           |**Required**| Output directory of the generator. Contains the file `*.cgen.yml`.
 
 ```yml
 generator:

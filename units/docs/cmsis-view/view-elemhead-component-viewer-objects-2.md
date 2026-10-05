@@ -3,7 +3,7 @@ id: "view-elemhead-component-viewer-objects-2"
 type: "concept"
 domain: "trace"
 title: "\\elemhead{component_viewer/objects/object/.../calc}"
-summary: "Execute calculations using scvdexpression."
+summary: "Execute calculations using scvd_expression."
 status: "draft"
 collection: "cmsis-view"
 source: "ARM-software/CMSIS-View@fef5aca:Documentation/Doxygen/src/ref_scvd.txt"
@@ -16,48 +16,14 @@ Execute calculations using scvd_expression.
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    `<object>` | 
-    elem_object | 
-  
-
-  | 
-    \refelem{elem_list,list} | 
-    elem_list | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    cond | 
-    Conditional execution: element is executed when expression result is not `0`. Default value is `1`.  | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    Body | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    _text_ | 
-     scvd_expression that are calculated. No XML-comments are allowed in this section. | 
-    xs:string | 
-    optional | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| `<object>` | elem_object |  |  |
+| \refelem{elem_list,list} | elem_list |  |  |
+| Attributes | Description | Type | Use |
+| cond | Conditional execution: element is executed when expression result is not `0`. Default value is `1`. | xs:string | optional |
+| Body | Description | Type | Use |
+| text | scvd_expression that are calculated. No XML-comments are allowed in this section. | xs:string | optional |
 
 
 

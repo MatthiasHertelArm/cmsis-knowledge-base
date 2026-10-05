@@ -16,25 +16,8 @@ Grouping element for boards. No more than one such group can exist in a Pack. No
 
 
 
-  | 
-    Parent | 
-    Chain | 
-  
-
-  | 
-    package | 
-    /package | 
-  
-	
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    board | 
-    Description of the board | 
-    BoardType | 
-    1..* |
+| Parent | Chain |  |  |
+|---|---|---|---|
+| package | /package |  |  |
+| Child Elements | Description | Type | Occurrence |
+| board | Description of the board | BoardType | 1..* |

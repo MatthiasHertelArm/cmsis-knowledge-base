@@ -58,11 +58,11 @@ Header File                            | Description
 📂 CMSIS/Core/Include    | CMSIS-Core include folder ([See on GitHub](https://github.com/ARM-software/CMSIS_6/tree/main/CMSIS/Core/Include/))
  ┣ 📄 cmsis_compiler.h                  | Main CMSIS-Core compiler header file
  ┗ 📂 m-profile                         | Directory for M-Profile specific files
- &emsp;  ┣ 📄 cmsis_armclang_m.h   | CMSIS-Core Arm Clang compiler file for Cortex-M
- &emsp;  ┣ 📄 cmsis_clang_m.h      | CMSIS-Core Clang compiler file for Cortex-M
- &emsp;  ┣ 📄 cmsis_gcc_m.h        | CMSIS-Core GCC compiler file for Cortex-M
- &emsp;  ┣ 📄 cmsis_iccarm_m.h     | CMSIS-Core IAR compiler file for Cortex-M
- &emsp;  ┗ 📄 cmsis_tiarmclang_m.h | CMSIS-Core TI Clang compiler file
+    ┣ 📄 cmsis_armclang_m.h   | CMSIS-Core Arm Clang compiler file for Cortex-M
+    ┣ 📄 cmsis_clang_m.h      | CMSIS-Core Clang compiler file for Cortex-M
+    ┣ 📄 cmsis_gcc_m.h        | CMSIS-Core GCC compiler file for Cortex-M
+    ┣ 📄 cmsis_iccarm_m.h     | CMSIS-Core IAR compiler file for Cortex-M
+    ┗ 📄 cmsis_tiarmclang_m.h | CMSIS-Core TI Clang compiler file
 
 ### CMSIS-Core Architecture Feature Files
 
@@ -74,11 +74,11 @@ Header File         | Feature
 :-------------------|:-------------------
 📂 CMSIS/Core/Include    | CMSIS-Core include folder ([See on GitHub](https://github.com/ARM-software/CMSIS_6/tree/main/CMSIS/Core/Include/))
  ┣ 📂 m-profile                    | Directory for M-Profile specific files
- &emsp;  ┣ 📄 armv7m_cache1.h | cache_functions_m7
- &emsp;  ┣ 📄 armv7m_mpu.h    | mpu_functions
- &emsp;  ┣ 📄 armv8m_mpu.h    | mpu8_functions
- &emsp;  ┣ 📄 armv8m_pmu.h    | pmu8_functions
- &emsp;  ┗ 📄 armv81m_pac.h   | PAC functions
+    ┣ 📄 armv7m_cache1.h | cache_functions_m7
+    ┣ 📄 armv7m_mpu.h    | mpu_functions
+    ┣ 📄 armv8m_mpu.h    | mpu8_functions
+    ┣ 📄 armv8m_pmu.h    | pmu8_functions
+    ┗ 📄 armv81m_pac.h   | PAC functions
  ┗ 📄 tz_context.h                 | API header file for context_trustzone_functions
 
 ### CMSIS Version and Processor Information

@@ -73,100 +73,19 @@ full control of the **element** usage.
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    family | 
-    element_family | 
-  
-
-  | 
-    subFamily | 
-    element_subFamily | 
-  
-
-  | 
-    device | 
-    element_device | 
-  
-
-  | 
-    part | 
-    element_part | 
-  
-
-  | 
-    board | 
-    element_board | 
-  
-
-  | 
-    environments | 
-    element_component_environments | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    name | 
-    Name of the development tool (for example, "uv" for uVision) | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    Pname | 
-    Identifies the processor the setting belongs to.
-        Only alphabetical characters, decimal digits, '-' and '_' are allowed.
-        
-
-
-        Must not be used for:
-        
-
-          
-- /package/parts/part
-          
-- /package/boards/board
-          
-- /package/components/.../component/environments
-        
-     | 
-    RestrictedString | 
-    optional | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    any | 
-    Any element that is available for the specified development tool.
-
-    For uVision, the following elements are available: \`<CMisc>`, `<AMisc>`, `<LMisc>`, `
-`, `
-`, `
-`, `
-`, `
-`, `
-`, `
-`, `
-`. | 
-    xs:anyAttribute | 
-    0..* | 
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| family | element_family |  |  |
+| subFamily | element_subFamily |  |  |
+| device | element_device |  |  |
+| part | element_part |  |  |
+| board | element_board |  |  |
+| environments | element_component_environments |  |  |
+| Attributes | Description | Type | Use |
+| name | Name of the development tool (for example, "uv" for uVision) | xs:string | required |
+| Pname | Identifies the processor the setting belongs to. Only alphabetical characters, decimal digits, '-' and '_' are allowed. Must not be used for: /package/parts/part /package/boards/board /package/components/.../component/environments | RestrictedString | optional |
+| Child Elements | Description | Type | Occurrence |
+| any | Any element that is available for the specified development tool. For uVision, the following elements are available: \`<CMisc>`, `<AMisc>`, `<LMisc>`, \ , \ , \ , \ , \ , \ , \ , \ . | xs:anyAttribute | 0..* |
 
 
 

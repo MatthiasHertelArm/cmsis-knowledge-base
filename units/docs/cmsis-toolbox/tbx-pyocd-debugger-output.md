@@ -22,11 +22,11 @@ programmed to the device.
 `output:`                                                 |              | Content
 :---------------------------------------------------------|:-------------|:------------------------------------
 `- file:`                                                 | **Required** | Specifies the file name.
-&nbsp;&nbsp;&nbsp; [`type:`](https://open-cmsis-pack.github.io/cmsis-toolbox/pyOCD-Debugger/YML-Input-Format.md#type)    | **Required** | Specifies the file type.
-&nbsp;&nbsp;&nbsp; `info:`                                |   Optional   | Brief description of the file.
-&nbsp;&nbsp;&nbsp; [`load:`](https://open-cmsis-pack.github.io/cmsis-toolbox/pyOCD-Debugger/YML-Input-Format.md#load)    | **Required** | Load mode of the image file for programmers and debug tools.
-&nbsp;&nbsp;&nbsp; `load-offset:`                         |   Optional   | Offset applied in `*.csolution.yml` when loading the binary image file.
-&nbsp;&nbsp;&nbsp; `pname:`                               |   Optional   | Image belongs to processor in a multi-core system.
+    [`type:`](https://open-cmsis-pack.github.io/cmsis-toolbox/pyOCD-Debugger/YML-Input-Format.md#type)    | **Required** | Specifies the file type.
+    `info:`                                |   Optional   | Brief description of the file.
+    [`load:`](https://open-cmsis-pack.github.io/cmsis-toolbox/pyOCD-Debugger/YML-Input-Format.md#load)    | **Required** | Load mode of the image file for programmers and debug tools.
+    `load-offset:`                         |   Optional   | Offset applied in `*.csolution.yml` when loading the binary image file.
+    `pname:`                               |   Optional   | Image belongs to processor in a multi-core system.
 
 **Example:**
 

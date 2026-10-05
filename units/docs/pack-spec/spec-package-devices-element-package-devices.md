@@ -31,29 +31,11 @@ The group is not mandatory.
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    package | 
-    /package | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    family | 
-    Device family group. Define all properties that are in common to devices of a family. | 
-    complexType | 
-    1..* | 
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| package | /package |  |  |
+| Child Elements | Description | Type | Occurrence |
+| family | Device family group. Define all properties that are in common to devices of a family. | complexType | 1..* |
 
 
 

@@ -62,78 +62,16 @@ can provide reference manual level details within the debugger.
 **/device/peripherals/peripheral/registers/.../field/enumeratedValues**
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    `<field>` | 
-    elem_field | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    derivedFrom | 
-    Makes a copy from a previously defined **enumeratedValues** section.
-        No modifications are allowed. An **enumeratedValues** entry is referenced by its name.
-        If the name is not unique throughout the description, it needs to be further qualified
-        by specifying the associated field, register, and peripheral as required. For example:
-
-
-    field:                           clk.dis_en_enum
-    register + field:                ctrl.clk.dis_en_enum
-    peripheral + register + field:   timer0.ctrl.clk.dis_en_enum
-
-     | 
-    referenceIdentifierType | 
-    0..1 | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    name | 
-    Identifier for the whole enumeration section. | 
-    xs:Name | 
-    0..1 | 
-  
-
-  | 
-    headerEnumName | 
-    Identifier for the enumeration section. Overwrites the hierarchical enumeration type in the device header file.
-        User is responsible for uniqueness across description. | 
-    identifierType | 
-    0..1 | 
-  
-
-  | 
-    usage | 
-    Possible values are `read<em>,</em> write<em>, or</em> read-write`.
-        This allows specifying two different enumerated values depending whether it is to be used
-        for a read or a write access. If not specified, the default value `read-write` is used. | 
-    enumUsageType | 
-    0..1 | 
-  
-
-  | 
-    `<enumeratedValue>` | 
-    Describes a single entry in the enumeration. The number of required items depends on the
-        bit-width of the associated field. If derived from a previously defined **enumeratedValues** section, don't specify, else required. | 
-    enumeratedValueType | 
-    0/1..* | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| `<field>` | elem_field |  |  |
+| Attributes | Description | Type | Occurrence |
+| derivedFrom | Makes a copy from a previously defined **enumeratedValues** section. No modifications are allowed. An **enumeratedValues** entry is referenced by its name. If the name is not unique throughout the description, it needs to be further qualified by specifying the associated field, register, and peripheral as required. For example: field: clk.dis_en_enum register + field: ctrl.clk.dis_en_enum peripheral + register + field: timer0.ctrl.clk.dis_en_enum | referenceIdentifierType | 0..1 |
+| Child Elements | Description | Type | Occurrence |
+| name | Identifier for the whole enumeration section. | xs:Name | 0..1 |
+| headerEnumName | Identifier for the enumeration section. Overwrites the hierarchical enumeration type in the device header file. User is responsible for uniqueness across description. | identifierType | 0..1 |
+| usage | Possible values are `read , write , or read-write`. This allows specifying two different enumerated values depending whether it is to be used for a read or a write access. If not specified, the default value `read-write` is used. | enumUsageType | 0..1 |
+| `<enumeratedValue>` | Describes a single entry in the enumeration. The number of required items depends on the bit-width of the associated field. If derived from a previously defined **enumeratedValues** section, don't specify, else required. | enumeratedValueType | 0/1..* |
 
 
 

@@ -33,11 +33,6 @@ A **trace** element is expected to contain only one **serialwire** element.
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    trace | 
-    element_trace |
+| Parents | Element Chain |
+|---|---|
+| trace | element_trace |

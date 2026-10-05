@@ -11,10 +11,11 @@ Only sources with mode V (full text, open licence) belong in the list: the unit 
 section text. Every unit records where it came from (source: repo@commit:path), where it is
 published (doc_source: URL), its licence and its collection, so a reviewer can trace it.
 
-Usage: python doc2ku.py <sources.yml> <docs-dir> <out-dir> [--only name,name]
+Usage: python doc2ku.py <sources.yml> <docs-dir> <out-dir> [--only=name,name] [--fetch]
   docs-dir holds one clone per source, named like the source's `dir` (default: last part of repo).
+  --fetch clones what is missing: shallow, and sparse for a source with `sparse:` paths.
 """
-import fnmatch, json, re, subprocess, sys
+import fnmatch, html, json, re, subprocess, sys
 from pathlib import Path
 import yaml
 
@@ -22,6 +23,12 @@ SPLIT_CHARS = 12_000
 MIN_CHARS = 160
 SUMMARY_WORDS = 40
 ID_MAX = 90
+PAGE_SKIP = re.compile(r"(?i)^(revision history|release notes|change ?log|history)$")
+# Document boilerplate: says nothing about the subject.
+SECTION_SKIP = re.compile(r"(?i)^(\d+(\.\d+)*\.?\s+)?(acknowledge?ments?|change control|change history|document history|revision history|"
+                          r"release notes|change ?log|licen[cs]e|licensing|copyright|trademark[\w ]*|contributing|contributors|"
+                          r"code of conduct|feedback|disclaimer|proprietary notice|confidentiality status|"
+                          r"current status and anticipated changes|about the license)$")
 SKIP_NAMES = re.compile(r"(?i)(changelog|history|revision_history|code_of_conduct|contributing|security|license|third[-_]party|release[-_]notes?|pull_request_template|issue_template)")
 
 
@@ -51,8 +58,35 @@ def dox_inline(t):
 
 def html_to_md(text):
     """HTML of the prose as Markdown; code fences and code spans stay as they are (they hold XML such as <sequence>)."""
+    text = "".join(p if p.startswith("```") else html_tables(p) for p in re.split(r"(```.*?```)", text, flags=re.S))
     parts = re.split(r"(```.*?```|`[^`\n]+`)", text, flags=re.S)
     return "".join(p if p.startswith("`") else html_prose_to_md(p) for p in parts)
+
+
+def html_cell(c):
+    c = re.sub(r"(?is)<br\s*/?>|</?p[^>]*>", " ", c)
+    c = re.sub(r"(?is)</?(code|tt)>", "`", c)
+    c = re.sub(r"(?is)</?(b|strong)>", "**", c)
+    c = re.sub(r"(?is)<a\s[^>]*href=\"([^\"]+)\"[^>]*>(.*?)</a>", r"[\2](\1)", c)
+    c = re.sub(r"(?is)</?(?:span|div|i|em|sup|sub|small|font|img|ul|ol|li|nobr|center)(\s[^<>]*)?/?>", " ", c)
+    return html.unescape(re.sub(r"\s+", " ", c).strip()).replace("|", "\\|")
+
+
+def html_tables(t):
+    """HTML tables as Markdown tables, the first row as the header."""
+    def table(m):
+        rows = []
+        for r in re.findall(r"(?is)<tr[^>]*>(.*?)</tr>", m.group(0)):
+            cells = [html_cell(c) for c in re.findall(r"(?is)<t[dh][^>]*>(.*?)</t[dh]>", r)]
+            if cells:
+                rows.append(cells)
+        if not rows:
+            return m.group(0)
+        n = max(len(r) for r in rows)
+        rows = [r + [""] * (n - len(r)) for r in rows]
+        lines = ["| " + " | ".join(rows[0]) + " |", "|" + "---|" * n] + ["| " + " | ".join(r) + " |" for r in rows[1:]]
+        return "\n\n" + "\n".join(lines) + "\n\n"
+    return re.sub(r"(?is)<table[^>]*>.*?</table>", table, t)
 
 
 def html_prose_to_md(t):
@@ -67,12 +101,11 @@ def html_prose_to_md(t):
     t = re.sub(r"(?is)</t[dh]>", " | ", t)
     t = re.sub(r"(?is)<tr[^>]*>", "| ", t)
     t = re.sub(r"(?is)<(p|div|table|ul|ol|dl|dd|dt)[^>]*>", "\n", t)
-    html = r"(?:a|b|i|u|p|em|strong|code|tt|pre|span|div|table|thead|tbody|tr|td|th|ul|ol|li|dl|dt|dd|img|sup|sub|center|h[1-6]|hr|small|big|font|caption|col|colgroup|blockquote|details|summary|kbd|var|samp|cite|abbr|section|figure|figcaption|nobr)"
-    t = re.sub(r"(?is)</?" + html + r"(\s[^<>]*)?/?>", "", t)
+    tags = r"(?:a|b|i|u|p|em|strong|code|tt|pre|span|div|table|thead|tbody|tr|td|th|ul|ol|li|dl|dt|dd|img|sup|sub|center|h[1-6]|hr|small|big|font|caption|col|colgroup|blockquote|details|summary|kbd|var|samp|cite|abbr|section|figure|figcaption|nobr)"
+    t = re.sub(r"(?is)</?" + tags + r"(\s[^<>]*)?/?>", "", t)
     # Anything else in angle brackets is an XML element of the specification: keep it, as code.
     t = re.sub(r"(?<![`\w])<(/?[a-zA-Z][\w:.-]*)((?:\s[^<>]*)?)/?>(?!`)", lambda m: f"`<{m.group(1)}{m.group(2)}>`", t)
-    t = t.replace("&nbsp;", " ").replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&")
-    return t
+    return html.unescape(t).replace("\xa0", " ")
 
 
 def comment_blocks(text):
@@ -168,11 +201,157 @@ def doxmd_to_md(text):
     return html_to_md(dox_inline(t))
 
 
+# ── reStructuredText ────────────────────────────────────────────────────────
+
+RST_ADORN = re.compile(r"^([=\-~^*#+'`\"_:.])\1{2,}\s*$")
+RST_DROP = ("toctree", "doxygengroup", "doxygenfunction", "doxygenstruct", "doxygentypedef", "doxygenenum", "doxygendefine",
+            "doxygenfile", "contents", "image", "figure", "graphviz", "zephyr-app-commands", "zephyr:code-sample-category",
+            "only", "raw", "include", "literalinclude", "kconfig:option", "zephyr:board-catalog", "tabs", "rst-class", "highlight",
+            "versionadded", "versionchanged", "index", "uml", "plantuml", "csv-table", "tabularcolumns")
+
+
+def rst_inline(t):
+    t = re.sub(r":(?:c:)?(?:func|macro|type|struct|enum|member|var|data):`~?([^`<]+?)(?:\s*<[^>]+>)?`", r"`\1`", t)
+    t = re.sub(r":(?:ref|doc|numref|zephyr:code-sample|zephyr:board)?:`([^`<]+?)\s*<[^>]+>`", r"\1", t)
+    t = re.sub(r":(?:ref|doc|numref|zephyr:code-sample|zephyr:board):`([^`]+)`", r"\1", t)
+    t = re.sub(r":[\w:+-]+:`([^`]+)`", r"`\1`", t)
+    t = re.sub(r"`([^`<]+?)\s*<(https?://[^>]+)>`__?", r"[\1](\2)", t)
+    t = re.sub(r"``([^`]+)``", r"`\1`", t)
+    t = re.sub(r"(?<![`\w])`([^`]+)`_+", r"\1", t)
+    return t
+
+
+def rst_to_md(text):
+    lines = text.replace("\t", "    ").splitlines()
+    out, levels, i = [], [], 0
+    while i < len(lines):
+        line = lines[i]
+        nxt = lines[i + 1] if i + 1 < len(lines) else ""
+        # Title: a line underlined (and maybe overlined) with one adornment character.
+        if line.strip() and not RST_ADORN.match(line) and RST_ADORN.match(nxt) and len(nxt.strip()) >= len(line.strip()) - 1:
+            over = i > 0 and RST_ADORN.match(lines[i - 1] or "") is not None
+            key = (nxt.strip()[0], over)
+            if key not in levels:
+                levels.append(key)
+            if over and out and RST_ADORN.match(out[-1] or ""):
+                out.pop()
+            out += ["", "#" * min(levels.index(key) + 1, 6) + " " + rst_inline(line.strip()), ""]
+            i += 2
+            continue
+        if RST_ADORN.match(line) and i + 2 < len(lines) and RST_ADORN.match(lines[i + 2] or ""):
+            i += 1            # an overline: the title follows
+            continue
+        d = re.match(r"^(\s*)\.\.\s+([\w:-]+)::\s*(.*)$", line)
+        if d or re.match(r"^\s*\.\.\s+(_[\w -]+:|\|[^|]+\|)", line) or re.match(r"^\s*\.\.\s*$", line):
+            indent = len(d.group(1)) if d else len(line) - len(line.lstrip())
+            name = d.group(2) if d else ""
+            j = i + 1
+            block = []
+            while j < len(lines) and (not lines[j].strip() or len(lines[j]) - len(lines[j].lstrip()) > indent):
+                block.append(lines[j])
+                j += 1
+            while block and not block[-1].strip():
+                block.pop()
+            body = [b for b in block if not re.match(r"^\s*:[\w-]+:", b)]
+            if name in ("code-block", "code", "sourcecode", "console"):
+                lang = d.group(3).strip() if d else ""
+                out += ["```" + lang] + dedent(body) + ["```"]
+            elif name in ("note", "warning", "important", "tip", "caution", "attention", "hint"):
+                text_ = " ".join(x.strip() for x in body if x.strip())
+                out += ["", f"**{name.capitalize()}:** {rst_inline((d.group(3) + ' ' + text_).strip())}", ""]
+            elif name in ("list-table",):
+                out += [rst_inline(x) for x in dedent(body)]
+            elif name and name not in RST_DROP and body and not name.startswith(("doxygen", "auto")):
+                out += rst_to_md("\n".join(dedent(body))).splitlines()
+            i = j
+            continue
+        if line.rstrip().endswith("::") and not line.strip().startswith(".."):
+            # A literal block follows.
+            out.append(rst_inline(line.rstrip()[:-1].rstrip() + (":" if line.strip() != "::" else "")))
+            j = i + 1
+            while j < len(lines) and not lines[j].strip():
+                j += 1
+            indent = len(line) - len(line.lstrip())
+            block = []
+            while j < len(lines) and (not lines[j].strip() or len(lines[j]) - len(lines[j].lstrip()) > indent):
+                block.append(lines[j])
+                j += 1
+            while block and not block[-1].strip():
+                block.pop()
+            out += ["```"] + dedent(block) + ["```"]
+            i = j
+            continue
+        out.append(rst_inline(line))
+        i += 1
+    return "\n".join(out)
+
+
+def dedent(block):
+    widths = [len(b) - len(b.lstrip()) for b in block if b.strip()]
+    cut = min(widths) if widths else 0
+    return [b[cut:] for b in block]
+
+
+# ── Hugo (Arm Learning Paths) ───────────────────────────────────────────────
+
+def hugo_to_md(t):
+    """Hugo shortcodes: notices become a bold label, tabs a bold heading, the rest goes."""
+    t = re.sub(r"\{\{[<%]\s*notice\s*\"?([^\"%>]*?)\"?\s*[%>]\}\}", lambda m: f"**{(m.group(1) or 'Note').strip()}:**", t)
+    t = re.sub(r"\{\{[<%]\s*tab\s+header=\"([^\"]+)\"[^}]*[%>]\}\}", r"**\1:**", t)
+    t = re.sub(r"\{\{[<%]\s*/?[\w-]+[^}]*[%>]\}\}", "", t)
+    return re.sub(r"(?m)^(#{1,6} .*?)\s*\{#[\w.-]+\}\s*$", r"\1", t)
+
+
+def as_list(v):
+    return [str(x) for x in v] if isinstance(v, list) else [str(v)] if v else []
+
+
+def path_overview(fm, steps):
+    """The _index.md of a Learning Path keeps its content in the front matter: make it a page."""
+    out = [f"# {fm.get('title', '')}", "", str(fm.get("description", "")).strip(), ""]
+    for key, label in (("who_is_this_for", "Who is this for"), ("learning_objectives", "Learning objectives"),
+                       ("prerequisites", "Prerequisites")):
+        items = as_list(fm.get(key))
+        if len(items) == 1:
+            out += [f"**{label}:** {items[0]}", ""]
+        elif items:
+            out += [f"**{label}:**", ""] + [f"- {x}" for x in items] + [""]
+    if steps:
+        out += ["**Steps:**", ""] + [f"{i}. {t}" for i, t in enumerate(steps, 1)] + [""]
+    if fm.get("minutes_to_complete"):
+        out += [f"Time: about {fm['minutes_to_complete']} minutes."]
+    return "\n".join(out)
+
+
+def path_index(folder):
+    """(front matter of the folder's _index.md, step titles in weight order), cached per folder."""
+    if folder not in _PATH_INDEX:
+        idx = folder / "_index.md"
+        fm = strip_front_matter(idx.read_text(encoding="utf-8", errors="replace"))[1] if idx.exists() else {}
+        steps = []
+        for f in folder.glob("*.md"):
+            if f.name.startswith("_"):
+                continue
+            sfm = strip_front_matter(f.read_text(encoding="utf-8", errors="replace"))[1]
+            steps.append((sfm.get("weight", 99), str(sfm.get("title", f.stem))))
+        _PATH_INDEX[folder] = (fm, [t for _, t in sorted(steps)])
+    return _PATH_INDEX[folder]
+
+
+_PATH_INDEX = {}
+
+
 # ── Markdown pages -> sections ──────────────────────────────────────────────
 
 def strip_front_matter(t):
-    m = re.match(r"---\n(.*?)\n---\n", t, re.S)
-    return (t[m.end():], yaml.safe_load(m.group(1)) or {}) if m else (t, {})
+    m = re.match(r"---[ \t]*\r?\n(.*?)\r?\n---[ \t]*\r?\n", t, re.S)
+    if not m:
+        return t, {}
+    try:
+        fm = yaml.safe_load(m.group(1)) or {}
+    except yaml.YAMLError:
+        fm = {}
+    return t[m.end():], fm if isinstance(fm, dict) else {}
 
 
 def headings(md):
@@ -203,7 +382,8 @@ def summary_of(md, fallback):
         if not p or p.startswith(("#", "|", "!", "<", ">", "-", "*", "1.", "```")) or len(p) < 40:
             continue
         p = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", p)
-        p = re.sub(r"[`*_]", "", " ".join(p.split()))
+        # Emphasis marks go; an underscore inside a name such as app_main stays.
+        p = re.sub(r"[`*]|(?<!\w)_(?=\S)|(?<=\S)_(?!\w)", "", " ".join(p.split()))
         first = re.split(r"(?<=[.!?])\s", p)
         s = ""
         for sent in first:
@@ -224,6 +404,9 @@ def rewrite_links(md, page_url):
         label, target = m.group(1), m.group(2)
         if re.match(r"(?i)^(https?:|mailto:|#)", target) or not page_url:
             return m.group(0)
+        if target.startswith("/"):
+            # A site-root link: relative to the host of the published page.
+            return f"[{label}]({re.match(r'https?://[^/]+', page_url).group(0)}{target})"
         base = page_url.rsplit("/", 1)[0] + "/"
         return f"[{label}]({base}{target})"
     return re.sub(r"(?<!!)\[([^\]]+)\]\(([^)\s]+)\)", fix, md)
@@ -270,10 +453,14 @@ def matches(path, globs):
 def page_url_of(src, rel, page_id):
     tpl = src.get("url")
     if tpl:
-        stem = Path(rel).stem
+        stem = Path(rel).stem.lstrip("_")
         if stem.lower() in ("index", "readme"):
             stem = ""
-        return re.sub(r"(?<!:)//+", "/", tpl.format(stem=stem, page=page_id, path=rel, dir=str(Path(rel).parent)))
+        page_id = "index" if page_id == "mainpage" else page_id
+        return re.sub(r"(?<!:)//+", "/", tpl.format(stem=stem, page=page_id, path=rel, dir=str(Path(rel).parent).removeprefix(src.get("dir_strip", "")),
+                                                    name=Path(rel).parent.name))
+    if src.get("host"):
+        return f"{src['host']}/{src['repo']}/-/blob/{src['commit']}/{rel}"
     return f"https://github.com/{src['repo']}/blob/{src['commit']}/{rel}"
 
 
@@ -290,7 +477,7 @@ def convert(src, repo, out, used):
     written = 0
     for f in files:
         rel = f.relative_to(repo).as_posix()
-        suffixes = (".md", ".txt", ".c", ".h") if src.get("format") == "doxtxt" else (".md", ".txt")
+        suffixes = (".md", ".txt", ".c", ".h") if src.get("format") == "doxtxt" else (".md", ".txt", ".rst")
         if f.suffix.lower() not in suffixes or not matches(rel, src["include"]) or matches(rel, src.get("exclude", [])) \
                 or SKIP_NAMES.search(f.stem):
             continue
@@ -301,16 +488,27 @@ def convert(src, repo, out, used):
             pages = [(pid, t, "# " + t + "\n" + md) for pid, t, md in doxtxt_to_md(text, f.stem, title)]
         else:
             body, fm = strip_front_matter(text)
-            body = doxmd_to_md(body) if fmt in ("doxmd", "doxtxt") else body
-            if fm.get("title") and not re.search(r"(?m)^# ", body):
-                body = f"# {fm['title']}\n" + body
+            if fmt == "hugo":
+                body = hugo_to_md(body)
+            body = doxmd_to_md(body) if fmt in ("doxmd", "doxtxt") else rst_to_md(body) if f.suffix == ".rst" else html_to_md(body)
+            title = str(fm.get("title", "")).strip()
+            if src.get("path_index"):
+                pfm, steps = path_index(f.parent)
+                if f.name == "_index.md":
+                    body = path_overview(fm, steps) + "\n" + body
+                elif pfm.get("title") and title:
+                    title = f"{pfm['title']}: {title}"
+            if title and not re.search(r"(?m)^# ", body):
+                body = f"# {title}\n" + body
             pages = [(f.stem, "", body)]
         for page_id, _title, md in pages:
+            if PAGE_SKIP.match(_title.strip()) or page_id in ("rev_hist", "revision_history", "changelog"):
+                continue
             page_url = page_url_of(src, rel, page_id)
             page_title, secs = sections(md)
             page_title = page_title or Path(rel).stem.replace("_", " ").replace("-", " ")
             for path, text_ in secs:
-                if prose_chars(text_) < MIN_CHARS:
+                if prose_chars(text_) < MIN_CHARS or (path and SECTION_SKIP.match(path[-1].strip())):
                     continue
                 name = path[-1] if path else page_title
                 title = f"{page_title}: {' / '.join(path)}" if path else page_title
@@ -320,7 +518,12 @@ def convert(src, repo, out, used):
                 body = rewrite_links(text_.strip(), page_url)
                 if len(path) == 2:
                     body = f"_Part of: {path[0]}_\n\n" + body
-                base = f"{src['prefix']}-{slug(page_title, 34)}" + (f"-{slug(name, 40)}" if path else "")
+                if src.get("id_from_path"):
+                    stem = f.stem.lstrip("_")
+                    base = f"{src['prefix']}-{slug(f.parent.name, 34)}" + (f"-{slug(stem, 24)}" if stem != "index" else "") \
+                        + (f"-{slug(name, 30)}" if path else "")
+                else:
+                    base = f"{src['prefix']}-{slug(page_title, 34)}" + (f"-{slug(name, 40)}" if path else "")
                 uid = base[:ID_MAX].strip("-")
                 n = 1
                 while uid in used:
@@ -341,7 +544,16 @@ def convert(src, repo, out, used):
     return written
 
 
-def main(cfg, docs, out, only=None):
+def fetch(src, repo):
+    url = f"{src.get('host', 'https://github.com')}/{src['repo']}.git"
+    sparse = src.get("sparse")
+    cmd = ["git", "clone", "-q", "--depth", "1"] + (["--filter=blob:none", "--sparse"] if sparse else []) + [url, str(repo)]
+    subprocess.run(cmd, check=True)
+    if sparse:
+        subprocess.run(["git", "-C", str(repo), "sparse-checkout", "set"] + list(sparse), check=True)
+
+
+def main(cfg, docs, out, only=None, get=False):
     sources = yaml.safe_load(Path(cfg).read_text(encoding="utf-8"))["sources"]
     out = Path(out)
     used = set()
@@ -353,6 +565,9 @@ def main(cfg, docs, out, only=None):
             print(f"{src['name']:28s} skipped: mode {src.get('mode')}")
             continue
         repo = Path(docs) / src.get("dir", src["repo"].split("/")[-1])
+        if not repo.exists() and get:
+            print(f"{src['name']:28s} cloning {src['repo']}")
+            fetch(src, repo)
         if not repo.exists():
             print(f"{src['name']:28s} missing clone {repo}")
             continue
@@ -367,11 +582,11 @@ def main(cfg, docs, out, only=None):
 
 
 if __name__ == "__main__":
-    args = [a for a in sys.argv[1:] if not a.startswith("--only")]
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
     only = None
     for a in sys.argv[1:]:
         if a.startswith("--only="):
             only = set(a.split("=", 1)[1].split(","))
     if len(args) != 3:
         sys.exit(__doc__)
-    main(*args, only=only)
+    main(*args, only=only, get="--fetch" in sys.argv)

@@ -16,71 +16,17 @@ Define the output for an object.
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    `<object>` | 
-    elem_object | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    name | 
-    The name used for menu titles and window titles of the \cviewer. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    value | 
-    Is the assigned value. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    type | 
-    Value type. One of the data_type. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    cond | 
-    Conditional execution: element is executed when expression result is not `0`. Default value is `1`. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    Child Element | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    \spref{elem_item,item} | 
-    Output a line to the Component Viewer window. | 
-    ItemType | 
-    0..* | 
-  
-
-  | 
-    \spref{elem_listout,list} | 
-    Iterate a loop (for or while construct). | 
-    ListType | 
-    0..* | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| `<object>` | elem_object |  |  |
+| Attributes | Description | Type | Use |
+| name | The name used for menu titles and window titles of the \cviewer. | xs:string | optional |
+| value | Is the assigned value. | xs:string | optional |
+| type | Value type. One of the data_type. | xs:string | optional |
+| cond | Conditional execution: element is executed when expression result is not `0`. Default value is `1`. | xs:string | optional |
+| Child Element | Description | Type | Occurrence |
+| \spref{elem_item,item} | Output a line to the Component Viewer window. | ItemType | 0..* |
+| \spref{elem_listout,list} | Iterate a loop (for or while construct). | ListType | 0..* |
 
 
  

@@ -32,7 +32,7 @@ For more control of breakpoints, use the **BREAKPOINTS** section that lists and 
 
 (figure: BREAKPOINTS section)
 
-> &#128221; **Note:**
+> 📝 **Note:**
 >
 > You can set breakpoints anytime during your debug session. However, when setting a breakpoint while running an
 > application, the target stops for a short period of time.
@@ -77,7 +77,7 @@ To add a condition to an existing breakpoint:
 
 - Edit the condition (expression, hit count, or wait for breakpoint).
 
-> &#128221; **Note:**
+> 📝 **Note:**
 >
 > For checking the the breakpoint condition, the target is halted for a short period of time.
 
@@ -90,7 +90,7 @@ breakpoint is shown (Write/Read/Access).
 
 (figure: Creating a data breakpoint)
 
-> &#128221; **Note:**
+> 📝 **Note:**
 >
 > When hitting a data breakpoint, the program execution does not stop exactly on that line of code. Depending on the
 > underlying CPU architecture, stopping can be delayed by up to 5 cycles. Use the

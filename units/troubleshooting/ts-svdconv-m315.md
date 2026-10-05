@@ -10,11 +10,14 @@ code: "M315"
 symptoms: ["M315", "Address Block: <size> is zero."]
 symptom_regex: "^Address Block: <size> is zero\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e81:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e81:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
+cause_origin: "source-analysis"
+confidence: "high"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdAddressBlock.cpp:133", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdAddressBlock.cpp:134", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/unittests/src/SvdModelValidationTest.cpp:123", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:134"]
 ---
 
 ## Symptom
@@ -24,8 +27,17 @@ mode: "V"
 
 ## Cause
 
-_offen, im Review ergänzen_
+An <addressBlock> has <size> 0. The block is dropped.
 
 ## Fix
 
-_offen, im Review ergänzen_
+Set <size> to the number of bytes the block spans (for example 0x400), or remove the block.
+
+## Evidence
+
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+
+- `tools/svdconv/SVDModel/src/SvdAddressBlock.cpp:133`
+- `tools/svdconv/SVDModel/src/SvdAddressBlock.cpp:134`
+- `tools/svdconv/test/unittests/src/SvdModelValidationTest.cpp:123`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:134`

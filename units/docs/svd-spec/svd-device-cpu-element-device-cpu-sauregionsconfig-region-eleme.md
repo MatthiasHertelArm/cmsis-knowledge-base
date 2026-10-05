@@ -39,63 +39,13 @@ SAU2 has the address boundries `0x10006000` and `0x10008000`. The region has sec
 **/device/cpu/sauRegionsConfig/region**
 
 
-    | 
-        Parent Element | 
-        Element Chain | 
-    
-
-    | 
-        sauRegionsConfig | 
-        elem_sauRegionsConfig  | 
-    
-
-    | 
-        Attributes | 
-        Description | 
-        Type | 
-        Use | 
-    
-
-    | 
-        enabled | 
-        Specify whether the Secure Attribution Units are enabled. The following values can be used:
-            `true` and `false`, or `1` and `0`. Default value is `true`. | 
-        xs:boolean | 
-        optional | 
-    
-
-    | 
-        name | 
-        Identifiy the region with a name.  | 
-        xs:string | 
-        optional | 
-    
-
-    | 
-        Child Elements | 
-        Description | 
-        Type | 
-        Occurrence | 
-    
-
-    | 
-        base | 
-        Base address of the region. | 
-        scaledNonNegativeInteger | 
-        1..1 | 
-    
-
-    | 
-        limit | 
-        Limit address of the region. | 
-        scaledNonNegativeInteger | 
-        1..1 | 
-    
-
-    | 
-        access | 
-        Use one of the following predefined values to define the acces type of a region:
-            \n - `n` : non-secure
-            \n - `c` : secure callable | 
-        xs:string | 
-        1..1 |
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| sauRegionsConfig | elem_sauRegionsConfig |  |  |
+| Attributes | Description | Type | Use |
+| enabled | Specify whether the Secure Attribution Units are enabled. The following values can be used: `true` and `false`, or `1` and `0`. Default value is `true`. | xs:boolean | optional |
+| name | Identifiy the region with a name. | xs:string | optional |
+| Child Elements | Description | Type | Occurrence |
+| base | Base address of the region. | scaledNonNegativeInteger | 1..1 |
+| limit | Limit address of the region. | scaledNonNegativeInteger | 1..1 |
+| access | Use one of the following predefined values to define the acces type of a region: \n - `n` : non-secure \n - `c` : secure callable | xs:string | 1..1 |

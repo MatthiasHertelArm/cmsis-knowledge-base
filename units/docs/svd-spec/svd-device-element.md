@@ -68,202 +68,31 @@ is set for all registers unless redefined at a lower level.
 **/device**
 
 
-  | 
-    Parent Level | 
-    Element Chain | 
-  
-
-  | 
-    root | 
-    None; Document root | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    xmlns:xs | 
-    Specify the underlying XML schema to which the CMSIS-SVD schema is compliant.
-    Has to be set to: `"http://www.w3.org/2001/XMLSchema-instance"`. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    xs:noNamespaceSchemaLocation | 
-    Specify the file path and file name of the CMSIS-SVD Schema. For example, `CMSIS-SVD.xsd`. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    schemaVersion | 
-    Specify the compliant CMSIS-SVD schema version (for example, `1.1`). | 
-    xs:decimal | 
-    required | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    vendor | 
-    Specify the vendor of the device using the full name.  | 
-    xs:string  | 
-    0..1  | 
-  
-
-  | 
-    vendorID | 
-    Specify the vendor abbreviation without spaces or special characters. This information is used
-        to define the directory.  | 
-    xs:string  | 
-    0..1  | 
-  
-
-  | 
-    name | 
-    The string identifies the device or device series. Device names are required to be unique. | 
-    xs:string  | 
-    1..1  | 
-  
-
-  | 
-    series | 
-    Specify the name of the device series.  | 
-    xs:string  | 
-    0..1  | 
-  
-
-  | 
-    version | 
-    Define the version of the SVD file. Silicon vendors maintain the description
-    throughout the life-cycle of the device and ensure that all updated and released copies
-    have a unique version string. Higher numbers indicate a more recent version.  | 
-  
-
-    xs:string  | 
-    1..1  | 
-  | 
-    description  | 
-    Describe the main features of the device (for example CPU, clock frequency, peripheral overview). | 
-    xs:string  | 
-    1..1  | 
-  
-
-  | 
-    licenseText  | 
-    The text will be copied into the header section of the generated device header file and shall contain the legal disclaimer.
-        New lines can be inserted by using `\\n`. This section is mandatory if the SVD file is used for generating the device header file. | 
-    xs:string  | 
-    0..1  | 
-  
-
-  | 
-    `<cpu>`  | 
-    Describe the processor included in the device. | 
-    xs:string  | 
-    0..1  | 
-  
-
-  | 
-    headerSystemFilename  | 
-    Specify the file name (without extension) of the device-specific system include file (system_<device>.h; See CMSIS-Core description).
-        The header file generator customizes the include statement referencing the CMSIS system file within the CMSIS device header file.
-        By default, the filename is system__device-name_.h. In cases where a device series shares a single system header file,
-        the name of the series shall be used instead of the individual device name.  | 
-    xs:string  | 
-    0..1  | 
-  
-
-  | 
-    headerDefinitionsPrefix  | 
-    This string is prepended to all type definition names generated in the CMSIS-Core device header file.
-        This is used if the vendor's software requires vendor-specific types in order to avoid name clashes with other definied types. | 
-    xs:string  | 
-    0..1  | 
-  
-
-  | 
-    addressUnitBits  | 
-    Define the number of data bits uniquely selected by each address.
-    The value for Cortex-M-based devices is  `8` (byte-addressable).
-     | 
-    scaledNonNegativeInteger  | 
-    1..1  | 
-  
-
-  | 
-    width  | 
-    Define the number of data bit-width of the maximum single data transfer supported
-    by the bus infrastructure. This information is relevant for debuggers when accessing
-    registers, because it might be required to issue multiple accesses for resources of a bigger size.
-    The expected value for Cortex-M-based devices is `32`. | 
-    scaledNonNegativeInteger  | 
-    1..1  | 
-  
-
-  | 
-       | 
-     Refer to registerPropertiesGroup_gr for details about the colored elements listed below. | 
-  
-
-  | 
-    size | 
-    Default bit-width of any register contained in the device. | 
-    scaledNonNegativeInteger | 
-    0..1 | 
-  
-
-  | 
-    access | 
-    Default access rights for all registers. | 
-    accessType | 
-    0..1  | 
-  
-
-  | 
-    protection | 
-    Default access protection for all registers. | 
-    protectionStringType | 
-    0..1  | 
-  
-
-  | 
-    resetValue  | 
-    Default value for all registers at RESET. | 
-    scaledNonNegativeInteger | 
-    0..1  | 
-  
-
-  | 
-    resetMask | 
-    Define which register bits have a defined reset value. | 
-    scaledNonNegativeInteger | 
-    0..1 | 
-  
-
-  | 
-    `<peripherals>` | 
-    Group to define peripherals.  | 
-      | 
-    1..1  | 
-  
-
-  | 
-    vendorExtensions  | 
-    The content and format of this section is unspecified.
-    Silicon vendors may choose to provide additional information. By default, this section
-    is ignored when constructing CMSIS files. It is up to the silicon vendor to specify
-    a schema for this section.
-     | 
-    xs:anyType (restriction)  | 
-    0..1  |
+| Parent Level | Element Chain |  |  |
+|---|---|---|---|
+| root | None; Document root |  |  |
+| Attributes | Description | Type | Use |
+| xmlns:xs | Specify the underlying XML schema to which the CMSIS-SVD schema is compliant. Has to be set to: `"http://www.w3.org/2001/XMLSchema-instance"`. | xs:string | required |
+| xs:noNamespaceSchemaLocation | Specify the file path and file name of the CMSIS-SVD Schema. For example, `CMSIS-SVD.xsd`. | xs:string | required |
+| schemaVersion | Specify the compliant CMSIS-SVD schema version (for example, `1.1`). | xs:decimal | required |
+| Child Elements | Description | Type | Occurrence |
+| vendor | Specify the vendor of the device using the full name. | xs:string | 0..1 |
+| vendorID | Specify the vendor abbreviation without spaces or special characters. This information is used to define the directory. | xs:string | 0..1 |
+| name | The string identifies the device or device series. Device names are required to be unique. | xs:string | 1..1 |
+| series | Specify the name of the device series. | xs:string | 0..1 |
+| version | Define the version of the SVD file. Silicon vendors maintain the description throughout the life-cycle of the device and ensure that all updated and released copies have a unique version string. Higher numbers indicate a more recent version. |  |  |
+| description | Describe the main features of the device (for example CPU, clock frequency, peripheral overview). | xs:string | 1..1 |
+| licenseText | The text will be copied into the header section of the generated device header file and shall contain the legal disclaimer. New lines can be inserted by using `\\n`. This section is mandatory if the SVD file is used for generating the device header file. | xs:string | 0..1 |
+| `<cpu>` | Describe the processor included in the device. | xs:string | 0..1 |
+| headerSystemFilename | Specify the file name (without extension) of the device-specific system include file (system_<device>.h; See CMSIS-Core description). The header file generator customizes the include statement referencing the CMSIS system file within the CMSIS device header file. By default, the filename is system_ device-name .h. In cases where a device series shares a single system header file, the name of the series shall be used instead of the individual device name. | xs:string | 0..1 |
+| headerDefinitionsPrefix | This string is prepended to all type definition names generated in the CMSIS-Core device header file. This is used if the vendor's software requires vendor-specific types in order to avoid name clashes with other definied types. | xs:string | 0..1 |
+| addressUnitBits | Define the number of data bits uniquely selected by each address. The value for Cortex-M-based devices is `8` (byte-addressable). | scaledNonNegativeInteger | 1..1 |
+| width | Define the number of data bit-width of the maximum single data transfer supported by the bus infrastructure. This information is relevant for debuggers when accessing registers, because it might be required to issue multiple accesses for resources of a bigger size. The expected value for Cortex-M-based devices is `32`. | scaledNonNegativeInteger | 1..1 |
+|   | Refer to registerPropertiesGroup_gr for details about the colored elements listed below. |  |  |
+| size | Default bit-width of any register contained in the device. | scaledNonNegativeInteger | 0..1 |
+| access | Default access rights for all registers. | accessType | 0..1 |
+| protection | Default access protection for all registers. | protectionStringType | 0..1 |
+| resetValue | Default value for all registers at RESET. | scaledNonNegativeInteger | 0..1 |
+| resetMask | Define which register bits have a defined reset value. | scaledNonNegativeInteger | 0..1 |
+| ` ` | Group to define peripherals. |   | 1..1 |
+| vendorExtensions | The content and format of this section is unspecified. Silicon vendors may choose to provide additional information. By default, this section is ignored when constructing CMSIS files. It is up to the silicon vendor to specify a schema for this section. | xs:anyType (restriction) | 0..1 |

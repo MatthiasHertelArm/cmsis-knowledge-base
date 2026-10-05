@@ -68,60 +68,14 @@ __var uservar = value;  // Comment: Define "uservar" and initialize to "value"
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    family | 
-    element_family | 
-  
-
-  | 
-    subFamily | 
-    element_subFamily | 
-  
-
-  | 
-    device | 
-    element_device | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    configfile | 
-    
-    
-      Configuration file with path relative to the package base folder (extension *.DBGCONF). This file contains 
-      assignments of a default value to global debug access variables. This file gets copied to the project folder
-      and is editable by the end-user. This file is read by the debugger after processing the global debug access variables.
-      By editing the values of the debug access variables, the end-user effectively controls the behavior of sequences.
-      The file can only assign new values but must not specify any new debug access variables.
-      Configuration Wizard Annotations shall be used within the file to provide a graphical user interface
-      for editing configuration options.
-     | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    version | 
-    
-      Version refers to the file version of the configfile attribute. If a configfile is specified the version attribute becomes
-      mandatory. The version shall be incremented if any changes have been made to the global debug access variable names or default
-      values. Based on the version information the tool environment will load a configfile with the version required by the debug
-      description. The end-user may be required to update the settings after updating to a new version.
-     | 
-    VersionType | 
-    optional | 
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| family | element_family |  |  |
+| subFamily | element_subFamily |  |  |
+| device | element_device |  |  |
+| Attributes | Description | Type | Use |
+| configfile | Configuration file with path relative to the package base folder (extension *.DBGCONF). This file contains assignments of a default value to global debug access variables. This file gets copied to the project folder and is editable by the end-user. This file is read by the debugger after processing the global debug access variables. By editing the values of the debug access variables, the end-user effectively controls the behavior of sequences. The file can only assign new values but must not specify any new debug access variables. Configuration Wizard Annotations shall be used within the file to provide a graphical user interface for editing configuration options. | xs:string | optional |
+| version | Version refers to the file version of the configfile attribute. If a configfile is specified the version attribute becomes mandatory. The version shall be incremented if any changes have been made to the global debug access variable names or default values. Based on the version information the tool environment will load a configfile with the version required by the debug description. The end-user may be required to update the settings after updating to a new version. | VersionType | optional |
 
 
 

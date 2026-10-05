@@ -3,7 +3,7 @@ id: "view-elemhead-component-viewer-events-e"
 type: "concept"
 domain: "trace"
 title: "\\elemhead{component_viewer/events/event/../print}"
-summary: "printspec are supported using the \" \" element. It works as child element of <event> and allows conditional output."
+summary: "print_spec are supported using the \" \" element. It works as child element of <event> and allows conditional output."
 status: "draft"
 collection: "cmsis-view"
 source: "ARM-software/CMSIS-View@fef5aca:Documentation/Doxygen/src/ref_scvd.txt"
@@ -17,58 +17,15 @@ print_spec are supported using the "
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    `<event>` | 
-    elem_event | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    cond | 
-    Conditional execution: element is executed when expression result is not `0`. If executed all consecutive "
-" elements are skipped. Default value is `1`. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    property | 
-    Shown in the **Property** column of the \erecorder window. Use specifiers to format the output. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    value | 
-    Shown in the **Value** column of the \erecorder window. Use specifiers to format the output. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    bold | 
-    Output in the **Value** column is displayed in **bold** when expression result is not `0`. Default value is `0`. See also alert_bold. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    alert | 
-    Output in the **Value** column is displayed in **red** when expression result is not `0`. Default value is `0`. See also alert_bold. | 
-    xs:string | 
-    optional | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| `<event>` | elem_event |  |  |
+| Attributes | Description | Type | Use |
+| cond | Conditional execution: element is executed when expression result is not `0`. If executed all consecutive " " elements are skipped. Default value is `1`. | xs:string | required |
+| property | Shown in the **Property** column of the \erecorder window. Use specifiers to format the output. | xs:string | required |
+| value | Shown in the **Value** column of the \erecorder window. Use specifiers to format the output. | xs:string | required |
+| bold | Output in the **Value** column is displayed in **bold** when expression result is not `0`. Default value is `0`. See also alert_bold. | xs:string | optional |
+| alert | Output in the **Value** column is displayed in **red** when expression result is not `0`. Default value is `0`. See also alert_bold. | xs:string | optional |
 
 
  

@@ -18,6 +18,6 @@ The command **Open Disassembly View** (available from [command palette](https://
 
 (figure: Disassembly View)
 
-> &#128221; **Note:**
+> 📝 **Note:**
 >
 > - Enable the [VS Code setting](https://code.visualstudio.com/docs/configure/settings) **Features > Debug > Disassembly View: Show Source Code** to show assembler instructions interleaved with source code.

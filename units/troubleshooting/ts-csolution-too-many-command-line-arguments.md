@@ -9,10 +9,13 @@ severity: "error"
 symptoms: ["too many command line arguments"]
 symptom_regex: "^too many command line arguments$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e81:tools/projmgr/src/ProjMgr.cpp:322"
+source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:322"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+cause_origin: "source-analysis"
+confidence: "low"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:320", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:214", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:257"]
 ---
 
 ## Symptom
@@ -21,14 +24,26 @@ mode: "V"
 
 ## Cause
 
-_offen, im Review ergänzen_
+The command-line parser reported arguments that it could not assign to an option or to the positional arguments.
 
 ## Fix
 
-_offen, im Review ergänzen_
+Remove stray words from the command line and quote values that contain spaces; `csolution <command> -h` lists the valid options.
 
-## Trigger im Quelltext
+## Trigger in the source
 
 ```cpp
 if (!parseResult.unmatched().empty()) {
 ```
+
+## Note
+
+All positional words go into one catch-all list, of which csolution uses the solution file, the command and its first argument and silently ignores the rest, so this check is hard to reach; no test covers it. The cxxopts submodule was not checked out to confirm when unmatched() is non-empty.
+
+## Evidence
+
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence low, not reviewed yet:
+
+- `tools/projmgr/src/ProjMgr.cpp:320`
+- `tools/projmgr/src/ProjMgr.cpp:214`
+- `tools/projmgr/src/ProjMgr.cpp:257`

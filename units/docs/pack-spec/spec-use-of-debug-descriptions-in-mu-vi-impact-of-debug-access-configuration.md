@@ -3,7 +3,7 @@ id: "spec-use-of-debug-descriptions-in-mu-vi-impact-of-debug-access-configuratio
 type: "concept"
 domain: "pack"
 title: "Use of debug descriptions in &mu;Vision: Impact of debug access configuration"
-summary: "When dbgdebugsettings are provided the &mu;Vision debugger automatically applies these settings to the new project for the MCU. This can be observed in  Options for Target... dialog - Debug tab - Settings button."
+summary: "When dbg_debug_settings are provided the μVision debugger automatically applies these settings to the new project for the MCU. This can be observed in  Options for Target... dialog - Debug tab - Settings button."
 status: "draft"
 collection: "pack-spec"
 source: "Open-CMSIS-Pack/Open-CMSIS-Pack-Spec@b3f8fcf:doxygen/src/pack_dbg_setup_tutorial.txt"
@@ -15,9 +15,9 @@ mode: "V"
 ### Debug connection
 
 
-When dbg_debug_settings are provided the &mu;Vision debugger automatically applies these settings to the new project for the MCU. This can be observed in ** Options for Target...** dialog - **Debug** tab - **Settings** button.
+When dbg_debug_settings are provided the μVision debugger automatically applies these settings to the new project for the MCU. This can be observed in ** Options for Target...** dialog - **Debug** tab - **Settings** button.
 
-Below is an example of the configuration code and how it is applied by &mu;Vision.
+Below is an example of the configuration code and how it is applied by μVision.
 
 ```
 <devices>
@@ -36,15 +36,15 @@ SWD is selected as the default debug protocol with 5MHz clock and SWJ checkbox l
 ### Access port
 
 
-With the specificaton of the debug connection &mu;Vision debugger will automatically use the access port specified via the **__ap** attribute when debugging the processor and there's no need for user to configure it in the IDE. Corresponding option is locked as shown on the figure below.
+With the specificaton of the debug connection μVision debugger will automatically use the access port specified via the **__ap** attribute when debugging the processor and there's no need for user to configure it in the IDE. Corresponding option is locked as shown on the figure below.
 
 
 
-&mu;Vision debugger displays the JTAG ID Code and the IR Length values (actually read or overwritten ones) in debug settings:
+μVision debugger displays the JTAG ID Code and the IR Length values (actually read or overwritten ones) in debug settings:
 
 
 
-You can test what the &mu;Vision debugger is able to detect automatically without the **debugport** configuration in the pdsc. For that the use of debug description shall be disabled in the **Pack** tab.
+You can test what the μVision debugger is able to detect automatically without the **debugport** configuration in the pdsc. For that the use of debug description shall be disabled in the **Pack** tab.
 
 
 ### Reset types and default selection
@@ -65,7 +65,7 @@ It is also possible to disable particular reset type for selection by overwritin
 
 ```
 
-&mu;Vision debugger applies it automatically and displays as default and selected in **Options for Target...** dialog - **Debug** tab - **Settings** button and then **Reset:**
+μVision debugger applies it automatically and displays as default and selected in **Options for Target...** dialog - **Debug** tab - **Settings** button and then **Reset:**
 
 
 

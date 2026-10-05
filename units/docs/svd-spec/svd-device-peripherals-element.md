@@ -29,29 +29,11 @@ All peripherals of a device are enclosed within the tag \tagem{peripherals}.
 **/device/peripherals**
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    device | 
-    elem_device | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    peripheral | 
-    Define the sequence of peripherals. | 
-    peripheralType | 
-    1..* | 
-    
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| device | elem_device |  |  |
+| Child Elements | Description | Type | Occurrence |
+| peripheral | Define the sequence of peripherals. | peripheralType | 1..* |
 
 
 

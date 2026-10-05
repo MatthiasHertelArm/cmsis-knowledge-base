@@ -37,37 +37,10 @@ The possible values are not imposed by this specification.
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    extensions | 
-    /package/components/component/extensions | 
-  
-
-  | 
-    extensions | 
-    /package/components/bundle/component/extensions | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    key | 
-    key identifying this extension. This must be unique per component. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    value | 
-    value associated to the key. | 
-    xs:string | 
-    optional |
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| extensions | /package/components/component/extensions |  |  |
+| extensions | /package/components/bundle/component/extensions |  |  |
+| Attributes | Description | Type | Use |
+| key | key identifying this extension. This must be unique per component. | xs:string | required |
+| value | value associated to the key. | xs:string | optional |

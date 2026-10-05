@@ -16,25 +16,8 @@ Is the enclosing element for objects that define the output for the \cviewer.
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    `<component_viewer>` | 
-    elem_component_viewer | 
-  
-
-  | 
-    Child Element | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    `<object>` | 
-    Define the output object for the Component Viewer. | 
-    ObjectType | 
-    1 |
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| `<component_viewer>` | elem_component_viewer |  |  |
+| Child Element | Description | Type | Occurrence |
+| `<object>` | Define the output object for the Component Viewer. | ObjectType | 1 |

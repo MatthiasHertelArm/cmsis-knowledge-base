@@ -20,17 +20,17 @@ pyOCD falls back to the default Cortex-M memory map.
 
 `system-resources:`                               |              | Content
 :-------------------------------------------------|:-------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `memory:`                      |   Optional   | Identifies the section for memory.
+    `memory:`                      |   Optional   | Identifies the section for memory.
 
 `memory:`                                         |              | Content
 :-------------------------------------------------|:-------------|:------------------------------------
 `- name:`                                         | **Required** | Name of the memory region (when PDSC contains id, it uses the id as name).
-&nbsp;&nbsp;&nbsp; `access:`                      | **Required** | Access attribute string for the memory ([see `access:` table here](https://open-cmsis-pack.github.io/cmsis-toolbox/pyOCD-Debugger/YML-CBuild-Format.md#system-resources)).
-&nbsp;&nbsp;&nbsp; `start:`                       | **Required** | Base address of the memory.
-&nbsp;&nbsp;&nbsp; `size:`                        | **Required** | Size of the memory.
-&nbsp;&nbsp;&nbsp; `pname:`                       |   Optional   | Only accessible by a specific processor.
-&nbsp;&nbsp;&nbsp; `alias:`                       |   Optional   | Name of identical memory exposed at a different address.
-&nbsp;&nbsp;&nbsp; `default:`                     |   Optional   | Indicates a general purpose memory region.
+    `access:`                      | **Required** | Access attribute string for the memory ([see `access:` table here](https://open-cmsis-pack.github.io/cmsis-toolbox/pyOCD-Debugger/YML-CBuild-Format.md#system-resources)).
+    `start:`                       | **Required** | Base address of the memory.
+    `size:`                        | **Required** | Size of the memory.
+    `pname:`                       |   Optional   | Only accessible by a specific processor.
+    `alias:`                       |   Optional   | Name of identical memory exposed at a different address.
+    `default:`                     |   Optional   | Indicates a general purpose memory region.
 
 **Default Cortex-M memory map:**
 

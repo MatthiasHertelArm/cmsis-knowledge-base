@@ -43,64 +43,16 @@ include path and define. It is required that each device has an effective header
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    family | 
-    element_family | 
-  
-
-  | 
-    subFamily | 
-    element_subFamily | 
-  
-
-  | 
-    device | 
-    element_device | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    Pname | 
-    Processor identifier. This attribute **is mandatory for devices that embed multiple processors if the header and define is different for each processor**.
-        Only alphabetical characters, decimal digits, '-' and '_' are allowed.  | 
-   RestrictedString | 
-    optional | 
-  
-
-  | 
-    header | 
-    CMSIS-Core compliant device header file with path relative to the pack's base folder. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    define | 
-    Device specific preprocessor define (macro). This macro is set in the pre-processor command line (-D\`<macro>`) and allows to
-	    select device specific code during preprocessing of the application code, e.g. enabling/disabling device specific definitions in the device header file. | 
-    xs:string | 
-    required | 
-  
-
-    | 
-    Pdefine | 
-    This attribute can only be used for devices with multiple processor cores. It specifies a core specific preprocessor define (macro).
-        This macro is set in the pre-processor command line (-D\`<macro>`) and allows to select processor specific code during preprocessing
-		of the application code, e.g. enabling/disabling core specific definitions in the device header file. | 
-    xs:string | 
-    optional | 
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| family | element_family |  |  |
+| subFamily | element_subFamily |  |  |
+| device | element_device |  |  |
+| Attributes | Description | Type | Use |
+| Pname | Processor identifier. This attribute **is mandatory for devices that embed multiple processors if the header and define is different for each processor**. Only alphabetical characters, decimal digits, '-' and '_' are allowed. | RestrictedString | optional |
+| header | CMSIS-Core compliant device header file with path relative to the pack's base folder. | xs:string | required |
+| define | Device specific preprocessor define (macro). This macro is set in the pre-processor command line (-D\`<macro>`) and allows to select device specific code during preprocessing of the application code, e.g. enabling/disabling device specific definitions in the device header file. | xs:string | required |
+| Pdefine | This attribute can only be used for devices with multiple processor cores. It specifies a core specific preprocessor define (macro). This macro is set in the pre-processor command line (-D\`<macro>`) and allows to select processor specific code during preprocessing of the application code, e.g. enabling/disabling core specific definitions in the device header file. | xs:string | optional |
 
 
 

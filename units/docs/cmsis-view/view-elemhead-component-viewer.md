@@ -3,7 +3,7 @@ id: "view-elemhead-component-viewer"
 type: "concept"
 domain: "trace"
 title: "\\elemhead{component_viewer}"
-summary: "The element \\elem{componentviewer} provides the outermost frame of the description. All elements are described within this scope."
+summary: "The element \\elem{component_viewer} provides the outermost frame of the description. All elements are described within this scope."
 status: "draft"
 collection: "cmsis-view"
 source: "ARM-software/CMSIS-View@fef5aca:Documentation/Doxygen/src/ref_scvd.txt"
@@ -16,76 +16,17 @@ The element \elem{component_viewer} provides the outermost frame of the descript
 
 
 
-  | 
-     Parent Element  | 
-     Element Chain  | 
-  
-
-  | 
-     root  | 
-     Document root  | 
-  
-
-  | 
-     Attributes  | 
-     Description  | 
-     Type  | 
-     Use  | 
-  
-
-  | 
-     xmlns:xs  | 
-     Specifies the underlying XML schema to which the SCVD schema is compliant. Has to be set to: `"http://www.w3.org/2001/XMLSchema-instance"`.  | 
-     xs:decimal  | 
-     required  | 
-  
-
-  | 
-     xs:noNamespaceSchemaLocation  | 
-     Specifies the file name of the SCVD Schema: `"Component_Viewer.xsd"`.  | 
-     xs:string  | 
-     required  | 
-  
-
-  | 
-     schemaVersion  | 
-     Specifies the compliant SCVD schema version (for example, `"1.1"`).  | 
-     xs:string  | 
-     required  | 
-  
-
-  | 
-     Child Elements  | 
-     Description  | 
-     Type  | 
-     Occurrence  | 
-  
-
-  | 
-     `<component>`  | 
-     Name of the component and version of this SCVD file.  | 
-     ComponentsType  | 
-     0..1  | 
-  
-
-  | 
-     `<typedefs>`  | 
-     Group element for one or more `<typedef>` elements.  | 
-     TypedefsType  | 
-     0..1  | 
-  | 
-     `<objects>`  | 
-     Group element for one or more `<object>` elements.  | 
-     ObjectsType  | 
-     0..1  | 
-  
-
-  | 
-     `<events>`  | 
-     Group element for one or more `<event>` elements.  | 
-     EventsType  | 
-     0..1  | 
-  
+| Parent Element | Element Chain |  |  |  |  |  |  |
+|---|---|---|---|---|---|---|---|
+| root | Document root |  |  |  |  |  |  |
+| Attributes | Description | Type | Use |  |  |  |  |
+| xmlns:xs | Specifies the underlying XML schema to which the SCVD schema is compliant. Has to be set to: `"http://www.w3.org/2001/XMLSchema-instance"`. | xs:decimal | required |  |  |  |  |
+| xs:noNamespaceSchemaLocation | Specifies the file name of the SCVD Schema: `"Component_Viewer.xsd"`. | xs:string | required |  |  |  |  |
+| schemaVersion | Specifies the compliant SCVD schema version (for example, `"1.1"`). | xs:string | required |  |  |  |  |
+| Child Elements | Description | Type | Occurrence |  |  |  |  |
+| `<component>` | Name of the component and version of this SCVD file. | ComponentsType | 0..1 |  |  |  |  |
+| `<typedefs>` | Group element for one or more `<typedef>` elements. | TypedefsType | 0..1 | `<objects>` | Group element for one or more `<object>` elements. | ObjectsType | 0..1 |
+| `<events>` | Group element for one or more `<event>` elements. | EventsType | 0..1 |  |  |  |  |
 
 
 

@@ -16,36 +16,12 @@ Describes the recommended debug and trace configuration for the device.
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    system_description | 
-    /system_description | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    sdf_element_debug | 
-    Describes the debug connection configuration | 
-    complexType | 
-    0..1 |   
-  
-
-  | 
-    sdf_element_trace | 
-    Describes the trace configuration | 
-    complexType | 
-    0..1 |   
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| system_description | /system_description |  |  |
+| Child Elements | Description | Type | Occurrence |
+| sdf_element_debug | Describes the debug connection configuration | complexType | 0..1 |
+| sdf_element_trace | Describes the trace configuration | complexType | 0..1 |
 
 
 

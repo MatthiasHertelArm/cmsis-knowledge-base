@@ -35,60 +35,13 @@ selection of pack content such as components. Therefore these attributes are exp
 **/target**
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    targets | 
-    element_targets | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    Dvendor | 
-    Specifies the silicon vendor of the device | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    Dname | 
-    Specifies the name of the device (wildcards possible) | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    Dcore | 
-    Specifies a processor core (experimental) | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    Bvendor | 
-    Specifies the board vendor (experimental) | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    Bname | 
-    Specifies the board name (experimental) | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    Brevision | 
-    Specifies the board revision (experimental) | 
-    xs:string | 
-    optional |
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| targets | element_targets |  |  |
+| Attributes | Description | Type | Use |
+| Dvendor | Specifies the silicon vendor of the device | xs:string | optional |
+| Dname | Specifies the name of the device (wildcards possible) | xs:string | optional |
+| Dcore | Specifies a processor core (experimental) | xs:string | optional |
+| Bvendor | Specifies the board vendor (experimental) | xs:string | optional |
+| Bname | Specifies the board name (experimental) | xs:string | optional |
+| Brevision | Specifies the board revision (experimental) | xs:string | optional |

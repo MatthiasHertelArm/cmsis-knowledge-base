@@ -10,11 +10,14 @@ code: "M304"
 symptoms: ["M304", "No package URL (<url>-tag and/or value) found in PDSC file!"]
 symptom_regex: "^No package URL \\(<url>\\-tag and/or value\\) found in PDSC file!$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e81:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e81:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
+cause_origin: "source-analysis"
+confidence: "high"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:116", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:502-511", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:153"]
 ---
 
 ## Symptom
@@ -28,4 +31,12 @@ Package URL is mandatory required in the package description but was not found i
 
 ## Fix
 
-_siehe Cause_
+Add <url> under <package> with the location the pack is downloaded from, ending in '/', e.g. <url>https://www.myvendor.com/pack/</url>.
+
+## Evidence
+
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+
+- `tools/packchk/src/PackChk_Msgs.cpp:116`
+- `tools/packchk/src/ValidateSyntax.cpp:502-511`
+- `tools/packchk/README.md:153`

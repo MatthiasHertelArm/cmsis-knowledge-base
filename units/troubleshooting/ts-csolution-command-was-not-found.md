@@ -9,10 +9,13 @@ severity: "error"
 symptoms: ["<command> was not found"]
 symptom_regex: "^<command> was not found$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e81:tools/projmgr/src/ProjMgr.cpp:407"
+source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:407"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+cause_origin: "source-analysis"
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:257-266", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:369-410"]
 ---
 
 ## Symptom
@@ -21,14 +24,21 @@ mode: "V"
 
 ## Cause
 
-_offen, im Review ergänzen_
+The first argument after `csolution` is not a known command (list, check, update-rte, convert, run, rpc), e.g. a typo such as `csolution conver ...`, or only a *.csolution.yml was given without a command. The text `<command>` is printed literally, not replaced by what was typed.
 
 ## Fix
 
-_offen, im Review ergänzen_
+Put a valid command before the options, e.g. `csolution convert <name>.csolution.yml`; `csolution --help` lists the commands.
 
-## Trigger im Quelltext
+## Trigger in the source
 
 ```cpp
 if (!m_rpcServer.Run()) {
 ```
+
+## Evidence
+
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
+
+- `tools/projmgr/src/ProjMgr.cpp:257-266`
+- `tools/projmgr/src/ProjMgr.cpp:369-410`

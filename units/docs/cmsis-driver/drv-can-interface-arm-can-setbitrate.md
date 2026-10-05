@@ -3,7 +3,7 @@ id: "drv-can-interface-arm-can-setbitrate"
 type: "concept"
 domain: "drivers"
 title: "CAN Interface: Remote Frame / ARM_CAN_SetBitrate"
-summary: "The function ARMCANSetBitrate sets the CAN communication bit rate."
+summary: "The function ARM_CAN_SetBitrate sets the CAN communication bit rate."
 status: "draft"
 collection: "cmsis-driver"
 source: "ARM-software/CMSIS_6@26206e4:CMSIS/Documentation/Doxygen/Driver/src/Driver_CAN.c"
@@ -36,61 +36,12 @@ The CAN controller samples each bit on the bus at the _Sample Point_.
 
 
 
-| 
-  Parameter **bit_segments | **
-  Bit |   
-   for **select** = ARM_CAN_BITRATE_NOMINAL \n (CAN specification) | 
-   for **select** = ARM_CAN_BITRATE_NOMINAL \n (CAN FD specification) | 
-   for **select** = ARM_CAN_BITRATE_FD_DATA \n (CAN FD specification) | 
-
-
-| 
-  ARM_CAN_BIT_PROP_SEG(_x_) \n
-      Propagation Time Segment \n (PROP_SEG)
-   | 
-  0..7  | 
-  **x** = `[1..8]` | 
-  **x** = `[1..32] or more` |   
-  **x** = `[0..8]` |   
-
-
-| 
-  ARM_CAN_BIT_PHASE_SEG1(_x_) \n
-       Phase Buffer Segment 1 \n (PHASE_SEG1)
-   | 
-  8..15  | 
-  **x** = `[1..8]` | 
-  **x** = `[1..32] or more` |   
-  **x** = `[1..8]` |   
-
-
-| 
-  ARM_CAN_BIT_PHASE_SEG2(_x_) \n 
-      Phase Buffer Segment 2 \n (PHASE_SEG2)
-   | 
-  16..23  | 
-  **x** = `[1..8]`  | 
-  **x** = `[1..32] or more` |   
-  **x** = `[1..8]` |   
-| 
-  The maximum allowed value is `x = MAX (PHASE_SEG1, IPT)`. 
-                  IPT = Information Processing Time. Usually, IPT = `2`. 
-				  Exceptions apply. Read the specifications of your CAN controller. | 
-
-
-| 
-  ARM_CAN_BIT_SJW(_x_) \n
-      (Re-)Synchronization Jump Width \n (SJW).
-   | 
-  24..31  | 
-  **x** = `[1..4]` | 
-  **x** = `[1..4]` |   
-  **x** = `[1..4]` |   
-| 
-  The maximum allowed value is `x = MIN (MIN (PHASE_SEG1, PHASE_SEG2), 4)`. 
-                  SJW is not allowed to be greater than either PHASE segment.
-   | 
-
+| Parameter **bit_segments | Bit | for **select** = ARM_CAN_BITRATE_NOMINAL \n (CAN specification) | for **select** = ARM_CAN_BITRATE_NOMINAL \n (CAN FD specification) | for **select** = ARM_CAN_BITRATE_FD_DATA \n (CAN FD specification) |  |
+|---|---|---|---|---|---|
+| ARM_CAN_BIT_PROP_SEG( x ) \n Propagation Time Segment \n (PROP_SEG) | 0..7 | **x** = `[1..8]` | **x** = `[1..32] or more` | **x** = `[0..8]` |  |
+| ARM_CAN_BIT_PHASE_SEG1( x ) \n Phase Buffer Segment 1 \n (PHASE_SEG1) | 8..15 | **x** = `[1..8]` | **x** = `[1..32] or more` | **x** = `[1..8]` |  |
+| ARM_CAN_BIT_PHASE_SEG2( x ) \n Phase Buffer Segment 2 \n (PHASE_SEG2) | 16..23 | **x** = `[1..8]` | **x** = `[1..32] or more` | **x** = `[1..8]` | The maximum allowed value is `x = MAX (PHASE_SEG1, IPT)`. IPT = Information Processing Time. Usually, IPT = `2`. Exceptions apply. Read the specifications of your CAN controller. |
+| ARM_CAN_BIT_SJW( x ) \n (Re-)Synchronization Jump Width \n (SJW). | 24..31 | **x** = `[1..4]` | **x** = `[1..4]` | **x** = `[1..4]` | The maximum allowed value is `x = MIN (MIN (PHASE_SEG1, PHASE_SEG2), 4)`. SJW is not allowed to be greater than either PHASE segment. |
 
 
 

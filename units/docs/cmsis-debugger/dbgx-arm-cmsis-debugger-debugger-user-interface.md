@@ -31,7 +31,7 @@ The **Run and Debug** view provides:
 - [**CALL STACK**](#call-stack) section that shows active RTOS threads along with the call stack.
 - [**BREAKPOINTS**](#breakpoints) section for managing stop points in application execution to inspect the state.
 
-> &#128204; **TIP**
+> 📌 **TIP**
 >
 > Click on a _line number badge_ to navigate to the source code line.
 

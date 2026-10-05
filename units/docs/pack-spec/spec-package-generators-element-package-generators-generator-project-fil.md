@@ -3,7 +3,7 @@ id: "spec-package-generators-element-package-generators-generator-project-fil"
 type: "concept"
 domain: "pack"
 title: "/package/generators element: /package/generators/generator/project_files"
-summary: "The group projectfiles specifies all files that are required for the project setup. Only one such group can exist."
+summary: "The group project_files specifies all files that are required for the project setup. Only one such group can exist."
 status: "draft"
 collection: "pack-spec"
 source: "Open-CMSIS-Pack/Open-CMSIS-Pack-Spec@b3f8fcf:doxygen/src/generators_schema.txt"
@@ -41,25 +41,8 @@ The group **project_files** specifies all files that are required for the projec
 
 
 
-  | 
-    Parent | 
-    Element Chain | 
-  
-
-  | 
-    generator | 
-    element_generator | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    file | 
-    Frame for files created by the generator and used in a project.
-    group | 
-    0..1  |
+| Parent | Element Chain |  |  |
+|---|---|---|---|
+| generator | element_generator |  |  |
+| Child Elements | Description | Type | Occurrence |
+| file | Frame for files created by the generator and used in a project. group | 0..1 |  |

@@ -65,10 +65,14 @@ The server loads it when `knowledge_search` gets a `cbuild` path and reloads on 
 | `stage2/` | Stage 2: LLM refinement prompt v2, inputs and outputs of the test runs (`out` = v1, `out_v2` = v2) |
 | `tools/stage2_merge.py` | Writes stage 2 JSON into frontmatter, canonical rules, extracted units |
 | `tools/errcat.py` | devtools message tables and csolution log calls → troubleshooting units |
+| `tools/errcat_merge.py` | Cause, fix, note and evidence of each message, read from the devtools source (`stage2/errcat-out`), into the troubleshooting units |
+| `tools/review_csv.py` | `messages-to-review.csv`: every draft message unit, least certain first, with columns for reviewer and comment |
+| `tools/doc2ku.py` | Documentation of open-licence repositories → one concept unit per section. Markdown, doxygen (`*.txt`, doxygen Markdown), reStructuredText and Hugo pages; HTML tables become Markdown tables |
+| `sources/docs.yml`, `sources/docs-ccbysa.yml` | The documentation sources, their licence, domain and published URL; the second holds the CC BY-SA ones |
 | `tools/build_index.py` | Lint, resolve `applies_to`, FTS5, sqlite-vec, edges → `knowledge.db` |
 | `tools/kb_lib.py`, `tools/kb_server.py` | Retrieval and MCP server |
 | `tools/overlay.py` | Workspace entities for unreleased devices |
-| `units/` | Generated knowledge units (all draft). `units/cda-skills` and `units/cda-routes` come from a checkout of the extension: `CDA=<checkout> scripts/rebuild.sh` |
+| `units/` | Generated knowledge units (all draft). `units/cda-skills` and `units/cda-routes` come from a checkout of the extension: `CDA=<checkout> scripts/rebuild.sh`. `units/docs/<source>` from `sources/docs.yml`; `units/docs-ccbysa/<source>` is built but left out of the index unless `CCBYSA=1` |
 | `build/` | `entities/*.jsonl` and prebuilt `knowledge.db` |
 | `tests/` | `test_kb.py` and fixtures (incl. a workspace with a local DFP and a docs-only device) |
 | `scripts/` | `setup.sh`, `fetch_sources.py`, `rebuild.sh` |
@@ -81,8 +85,8 @@ The server loads it when `knowledge_search` gets a `cbuild` path and reloads on 
 scripts/rebuild.sh            # 4 to 7 minutes; NO_VEC=1 skips the embeddings (about 3 minutes)
 ```
 
-Fetches the Keil pack index and all active PDSC files (via the keil.com/pack mirror), clones cmsis-skills and devtools, runs the whole pipeline and the tests. Inputs of the shipped build: cmsis-skills@25c2085, devtools@30f5e81, pack index of 4 Oct 2026.
+Fetches the Keil pack index and all active PDSC files (via the keil.com/pack mirror), clones cmsis-skills and devtools, clones the documentation sources into `.work/docs` (shallow, sparse for Zephyr, ExecuTorch, TF-M and the Learning Paths), runs the whole pipeline and the tests. `CCBYSA=1` adds the CC BY-SA documentation to the index. Inputs of the shipped build: cmsis-skills@25c2085, devtools@30f5e81, pack index of 4 Oct 2026.
 
 ## Licensing of content
 
-Code in `tools/` and `scripts/`: Arm internal prototype, license to be decided. Generated units carry `source`, `license` and `mode` in their frontmatter. Everything shipped here is derived from Apache-2.0 sources (cmsis-skills, devtools, Open-CMSIS-Pack PDSC metadata). `docs/design/04_quellenliste.md` lists further sources per domain with mode V (full text), S (own summary + link) or R (reference only); Arm documents, Keil KB and Learning Paths (CC BY-SA 4.0) need legal review before use.
+Code in `tools/` and `scripts/`: Arm internal prototype, license to be decided. Generated units carry `source`, `license` and `mode` in their frontmatter. The default index is derived from Apache-2.0, MIT and BSD-3-Clause sources only (cmsis-skills, devtools, Open-CMSIS-Pack PDSC metadata, and the documentation in `sources/docs.yml`, each unit with its own `license`). The CC BY-SA 4.0 documentation (FreeRTOS Kernel Book, Arm Learning Paths and install guides, the Arm ABI documents) is converted into `units/docs-ccbysa` but stays out of the index until the legal review (HANDOVER.md, decision 4). Repositories without a licence file, such as the CMSIS Solution extension's documentation, are not used. `docs/design/04_quellenliste.md` lists further sources per domain with mode V (full text), S (own summary + link) or R (reference only); Arm documents, Keil KB and Learning Paths (CC BY-SA 4.0) need legal review before use.

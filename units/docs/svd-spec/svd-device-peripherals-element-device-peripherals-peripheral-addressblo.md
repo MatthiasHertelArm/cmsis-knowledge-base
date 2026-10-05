@@ -18,54 +18,14 @@ have at least one address block. If a peripheral is derived form another periphe
 **/device/peripherals/peripheral/addressBlock**
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    peripheral | 
-    elem_peripheral | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    offset  | 
-    Specifies the start address of an address block relative to the peripheral **baseAddress. | **
-    scaledNonNegativeInteger  | 
-    1..1 | 
-  
-
-  | 
-    size | 
-    Specifies the number of addressUnitBits being covered by this address block.
-        The end address of an address block results from the sum of baseAddress, offset, and (size - 1). | 
-    scaledNonNegativeInteger  | 
-    1..1 | 
-  
-
-  | 
-    usage | 
-    The following predefined values can be used:
-         - `registers`
-         - `buffer`
-         - `reserved`. | 
-    enumerated token  | 
-    1..1 | 
-  
-
-  | 
-    protection | 
-    Set the protection level for an address block. | 
-    protectionStringType  | 
-    0..1 | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| peripheral | elem_peripheral |  |  |
+| Child Elements | Description | Type | Occurrence |
+| offset | Specifies the start address of an address block relative to the peripheral **baseAddress. | scaledNonNegativeInteger | 1..1 |
+| size | Specifies the number of addressUnitBits being covered by this address block. The end address of an address block results from the sum of baseAddress, offset, and (size - 1). | scaledNonNegativeInteger | 1..1 |
+| usage | The following predefined values can be used: - `registers` - `buffer` - `reserved`. | enumerated token | 1..1 |
+| protection | Set the protection level for an address block. | protectionStringType | 0..1 |
 
 
 

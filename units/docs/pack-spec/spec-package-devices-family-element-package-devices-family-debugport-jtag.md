@@ -35,50 +35,11 @@ detection.
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    debugport | 
-    element_debugport | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    tapindex | 
-    Specifies the TAP index relative to the JTAG scan chain of this device. A debugger needs to determine the absolute index
-    if the device is part of an extended scan chain. Default value is `0`.  | 
-    NonNegativeInteger | 
-    optional | 
-  
-
-  | 
-    idcode | 
-    Specifies the IDCODE of the JTAG TAP. This value overrides the IDCODE read from the target.  | 
-    NonNegativeInteger | 
-    optional | 
-  
-
-<!-- finalize when there are multidrop devices available (or when we have DS-5 support for that)
-  | 
-    targetsel | 
-    Specifies the value to write to a CoreSight debug port's TARGETSEL register to select this port for connection.
-    The element is required for debug ports with multi-drop support. It is ignored otherwise. **(Unsupported)** | 
-    NonNegativeInteger | 
-    optional | 
-  
-
--->
-  | 
-    irlen | 
-    Specifies the instruction register length of the JTAG TAP. This value overrides the instruction register length detected by a debugger.  | 
-    xs:unsignedInt | 
-    optional |
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| debugport | element_debugport |  |  |
+| Attributes | Description | Type | Use |
+| tapindex | Specifies the TAP index relative to the JTAG scan chain of this device. A debugger needs to determine the absolute index if the device is part of an extended scan chain. Default value is `0`. | NonNegativeInteger | optional |
+| idcode | Specifies the IDCODE of the JTAG TAP. This value overrides the IDCODE read from the target. | NonNegativeInteger | optional |
+| targetsel | Specifies the value to write to a CoreSight debug port's TARGETSEL register to select this port for connection. The element is required for debug ports with multi-drop support. It is ignored otherwise. **(Unsupported)** | NonNegativeInteger | optional |
+| irlen | Specifies the instruction register length of the JTAG TAP. This value overrides the instruction register length detected by a debugger. | xs:unsignedInt | optional |

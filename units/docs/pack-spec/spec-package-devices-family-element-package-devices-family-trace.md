@@ -33,52 +33,12 @@ element applies to all processor connections.
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    family | 
-    element_family | 
-  
-
-  | 
-    subFamily | 
-    element_subFamily | 
-  
-
-  | 
-    device | 
-    element_device | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    serialwire | 
-    Describe the serial wire trace output capabilities of the processor.
-     | 
-    SerialWireType | 
-    0..* | 
-  
-
-  | 
-    traceport | 
-    Describe the parallel trace port output capabilities of the processor.
-     | 
-    TracePortType | 
-    0..* | 
-  
-
-  | 
-    tracebuffer | 
-    Describe the on-device trace buffer capabilities of the processor.
-     | 
-    TraceBufferType | 
-    0..* |
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| family | element_family |  |  |
+| subFamily | element_subFamily |  |  |
+| device | element_device |  |  |
+| Child Elements | Description | Type | Occurrence |
+| serialwire | Describe the serial wire trace output capabilities of the processor. | SerialWireType | 0..* |
+| traceport | Describe the parallel trace port output capabilities of the processor. | TracePortType | 0..* |
+| tracebuffer | Describe the on-device trace buffer capabilities of the processor. | TraceBufferType | 0..* |

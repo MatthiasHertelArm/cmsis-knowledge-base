@@ -18,9 +18,9 @@ The `systemview:` node configures the *.SVDat file capturing for [SEGGER SystemV
 
 `systemview:`                                       |              | Description
 :---------------------------------------------------|:-------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `file:`                          |   Optional   | SystemView capture file. Default: `./out/<solution-name>+<target-type>.SVDat` (derived from [`*.cbuild-run.yml`](https://open-cmsis-pack.github.io/cmsis-toolbox/pyOCD-Debugger/YML-CBuild-Format.md#run-and-debug-management)).
-&nbsp;&nbsp;&nbsp; `auto-start:`                    |   Optional   | Send SystemView start command automatically: `true` (default), `false`.
-&nbsp;&nbsp;&nbsp; `auto-stop:`                     |   Optional   | Send SystemView stop command automatically: `true` (default), `false`.
+    `file:`                          |   Optional   | SystemView capture file. Default: `./out/<solution-name>+<target-type>.SVDat` (derived from [`*.cbuild-run.yml`](https://open-cmsis-pack.github.io/cmsis-toolbox/pyOCD-Debugger/YML-CBuild-Format.md#run-and-debug-management)).
+    `auto-start:`                    |   Optional   | Send SystemView start command automatically: `true` (default), `false`.
+    `auto-stop:`                     |   Optional   | Send SystemView stop command automatically: `true` (default), `false`.
 
 **Examples:**
 

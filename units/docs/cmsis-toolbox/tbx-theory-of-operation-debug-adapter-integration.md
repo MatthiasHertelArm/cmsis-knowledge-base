@@ -21,11 +21,11 @@ The master definitions are maintained in the [Open-CMSIS-Pack Debug Adapter Regi
 `debug-adapters:`                                       |            | Content
 :-------------------------------------------------------|:-----------|:------------------------------------
 `- name:`                                               |**Required**| `<generator-id>` referred in the `*.PDSC` file
-&nbsp;&nbsp;&nbsp; `alias-name:`                        |  Optional  | List of names (in input node or BSP) that map to this debug adapter.
-&nbsp;&nbsp;&nbsp; `template:`                          |  Optional  | Used only by the [VS Code CMSIS Solution](https://marketplace.visualstudio.com/items?itemName=Arm.cmsis-csolution) extension for configuration.
-&nbsp;&nbsp;&nbsp; `gdbserver:`                         |  Optional  | Add the [`gdbserver:`](https://open-cmsis-pack.github.io/cmsis-toolbox/build-operation/YML-CBuild-Format.md#gdbserver) node in the `cbuild-run.yml` file.
-&nbsp;&nbsp;&nbsp; `defaults:`                          |  Optional  | List of default options to use when not specified in the [`target-set:`](https://open-cmsis-pack.github.io/cmsis-toolbox/build-operation/YML-Input-Format.md#target-set) node.
-&nbsp;&nbsp;&nbsp; [`user-interface:`](#user-interface) |  Optional  | Defines the user interface for VS Code CMSIS Solution extension.
+    `alias-name:`                        |  Optional  | List of names (in input node or BSP) that map to this debug adapter.
+    `template:`                          |  Optional  | Used only by the [VS Code CMSIS Solution](https://marketplace.visualstudio.com/items?itemName=Arm.cmsis-csolution) extension for configuration.
+    `gdbserver:`                         |  Optional  | Add the [`gdbserver:`](https://open-cmsis-pack.github.io/cmsis-toolbox/build-operation/YML-CBuild-Format.md#gdbserver) node in the `cbuild-run.yml` file.
+    `defaults:`                          |  Optional  | List of default options to use when not specified in the [`target-set:`](https://open-cmsis-pack.github.io/cmsis-toolbox/build-operation/YML-Input-Format.md#target-set) node.
+    [`user-interface:`](#user-interface) |  Optional  | Defines the user interface for VS Code CMSIS Solution extension.
 
 !!! Note
     - As the file is shared with the [VS Code CMSIS Solution](https://marketplace.visualstudio.com/items?itemName=Arm.cmsis-csolution) extension, also template files are references. However these template files are not part of the CMSIS-Toolbox.

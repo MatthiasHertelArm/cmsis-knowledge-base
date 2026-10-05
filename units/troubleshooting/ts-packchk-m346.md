@@ -2,7 +2,7 @@
 id: "ts-packchk-m346"
 type: "troubleshooting"
 domain: "error-catalog"
-title: "packchk M346: Referenced device(s) in"
+title: "packchk M346: Referenced device(s) in '…' not found: '…'"
 status: "draft"
 tool: "packchk"
 severity: "warning"
@@ -10,11 +10,14 @@ code: "M346"
 symptoms: ["M346", "Referenced device(s) in '%BOARD%' not found: '%DEVICE%'"]
 symptom_regex: "^Referenced device\\(s\\) in '.+?' not found: '.+?'$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e81:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e81:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
+cause_origin: "source-analysis"
+confidence: "high"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:164", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:1734-1739", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:1793-1798", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:989-1036", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:187"]
 ---
 
 ## Symptom
@@ -28,4 +31,14 @@ The device or devices specified for the board could not be found. Verify and cor
 
 ## Fix
 
-_siehe Cause_
+Correct Dname and Dvendor of the <mountedDevice> or <compatibleDevice> to an existing device or variant, or pass the DFP's PDSC with -i so its devices are known.
+
+## Evidence
+
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+
+- `tools/packchk/src/PackChk_Msgs.cpp:164`
+- `tools/packchk/src/ValidateSyntax.cpp:1734-1739`
+- `tools/packchk/src/ValidateSyntax.cpp:1793-1798`
+- `tools/packchk/test/integtests/src/PackChkIntegTests.cpp:989-1036`
+- `tools/packchk/README.md:187`

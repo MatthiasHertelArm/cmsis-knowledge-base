@@ -16,29 +16,11 @@ Describes the recommended debug configuration for the device.
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    debug_and_trace_config | 
-    /system_description/debug_and_trace_config | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    sdf_element_config_item | 
-    Describes a configuration item attribute/value pair | 
-    xs:string | 
-    0..* |   
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| debug_and_trace_config | /system_description/debug_and_trace_config |  |  |
+| Child Elements | Description | Type | Occurrence |
+| sdf_element_config_item | Describes a configuration item attribute/value pair | xs:string | 0..* |
 
 
 

@@ -18,9 +18,9 @@ Configures the debug sequences executed during the `load` command of pyOCD.
 
 `load-setup:`                     |              | Description
 :---------------------------------|:-------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `halt:`        |   Optional   | Halt core(s) before load: `on` (default), `off`.
-&nbsp;&nbsp;&nbsp; `pre-reset:`   |   Optional   | Reset type before loading: `off`, `hardware`, `system`, `core`. Default: specified in DFP or defined with [`reset`](#reset).
-&nbsp;&nbsp;&nbsp; `post-reset:`  |   Optional   | Reset type after loading: `off`, `hardware` (default), `system`, `core`.
+    `halt:`        |   Optional   | Halt core(s) before load: `on` (default), `off`.
+    `pre-reset:`   |   Optional   | Reset type before loading: `off`, `hardware`, `system`, `core`. Default: specified in DFP or defined with [`reset`](#reset).
+    `post-reset:`  |   Optional   | Reset type after loading: `off`, `hardware` (default), `system`, `core`.
 
 **Examples:**
 

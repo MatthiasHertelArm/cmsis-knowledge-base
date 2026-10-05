@@ -1,0 +1,1513 @@
+[
+  {
+    "id": "ts-packchk-m105",
+    "cause": "The packchk command line could not be parsed, for example because of an unknown option or an option given without its value.",
+    "fix": "Run packchk -h, correct the options, and give exactly one *.pdsc file as the positional argument, e.g. packchk MyVendor.MyPack.pdsc -i ARM.CMSIS.pdsc.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:76",
+      "tools/packchk/src/ParseOptions.cpp:200-227",
+      "tools/packchk/src/ParseOptions.cpp:334-337",
+      "tools/packchk/README.md:24-45",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:124-138"
+    ],
+    "confidence": "low",
+    "note": "No raise site for M105 in packchk at 30f5e81: option errors from cxxopts are printed as '<program> error: <text>' with exit code 1 (ParseOptions.cpp:334-337). Cause inferred from the message text."
+  },
+  {
+    "id": "ts-packchk-m201",
+    "cause": "",
+    "fix": "",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:85",
+      "tools/packchk/src/CreateModel.cpp:94-99",
+      "tools/packchk/src/CreateModel.cpp:125-128",
+      "tools/packchk/src/RteModelReader.cpp:106-113",
+      "libs/xmltree/src/XMLTree.cpp:133-145"
+    ],
+    "confidence": "unknown",
+    "note": "M201 is logged when the XML reader refuses to register the PDSC (CreateModel.cpp:125-126), but RteModelReader::AddFile only fails for an empty name, which AddPdsc already rejects with M202, and XMLTree::AddFileName returns true when it does not parse. The message cannot occur at 30f5e81, so no PDSC cause can be named."
+  },
+  {
+    "id": "ts-packchk-m213",
+    "cause": "The file name given with option -n (text file that receives the pack name) contains a space, tab, carriage return or line feed. packchk deletes each such character from the whole path, folder names included, and prints its decimal character code (32 is a space), so the file is written to a different path than the one given.",
+    "fix": "Give -n a path without blanks, e.g. -n out/packname.txt, so the pack name file lands where the build script expects it.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:99",
+      "tools/packchk/src/PackOptions.cpp:57-74",
+      "tools/packchk/src/PackChk.cpp:138-157",
+      "libs/errlog/include/ErrLog.h:66"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m214",
+    "cause": "A packchk command-line argument was not accepted; %OPT% names it.",
+    "fix": "Check the named option against packchk -h and correct its spelling or value; for example -w takes 0, 1, 2, 3 or all.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:100",
+      "tools/packchk/src/ParseOptions.cpp:200-227",
+      "tools/packchk/src/ParseOptions.cpp:334-337",
+      "tools/packchk/README.md:24-45"
+    ],
+    "confidence": "low",
+    "note": "No raise site for M214 in packchk at 30f5e81 (the code M214 is only raised by svdconv); invalid options are reported by cxxopts as '<program> error: <text>'. Cause inferred from the message text."
+  },
+  {
+    "id": "ts-packchk-m216",
+    "cause": "packchk was started without --xsd and without --disable-validation, so it looks for PACK.xsd relative to its own executable, but the operating system did not return the executable's path; %MSG% is the system error text. The PDSC is not involved.",
+    "fix": "Pass the schema explicitly with --xsd <path>/PACK.xsd, or skip schema validation with --disable-validation; otherwise start packchk from a normal, readable installation folder.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:102",
+      "tools/packchk/src/PackOptions.cpp:228-237",
+      "tools/packchk/src/ParseOptions.cpp:316-332"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m219",
+    "cause": "The schema file given with --xsd does not exist (a relative path is resolved against the current working directory). The same message appears when the stored schema path no longer exists when the check starts.",
+    "fix": "Point --xsd at an existing PACK.xsd, preferably with an absolute path; or omit --xsd so packchk uses the PACK.xsd of its installation (./, ../etc/ or ../../etc/ next to the executable); or use --disable-validation to skip the schema check.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:105",
+      "tools/packchk/src/PackOptions.cpp:272-287",
+      "tools/packchk/src/CreateModel.cpp:151-162",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:697-727",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:730-762",
+      "tools/packchk/README.md:54-57"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m300",
+    "cause": "An element text or attribute value in the PDSC contains 'http://', for example <url>, <repository>, the url of a <release>, the name of a <book> or <file>, a board orderForm or an <image> link. %TAG% is the element name for element text, or the attribute name; packchk wants 'https://'.",
+    "fix": "Change each reported link from http:// to https:// and check that the https address works, e.g. <url>https://www.myvendor.com/pack/</url>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:108",
+      "tools/packchk/src/CheckFiles.cpp:246-269",
+      "tools/packchk/src/CheckFiles.cpp:41-56",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:826-855",
+      "tools/packchk/test/data/TestUrlHttps/TestVendor.TestUrlHttps.pdsc:5-65"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m313",
+    "cause": "A file or folder referenced in the PDSC resolves to a location outside the folder that contains the PDSC (the pack root), typically through '../' segments in its path.",
+    "fix": "Move the file into the pack folder tree and reference it with a path relative to the PDSC that stays inside it, e.g. name=\"Source/test2.c\" instead of name=\"../ExtFiles/test2.c\".",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:129",
+      "tools/packchk/src/CheckFiles.cpp:483-502",
+      "tools/packchk/src/CheckFiles.cpp:343-348",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:622-647",
+      "tools/packchk/test/data/TestPackRoot/Pack/TestVendor.TestPackRoot.pdsc:31"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m314",
+    "cause": "A file path referenced in the PDSC (file, book, algorithm, image, svd, example doc, environment load, csolution layer or template) contains a space character.",
+    "fix": "Rename the file or folder without spaces (use '_' or '-') and update the reference in the PDSC.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:130",
+      "tools/packchk/src/CheckFiles.cpp:578-591",
+      "tools/packchk/src/CheckFiles.cpp:343-345",
+      "tools/packchk/src/CheckFiles.cpp:370-372",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:765-791",
+      "tools/packchk/test/data/FileNameHasSpace/TestVendor.FileNameHasSpacePack.pdsc:73"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m317",
+    "cause": "An expression inside a <condition> names a component (Cclass, Cgroup, Csub, Cvendor, Cversion ...) that no loaded pack provides. packchk only knows the components of the PDSC under test and of PDSC files passed with -i; %NAME% is the condition id, %NAME2% the expression.",
+    "fix": "Correct the component attributes in the expression, or pass the PDSC of the pack that provides the component with -i, e.g. packchk MyVendor.MyPack.pdsc -i ARM.CMSIS.pdsc.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:133",
+      "tools/packchk/src/CheckConditions.cpp:63-70",
+      "libs/rtemodel/src/RteCondition.cpp:52-55",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1249-1281",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1315-1345"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m318",
+    "cause": "A <compatibleDevice> element of a <board> carries a Dfamily or DsubFamily attribute; packchk wants compatible devices listed one by one with Dname. In the text, %TAG% is the element (compatibleDevice) and %TAG2% the attribute, although it reads 'Attribute ... must not have ...'.",
+    "fix": "Remove Dfamily and DsubFamily and add one <compatibleDevice> per device, e.g. <compatibleDevice deviceIndex=\"0\" Dvendor=\"Cypress:19\" Dname=\"S6E1A12C0A\"/>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:134",
+      "tools/packchk/src/ValidateSyntax.cpp:1773-1781",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:989-1036",
+      "tools/packchk/test/data/CheckBoardMountedCompatibleDevices/BulbBoard_BSP/Keil.BulbBoard_BSP.pdsc:45"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m319",
+    "cause": "Two <mountedDevice> elements of the same <board> have the same deviceIndex value, which includes two mountedDevice elements that both omit deviceIndex. %NAME2% is the Dname of the earlier one and %LINE% its line.",
+    "fix": "Give every <mountedDevice> of a board its own deviceIndex, e.g. deviceIndex=\"0\" and deviceIndex=\"1\".",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:135",
+      "tools/packchk/src/ValidateSyntax.cpp:1700-1711",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:989-1036",
+      "tools/packchk/test/data/CheckBoardMountedCompatibleDevices/BulbBoard_BSP/Keil.BulbBoard_BSP.pdsc:39-43"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m321",
+    "cause": "An <example> has an <environment name=\"DS5\"> (name compared case-insensitively) whose load path does not end in an Eclipse '.project' file.",
+    "fix": "Set load to the example's .project file, relative to the example folder, e.g. <environment name=\"DS5\" load=\".project\"/>, and ship .project and .cproject in that folder.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:137",
+      "tools/packchk/src/CheckFiles.cpp:282-290",
+      "tools/packchk/src/CheckFiles.cpp:143-157",
+      "tools/packchk/src/CheckFiles.cpp:350-366"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m322",
+    "cause": "An <example> has an <environment name=\"DS5\"> whose load points to a '.project' file, but the matching '.cproject' file next to it is missing from the pack; %PATH% is the full path packchk looked for.",
+    "fix": "Add the Eclipse .cproject file beside the .project file in the example folder, or correct the load path.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:138",
+      "tools/packchk/src/CheckFiles.cpp:350-362",
+      "tools/packchk/src/CheckFiles.cpp:424-444"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m356",
+    "cause": "A <file> element with a category other than \"include\" names a folder instead of a file, e.g. name=\"Files/\".",
+    "fix": "Point name at a file; if the folder is meant as include path, use <file category=\"include\" name=\"Files/\"/>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:174",
+      "tools/packchk/src/CheckFiles.cpp:840-878",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:650-676",
+      "tools/packchk/test/data/FilenameIsDir/TestVendor.FilenameIsDirPack.pdsc:30"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m357",
+    "cause": "A configuration file (<file attr=\"config\">) sits in a folder that the pack also uses as include path, either a <file category=\"include\"> folder or the folder of a <file category=\"header\">. A project then sees both its own copy and the original in the pack; %LINE% points to the entry that adds the include path.",
+    "fix": "Move config files into their own folder (e.g. Config/) that no include or header entry points to and update their name attributes; keep regular headers in the include folder.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:175",
+      "tools/packchk/src/CheckFiles.cpp:913-963",
+      "tools/packchk/src/ValidateSemantic.cpp:684-690",
+      "tools/packchk/src/ValidateSemantic.cpp:766-774",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:886-913",
+      "tools/packchk/test/data/ConfigFileInIncludePath/TestVendor.ConfigFileInIncludePathPack.pdsc:60-70"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m368",
+    "cause": "A <compatibleDevice> element of a <board> has no Dname attribute (for example it only gives Dfamily or DsubFamily), so packchk cannot look the device up; the message reads \"Cannot check 'compatibleDevice', no 'Dname' could be calculated\".",
+    "fix": "Give every <compatibleDevice> a Dname and Dvendor, one element per device, e.g. <compatibleDevice deviceIndex=\"0\" Dvendor=\"ARM:82\" Dname=\"ARMCM3\"/>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:187",
+      "tools/packchk/src/ValidateSyntax.cpp:1783-1789"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m387",
+    "cause": "The text of a <description> element (of the package, a component, device, example and so on) is longer than 128 characters.",
+    "fix": "Shorten the description to at most 128 characters and put longer text into the pack documentation; the message is a recommendation and can be suppressed with -x M387.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:206",
+      "tools/packchk/src/CheckFiles.cpp:214-239",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:915-950",
+      "tools/packchk/test/data/TestTextExceedsLength/TestVendor.TestTextExceedsLength.pdsc:7"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m388",
+    "cause": "The text of a <description> element contains a character outside printable US-ASCII (0x20 to 0x7E), for example a non-ASCII letter, a symbol such as the euro sign, typographic quotes, or a line break inside the text; %NAME% shows the whole description.",
+    "fix": "Replace such characters with plain ASCII (e.g. 'EUR', straight quotes) and keep the description on one line.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:207",
+      "tools/packchk/src/CheckFiles.cpp:222-230",
+      "libs/xmlreader/src/XML_Reader.cpp:515-527",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:915-950",
+      "tools/packchk/test/data/TestTextExceedsLength/TestVendor.TestTextExceedsLength.pdsc:28"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m389",
+    "cause": "A component's condition (directly or through a referenced condition) contains a component dependency that the component itself satisfies, e.g. the component Cclass=\"C\" Cgroup=\"G\" uses a condition with <require Cclass=\"C\" Cgroup=\"G\"/>. %NAME% is the component, %EXPR% the condition and %NAME2% the expression.",
+    "fix": "Remove the self-matching <require> or <accept> from that condition, or give the component its own condition without it, e.g. split a shared condition into a hardware part and a software part.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:208",
+      "tools/packchk/src/ValidateSemantic.cpp:976-1020",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:528-554",
+      "tools/packchk/test/data/CompResolvedByItself/ARM.CompResolvedByItself.pdsc:16-33"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m390",
+    "cause": "Evaluating a <condition> failed because it refers to itself, directly or through a chain of condition=\"...\" references in its <require>, <accept> or <deny> expressions. The same evaluation error, and so the same message, occurs when such a condition attribute names a condition id that is not defined. packchk skips the condition in later checks.",
+    "fix": "Follow the condition=\"...\" references from the named condition, break the loop, and make sure every referenced condition id is defined in <conditions>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:209",
+      "tools/packchk/src/CheckConditions.cpp:42-55",
+      "libs/rtemodel/src/RteCondition.cpp:501-506",
+      "libs/rtemodel/src/RteCondition.cpp:889-904",
+      "libs/rtemodel/src/RteCondition.cpp:955-956"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m505",
+    "cause": "Validation of the RTE model built from the loaded PDSC files found an error and prints it as '<pack>: <element> '<id>': error #<n>: <text>'. Typical cases: #501 a component definition with errors such as a condition attribute naming an undefined condition; #502 a condition with an empty expression, mixed B/C/D/T attributes in one expression, or a component expression without Cclass or Cgroup; #503 condition recursion; #530 a device or variant without <processor>; #531 a device property whose Pname names no processor, or an invalid example.",
+    "fix": "Fix the element named in the message at the reported line (define the condition, split the expression, add Cclass/Cgroup, add the <processor>, correct Pname); the M500 lines that follow give the details.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:228",
+      "tools/packchk/src/RteModelReader.cpp:20-44",
+      "tools/packchk/src/RteModelReader.cpp:142-154",
+      "libs/rtemodel/src/RteItem.cpp:470-474",
+      "libs/rtemodel/src/RteItem.cpp:1048-1066",
+      "libs/rtemodel/src/RteComponent.cpp:47-53",
+      "libs/rtemodel/src/RteCondition.cpp:160-192",
+      "libs/rtemodel/src/RteCondition.cpp:360-372",
+      "libs/rtemodel/src/RteDevice.cpp:525-553",
+      "libs/rtemodel/src/RteExample.cpp:46-53"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m506",
+    "cause": "Validation of the RTE model reported a warning: #500 the same pack (vendor, name, version) is loaded twice, for example because the PDSC under test is also passed with -i; #520 the pack defines a component with the same component ID twice; #521 a condition id is defined more than once (the duplicate is ignored).",
+    "fix": "Do not pass the checked PDSC, or a second copy of a pack, with -i; make every component definition unique (e.g. a different Cvariant); remove or rename duplicate condition ids.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:229",
+      "tools/packchk/src/RteModelReader.cpp:31-37",
+      "libs/rtemodel/src/RteModel.cpp:420-434",
+      "libs/rtemodel/src/RteComponent.cpp:55-62",
+      "libs/rtemodel/src/RtePackage.cpp:691-716"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m510",
+    "cause": "Xerces reported a warning while validating the PDSC against the PACK.xsd schema; %MSG% is the Xerces text and the line is the PDSC line.",
+    "fix": "Read the Xerces text and correct the PDSC at that line; make sure the schema in use (--xsd or the installed PACK.xsd) is at least as new as the schemaVersion of the PDSC.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:231",
+      "libs/xmlschemachecker/src/XmlErrorHandler.cpp:22-25",
+      "libs/xmlschemachecker/src/XmlErrorHandler.cpp:37-46",
+      "libs/xmlschemachecker/src/XmlValidator.cpp:49-66",
+      "tools/packchk/src/CreateModel.cpp:119-123"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m511",
+    "cause": "The PDSC does not validate against PACK.xsd: Xerces reports an element or attribute the schema does not allow at that place, a missing required attribute, a value that breaks the schema type or pattern, or XML that is not well-formed. It is also printed as 'Exception: ...' when the schema or PDSC cannot be read. packchk continues with its other checks.",
+    "fix": "Correct the PDSC at the reported line as the Xerces text says (element spelling and order, allowed attribute values, required attributes). If the element is valid in a newer pack schema, point --xsd at a PACK.xsd of that version.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:232",
+      "libs/xmlschemachecker/src/XmlErrorHandler.cpp:17-30",
+      "libs/xmlschemachecker/src/XmlValidator.cpp:49-79",
+      "tools/packchk/src/CreateModel.cpp:119-123",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:952-986"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m600",
+    "cause": "A <file> element uses attr=\"copy\", which packchk reports as deprecated.",
+    "fix": "Remove attr=\"copy\" from the <file>; if users are meant to get an editable copy in their project, use attr=\"config\" with a version attribute instead.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:235",
+      "tools/packchk/src/CheckFiles.cpp:189-207",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1105-1131",
+      "tools/packchk/test/data/FileAttributeDeprecated/TestVendor.FileAttributeDeprecated.pdsc:35"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m601",
+    "cause": "A required part is missing: <licenseSets> without any <licenseSet>; a <licenseSet> without <license>; a <license> without name or title; in <csolution>, a <clayer> without type, path or file, or a <template> without name, path, file or a <description> child. %TAG% is what is missing, %TAG2% the element that lacks it.",
+    "fix": "Add what the message names, e.g. <license name=\"licenses/MIT.txt\" title=\"MIT License\"/>, or <clayer type=\"Board\" path=\"boards/myboard/layers\" file=\"Board.clayer.yml\"/>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:236",
+      "tools/packchk/src/ValidateSyntax.cpp:191-245",
+      "tools/packchk/src/CheckFiles.cpp:993-1059",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:453-496",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1201-1247",
+      "tools/packchk/test/data/TestLicense/TestVendor.TestPackLicense.pdsc:27-28",
+      "tools/packchk/test/data/CsolutionTag/TestVendor.CsolutionTag.pdsc:37-54"
+    ],
+    "confidence": "high",
+    "note": "<csolution>, <clayer> and <template> are not in the 1.7.15 schema copy in the tree (tools/packchk/test/data/schema.xsd); PACK.xsd itself is not in the tree, so these names come from CheckFiles.cpp and the test pack."
+  },
+  {
+    "id": "ts-packchk-m602",
+    "cause": "More than one <licenseSet> in <licenseSets> is marked default; only one license set can be the default. The message is logged without a line number, so its 'see Line' part is not filled in.",
+    "fix": "Keep default=\"true\" on exactly one <licenseSet> and remove it from the others.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:237",
+      "tools/packchk/src/ValidateSyntax.cpp:219-226",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:453-496",
+      "tools/packchk/test/data/TestLicense/TestVendor.TestPackLicense.pdsc:17-24",
+      "libs/errlog/src/ErrLog.cpp:24-37"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m603",
+    "cause": "The PDSC has neither a <license> element nor a <licenseSets> element with at least one <licenseSet>.",
+    "fix": "Ship the license text in the pack and reference it, e.g. <license>License.txt</license> under <package>, or <licenseSets><licenseSet id=\"all\" default=\"true\"><license name=\"License.txt\" title=\"BSD-3-Clause\"/></licenseSet></licenseSets>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:238",
+      "tools/packchk/src/ValidateSyntax.cpp:182-258"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m604",
+    "cause": "A <processor> has a Dcore for which packchk keeps no list of required processor attributes (it knows Cortex-M0, M0+, M1, M3, M4, M7, M23, M33, M35P, M52, M55, M85, Star-MC1, SC000, SC300, ARMV8MBL, ARMV8MML and ARMV81MML), for example a Cortex-A or Cortex-R core or a misspelled Dcore. The attribute check (M605) is then skipped for that device.",
+    "fix": "Nothing to change for a correctly spelled non-listed core; suppress with -x M604 if wanted. If the Dcore is misspelled, use the exact schema value, e.g. Dcore=\"Cortex-M33\".",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:239",
+      "tools/packchk/src/ValidateSemantic.cpp:481-540",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1284-1312",
+      "tools/packchk/test/data/ProcessorFeatures/TestVendor.ProcessorFeatures.pdsc:65"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m605",
+    "cause": "A <processor>, together with what it inherits from family and subFamily, lacks an attribute that packchk requires for its Dcore: Dfpu, Dmpu, Ddsp, Dendian, Dclock and DcoreVersion for every listed core; Dtz additionally for Cortex-M23, M33, M35P, M52, M55, M85, Star-MC1, SC000, SC300 and the ARMV8M/ARMV81M cores; Dmve for M35P, M52, M55, M85, Star-MC1 and ARMV81MML. On devices with more than one processor every processor also needs Pname.",
+    "fix": "Add the named attribute to the <processor> (or to the family or subFamily level it inherits from), e.g. <processor Dcore=\"Cortex-M4\" DcoreVersion=\"r0p1\" Dfpu=\"SP_FPU\" Dmpu=\"MPU\" Ddsp=\"DSP\" Dendian=\"Little-endian\" Dclock=\"100000000\"/>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:240",
+      "tools/packchk/src/ValidateSemantic.cpp:481-559",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1284-1312",
+      "tools/packchk/test/data/ProcessorFeatures/TestVendor.ProcessorFeatures.pdsc:45-53"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m607",
+    "cause": "A <mountedDevice> of a <board> uses a wildcard (*, ?, [ or ]) in Dname; a mounted device must name one device.",
+    "fix": "Replace the pattern with the exact device or variant name, e.g. <mountedDevice deviceIndex=\"0\" Dvendor=\"ARM:82\" Dname=\"ARMCM4\"/>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:242",
+      "tools/packchk/src/ValidateSyntax.cpp:1729-1732",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:989-1036",
+      "tools/packchk/test/data/CheckBoardMountedCompatibleDevices/BulbBoard_BSP/Keil.BulbBoard_BSP.pdsc:44"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m608",
+    "cause": "A <memory> has startup=\"1\" but its access attribute does not contain 'x' (execute); a startup memory without access is reported too. Memories with id IROM*/IRAM* are exempt.",
+    "fix": "Add x to the access of the startup memory or move startup=\"1\" to the executable region, e.g. <memory name=\"Flash\" access=\"rx\" start=\"0x08000000\" size=\"0x00080000\" startup=\"1\"/>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:243",
+      "tools/packchk/src/ValidateSemantic.cpp:280-288",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1133-1172",
+      "tools/packchk/test/data/MemoryAttributes/TestVendor.MemoryAttributes.pdsc:74",
+      "tools/packchk/test/data/MemoryAttributes/TestVendor.MemoryAttributes.pdsc:90"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m609",
+    "cause": "Among the memories that apply to a processor of a device (including those inherited from family and subFamily), none or more than one has startup=\"1\".",
+    "fix": "Mark exactly one executable memory per processor with startup=\"1\" and remove startup or set it to \"0\" on the others.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:244",
+      "tools/packchk/src/ValidateSemantic.cpp:197-296",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1133-1172",
+      "tools/packchk/test/data/MemoryAttributes/TestVendor.MemoryAttributes.pdsc:65-66",
+      "tools/packchk/test/data/MemoryAttributes/TestVendor.MemoryAttributes.pdsc:82"
+    ],
+    "confidence": "high",
+    "note": "On multi-core devices the processor name printed in the message accumulates the names of earlier processors (devName is extended inside the loop, ValidateSemantic.cpp:199-208)."
+  },
+  {
+    "id": "ts-packchk-m610",
+    "cause": "The same source, library or object file (category library, object, source, sourceC, sourceCpp, sourceAsm or genSource) is listed in two components with the same file condition, component condition, Cvariant and Cbundle, so selecting both would add the file twice. %NAME% shows packchk's internal key (file name and those values joined by ':').",
+    "fix": "List the file in one component only; if several components need it, move it into a common component that the others require.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:245",
+      "tools/packchk/src/CheckComponents.cpp:35-77",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1174-1199",
+      "tools/packchk/test/data/ConcurrentComponentFiles/ARM.ConcurrentComponentFiles.pdsc:65-78"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m611",
+    "cause": "A <mountedDevice> of a <board> names a device that has <variant> children, so the board does not identify a single device.",
+    "fix": "Set Dname to the variant that is actually mounted, e.g. Dname=\"RteTest_ARMCM4_FP\" instead of the parent device \"RteTest_ARMCM4\".",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:246",
+      "tools/packchk/src/ValidateSyntax.cpp:1741-1749",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1038-1076",
+      "tools/packchk/test/data/RteTestBoard/ARM.RteTestBoard.pdsc:42",
+      "test/packs/ARM/RteTest_DFP/0.2.0/ARM.RteTest_DFP.pdsc:243-256"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m101",
+    "cause": "",
+    "fix": "",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:72",
+      "tools/packchk/README.md:117"
+    ],
+    "confidence": "unknown",
+    "note": "No raise site for M101 in tools/packchk/src or libs at 30f5e81; only the message table entry and the README row ('Contact Arm for clarifications') exist."
+  },
+  {
+    "id": "ts-packchk-m103",
+    "cause": "During the letter-case check of a file path from the PDSC, packchk could not find one path segment in the folder listing although the file exists; the text reads 'Internal Error: file/folder \"<segment>\" not found'. A doubled slash such as \"Files//test.c\" produces an empty segment and triggers it.",
+    "fix": "Look at the segment named in the message and fix the path in the PDSC: remove doubled or stray slashes and make every folder and file name match the name on disk.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:74",
+      "tools/packchk/src/CheckFiles.cpp:511-550",
+      "tools/packchk/src/CheckFiles.cpp:461-474",
+      "libs/rteutils/src/RteUtils.cpp:143-156",
+      "tools/packchk/README.md:118"
+    ],
+    "confidence": "medium",
+    "note": "Only raise site is CheckFiles::CheckCaseSense; the README advice 'Contact Arm' does not explain it."
+  },
+  {
+    "id": "ts-packchk-m104",
+    "cause": "",
+    "fix": "",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:75",
+      "tools/packchk/src/CreateModel.cpp:39-43",
+      "tools/packchk/README.md:119"
+    ],
+    "confidence": "unknown",
+    "note": "No raise site for M104 at 30f5e81: CheckForOtherPdscFiles returns false without a message for an empty path (CreateModel.cpp:41-43). The README advice (run verbose, identify the PDSC) cannot be tied to code."
+  },
+  {
+    "id": "ts-packchk-m108",
+    "cause": "",
+    "fix": "Fix the XML syntax errors that the XML reader reports just before M108 with line numbers (for example a missing end tag, or a bare '&' or '<' in text that must be written &amp; or &lt;), then run packchk again; until the PDSC parses, the later checks have no model to work on.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:79",
+      "tools/packchk/src/RteModelReader.cpp:119-130",
+      "tools/packchk/src/PackChk.cpp:117-120",
+      "libs/xmltreeslim/src/XmlTreeSlimInterface.cpp:104-133",
+      "libs/xmlreader/src/XML_Reader.cpp:740-790",
+      "tools/packchk/README.md:120"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m109",
+    "cause": "",
+    "fix": "",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:80",
+      "tools/packchk/src/RteModelReader.cpp:121-140",
+      "tools/packchk/README.md:121"
+    ],
+    "confidence": "unknown",
+    "note": "Unreachable at 30f5e81: M109 is logged under 'if(!bOk)' right after the code returned early when bOk was false (RteModelReader.cpp:127-140), so it never prints. No PDSC cause exists."
+  },
+  {
+    "id": "ts-packchk-m110",
+    "cause": "Validation of the RTE model built from the PDSC (and any -i reference PDSCs) found invalid items, for example a condition attribute that names an undefined condition. The details follow right after as 'RTE Model reports' messages (M500, M505, M506).",
+    "fix": "Work through the 'RTE Model reports' lines after M110 and fix each named element (define or correct the condition id, add the missing <processor>, remove duplicates); M110 goes away with them.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:81",
+      "tools/packchk/src/RteModelReader.cpp:142-154",
+      "tools/packchk/src/RteModelReader.cpp:20-44",
+      "libs/rtemodel/src/RteItem.cpp:1048-1066",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1201-1247",
+      "tools/packchk/test/data/CsolutionTag/TestVendor.CsolutionTag.pdsc:39",
+      "tools/packchk/README.md:122"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m202",
+    "cause": "packchk got no PDSC file to check: no file argument was given, or the argument names a folder instead of a *.pdsc file.",
+    "fix": "Pass the path of the pack's .pdsc file as the positional argument, not the pack folder, e.g. packchk ./MyVendor.MyPack.pdsc.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:86",
+      "tools/packchk/src/CreateModel.cpp:94-110",
+      "tools/packchk/src/PackOptions.cpp:171-176",
+      "tools/packchk/src/ParseOptions.cpp:208",
+      "tools/packchk/README.md:131"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m203",
+    "cause": "The folder that contains the PDSC holds more than one *.pdsc file, so packchk does not read the pack; M206 printed just before lists the files. Despite its text, M203 is not a content error of the PDSC.",
+    "fix": "Remove or rename the extra .pdsc files (old copies, backups) in the PDSC's folder, or add --ignore-other-pdsc when they must stay.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:87",
+      "tools/packchk/src/CreateModel.cpp:39-63",
+      "tools/packchk/src/CreateModel.cpp:112-117",
+      "tools/packchk/src/ParseOptions.cpp:222",
+      "libs/rtefsutils/src/RteFsUtils.cpp:750-788",
+      "tools/packchk/README.md:132"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m204",
+    "cause": "",
+    "fix": "Correct the path or name of the PDSC on the command line; a relative path is resolved against the current working directory.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:88",
+      "tools/packchk/src/PackOptions.cpp:171-188",
+      "tools/packchk/src/CreateModel.cpp:101-106",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:89-108",
+      "tools/packchk/README.md:133"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m205",
+    "cause": "",
+    "fix": "Give -n a path where packchk may write (it creates missing folders itself), e.g. -n build/packname.txt, and make sure the path is not an existing folder and the location is writable.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:89",
+      "tools/packchk/src/PackChk.cpp:54-84",
+      "libs/rtefsutils/src/RteFsUtils.cpp:217-232",
+      "tools/packchk/README.md:134"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m206",
+    "cause": "The folder that contains the PDSC holds more than one *.pdsc file; only that folder is searched, not its subfolders. A pack may contain only one PDSC.",
+    "fix": "Delete the other .pdsc files from the pack root or move them out of the pack, or run with --ignore-other-pdsc if they must stay.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:90",
+      "tools/packchk/src/CreateModel.cpp:39-86",
+      "libs/rtefsutils/src/RteFsUtils.cpp:750-788",
+      "tools/packchk/src/ParseOptions.cpp:222",
+      "tools/packchk/README.md:135"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m207",
+    "cause": "The PDSC file name is not <vendor>.<name>.pdsc as built from the <vendor> and <name> elements of the PDSC (exact, case-sensitive comparison). 'Expected' shows the name built from the elements, 'Actual' the file name.",
+    "fix": "Rename the PDSC to <vendor>.<name>.pdsc, or correct <vendor> or <name>, e.g. file MyVendor.MyPack.pdsc with <vendor>MyVendor</vendor> and <name>MyPack</name>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:91-93",
+      "tools/packchk/src/ValidateSyntax.cpp:335-341",
+      "tools/packchk/README.md:136"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m210",
+    "cause": "",
+    "fix": "Run packchk once per PDSC; pass packs it depends on with -i instead of as extra file arguments.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:96",
+      "tools/packchk/src/ParseOptions.cpp:208",
+      "tools/packchk/src/ParseOptions.cpp:226",
+      "tools/packchk/README.md:137"
+    ],
+    "confidence": "low",
+    "note": "No raise site for M210 in packchk at 30f5e81; fix inferred from the message and README."
+  },
+  {
+    "id": "ts-packchk-m218",
+    "cause": "No --xsd option was given and packchk found no PACK.xsd in ./, ../etc/ or ../../etc/ relative to the folder of its executable (%PATH%), so it cannot run the schema check. The README row for M218 describes the --xsd case, which is M219.",
+    "fix": "Pass the schema with --xsd <path>/PACK.xsd, or run packchk from a CMSIS-Toolbox installation where etc/PACK.xsd sits next to bin/, or skip the schema check with --disable-validation.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:104",
+      "tools/packchk/src/PackOptions.cpp:228-265",
+      "tools/packchk/src/ParseOptions.cpp:316-332",
+      "tools/packchk/README.md:54-57",
+      "tools/packchk/README.md:138"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m301",
+    "cause": "",
+    "fix": "Make <url> start with the URL given to -u (compared without regard to case; trailing slashes of the -u value are ignored), or correct the -u value, e.g. -u https://www.myvendor.com/pack/ with <url>https://www.myvendor.com/pack/</url>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:109-111",
+      "tools/packchk/src/ValidateSyntax.cpp:502-540",
+      "tools/packchk/src/PackOptions.cpp:294-316",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:263-279",
+      "tools/packchk/README.md:150"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m302",
+    "cause": "",
+    "fix": "Add <vendor>MyVendor</vendor> under <package>; the value is also the first part of the PDSC file name (<vendor>.<name>.pdsc).",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:112-113",
+      "tools/packchk/src/ValidateSyntax.cpp:279-283",
+      "tools/packchk/src/ValidateSyntax.cpp:335-341",
+      "tools/packchk/README.md:151"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m303",
+    "cause": "",
+    "fix": "Add <name>MyPack</name> under <package>; it must equal the second part of the PDSC file name (<vendor>.<name>.pdsc).",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:114-115",
+      "tools/packchk/src/ValidateSyntax.cpp:285-289",
+      "tools/packchk/src/ValidateSyntax.cpp:335-341",
+      "tools/packchk/README.md:152"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m304",
+    "cause": "",
+    "fix": "Add <url> under <package> with the location the pack is downloaded from, ending in '/', e.g. <url>https://www.myvendor.com/pack/</url>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:116",
+      "tools/packchk/src/ValidateSyntax.cpp:502-511",
+      "tools/packchk/README.md:153"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m305",
+    "cause": "The PDSC has a <releases> element, but it contains no <release>.",
+    "fix": "Add at least one release, newest first: <releases><release version=\"1.0.0\" date=\"2026-01-31\">Initial release</release></releases>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:117",
+      "tools/packchk/src/ValidateSyntax.cpp:291-302",
+      "tools/packchk/README.md:154"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m306",
+    "cause": "",
+    "fix": "Add <description>Device Family Pack for ...</description> under <package>; keep it to plain ASCII on one line, within 128 characters, to avoid M387 and M388.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:118-120",
+      "tools/packchk/src/ValidateSyntax.cpp:317-320",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:952-986",
+      "tools/packchk/README.md:155"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m307",
+    "cause": "",
+    "fix": "Describe each memory either with id (legacy IROM1/IRAM1 form) or with name plus access, e.g. <memory name=\"Flash\" access=\"rx\" start=\"0x08000000\" size=\"0x00080000\" startup=\"1\"/>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:121",
+      "tools/packchk/src/ValidateSemantic.cpp:237-241",
+      "tools/packchk/README.md:156"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m308",
+    "cause": "An element lacks an attribute packchk requires: a <memory> without start or size, a <mountedDevice> without Dvendor or Dname, or a <licenseSet> without id.",
+    "fix": "Add the attribute named in the message to that element, e.g. <memory name=\"SRAM\" access=\"rw\" start=\"0x20000000\" size=\"0x00010000\"/> or <mountedDevice deviceIndex=\"0\" Dvendor=\"ARM:82\" Dname=\"ARMCM4\"/>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:122",
+      "tools/packchk/src/ValidateSemantic.cpp:259-265",
+      "tools/packchk/src/ValidateSyntax.cpp:1713-1721",
+      "tools/packchk/src/ValidateSyntax.cpp:203-206",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1133-1172",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:989-1036",
+      "tools/packchk/test/data/MemoryAttributes/TestVendor.MemoryAttributes.pdsc:91-92",
+      "tools/packchk/README.md:157"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m309",
+    "cause": "",
+    "fix": "Give the <memory> both name and access, e.g. name=\"SRAM\" access=\"rwx\", or use the legacy id form instead.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:123",
+      "tools/packchk/src/ValidateSemantic.cpp:248-257",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1133-1172",
+      "tools/packchk/test/data/MemoryAttributes/TestVendor.MemoryAttributes.pdsc:90",
+      "tools/packchk/README.md:158"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m310",
+    "cause": "",
+    "fix": "Change the path in the PDSC so every folder and file name has exactly the letter case used on disk, or rename the files; 'Filename' in the message shows the on-disk spelling.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:124-126",
+      "tools/packchk/src/CheckFiles.cpp:511-570",
+      "tools/packchk/README.md:159"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m311",
+    "cause": "Two <memory> elements that apply to the same device and processor (including memories inherited from family and subFamily) have the same name, or the same id when name is absent.",
+    "fix": "Give each memory region a unique name (or id), or remove the duplicate definition.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:127",
+      "tools/packchk/src/ValidateSemantic.cpp:212-278",
+      "tools/packchk/README.md:160"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m315",
+    "cause": "The <url> of the package has ':' as its second character, i.e. it starts with a drive letter such as \"C:/packs/\" instead of a web address.",
+    "fix": "Set <url> to the web location the pack is downloaded from, e.g. <url>https://www.myvendor.com/pack/</url>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:131",
+      "tools/packchk/src/ValidateSyntax.cpp:513-515",
+      "tools/packchk/README.md:162"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m316",
+    "cause": "The value of the package <url> element does not end with '/'.",
+    "fix": "Append the slash: <url>https://www.myvendor.com/pack/</url>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:132",
+      "tools/packchk/src/ValidateSyntax.cpp:517-519",
+      "tools/packchk/README.md:163"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m323",
+    "cause": "",
+    "fix": "Correct the path (relative to the PDSC folder, forward slashes, matching letter case) or add the missing file to the pack; %PATH% is the full path packchk looked for.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:139",
+      "tools/packchk/src/CheckFiles.cpp:424-451",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:589-620",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1201-1247",
+      "tools/packchk/README.md:164"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m324",
+    "cause": "",
+    "fix": "Make the example's <board name=\"...\" vendor=\"...\"/> match a <board> defined in this pack, or pass the BSP pack that defines the board with -i.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:140",
+      "tools/packchk/src/ValidateSyntax.cpp:1507-1548",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:198-229",
+      "tools/packchk/README.md:165"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m325",
+    "cause": "Two <board> elements in the checked PDSC have the same name and revision. The line numbers are swapped: the message is reported at the earlier board and its 'Line' names the later one.",
+    "fix": "Remove the duplicate <board>, or give the boards different name or revision values.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:141",
+      "tools/packchk/src/ValidateSyntax.cpp:1584-1608",
+      "libs/rtemodel/src/RteBoard.cpp:32-39",
+      "libs/rtemodel/src/RteBoard.cpp:246-249",
+      "tools/packchk/README.md:166"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m326",
+    "cause": "",
+    "fix": "Write the path relative to the folder of the PDSC, e.g. name=\"Source/startup.c\" instead of \"C:/work/pack/Source/startup.c\" or \"/boards/...\".",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:142",
+      "tools/packchk/src/RteModelReader.cpp:52-67",
+      "tools/packchk/src/CheckFiles.cpp:430-433",
+      "tools/packchk/src/ValidateSyntax.cpp:155-174",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1201-1247",
+      "tools/packchk/README.md:167"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m327",
+    "cause": "",
+    "fix": "Replace the backslashes with forward slashes, e.g. Device/Include/device.h.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:143",
+      "tools/packchk/src/RteModelReader.cpp:57-63",
+      "tools/packchk/src/ValidateSyntax.cpp:163-169",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:453-496",
+      "tools/packchk/test/data/TestLicense/TestVendor.TestPackLicense.pdsc:8",
+      "tools/packchk/README.md:168"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m328",
+    "cause": "",
+    "fix": "Add the version attribute to the <release>, e.g. <release version=\"1.2.0\" date=\"2026-01-31\">...</release>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:144",
+      "tools/packchk/src/ValidateSyntax.cpp:303-310",
+      "tools/packchk/README.md:169"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m329",
+    "cause": "",
+    "fix": "Write the release notes as text of the <release>, e.g. <release version=\"1.2.0\" date=\"2026-01-31\">Added USB driver</release>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:145",
+      "tools/packchk/src/ValidateSyntax.cpp:303-314",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:407-451",
+      "tools/packchk/README.md:170"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m330",
+    "cause": "",
+    "fix": "Give one of the conditions a unique id (and update the condition attributes meant to use it), or delete the duplicate.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:146",
+      "tools/packchk/src/CheckConditions.cpp:195-216",
+      "tools/packchk/README.md:171"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m331",
+    "cause": "A <condition> is defined in <conditions>, but no element refers to it through a condition attribute, neither directly nor through another condition.",
+    "fix": "Delete the unused condition or reference it where intended, e.g. <component ... condition=\"MyCondition\">; suppress with -x M331 if it is kept on purpose.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:147",
+      "tools/packchk/src/CheckConditions.cpp:273-304",
+      "tools/packchk/src/CheckConditions.cpp:96-145",
+      "tools/packchk/README.md:172",
+      "tools/packchk/README.md:85-90"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m332",
+    "cause": "",
+    "fix": "Define <condition id=\"...\"> with exactly the referenced id (spelling and case), or change the condition attribute to an existing id.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:148",
+      "tools/packchk/src/CheckConditions.cpp:223-267",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1201-1247",
+      "tools/packchk/README.md:173"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m333",
+    "cause": "",
+    "fix": "If the component only applies to certain devices, compilers or other components, add a condition attribute naming a <condition> that expresses this; otherwise no change is needed.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:149",
+      "tools/packchk/src/PackChk_Msgs.cpp:54",
+      "tools/packchk/README.md:174"
+    ],
+    "confidence": "low",
+    "note": "No raise site for M333 at 30f5e81 (only the progress message M085 'Checking if Component has Condition' exists in the table). Fix inferred from the message and README."
+  },
+  {
+    "id": "ts-packchk-m334",
+    "cause": "",
+    "fix": "Add version to the <file attr=\"config\"> element, e.g. <file category=\"header\" attr=\"config\" name=\"Config/RTE_Device.h\" version=\"1.0.0\"/>, and raise it when the file changes.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:150",
+      "tools/packchk/src/CheckFiles.cpp:378-380",
+      "tools/packchk/src/CheckFiles.cpp:598-617",
+      "tools/packchk/README.md:175"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m335",
+    "cause": "A component with Cclass \"Device\", \"Board Support\", or \"CMSIS Driver\" without Csub has no condition attribute, so nothing restricts it to the devices it supports.",
+    "fix": "Add a condition that requires the supported devices and reference it from the component, e.g. <condition id=\"ARMCM4\"><require Dvendor=\"ARM:82\" Dname=\"ARMCM4*\"/></condition> and <component Cclass=\"Device\" Cgroup=\"Startup\" ... condition=\"ARMCM4\">.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:151-152",
+      "tools/packchk/src/CheckComponents.cpp:84-107",
+      "tools/packchk/README.md:176"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m336",
+    "cause": "A component with Cclass \"Device\", \"Board Support\", or \"CMSIS Driver\" without Csub has a condition, but neither that condition nor the conditions it references contains an expression whose Dname matches a device known to packchk (this pack or PDSC files passed with -i).",
+    "fix": "Add <require Dvendor=\"...\" Dname=\"...\"/> for the supported devices to the component's condition and make sure those devices exist in this pack or in a PDSC passed with -i; M364 lines name Dname values that matched no device.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:153-154",
+      "tools/packchk/src/CheckComponents.cpp:104-110",
+      "tools/packchk/src/CheckComponents.cpp:155-207",
+      "tools/packchk/README.md:177"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m337",
+    "cause": "",
+    "fix": "Use the extension that fits the category (header: .h or .hpp; sourceC: .c; sourceCpp: .cpp, .cc or .cxx; sourceAsm: .s or .asm; the package description overview: .md), or change category to match the file.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:155",
+      "tools/packchk/src/CheckFiles.cpp:840-911",
+      "tools/packchk/src/ValidateSyntax.cpp:322-332",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1078-1103",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:857-884",
+      "tools/packchk/README.md:178"
+    ],
+    "confidence": "high",
+    "note": "The overview attribute of <description> is not in the 1.7.15 schema copy in the tree (tools/packchk/test/data/schema.xsd)."
+  },
+  {
+    "id": "ts-packchk-m338",
+    "cause": "The PDSC has no <releases> element at all. packchk then also skips the package description and PDSC file name checks.",
+    "fix": "Add <releases> under <package> with at least one release, newest first: <releases><release version=\"1.0.0\" date=\"2026-01-31\">Initial release</release></releases>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:156",
+      "tools/packchk/src/ValidateSyntax.cpp:291-296",
+      "tools/packchk/README.md:179"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m339",
+    "cause": "A <file category=\"include\"> entry does not name an existing folder: it points to a file, or to a path that does not exist.",
+    "fix": "Set name to the include folder with a trailing '/', e.g. <file category=\"include\" name=\"Include/\"/>; list single header files with category=\"header\" instead.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:157",
+      "tools/packchk/src/CheckFiles.cpp:862-868",
+      "tools/packchk/README.md:180"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m340",
+    "cause": "",
+    "fix": "Append '/' to the folder name: <file category=\"include\" name=\"Include/\"/>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:158",
+      "tools/packchk/src/CheckFiles.cpp:864-872",
+      "tools/packchk/README.md:181"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m341",
+    "cause": "An assembler file (category sourceAsm, or category source with extension .s or .asm) has a condition that requires or accepts Tcompiler=\"GCC\", and its extension is lowercase .s; packchk asks for uppercase .S for GCC.",
+    "fix": "Rename the file to .S and update its name attribute, e.g. name=\"Source/GCC/startup_device.S\".",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:159",
+      "tools/packchk/src/CheckFiles.cpp:394-398",
+      "tools/packchk/src/CheckFiles.cpp:758-803",
+      "tools/packchk/README.md:182"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m342",
+    "cause": "A <file> with attr=\"template\" also has category=\"include\"; packchk does not allow templates to be include folders. Only attr=\"template\" is checked here, not attr=\"config\" as the README example says.",
+    "fix": "Give the template a file category such as sourceC or header, or remove attr=\"template\" from the include entry.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:160",
+      "tools/packchk/src/CheckFiles.cpp:382-384",
+      "tools/packchk/src/CheckFiles.cpp:649-679",
+      "tools/packchk/README.md:183"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m343",
+    "cause": "",
+    "fix": "Add select with a short label for the template, e.g. <file category=\"sourceC\" attr=\"template\" name=\"Templates/main.c\" select=\"Main module\"/>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:161",
+      "tools/packchk/src/CheckFiles.cpp:649-679",
+      "tools/packchk/README.md:184"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m344",
+    "cause": "A library or assembler file (category library or sourceAsm, or category source with extension .s or .asm) has no condition with a Tcompiler expression, neither on the <file> nor on its <component>. %COND% is always 'Tcompiler'.",
+    "fix": "Add a condition that requires the compiler and attach it to the file or its component, e.g. <condition id=\"GCC\"><require Tcompiler=\"GCC\"/></condition> and <file category=\"sourceAsm\" name=\"Source/GCC/startup.S\" condition=\"GCC\"/>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:162",
+      "tools/packchk/src/CheckFiles.cpp:386-398",
+      "tools/packchk/src/CheckFiles.cpp:689-751",
+      "tools/packchk/src/CheckFiles.cpp:810-833",
+      "tools/packchk/README.md:185"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m345",
+    "cause": "",
+    "fix": "Correct the URL named in the message or make the target reachable.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:163",
+      "tools/packchk/src/PackChk_Msgs.cpp:23",
+      "tools/packchk/README.md:186"
+    ],
+    "confidence": "low",
+    "note": "No raise site for M345 (nor for the progress message M054 'Checking if URL exists') at 30f5e81; packchk does not test URLs there. Fix taken from the README."
+  },
+  {
+    "id": "ts-packchk-m346",
+    "cause": "",
+    "fix": "Correct Dname and Dvendor of the <mountedDevice> or <compatibleDevice> to an existing device or variant, or pass the DFP's PDSC with -i so its devices are known.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:164",
+      "tools/packchk/src/ValidateSyntax.cpp:1734-1739",
+      "tools/packchk/src/ValidateSyntax.cpp:1793-1798",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:989-1036",
+      "tools/packchk/README.md:187"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m347",
+    "cause": "",
+    "fix": "Define the generator in the same PDSC, <generators><generator id=\"MyGenerator\">...</generator></generators>, or correct the component's generator attribute to an existing generator id.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:165",
+      "tools/packchk/src/CheckComponents.cpp:113-145",
+      "tools/packchk/src/ValidateSyntax.cpp:1822-1881",
+      "tools/packchk/README.md:188"
+    ],
+    "confidence": "medium",
+    "note": "The component check is skipped when the pack has no <generators> element (CheckComponents.cpp:121-122). The taxonomy check compares the generator attribute of the <taxonomy> element rather than that of each <description> and reports M347, not M361 (ValidateSyntax.cpp:1834-1870)."
+  },
+  {
+    "id": "ts-packchk-m348",
+    "cause": "Within one device-level element (family, subFamily, device or variant), two <feature> elements with the same type, m and name, or two <algorithm> elements with the same identity, apply to the same processor (same Pname, or both to all processors); a <board> can also list the same feature twice.",
+    "fix": "Remove the duplicate entry, or make the two distinct (different Pname or attribute values) if both are meant.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:166",
+      "tools/packchk/src/ValidateSyntax.cpp:868-963",
+      "tools/packchk/src/ValidateSyntax.cpp:1164-1201",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:794-824",
+      "tools/packchk/test/data/DuplicateFlashAlgo/TestVendor.DuplicateFlashAlgo.pdsc:93-104",
+      "tools/packchk/README.md:189"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m349",
+    "cause": "",
+    "fix": "Define the boards that the examples reference with <boards><board name=\"...\" vendor=\"...\"> in this pack, or pass the BSP that defines them with -i; otherwise correct the example's <board> reference.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:167",
+      "tools/packchk/README.md:190"
+    ],
+    "confidence": "low",
+    "note": "No raise site for M349 at 30f5e81; fix inferred from the message and README. Missing boards for examples are reported per example as M324."
+  },
+  {
+    "id": "ts-packchk-m350",
+    "cause": "For a device (checked per processor, per TrustZone mode when Dtz is set, and per compiler named in the pack's conditions), no Device:Startup component (Cclass=\"Device\" Cgroup=\"Startup\") is available whose conditions accept that device. packchk looks in this pack and in PDSC files given with -i.",
+    "fix": "Add a Device:Startup component with a condition matching the device, or widen its condition (Dname pattern, Dvendor, Tcompiler) to cover the reported device and compiler; if the startup code comes from another pack, pass that PDSC with -i.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:168",
+      "tools/packchk/src/ValidateSemantic.cpp:571-636",
+      "tools/packchk/src/ValidateSemantic.cpp:92-123",
+      "tools/packchk/src/ValidateSemantic.cpp:848-870",
+      "tools/packchk/README.md:191"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m359",
+    "cause": "",
+    "fix": "Add <device> elements (or a <subFamily> with devices) to the <family>, or remove the empty family.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:178",
+      "tools/packchk/src/ValidateSyntax.cpp:1337-1347",
+      "tools/packchk/README.md:198"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m360",
+    "cause": "A <subFamily> element contains no <device> element.",
+    "fix": "Add <device> elements to the subFamily, or remove it.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:179",
+      "tools/packchk/src/ValidateSyntax.cpp:1337-1347",
+      "tools/packchk/README.md:199"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m361",
+    "cause": "",
+    "fix": "Define the generator in <generators><generator id=\"...\"> of the same PDSC, or correct the generator attribute of the taxonomy <description>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:180",
+      "tools/packchk/src/PackChk_Msgs.cpp:62",
+      "tools/packchk/src/ValidateSyntax.cpp:1822-1881",
+      "tools/packchk/README.md:200"
+    ],
+    "confidence": "low",
+    "note": "No raise site for M361 at 30f5e81: CheckTaxonomy reports an undefined generator as M347, and it only runs when the <taxonomy> element itself has a generator attribute (ValidateSyntax.cpp:1834-1870). Fix inferred from the message and README."
+  },
+  {
+    "id": "ts-packchk-m362",
+    "cause": "",
+    "fix": "Read the M502/M504 lines that follow; they name the dependency that fails. Provide the required component or API in this pack, pass the providing pack's PDSC with -i (e.g. ARM.CMSIS.pdsc for CMSIS:CORE), or correct Cclass/Cgroup/Csub/Capiversion in the condition. -x M362 also suppresses M502 and M504.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:181",
+      "tools/packchk/src/ValidateSemantic.cpp:877-973",
+      "tools/packchk/src/ValidateSemantic.cpp:154-190",
+      "tools/packchk/src/PackOptions.cpp:422-426",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:198-229",
+      "tools/packchk/README.md:201"
+    ],
+    "confidence": "medium",
+    "note": "Bug at 30f5e81: bOk in TestComponentDependencies is set before the component loop and never reset (ValidateSemantic.cpp:890, 950), so after the first failing component every later component is also reported with M362."
+  },
+  {
+    "id": "ts-packchk-m363",
+    "cause": "A component has Capiversion, but no <api> with the same Cclass and Cgroup (and a compatible version) is defined in this pack or in a PDSC passed with -i.",
+    "fix": "Add the API to <apis> (<api Cclass=\"...\" Cgroup=\"...\" Capiversion=\"...\">), pass the pack that defines it with -i, or remove Capiversion if the component implements no API.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:182",
+      "tools/packchk/src/ValidateSemantic.cpp:924-931",
+      "tools/packchk/README.md:202"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m364",
+    "cause": "",
+    "fix": "Correct Dname (and Dvendor) in the condition expression to an existing device or variant, or pass the DFP's PDSC with -i so its devices are known.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:183",
+      "tools/packchk/src/CheckConditions.cpp:152-188",
+      "tools/packchk/src/CheckComponents.cpp:155-188",
+      "tools/packchk/README.md:203"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m365",
+    "cause": "Two device leaves of the same kind (two <device> elements without variants, or two <variant> elements) have the same name in the PDSC.",
+    "fix": "Rename or remove one of them so that every Dname and Dvariant is unique.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:184",
+      "tools/packchk/src/ValidateSyntax.cpp:1892-1952",
+      "tools/packchk/src/ValidateSyntax.cpp:1277-1300",
+      "tools/packchk/src/ValidateSyntax.cpp:76-108",
+      "tools/packchk/README.md:204"
+    ],
+    "confidence": "medium",
+    "note": "At 30f5e81 the function that raises M365 (ValidateSyntax::CheckDevices) is never called from Check(); the same duplication is reported as M392."
+  },
+  {
+    "id": "ts-packchk-m366",
+    "cause": "The same name is used once for a <device> without variants and once for a <variant>, so one leaf device is defined as both.",
+    "fix": "Rename one of them so that every Dname and Dvariant is unique.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:185",
+      "tools/packchk/src/ValidateSyntax.cpp:1918-1946",
+      "tools/packchk/src/ValidateSyntax.cpp:1277-1300",
+      "tools/packchk/src/ValidateSyntax.cpp:76-108",
+      "tools/packchk/README.md:205"
+    ],
+    "confidence": "medium",
+    "note": "At 30f5e81 the function that raises M366 (ValidateSyntax::CheckDevices) is never called from Check(); the same duplication is reported as M392."
+  },
+  {
+    "id": "ts-packchk-m367",
+    "cause": "Two sibling elements have the same name: for example two <device> elements with the same Dname in one family or subFamily, or two <licenseSet> elements with the same id. %TYPE% says which kind (Family, Subfamily, Device, Variant or id).",
+    "fix": "Rename or remove the duplicate element.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:186",
+      "tools/packchk/src/ValidateSyntax.cpp:1354-1364",
+      "tools/packchk/src/ValidateSyntax.cpp:208-214",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:453-496",
+      "tools/packchk/test/data/TestLicense/TestVendor.TestPackLicense.pdsc:21-24",
+      "tools/packchk/README.md:206"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m370",
+    "cause": "A path attribute or license entry in the PDSC holds a URL (http, https, ftp or ftps) that contains backslashes.",
+    "fix": "Write the URL with forward slashes only.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:189",
+      "tools/packchk/src/RteModelReader.cpp:52-67",
+      "tools/packchk/src/ValidateSyntax.cpp:155-174",
+      "tools/packchk/README.md:208"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m371",
+    "cause": "",
+    "fix": "Use a feature type packchk knows, spelled exactly, e.g. device features such as \"NVIC\", \"UART\", \"QFP\" or board features such as \"ODbg\", \"LED\", \"Button\": <feature type=\"UART\" n=\"4\"/>. The check runs only when schemaVersion is above 1.1.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:190",
+      "tools/packchk/src/ValidateSyntax.cpp:616-767",
+      "tools/packchk/src/ValidateSyntax.cpp:775-859",
+      "tools/packchk/src/ValidateSyntax.cpp:952-960",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:498-526",
+      "tools/packchk/README.md:209"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m372",
+    "cause": "",
+    "fix": "Write the type with the spelling suggested in the message, e.g. type=\"UART\" instead of type=\"Uart\".",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:191",
+      "tools/packchk/src/ValidateSyntax.cpp:793-805",
+      "tools/packchk/src/ValidateSyntax.cpp:839-851",
+      "tools/packchk/README.md:210"
+    ],
+    "confidence": "medium",
+    "note": "For board features the name in the message is the feature's name attribute, not the board name (ValidateSyntax.cpp:1225)."
+  },
+  {
+    "id": "ts-packchk-m373",
+    "cause": "",
+    "fix": "Set schemaVersion on <package> to a version of the pack schema the tools support, e.g. schemaVersion=\"1.7.15\", and validate against the matching PACK.xsd.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:192",
+      "tools/packchk/src/ValidateSyntax.cpp:386-399",
+      "tools/packchk/README.md:211"
+    ],
+    "confidence": "low",
+    "note": "No raise site for M373 at 30f5e81; packchk only checks that schemaVersion is present (M376). Fix inferred from the message and README."
+  },
+  {
+    "id": "ts-packchk-m374",
+    "cause": "A <feature> or <algorithm> of a device has a Pname that matches no <processor Pname> of that device, including processors inherited from family and subFamily.",
+    "fix": "Correct Pname to one of the device's processor names, or add the missing <processor Pname=\"...\"> definition.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:193",
+      "tools/packchk/src/ValidateSyntax.cpp:868-928",
+      "tools/packchk/src/ValidateSyntax.cpp:587-611",
+      "libs/rtemodel/src/RteDevice.cpp:602-609",
+      "tools/packchk/README.md:212"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m375",
+    "cause": "",
+    "fix": "Add the device the board carries: <mountedDevice deviceIndex=\"0\" Dvendor=\"ARM:82\" Dname=\"ARMCM4\"/>. The message says <mountedDevices>; the element is <mountedDevice>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:194",
+      "tools/packchk/src/ValidateSyntax.cpp:1692-1698",
+      "tools/packchk/README.md:213"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m376",
+    "cause": "The <package> element has no schemaVersion attribute.",
+    "fix": "Add schemaVersion to <package>, e.g. <package schemaVersion=\"1.7.15\" ...>, naming the pack schema version the PDSC is written for.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:195",
+      "tools/packchk/src/ValidateSyntax.cpp:386-399",
+      "tools/packchk/README.md:214"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m377",
+    "cause": "In a Device:Startup component (Cclass=\"Device\" Cgroup=\"Startup\"), a startup_* file or a system_*.c file of category source, sourceAsm or sourceC lacks attr=\"config\". %TYPE% shows the category.",
+    "fix": "Add attr=\"config\" and a version to these files, e.g. <file category=\"sourceC\" attr=\"config\" name=\"Source/system_ARMCM4.c\" version=\"1.0.0\"/>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:196",
+      "tools/packchk/src/ValidateSemantic.cpp:674-758",
+      "tools/packchk/README.md:215"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m378",
+    "cause": "",
+    "fix": "Add Capiversion with the API version the component implements, e.g. <component Cclass=\"CMSIS Driver\" Cgroup=\"USART\" Capiversion=\"2.4.0\" ...>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:197",
+      "tools/packchk/src/ValidateSemantic.cpp:924-938",
+      "tools/packchk/README.md:216"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m379",
+    "cause": "",
+    "fix": "Add an <example> whose <board name=\"...\" vendor=\"...\"/> matches the board, or pass the pack holding the examples with -i; suppress with -x M379 if the pack has no examples on purpose.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:198",
+      "tools/packchk/src/ValidateSyntax.cpp:1615-1659",
+      "tools/packchk/README.md:217"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m380",
+    "cause": "The <description> element that applies to the device (from device, subFamily or family level) is present but empty. Devices have no description attribute; the description is the <description> element.",
+    "fix": "Write the device text into the <description> element at device, subFamily or family level.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:199",
+      "tools/packchk/src/ValidateSemantic.cpp:332-349",
+      "libs/rtemodel/src/RteItem.cpp:740-745",
+      "tools/packchk/README.md:218"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m381",
+    "cause": "The Dvendor of a <mountedDevice> or <compatibleDevice> identifies the device's vendor but is not written the same way as the Dvendor of the device itself (e.g. \"ARM\" versus \"ARM:82\"), or it is empty.",
+    "fix": "Copy the Dvendor value exactly as the device's family defines it, e.g. Dvendor=\"ARM:82\".",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:200",
+      "tools/packchk/src/ValidateSyntax.cpp:1751-1759",
+      "tools/packchk/src/ValidateSyntax.cpp:1800-1808",
+      "libs/rtemodel/src/RteModel.cpp:682-698",
+      "libs/rteutils/src/DeviceVendor.cpp:382-396",
+      "tools/packchk/README.md:219"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m382",
+    "cause": "",
+    "fix": "Pass the required pack's PDSC with -i (e.g. -i /path/to/ARM.CMSIS.pdsc), or correct vendor, name or the version range of the <package> entry in <requirements><packages>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:201",
+      "tools/packchk/src/ValidateSyntax.cpp:2019-2091",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:198-229",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:281-310",
+      "tools/packchk/README.md:220"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m383",
+    "cause": "A device or variant name (Dname or Dvariant) contains characters other than letters, digits, '-', '_' and '/'.",
+    "fix": "Rename the device or variant using only A-Z, a-z, 0-9, '-', '_' (no spaces, dots or parentheses), and update the references to it.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:202",
+      "tools/packchk/src/ValidateSemantic.cpp:307-324",
+      "tools/packchk/src/ValidateSemantic.cpp:577-581",
+      "libs/rteutils/src/RteUtils.cpp:187-194",
+      "tools/packchk/README.md:221"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m384",
+    "cause": "Evaluating a <condition> while collecting the compilers named in the pack's conditions failed: it refers to itself directly or through condition=\"...\" references, or such a reference names a condition id that is not defined. M390 usually reports the same condition earlier.",
+    "fix": "Follow the condition=\"...\" references from the named condition, break the loop, and define every referenced condition id.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:203",
+      "tools/packchk/src/GatherCompilers.cpp:76-87",
+      "tools/packchk/src/CheckConditions.cpp:42-55",
+      "libs/rtemodel/src/RteCondition.cpp:501-506",
+      "libs/rtemodel/src/RteCondition.cpp:889-904",
+      "libs/rtemodel/src/RteCondition.cpp:955-956",
+      "tools/packchk/README.md:222"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "ts-packchk-m386",
+    "cause": "The date attribute of a <release> is later than today's date on the machine that runs packchk. The README advice 'Set the date to the future' is inverted.",
+    "fix": "Set date to the actual release date, today or earlier, in YYYY-MM-DD form.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:205",
+      "tools/packchk/src/ValidateSyntax.cpp:417-475",
+      "tools/packchk/README.md:224"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m392",
+    "cause": "",
+    "fix": "Rename one of the device or variant definitions so each name is unique, or remove the duplicate; the message lists every place the name is used.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:211",
+      "tools/packchk/src/ValidateSyntax.cpp:1349-1352",
+      "tools/packchk/src/ValidateSyntax.cpp:1413-1431",
+      "tools/packchk/README.md:226"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m394",
+    "cause": "",
+    "fix": "Use MAJOR.MINOR.PATCH with optional -prerelease and +build parts, e.g. version=\"1.2.0\" or version=\"1.2.0-rc1\".",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:213",
+      "tools/packchk/src/ValidateSyntax.cpp:449-455",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:407-451",
+      "tools/packchk/README.md:228"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m396",
+    "cause": "The <release> elements are not ordered newest first by version: a release has a version equal to or higher than the release listed before it. Only versions are compared, not dates; %TAG% is always 'Version'.",
+    "fix": "Order the releases by strictly decreasing version, newest first, and remove duplicate version entries.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:215",
+      "tools/packchk/src/ValidateSyntax.cpp:477-489",
+      "tools/packchk/test/integtests/src/PackChkIntegTests.cpp:407-451",
+      "tools/packchk/README.md:230"
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ts-packchk-m397",
+    "cause": "",
+    "fix": "Rename the PDSC file so its extension is lowercase .pdsc.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:216",
+      "tools/packchk/src/PackChk_Msgs.cpp:37",
+      "tools/packchk/README.md:231",
+      "libs/rtefsutils/src/RteFsUtils.cpp:750-788"
+    ],
+    "confidence": "low",
+    "note": "No raise site for M397 (nor for the info message M068) at 30f5e81. Fix taken from the message and README."
+  },
+  {
+    "id": "ts-packchk-m398",
+    "cause": "",
+    "fix": "Add Dname to the same expression that uses Pname, e.g. <require Dname=\"MyDevice\" Pname=\"cm4\"/>.",
+    "evidence": [
+      "tools/packchk/src/PackChk_Msgs.cpp:217",
+      "tools/packchk/src/CheckConditions.cpp:152-164",
+      "tools/packchk/README.md:232"
+    ],
+    "confidence": "medium"
+  }
+]

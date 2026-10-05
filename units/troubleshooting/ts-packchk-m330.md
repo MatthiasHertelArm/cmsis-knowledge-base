@@ -2,7 +2,7 @@
 id: "ts-packchk-m330"
 type: "troubleshooting"
 domain: "error-catalog"
-title: "packchk M330: , already defined in Line"
+title: "packchk M330: Condition redefined: '…', already defined in Line …"
 status: "draft"
 tool: "packchk"
 severity: "error"
@@ -10,11 +10,14 @@ code: "M330"
 symptoms: ["M330", "Condition redefined: '%COND%', already defined in Line %LINE%"]
 symptom_regex: "^Condition redefined: '.+?', already defined in Line .+?$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e81:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e81:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
+cause_origin: "source-analysis"
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:146", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckConditions.cpp:195-216", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:171"]
 ---
 
 ## Symptom
@@ -28,4 +31,12 @@ The condition has been defined already in a previous line. Correct the condition
 
 ## Fix
 
-_siehe Cause_
+Give one of the conditions a unique id (and update the condition attributes meant to use it), or delete the duplicate.
+
+## Evidence
+
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
+
+- `tools/packchk/src/PackChk_Msgs.cpp:146`
+- `tools/packchk/src/CheckConditions.cpp:195-216`
+- `tools/packchk/README.md:171`

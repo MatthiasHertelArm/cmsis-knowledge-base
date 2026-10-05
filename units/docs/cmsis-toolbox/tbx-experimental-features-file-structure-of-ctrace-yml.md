@@ -21,23 +21,23 @@ The `*.ctrace.yml` file starts with the node `ctrace:` and contains the trace ca
 
 `ctrace:`                                               |             | Content
 :-------------------------------------------------------|:------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `generated-by:`                      |  Optional   | Tool and version that generated or last updated the file.
-&nbsp;&nbsp;&nbsp; `setup:`                             |  Required   | Setup for each processor.
+    `generated-by:`                      |  Optional   | Tool and version that generated or last updated the file.
+    `setup:`                             |  Required   | Setup for each processor.
 
 `setup:`                                                  |             | Content
 :---------------------------------------------------------|:------------|:---------------------------------------                                      
 `- pname:`                                                |  Optional   | Section applies to a processor name (required for multi-processor systems).
-&nbsp;&nbsp;&nbsp; `disable:`                             |  Optional   | When set, this list node is ignored; useful for testing.
-&nbsp;&nbsp;&nbsp; [`timestamps:`](#timestamps)           |  Optional   | Enables timestamps in the emitted trace streams.
-&nbsp;&nbsp;&nbsp; [`timesync:`](#timesync)               |  Optional   | Enables time synchronization between trace streams.
-&nbsp;&nbsp;&nbsp; [`data:`](#data)                       |  Optional   | DWT data trace configuration.
-&nbsp;&nbsp;&nbsp; [`exceptions:`](#exceptions)           |  Optional   | DWT exception trace configuration.
-&nbsp;&nbsp;&nbsp; [`events:`](#events)                   |  Optional   | DWT or PMU event trace configuration.
-&nbsp;&nbsp;&nbsp; [`itm:`](#itm)                         |  Optional   | ITM channel configuration.
-&nbsp;&nbsp;&nbsp; [`instructions:`](#instructions)       |  Optional   | ETM or MTB instruction trace configuration.
-&nbsp;&nbsp;&nbsp; [`pcsampling:`](#pcsampling)           |  Optional   | DWT PC sampling configuration.
-&nbsp;&nbsp;&nbsp; [`synchronization:`](#synchronization) |  Optional   | Trace synchronization packet period configuration.
-&nbsp;&nbsp;&nbsp; [`tracehalt:`](#tracehalt)             |  Future     | Trace sink or formatter halt trigger configuration.
+    `disable:`                             |  Optional   | When set, this list node is ignored; useful for testing.
+    [`timestamps:`](#timestamps)           |  Optional   | Enables timestamps in the emitted trace streams.
+    [`timesync:`](#timesync)               |  Optional   | Enables time synchronization between trace streams.
+    [`data:`](#data)                       |  Optional   | DWT data trace configuration.
+    [`exceptions:`](#exceptions)           |  Optional   | DWT exception trace configuration.
+    [`events:`](#events)                   |  Optional   | DWT or PMU event trace configuration.
+    [`itm:`](#itm)                         |  Optional   | ITM channel configuration.
+    [`instructions:`](#instructions)       |  Optional   | ETM or MTB instruction trace configuration.
+    [`pcsampling:`](#pcsampling)           |  Optional   | DWT PC sampling configuration.
+    [`synchronization:`](#synchronization) |  Optional   | Trace synchronization packet period configuration.
+    [`tracehalt:`](#tracehalt)             |  Future     | Trace sink or formatter halt trigger configuration.
 
 **Example:**
 
@@ -82,8 +82,8 @@ When `timestamps:` is present, timestamp generation is enabled in the trace stre
 
 `timestamps:`                                            |             | Content
 :--------------------------------------------------------|:------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `clock:`                              |  Optional   | Timestamp clock frequency in Hz.
-&nbsp;&nbsp;&nbsp; `itm-prescaler:`                      |  Optional   | ITM timestamp prescaler: `1` (default), `4`, `16`, `64`.
+    `clock:`                              |  Optional   | Timestamp clock frequency in Hz.
+    `itm-prescaler:`                      |  Optional   | ITM timestamp prescaler: `1` (default), `4`, `16`, `64`.
 
 The timestamp `clock` typically is the processor clock.
 
@@ -98,16 +98,16 @@ The `data:` node configures DWT data trace. DWT comparator resources are limited
 `data:`                                                  |             | Content
 :--------------------------------------------------------|:------------|:------------------------------------
 `- location:`                                            |**Required** | Symbol or numeric address [location](#location) to trace.
-&nbsp;&nbsp;&nbsp; `label:`                              |  Optional   | User-defined short label for Trace Compass.
-&nbsp;&nbsp;&nbsp; `access:`                             |  Optional   | Access type: `W`, `R`, or `RW`. Default: `W`.
-&nbsp;&nbsp;&nbsp; `size:`                               |  Optional   | Number of bytes in the traced range. Default: `sizeof(symbol)`, `4` for numeric addresses.
-&nbsp;&nbsp;&nbsp; `output:`                             |  Optional   | Trace output mode (see table below). Default: `value`.
-&nbsp;&nbsp;&nbsp; `match:`                              |  Optional   | Value match condition. When present, trace is emitted only for matching accesses.
+    `label:`                              |  Optional   | User-defined short label for Trace Compass.
+    `access:`                             |  Optional   | Access type: `W`, `R`, or `RW`. Default: `W`.
+    `size:`                               |  Optional   | Number of bytes in the traced range. Default: `sizeof(symbol)`, `4` for numeric addresses.
+    `output:`                             |  Optional   | Trace output mode (see table below). Default: `value`.
+    `match:`                              |  Optional   | Value match condition. When present, trace is emitted only for matching accesses.
 
 `match:`                                                 |             | Content
 :--------------------------------------------------------|:------------|:------------------------------------
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `value:`            |**Required** | Value to match.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `size:`             |  Optional   | Number of bytes to compare. Allowed values: `1`, `2`, `4`. Default: `4`.
+       `value:`            |**Required** | Value to match.
+       `size:`             |  Optional   | Number of bytes to compare. Allowed values: `1`, `2`, `4`. Default: `4`.
 
 `output:`       | Description
 :---------------|:------------------------------------
@@ -152,7 +152,7 @@ The `itm:` node enables ITM channels.
 `itm:`                                |             | Content
 :-------------------------------------|:------------|:------------------------------------
 `- enable:`                           |**Required** | ITM channel bit mask.
-&nbsp;&nbsp;&nbsp; `privileged:`      |  Optional   | Privileged access only mask by blocks of eight channels. Default: `0`.
+    `privileged:`      |  Optional   | Privileged access only mask by blocks of eight channels. Default: `0`.
 
 Each bit in `enable:` represents one ITM channel.  
 Each bit in `privileged:` represents a block of eight channels, i.e. value `0x2` configures that access to ITM channles 8-15 must be privileged.
@@ -200,8 +200,8 @@ The `instructions:` node is reserved for ETM and MTB instruction trace. It is no
 
 `instructions:`                       |             | Content
 :-------------------------------------|:------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `start:`           |  Optional   | Conditions that start instruction trace.
-&nbsp;&nbsp;&nbsp; `stop:`            |  Optional   | Conditions that stop instruction trace.
+    `start:`           |  Optional   | Conditions that start instruction trace.
+    `stop:`            |  Optional   | Conditions that stop instruction trace.
 
 `start:` and `stop:` contain [condition](#conditions) entries. These entries define when instruction trace starts or stops; they do not define trace output.
 
@@ -216,11 +216,11 @@ The nodes `start:`, `stop:`, and `tracehalt:` may contain a condition list that 
 `start:`, `stop:`, `tracehalt:`                        |             | Content
 :------------------------------------------------------|:------------|:------------------------------------
 `- location:`                                          |**Required** | Code symbol, data symbol, or numeric address [location](#location) used as the trace condition.
-&nbsp;&nbsp;&nbsp; `access:`                           |  Optional   | Access type: `X`, `R`, `W`, or `RW`. Defaults to `X` for code symbols, and to `W` for data symbols or numeric addresses
-&nbsp;&nbsp;&nbsp; `size:`                             |  Optional   | Number of bytes in the condition range. Defaults to `sizeof(symbol)` for symbols and `4` for numeric addresses.
-&nbsp;&nbsp;&nbsp; `match:`                            |  Optional   | Value match condition for data symbols or numeric addresses.
+    `access:`                           |  Optional   | Access type: `X`, `R`, `W`, or `RW`. Defaults to `X` for code symbols, and to `W` for data symbols or numeric addresses
+    `size:`                             |  Optional   | Number of bytes in the condition range. Defaults to `sizeof(symbol)` for symbols and `4` for numeric addresses.
+    `match:`                            |  Optional   | Value match condition for data symbols or numeric addresses.
 
 `match:`                                               |             | Content
 :------------------------------------------------------|:------------|:------------------------------------
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `value:`          |**Required** | Value to match.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `size:`           |  Optional   | Number of bytes to compare. Allowed values: `1`, `2`, `4`. Default: `4`.
+       `value:`          |**Required** | Value to match.
+       `size:`           |  Optional   | Number of bytes to compare. Allowed values: `1`, `2`, `4`. Default: `4`.

@@ -39,40 +39,10 @@ trace buffer may omit the attribute.
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    trace | 
-    element_trace | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    name | 
-    Identifier of the trace buffer. This attribute is required and shall be unique when the parent
-        **trace** element contains multiple **tracebuffer** elements. | 
-    RestrictedString | 
-    optional | 
-  
-
-  | 
-    start | 
-    Start address of the on-chip memory used as trace buffer for a supported configuration. | 
-    NonNegativeInteger | 
-    optional | 
-  
-
-  | 
-    size | 
-    Size of the on-chip memory used as trace buffer in bytes for a supported configuration. | 
-    NonNegativeInteger | 
-    optional |
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| trace | element_trace |  |  |
+| Attributes | Description | Type | Use |
+| name | Identifier of the trace buffer. This attribute is required and shall be unique when the parent **trace** element contains multiple **tracebuffer** elements. | RestrictedString | optional |
+| start | Start address of the on-chip memory used as trace buffer for a supported configuration. | NonNegativeInteger | optional |
+| size | Size of the on-chip memory used as trace buffer in bytes for a supported configuration. | NonNegativeInteger | optional |

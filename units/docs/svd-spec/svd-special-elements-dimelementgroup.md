@@ -27,74 +27,18 @@ Refer to `<peripheral>`, `<register>`, `<cluster>`, and `<field>` for details.
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    `<peripheral>` | 
-    elem_peripheral  | 
-  
-
-  | 
-    `<register>` | 
-    elem_register  | 
-  
-
-  | 
-    `<cluster>` | 
-    elem_cluster  | 
-  
-
-  | 
-    `<field>` | 
-    elem_field | 
-  
-
-  | 
-    Grouped Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    dim | 
-    Defines the number of elements in an array or list. | 
-    scaledNonNegativeInteger | 
-    1..1  | 
-  
-
-  | 
-    dimIncrement | 
-    Specify the address increment between two neighboring array or list members in the address map. | 
-    scaledNonNegativeInteger | 
-    1..1  | 
-  
-
-  | 
-    dimIndex | 
-    Specify the strings that substitue the placeholder _%%s_ within  \tagem{name} and \tagem{displayName}.
-        By default, \tagem{dimIndex} is a value starting with `0`.
-        \n**Remark:** Do not define \tagem{dimIndex} when using the placeholder _[%%s]_ in \tagem{name} or \tagem{displayName}. | 
-    dimIndexType | 
-    0..1  | 
-  
-
-  | 
-    dimName | 
-    Specify the name of the C-type structure. If not defined, then the entry in the \tagem{name} element is used. | 
-    identifierType | 
-    0..1  | 
-  
-
-  | 
-    `<dimArrayIndex>` | 
-    Grouping element to create enumerations in the header file. | 
-    dimArrayIndexType | 
-    0..1  | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| ` ` | elem_peripheral |  |  |
+| `<register>` | elem_register |  |  |
+| `<cluster>` | elem_cluster |  |  |
+| `<field>` | elem_field |  |  |
+| Grouped Elements | Description | Type | Occurrence |
+| dim | Defines the number of elements in an array or list. | scaledNonNegativeInteger | 1..1 |
+| dimIncrement | Specify the address increment between two neighboring array or list members in the address map. | scaledNonNegativeInteger | 1..1 |
+| dimIndex | Specify the strings that substitue the placeholder %%s within \tagem{name} and \tagem{displayName}. By default, \tagem{dimIndex} is a value starting with `0`. \n**Remark:** Do not define \tagem{dimIndex} when using the placeholder [%%s] in \tagem{name} or \tagem{displayName}. | dimIndexType | 0..1 |
+| dimName | Specify the name of the C-type structure. If not defined, then the entry in the \tagem{name} element is used. | identifierType | 0..1 |
+| `<dimArrayIndex>` | Grouping element to create enumerations in the header file. | dimArrayIndexType | 0..1 |
 
 
 
@@ -175,51 +119,14 @@ making source code more readable, the system view in the debugger becomes more i
 **/device/peripherals/peripheral/.../dimArrayIndex**
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    `<peripheral>` | 
-    elem_peripheral  | 
-  
-
-  | 
-    `<register>` | 
-    elem_register  | 
-  
-
-  | 
-    `<cluster>` | 
-    elem_cluster  | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    headerEnumName | 
-    Specify the base name of enumerations.  Overwrites the hierarchical enumeration type in the device header file.
-        User is responsible for uniqueness across description.
-        The headerfile generator uses the name of a peripheral or cluster as the base name for enumeration types.
-        If \tagem{headerEnumName} element is specfied, then this string is used.
-
- | 
-    identifierType | 
-    0..1  | 
-  
-
-  | 
-    `<enumeratedValue>` | 
-    Specify the values contained in the enumeration. | 
-    enumeratedValueType | 
-    1..*  | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| ` ` | elem_peripheral |  |  |
+| `<register>` | elem_register |  |  |
+| `<cluster>` | elem_cluster |  |  |
+| Child Elements | Description | Type | Occurrence |
+| headerEnumName | Specify the base name of enumerations. Overwrites the hierarchical enumeration type in the device header file. User is responsible for uniqueness across description. The headerfile generator uses the name of a peripheral or cluster as the base name for enumeration types. If \tagem{headerEnumName} element is specfied, then this string is used. | identifierType | 0..1 |
+| `<enumeratedValue>` | Specify the values contained in the enumeration. | enumeratedValueType | 1..* |
 
 
 

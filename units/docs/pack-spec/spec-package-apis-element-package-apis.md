@@ -29,29 +29,8 @@ The element itself is optional. Only one such section can exist in a package.
 
 
 
-  | 
-    Parents  | 
-    Element Chain | 
-      | 
-      | 
-  
-
-  | 
-    package | 
-    /package | 
-      | 
-      | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    api | 
-    Named specification of an API containing a brief description, C/C++ header files and documentation | 
-    ApiType | 
-    1..* |
+| Parents | Element Chain |   |   |
+|---|---|---|---|
+| package | /package |   |   |
+| Child Elements | Description | Type | Occurrence |
+| api | Named specification of an API containing a brief description, C/C++ header files and documentation | ApiType | 1..* |

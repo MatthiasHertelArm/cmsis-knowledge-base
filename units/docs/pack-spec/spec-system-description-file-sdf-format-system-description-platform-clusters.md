@@ -16,29 +16,11 @@ Describes the cluster arrangement.
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    platform | 
-    /system_description/platform | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    sdf_element_cluster | 
-    Lists the devices that make up the cluster and a unique name for the cluster. | 
-    complexType | 
-    0..* |   
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| platform | /system_description/platform |  |  |
+| Child Elements | Description | Type | Occurrence |
+| sdf_element_cluster | Lists the devices that make up the cluster and a unique name for the cluster. | complexType | 0..* |
 
 
 

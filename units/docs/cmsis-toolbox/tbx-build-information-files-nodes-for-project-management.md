@@ -21,16 +21,16 @@ The `configurations:` node lists possible configurations for [reference applicat
 `configurations:`                                                       | Content
 :-----------------------------------------------------------------------|:------------------------------------
 `- target-type:`                                                        | Name of target-type for which configurations are listed.
-&nbsp;&nbsp;&nbsp;`target-configurations:`                              | List of possible configurations for the target-type.
-&nbsp;&nbsp;&nbsp;- `configuration:`                                    | Possible configuration for the reference application.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`- variables:`                      | List of variable names with configuration information.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`<layer-name>:`   | Layer name with a value that is the path to the `clayer.yml` file.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`description:`    | Brief [description](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#layer) text taken from `*.clayer.yml`.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`settings:`       | Usage instructions for this layer.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`- set:`          | Value of `set` and `info` taken from [`connect:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#connect) in `*.clayer.yml`.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`path:`           | Path to the directory that contains the layer (from *.PDSC file).
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`file:`           | Name of the *.clayer.yml file (optional with a relative path to the directory specified with path) (from `*.PDSC` file).
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`copy-to:`        | Proposed directory for the layer in the *csolution project* (from *.PDSC file).
+   `target-configurations:`                              | List of possible configurations for the target-type.
+   - `configuration:`                                    | Possible configuration for the reference application.
+      `- variables:`                      | List of variable names with configuration information.
+         `<layer-name>:`   | Layer name with a value that is the path to the `clayer.yml` file.
+         `description:`    | Brief [description](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#layer) text taken from `*.clayer.yml`.
+         `settings:`       | Usage instructions for this layer.
+         `- set:`          | Value of `set` and `info` taken from [`connect:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#connect) in `*.clayer.yml`.
+         `path:`           | Path to the directory that contains the layer (from *.PDSC file).
+         `file:`           | Name of the *.clayer.yml file (optional with a relative path to the directory specified with path) (from `*.PDSC` file).
+         `copy-to:`        | Proposed directory for the layer in the *csolution project* (from *.PDSC file).
 
 **Example:**
 
@@ -70,7 +70,7 @@ The `cprojects:` node lists all `*.cproject.yml` input files along with `*.claye
 `cprojects:`                                                       | Content
 :------------------------------------------------------------------|:------------------------------------
 `- cproject:`                                                      | Relative path and name of a [`*.cproject.yml`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#project) input file.
-&nbsp;&nbsp;&nbsp;`clayers:`                                       | List of [`*.clayer.yml`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#layer) input files used by this `*.cproject.yml` file.
+   `clayers:`                                       | List of [`*.clayer.yml`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#layer) input files used by this `*.cproject.yml` file.
 
 **Example:**
 
@@ -91,12 +91,12 @@ The `cbuilds:` node lists all project context configurations that are generated 
 `cbuilds:`                                                         | Content
 :------------------------------------------------------------------|:------------------------------------
 `- cbuild:`                                                        | Build description file of a single context for a *.cproject.yml input file.
-&nbsp;&nbsp;&nbsp; `project:`                                      | Project name.
-&nbsp;&nbsp;&nbsp; `configuration:`                                | Context configuration for this build description file.
-&nbsp;&nbsp;&nbsp; `errors:`                                       | Error indication.
-&nbsp;&nbsp;&nbsp; `packs-missing:`                                | List of missing packs.
-&nbsp;&nbsp;&nbsp; `packs-unused:`                                 | List of unused packs.
-&nbsp;&nbsp;&nbsp; `messages:`                                     | List of `errors:`, `warnings:`, or `info:` messages.
+    `project:`                                      | Project name.
+    `configuration:`                                | Context configuration for this build description file.
+    `errors:`                                       | Error indication.
+    `packs-missing:`                                | List of missing packs.
+    `packs-unused:`                                 | List of unused packs.
+    `messages:`                                     | List of `errors:`, `warnings:`, or `info:` messages.
 
 **Example:**
 
@@ -128,7 +128,7 @@ The `packs:` node is the start of a pack list that is used for the project conte
 `packs:`                                              | Content
 :-----------------------------------------------------|:------------------------------------
 `- pack:`                                             | Explicit pack specification with exact version information used.
-&nbsp;&nbsp;&nbsp;`path:`                             | Path name that stores the software pack (see note).
+   `path:`                             | Path name that stores the software pack (see note).
 
 !!! Note
     Packs that are located in the [CMSIS-Pack root directory](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/installation.md#environment-variables) are prefixed with `${CMSIS_PACK_ROOT}`.
@@ -153,9 +153,9 @@ The `generators:` node contains information for calling a generator.
 `generators:`                                                       | Content
 :-------------------------------------------------------------------|:------------------------------------
 `- generator:`                                                      | Section for a specific generator.
-&nbsp;&nbsp;&nbsp; [`path:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#generators)        | Path name for storing the files generated.
-&nbsp;&nbsp;&nbsp; `gdpsc:`                                         | File name of the *.GDPSC file that stores the information in `path:`.
-&nbsp;&nbsp;&nbsp; `command:`                                       | Section for invoking the generator on different Host operating systems.
+    [`path:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#generators)        | Path name for storing the files generated.
+    `gdpsc:`                                         | File name of the *.GDPSC file that stores the information in `path:`.
+    `command:`                                       | Section for invoking the generator on different Host operating systems.
 
 **Example:**
 
@@ -178,4 +178,4 @@ The `generators:` node contains information for calling a generator.
 `generator:`                                                   | Content
 :--------------------------------------------------------------|:------------------------------------
 `- id:`                                                        | Generator identifier used for this component
-&nbsp;&nbsp;&nbsp; `path:`                                     | File name and path to the *.cgen.yml file that is generated.
+    `path:`                                     | File name and path to the *.cgen.yml file that is generated.

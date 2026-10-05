@@ -41,47 +41,13 @@ for details on the allowed syntax of the block contents.
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    sequence | 
-    element_sequence | 
-  
-
-  | 
-    control | 
-    element_seq_control | 
-  
-
-  | 
-    Attribute | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    atomic | 
-    
-      Instruct the debugger to execute the block contents atomically; a debugger needs to
-      download and buffer all debug accesses to the debug probe and finish the
-      execution without further communication to the host PC. If a debugger cannot
-      support an atomic block it must abort the execution of the debug access sequence.
-
-       | 
-    xs:boolean | 
-    optional | 
-  
-
-  | 
-    info | 
-    Descriptive text to display for example for error diagnostics. | 
-    xs:string | 
-    optional | 
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| sequence | element_sequence |  |  |
+| control | element_seq_control |  |  |
+| Attribute | Description | Type | Use |
+| atomic | Instruct the debugger to execute the block contents atomically; a debugger needs to download and buffer all debug accesses to the debug probe and finish the execution without further communication to the host PC. If a debugger cannot support an atomic block it must abort the execution of the debug access sequence. | xs:boolean | optional |
+| info | Descriptive text to display for example for error diagnostics. | xs:string | optional |
 
 
 

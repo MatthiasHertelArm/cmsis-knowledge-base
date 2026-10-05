@@ -16,29 +16,11 @@ Describes the recommended trace configuration for the device.
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    debug_and_trace_config | 
-    /system_description/debug_and_trace_config | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    sdf_element_trace_capture | 
-    Describes the trace capture device | 
-    complexType | 
-    0..* |   
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| debug_and_trace_config | /system_description/debug_and_trace_config |  |  |
+| Child Elements | Description | Type | Occurrence |
+| sdf_element_trace_capture | Describes the trace capture device | complexType | 0..* |
 
 
 

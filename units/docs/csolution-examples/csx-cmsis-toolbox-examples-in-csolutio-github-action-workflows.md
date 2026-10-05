@@ -12,4 +12,4 @@ license: "Apache-2.0"
 mode: "V"
 ---
 
-The directory [.ci](https://github.com/Open-CMSIS-Pack/csolution-examples/blob/02f71b2/./.ci) contains the required setup for testing these examples with [GitHub Actions](https://github.com/Open-CMSIS-Pack/csolution-examples/blob/02f71b2/./.github) workflows. The tools are downloaded from the [Arm Tools Artifactory](https://artifacts.tools.arm.com/). The test results are available in the [*Actions*](https://github.com/Open-CMSIS-Pack/csolution-examples/blob/02f71b2//../../actions) view.
+The directory [.ci](https://github.com/Open-CMSIS-Pack/csolution-examples/blob/02f71b2/./.ci) contains the required setup for testing these examples with [GitHub Actions](https://github.com/Open-CMSIS-Pack/csolution-examples/blob/02f71b2/./.github) workflows. The tools are downloaded from the [Arm Tools Artifactory](https://artifacts.tools.arm.com/). The test results are available in the [*Actions*](https://github.com/../../actions) view.

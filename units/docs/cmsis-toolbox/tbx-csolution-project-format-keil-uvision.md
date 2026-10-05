@@ -20,8 +20,8 @@ This section lists options that are specific for the uVision Debugger.
 
 debugger:                  |              | Description
 :--------------------------|:-------------|:-----------------------------------------------
-&nbsp;&nbsp;&nbsp; `name:` | **Required** | Identifies the debug adapter with `Keil uVision`.
-&nbsp;&nbsp;&nbsp; `uv4:`  |   Optional   | Path to the uVision executable; default: `C:/Keil_v5/UV4/UV4.exe`.
+    `name:` | **Required** | Identifies the debug adapter with `Keil uVision`.
+    `uv4:`  |   Optional   | Path to the uVision executable; default: `C:/Keil_v5/UV4/UV4.exe`.
 
 ```yml
 debugger:

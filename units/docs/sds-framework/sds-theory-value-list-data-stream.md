@@ -21,12 +21,12 @@ With `dim-x:` and `dim-y:` arrays can be composed. The equivalent representation
 `content:`                           | Value list in the order stored in the data block
 :------------------------------------|---------------------------------------------------
 `- value:`                           | Name of the value (required)
-&nbsp;&nbsp;&nbsp; `type:`           | Data type of the value (required)
-&nbsp;&nbsp;&nbsp; `dim-x:`          | Array size x (optional); default: 1
-&nbsp;&nbsp;&nbsp; `dim-y:`          | Array size y (optional); default: 1
-&nbsp;&nbsp;&nbsp; `offset:`         | Offset of the value (optional); default: 0
-&nbsp;&nbsp;&nbsp; `scale:`          | Scale factor of the value (optional); default: 1.0
-&nbsp;&nbsp;&nbsp; `unit:`           | Physical unit of the value (optional)
+    `type:`           | Data type of the value (required)
+    `dim-x:`          | Array size x (optional); default: 1
+    `dim-y:`          | Array size y (optional); default: 1
+    `offset:`         | Offset of the value (optional); default: 0
+    `scale:`          | Scale factor of the value (optional); default: 1.0
+    `unit:`           | Physical unit of the value (optional)
 
 The following examples show metadata files for several value-list data streams.
 

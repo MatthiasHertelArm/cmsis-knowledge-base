@@ -18,9 +18,9 @@ Contains a list of symbol #define statements that are passed via the command lin
 
 `define-asm:`                                               | Content
 :-----------------------------------------------------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `- <symbol-name>`                        | #define symbol passed via command line
-&nbsp;&nbsp;&nbsp; `- <symbol-name>: <value>`               | #define symbol with value passed via command line
-&nbsp;&nbsp;&nbsp; `- <symbol-name>: \"<string>\"`          | #define symbol with string value passed via command line
+    `- <symbol-name>`                        | #define symbol passed via command line
+    `- <symbol-name>: <value>`               | #define symbol with value passed via command line
+    `- <symbol-name>: \"<string>\"`          | #define symbol with string value passed via command line
 
 **Example:**
 

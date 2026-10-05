@@ -29,25 +29,8 @@ Therefore the project element is a sequence of one or more **environment** eleme
 
 
 
-  | 
-    Parent | 
-	Chain | 
-  
-
-  | 
-    example | 
-	element_example | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    environment | 
-	Specifies the environment and project file with extension. | 
-	xs:complexType | 
-	1..* |
+| Parent | Chain |  |  |
+|---|---|---|---|
+| example | element_example |  |  |
+| Child Elements | Description | Type | Occurrence |
+| environment | Specifies the environment and project file with extension. | xs:complexType | 1..* |

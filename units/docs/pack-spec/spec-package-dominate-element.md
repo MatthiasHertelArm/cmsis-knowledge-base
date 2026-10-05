@@ -3,7 +3,7 @@ id: "spec-package-dominate-element"
 type: "concept"
 domain: "pack"
 title: "/package/dominate element"
-summary: "The elementdominate specifies that the Pack contains one or more device, API, or component that overrules other packs that contain identical named device, API, or component."
+summary: "The element_dominate specifies that the Pack contains one or more device, API, or component that overrules other packs that contain identical named device, API, or component."
 status: "draft"
 collection: "pack-spec"
 source: "Open-CMSIS-Pack/Open-CMSIS-Pack-Spec@b3f8fcf:doxygen/src/pdsc_format.txt"
@@ -35,25 +35,8 @@ This attribute is useful for framing packs that:
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    package | 
-    element_package | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    info | 
-    Descriptive text that explains the reason for the overwrite using dominate. | 
-    xs:string | 
-    required |
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| package | element_package |  |  |
+| Attributes | Description | Type | Use |
+| info | Descriptive text that explains the reason for the overwrite using dominate. | xs:string | required |

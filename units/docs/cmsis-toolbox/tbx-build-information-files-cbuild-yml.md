@@ -18,32 +18,32 @@ The `<project-name>.<build-type>+<target-type>.cbuild.yml` file contains all inf
 
 `build:`                                                      | Content
 :-------------------------------------------------------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `generated-by:`                            | Reference to csolution tool along with version information used to generate this application.
-&nbsp;&nbsp;&nbsp; `context:`                                 | Project [context](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#context-name-conventions) of this build description.
-&nbsp;&nbsp;&nbsp; `compiler:`                                | [Compiler toolchain](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#compiler) used for code generation.
-&nbsp;&nbsp;&nbsp; `board:`                                   | [Board name](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#board) used for this context.
-&nbsp;&nbsp;&nbsp; `board-pack:`                              | BSP that is defining the [Board name](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#board) used for this context.
-&nbsp;&nbsp;&nbsp; `board-books:`                             | List board documentation as defined in the [PDSC element `<board>`](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_boards_pg.html#element_board_book).
-&nbsp;&nbsp;&nbsp; `device:`                                  | [Device name](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#device) with processor core selection used in this  project context.
-&nbsp;&nbsp;&nbsp; `device-pack:`                             | DFP that is defining the [Device name](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#device) with processor core selection used in this  project context.
-&nbsp;&nbsp;&nbsp; `device-books:`                            | List device documentation as defined in the [PDSC element `<device>`](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_book).
-&nbsp;&nbsp;&nbsp; `processor:`                               | List of [processor attributes](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#processor) used in this project context.
-&nbsp;&nbsp;&nbsp; [`packs:`](#packs)                         | List of software [packs](#packs) along with path information used to generate this project context.
-&nbsp;&nbsp;&nbsp; `optimize:`                                | Generic [optimize](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#optimize) level for code generation.
-&nbsp;&nbsp;&nbsp; `link-time-optimize:`                      | Enable [optimization at linker level](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#link-time-optimize).
-&nbsp;&nbsp;&nbsp; `debug:`                                   | Global control the generation of [debug](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#debug) information.
-&nbsp;&nbsp;&nbsp; `warnings:`                                | Global control [warning](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#warnings) level for compiler diagnostics.
-&nbsp;&nbsp;&nbsp; `misc:`                                    | Global control of [miscellaneous](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#misc) literal tool-specific controls.
-&nbsp;&nbsp;&nbsp; `define:`                                  | List of global [define](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#define) symbol settings.
-&nbsp;&nbsp;&nbsp; `add-path:`                                | List of global [include path](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#add-path) settings.
-&nbsp;&nbsp;&nbsp; `output-type:`                             | Select the [output type](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#output) (exe or lib) for this project context.
-&nbsp;&nbsp;&nbsp; `output-dirs:`                             | Specifies the [directories](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#output-dirs) used to generate the output files.
-&nbsp;&nbsp;&nbsp; `linker:`                                  | Specifies the [linker script processing](#linker) used to generate the output files.
-&nbsp;&nbsp;&nbsp; [`components:`](#components)               | List of software components used.
-&nbsp;&nbsp;&nbsp; [`apis:`](#apis)                           | List of API interfaces used.
-&nbsp;&nbsp;&nbsp; [`groups:`](#groups)                       | List of source file groups along with source files.
-&nbsp;&nbsp;&nbsp; [`constructed-files:`](#constructed-files) | List of files that are generated by RTE management of the `csolution` tool.
-&nbsp;&nbsp;&nbsp; [`licenses:`](#licenses)                   | List of licenses used by the various software components of this project context.
+    `generated-by:`                            | Reference to csolution tool along with version information used to generate this application.
+    `context:`                                 | Project [context](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#context-name-conventions) of this build description.
+    `compiler:`                                | [Compiler toolchain](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#compiler) used for code generation.
+    `board:`                                   | [Board name](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#board) used for this context.
+    `board-pack:`                              | BSP that is defining the [Board name](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#board) used for this context.
+    `board-books:`                             | List board documentation as defined in the [PDSC element `<board>`](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_boards_pg.html#element_board_book).
+    `device:`                                  | [Device name](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#device) with processor core selection used in this  project context.
+    `device-pack:`                             | DFP that is defining the [Device name](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#device) with processor core selection used in this  project context.
+    `device-books:`                            | List device documentation as defined in the [PDSC element `<device>`](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_book).
+    `processor:`                               | List of [processor attributes](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#processor) used in this project context.
+    [`packs:`](#packs)                         | List of software [packs](#packs) along with path information used to generate this project context.
+    `optimize:`                                | Generic [optimize](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#optimize) level for code generation.
+    `link-time-optimize:`                      | Enable [optimization at linker level](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#link-time-optimize).
+    `debug:`                                   | Global control the generation of [debug](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#debug) information.
+    `warnings:`                                | Global control [warning](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#warnings) level for compiler diagnostics.
+    `misc:`                                    | Global control of [miscellaneous](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#misc) literal tool-specific controls.
+    `define:`                                  | List of global [define](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#define) symbol settings.
+    `add-path:`                                | List of global [include path](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#add-path) settings.
+    `output-type:`                             | Select the [output type](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#output) (exe or lib) for this project context.
+    `output-dirs:`                             | Specifies the [directories](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#output-dirs) used to generate the output files.
+    `linker:`                                  | Specifies the [linker script processing](#linker) used to generate the output files.
+    [`components:`](#components)               | List of software components used.
+    [`apis:`](#apis)                           | List of API interfaces used.
+    [`groups:`](#groups)                       | List of source file groups along with source files.
+    [`constructed-files:`](#constructed-files) | List of files that are generated by RTE management of the `csolution` tool.
+    [`licenses:`](#licenses)                   | List of licenses used by the various software components of this project context.
 
 **Example:**
 

@@ -18,39 +18,10 @@ A peripheral can have multiple interrupts. This entry allows the debugger to sho
 **/device/peripherals/peripheral/interrupt**
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    peripheral | 
-    elem_peripheral | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    name  | 
-    The string represents the interrupt name. | 
-    stringType  | 
-    1..1  | 
-  
-
-  | 
-    description | 
-    The string describes the interrupt. | 
-    xs:string  | 
-    0..1  | 
-  
-
-  | 
-    value  | 
-    Represents the enumeration index value associated to the interrupt. | 
-    xs:integer  | 
-    1..1  |
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| peripheral | elem_peripheral |  |  |
+| Child Elements | Description | Type | Occurrence |
+| name | The string represents the interrupt name. | stringType | 1..1 |
+| description | The string describes the interrupt. | xs:string | 0..1 |
+| value | Represents the enumeration index value associated to the interrupt. | xs:integer | 1..1 |

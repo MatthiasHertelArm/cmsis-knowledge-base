@@ -21,10 +21,10 @@ File/Directory                        | Content
 📂 CMSIS                              | CMSIS Base software components folder
  ┣ 📂 Documentation/html/RTOS2        | A local copy of this CMSIS-RTOS2 documentation
  ┗ 📂 RTOS2                           | CMSIS-RTOS2 API header files and OS tick implementations
-&emsp;  ┣ 📂 Include             | API header files
-&emsp;&emsp;  ┣ 📄 cmsis_os2.h    | cmsis_os2_h
-&emsp;&emsp;  ┗ 📄 os_tick.h      | CMSIS_RTOS_TickAPI header file
-&emsp;  ┗ 📂 Source               | OS tick implementations
-&emsp;&emsp;  ┣ 📄 os_systick.c   | OS tick implementation using Cortex-M SysTick timer
-&emsp;&emsp;  ┣ 📄 os_tick_gtim.c | OS tick implementation using Cortex-A Generic Timer
-&emsp;&emsp;  ┗ 📄 os_tick_ptim.c | OS tick implementation using Cortex-A Private Timer
+   ┣ 📂 Include             | API header files
+    ┣ 📄 cmsis_os2.h    | cmsis_os2_h
+    ┗ 📄 os_tick.h      | CMSIS_RTOS_TickAPI header file
+   ┗ 📂 Source               | OS tick implementations
+    ┣ 📄 os_systick.c   | OS tick implementation using Cortex-M SysTick timer
+    ┣ 📄 os_tick_gtim.c | OS tick implementation using Cortex-A Generic Timer
+    ┗ 📄 os_tick_ptim.c | OS tick implementation using Cortex-A Private Timer

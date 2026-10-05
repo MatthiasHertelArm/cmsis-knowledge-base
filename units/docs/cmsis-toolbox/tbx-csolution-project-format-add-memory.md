@@ -20,13 +20,13 @@ This information is used for the [Run and Debug Management](https://open-cmsis-p
 `memory:`                       |              | Content
 :-------------------------------|:-------------|:------------------------------------
 `- name:`                       | **Required** | Identifier of the memory.
-&nbsp;&nbsp;&nbsp; `access:`    | **Required** | Access attribute string for the memory (see table below).
-&nbsp;&nbsp;&nbsp; `start:`     | **Required** | Base address of the memory.
-&nbsp;&nbsp;&nbsp; `size:`      | **Required** | Size of the memory.
-&nbsp;&nbsp;&nbsp; `pname:`     |   Optional   | Only accessible by the specified processor.
-&nbsp;&nbsp;&nbsp; `algorithm:` |   Optional   | Programming algorithm for download.
-&nbsp;&nbsp;&nbsp; `ram-start:` |   Optional   | Start address of the RAM region used to execute the programming algorithm.
-&nbsp;&nbsp;&nbsp; `ram-size:`  |   Optional   | Maximum RAM size available for executing the programming algorithm.
+    `access:`    | **Required** | Access attribute string for the memory (see table below).
+    `start:`     | **Required** | Base address of the memory.
+    `size:`      | **Required** | Size of the memory.
+    `pname:`     |   Optional   | Only accessible by the specified processor.
+    `algorithm:` |   Optional   | Programming algorithm for download.
+    `ram-start:` |   Optional   | Start address of the RAM region used to execute the programming algorithm.
+    `ram-size:`  |   Optional   | Maximum RAM size available for executing the programming algorithm.
 
 The `ram-start:` and `ram-size:` values apply when `algorithm:` specifies a custom flash programming algorithm. When they are omitted, CMSIS-Toolbox uses the first memory region marked as default with `rwx` access. If no such region exists, it uses the RAM settings of another programming algorithm defined by the DFP. An error is reported when no suitable default RAM region or algorithm RAM settings are available.
 

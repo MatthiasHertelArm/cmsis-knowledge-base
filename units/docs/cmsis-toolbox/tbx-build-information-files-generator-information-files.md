@@ -23,25 +23,25 @@ File                    | Description
 
 `build-gen-idx:`                                   | Content
 :--------------------------------------------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `generated-by:`                 | Reference to csolution tool along with version information used to generate this application.
-&nbsp;&nbsp;&nbsp; `generators:`                   | List of generators that are called with the `run` command.
+    `generated-by:`                 | Reference to csolution tool along with version information used to generate this application.
+    `generators:`                   | List of generators that are called with the `run` command.
 
 `generators:`                                      | Content
 :--------------------------------------------------|:------------------------------------
 `- id:`                                            | `generator identifier` specified with the option `--generator` in the [`csolution run`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/build-tools.md#csolution-invocation) command.
-&nbsp;&nbsp;&nbsp; `output:`                       | Specifies the directory for generated files.
-&nbsp;&nbsp;&nbsp; `board:`                        | [Board name](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#board) used for the generator.
-&nbsp;&nbsp;&nbsp; `device:`                       | [Device name](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#device) used for the generator.
-&nbsp;&nbsp;&nbsp; `project-type:`                 | Describes the project type "single-core", "multi-core", "trustzone".
-&nbsp;&nbsp;&nbsp; `cbuild-gens:`                  | List of `*.cbuild-gen.yml` files with options that are generated for the generator run.
+    `output:`                       | Specifies the directory for generated files.
+    `board:`                        | [Board name](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#board) used for the generator.
+    `device:`                       | [Device name](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#device) used for the generator.
+    `project-type:`                 | Describes the project type "single-core", "multi-core", "trustzone".
+    `cbuild-gens:`                  | List of `*.cbuild-gen.yml` files with options that are generated for the generator run.
 
 `cbuild-gens:`                                     | Content
 :--------------------------------------------------|:------------------------------------
 `- cbuild-gen:`                                    | Build information file with name `<context>.cbuild-gen.yml`; structure identical with [*.cbuild.yml](#cbuildyml).
-&nbsp;&nbsp;&nbsp; `project:`                      | Project name (used as a name for `*.cgen.yml` when `name:` is not specified).
-&nbsp;&nbsp;&nbsp; `configuration:`                | Specifies `.build-type+target-type` of this context.
-&nbsp;&nbsp;&nbsp; `name:`                         | Explicit name for the `*.cgen.yml` [generator import file](#generator-import-file) specified by [`generator options`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#generators-options).
-&nbsp;&nbsp;&nbsp; `map:`                          | Mapping to a generator-specific run-time context name specified by [`generator options`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#generators-options).
+    `project:`                      | Project name (used as a name for `*.cgen.yml` when `name:` is not specified).
+    `configuration:`                | Specifies `.build-type+target-type` of this context.
+    `name:`                         | Explicit name for the `*.cgen.yml` [generator import file](#generator-import-file) specified by [`generator options`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#generators-options).
+    `map:`                          | Mapping to a generator-specific run-time context name specified by [`generator options`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#generators-options).
 
 **Example:**
 

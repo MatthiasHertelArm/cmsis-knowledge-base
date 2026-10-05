@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Full rebuild from live sources: entities, skills (stage 1 + stage 2 results), error catalog, index, tests.
 # Usage: scripts/rebuild.sh [work-dir]   (default .work)   Set NO_VEC=1 to skip embeddings.
+# Set CCBYSA=1 to include the CC BY-SA documentation (units/docs-ccbysa), which is open for legal review.
 # Set CDA=<checkout of CMSIS-Developer-Assistant> to regenerate the units of its own skills and the routing units.
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -11,6 +12,16 @@ rm -rf units/skills units/canonical units/extracted units/troubleshooting
 python3 tools/skill2ku.py "$W/cmsis-skills/generic-mcu-skills/skills" units/skills
 python3 tools/stage2_merge.py units/skills stage2/out_v2
 python3 tools/errcat.py "$W/devtools" units/troubleshooting
+# Cause and fix of the messages, read from the devtools source (stage2/errcat-out), then the review list.
+python3 tools/errcat_merge.py units/troubleshooting stage2/errcat-out
+python3 tools/review_csv.py units/troubleshooting messages-to-review.csv
+# Documentation of open-licence repositories, one unit per section (sources/docs.yml).
+python3 tools/doc2ku.py sources/docs.yml "$W/docs" units/docs --fetch
+DOC_UNITS=(--units units/docs)
+if [ -n "${CCBYSA:-}" ]; then
+  python3 tools/doc2ku.py sources/docs-ccbysa.yml "$W/docs" units/docs-ccbysa --fetch
+  DOC_UNITS+=(--units units/docs-ccbysa)
+fi
 # The CMSIS Developer Assistant's own skills and its routing units: set CDA to a checkout of the extension.
 CDA_UNITS=()
 if [ -n "${CDA:-}" ]; then
@@ -22,5 +33,5 @@ fi
 [ -d units/cda-routes ] && CDA_UNITS+=(--units units/cda-routes)
 python3 tools/build_index.py ${NO_VEC:+--no-vec} \
   --units units/skills --units units/canonical --units units/extracted --units units/troubleshooting \
-  "${CDA_UNITS[@]}" --entities build/entities --out build/knowledge.db
+  "${CDA_UNITS[@]}" "${DOC_UNITS[@]}" --entities build/entities --out build/knowledge.db
 python3 tests/test_kb.py

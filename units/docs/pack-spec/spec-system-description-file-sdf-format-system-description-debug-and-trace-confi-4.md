@@ -16,43 +16,13 @@ Describes settings for the trace capture device.
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    trace | 
-    /system_description/debug_and_trace_config/trace | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    sdf_element_config_item | 
-    Describes a configuration item attribute/value pair | 
-    complexType | 
-    0..* |   
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    type | 
-    Trace capture type: for example parallel or HSSTP. | 
-    xs:string | 
-    required | 
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| trace | /system_description/debug_and_trace_config/trace |  |  |
+| Child Elements | Description | Type | Occurrence |
+| sdf_element_config_item | Describes a configuration item attribute/value pair | complexType | 0..* |
+| Attributes | Description | Type | Use |
+| type | Trace capture type: for example parallel or HSSTP. | xs:string | required |
 
 
 

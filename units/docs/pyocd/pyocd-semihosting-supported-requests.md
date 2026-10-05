@@ -44,7 +44,7 @@ The majority of standard Arm-defined semihosting requests are supported by pyOCD
 
 
 The following semihosting requests are not supported. If invoked, the return code is -1 and pyOCD logs a
-warning message, such as "Semihost: unimplemented request pc=\<x> r0=\<y> r1=\<z>".
+warning message, such as "Semihost: unimplemented request pc=\`<x>` r0=\`<y>` r1=\`<z>`".
 
 - `SYS_ISERROR` (0x08)
 - `SYS_TMPNAM` (0x0d)

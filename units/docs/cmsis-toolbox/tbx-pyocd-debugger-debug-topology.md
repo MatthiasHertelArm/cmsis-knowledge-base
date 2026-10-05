@@ -19,22 +19,22 @@ the DFP. If the information is not provided in the `*.cbuild-run.yml` file, pyOC
 
 `debug-topology:`                                 |              | Content
 :-------------------------------------------------|:-------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `debugports:`                  |   Optional   | Describes the CoreSight debug ports of the device and its capabilities.
-&nbsp;&nbsp;&nbsp; `processors:`                  |   Optional   | Map of `pname` identifiers to access port IDs (mandatory for multi-processor devices).
-&nbsp;&nbsp;&nbsp; `trace-sinks:`                 |   Optional   | Trace sinks supported by the device.
-&nbsp;&nbsp;&nbsp; `swj:`                         |   Optional   | Device allows switching between Serial Wire Debug (SWD) and JTAG protocols (`true` or `false`).
-&nbsp;&nbsp;&nbsp; `dormant:`                     |   Optional   | Device requires the dormant state to switch debug protocols (`true` or `false`).
+    `debugports:`                  |   Optional   | Describes the CoreSight debug ports of the device and its capabilities.
+    `processors:`                  |   Optional   | Map of `pname` identifiers to access port IDs (mandatory for multi-processor devices).
+    `trace-sinks:`                 |   Optional   | Trace sinks supported by the device.
+    `swj:`                         |   Optional   | Device allows switching between Serial Wire Debug (SWD) and JTAG protocols (`true` or `false`).
+    `dormant:`                     |   Optional   | Device requires the dormant state to switch debug protocols (`true` or `false`).
 
 `debugports:`                                     |              | Content
 :-------------------------------------------------|:-------------|:------------------------------------
 `- dpid:`                                         | **Required** | Unique ID of this debug port.
-&nbsp;&nbsp;&nbsp; `accessports:`                 |   Optional   | List of CoreSight access ports (APv1/APv2) (mandatory for multi-processor devices).
+    `accessports:`                 |   Optional   | List of CoreSight access ports (APv1/APv2) (mandatory for multi-processor devices).
 
 `accessports:`                                    |              | Content
 :-------------------------------------------------|:-------------|:------------------------------------
 `- apid:`                                         | **Required** | Unique ID of this access port. If only `apid` is provided, access port (APv1) with index `0` will be implicitly used.
-&nbsp;&nbsp;&nbsp; `index:`                       |   Optional   | Index to select this access port (APv1) for a target access.
-&nbsp;&nbsp;&nbsp; `address:`                     |   Optional   | Address to select this access port (APv2) in its parent's address space for a target access.
+    `index:`                       |   Optional   | Index to select this access port (APv1) for a target access.
+    `address:`                     |   Optional   | Address to select this access port (APv2) in its parent's address space for a target access.
 
 !!! Note
     `index:` and `address:` cannot be specified at the same time.
@@ -42,8 +42,8 @@ the DFP. If the information is not provided in the `*.cbuild-run.yml` file, pyOC
 `processors:`                                     |              | Content
 :-------------------------------------------------|:-------------|:------------------------------------
 `- pname:`                                        | **Required** | Processor identifier (mandatory for multi-processor devices).
-&nbsp;&nbsp;&nbsp; `apid:`                        |   Optional   | Access port ID to use for this processor.
-&nbsp;&nbsp;&nbsp; `reset-sequence:`              |   Optional   | Name of debug sequence for reset operation (default: `ResetSystem` sequence).
+    `apid:`                        |   Optional   | Access port ID to use for this processor.
+    `reset-sequence:`              |   Optional   | Name of debug sequence for reset operation (default: `ResetSystem` sequence).
 
 `trace-sinks:`                                    |              | Content
 :-------------------------------------------------|:-------------|:------------------------------------

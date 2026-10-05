@@ -61,7 +61,7 @@ Registers may be partitioned into chunks of bits of distinct functionality. A ch
 is referred to as _field_. The field names within a single register must be unique.
 Only architecturally defined fields shall be described. Any bits not being explicitly described are treated as reserved.
 They are not displayed in the System Viewer and are padded in the bit fields of the device header file.
-The case-insensitive field named **&quot;reserved&quot;** is treated as a keyword and each field with this name
+The case-insensitive field named **"reserved"** is treated as a keyword and each field with this name
 is ignored.
 \n\n
 - Enumerated Values Level:

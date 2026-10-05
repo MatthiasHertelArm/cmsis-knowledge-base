@@ -28,38 +28,9 @@ mode: "V"
 **/compiler**
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    requirements | 
-    element_requirements | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    name | 
-    Name of the required compiler (i.e. "ARMCC", "IAR") | 
-    CompilerEnumType | 
-    required | 
-  
-
-  | 
-    version | 
-    Version of the required compiler which can be:
-       - Minimum version (higher versions are accepted).
-       - Version range specified with _min_version_**:**_max_version_. _min_version_ must be lower or
-         equal than _max_version_. For a version range that retains the major version, the _max_version_ is set
-         to the next major version with minor, patch and release qualifier set to "0".
-       - Fixed version is specified if _min_version_ and _max_version_ are equal.
-     | 
-    VersionType | 
-    required |
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| requirements | element_requirements |  |  |
+| Attributes | Description | Type | Use |
+| name | Name of the required compiler (i.e. "ARMCC", "IAR") | CompilerEnumType | required |
+| version | Version of the required compiler which can be: - Minimum version (higher versions are accepted). - Version range specified with min_version **:** max_version . min_version must be lower or equal than max_version . For a version range that retains the major version, the max_version is set to the next major version with minor, patch and release qualifier set to "0". - Fixed version is specified if min_version and max_version are equal. | VersionType | required |

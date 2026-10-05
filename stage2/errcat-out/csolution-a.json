@@ -1,0 +1,780 @@
+[
+ {
+  "id": "ts-csolution-contains-more-than-one",
+  "cause": "The RTE folder of a component configuration file (for example RTE/Device/<device>/startup_<device>.c) holds more than one backup with the same prefix, such as two `<file>.base@<version>` or two `<file>.update@<version>` files. The first `<…>` is that folder, the second the prefix (`<file>.base` or `<file>.update`); csolution writes the first match into the cbuild.yml, so the PLM status reported for the file may be wrong.",
+  "fix": "Keep only the backup whose version is the file's current base version (normally the highest) and delete the stale `.base@`/`.update@` copies, or run `csolution update-rte <name>.csolution.yml`, which deletes redundant backups when it updates the RTE files. Such leftovers usually come from copying RTE folders or from merges in version control.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrCbuild.cpp:235-261",
+   "tools/projmgr/src/ProjMgrCbuild.cpp:191-196",
+   "libs/rtemodel/src/RteProject.cpp:646-668",
+   "libs/rtemodel/src/RteProject.cpp:714-725",
+   "libs/rtemodel/src/RteProject.cpp:1087-1092",
+   "tools/projmgr/src/ProjMgrWorker.cpp:2425"
+  ],
+  "confidence": "medium",
+  "note": "Source comment says the condition 'should never be triggered'; update-rte keeps only file.base@<highest version> and the matching update file. No test reproduces it. The message lacks the closing quote after the prefix."
+ },
+ {
+  "id": "ts-csolution-contains-non-portable-backslash-use-forward-slas",
+  "cause": "A path value in a csolution.yml, cproject.yml or clayer.yml contains a backslash, for example under projects: project:, layers: layer:, files: file:, add-path:, linker: script:/regions:, packs: path:, output-dirs: or generators:. The `<…>` is the path as written; the message is prefixed with the YAML file, line and column.",
+  "fix": "Write the path with forward slashes, e.g. `- file: ../src/main.c` instead of `..\\src\\main.c`; forward slashes work on Windows, Linux and macOS.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:332-336",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:355-367",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:785",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:800",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:845",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:893",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:987",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:1026",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:1083",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:5411-5441",
+   "tools/projmgr/test/data/TestSolution/Portability/portability.csolution.yml"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-has-case-inconsistency-use",
+  "cause": "A relative path in a csolution.yml, cproject.yml or clayer.yml points to an existing file or folder, but its upper/lower case differs from the name on disk. It only shows on case-insensitive file systems (Windows, default macOS), where the path still resolves; on Linux the same path is not found. The first `<…>` is the path as written, the second the path with the case on disk, relative to the YAML file.",
+  "fix": "Replace the path with the suggested spelling, e.g. `- layer: ../layer.clayer.yml` instead of `../laYer.clayer.yml`, so the project also builds on case-sensitive hosts such as Linux CI runners.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:337-350",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:5444-5453",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:5346-5356"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-is-not-a-valid-command-see-csolution-help",
+  "cause": "`-h`/`--help` was given together with a command or subcommand that csolution does not know, e.g. `csolution list invalid -h` or `csolution test -h`. The `<…>` is the command (and subcommand) as typed.",
+  "fix": "Run `csolution --help` and use one of the listed commands, e.g. `csolution convert -h` or `csolution list packs -h`. Valid are convert, update-rte, run, rpc, check pack-updates and list with packs, boards, devices, npus, components, configs, dependencies, examples, templates, contexts, targets, target-sets, debuggers, generators, layers, toolchains or environment.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:95-111",
+   "tools/projmgr/src/ProjMgr.cpp:179-203",
+   "tools/projmgr/src/ProjMgr.cpp:326-328",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:4530-4543"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-is-not-selectable-as-active-target-set",
+  "cause": "The value of `--active`/`-a` (`<target-type>[@<target-set>]`) does not match the csolution.yml: no entry under target-types: has that `type:` name, or that type has no target-set: entry whose `set:` equals the part after `@`. The `<…>` is the value as given.",
+  "fix": "List the valid values with `csolution list target-sets <name>.csolution.yml` and pass one of them, e.g. `-a CM0` or `-a CM0@Production`; or add the set to the target type (`target-set: - set: Production`). Names are case-sensitive.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:6288-6324",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7659-7669"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-multiple-linker-scripts-defined",
+  "cause": "A linker script file (extension .ld, .sct, .scf, .icf, .src or `category: linkerScript`) is listed under groups: files:, but the context's linker script is already decided: by a `linker:` node with `script:`, `regions:`, `define:` or `auto:`, or by an earlier linker script file in the groups. The file named in `<…>` is ignored; the suffix `; multiple linker scripts defined` is added when a script was already set.",
+  "fix": "Keep one linker script per context: remove the extra file from groups:, or name the one you want with `linker: - script: <file>` and drop the other, or limit the entries with `for-context:`/`for-compiler:`. With `regions:` or `define:` a script listed only in groups: is ignored, so put your own script under `linker: - script:`; with `auto:` remove linker scripts from groups:.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:3879-3888",
+   "tools/projmgr/src/ProjMgrWorker.cpp:3503-3553",
+   "tools/projmgr/src/ProjMgrWorker.cpp:4117-4118",
+   "libs/rtefsutils/src/RteFsUtils.cpp:875-884",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:4925-4947"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-compiler-setting-in-cdefault-yml-will-be-depreca",
+  "cause": "The cdefault.yml used by the solution (enabled with `cdefault:` in the csolution.yml) sets `compiler:` under `default:`. The setting still works but is announced to be dropped in CMSIS-Toolbox 3.0.0.",
+  "fix": "Move the compiler selection into the csolution.yml, e.g. `solution: compiler: GCC` (or per build-type/target-type `compiler:`), and delete `compiler:` from cdefault.yml. `select-compiler:` in cdefault.yml carries the same deprecation note in the schema, so move it to the csolution.yml as well.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:42-46",
+   "tools/projmgr/src/ProjMgr.cpp:497-501",
+   "tools/projmgr/schemas/common.schema.json:1193-1199",
+   "tools/projmgr/schemas/common.schema.json:1216",
+   "tools/projmgr/test/data/TestDefault/cdefault.yml:5"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-is-not-supported",
+  "cause": "A `for-compiler:` value (on a file, group, setup or linker entry) names a compiler for which no toolchain configuration file `<name>.<version>.cmake` exists in the compiler root (CMSIS_COMPILER_ROOT, default <cmsis-toolbox>/etc). The name match is case-sensitive, so `Ac6` is reported while `AC6` is fine; the `<…>` is the name before `@`.",
+  "fix": "Spell the compiler as the toolchain files do: AC6, GCC, IAR, CLANG, CLANG_TI or XC, e.g. `for-compiler: AC6@>=6.18.1`. If the spelling is right, check that CMSIS_COMPILER_ROOT points to the CMSIS-Toolbox etc folder that contains the matching *.cmake file.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:3944-3965",
+   "tools/projmgr/src/ProjMgrWorker.cpp:4102-4104",
+   "tools/projmgr/src/ProjMgrWorker.cpp:5430-5440",
+   "tools/projmgr/src/ProjMgrUtils.cpp:199-212",
+   "tools/projmgr/schemas/common.schema.json:192-197",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:5508-5531",
+   "tools/projmgr/test/data/TestSolution/typefilters.cproject.yml:19"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-telnet-pname-is-required-multicore-device",
+  "cause": "The device has more than one processor, and an entry under `debugger: telnet:` (target-set in the csolution.yml) has no `pname:`. csolution cannot tell which core the telnet settings belong to and skips the entry.",
+  "fix": "Add the processor name to each telnet entry, e.g. `telnet: - mode: monitor  pname: cm0_core0  port: 4444`. The pnames are those of the device's processors (the `:<pname>` used in `device:`).",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrRunDebug.cpp:482-494",
+   "tools/projmgr/schemas/common.schema.json:2406-2420",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7366-7376"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-is-deprecated-at-this-level-and-accepted-in-csol",
+  "cause": "A cproject.yml or clayer.yml sets `device:` with a device name or sets `board:`. Board and device belong to the target-types: of the csolution.yml; in a project or layer only the processor form `device: :<pname>` is accepted without warning.",
+  "fix": "Move `board:`/`device:` to the target type in the csolution.yml (`target-types: - type: MyTarget  board: Vendor::BoardName`) and keep at most `device: :cm33_core0` in the cproject.yml. A layer that targets a board or device uses `for-board:`/`for-device:` instead.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:1110-1131",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:3056-3069"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-uses-unknown-generator",
+  "cause": "While writing the cbuild.yml, a selected component names a generator (`generator` attribute of the component, possibly a component inserted from a generator's gpdsc file) that is neither a generator defined in its pack nor a generator registered in the global generator register (*.generator.yml in the CMSIS-Toolbox etc folder). The cbuild.yml then lacks the generator's from-pack or path entry.",
+  "fix": "Check that the generator id in the pack or gpdsc matches a `<generator id=...>` of the pack, or that the external generator is registered in a *.generator.yml in <cmsis-toolbox>/etc; then re-run the generator (`csolution run <name>.csolution.yml -g <generator-id> -c <context>`) so that a consistent gpdsc is written.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrCbuild.cpp:165-179",
+   "tools/projmgr/src/ProjMgrWorker.cpp:2049-2080",
+   "tools/projmgr/src/ProjMgrWorker.cpp:2918-2937",
+   "libs/rtemodel/src/RteComponent.cpp:311-325"
+  ],
+  "confidence": "low",
+  "note": "For components of the project itself, ProcessComponents already fails with 'was not found in global register', so the warning can only come from components added later (gpdsc components); no test reproduces it."
+ },
+ {
+  "id": "ts-csolution-command-was-not-found",
+  "cause": "The first argument after `csolution` is not a known command (list, check, update-rte, convert, run, rpc), e.g. a typo such as `csolution conver ...`, or only a *.csolution.yml was given without a command. The text `<command>` is printed literally, not replaced by what was typed.",
+  "fix": "Put a valid command before the options, e.g. `csolution convert <name>.csolution.yml`; `csolution --help` lists the commands.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:257-266",
+   "tools/projmgr/src/ProjMgr.cpp:369-410"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-a-single-context-must-be-specified",
+  "cause": "`csolution run -g <generator>` for a generator defined in a pack (not a globally registered one) ran with more than one selected context, e.g. no `-c` option in a solution with several build or target types. The pack generator runs for exactly one context.",
+  "fix": "Select one context with `-c`, e.g. `csolution run <name>.csolution.yml -g <generator-id> -c <project>.Debug+<target>`; `csolution list contexts <name>.csolution.yml` shows the names.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:5101-5105",
+   "tools/projmgr/src/ProjMgr.cpp:1042-1066",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:3545-3565"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-is-not-portable-use-relative-path-instead",
+  "cause": "A path value in a csolution.yml, cproject.yml or clayer.yml (projects:, layers:, files:, add-path:, linker:, packs: path:, output-dirs:, generators: and similar path nodes) is absolute, e.g. `/home/user/...` or `C:/...`. The `<…>` is that path; the message carries file, line and column.",
+  "fix": "Write the path relative to the YAML file that contains it (e.g. `../common/inc`), or use an access sequence such as `$SolutionDir()$/common/inc`, so the project works on other machines.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:337-340",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:355-367",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:4431",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:5455-5461",
+   "tools/projmgr/test/data/TestSolution/Portability/portability.csolution.yml"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-must-have-the-format-pack-vendor-name",
+  "cause": "A `$Pack(...)$` access sequence in a YAML path or option has an argument without both vendor and pack name separated by `::`, e.g. `$Pack(Wrong.Format)$`. The `<…>` is the argument; the sequence is left unexpanded.",
+  "fix": "Write the pack as `$Pack(Vendor::Name)$`, e.g. `$Pack(ARM::CMSIS)$/CMSIS/Include`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:3684-3690",
+   "tools/projmgr/src/ProjMgrWorker.cpp:3727-3729",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:2667-2691",
+   "tools/projmgr/test/data/TestAccessSequences/pack-access-sequences.csolution.yml:13"
+  ],
+  "confidence": "high",
+  "note": "The message prints the given sequence without its closing '$'."
+ },
+ {
+  "id": "ts-csolution-access-sequence-pack-was-not-loaded-pack",
+  "cause": "A `$Pack(Vendor::Name)$` access sequence refers to a pack that is not among the packs loaded for the context: it is not listed under packs: of the csolution.yml/cproject.yml/clayer.yml (when packs are listed, only those are loaded) or it is not installed. The `<…>` is the pack as written; the sequence stays unexpanded, so the resulting path is wrong.",
+  "fix": "Add the pack to packs:, e.g. `- pack: ARM::CMSIS`, and install it with `cpackget add Vendor::Name`; or correct the vendor/name spelling in the `$Pack(...)$` sequence.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:3684-3707",
+   "tools/projmgr/src/ProjMgrWorker.cpp:539-575",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:2666-2691",
+   "tools/projmgr/test/data/TestAccessSequences/pack-access-sequences.csolution.yml:12"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-was-not-found",
+  "cause": "The `board:` of the target type (format `[Vendor::]Name[:Revision]`) matches no board in the loaded packs: no board has exactly that name, or the vendor before `::` differs. Only boards of the packs listed under packs: are searched (all installed packs when none are listed). The `<…>` is the board as written; the same text is printed when name and vendor match but no board has the given `:Revision`.",
+  "fix": "Look up the exact name with `csolution list boards <name>.csolution.yml -f <part-of-name>` and copy it into `board:`; if the board is missing there, add its board support pack under packs: and install it with `cpackget add Vendor::PackName`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:1357-1374",
+   "tools/projmgr/src/ProjMgrWorker.cpp:1394-1397",
+   "tools/projmgr/src/ProjMgrWorker.cpp:559-569",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:3116-3150",
+   "tools/projmgr/test/src/ProjMgrWorkerUnitTests.cpp:860",
+   "tools/projmgr/test/src/ProjMgrWorkerUnitTests.cpp:918"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-board-mounted-device",
+  "cause": "The board selected with `board:` lists exactly one mounted device in its pack, but that device is not found in the loaded packs, typically because the device family pack (DFP) is not listed under packs: or not installed. The `<…>` is the mounted device as Vendor::Name. The check runs before an explicit `device:` is considered, so setting `device:` does not avoid it.",
+  "fix": "Add the device family pack that defines this device under packs:, e.g. `- pack: Keil::STM32U5xx_DFP`, and install it with `cpackget add <Vendor::Pack>`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:1428-1450",
+   "test/packs/ARM/RteTest_DFP/0.2.0/ARM.RteTest_DFP.pdsc:555-560"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-does-not-exist-in-solution",
+  "cause": "A `for-context:` or `not-for-context:` entry in a csolution.yml, cproject.yml or clayer.yml uses `.Name`, but Name is not a build type defined under build-types: (nor in a context-map:). When Name is a target type, the warning asks whether `+Name` was meant, since `.` marks build types and `+` target types. The same check prints `target-type '+Name' does not exist in solution` for unknown target types.",
+  "fix": "Correct the filter, e.g. `for-context: .Debug` for a build type or `for-context: +CM3` for a target type, or add the missing type under build-types:/target-types: in the csolution.yml. Names are case-sensitive.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:4012-4105",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:5508-5531",
+   "tools/projmgr/test/data/TestSolution/typefilters.cproject.yml",
+   "tools/projmgr/test/data/TestSolution/typefilters.csolution.yml"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-cgen-file-was-not-found-run-generator",
+  "cause": "A selected component uses a globally registered generator (for example STM32CubeMX), and the generator import file `<project-or-name>.cgen.yml` that this generator writes does not exist in its output folder. The generator has not been run for this context yet, or `generators: options:` (`path:`/`name:`) point elsewhere. The first `<…>` is the generator id, the second the context.",
+  "fix": "Run the generator for the context, e.g. `csolution run <name>.csolution.yml -g <generator-id> -c <context>`, then convert/build again; if it was run, make `generators: options: - generator: <id>  path: ...` point to the folder that holds the .cgen.yml.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrExtGenerator.cpp:70-88",
+   "tools/projmgr/src/ProjMgrWorker.cpp:5684-5703",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:5944-5970"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-check-args-was-not-found",
+  "cause": "`csolution check` was followed by a subcommand other than `pack-updates`, the only one it knows. The text `<args>` is printed literally, not replaced by what was typed.",
+  "fix": "Use `csolution check pack-updates <name>.csolution.yml`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:448-465"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-check-args-was-not-specified",
+  "cause": "`csolution check` was run without a subcommand. `<args>` is printed literally.",
+  "fix": "Add the subcommand: `csolution check pack-updates <name>.csolution.yml`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:448-453",
+   "tools/projmgr/src/ProjMgr.cpp:257-266"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-clayer-search-path-does-not-exist",
+  "cause": "The folder given with `--clayer-path`/`-L` to `csolution list layers` does not exist. A relative path is resolved against the current working directory, not against the csolution.yml; the message is prefixed with the resolved path.",
+  "fix": "Pass an existing folder, e.g. `csolution list layers <name>.csolution.yml -L ./layers` from the folder that contains it, or an absolute path.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:857-864",
+   "tools/projmgr/src/ProjMgr.cpp:301-303",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:2459-2467"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-command-line-options-quiet-and-verbose-are-mutua",
+  "cause": "Both `--quiet`/`-q` and `--verbose`/`-v` were given on the csolution command line (for example passed through by cbuild); they contradict each other.",
+  "fix": "Remove one of the two options.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:330-334",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7894-7907"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-does-not-accept-more-than",
+  "cause": "A component under components: sets `instances:` higher than its pack allows: the pack's maxInstances attribute, or 1 when the pack does not set it. The `<…>` are the component and the allowed maximum.",
+  "fix": "Lower `instances:` to the maximum or remove it (one instance is the default), or select a component variant that supports several instances.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:2040-2047",
+   "libs/rtemodel/src/RteItem.cpp:732-738",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:6257-6283",
+   "tools/projmgr/test/data/TestSolution/Instances/instances.cproject.yml:10-12"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-not-found-in-included-packs",
+  "cause": "A `component:` entry matches no component that the loaded packs offer for this context. Either the pack is not listed under packs:/not installed, the ID is misspelled or incomplete (Cclass:Cgroup:Csub, `&Cvariant`, vendor `::`), the version after `@` matches no available version, or the component's pack condition excludes the device, board or compiler. When exactly one component matches partially, the message adds `did you mean '<id>'`.",
+  "fix": "Use the suggested ID if one is shown; otherwise run `csolution list components <name>.csolution.yml -c <context>` to see what is available and copy the ID, and add the missing pack under packs: (then `cpackget add Vendor::PackName`).",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:1990-2008",
+   "tools/projmgr/src/ProjMgrWorker.cpp:2183-2280",
+   "tools/projmgr/test/src/ProjMgrWorkerUnitTests.cpp:539-541",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:1515-1523",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:5924-5928"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-conflict-automatic-linker-script-generation-over",
+  "cause": "The context has `linker: - auto:` and also a linker script from `linker: - script:` (in the cproject.yml, a clayer.yml or a setup). Automatic linker script generation wins and the named script, shown in `<…>`, is dropped.",
+  "fix": "Keep one of the two: remove `auto:` to use your script, or remove `script:` to use the generated one; or restrict either entry with `for-context:`/`for-compiler:`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:2354-2361",
+   "tools/projmgr/src/ProjMgrWorker.cpp:3555-3575",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:4893-4901"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-is-listed-multiple-times",
+  "cause": "The same `component:` string appears more than once under components: of the cproject.yml for the same context (entries are compared as written, after for-context:/not-for-context: filtering). The same duplicate coming from a clayer.yml only gives the warning 'ignoring conflict'.",
+  "fix": "Delete the duplicate entry, or give the entries disjoint `for-context:` filters if they belong to different build or target types.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:3900-3914",
+   "tools/projmgr/src/ProjMgrWorker.cpp:3611-3619",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7871-7885",
+   "tools/projmgr/test/data/TestSolution/DuplicateComponents/Cproject/duplicateComponents_cproject.cproject.yml"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-is-declared-multiple-times-2",
+  "cause": "Within one group of a cproject.yml, clayer.yml or *.cgen.yml, the same `file:` path is listed twice for the same context (after for-context:/not-for-context:/for-compiler: filtering).",
+  "fix": "Delete the duplicate `- file:` entry, or give the entries disjoint `for-context:`/`for-compiler:` filters.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:3850-3870",
+   "tools/projmgr/src/ProjMgrWorker.cpp:3710-3797",
+   "tools/projmgr/src/ProjMgrWorker.cpp:223-233"
+  ],
+  "confidence": "medium",
+  "note": "AddFile compares the raw path with already-rebased paths (made relative to the cbuild/cprj folder), so with the default cbuild2cmake backend real duplicates are probably not detected; no test covers this message."
+ },
+ {
+  "id": "ts-csolution-is-declared-multiple-times",
+  "cause": "Two groups with the same `group:` name sit at the same level for one context. Top-level groups of the cproject.yml, of all its clayer.yml files and of a generator's *.cgen.yml are merged into one list, so a name used in the project and in a layer or generated file collides; nested groups are compared within their parent group.",
+  "fix": "Rename one of the groups (e.g. `group: App Sources` vs `group: Board Sources`), or give them disjoint `for-context:` filters.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:3801-3847",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:5929-5934",
+   "tools/projmgr/test/data/ExternalGenerator/single/wrong.cproject.yml",
+   "tools/projmgr/test/data/ExternalGenerator/single/generated/wrong.cgen.yml"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-gpdsc-validation-failed",
+  "cause": "The gpdsc file that a pack generator wrote for a component (its path prefixes the message) loads, but fails pack validation without a specific error, e.g. a component in it references a condition that does not exist. csolution still uses the file. The `<…>` are the context, the generator id and the component that started the generator.",
+  "fix": "Re-run the generator so it writes a fresh gpdsc: `csolution run <name>.csolution.yml -g <generator-id> -c <context>`. If the warning stays, the generator or its pack produces an inconsistent gpdsc; update them or report it to their vendor.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:2891-2905",
+   "tools/projmgr/src/ProjMgrUtils.cpp:108-132",
+   "tools/projmgr/test/src/ProjMgrUtilsUnitTests.cpp:49-59",
+   "tools/projmgr/test/data/TestGenerator/RTE/Device/RteTestGen_ARMCM0/RteTest_Warning.gpdsc:28"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-reading-gpdsc-failed",
+  "cause": "A selected component is handled by a generator defined in its pack, and the generator's gpdsc file (its path prefixes the message) cannot be loaded: it does not exist yet because the generator has not been run for this context, or it is not valid XML/PDSC. The `<…>` are the context, the generator id and the component; RTE parser errors with details may follow.",
+  "fix": "Run the generator for the context: `csolution run <name>.csolution.yml -g <generator-id> -c <context>` (`csolution list generators <name>.csolution.yml -c <context>` shows the ids). If the file exists, regenerate it or fix the XML error reported after this message.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:2882-2898",
+   "tools/projmgr/src/ProjMgrWorker.cpp:2049-2064",
+   "tools/projmgr/src/ProjMgrUtils.cpp:108-132",
+   "libs/rtemodel/src/RteProject.cpp:1196-1214",
+   "tools/projmgr/test/src/ProjMgrUtilsUnitTests.cpp:61-75",
+   "tools/projmgr/test/data/TestGenerator/RTE/Device/RteTestGen_ARMCM0/RteTest_Invalid.gpdsc"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-does-not-exist-or-is-not-selected",
+  "cause": "An access sequence with a context argument in a cproject.yml or clayer.yml, such as `$elf(project.Debug+Target)$`, `$cmse-lib(...)$`, `$OutDir(...)$` or `$ProjectDir(...)$`, refers to a context that is not among the contexts selected for this run: the project, build type or target type is misspelled, or that context is excluded by `-c`, `--active` or the cbuild-set. Omitted project or target parts default to those of the current context. The `<…>` are the referenced context and the sequence name.",
+  "fix": "Correct the context name in the access sequence (`csolution list contexts <name>.csolution.yml` lists them) and make sure the referenced context is built in the same run, e.g. select it with an additional `-c <context>` or add it to the target-set.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:3752-3781",
+   "tools/projmgr/src/ProjMgrUtils.cpp:459-490",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:2634-2664",
+   "tools/projmgr/test/data/TestAccessSequences/test-not_exisitng-access-sequences1.cproject.yml:9",
+   "tools/projmgr/test/data/TestAccessSequences/test-not_exisitng-access-sequences2.cproject.yml:11"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-referenced-by-access-sequence",
+  "cause": "A solution-level node of the csolution.yml (for example `executes:` input/output) uses an access sequence such as `$elf(unknown.Debug+Target)$` whose context argument matches no context of the solution: no context name contains the given text. Despite the wording, it means the context was not found. The `<…>` are the context text and the sequence name.",
+  "fix": "Correct the context name in the access sequence to an existing `<project>.<build-type>+<target-type>` (see `csolution list contexts <name>.csolution.yml`).",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:3735-3751",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:6369-6392",
+   "tools/projmgr/test/data/TestSolution/Executes/error.csolution.yml"
+  ],
+  "confidence": "high",
+  "note": "'is not compatible' is misleading: the check is a substring match over all context names."
+ },
+ {
+  "id": "ts-csolution-cproject-file-was-not-found",
+  "cause": "A `project:` entry under projects: in the csolution.yml names a cproject.yml that does not exist at that path, relative to the folder of the csolution.yml. The message is prefixed with the path as written.",
+  "fix": "Correct the path and file name (case matters on Linux), e.g. `- project: app/app.cproject.yml`, or create the missing project file.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:524-535",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:3031-3049",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:5346-5356"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-cproject-not-parsed-adding-context-failed",
+  "cause": "Follow-up error: a project listed under projects: of the csolution.yml could not be loaded, because its cproject.yml was not found or failed YAML or schema parsing, so csolution cannot create its contexts. The message is prefixed with the cproject path.",
+  "fix": "Fix the error reported before it for the same file (wrong `project:` path, YAML syntax or schema error), then run again.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:108-123",
+   "tools/projmgr/src/ProjMgr.cpp:524-535",
+   "tools/projmgr/src/ProjMgr.cpp:551-560"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-cproject-yml-filenames-must-be-unique",
+  "cause": "Two entries under projects: of the csolution.yml use the same cproject file name in different folders, e.g. app1/app.cproject.yml and app2/app.cproject.yml. The project name, and with it the context names, is taken from the file name, so the names must differ.",
+  "fix": "Rename one of the project files, e.g. app2/app2.cproject.yml, and update its `project:` entry.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:508-519",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:5010-5025"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-cproject-yml-files-should-be-placed-in-separate-",
+  "cause": "Two or more projects under projects: of the csolution.yml are in the same folder. Projects in one folder share that folder's RTE directory and other per-project outputs.",
+  "fix": "Give each cproject.yml (with its sources) its own folder, e.g. app/app.cproject.yml and boot/boot.cproject.yml, and update the `project:` paths.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:508-523",
+   "tools/projmgr/src/ProjMgrWorker.cpp:199",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:4992-5007"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-csolution-file-not-specified",
+  "cause": "The command needs a solution, but none was given: no `--solution`/`-s` option and no positional argument whose name ends in `.csolution.yml` or `.csolution.yaml`. A file with another name is not recognized as the solution.",
+  "fix": "Pass the solution file, e.g. `csolution convert my.csolution.yml` or `csolution list configs -s my.csolution.yml`; rename the file to `<name>.csolution.yml` if needed.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:257-266",
+   "tools/projmgr/src/ProjMgr.cpp:536-539",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:5170-5178"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-csolution-file-was-not-found",
+  "cause": "The *.csolution.yml given on the command line (positional or `--solution`/`-s`) does not exist at that path; a relative path is resolved from the current working directory. The message is prefixed with the path as given.",
+  "fix": "Correct the path or file name, or run csolution from the folder that contains the solution.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:267-274",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:319-321"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-customization-of-intermediate-directory-intdir-i",
+  "cause": "The csolution.yml sets `output-dirs: intdir:`, which only the legacy `--cbuildgen` flow uses; the default cbuild2cmake backend ignores it.",
+  "fix": "Remove `intdir:` from output-dirs:; to move intermediate files, set `output-dirs: tmpdir: <path>` instead.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:193-209",
+   "tools/projmgr/schemas/common.schema.json:356-370"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-debug-adapters-yml-file-not-found",
+  "cause": "`csolution list debuggers` reads etc/debug-adapters.yml of the CMSIS-Toolbox installation (the etc folder next to the bin folder that contains csolution), and that file is missing, e.g. a csolution binary copied out of its installation or an incomplete installation.",
+  "fix": "Run csolution from a complete CMSIS-Toolbox installation with bin/ and etc/ side by side, or reinstall CMSIS-Toolbox.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:935-941",
+   "tools/projmgr/src/ProjMgr.cpp:1276-1284",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7738-7743"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-destination-directory-cannot-be-created",
+  "cause": "csolution cannot create the folder for a YAML file it writes (cbuild-idx.yml, cbuild.yml, cbuild-pack.yml, cbuild-run.yml, cbuild-gen.yml and similar), e.g. because a plain file exists where a folder of the path is needed or the location is not writable. The message is prefixed with the file path.",
+  "fix": "Remove or rename the file that blocks the path (e.g. a file named `tmp` or `out` in the solution folder), make the location writable, or choose another output folder with `--output`/`-o` or output-dirs:.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrYamlEmitter.cpp:55-63",
+   "tools/projmgr/test/src/ProjMgrGeneratorUnitTests.cpp:106-125"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-does-not-support",
+  "cause": "The `processor:` node (in a target type or build type of the csolution.yml, or in the cproject.yml) asks for a feature the selected device or core does not have: an `endian:` the device does not use, `fpu: dp` on a single-precision FPU, or `fpu`, `dsp`, `mve`, `trustzone` or `branch-protection` on a device without that feature. The `<…>` are the device and the `key: value` asked for.",
+  "fix": "Remove the setting, or set it to `off` where the key allows it (e.g. `processor: trustzone: off`; `endian:` has no off), or select a device or processor that has the feature.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:1536-1539",
+   "tools/projmgr/src/ProjMgrWorker.cpp:1601-1637",
+   "tools/projmgr/test/src/ProjMgrWorkerUnitTests.cpp:1711-1740"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-duplicate-cmake-image-type",
+  "cause": "In the csolution.yml, a projects: entry with `cmake:` lists two `images:` with the same `type:` (elf, hex, bin or lib). Each output type may appear once per CMake project; the message points to the second `type:`.",
+  "fix": "Keep one image per type, e.g. `images: - image: build/app.elf  type: elf` and `- image: build/app.hex  type: hex`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:918-931",
+   "tools/projmgr/schemas/common.schema.json:2710-2733"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-executing-generator",
+  "cause": "`csolution run -g <id>` started the command of a generator defined in a pack (from its `<exe>` element) for the context, and the command ended with a non-zero exit code. The generator's own output is printed only with `--verbose`, as 'generator ... reported:'. The `<…>` are the generator id and the context.",
+  "fix": "Run the same command again with `--verbose` to see what the generator reported, and fix that problem (for example a missing tool installation or invalid input); then run the generator again.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:5163-5180",
+   "tools/projmgr/src/ProjMgrLogger.cpp:72-80"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-export-file-cannot-be-written",
+  "cause": "With `--cbuildgen` and `--export <suffix>`/`-e`, csolution also writes `<context><suffix>.cprj` without fixed pack versions, and that file cannot be saved in the cprj output folder, e.g. the folder is not writable or a folder with that file name exists. The message is prefixed with the file path.",
+  "fix": "Make the output folder writable or remove what blocks the path, or choose another output folder with `--output`/`-o`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:794-815",
+   "tools/projmgr/src/ProjMgrGenerator.cpp:89-95"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-failed-to-load-and-insert-packs",
+  "cause": "A pack description file (*.pdsc) that csolution has to load cannot be read or parsed: an installed pack under CMSIS_PACK_ROOT or a local pack referenced with `packs: - pack: ... path:`. 'Error parsing XML file' messages naming the file follow.",
+  "fix": "Look at the errors that follow to find the failing *.pdsc; reinstall that pack with cpackget (e.g. remove its damaged folder and run `cpackget add Vendor::Name`), or repair the pdsc of the local pack referenced by `path:`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:539-577",
+   "libs/rtemodel/src/RteKernel.cpp:465-488",
+   "libs/rtemodel/src/RteKernel.cpp:293-320",
+   "libs/rtemodel/src/RteKernel.cpp:36"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-failed-to-read-latest-pack-information-from-pack",
+  "cause": "`csolution check pack-updates` found no pack information at all: the pack index $CMSIS_PACK_ROOT/.Web/index.pidx is missing or unreadable, and no installed or local pack could be read either. Usually CMSIS_PACK_ROOT points to an empty or uninitialized pack root.",
+  "fix": "Initialize the pack root with `cpackget init https://www.keil.com/pack/index.pidx` or refresh an existing one with `cpackget update-index`, and check that CMSIS_PACK_ROOT points to it.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:6137-6149",
+   "libs/rtemodel/src/RteKernel.cpp:610-678",
+   "tools/buildmgr/test/scripts/setup_test.sh:131-133"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-base-not-found-base-version-unknown",
+  "cause": "A component configuration file in the RTE folder exists, but its backup `<file>.base@<version>` beside it is missing, so csolution cannot tell from which pack version the file was copied (PLM status 'missing base'). Typical when the RTE files were last processed with `--no-update-rte`, by an older tool, or the `*.base@*` files were not committed to version control. The `<…>` is the config file path.",
+  "fix": "Run csolution with RTE update enabled (`csolution update-rte <name>.csolution.yml`, or convert without `--no-update-rte`); it recreates the base backup where it can. Keep the `*.base@*` files under version control together with the RTE folder.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:2385-2411",
+   "tools/projmgr/src/ProjMgr.cpp:751-773",
+   "libs/rtemodel/src/RteProject.cpp:671-690",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:6958-7004"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-file-cannot-be-written",
+  "cause": "csolution cannot save an output file whose path prefixes the message, e.g. a folder with the same name exists at that path or the location is not writable. From ProjMgr.cpp:802 it is the legacy `<context>.cprj` written with `--cbuildgen`; the same text is printed for YAML outputs such as *.cbuild.yml.",
+  "fix": "Remove the folder or file that blocks the path, make the output location writable, or choose another output folder with `--output`/`-o`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:794-804",
+   "tools/projmgr/src/ProjMgrYamlEmitter.cpp:39-44",
+   "tools/projmgr/src/ProjMgrYamlEmitter.cpp:64-67",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:1075-1093"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-file-doesn-t-exist",
+  "cause": "The YAML schema check was asked to validate a file that does not exist at the given path (`<…>`). On the command line csolution checks its input files before, so this mostly appears when a client such as an IDE extension, using `csolution rpc`, loads a *.csolution.yml path that does not exist.",
+  "fix": "Check the solution path the command or the client passes to csolution and point it to an existing `<name>.csolution.yml`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:18-24",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:69-74",
+   "tools/projmgr/src/ProjMgrRpcServer.cpp:322-350",
+   "tools/projmgr/test/src/ProjMgrSchemaCheckerUnitTests.cpp:62-64"
+  ],
+  "confidence": "medium",
+  "note": "All command-line callers check existence before parsing; RPC LoadSolution does not, which is the only plain path to this message found."
+ },
+ {
+  "id": "ts-csolution-file-is-missing-and-required-due-to-use-of-froze",
+  "cause": "`--frozen-packs` was given, but the pack lock file `<name>.cbuild-pack.yml` next to the csolution.yml does not exist; frozen packs require it. The message is prefixed with the expected file path.",
+  "fix": "Run once without `--frozen-packs` to create the cbuild-pack.yml, commit it, and use `--frozen-packs` afterwards (e.g. in CI).",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:59-68",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:1336-1351"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-file-not-allowed-to-be-updated",
+  "cause": "`--frozen-packs` was given, and the packs csolution resolves for the solution differ from those locked in `<name>.cbuild-pack.yml` (e.g. a pack was added to or removed from packs:, or a version requirement changed), so the lock file would have to change. The message is prefixed with the cbuild-pack.yml path.",
+  "fix": "Run once without `--frozen-packs` to update the cbuild-pack.yml and commit it, or change packs: back so that it matches the locked list.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrYamlEmitter.cpp:55-58",
+   "tools/projmgr/src/ProjMgrCbuildPack.cpp:139-149",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:1265-1305"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-found-multiple-device-variants",
+  "cause": "The selected device, from `device:` or from the board's mounted device, has variants in its pack, and csolution needs one variant. The error that follows lists the variant names.",
+  "fix": "Set `device:` in the target type to one of the listed variants, e.g. `device: RteTest_ARMCM4_FP`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:1502-1512",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:3394-3409",
+   "tools/projmgr/test/data/TestSolution/TestProject4/test_board_multi_variant.cproject.yml",
+   "tools/projmgr/test/data/TestSolution/TestProject4/test_board_multi_variant_and_device.cproject.yml"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-found-no-mounted-device",
+  "cause": "The `board:` refers to a board whose pack description lists no mounted device (only compatible devices). The check fails even when `device:` is also set.",
+  "fix": "Use a board (or board support pack version) that declares its mounted device, or select the target with `device:` only and drop `board:`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:1430-1442",
+   "test/packs/ARM/RteTest_DFP/0.2.0/ARM.RteTest_DFP.pdsc:542-547",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:3412-3427",
+   "tools/projmgr/test/data/TestSolution/TestProject4/test_board_no_mounted_device.cproject.yml"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-is-not-dry-run-capable",
+  "cause": "`csolution run --dry-run` was used with a pack generator whose `<exe>` in the pack declares no `<argument mode=\"dry-run\">`, so it cannot run without writing files. The `<…>` is the generator id.",
+  "fix": "Run the generator without `--dry-run`, or use a generator/pack version that supports dry-run.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:5159-5162",
+   "libs/rtemodel/src/RteGenerator.cpp:307-319",
+   "tools/projmgr/test/src/ProjMgrGeneratorUnitTests.cpp:151-166",
+   "test/packs/ARM/RteTestGenerator/0.1.0/ARM.RteTestGenerator.pdsc:110-130"
+  ],
+  "confidence": "high",
+  "note": "ExecuteGenerator passes the executable path as the host type to IsDryRunCapable, so a dry-run argument restricted with a host attribute is never recognized."
+ },
+ {
+  "id": "ts-csolution-was-not-found-in-global-register",
+  "cause": "A selected component names a generator that its pack does not define and that is not registered globally: no *.generator.yml in the CMSIS-Toolbox etc folder has an entry with that `id:`. Typical for components that rely on an external tool such as STM32CubeMX when the installation lacks its registration file. The `<…>` are the generator id and the component.",
+  "fix": "Use a CMSIS-Toolbox installation whose etc folder contains the generator's *.generator.yml (an entry `generator: - id: <id>  run: ...  path: ...`), or remove the component that needs it.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrExtGenerator.cpp:29-40",
+   "tools/projmgr/src/ProjMgrWorker.cpp:2065-2072",
+   "libs/rtemodel/src/RteKernel.cpp:256-280",
+   "tools/projmgr/schemas/common.schema.json:1945",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:5793-5809"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-was-not-found-2",
+  "cause": "The id given with `csolution run -g <id>` matches neither a globally registered generator nor a generator of a component selected in the context. Ids are case-sensitive and come from the pack's `<generator id=...>`.",
+  "fix": "List valid ids with `csolution list generators <name>.csolution.yml -c <context>` and pass one of them; check that the component that uses the generator is in the context's components:.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:5106-5115",
+   "tools/projmgr/src/ProjMgr.cpp:1056-1066",
+   "tools/projmgr/src/ProjMgrWorker.cpp:2053-2056"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-generator-executable",
+  "cause": "The pack generator selected with `-g` has no command for this host: its `<exe>` element lists no `<command>` for the host OS (host attribute win, linux or mac), or the command is a web URL. The `<…>` is the generator id.",
+  "fix": "Run the generator on a host its pack supports, or update the pack; the pack's documentation tells how to start the tool otherwise.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:5144-5149",
+   "libs/rtemodel/src/RteGenerator.cpp:103-145",
+   "libs/rtemodel/src/RteItem.cpp:599-604"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-generator-executable-file",
+  "cause": "The pack generator's command resolved to a file that does not exist. Relative commands are taken from the pack folder; a command with a `key` attribute takes its folder from that Windows registry value or, on Linux/macOS, the environment variable of that name. The `<…>` is the resolved path.",
+  "fix": "Check that the pack is installed completely (reinstall it if the file is missing) and that a tool referenced through a key is installed and its registry value/environment variable points to it.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:5150-5153",
+   "libs/rtemodel/src/RteGenerator.cpp:103-168",
+   "libs/crossplatform/test/src/UnitTests.cpp:118",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:3741-3758"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-cannot-be-executed-check-permissions",
+  "cause": "The pack generator's executable exists but is not executable for the current user, e.g. a script in the pack without its execute bit after unpacking on Linux/macOS. The `<…>` is the file path. The cbuild-gen.yml input file has already been written at this point.",
+  "fix": "Make the file executable, e.g. `chmod +x \"<path>\"`, or reinstall the pack; then run the generator again.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:5155-5158",
+   "tools/projmgr/test/src/ProjMgrGeneratorUnitTests.cpp:127-145",
+   "test/packs/ARM/RteTestGenerator/0.1.0/ARM.RteTestGenerator.pdsc:89-107"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-generator-identifier-was-not-specified",
+  "cause": "`csolution run` was called without `-g`/`--generator <id>`.",
+  "fix": "Add the generator id, e.g. `csolution run <name>.csolution.yml -g <generator-id> -c <context>`; `csolution list generators <name>.csolution.yml` shows the ids.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:1042-1047"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-generator-output-directory-was-not-set",
+  "cause": "A selected component uses a globally registered generator, and no output folder is known for it: no `generators: options: - generator: <id>  path:` and no `generators: base-dir:` in the clayer.yml, cproject.yml or csolution.yml, and no `path:` in the generator's global registration (*.generator.yml).",
+  "fix": "Set the folder in the cproject.yml (or csolution.yml), e.g. `generators: options: - generator: CubeMX  path: ./CubeMX`, or set `generators: base-dir: ./generated`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:5683-5703",
+   "tools/projmgr/src/ProjMgrWorker.cpp:5705-5740",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:5843-5867",
+   "tools/projmgr/test/data/ExternalGenerator/no-gendir.generator.yml"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-ignoring-conflict-component",
+  "cause": "A component that is already listed for the context (in the cproject.yml or an earlier processed clayer.yml) is listed again in a clayer.yml. csolution keeps the first entry and drops the layer's duplicate, including any settings on it (define:, misc:, instances: and so on).",
+  "fix": "Remove the duplicate from either the project or the layer, keeping the entry whose settings should apply.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:3900-3914",
+   "tools/projmgr/src/ProjMgrWorker.cpp:3621-3633",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7887-7891",
+   "tools/projmgr/test/data/TestSolution/DuplicateComponents/Clayer/duplicateComponents.clayer.yml"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-initializing-rte-kernel-failed",
+  "cause": "csolution could not create its internal pack-model kernel at start. The kernel is created on demand independent of project files or options, so this is not caused by the project; it indicates an internal failure such as a broken installation or lack of memory.",
+  "fix": "Not fixable in the project files. Reinstall CMSIS-Toolbox and retry; if it persists, report it to Open-CMSIS-Pack/devtools with the output of `csolution -V`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:503-508",
+   "tools/projmgr/src/ProjMgrKernel.cpp:54-59"
+  ],
+  "confidence": "low",
+  "note": "Defensive check: ProjMgrKernel::Get() always constructs the singleton, so no input reaches this branch."
+ },
+ {
+  "id": "ts-csolution-initializing-rte-model-failed",
+  "cause": "csolution could not obtain the global pack model from its kernel at start. The model is created together with the kernel, independent of project files or options, so this indicates an internal failure rather than a project problem.",
+  "fix": "Not fixable in the project files. Reinstall CMSIS-Toolbox and retry; if it persists, report it to Open-CMSIS-Pack/devtools with the output of `csolution -V`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:509-513",
+   "libs/rtemodel/include/RteKernel.h:119"
+  ],
+  "confidence": "low",
+  "note": "Defensive check; no input path found that leaves the global model null."
+ }
+]

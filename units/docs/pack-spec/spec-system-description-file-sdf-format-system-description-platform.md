@@ -16,43 +16,13 @@ Describes the platform configuration (scanchain, topology and cluster arrangemen
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    system_description | 
-    /system_description | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    sdf_element_scanchain | 
-    Lists all DAPs/Devices in the order that they appear on the scanchain (Note - order is reverse to DAP references in PDSC files). The first device in the scanchain is one closest to target's TDI pin. | 
-    complexType | 
-    0..* |   
-  
-
-  | 
-    sdf_element_topology | 
-    Describes the system topology | 
-    complexType | 
-    0..1 |   
-  
-
-  | 
-    sdf_element_clusters | 
-    Describes the cluster arrangement | 
-    complexType | 
-    0..1 |   
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| system_description | /system_description |  |  |
+| Child Elements | Description | Type | Occurrence |
+| sdf_element_scanchain | Lists all DAPs/Devices in the order that they appear on the scanchain (Note - order is reverse to DAP references in PDSC files). The first device in the scanchain is one closest to target's TDI pin. | complexType | 0..* |
+| sdf_element_topology | Describes the system topology | complexType | 0..1 |
+| sdf_element_clusters | Describes the cluster arrangement | complexType | 0..1 |
 
 
 

@@ -26,163 +26,18 @@ The table below lists the core exception vectors of the various Cortex-M process
 
 
 
-    | 
-      Exception Vector | 
-      Handler Function | 
-      IRQn
-Value | 
-      Armv6-M | 
-      Armv7-M | 
-\if ARMv8M
-      Armv8-M
-Baseline | 
-      Armv8-M
-Mainline | 
-      Armv8.1-M
-Mainline | 
-\endif
-      Description | 
-    
-
-    | 
-      **NonMaskableInt_IRQn** | 
-      NMI_Handler | 
-      -14 | 
-      &radic; | 
-      &radic; | 
-\if ARMv8M
-      &radic; | 
-      &radic; | 
-      &radic; | 
-\endif
-      Non Maskable Interrupt | 
-    
-
-    | 
-      **HardFault_IRQn** | 
-      HardFault_Handler | 
-      -13 | 
-      &radic; | 
-      &radic; | 
-\if ARMv8M
-      &radic; | 
-      &radic; | 
-      &radic; | 
-\endif
-      Hard Fault Interrupt | 
-    
-
-    | 
-      **MemoryManagement_IRQn** | 
-      MemManage_Handler | 
-      -12 | 
-      &mdash; | 
-      &radic; | 
-\if ARMv8M
-      &mdash; | 
-      &radic; | 
-      &radic; | 
-\endif
-      Memory Management Interrupt | 
-    
-
-    | 
-      **BusFault_IRQn** | 
-      BusFault_Handler | 
-      -11 | 
-      &mdash; | 
-      &radic; | 
-\if ARMv8M
-      &mdash; | 
-      &radic; | 
-      &radic; | 
-\endif
-      Bus Fault Interrupt | 
-    
-
-    | 
-      **UsageFault_IRQn** | 
-      UsageFault_Handler | 
-      -10 | 
-      &mdash; | 
-      &radic; | 
-\if ARMv8M
-      &mdash; | 
-      &radic; | 
-      &radic; | 
-\endif
-      Usage Fault Interrupt | 
-    
-
-\if ARMv8M
-    | 
-      **SecureFault_IRQn** | 
-      SecureFault_Handler | 
-      -9 | 
-      &mdash; | 
-      &mdash; | 
-      &radic; | 
-      &radic; | 
-      &radic; | 
-      Secure Fault Interrupt | 
-    
-
-\endif
-    | 
-      **SVCall_IRQn** | 
-      SVC_Handler | 
-      -5 | 
-      &radic; | 
-      &radic; | 
-\if ARMv8M
-      &radic; | 
-      &radic; | 
-      &radic; | 
-\endif
-      SVC Interrupt  | 
-    
-
-    | 
-      **DebugMonitor_IRQn** | 
-      DebugMon_Handler | 
-      -4 | 
-      &mdash; | 
-      &radic; | 
-\if ARMv8M
-      &mdash; | 
-      &radic; | 
-      &radic; | 
-\endif
-      Debug Monitor Interrupt | 
-    
-
-    | 
-      **PendSV_IRQn** | 
-      PendSV_Handler | 
-      -2 | 
-      &radic; | 
-      &radic; | 
-\if ARMv8M
-      &radic; | 
-      &radic; | 
-      &radic; | 
-\endif
-      Pend SV Interrupt | 
-    
-
-    | 
-      **SysTick_IRQn** | 
-      SysTick_Handler | 
-      -1 | 
-      &radic; | 
-      &radic; | 
-\if ARMv8M
-      &radic; | 
-      &radic; | 
-      &radic; | 
-\endif
-      System Tick Interrupt | 
-    
+| Exception Vector | Handler Function | IRQn Value | Armv6-M | Armv7-M | Armv8-M Baseline | Armv8-M Mainline | Armv8.1-M Mainline | Description |
+|---|---|---|---|---|---|---|---|---|
+| **NonMaskableInt_IRQn** | NMI_Handler | -14 | √ | √ | √ | √ | √ | Non Maskable Interrupt |
+| **HardFault_IRQn** | HardFault_Handler | -13 | √ | √ | √ | √ | √ | Hard Fault Interrupt |
+| **MemoryManagement_IRQn** | MemManage_Handler | -12 | — | √ | — | √ | √ | Memory Management Interrupt |
+| **BusFault_IRQn** | BusFault_Handler | -11 | — | √ | — | √ | √ | Bus Fault Interrupt |
+| **UsageFault_IRQn** | UsageFault_Handler | -10 | — | √ | — | √ | √ | Usage Fault Interrupt |
+| **SecureFault_IRQn** | SecureFault_Handler | -9 | — | — | √ | √ | √ | Secure Fault Interrupt |
+| **SVCall_IRQn** | SVC_Handler | -5 | √ | √ | √ | √ | √ | SVC Interrupt |
+| **DebugMonitor_IRQn** | DebugMon_Handler | -4 | — | √ | — | √ | √ | Debug Monitor Interrupt |
+| **PendSV_IRQn** | PendSV_Handler | -2 | √ | √ | √ | √ | √ | Pend SV Interrupt |
+| **SysTick_IRQn** | SysTick_Handler | -1 | √ | √ | √ | √ | √ | System Tick Interrupt |
 
 
 

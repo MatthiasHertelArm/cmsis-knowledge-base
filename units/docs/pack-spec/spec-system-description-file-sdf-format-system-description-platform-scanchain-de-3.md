@@ -16,30 +16,12 @@ Describes implementation specific details of the specified device or DAP.
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| device_info_items | /system_description/platform/../../device_info_items |  |  |
+| Attributes | Description | Type | Use |
+| name | Unique name for the device information item. | xs:string | required |
 
-  | 
-    device_info_items | 
-    /system_description/platform/../../device_info_items | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    name | 
-    Unique name for the device information item. | 
-    xs:string | 
-    required | 
-  
-  
 
 
 The following device information items are applicable for each type of "device":

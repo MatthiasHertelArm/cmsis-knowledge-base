@@ -18,7 +18,7 @@ Add include paths to the command line of the development tools for C and C++ sou
 
 `add-path:`                                                | Content
 :----------------------------------------------------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `- <path-name>`                         | Named path to be added
+    `- <path-name>`                         | Named path to be added
 
 !!! Note
     This control only applies to C and C++ source files.  For assembler source files, use the `add-path-asm:` node.

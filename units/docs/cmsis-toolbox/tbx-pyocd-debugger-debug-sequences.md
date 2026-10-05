@@ -21,19 +21,19 @@ default sequences from the DFP.
 `debug-sequences:`                                        |              | Content
 :---------------------------------------------------------|--------------|:------------------------------------
 `- name:`                                                 | **Required** | Name of the sequence.
-&nbsp;&nbsp;&nbsp; `info:`                                |   Optional   | Descriptive text to display for example for error diagnostics.
-&nbsp;&nbsp;&nbsp; `blocks:`                              |   Optional   | A list of command blocks in order of execution.
-&nbsp;&nbsp;&nbsp; `pname:`                               |   Optional   | Executes sequence only for a specific processor; default is for all processors.
+    `info:`                                |   Optional   | Descriptive text to display for example for error diagnostics.
+    `blocks:`                              |   Optional   | A list of command blocks in order of execution.
+    `pname:`                               |   Optional   | Executes sequence only for a specific processor; default is for all processors.
 
 `blocks:`                                                 |              | Content
 :---------------------------------------------------------|--------------|:------------------------------------
 `- info:`                                                 |   Optional   | Descriptive text to display for example for error diagnostics.
-&nbsp;&nbsp;&nbsp; `blocks:`                              |   Optional   | A list of command blocks in the order of execution.
-&nbsp;&nbsp;&nbsp; `execute:`                             |   Optional   | Commands for execution.
-&nbsp;&nbsp;&nbsp; `atomic:`                              |   Optional   | Atomic execution of commands; cannot be used with `blocks:`.
-&nbsp;&nbsp;&nbsp; `if:`                                  |   Optional   | Only executed when expression is true.
-&nbsp;&nbsp;&nbsp; `while:`                               |   Optional   | Executed in loop until while expression is true.
-&nbsp;&nbsp;&nbsp; `timeout:`                             |   Optional   | Timeout value (integer) in milliseconds for while loop.
+    `blocks:`                              |   Optional   | A list of command blocks in the order of execution.
+    `execute:`                             |   Optional   | Commands for execution.
+    `atomic:`                              |   Optional   | Atomic execution of commands; cannot be used with `blocks:`.
+    `if:`                                  |   Optional   | Only executed when expression is true.
+    `while:`                               |   Optional   | Executed in loop until while expression is true.
+    `timeout:`                             |   Optional   | Timeout value (integer) in milliseconds for while loop.
 
 **Example:**
 

@@ -23,7 +23,7 @@ The `context-map:` node lists a remapping of the [`context-name`](#context-name-
 
 `context-map:`                                     |              | Content
 :--------------------------------------------------|:-------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `- <context-name>`              | **Required** | Specify an alternative [`context-name`](#context-name-conventions) for a project.
+    `- <context-name>`              | **Required** | Specify an alternative [`context-name`](#context-name-conventions) for a project.
 
 For the `context-map:` it is required to specify the `<project-name>` as part of the [`context-name`](#context-name-conventions). This project will use a different `.build-type` and/or `+target-type` as applied in the [`context-name`](#context-name-conventions). This remapping of the context applies for the specific type in the `build-types:` or `target-types:` list.
 

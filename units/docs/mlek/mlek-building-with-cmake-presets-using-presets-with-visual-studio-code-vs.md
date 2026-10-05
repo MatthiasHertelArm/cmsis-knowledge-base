@@ -1,0 +1,69 @@
+---
+id: "mlek-building-with-cmake-presets-using-presets-with-visual-studio-code-vs"
+type: "concept"
+domain: "edge-ai"
+title: "Building with CMake Presets: Using presets with Visual Studio Code (VS Code)"
+summary: "CMake Presets are well supported by most IDEs and serve as a developer-convenience tool. This section would demonstrate the use of CMake Presets in VS Code."
+status: "draft"
+collection: "mlek"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/cmake_presets.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/cmake_presets.md#using-presets-with-visual-studio-code-vs-code"
+license: "Apache-2.0"
+mode: "V"
+---
+
+CMake Presets are well supported by most IDEs and serve as a developer-convenience tool. This section would demonstrate the use of CMake Presets in VS Code.
+In order to use CMake Presets in VS Code the [CMake Tools extension](https://code.visualstudio.com/docs/cpp/cmake-linux) has to be installed and *Use Cmake Presets* option has to be turned to either *always* or *auto*.
+(figure: Make VS Code use presets)
+For further information on how to enable the use of CMake and presets in VS Code please refer to [VS Code CMake Tools documentation](https://github.com/microsoft/VSCode-cmake-tools/blob/main/docs/cmake-presets.md).
+
+Once the presets are enabled in VS Code and the root folder of the project is opened in the editor - VS Code should automatically find the `CMakePresets.json` (or `CMakeUserPresets.json`) in the root folder and parse them accordingly.
+From that point user can switch between configurations and build the selected preset using the toolbar at the bottom of the editor:
+(figure: VS Code build and preset toolbar)
+The project provides basing configuration and build presets along with one CTest test preset (for native platform only). Each configuration preset has only one build preset. All build presets have different use-cases listed as targets for user convenience.
+
+It is encouraged to create a personal `CMakeUserPreset.json` with personal user presets that are based on the provided default presets. User's preset file automatically includes the default preset file. An example of such a user preset can be find below:
+```
+{
+    "version": 4,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 23,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "example-user-preset",
+            "displayName": "My config mps3-300-gcc",
+            "description": "Build for MPS3 SSE-300 using GCC and public presets.",
+            "inherits": [
+                "mps3-300-gcc",
+                "log-debug",
+                "single-input"
+            ]
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "build-kws",
+            "displayName": "kws",
+            "configurePreset": "example-user-preset",
+            "jobs": 8,
+            "targets": [
+                "ethos-u-kws"
+            ]
+        },
+        {
+            "name": "build-object_detection",
+            "displayName": "object detection",
+            "configurePreset": "example-user-preset",
+            "jobs": 8,
+            "targets": [
+                "ethos-u-object_detection"
+            ]
+        }
+    ]
+}
+```
+VS Code will include all configurations from both `CMakePresets.json` and `CMakeUserPresets.json` in the drop-down menus in the toolbar.
+Using the *build* option from the VS Code toolbar would both configure the project and build project using the generator that can be set in settings. By default Cmake tools use Ninja generator.

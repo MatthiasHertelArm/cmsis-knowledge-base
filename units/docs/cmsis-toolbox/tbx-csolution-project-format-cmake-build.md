@@ -22,13 +22,13 @@ The `project:`, `west:`, and `cmake:` descriptors are mutually exclusive within 
 
 `cmake:`                                                  |              | Content
 :---------------------------------------------------------|:-------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `source:`                              | **Required** | Path to the CMake source directory.
-&nbsp;&nbsp;&nbsp; `project-id:`                          |   Optional   | Project identifier used for the context name and output path (default: last sub-dir name of `source`).
-&nbsp;&nbsp;&nbsp; `generator:`                           |   Optional   | CMake generator to use for the build (default: `Ninja`).
-&nbsp;&nbsp;&nbsp; `configure:`                           |   Optional   | List of options for the CMake configure command.
-&nbsp;&nbsp;&nbsp; `target:`                              |   Optional   | CMake build target.
-&nbsp;&nbsp;&nbsp; [`images:`](#cmake-images)             |   Optional   | List of output images produced by the CMake project.
-&nbsp;&nbsp;&nbsp; [`device:`](#device)                   |   Optional   | Specify the processor core for execution of the generated images (used in `*.cbuild-run.yml`).
+    `source:`                              | **Required** | Path to the CMake source directory.
+    `project-id:`                          |   Optional   | Project identifier used for the context name and output path (default: last sub-dir name of `source`).
+    `generator:`                           |   Optional   | CMake generator to use for the build (default: `Ninja`).
+    `configure:`                           |   Optional   | List of options for the CMake configure command.
+    `target:`                              |   Optional   | CMake build target.
+    [`images:`](#cmake-images)             |   Optional   | List of output images produced by the CMake project.
+    [`device:`](#device)                   |   Optional   | Specify the processor core for execution of the generated images (used in `*.cbuild-run.yml`).
 
 #### CMake `images:`
 
@@ -39,7 +39,7 @@ Image paths are relative to the context output directory. CMSIS-Toolbox records 
 `images:`                                                 |              | Content
 :---------------------------------------------------------|:-------------|:------------------------------------
 `- image:`                                                | **Required** | Path to the CMake build output image.
-&nbsp;&nbsp;&nbsp; [`type:`](#type)                       | **Required** | Output image type: `elf`, `hex`, `bin`, or `lib`.
+    [`type:`](#type)                       | **Required** | Output image type: `elf`, `hex`, `bin`, or `lib`.
 
 **Example:**
 

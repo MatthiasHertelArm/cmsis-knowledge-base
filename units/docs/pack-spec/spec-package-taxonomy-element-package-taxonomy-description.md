@@ -61,59 +61,15 @@ software components in projects. Reserved characters are:
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    taxonomy | 
-    element_taxonomy | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    Cclass | 
-    Component Class Name. Can be defined by the creator of the package. Predefined values can be used as listed in the table Component Classes. | 
-    CclassType | 
-    required | 
-  
-
-  | 
-    Cgroup | 
-    Component Group Name. Can be defined by the creator of the package. Predefined values can be used as listed in the table Component Groups. | 
-    CgroupType | 
-    optional | 
-  
-
-  | 
-    doc | 
-    Reference to documentation. | 
-    xs:string  | 
-    optional | 
-  
-
-  | 
-    generator | 
-    Reference to a generator. Enter the **id** value of the element element_generator. | 
-    xs:string  | 
-    optional | 
-  
-
-  | 
-    public | 
-    Set publishing permissions for the documentation. If \tagem{public} is `true`, then the vendor gives permission
-        to extract the documentation from the pack and publish it on a web-page. Links to web pages are assumed to be public.
-        The default value is `true` (this is also the basic assumption if the tag is missing). | 
-    xs:boolean | 
-    optional | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| taxonomy | element_taxonomy |  |  |
+| Attributes | Description | Type | Use |
+| Cclass | Component Class Name. Can be defined by the creator of the package. Predefined values can be used as listed in the table Component Classes. | CclassType | required |
+| Cgroup | Component Group Name. Can be defined by the creator of the package. Predefined values can be used as listed in the table Component Groups. | CgroupType | optional |
+| doc | Reference to documentation. | xs:string | optional |
+| generator | Reference to a generator. Enter the **id** value of the element element_generator. | xs:string | optional |
+| public | Set publishing permissions for the documentation. If \tagem{public} is `true`, then the vendor gives permission to extract the documentation from the pack and publish it on a web-page. Links to web pages are assumed to be public. The default value is `true` (this is also the basic assumption if the tag is missing). | xs:boolean | optional |
 
 
 
@@ -145,100 +101,26 @@ These values can be used in the elements:
 The table lists predefined Component Classes.
 
 
-  | 
-    Cclass= | 
-    Description | 
-  
-
-  | 
-    Audio | 
-	Software components for audio processing | 
-  
-
-  | 
-    Board Support | 
-	Components providing interfaces for Evaluation and Development Boards | 
-  
-
-  | 
-    Board Part | 
-    Drivers that support an external component available on an evaluation board | 
-  
-
-  | 
-    Compiler | 
-    Components implementing compiler specific interfaces (e.g. Retargeting) | 
-  
-
-  | 
-    CMSIS | 
-    Components defined by the Common Microcontroller Software Interface Standard (e.g. CMSIS-Core(M), CMSIS-Core(A), CMSIS-DSP and CMSIS-RTOS) | 
-  
-
-  | 
-    CMSIS Driver | 
-    Components implementing unified device drivers compliant to CMSIS-Driver (e.g. UART, SPI, USB, etc.)  | 
-  
-
-  | 
-    Device | 
-    Components containing device specific implementations of non-standard APIs (e.g. HAL drivers, CMSIS Startup files) | 
-  
-
-  | 
-    Data Exchange | 
-    Components implementing some kind of data exchange or data formatter | 
-  
-
-  | 
-    Extension Board | 
-    Drivers that support an extension board or shield | 
-  
-
-  | 
-    File System | 
-    Components implementing some kind of File Systems (e.g. Flash or RAM based file systems) | 
-  
-
-  | 
-    Graphics | 
-    Components implementing some kind of Display and Graphics Software | 
-  
-
-  | 
-    IoT Client | 
-    Components implementing some kind of IoT cloud client connector | 
-  
-
-  | 
-    IoT Utility | 
-    IoT specific software utility | 
-  
-
-  | 
-    Network | 
-    Components implementing some kind of network communications (e.g. TCP/IP Stack) | 
-  
-
-  | 
-    RTOS | 
-    Components implementing some kind of real-time operating system (e.g. FreeRTOS, Micrium Real Time Kernel) | 
-  
-
-  | 
-    Security | 
-    Components implementing some kind of encryption for secure communication or storage | 
-  
-
-  | 
-    USB | 
-    Components implementing some kind of USB interfaces (e.g. Host and Device interfaces) | 
-  
-
-  | 
-    Utility | 
-    Generic software utility components | 
-  
+| Cclass= | Description |
+|---|---|
+| Audio | Software components for audio processing |
+| Board Support | Components providing interfaces for Evaluation and Development Boards |
+| Board Part | Drivers that support an external component available on an evaluation board |
+| Compiler | Components implementing compiler specific interfaces (e.g. Retargeting) |
+| CMSIS | Components defined by the Common Microcontroller Software Interface Standard (e.g. [CMSIS-Core(M)](https://arm-software.github.io/CMSIS_5/develop/Core/html/index.html), [CMSIS-Core(A)](https://arm-software.github.io/CMSIS_5/develop/Core_A/html/index.html), [CMSIS-DSP](https://arm-software.github.io/CMSIS_5/develop/DSP/html/index.html) and [CMSIS-RTOS](https://arm-software.github.io/CMSIS_5/develop/RTOS/html/index.html)) |
+| CMSIS Driver | Components implementing unified device drivers compliant to [CMSIS-Driver](https://arm-software.github.io/CMSIS_5/develop/Driver/html/index.html) (e.g. UART, SPI, USB, etc.) |
+| Device | Components containing device specific implementations of non-standard APIs (e.g. HAL drivers, CMSIS Startup files) |
+| Data Exchange | Components implementing some kind of data exchange or data formatter |
+| Extension Board | Drivers that support an extension board or shield |
+| File System | Components implementing some kind of File Systems (e.g. Flash or RAM based file systems) |
+| Graphics | Components implementing some kind of Display and Graphics Software |
+| IoT Client | Components implementing some kind of IoT cloud client connector |
+| IoT Utility | IoT specific software utility |
+| Network | Components implementing some kind of network communications (e.g. TCP/IP Stack) |
+| RTOS | Components implementing some kind of real-time operating system (e.g. FreeRTOS, Micrium Real Time Kernel) |
+| Security | Components implementing some kind of encryption for secure communication or storage |
+| USB | Components implementing some kind of USB interfaces (e.g. Host and Device interfaces) |
+| Utility | Generic software utility components |
 
 
 
@@ -270,48 +152,19 @@ Component Groups can be used in the elements:
 The following table lists predefined values for the Component Class **Cclass="CMSIS"**.
 
 
-  | 
-    Cgroup= | 
-    Description | 
-  
-
-  | 
-    CORE | 
-    A component containing core support in accordance to the CMSIS-Core(M)
-  or CMSIS-Core(A) specifications. | 
-  
-
-  | 
-    DSP | 
-    A component implementing the CMSIS-DSP API specification. | 
-  
-
-  | 
-    NN Lib | 
-    A component implementing the CMSIS-NN API specification. | 
-  
-
-  | 
-    RTOS | 
-    A component implementing the CMSIS-RTOS API specification. | 
-  
-
-  | 
-    RTOS2 | 
-    A component implementing the CMSIS-RTOS v2 API specification. | 
-  
+| Cgroup= | Description |
+|---|---|
+| CORE | A component containing core support in accordance to the [CMSIS-Core(M)](https://arm-software.github.io/CMSIS_5/develop/Core/html/index.html) or [CMSIS-Core(A)](https://arm-software.github.io/CMSIS_5/develop/Core_A/html/index.html) specifications. |
+| DSP | A component implementing the [CMSIS-DSP](https://arm-software.github.io/CMSIS_5/develop/DSP/html/index.html) API specification. |
+| NN Lib | A component implementing the [CMSIS-NN](https://arm-software.github.io/CMSIS_5/develop/NN/html/index.html) API specification. |
+| RTOS | A component implementing the [CMSIS-RTOS](https://arm-software.github.io/CMSIS_5/develop/RTOS/html/index.html) API specification. |
+| RTOS2 | A component implementing the [CMSIS-RTOS v2](https://arm-software.github.io/CMSIS_5/develop/RTOS2/html/index.html) API specification. |
 
 
 
 The following table lists predefined values for the Component Class **Cclass="Device"**.
 
 
-  | 
-    Cgroup= | 
-    Description | 
-  
-
-  | 
-    Startup | 
-    A component containing the device support files system_device.c and startup_device.s/c in accordance to the CMSIS-Core(M)
-  or CMSIS-Core(A) specifications (startup, system and device files). |
+| Cgroup= | Description |
+|---|---|
+| Startup | A component containing the device support files system_device.c and startup_device.s/c in accordance to the [CMSIS-Core(M)](https://arm-software.github.io/CMSIS_5/develop/Core/html/index.html) or [CMSIS-Core(A)](https://arm-software.github.io/CMSIS_5/develop/Core_A/html/index.html) specifications (startup, system and device files). |

@@ -20,12 +20,12 @@ The following section defines the YAML format of this metadata file. The file [`
 
 `sds:`                                | Start of the SDS format description
 :-------------------------------------|---------------------------------------------------
-&nbsp;&nbsp;&nbsp; `name:`            | Name of the Synchronous Data Stream (required)
-&nbsp;&nbsp;&nbsp; `description:`     | Additional descriptive text (optional)
-&nbsp;&nbsp;&nbsp; `block-frequency:` | Frequency in Hz (interval) of data blocks within a data stream (optional, see note)
-&nbsp;&nbsp;&nbsp; `sample-frequency:`| Frequency in Hz (sample rate) of samples within a data block (optional, see note)
-&nbsp;&nbsp;&nbsp; `tick-frequency:`  | Tick frequency in Hz of the timeslot value (optional); default: 1000 Hz
-&nbsp;&nbsp;&nbsp; `content:`         | List of values captured (required, see below)
+    `name:`            | Name of the Synchronous Data Stream (required)
+    `description:`     | Additional descriptive text (optional)
+    `block-frequency:` | Frequency in Hz (interval) of data blocks within a data stream (optional, see note)
+    `sample-frequency:`| Frequency in Hz (sample rate) of samples within a data block (optional, see note)
+    `tick-frequency:`  | Tick frequency in Hz of the timeslot value (optional); default: 1000 Hz
+    `content:`         | List of values captured (required, see below)
 
 !!! Note
     - `block-frequency:` is optional as it can be derived from the timeslot value in combination with `tick-frequency:`.

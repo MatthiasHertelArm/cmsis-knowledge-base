@@ -45,53 +45,12 @@ There are the following requirement types:
 **/requirements**
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    package | 
-    element_package | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    packages | 
-    List of software packs required for the project to build. | 
-    PackagesType | 
-    <0..1> | 
-  
-
-  | 
-    compilers | 
-    List of compilers required for the project to build. Support for all compilers is assumed when not specified. | 
-    CompilersType | 
-    <0..1> | 
-  
-
-  | 
-    languages | 
-    List of language standards required for the project to build. Assuming ANSI C if not set. | 
-    LanguagesType | 
-    <0..1> | 
-  
-
-  | 
-    targets | 
-    Restrict a software pack to a list of devices, boards, or processor cores that are supported. | 
-    TargetsType | 
-    <0..1> |
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| package | element_package |  |  |
+| Attributes | Description | Type | Use |
+| Child Elements | Description | Type | Occurrence |
+| packages | List of software packs required for the project to build. | PackagesType | <0..1> |
+| compilers | List of compilers required for the project to build. Support for all compilers is assumed when not specified. | CompilersType | <0..1> |
+| languages | List of language standards required for the project to build. Assuming ANSI C if not set. | LanguagesType | <0..1> |
+| targets | Restrict a software pack to a list of devices, boards, or processor cores that are supported. | TargetsType | <0..1> |

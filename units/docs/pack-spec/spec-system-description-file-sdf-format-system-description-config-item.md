@@ -3,7 +3,7 @@ id: "spec-system-description-file-sdf-format-system-description-config-item"
 type: "concept"
 domain: "pack"
 title: "System Description File (*.SDF) Format: /system_description/.../config_item"
-summary: "A configitem can appear in various SDF elements. This group contains individual configuration items."
+summary: "A config_item can appear in various SDF elements. This group contains individual configuration items."
 status: "draft"
 collection: "pack-spec"
 source: "Open-CMSIS-Pack/Open-CMSIS-Pack-Spec@b3f8fcf:doxygen/src/sdf_schema.txt"
@@ -16,40 +16,14 @@ A **config_item** can appear in various SDF elements. This group contains indivi
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| debug | /system_description/debug_and_trace_config/debug |  |  |
+| trace_capture | /system_description/debug_and_trace_config/trace/trace_capture |  |  |
+| config_items | /system_description/platform/scanchain/../config_items |  |  |
+| Attributes | Description | Type | Use |
+| name | Name of the configuration item. | xs:string | required |
 
-  | 
-    debug | 
-    /system_description/debug_and_trace_config/debug | 
-  
-
-  | 
-    trace_capture | 
-    /system_description/debug_and_trace_config/trace/trace_capture | 
-  
-
-  | 
-    config_items | 
-    /system_description/platform/scanchain/../config_items | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    name | 
-    Name of the configuration item. | 
-    xs:string | 
-    required | 
-  
-  
 
 
 Debug element

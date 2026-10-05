@@ -3,7 +3,7 @@ id: "spec-use-of-debug-descriptions-in-mu-vi-enabling-debug-descriptions"
 type: "concept"
 domain: "pack"
 title: "Use of debug descriptions in &mu;Vision: Enabling debug descriptions"
-summary: "By default &mu;Vision enables the use of the debug descriptions if such are specified for the target. It is possible to manually disable the use of the debug descriptions for a specific project target in Options for Target..."
+summary: "By default μVision enables the use of the debug descriptions if such are specified for the target. It is possible to manually disable the use of the debug descriptions for a specific project target in Options for Target..."
 status: "draft"
 collection: "pack-spec"
 source: "Open-CMSIS-Pack/Open-CMSIS-Pack-Spec@b3f8fcf:doxygen/src/pack_dbg_setup_tutorial.txt"
@@ -12,7 +12,7 @@ license: "Apache-2.0"
 mode: "V"
 ---
 
-By default &mu;Vision enables the use of the debug descriptions if such are specified for the target. It is possible to manually disable the use of the debug descriptions for a specific project target in **Options for Target...** dialog - **Debug** tab - **Settings** button - **Pack** tab. If the item "Enable" is unchecked the debugger will ignore all device descriptions specified in the DFP:
+By default μVision enables the use of the debug descriptions if such are specified for the target. It is possible to manually disable the use of the debug descriptions for a specific project target in **Options for Target...** dialog - **Debug** tab - **Settings** button - **Pack** tab. If the item "Enable" is unchecked the debugger will ignore all device descriptions specified in the DFP:
 
 
 

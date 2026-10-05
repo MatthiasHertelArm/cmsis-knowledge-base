@@ -1,0 +1,117 @@
+---
+id: "frb-2-the-freertos-kernel-distribution-2-4-creating-a-freertos-project"
+type: "concept"
+domain: "rtos"
+title: "2 The FreeRTOS Kernel Distribution: 2.4 Creating a FreeRTOS Project"
+summary: "Every FreeRTOS port comes with at least one pre-configured demo application."
+status: "draft"
+collection: "freertos-kernel-book"
+source: "FreeRTOS/FreeRTOS-Kernel-Book@ba20b2f:ch02.md"
+doc_source: "https://github.com/FreeRTOS/FreeRTOS-Kernel-Book/blob/ba20b2f/ch02.md#2-4-creating-a-freertos-project"
+license: "CC-BY-SA-4.0"
+mode: "V"
+---
+
+### 2.4.1 Adapting One of the Supplied Demo Projects
+
+Every FreeRTOS port comes with at least one pre-configured demo
+application. It is recommended to create new projects by adapting one of
+these existing projects to ensure the new project has the correct files
+included, the correct interrupt handlers installed, and the correct
+compiler options set.
+
+To create a new application from an existing demo project:
+
+1. Open the supplied demo project and ensure it builds and executes as
+   expected.
+
+2. Remove the source files that implement the demo tasks, which are
+   files located in the Demo/Common directory.
+
+3. Delete all the function calls within `main()`, except
+   `prvSetupHardware()` and `vTaskStartScheduler()`, as shown in Listing 2.1.
+
+4. Verify that the project still builds.
+
+When you follow these steps you create a project that includes the correct
+FreeRTOS source files, but does not define any functionality.
+
+
+
+
+
+```c
+int main( void )
+{
+    /* Perform any hardware setup necessary. */
+    prvSetupHardware();
+
+    /* --- APPLICATION TASKS CAN BE CREATED HERE --- */
+
+    /* Start the created tasks running. */
+    vTaskStartScheduler();
+
+    /* Execution will only reach here if there was insufficient heap to
+       start the scheduler. */
+    for( ;; );
+    return 0;
+}
+```
+***Listing 2.1*** *The template for a new main() function*
+
+
+
+### 2.4.2 Creating a New Project from Scratch
+
+As already mentioned, it is recommended to create new projects from an
+existing demo project. If this is not desirable, then use the following
+procedure to create a new project:
+
+1. Using your chosen toolchain, create a new project that does not yet
+   include any FreeRTOS source files.
+
+1. Ensure the new project builds, downloads to your target hardware,
+   and executes.
+
+1. Only when you are sure you already have a working project, add the
+   FreeRTOS source files detailed in Table 1 to the project.
+
+1. Copy the `FreeRTOSConfig.h` header file used by the demo project and
+   provided for the port in use into your new project directory.
+
+1. Add the following directories to the path the project will search to
+   locate header files:
+
+   - FreeRTOS/Source/include
+   - FreeRTOS/Source/portable/\[*compiler*\]/\[*architecture*\] (where
+     \[*compiler*\] and \[*architecture*\] are correct for your chosen port)
+   - The directory containing the `FreeRTOSConfig.h` header file
+
+1. Copy the compiler settings from the relevant demo project.
+
+1. Install any FreeRTOS interrupt handlers that might be necessary. Use
+   the web page that describes the port in use and the demo project
+   provided for the port in use as a reference.
+
+
+
+* * *
+| File                            | Location                     |
+|---------------------------------|------------------------------|
+| tasks.c                         | FreeRTOS/Source              |
+| queue.c                         | FreeRTOS/Source              |
+| list.c                          | FreeRTOS/Source              |
+| timers.c                        | FreeRTOS/Source              |
+| event\_groups.c                 | FreeRTOS/Source              |
+| stream\_buffer.c                | FreeRTOS/Source              |
+| All C and assembler files       | FreeRTOS/Source/portable/\[compiler\]/\[architecture\] |
+| heap\_n.c                       | FreeRTOS/Source/portable/MemMang, where n is either 1, 2, 3, 4 or 5 |
+
+***Table 1*** *FreeRTOS source files to include in the project*
+* * *
+
+**Note on heap memory:**
+ If `configSUPPORT_DYNAMIC_ALLOCATION` is 0 then do not include a heap memory
+ allocation scheme in your project. Else include a heap memory allocation scheme
+ in your project, either one of the heap\_*n*.c files, or one provided by
+ yourself. Refer to Chapter 3, Heap Memory Management, for more information.

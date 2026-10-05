@@ -30,25 +30,8 @@ The group **files** specifies files that are required by the generator tool. Onl
 
 
 
-  | 
-    Parent | 
-    Element Chain | 
-  
-
-  | 
-    generator | 
-    element_generator | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    file | 
-    Frame for files used by the generator.
-    group | 
-    0..1  |
+| Parent | Element Chain |  |  |
+|---|---|---|---|
+| generator | element_generator |  |  |
+| Child Elements | Description | Type | Occurrence |
+| file | Frame for files used by the generator. group | 0..1 |  |

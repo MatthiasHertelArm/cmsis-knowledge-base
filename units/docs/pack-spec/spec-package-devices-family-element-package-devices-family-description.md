@@ -39,37 +39,10 @@ of bullet points should not exceed ten. To create a detailed feature list use th
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    family | 
-    element_family | 
-  
-
-  | 
-    subFamily | 
-    element_subFamily | 
-  
-
-  | 
-    device | 
-    element_device | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    Pname | 
-    Processor Identifier. This attribute **is mandatory for devices that embed multiple processors and
-        where the description is specific to a single processor**.
-        Only alphabetical characters, decimal digits, '-' and '_' are allowed.  | 
-    RestrictedString | 
-    optional |
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| family | element_family |  |  |
+| subFamily | element_subFamily |  |  |
+| device | element_device |  |  |
+| Attributes | Description | Type | Use |
+| Pname | Processor Identifier. This attribute **is mandatory for devices that embed multiple processors and where the description is specific to a single processor**. Only alphabetical characters, decimal digits, '-' and '_' are allowed. | RestrictedString | optional |

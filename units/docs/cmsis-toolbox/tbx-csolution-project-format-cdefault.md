@@ -24,7 +24,7 @@ The `default:` node is the start of a [`cdefault.yml`](https://open-cmsis-pack.g
 
 `default:`                                                |            | Content
 :---------------------------------------------------------|:-----------|:------------------------------------
-&nbsp;&nbsp; [`misc:`](#misc)                             |  Optional  | Literal tool-specific controls. Refer to [CSolution Project Structure: `cdefault.yml`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/build-overview.md#cdefaultyml) for an example.
+   [`misc:`](#misc)                             |  Optional  | Literal tool-specific controls. Refer to [CSolution Project Structure: `cdefault.yml`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/build-overview.md#cdefaultyml) for an example.
 
 !!! Note
     The [`compiler:`](#compiler) selection in `cdefault.yml` has been deprecated in CMSIS-Toolbox 2.6.0.

@@ -19,7 +19,7 @@ Configures the reset behavior for each core when a reset is requested.
 `reset:`                                          |              | Description
 :-------------------------------------------------|:-------------|:------------------------------------
 `- pname:`                                        |   Optional   | Identifies the processor (not required for single core system).
-&nbsp;&nbsp;&nbsp; `type:`                        | **Required** | Selects the reset type: `hardware`, `system`, `core`. Default: specified in DFP.
+    `type:`                        | **Required** | Selects the reset type: `hardware`, `system`, `core`. Default: specified in DFP.
 
 Reset Types   | Description
 :-------------|:------------------------------------

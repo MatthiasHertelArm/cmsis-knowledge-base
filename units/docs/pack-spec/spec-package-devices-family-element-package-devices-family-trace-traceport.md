@@ -34,31 +34,11 @@ This element describes possible configuration settings for capturing trace. A
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    trace | 
-    element_trace | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    width | 
-    
-      Parallel trace port widths supported for the processor connection (see table below).
-     | 
-    NonNegativeInteger | 
-    optional | 
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| trace | element_trace |  |  |
+| Attributes | Description | Type | Use |
+| width | Parallel trace port widths supported for the processor connection (see table below). | NonNegativeInteger | optional |
 
 
 
@@ -69,109 +49,7 @@ The value **width=0x00008088** (as shown in the table) indicates that three port
 
 
 
-  | 
-    Bit | 
-    31 | 
-    30 | 
-    29 | 
-    28 | 
-    27 | 
-    26 | 
-    25 | 
-    24 | 
-    23 | 
-    22 | 
-    21 | 
-    20 | 
-    19 | 
-    18 | 
-    17 | 
-    16 | 
-    15 | 
-    14 | 
-    13 | 
-    12 | 
-    11 | 
-    10 | 
-     9 | 
-     8 | 
-     7 | 
-     6 | 
-     5 | 
-     4 | 
-     3 | 
-     2 | 
-     1 | 
-     0 | 
-  
-
-  | 
-    width | 
-    32 | 
-    31 | 
-    30 | 
-    29 | 
-    28 | 
-    27 | 
-    26 | 
-    25 | 
-    24 | 
-    23 | 
-    22 | 
-    21 | 
-    20 | 
-    19 | 
-    18 | 
-    17 | 
-    16 | 
-    15 | 
-    14 | 
-    13 | 
-    12 | 
-    11 | 
-    10 | 
-     9 | 
-     8 | 
-     7 | 
-     6 | 
-     5 | 
-     4 | 
-     3 | 
-     2 | 
-     1 | 
-  
-
-  | 
-    Value | 
-    0 | 
-    0 | 
-    0 | 
-    0 | 
-    0 | 
-    0 | 
-    0 | 
-    0 | 
-    0 | 
-    0 | 
-    0 | 
-    0 | 
-    0 | 
-    0 | 
-    0 | 
-    0 | 
-    1 | 
-    0 | 
-    0 | 
-    0 | 
-    0 | 
-    0 | 
-    0 | 
-    0 | 
-    1 | 
-    0 | 
-    0 | 
-    0 | 
-    1 | 
-    0 | 
-    0 | 
-    0 |
+| Bit | 31 | 30 | 29 | 28 | 27 | 26 | 25 | 24 | 23 | 22 | 21 | 20 | 19 | 18 | 17 | 16 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| width | 32 | 31 | 30 | 29 | 28 | 27 | 26 | 25 | 24 | 23 | 22 | 21 | 20 | 19 | 18 | 17 | 16 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 |
+| Value | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 0 |

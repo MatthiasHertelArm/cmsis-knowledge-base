@@ -9,10 +9,13 @@ severity: "error"
 symptoms: ["list <args> was not specified"]
 symptom_regex: "^list <args> was not specified$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e81:tools/projmgr/src/ProjMgr.cpp:416"
+source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:416"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+cause_origin: "source-analysis"
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:414", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:420", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:26"]
 ---
 
 ## Symptom
@@ -21,14 +24,22 @@ mode: "V"
 
 ## Cause
 
-_offen, im Review ergänzen_
+`csolution list` was run without saying what to list.
 
 ## Fix
 
-_offen, im Review ergänzen_
+Add the subject after `list`, e.g. `csolution list packs`, `csolution list devices`, `csolution list components my.csolution.yml` or `csolution list contexts my.csolution.yml`; `csolution --help` lists the choices.
 
-## Trigger im Quelltext
+## Trigger in the source
 
 ```cpp
 if (m_args.empty()) {
 ```
+
+## Evidence
+
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
+
+- `tools/projmgr/src/ProjMgr.cpp:414`
+- `tools/projmgr/src/ProjMgr.cpp:420`
+- `tools/projmgr/src/ProjMgr.cpp:26`

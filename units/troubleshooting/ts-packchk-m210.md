@@ -10,11 +10,14 @@ code: "M210"
 symptoms: ["M210", "Only one input file to be checked is allowed."]
 symptom_regex: "^Only one input file to be checked is allowed\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e81:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e81:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
+cause_origin: "source-analysis"
+confidence: "low"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:96", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ParseOptions.cpp:208", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ParseOptions.cpp:226", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:137"]
 ---
 
 ## Symptom
@@ -28,4 +31,17 @@ You can only check one PDSC file at a time.
 
 ## Fix
 
-_siehe Cause_
+Run packchk once per PDSC; pass packs it depends on with -i instead of as extra file arguments.
+
+## Note
+
+No raise site for M210 in packchk at 30f5e81; fix inferred from the message and README.
+
+## Evidence
+
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence low, not reviewed yet:
+
+- `tools/packchk/src/PackChk_Msgs.cpp:96`
+- `tools/packchk/src/ParseOptions.cpp:208`
+- `tools/packchk/src/ParseOptions.cpp:226`
+- `tools/packchk/README.md:137`

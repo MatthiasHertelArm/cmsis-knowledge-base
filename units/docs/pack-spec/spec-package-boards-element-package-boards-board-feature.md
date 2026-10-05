@@ -24,52 +24,14 @@ A list of pre-defined features exists.
 
 
 
-  | 
-    Parent | 
-    Chain | 
-  
-
-  | 
-    board | 
-    element_board | 
-  
-	
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    type | 
-    Defines board features. Select predefined values from the table Board Features. | 
-    BoardFeatureTypeEnum | 
-    required | 
-  
-
-  | 
-    n | 
-    Depends on attribute **\b** type. Check table Board Features for details. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    m | 
-	Depends on attribute **\b** type. Check table Board Features for details. | 
-	xs:string | 
-	optional | 
-  
-
-  | 
-    name | 
-	Descriptive name of the feature. If omitted, a **Default Name** is used (refer to table
-	    Board Feature Types). **Do not repeat** the `n` or `m` values in the name. This will lead to
-		duplicate entries on web sites (they show `n` x `name`). | 
-	xs:string | 
-	optional | 
-  
+| Parent | Chain |  |  |
+|---|---|---|---|
+| board | element_board |  |  |
+| Attributes | Description | Type | Use |
+| type | Defines board features. Select predefined values from the table Board Features. | BoardFeatureTypeEnum | required |
+| n | Depends on attribute **\b** type. Check table Board Features for details. | xs:string | optional |
+| m | Depends on attribute **\b** type. Check table Board Features for details. | xs:string | optional |
+| name | Descriptive name of the feature. If omitted, a **Default Name** is used (refer to table Board Feature Types). **Do not repeat** the `n` or `m` values in the name. This will lead to duplicate entries on web sites (they show `n` x `name`). | xs:string | optional |
 
 
 

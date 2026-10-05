@@ -19,9 +19,9 @@ Add a software layer to a project. Used in `*.cproject.yml` files.
 `layers:`                                                 |              | Content
 :---------------------------------------------------------|:-------------|:------------------------------------
 [`- layer:`](#layer)                                      |   Optional   | Path to the `*.clayer.yml` file that defines the layer.
-&nbsp;&nbsp;&nbsp; [`type:`](#layer-type)                 |   Optional   | Refers to an expected layer type. Enables the [auto-selection of layers](#auto-select-layers).
-&nbsp;&nbsp;&nbsp; [`for-context:`](#for-context)         |   Optional   | Include layer for a list of *build* and *target* types.
-&nbsp;&nbsp;&nbsp; [`not-for-context:`](#not-for-context) |   Optional   | Exclude layer for a list of *build* and *target* types.
+    [`type:`](#layer-type)                 |   Optional   | Refers to an expected layer type. Enables the [auto-selection of layers](#auto-select-layers).
+    [`for-context:`](#for-context)         |   Optional   | Include layer for a list of *build* and *target* types.
+    [`not-for-context:`](#not-for-context) |   Optional   | Exclude layer for a list of *build* and *target* types.
 
 **Example:**
 

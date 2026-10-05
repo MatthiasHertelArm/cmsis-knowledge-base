@@ -16,71 +16,17 @@ Define software components that are tied to an event number.
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    group | 
-    elem_group | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    name | 
-    Descriptive component name. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    brief | 
-    Short component name for display purposes. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    no | 
-    Event id component number (bits 8..15). See er_theory. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    prefix | 
-    Added to hyperlink in context sensitive help system before the \`<event name\>`. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    info | 
-    Descriptive text shown when hovering over the component brief. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    Child Element | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    \refelem{elem_group_component_state,state} | 
-    State information for a component | 
-    ComponentType | 
-    0..* | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| group | elem_group |  |  |
+| Attributes | Description | Type | Use |
+| name | Descriptive component name. | xs:string | required |
+| brief | Short component name for display purposes. | xs:string | required |
+| no | Event id component number (bits 8..15). See er_theory. | xs:string | required |
+| prefix | Added to hyperlink in context sensitive help system before the \`<event name\>`. | xs:string | required |
+| info | Descriptive text shown when hovering over the component brief. | xs:string | optional |
+| Child Element | Description | Type | Occurrence |
+| \refelem{elem_group_component_state,state} | State information for a component | ComponentType | 0..* |
 
 
  

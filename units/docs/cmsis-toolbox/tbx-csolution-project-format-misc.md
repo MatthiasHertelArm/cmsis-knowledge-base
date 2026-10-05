@@ -19,14 +19,14 @@ Add miscellaneous literal tool-specific controls that are directly passed to the
 `misc:`                                    |              | Content
 :------------------------------------------|:-------------|:------------------------------------
 [`- for-compiler:`](#for-compiler)         |   Optional   | Name of the toolchain that the literal control string applies to.
-&nbsp;&nbsp;&nbsp; `C-CPP:`                |   Optional   | Applies to `*.c` and `*.cpp` files (added before `C` and `CPP:`).
-&nbsp;&nbsp;&nbsp; `C:`                    |   Optional   | Applies to `*.c` files only.
-&nbsp;&nbsp;&nbsp; `CPP:`                  |   Optional   | Applies to `*.cpp` files only.
-&nbsp;&nbsp;&nbsp; `ASM:`                  |   Optional   | Applies to assembler source files only.
-&nbsp;&nbsp;&nbsp; `Link:`                 |   Optional   | Applies to the linker (added before `Link-C:` or `Link-CPP:`).
-&nbsp;&nbsp;&nbsp; `Link-C:`               |   Optional   | Applies to the linker; added when no C++ files are part of the project.
-&nbsp;&nbsp;&nbsp; `Link-CPP:`             |   Optional   | Applies to the linker; added when C++ files are part of the project.
-&nbsp;&nbsp;&nbsp; `Library:`              |   Optional   | Set libraries to the correct position in the linker command line (for GCC).
+    `C-CPP:`                |   Optional   | Applies to `*.c` and `*.cpp` files (added before `C` and `CPP:`).
+    `C:`                    |   Optional   | Applies to `*.c` files only.
+    `CPP:`                  |   Optional   | Applies to `*.cpp` files only.
+    `ASM:`                  |   Optional   | Applies to assembler source files only.
+    `Link:`                 |   Optional   | Applies to the linker (added before `Link-C:` or `Link-CPP:`).
+    `Link-C:`               |   Optional   | Applies to the linker; added when no C++ files are part of the project.
+    `Link-CPP:`             |   Optional   | Applies to the linker; added when C++ files are part of the project.
+    `Library:`              |   Optional   | Set libraries to the correct position in the linker command line (for GCC).
 
 **Example:**
 

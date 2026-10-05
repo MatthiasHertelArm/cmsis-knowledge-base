@@ -9,10 +9,13 @@ severity: "error"
 symptoms: ["check <args> was not specified"]
 symptom_regex: "^check <args> was not specified$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e81:tools/projmgr/src/ProjMgr.cpp:451"
+source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:451"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+cause_origin: "source-analysis"
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:448-453", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:257-266"]
 ---
 
 ## Symptom
@@ -21,14 +24,21 @@ mode: "V"
 
 ## Cause
 
-_offen, im Review ergänzen_
+`csolution check` was run without a subcommand. `<args>` is printed literally.
 
 ## Fix
 
-_offen, im Review ergänzen_
+Add the subcommand: `csolution check pack-updates <name>.csolution.yml`.
 
-## Trigger im Quelltext
+## Trigger in the source
 
 ```cpp
 if (m_args.empty()) {
 ```
+
+## Evidence
+
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
+
+- `tools/projmgr/src/ProjMgr.cpp:448-453`
+- `tools/projmgr/src/ProjMgr.cpp:257-266`

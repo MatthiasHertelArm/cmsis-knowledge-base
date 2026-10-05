@@ -3,7 +3,7 @@ id: "drv-spi-interface-arm-spi-signalevent"
 type: "concept"
 domain: "drivers"
 title: "SPI Interface: ARM_SPI_SignalEvent"
-summary: "The function ARMSPISignalEvent is a callback function registered by the function ARMSPIInitialize."
+summary: "The function ARM_SPI_SignalEvent is a callback function registered by the function ARM_SPI_Initialize."
 status: "draft"
 collection: "cmsis-driver"
 source: "ARM-software/CMSIS_6@26206e4:CMSIS/Documentation/Doxygen/Driver/src/Driver_SPI.c"
@@ -29,33 +29,11 @@ The following events can be generated:
 
 
 
-| 
-   Parameter **event**                   |  Bit  |  Description  |                                               
-   supported when ARM_SPI_CAPABILITIES  | 
-
-
-| 
-   ARM_SPI_EVENT_TRANSFER_COMPLETE  |   0   |  Occurs after call to ARM_SPI_Send, ARM_SPI_Receive, 
-                                                                    or ARM_SPI_Transfer 
-                                                                    to indicate that all the data has been transferred. 
-																	The driver is ready for the next transfer operation.  |      
-   _always supported_  | 
-
-
-| 
-   ARM_SPI_EVENT_DATA_LOST          |   1   |  Occurs in slave mode when data is requested/sent by master 
-                                                                    but send/receive/transfer operation has not been started and 
-                                                                    indicates that data is lost. Occurs also in master mode when
-                                                                    driver cannot transfer data fast enough.              |      
-   _always supported_  | 
-
-
-| 
-   ARM_SPI_EVENT_MODE_FAULT         |   2   |  Occurs in master mode when Slave Select is deactivated and 
-                                                                    indicates Master Mode Fault.  
-																	The driver is ready for the next transfer operation.  |      
-   data field **event_mode_fault** = `1`  | 
-
+| Parameter **event** | Bit | Description | supported when ARM_SPI_CAPABILITIES |
+|---|---|---|---|
+| ARM_SPI_EVENT_TRANSFER_COMPLETE | 0 | Occurs after call to ARM_SPI_Send, ARM_SPI_Receive, or ARM_SPI_Transfer to indicate that all the data has been transferred. The driver is ready for the next transfer operation. | always supported |
+| ARM_SPI_EVENT_DATA_LOST | 1 | Occurs in slave mode when data is requested/sent by master but send/receive/transfer operation has not been started and indicates that data is lost. Occurs also in master mode when driver cannot transfer data fast enough. | always supported |
+| ARM_SPI_EVENT_MODE_FAULT | 2 | Occurs in master mode when Slave Select is deactivated and indicates Master Mode Fault. The driver is ready for the next transfer operation. | data field **event_mode_fault** = `1` |
 
 
 *************************************************************************************************************************

@@ -3,7 +3,7 @@ id: "tbx-csolution-project-format-debugger"
 type: "concept"
 domain: "project"
 title: "CSolution Project Format: Debugger Configuration / `debugger:`"
-summary: "debugger: | | Content :---------------------------------------------------------|:-------------|:------------------------------------ &nbsp;&nbsp;&nbsp; name: | Required | Identifies the debug adapter. &nbsp;&nbsp;&nbsp; : | Optional | Other debugger specific options can be used as documented below."
+summary: "debugger: | | Content :---------------------------------------------------------|:-------------|:------------------------------------ name: | Required | Identifies the debug adapter. : | Optional | Other debugger specific options can be used as documented below."
 status: "draft"
 collection: "cmsis-toolbox"
 source: "Open-CMSIS-Pack/cmsis-toolbox@6c04673:docs/YML-Input-Format.md"
@@ -16,8 +16,8 @@ _Part of: Debugger Configuration_
 
 `debugger:`                                               |              | Content
 :---------------------------------------------------------|:-------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `name:`                                | **Required** | Identifies the debug adapter.
-&nbsp;&nbsp;&nbsp; `*:`                                   |   Optional   | Other debugger specific options can be used as documented below.
+    `name:`                                | **Required** | Identifies the debug adapter.
+    `*:`                                   |   Optional   | Other debugger specific options can be used as documented below.
 
 The command `csolution list debuggers` outputs the `name:` of the supported debug adapters; using the option `--verbose` extends the list with alias names that are also accepted as `name:`  There are five different debug adapter categories:
 

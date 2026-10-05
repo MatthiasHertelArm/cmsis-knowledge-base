@@ -21,7 +21,7 @@ Directory                         | Content
 📂 CMSIS                          | CMSIS Base software components folder
  ┣ 📂 Documentation/html/Core     | A local copy of this CMSIS-Core (M) documentation
  ┗ 📂 Core                        | CMSIS-Core files
- &emsp;  ┣ 📂 Include        | cmsis_processor_files.
- &emsp;&emsp;  ┗ 📂 m-profile| Header files specific for Arm M-Profile.
+    ┣ 📂 Include        | cmsis_processor_files.
+     ┗ 📂 m-profile| Header files specific for Arm M-Profile.
  See cmsis_compiler_files and cmsis_feature_files.
- &emsp;  ┗ 📂 Template       | cmsis_template_files
+    ┗ 📂 Template       | cmsis_template_files

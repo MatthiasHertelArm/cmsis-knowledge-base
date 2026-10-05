@@ -9,10 +9,13 @@ severity: "error"
 symptoms: ["processing contexts list failed"]
 symptom_regex: "^processing contexts list failed$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e81:tools/projmgr/src/ProjMgr.cpp:910"
+source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:910"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+cause_origin: "source-analysis"
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:909", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4834"]
 ---
 
 ## Symptom
@@ -21,14 +24,21 @@ mode: "V"
 
 ## Cause
 
-_offen, im Review ergänzen_
+`csolution list contexts` could not produce a list: a `-f` filter matched no context (the line before reports `no context was found with filter`), or the solution yielded no contexts at all.
 
 ## Fix
 
-_offen, im Review ergänzen_
+Fix the error printed before it; drop or loosen `-f`, and check that the csolution.yml has `projects:` and `target-types:`.
 
-## Trigger im Quelltext
+## Trigger in the source
 
 ```cpp
 if (!m_worker.ListContexts(contexts, m_filter, m_ymlOrder)) {
 ```
+
+## Evidence
+
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
+
+- `tools/projmgr/src/ProjMgr.cpp:909`
+- `tools/projmgr/src/ProjMgrWorker.cpp:4834`

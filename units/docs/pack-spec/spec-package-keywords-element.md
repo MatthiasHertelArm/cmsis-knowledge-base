@@ -33,25 +33,8 @@ Keywords can be exported to web pages to provide information for search engines,
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    package | 
-    element_package | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    keyword | 
-    Element that encloses one keyword. Enter a keyword between the opening and closing tag of this element. | 
-    xs:string | 
-    1..1 |
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| package | element_package |  |  |
+| Child Elements | Description | Type | Occurrence |
+| keyword | Element that encloses one keyword. Enter a keyword between the opening and closing tag of this element. | xs:string | 1..1 |

@@ -1,0 +1,48 @@
+---
+id: "tfm-trusted-firmware-m-profile-medium-overall-design-2"
+type: "concept"
+domain: "security"
+title: "Trusted Firmware-M Profile Medium-ARoT-less: Overall design"
+summary: "TF-M Profile Medium-ARoT-less defines the following feature set:"
+status: "draft"
+collection: "tf-m"
+source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/configuration/profiles/tfm_profile_medium_arot-less.rst"
+doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/configuration/profiles/tfm_profile_medium_arot-less.html#overall-design"
+license: "BSD-3-Clause"
+mode: "V"
+---
+
+TF-M Profile Medium-ARoT-less defines the following feature set:
+
+    - Firmware Framework
+
+        - Secure Function (SFN) model [4]_
+        - Isolation level 1 [5]_
+
+    - Internal Trusted Storage (ITS)
+
+    - Crypto
+
+        - Support both symmetric cryptography and asymmetric cryptography
+        - Asymmetric key based cipher suite suggested in TLS/DTLS profiles for
+          IoT [6]_ and CoAP [7]_, including
+
+            - Authenticated Encryption with Associated Data (AEAD) algorithm
+            - Asymmetric key algorithm based signature and verification
+            - Public-key cryptography based key exchange
+            - Hash function
+            - HMAC for default Pseudorandom Function (PRF)
+
+        - Asymmetric digital signature and verification for Initial Attestation
+          Token (IAT)
+
+    - Initial Attestation
+
+        - Asymmetric key algorithm based Initial Attestation
+
+    - Lightweight boot
+
+        - Anti-rollback protection
+        - Multiple image boot
+
+    - Firmware Update (FWU) RoT Service

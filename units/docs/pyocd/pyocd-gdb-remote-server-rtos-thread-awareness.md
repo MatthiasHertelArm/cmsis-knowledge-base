@@ -33,18 +33,20 @@ Within gdb, the set of current threads can be printed with `info threads`. gdb a
 
 This example shows a gdb thread listing for a Zephyr RTOS program.
 
-<div class="highlight"><pre class="highlight"><code>  Id   Target Id                                            Frame
-* 3    Thread 536871784 "idle" (Running; Priority 15)       <span style="color: yellow">arch_cpu_idle</span> ()
-    at <span style="color: green">/Users/creed/projects/zephyrproject/zephyr/arch/arm/core/aarch32/cpu_idle.S</span>:126
-  4    Thread 536871584 "uart_out_id" (Pending; Priority 7) <span style="color: yellow">arch_swap</span> (<span style="color: cyan">key</span>=0)
-    at <span style="color: green">/Users/creed/projects/zephyrproject/zephyr/arch/arm/core/aarch32/swap.c</span>:53
-  5    Thread 536871416 "blink1_id" (Suspended; Priority 7) <span style="color: yellow">arch_swap</span> (<span style="color: cyan">key=key@entry</span>=0)
-    at <span style="color: green">/Users/creed/projects/zephyrproject/zephyr/arch/arm/core/aarch32/swap.c</span>:53
-  6    Thread 536871248 "blink0_id" (Suspended; Priority 7) <span style="color: yellow">arch_swap</span> (<span style="color: cyan">key=key@entry</span>=0)
-    at <span style="color: green">/Users/creed/projects/zephyrproject/zephyr/arch/arm/core/aarch32/swap.c</span>:53
-  7    Thread 536872152 "sysworkq" (Pending; Priority -1)   <span style="color: yellow">arch_swap</span> (<span style="color: cyan">key</span>=0)
-    at <span style="color: green">/Users/creed/projects/zephyrproject/zephyr/arch/arm/core/aarch32/swap.c</span>:53
-</code></pre></div>
+
+
+`  Id   Target Id                                            Frame
+* 3    Thread 536871784 "idle" (Running; Priority 15)       arch_cpu_idle ()
+    at /Users/creed/projects/zephyrproject/zephyr/arch/arm/core/aarch32/cpu_idle.S:126
+  4    Thread 536871584 "uart_out_id" (Pending; Priority 7) arch_swap (key=0)
+    at /Users/creed/projects/zephyrproject/zephyr/arch/arm/core/aarch32/swap.c:53
+  5    Thread 536871416 "blink1_id" (Suspended; Priority 7) arch_swap (key=key@entry=0)
+    at /Users/creed/projects/zephyrproject/zephyr/arch/arm/core/aarch32/swap.c:53
+  6    Thread 536871248 "blink0_id" (Suspended; Priority 7) arch_swap (key=key@entry=0)
+    at /Users/creed/projects/zephyrproject/zephyr/arch/arm/core/aarch32/swap.c:53
+  7    Thread 536872152 "sysworkq" (Pending; Priority -1)   arch_swap (key=0)
+    at /Users/creed/projects/zephyrproject/zephyr/arch/arm/core/aarch32/swap.c:53
+`
 
 Note how the thread name is shown in quotes, and thread state and priority are shown in parentheses. The actual description of threads is specific to each RTOS plugin.
 

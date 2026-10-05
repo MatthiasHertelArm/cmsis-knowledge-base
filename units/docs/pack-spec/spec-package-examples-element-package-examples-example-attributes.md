@@ -33,39 +33,10 @@ mode: "V"
 
 
 
-  | 
-    Parent | 
-	Chain | 
-  
-
-  | 
-    example | 
-	element_example | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    category | 
-    Free form string defining an example category. A category can be used to filter examples in an example browser. | 
-    xs:string | 
-    0..* | 
-  
-
-  | 
-    component | 
-    Group for defining the components used in the example. | 
-    ComponentCategoryType | 
-    0..* | 
-  
-
-  | 
-    keyword | 
-    Free form string defining a keyword that relates to the example. A keyword can be used to search for examples. | 
-    xs:string | 
-    0..* |
+| Parent | Chain |  |  |
+|---|---|---|---|
+| example | element_example |  |  |
+| Child Elements | Description | Type | Occurrence |
+| category | Free form string defining an example category. A category can be used to filter examples in an example browser. | xs:string | 0..* |
+| component | Group for defining the components used in the example. | ComponentCategoryType | 0..* |
+| keyword | Free form string defining a keyword that relates to the example. A keyword can be used to search for examples. | xs:string | 0..* |

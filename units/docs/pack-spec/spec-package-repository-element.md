@@ -32,39 +32,11 @@ specifies the repository technology and therefore the tools required to be used 
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    package | 
-    element_package | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    type | 
-    Repository management technology used by the specified public repository (e.g. git, svn). | 
-    
-      
-
-        
-- git
-        
-- svn
-        
-- other
-      
-     | 
-    optional | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| package | element_package |  |  |
+| Attributes | Description | Type | Use |
+| type | Repository management technology used by the specified public repository (e.g. git, svn). | git svn other | optional |
 
 
 

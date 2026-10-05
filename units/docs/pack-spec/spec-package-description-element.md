@@ -29,25 +29,8 @@ This Markdown file is indented for web pages that offer software packs in form o
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    package | 
-    element_package | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    overview | 
-    File path, file name, and file extension in the format path/name.extension. The file path is relative to the root directory of the Pack and contains an overview documentation in Markdown format (file extension *.md). | 
-    xs:string | 
-    optional |
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| package | element_package |  |  |
+| Attributes | Description | Type | Use |
+| overview | File path, file name, and file extension in the format path/name.extension. The file path is relative to the root directory of the Pack and contains an overview documentation in Markdown format (file extension *.md). | xs:string | optional |

@@ -16,36 +16,12 @@ Define the name of component that is described in this SCVD file.  This element 
 
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    `<component_viewer>` | 
-    elem_component_viewer | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    name | 
-    Alphanumeric string identifying the component. Used as menu entry to open viewers. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    version | 
-    Alphanumeric string identifying the version of the component description. | 
-    xs:string | 
-    optional | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| `<component_viewer>` | elem_component_viewer |  |  |
+| Attributes | Description | Type | Use |
+| name | Alphanumeric string identifying the component. Used as menu entry to open viewers. | xs:string | required |
+| version | Alphanumeric string identifying the version of the component description. | xs:string | optional |
 
 
 

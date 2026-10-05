@@ -35,37 +35,9 @@ information for the port selection in a system with multi-drop SWD support.
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    debugport | 
-    element_debugport | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    idcode | 
-    Specifies the IDCODE of the SWD port. It overrides the value read from the port's IDCODE register.  | 
-    NonNegativeInteger | 
-    optional | 
-  
-
-<!-- finalize when there are multidrop devices available (or when we have DS-5 support for that)
-  | 
-    targetsel | 
-    Specifies the value to write to a CoreSight debug port's TARGETSEL register to select this port for connection.
-    The element is required for debug ports with multi-drop SWD support. It is ignored otherwise. **(Unsupported)** | 
-    NonNegativeInteger | 
-    optional | 
-  
-
--->
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| debugport | element_debugport |  |  |
+| Attributes | Description | Type | Use |
+| idcode | Specifies the IDCODE of the SWD port. It overrides the value read from the port's IDCODE register. | NonNegativeInteger | optional |
+| targetsel | Specifies the value to write to a CoreSight debug port's TARGETSEL register to select this port for connection. The element is required for debug ports with multi-drop SWD support. It is ignored otherwise. **(Unsupported)** | NonNegativeInteger | optional |

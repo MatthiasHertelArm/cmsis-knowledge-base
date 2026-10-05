@@ -20,11 +20,11 @@ The options are added
 `user-interface:`                                       |            | Content
 :-------------------------------------------------------|:-----------|:------------------------------------
 `- section:`                                            |**Required**| Label text for configuration section.
-&nbsp;&nbsp;&nbsp; `description:`                       |  Optional  | Hover over text.
-&nbsp;&nbsp;&nbsp; `yml-node:`                          |  Optional  | If present, options are under this group node in the `debugger:` section. 
-&nbsp;&nbsp;&nbsp; `select:`                            |  Optional  | If present, the section can be enabled. Applies to all options. 
-&nbsp;&nbsp;&nbsp; `options:`                           |  Optional  | List of available options.
-&nbsp;&nbsp;&nbsp; `pname-options:`                     |  Optional  | List of available options that are repeated for each pname.
+    `description:`                       |  Optional  | Hover over text.
+    `yml-node:`                          |  Optional  | If present, options are under this group node in the `debugger:` section. 
+    `select:`                            |  Optional  | If present, the section can be enabled. Applies to all options. 
+    `options:`                           |  Optional  | List of available options.
+    `pname-options:`                     |  Optional  | List of available options that are repeated for each pname.
 
 !!! Note
     When a `section:` is disabled all nodes are removed from the `csolution.yml` file.
@@ -32,20 +32,20 @@ The options are added
 `options:`                                              |            | Content
 :-------------------------------------------------------|:-----------|:------------------------------------
 `- name:`                                               |**Required**| Label text for the option in the user interface.
-&nbsp;&nbsp;&nbsp; `description:`                       |  Optional  | Hover over text.
-&nbsp;&nbsp;&nbsp; `yml-node:`                          |**Required**| Name of the node in the csolution file under `debugger:` section.
-&nbsp;&nbsp;&nbsp; `type:`                              |**Required**| Type (enum: value list, number: value, string: name, file: name).
-&nbsp;&nbsp;&nbsp; `range:`                             |  Optional  | Value range for type int.
-&nbsp;&nbsp;&nbsp; `values:`                            |  Optional  | Value list for type enum.
-&nbsp;&nbsp;&nbsp; `path-type:`                         |  Optional  | Only valid if `type:` is `file`. Possible values: `absolute` or `relative` (default).
-&nbsp;&nbsp;&nbsp; `default:`                           |  Optional  | Default value (or enum name) for user interface when no value given in csolution.yml.
-&nbsp;&nbsp;&nbsp; `scale:`                             |  Optional  | The value in csolution.yml value is multiplied by the scale factor.
+    `description:`                       |  Optional  | Hover over text.
+    `yml-node:`                          |**Required**| Name of the node in the csolution file under `debugger:` section.
+    `type:`                              |**Required**| Type (enum: value list, number: value, string: name, file: name).
+    `range:`                             |  Optional  | Value range for type int.
+    `values:`                            |  Optional  | Value list for type enum.
+    `path-type:`                         |  Optional  | Only valid if `type:` is `file`. Possible values: `absolute` or `relative` (default).
+    `default:`                           |  Optional  | Default value (or enum name) for user interface when no value given in csolution.yml.
+    `scale:`                             |  Optional  | The value in csolution.yml value is multiplied by the scale factor.
 
 `values:`                                               |            | Content
 :-------------------------------------------------------|:-----------|:------------------------------------
 `- name:`                                               |**Required**| Label text for the option in the user interface.
-&nbsp;&nbsp;&nbsp; `value:`                             |  Optional  | Value used for the enum name in csolution.yml file. If empty, `name` is used as `value`.
-&nbsp;&nbsp;&nbsp; `description:`                       |  Optional  | Descriptive text (hover over or sub-text in dialog).
+    `value:`                             |  Optional  | Value used for the enum name in csolution.yml file. If empty, `name` is used as `value`.
+    `description:`                       |  Optional  | Descriptive text (hover over or sub-text in dialog).
 
 **Example**
 

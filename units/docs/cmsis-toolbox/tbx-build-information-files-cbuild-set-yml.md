@@ -18,8 +18,8 @@ The `<solution-name>.cbuild-set.yml` file stores a legacy [context selection](ht
 
 `cbuild-set:`                                                      | Content
 :------------------------------------------------------------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `generated-by:`                                 | Reference to tool along with version information that generated this file.
-&nbsp;&nbsp;&nbsp; `contexts:`                                     | List of [context](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#context-name-conventions) names for the legacy [`--context-set`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/build-tools.md#legacy-context-set) option.
+    `generated-by:`                                 | Reference to tool along with version information that generated this file.
+    `contexts:`                                     | List of [context](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#context-name-conventions) names for the legacy [`--context-set`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/build-tools.md#legacy-context-set) option.
 
 **Example:**
 

@@ -23,53 +23,12 @@ The element specifies the parts (any device other than the MCU) mounted on the b
 
 
 
-  | 
-    Parent | 
-    Chain | 
-  
-
-  | 
-    board | 
-    element_board | 
-  
-	
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    n | 
-    Number of the parts with the same name and vendor mounted on the board. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    Hvendor | 
-    Vendor name of the part specified by **Hname. | **
-    xs:string | 
-    required | 
-  
-
-  | 
-    Hname | 
-    The part name used by the part vendor to identify and group a specific set of parts. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    Hvariant | 
-    Specifies the exact part name (e.g. the commercial/selling name) in case the one indicated in the **Hname** is not enough to uniquely identify the part. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    Hrevision | 
-    Revision of the part that is suited to be used. | 
-    xs:string | 
-    optional |
+| Parent | Chain |  |  |
+|---|---|---|---|
+| board | element_board |  |  |
+| Attributes | Description | Type | Use |
+| n | Number of the parts with the same name and vendor mounted on the board. | xs:string | required |
+| Hvendor | Vendor name of the part specified by **Hname. | xs:string | required |
+| Hname | The part name used by the part vendor to identify and group a specific set of parts. | xs:string | required |
+| Hvariant | Specifies the exact part name (e.g. the commercial/selling name) in case the one indicated in the **Hname** is not enough to uniquely identify the part. | xs:string | optional |
+| Hrevision | Revision of the part that is suited to be used. | xs:string | optional |

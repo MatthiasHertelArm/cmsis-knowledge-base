@@ -20,10 +20,10 @@ This section lists options that are specific to the [FVP](https://arm-software.g
 
 debugger:                         |              | Description
 :---------------------------------|:-------------|:-----------------------------------------------
-&nbsp;&nbsp;&nbsp; `name:`        | **Required** | Identifies the debug adapter with `Arm-FVP`.
-&nbsp;&nbsp;&nbsp; `model:`       |   Optional   | Filename (optionally with path) of the FVP executable. Default: `FVP_MPS2_Cortex-M3`.
-&nbsp;&nbsp;&nbsp; `config-file:` |   Optional   | Path and filename of the [FVP configuration file](https://arm-software.github.io/AVH/main/simulation/html/using.html).
-&nbsp;&nbsp;&nbsp; `args:`        |   Optional   | Miscellaneous [command line arguments](https://arm-software.github.io/AVH/main/simulation/html/using.html).
+    `name:`        | **Required** | Identifies the debug adapter with `Arm-FVP`.
+    `model:`       |   Optional   | Filename (optionally with path) of the FVP executable. Default: `FVP_MPS2_Cortex-M3`.
+    `config-file:` |   Optional   | Path and filename of the [FVP configuration file](https://arm-software.github.io/AVH/main/simulation/html/using.html).
+    `args:`        |   Optional   | Miscellaneous [command line arguments](https://arm-software.github.io/AVH/main/simulation/html/using.html).
 
 The following `model:` executables are installed from the [Arm Tools Artifactory](https://www.keil.arm.com/artifacts/#models/arm/avh-fvp). You should use these models in combination with a `pack:` and `device:` as listed under 
 ["CMSIS-based projects for FVPs"](https://arm-software.github.io/AVH/main/simulation/html/avh_fvp_cmsis.html). The PATH environment variable of your system can define the path to the FVP executable (then only the `model:` name from the list below is required). Optionally an explicit path can be specified in the `model:` node.

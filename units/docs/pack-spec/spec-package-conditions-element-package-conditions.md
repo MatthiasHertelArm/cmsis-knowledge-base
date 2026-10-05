@@ -16,25 +16,8 @@ This element groups all conditions used in the software pack.
 
 
 
-  | 
-    Parent | 
-    Chain | 
-  
-
-  | 
-    package | 
-    /package | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    condition | 
-    Define the individual dependency condition. | 
-    xs:string | 
-    1..* |
+| Parent | Chain |  |  |
+|---|---|---|---|
+| package | /package |  |  |
+| Child Elements | Description | Type | Occurrence |
+| condition | Define the individual dependency condition. | xs:string | 1..* |

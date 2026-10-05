@@ -18,8 +18,8 @@ The `variables:` node defines *key/value* pairs in the `*.csolution.yml` file. U
 
 `variables:`                         | Description
 :------------------------------------|:-------------
-&nbsp;&nbsp;&nbsp; `<key>:`          | `<key>:` specifies a variable name with value.
-&nbsp;&nbsp;&nbsp; `copied-from:`    | Descriptive text that documents the source of a layer. 
+    `<key>:`          | `<key>:` specifies a variable name with value.
+    `copied-from:`    | Descriptive text that documents the source of a layer. 
 
 **Example:**
 

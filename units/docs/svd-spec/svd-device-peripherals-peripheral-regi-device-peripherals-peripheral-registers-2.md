@@ -57,62 +57,16 @@ Other values cannot be written to this field. Field **F_TWO** overwrites the def
 **/device/peripherals/peripheral/registers/.../register/.../writeConstraint**
 
 
-  | 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    `<register>` | 
-    elem_register | 
-  
-
-  | 
-    `<field>` | 
-    elem_field | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    writeAsRead | 
-    If `true`, only the last read value can be written. | 
-    xs:boolean | 
-    0..1 | 
-  
-
-  | 
-    useEnumeratedValues | 
-    If `true`, only the values listed in the `<enumeratedValues>` list can be written.
-    xs:boolean | 
-    0..1 | 
-  
-
-  | 
-    range | 
-    Contains the following two elements: | 
-      | 
-    0..1 | 
-  
-
-  | 
-    minimum | 
-    Specify the smallest number to be written to the field. | 
-    scaledNonNegativeInteger | 
-    1..1 | 
-  
-
-  | 
-    maximum | 
-    Specify the largest number to be written to the field. | 
-    scaledNonNegativeInteger | 
-     1..1 | 
-  
+| Parent Element | Element Chain |  |  |
+|---|---|---|---|
+| `<register>` | elem_register |  |  |
+| `<field>` | elem_field |  |  |
+| Child Elements | Description | Type | Occurrence |
+| writeAsRead | If `true`, only the last read value can be written. | xs:boolean | 0..1 |
+| useEnumeratedValues | If `true`, only the values listed in the `<enumeratedValues>` list can be written. xs:boolean | 0..1 |  |
+| range | Contains the following two elements: |   | 0..1 |
+| minimum | Specify the smallest number to be written to the field. | scaledNonNegativeInteger | 1..1 |
+| maximum | Specify the largest number to be written to the field. | scaledNonNegativeInteger | 1..1 |
 
 
 

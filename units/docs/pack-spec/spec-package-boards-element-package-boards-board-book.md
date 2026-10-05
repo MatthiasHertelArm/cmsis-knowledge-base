@@ -24,52 +24,14 @@ The element provides information about documentation parts related to a developm
 
 
 
-  | 
-    Parent | 
-    Chain | 
-  
-
-  | 
-    board | 
-    element_board | 
-  
-	
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    category | 
-    Describes the type of documentation. Use predefined values as defined in the table Board Book Categories. | 
-    BoardBookCategoryEnum | 
-    optional | 
-  
-
-  | 
-    name | 
-	Is the name of the document (including the path within the Pack). The link to a document on an external web site is also allowed. | 
-	xs:string | 
-	optional | 
-  
-
-  | 
-    title | 
-	Is the title of the document to be displayed in the **Books** window of uVision. | 
-	xs:string | 
-	optional | 
-  
-
-  | 
-    public | 
-    Set publishing permissions for the documentation. If \tagem{public} is `true`, then the vendor gives permission 
-        to extract the documentation from the pack and publish it on a web-page. Links to web pages are assumed to be public.
-        The default value is `true`. | 
-    xs:boolean | 
-    optional | 
-  
+| Parent | Chain |  |  |
+|---|---|---|---|
+| board | element_board |  |  |
+| Attributes | Description | Type | Use |
+| category | Describes the type of documentation. Use predefined values as defined in the table Board Book Categories. | BoardBookCategoryEnum | optional |
+| name | Is the name of the document (including the path within the Pack). The link to a document on an external web site is also allowed. | xs:string | optional |
+| title | Is the title of the document to be displayed in the **Books** window of uVision. | xs:string | optional |
+| public | Set publishing permissions for the documentation. If \tagem{public} is `true`, then the vendor gives permission to extract the documentation from the pack and publish it on a web-page. Links to web pages are assumed to be public. The default value is `true`. | xs:boolean | optional |
 
 
 
@@ -81,40 +43,14 @@ The element provides information about documentation parts related to a developm
 The table lists values to identify a specific type of documentation for development boards. 
 
 
-  | 
-    category= | 
-    Description | 
-  
-
-  | 
-    setup | 
-    Documentation about how to setup the development board. | 
-  
-
-  | 
-    schematic | 
-    Schematics of the development board. | 
-  
-
-  | 
-    overview | 
-    Overview/data sheet of the development board. | 
-  
-
-  | 
-    manual | 
-    User manual of the development board | 
-  
-
-  | 
-    layout | 
-    PCB layout file of the board (e.g. in Gerber format) | 
-  
-
-  | 
-    other | 
-    All other documentation. | 
-  
+| category= | Description |
+|---|---|
+| setup | Documentation about how to setup the development board. |
+| schematic | Schematics of the development board. |
+| overview | Overview/data sheet of the development board. |
+| manual | User manual of the development board |
+| layout | PCB layout file of the board (e.g. in Gerber format) |
+| other | All other documentation. |
 
 
 

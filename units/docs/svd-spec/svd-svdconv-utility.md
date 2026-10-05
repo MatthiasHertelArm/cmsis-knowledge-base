@@ -37,83 +37,18 @@ SVDConv.exe <SVD_file> <options>
 
 
 
-  | 
-    \`<options>` | 
-    Short Name | 
-    Description | 
-  
-
-  | 
-     _none_  | 
-    Validation | 
-    Perform a validation check of the SVD file. Errors and warnings are printed on screen.
-   | 
-  
-
-  | 
-     -b  | 
-    Log File | 
-    Specify the log file name for writing messages. Default: screen.
-     | 
-  
-
-  | 
-     -o  | 
-    Output Path | 
-    Specify an output path for the generated device header file or log file. Default: current directory.
-     | 
-  
-
-  | 
-     \-\-generate=header  | 
-    Generate Device Header File | 
-    Generates the device header file. The name of the generated file is derived from the value of the tag `<devicename>` in the CMSIS-SVD file.
-    Refer to `<device>`.
-     | 
-  
-
-  | 
-     \-\-generate=partition  | 
-    Generate Partition file for Cortex-M Security Extensions (Armv8-M) | 
-    Generates the device partition file. The name of the generated file is composed of _partition__ and the value of the device _`<name>`_
-    (for example, _partition_CMSDK_ARMv8MBL.h_).
-    Refer to elem_device. The content of the file uses Configuration Wizard annotations and is derived
-    from the SAU-specific information of the elem_sauRegionsConfig and the interrupts specified in the elem_peripherals. | 
-  
-
-  | 
-     \-\-fields=enum  | 
-    Bit-field Enums | 
-    Generates enum lists for each field value description contained in the CMSIS-SVD input file.
-        Must be used in combination with _\-\-generate=header_. | 
-  
-
-  | 
-     \-\-fields=macro  | 
-    Bit-field Macros | 
-    Generates position and mask C-Macros for each field description contained in the CMSIS-SVD input file.
-    Must be used in combination with _\-\-generate=header_. | 
-  
-
-  | 
-     \-\-fields=struct  | 
-    Bit-field Structs | 
-    Generates bit fields for each field description contained in the CMSIS-SVD input file.
-        Must be used in combination with _\-\-generate=header_. | 
-  
-
-  | 
-     \-\-fields=struct-ansic  | 
-    ANSI Bit-field Structs | 
-    Generates MISRA-compliant structures for each bitfield. The generated code **is not CMSIS-compliant**!
-    Must be used in combination with _\-\-generate=header_. | 
-  
-
-  | 
-     \-\-strict | 
-    Strict error checking | 
-    **RECOMMENDED!** Applies strict error checking and generates a lot more messages. | 
-  
+| \`<options>` | Short Name | Description |
+|---|---|---|
+| none | Validation | Perform a validation check of the SVD file. Errors and warnings are printed on screen. |
+| -b | Log File | Specify the log file name for writing messages. Default: screen. |
+| -o | Output Path | Specify an output path for the generated device header file or log file. Default: current directory. |
+| \-\-generate=header | Generate Device Header File | Generates the device header file. The name of the generated file is derived from the value of the tag `<devicename>` in the CMSIS-SVD file. Refer to `<device>`. |
+| \-\-generate=partition | Generate Partition file for Cortex-M Security Extensions (Armv8-M) | Generates the device partition file. The name of the generated file is composed of partition_ and the value of the device `<name>` (for example, partition_CMSDK_ARMv8MBL.h ). Refer to elem_device. The content of the file uses Configuration Wizard annotations and is derived from the SAU-specific information of the elem_sauRegionsConfig and the interrupts specified in the elem_peripherals. |
+| \-\-fields=enum | Bit-field Enums | Generates enum lists for each field value description contained in the CMSIS-SVD input file. Must be used in combination with \-\-generate=header . |
+| \-\-fields=macro | Bit-field Macros | Generates position and mask C-Macros for each field description contained in the CMSIS-SVD input file. Must be used in combination with \-\-generate=header . |
+| \-\-fields=struct | Bit-field Structs | Generates bit fields for each field description contained in the CMSIS-SVD input file. Must be used in combination with \-\-generate=header . |
+| \-\-fields=struct-ansic | ANSI Bit-field Structs | Generates MISRA-compliant structures for each bitfield. The generated code **is not CMSIS-compliant**! Must be used in combination with \-\-generate=header . |
+| \-\-strict | Strict error checking | **RECOMMENDED!** Applies strict error checking and generates a lot more messages. |
 
 
 

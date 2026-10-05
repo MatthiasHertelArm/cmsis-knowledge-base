@@ -3,7 +3,7 @@ id: "drv-ethernet-phy-interface-arm-eth-phy-setmode"
 type: "concept"
 domain: "drivers"
 title: "Ethernet PHY Interface: ARM_ETH_PHY_SetMode"
-summary: "The function ARMETHPHYSetMode sets the operation mode parameters for the Ethernet PHY."
+summary: "The function ARM_ETH_PHY_SetMode sets the operation mode parameters for the Ethernet PHY."
 status: "draft"
 collection: "cmsis-driver"
 source: "ARM-software/CMSIS_6@26206e4:CMSIS/Documentation/Doxygen/Driver/src/Driver_ETH_PHY.c"
@@ -29,23 +29,16 @@ phy->SetMode (ARM_ETH_PHY_SPEED_100M | ARM_ETH_PHY_LOOPBACK | ARM_ETH_PHY_DUPLEX
 
 
 
-| Parameter **mode**               |  bit               |  Category               |  Description | 
-
-| ARM_ETH_PHY_SPEED_10M       |  0..1  | Link Speed  |  Set the link speed to `10 [Mbps]`      | 
-
-| ARM_ETH_PHY_SPEED_100M      |                                                       Set the link speed to `100 [Mbps]`           | 
-
-| ARM_ETH_PHY_SPEED_1G        |                                                       Set the link speed to `1  [Gbps]`            | 
-
-| ARM_ETH_PHY_DUPLEX_HALF     |  2     | Link Mode   |  Set the link mode to half duplex             | 
-
-| ARM_ETH_PHY_DUPLEX_FULL     |                                                       Set the link mode to full duplex                   | 
-
-| ARM_ETH_PHY_AUTO_NEGOTIATE  |            3       | Autonegotiation         |  Set the interface to Auto Negotiation mode of transmission parameters | 
-
-| ARM_ETH_PHY_LOOPBACK        |            4       | Loopback                |  Set the interface into a Loop-back test mode       | 
-
-| ARM_ETH_PHY_ISOLATE         |            5       | Isolation               |  Set to indicate electrical isolation of PHY interface from MII/RMII interface | 
+| Parameter **mode** | bit | Category | Description |
+|---|---|---|---|
+| ARM_ETH_PHY_SPEED_10M | 0..1 | Link Speed | Set the link speed to `10 [Mbps]` |
+| ARM_ETH_PHY_SPEED_100M | Set the link speed to `100 [Mbps]` |  |  |
+| ARM_ETH_PHY_SPEED_1G | Set the link speed to `1 [Gbps]` |  |  |
+| ARM_ETH_PHY_DUPLEX_HALF | 2 | Link Mode | Set the link mode to half duplex |
+| ARM_ETH_PHY_DUPLEX_FULL | Set the link mode to full duplex |  |  |
+| ARM_ETH_PHY_AUTO_NEGOTIATE | 3 | Autonegotiation | Set the interface to Auto Negotiation mode of transmission parameters |
+| ARM_ETH_PHY_LOOPBACK | 4 | Loopback | Set the interface into a Loop-back test mode |
+| ARM_ETH_PHY_ISOLATE | 5 | Isolation | Set to indicate electrical isolation of PHY interface from MII/RMII interface |
 
 
 

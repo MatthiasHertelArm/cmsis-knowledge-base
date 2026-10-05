@@ -1,0 +1,76 @@
+# Documentation under CC BY-SA 4.0, converted by tools/doc2ku.py into units/docs-ccbysa.
+# Kept apart from sources/docs.yml: whether share-alike text may ship inside knowledge.db is
+# open (HANDOVER.md, decision 4). scripts/rebuild.sh leaves these units out of the index unless
+# CCBYSA=1 is set. The sample code in both sources is MIT-0 (LICENSE-SAMPLECODE).
+sources:
+  - name: freertos-kernel-book
+    prefix: frb
+    repo: FreeRTOS/FreeRTOS-Kernel-Book
+    dir: FreeRTOS-Kernel-Book
+    include: ["ch*.md"]
+    license: CC-BY-SA-4.0
+    domain: rtos
+
+  - name: arm-learning-paths
+    prefix: alp
+    repo: ArmDeveloperEcosystem/arm-learning-paths
+    sparse: ["content/learning-paths/embedded-and-microcontrollers", "content/install-guides"]
+    include: ["content/learning-paths/embedded-and-microcontrollers/*/*.md"]
+    # Paths about Linux boards, containers and the cloud are left out: no Cortex-M firmware in them.
+    exclude: ["*/_next-steps.md", "*/_review.md", "content/learning-paths/embedded-and-microcontrollers/_index.md",
+              "content/learning-paths/embedded-and-microcontrollers/rpi*", "content/learning-paths/embedded-and-microcontrollers/raspberry*", "content/learning-paths/embedded-and-microcontrollers/linux-*", "content/learning-paths/embedded-and-microcontrollers/yocto_qemu/*", "content/learning-paths/embedded-and-microcontrollers/docker/*",
+              "content/learning-paths/embedded-and-microcontrollers/cloud-native-*", "content/learning-paths/embedded-and-microcontrollers/jetson_*", "content/learning-paths/embedded-and-microcontrollers/llama-python-cpu/*", "content/learning-paths/embedded-and-microcontrollers/universal-sbc-chassis/*",
+              "content/learning-paths/embedded-and-microcontrollers/device-connect-*", "content/learning-paths/embedded-and-microcontrollers/streamline-kernel-module/*", "content/learning-paths/embedded-and-microcontrollers/zephyr-signed-fit-uboot-cortex-a/*",
+              "content/learning-paths/embedded-and-microcontrollers/avh_greengrass/*", "content/learning-paths/embedded-and-microcontrollers/edge_impulse_greengrass/*", "content/learning-paths/embedded-and-microcontrollers/azure-iot/*"]
+    format: hugo
+    path_index: true
+    id_from_path: true
+    license: CC-BY-SA-4.0
+    domain: project
+    domains:
+      - {paths: ["content/learning-paths/embedded-and-microcontrollers/*ethos*", "content/learning-paths/embedded-and-microcontrollers/*tinyml*", "content/learning-paths/embedded-and-microcontrollers/*nn*", "content/learning-paths/embedded-and-microcontrollers/*mlek*", "content/learning-paths/embedded-and-microcontrollers/*ml_*", "content/learning-paths/embedded-and-microcontrollers/yolo*", "content/learning-paths/embedded-and-microcontrollers/alif-*",
+                 "content/learning-paths/embedded-and-microcontrollers/silero*", "content/learning-paths/embedded-and-microcontrollers/*mobilesam*", "content/learning-paths/embedded-and-microcontrollers/*inference*", "content/learning-paths/embedded-and-microcontrollers/img_nn*", "content/learning-paths/embedded-and-microcontrollers/tflow*", "content/learning-paths/embedded-and-microcontrollers/avh_ppocr/*",
+                 "content/learning-paths/embedded-and-microcontrollers/avh_vio/*", "content/learning-paths/embedded-and-microcontrollers/edge/*", "content/learning-paths/embedded-and-microcontrollers/deploy-ml-*"], domain: edge-ai}
+      - {paths: ["content/learning-paths/embedded-and-microcontrollers/cmsis_rtx*", "content/learning-paths/embedded-and-microcontrollers/zephyr*", "content/learning-paths/embedded-and-microcontrollers/context-switch-cortex-m/*"], domain: rtos}
+      - {paths: ["content/learning-paths/embedded-and-microcontrollers/uv_debug/*", "content/learning-paths/embedded-and-microcontrollers/new_debug_targets_armds/*", "content/learning-paths/embedded-and-microcontrollers/coverage_mdk/*"], domain: debug}
+      - {paths: ["content/learning-paths/embedded-and-microcontrollers/pack-migration-*", "content/learning-paths/embedded-and-microcontrollers/project-migration-*", "content/learning-paths/embedded-and-microcontrollers/uvprojx-conversion/*", "content/learning-paths/embedded-and-microcontrollers/migration/*"], domain: project}
+      - {paths: ["content/learning-paths/embedded-and-microcontrollers/trustzone_*", "content/learning-paths/embedded-and-microcontrollers/tfm/*", "content/learning-paths/embedded-and-microcontrollers/pqc_*"], domain: core}
+    url: "https://learn.arm.com/{dir}/{stem}/"
+    dir_strip: "content/"
+
+  - name: arm-install-guides
+    prefix: aig
+    repo: ArmDeveloperEcosystem/arm-learning-paths
+    dir: arm-learning-paths
+    include:
+      - content/install-guides/armclang.md
+      - content/install-guides/arm-toolchains-repository.md
+      - content/install-guides/cmsis-toolbox.md
+      - content/install-guides/keilstudio_vs.md
+      - content/install-guides/mdk.md
+      - content/install-guides/armds.md
+      - content/install-guides/llvm-embedded.md
+      - content/install-guides/mcuxpresso_vs.md
+      - content/install-guides/stm32_vs.md
+      - content/install-guides/fvps-on-macos.md
+      - content/install-guides/rust_embedded.md
+      - content/install-guides/fm_fvp/*.md
+      - content/install-guides/gcc/arm-gnu.md
+      - content/install-guides/license/*.md
+    exclude: ["*/_index.md", "*/_next-steps.md"]
+    format: hugo
+    id_from_path: true
+    license: CC-BY-SA-4.0
+    domain: project
+    url: "https://learn.arm.com/{dir}/{stem}/"
+    dir_strip: "content/"
+
+  # Arm ABI documents: the procedure call standard (stack frames, register use) and semihosting.
+  - name: arm-abi
+    prefix: abi
+    repo: ARM-software/abi-aa
+    dir: abi-aa
+    sparse: [aapcs32, semihosting]
+    include: ["aapcs32/aapcs32.rst", "semihosting/semihosting.rst"]
+    license: CC-BY-SA-4.0
+    domain: core

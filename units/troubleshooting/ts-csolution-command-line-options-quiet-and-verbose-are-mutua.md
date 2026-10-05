@@ -9,10 +9,13 @@ severity: "error"
 symptoms: ["command line options '--quiet' and '--verbose' are mutually exclusive"]
 symptom_regex: "^command line options '\\-\\-quiet' and '\\-\\-verbose' are mutually exclusive$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e81:tools/projmgr/src/ProjMgr.cpp:332"
+source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:332"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
+cause_origin: "source-analysis"
+confidence: "high"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:330-334", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:7894-7907"]
 ---
 
 ## Symptom
@@ -21,14 +24,21 @@ mode: "V"
 
 ## Cause
 
-_offen, im Review ergänzen_
+Both `--quiet`/`-q` and `--verbose`/`-v` were given on the csolution command line (for example passed through by cbuild); they contradict each other.
 
 ## Fix
 
-_offen, im Review ergänzen_
+Remove one of the two options.
 
-## Trigger im Quelltext
+## Trigger in the source
 
 ```cpp
 if (ProjMgrLogger::m_quiet && ProjMgrLogger::m_verbose) {
 ```
+
+## Evidence
+
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+
+- `tools/projmgr/src/ProjMgr.cpp:330-334`
+- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:7894-7907`

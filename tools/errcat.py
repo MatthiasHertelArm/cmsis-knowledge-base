@@ -31,6 +31,14 @@ def literal_core(template, var=r"%[A-Z0-9_]+%"):
     return max(parts, key=len) if parts else ""
 
 
+def title_text(template, var=r"%[A-Z0-9_]+%", limit=100):
+    """The message as a title: variables as '…', cut at a word after `limit` characters."""
+    t = re.sub(r"\s+", " ", re.sub(var, "…", template)).strip()
+    if len(t) > limit:
+        t = t[:limit].rsplit(" ", 1)[0] + " …"
+    return t
+
+
 def msg_table(path):
     rx = re.compile(r'\{\s*"(M\d+)",\s*\{\s*MsgLevel::LEVEL_(\w+)\s*,\s*\w+\s*,\s*((?:"(?:[^"\\]|\\.)*"\s*\\?\s*)+)\}')
     out = {}
@@ -59,7 +67,7 @@ def coded(tool, src, readme, repo, commit):
         d = doc.get(code, {})
         units.append(dict(
             id=f"ts-{tool}-{code.lower()}", tool=tool, code=code, severity=LEVELS[lvl],
-            title=f"{tool} {code}: {literal_core(text)[:70]}",
+            title=f"{tool} {code}: {title_text(text)}",
             symptoms=[code, text], symptom_regex=to_regex(text),
             cause=d.get("details", ""), fix="",
             documented=bool(d), source=f"{REPO}@{commit}:{Path(src).relative_to(repo)}",
@@ -143,7 +151,7 @@ def projmgr(repo, commit):
                 continue
             u = dict(
                 id="", tool="csolution", code="", severity="error" if m.group(1) == "Error" else "warning",
-                title=f"csolution: {literal_core(t, r'%VAR%')[:70]}",
+                title=f"csolution: {title_text(t, r'%VAR%')}",
                 symptoms=[t.replace("%VAR%", "<…>")], symptom_regex=to_regex(t, r"%VAR%"),
                 cause="", fix="", trigger_code=cond, documented=False,
                 source=f"{REPO}@{commit}:tools/projmgr/src/{f.name}:{line}", locations=[f"{f.name}:{line}"])
@@ -162,10 +170,10 @@ def write(units, out):
     for u in units:
         body = []
         body.append("## Symptom\n\n" + "\n".join(f"`{s}`" for s in u["symptoms"]))
-        body.append("## Cause\n\n" + (u["cause"] or "_offen, im Review ergänzen_"))
-        body.append("## Fix\n\n" + (u["fix"] or ("_siehe Cause_" if u["cause"] else "_offen, im Review ergänzen_")))
+        body.append("## Cause\n\n" + (u["cause"] or "_open: to be written in the review_"))
+        body.append("## Fix\n\n" + (u["fix"] or ("_see Cause_" if u["cause"] else "_open: to be written in the review_")))
         if u.get("trigger_code"):
-            body.append("## Trigger im Quelltext\n\n```cpp\n" + u["trigger_code"] + "\n```")
+            body.append("## Trigger in the source\n\n```cpp\n" + u["trigger_code"] + "\n```")
         meta = dict(id=u["id"], type="troubleshooting", domain="error-catalog", title=u["title"],
                     summary="", status="draft", tool=u["tool"], severity=u["severity"],
                     code=u["code"], symptoms=u["symptoms"], symptom_regex=u["symptom_regex"],

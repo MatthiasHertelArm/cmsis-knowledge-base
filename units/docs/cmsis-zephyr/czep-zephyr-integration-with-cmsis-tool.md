@@ -3,7 +3,7 @@ id: "czep-zephyr-integration-with-cmsis-tool"
 type: "concept"
 domain: "project"
 title: "Zephyr Integration with CMSIS-Toolbox"
-summary: "<img src=\"./images/preview.png\" alt=\"Overview of Zephyr capabilities in Keil Studio\" width=\"330\" height=\"205\" align=\"left\">"
+summary: "[](https://armkeil.blob.core.windows.net/developer/Files/videos/KeilStudio/CMSIS-Zephyr.mp4 \"Overview of Zephyr capabilities in Keil Studio\")"
 status: "draft"
 collection: "cmsis-zephyr"
 source: "Arm-Examples/CMSIS-Zephyr@ef8713c:README.md"
@@ -12,7 +12,7 @@ license: "Apache-2.0"
 mode: "V"
 ---
 
-[<img src="./images/preview.png" alt="Overview of Zephyr capabilities in Keil Studio" width="330" height="205" align="left">](https://armkeil.blob.core.windows.net/developer/Files/videos/KeilStudio/CMSIS-Zephyr.mp4 "Overview of Zephyr capabilities in Keil Studio")
+[](https://armkeil.blob.core.windows.net/developer/Files/videos/KeilStudio/CMSIS-Zephyr.mp4 "Overview of Zephyr capabilities in Keil Studio")
 
 This repository contains two basic Zephyr examples configured in the [`zephyr.csolution.yml`](https://github.com/Arm-Examples/CMSIS-Zephyr/blob/ef8713c/./zephyr.csolution.yml) file for multiple development boards. It uses the GCC toolchain, [Keil Studio](https://marketplace.visualstudio.com/items?itemName=Arm.keil-studio-pack), and Zephyr's `west` build system to generate the application image.
 

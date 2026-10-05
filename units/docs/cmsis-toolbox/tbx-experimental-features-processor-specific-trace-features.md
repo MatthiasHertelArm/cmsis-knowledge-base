@@ -25,11 +25,20 @@ Processor | ITM/DWT Comps *reduced* | ITM/DWT Comps *mid* | ITM/DWT Comps *full*
 Cortex-M0 | `0-2` comps; no trace   | -                   | -                    | -   | -   | -
 Cortex-M0+ | `0-2` comps; no trace | - | - | - | - | Optional; start/stop using `TSTART`/`TSTOP` integration inputs or software; integration inputs can be driven by `0-2` MTB_DWT comparators; watermark autostop
 Cortex-M1 | `1` comp; no trace | - | - | `2` comps; no trace | - | - 
-Cortex-M3 | `1` comp | - | `4` comps | - | Optional ETMv3.4/v3.5 *instruction trace*<br>Up to `4` DWT comparator inputs; `1` reduced-function counter in newer revisions; `2` external inputs; start/stop logic; read-only `ETMSYNCFR` fixed at `1024` | -
-Cortex-M4 | `1` comp | - | `4` comps | - | Optional ETMv3.5 *instruction trace*<br>Up to `4` DWT comparator inputs; `1` reduced-function counter; `2` external inputs; start/stop logic; read-only `ETMSYNCFR` fixed at `1024` | -
-Cortex-M7 | `2` comps | - | `4` comps | - | Optional ETMv4 *instruction trace* or *instruction and data trace*;<br>*instruction-only* resources: `4` DWT inputs, `1` reduced-function counter, `2` resource-selector pairs, `1` single-shot control, read-only `TRCSYNCPR`;<br>*instruction+data* resources: `4` DWT inputs, `2` counters, `8` resource-selector pairs, `4` address-comparator pairs, `2` data-value comparators, `1` four-state sequencer, read/write `TRCSYNCPR` | -
-Cortex-M23 | `2` comps; no trace | - | - | `4` comps; no trace | - | Optional ETMv3.5 *instruction trace*; mutually exclusive with MTB<br>`4` DWT comparator inputs; `1` reduced-function counter; `2` external inputs; start/stop logic; read-only `ETMSYNCFR` fixed at `1024` Optional; mutually exclusive with ETM; start/stop using `2` or `4` DWT inputs, `TSTART`/`TSTOP` inputs, or software; watermark autostop
-Cortex-M33 | `2` comps | - | `4` comps | - | Optional ETMv4 *instruction trace*<br>`2` or `4` DWT inputs; `1` reduced-function counter; `2` resource-selector pairs; `1` single-shot control; read-only `TRCSYNCPR` | Optional; start/stop using `2` or `4` DWT inputs, CTI inputs, or software; watermark autostop
-Cortex-M52 | `2` comps | `4` comps | `8` comps | Debug-set-dependent | Optional ETMv4.5 *instruction trace*<br>`2`, `4`, or `8` DWT inputs; `1` reduced-function counter; resource selectors; `1` single-shot control; read-only `TRCSYNCPR` | -
-Cortex-M55 | `2` comps | `4` comps | `8` comps | Debug-set-dependent | Optional ETMv4.5 *instruction trace*<br>`2`, `4`, or `8` DWT inputs; `1` reduced-function counter; `2` resource-selector pairs; `1` single-shot control; `4` external-input selectors; `2` external outputs; read-only `TRCSYNCPR` | -
-Cortex-M85 | `4` comps | - | `8` comps | Debug-set-dependent | Optional ETMv4.5 *instruction trace*<br>`4` or `8` DWT inputs; `1` reduced-function counter; `2` resource-selector pairs; `1` single-shot control; `4` external-input selectors; `2` external outputs; read-only `TRCSYNCPR` | -
+Cortex-M3 | `1` comp | - | `4` comps | - | Optional ETMv3.4/v3.5 *instruction trace*
+Up to `4` DWT comparator inputs; `1` reduced-function counter in newer revisions; `2` external inputs; start/stop logic; read-only `ETMSYNCFR` fixed at `1024` | -
+Cortex-M4 | `1` comp | - | `4` comps | - | Optional ETMv3.5 *instruction trace*
+Up to `4` DWT comparator inputs; `1` reduced-function counter; `2` external inputs; start/stop logic; read-only `ETMSYNCFR` fixed at `1024` | -
+Cortex-M7 | `2` comps | - | `4` comps | - | Optional ETMv4 *instruction trace* or *instruction and data trace*;
+*instruction-only* resources: `4` DWT inputs, `1` reduced-function counter, `2` resource-selector pairs, `1` single-shot control, read-only `TRCSYNCPR`;
+*instruction+data* resources: `4` DWT inputs, `2` counters, `8` resource-selector pairs, `4` address-comparator pairs, `2` data-value comparators, `1` four-state sequencer, read/write `TRCSYNCPR` | -
+Cortex-M23 | `2` comps; no trace | - | - | `4` comps; no trace | - | Optional ETMv3.5 *instruction trace*; mutually exclusive with MTB
+`4` DWT comparator inputs; `1` reduced-function counter; `2` external inputs; start/stop logic; read-only `ETMSYNCFR` fixed at `1024` Optional; mutually exclusive with ETM; start/stop using `2` or `4` DWT inputs, `TSTART`/`TSTOP` inputs, or software; watermark autostop
+Cortex-M33 | `2` comps | - | `4` comps | - | Optional ETMv4 *instruction trace*
+`2` or `4` DWT inputs; `1` reduced-function counter; `2` resource-selector pairs; `1` single-shot control; read-only `TRCSYNCPR` | Optional; start/stop using `2` or `4` DWT inputs, CTI inputs, or software; watermark autostop
+Cortex-M52 | `2` comps | `4` comps | `8` comps | Debug-set-dependent | Optional ETMv4.5 *instruction trace*
+`2`, `4`, or `8` DWT inputs; `1` reduced-function counter; resource selectors; `1` single-shot control; read-only `TRCSYNCPR` | -
+Cortex-M55 | `2` comps | `4` comps | `8` comps | Debug-set-dependent | Optional ETMv4.5 *instruction trace*
+`2`, `4`, or `8` DWT inputs; `1` reduced-function counter; `2` resource-selector pairs; `1` single-shot control; `4` external-input selectors; `2` external outputs; read-only `TRCSYNCPR` | -
+Cortex-M85 | `4` comps | - | `8` comps | Debug-set-dependent | Optional ETMv4.5 *instruction trace*
+`4` or `8` DWT inputs; `1` reduced-function counter; `2` resource-selector pairs; `1` single-shot control; `4` external-input selectors; `2` external outputs; read-only `TRCSYNCPR` | -

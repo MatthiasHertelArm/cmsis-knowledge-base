@@ -49,115 +49,23 @@ identical, the one on the lower level takes precedence. Overlap of Flash informa
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    family | 
-    element_family | 
-  
-
-  | 
-    subFamily | 
-    element_subFamily | 
-  
-
-  | 
-    device | 
-    element_device | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    name | 
-    Name of the specified flash device. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    start | 
-    Base address of the specified flash device as mapped into target memory system. | 
-    NonNegativeInteger | 
-    required | 
-  
-
-  | 
-    pagesize | 
-    Programming page size. | 
-    NonNegativeInteger | 
-    required | 
-  
-
-  | 
-    blankval | 
-    Expected memory value for unprogrammed address ranges (64-bit value). 
-    The access size used to read back programmed memory defines the number of least significant bytes of this value that are compared.
-    Defaults to `0xFFFFFFFFFFFFFFFF` if not specified. | 
-    NonNegativeInteger | 
-    optional | 
-  
-
-  | 
-    filler | 
-    Value that a debugger uses to fill the remainder of a programming page (64-bit value).
-    The access size used in FlashWriteBuffer defines the number of least significant bytes of this value to write.
-    Defaults to `0xFFFFFFFFFFFFFFFF` if not specified. | 
-    NonNegativeInteger | 
-    optional | 
-  
-
-  | 
-    ptime | 
-    Timeout in milliseconds for programming a page. Defaults to `100` if not specified. | 
-    xs:unsignedInt | 
-    optional | 
-  
-
-  | 
-    etime | 
-    Timeout in milliseconds for erasing a sector. Defaults to `300` if not specified. | 
-    xs:unsignedInt | 
-    optional | 
-  
-
-  | 
-    Pname | 
-    Processor identifier. This attribute **is mandatory for devices that embed multiple processors that require different algorithms**.
-        Only alphabetical characters, decimal digits, '-' and '_' are allowed.  | 
-    RestrictedString | 
-    optional | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    block | 
-    element_flashblock | 
-    FlashInfoBlockType | 
-    0..* | 
-  
-
-  | 
-    gap | 
-    element_flashgap | 
-    FlashInfoGapType | 
-    0..* | 
-  
-
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| family | element_family |  |  |
+| subFamily | element_subFamily |  |  |
+| device | element_device |  |  |
+| Attributes | Description | Type | Use |
+| name | Name of the specified flash device. | xs:string | required |
+| start | Base address of the specified flash device as mapped into target memory system. | NonNegativeInteger | required |
+| pagesize | Programming page size. | NonNegativeInteger | required |
+| blankval | Expected memory value for unprogrammed address ranges (64-bit value). The access size used to read back programmed memory defines the number of least significant bytes of this value that are compared. Defaults to `0xFFFFFFFFFFFFFFFF` if not specified. | NonNegativeInteger | optional |
+| filler | Value that a debugger uses to fill the remainder of a programming page (64-bit value). The access size used in FlashWriteBuffer defines the number of least significant bytes of this value to write. Defaults to `0xFFFFFFFFFFFFFFFF` if not specified. | NonNegativeInteger | optional |
+| ptime | Timeout in milliseconds for programming a page. Defaults to `100` if not specified. | xs:unsignedInt | optional |
+| etime | Timeout in milliseconds for erasing a sector. Defaults to `300` if not specified. | xs:unsignedInt | optional |
+| Pname | Processor identifier. This attribute **is mandatory for devices that embed multiple processors that require different algorithms**. Only alphabetical characters, decimal digits, '-' and '_' are allowed. | RestrictedString | optional |
+| Child Elements | Description | Type | Occurrence |
+| block | element_flashblock | FlashInfoBlockType | 0..* |
+| gap | element_flashgap | FlashInfoGapType | 0..* |
 
 
 

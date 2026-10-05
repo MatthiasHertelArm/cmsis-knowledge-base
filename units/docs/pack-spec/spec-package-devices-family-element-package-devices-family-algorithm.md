@@ -44,104 +44,20 @@ algorithms must have a different name.
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    family | 
-    element_family | 
-  
-
-  | 
-    subFamily | 
-    element_subFamily | 
-  
-
-  | 
-    device | 
-    element_device | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    Pname | 
-    Processor identifier. This attribute **is mandatory for devices that embed multiple processors that require different algorithms**.
-        Only alphabetical characters, decimal digits, '-' and '_' are allowed.  | 
-    RestrictedString | 
-    optional | 
-  
-
-  | 
-    name | 
-    Flash Programming Algorithm file including the path, which is relative to the root folder of the software pack. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    start | 
-    Base address for the Flash programming algorithm. | 
-    NonNegativeInteger | 
-    required | 
-  
-
-  | 
-    size | 
-    Size covered by the Flash programming algorithm. End address = start + size - 1 | 
-    NonNegativeInteger | 
-    required | 
-  
-
-   | 
-    RAMstart | 
-    Base address for the RAM where the Flash programming algorithm will be executed from. If
-    specified, the memory element does not require a `default` attribute.
-    If not specified, a memory element must be defined with the "rwx" access
-    permission and default="1".  | 
-    NonNegativeInteger | 
-    optional | 
-  
-
-  | 
-    RAMsize | 
-    Maximum size of RAM available for the execution of the Flash programming algorithm. 
-    End address = start + size - 1 is used for the Stack. If specified, the element_memory 
-    "memory" element does not require a `default` attribute. If not specified, a memory
-    element must be defined with the "rwx" access permission and default="1".  | 
-    NonNegativeInteger | 
-    optional | 
-  
-
-  | 
-    default | 
-    If `true`, then this is the default Flash programming algorithm that gets configured
-    in a project. If not specified or set to `false`, then the Flash programming algorithm can
-    be configured on a lower level. However, the Flash programming algorithm of a project can be
-    changed manually at any time during development.
-     | 
-    xs:boolean | 
-    optional | 
-  
-
-    | 
-    style | 
-    [Version 1.4.0] Today, different toolchains support different styles of incompatible flash
-    programming algorithms. The attribute specifies the style of the specified flash programming 
-    algorithm. For backward compatibility the default value is `Keil`. The aim is to converge to
-    the _CMSIS_ style.
-     | 
-    AlgorithmStyleEnum | 
-    optional | 
-  
-
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| family | element_family |  |  |
+| subFamily | element_subFamily |  |  |
+| device | element_device |  |  |
+| Attributes | Description | Type | Use |
+| Pname | Processor identifier. This attribute **is mandatory for devices that embed multiple processors that require different algorithms**. Only alphabetical characters, decimal digits, '-' and '_' are allowed. | RestrictedString | optional |
+| name | Flash Programming Algorithm file including the path, which is relative to the root folder of the software pack. | xs:string | required |
+| start | Base address for the Flash programming algorithm. | NonNegativeInteger | required |
+| size | Size covered by the Flash programming algorithm. End address = start + size - 1 | NonNegativeInteger | required |
+| RAMstart | Base address for the RAM where the Flash programming algorithm will be executed from. If specified, the memory element does not require a `default` attribute. If not specified, a memory element must be defined with the "rwx" access permission and default="1". | NonNegativeInteger | optional |
+| RAMsize | Maximum size of RAM available for the execution of the Flash programming algorithm. End address = start + size - 1 is used for the Stack. If specified, the element_memory "memory" element does not require a `default` attribute. If not specified, a memory element must be defined with the "rwx" access permission and default="1". | NonNegativeInteger | optional |
+| default | If `true`, then this is the default Flash programming algorithm that gets configured in a project. If not specified or set to `false`, then the Flash programming algorithm can be configured on a lower level. However, the Flash programming algorithm of a project can be changed manually at any time during development. | xs:boolean | optional |
+| style | [Version 1.4.0] Today, different toolchains support different styles of incompatible flash programming algorithms. The attribute specifies the style of the specified flash programming algorithm. For backward compatibility the default value is `Keil`. The aim is to converge to the CMSIS style. | AlgorithmStyleEnum | optional |
 
 
 

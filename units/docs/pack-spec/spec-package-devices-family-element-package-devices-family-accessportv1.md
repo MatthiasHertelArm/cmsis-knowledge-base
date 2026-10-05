@@ -3,7 +3,7 @@ id: "spec-package-devices-family-element-package-devices-family-accessportv1"
 type: "concept"
 domain: "pack"
 title: "/package/devices/family element: /package/devices/family/.../accessportV1"
-summary: "Describes a CoreSight access port (APv1) of the device and its selection parameters. The element can occur on various levels. Use unique ID values for the attribute apid to distinguish multiple accessportV1 and accessportV2 elements in later references."
+summary: "Describes a CoreSight access port (APv1) of the device and its selection parameters. The element can occur on various levels. Use unique ID values for the attribute _apid to distinguish multiple accessportV1 and accessportV2 elements in later references."
 status: "draft"
 collection: "pack-spec"
 source: "Open-CMSIS-Pack/Open-CMSIS-Pack-Spec@b3f8fcf:doxygen/src/devices_schema.txt"
@@ -51,57 +51,12 @@ Pairs of **__dp** and **__ap** values must not be used to reference an access po
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    family | 
-    element_family | 
-  
-
-  | 
-    subFamily | 
-    element_subFamily | 
-  
-
-  | 
-    device | 
-    element_device | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    __apid | 
-    
-      Unique ID of this element with respect to other access port elements.
-      It must be used consistently in references within the scope of the parent section.
-     | 
-    xs:unsignedInt | 
-    required | 
-  
-
-  | 
-    __dp | 
-    
-      Unique ID of the **debugport** used to access this access port.
-      Optional if exactly one **debugport** exists.
-     | 
-    xs:unsignedInt | 
-    optional | 
-  
-
-  | 
-    index | 
-    
-      The index to select this access port for a target access.
-     | 
-    xs:unsignedInt | 
-    required |
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| family | element_family |  |  |
+| subFamily | element_subFamily |  |  |
+| device | element_device |  |  |
+| Attributes | Description | Type | Use |
+| __apid | Unique ID of this element with respect to other access port elements. It must be used consistently in references within the scope of the parent section. | xs:unsignedInt | required |
+| __dp | Unique ID of the **debugport** used to access this access port. Optional if exactly one **debugport** exists. | xs:unsignedInt | optional |
+| index | The index to select this access port for a target access. | xs:unsignedInt | required |

@@ -12,286 +12,44 @@ license: "Apache-2.0"
 mode: "V"
 ---
 
-| 
-    Parent Element | 
-    Element Chain | 
-  
-
-  | 
-    root | 
-    Document root | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    schemaVersion | 
-    CMSIS-PDSC schema version used for describing the software pack (for example, `"1.2"`). The version format is described in Version Type. | 
-    VersionType | 
-    required | 
-  
-
-  | 
-    xmlns:xs | 
-    Is set to: `"http://www.w3.org/2001/XMLSchema-instance"` to indicate compliance to the XML format. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    xs:noNamespaceSchemaLocation | 
-    Path and file name of the PACK.xsd Schema. For example, `"PACK.xsd"`. | 
-    xs:string | 
-    required | 
-  
-
-  | 
-    Dcore | 
-    Pack only used for a specific processor core.  Use predefined values as listed in the table Device Cores. Note: do not apply for packs that define a device | 
-    DcoreEnum | 
-    optional | 
-  
-
-  | 
-    Dvendor | 
-    Pack only used for a specific silicon vendor of the device. Use predefined values as listed in the table Device Vendor.  Note: do not apply for packs that define a device | 
-    DeviceVendorEnum | 
-    optional | 
-  
-
-  | 
-    Dname***** | 
-    Pack only used for a specific name of the device. Note: do not apply for packs that define a device | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    Tcompiler | 
-    Pack only used for a specific compiler toolchain (ARMCC, GCC, IAR, Tasking, ...). Use predefined values as listed in table Compiler Types. | 
-    CompilerEnumType | 
-    optional | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  
-  | 
-    name | 
-    Name of the software pack. Could be displayed by an installer. | 
-    xs:string  | 
-    1..1  | 
-  
-
-  
-  | 
-    vendor | 
-    Name of the supplier or vendor of the software pack. | 
-    xs:string  | 
-    1..1  | 
-  
-
-  
-  | 
-    description | 
-    Brief description of the software pack (maximum 256 characters, recommended 128 characters). | 
-    BriefDescType | 
-    1..1  | 
-  
-
-  
-  | 
-    `<ECCN>` | 
-    Section listing Export Control Classification Numbers (ECCN) for EU and US. | 
-    ECCNType | 
-    0..1  | 
-  
-
-  
-  | 
-    url | 
-    URL
-        (only HTTPS allowed)
-        or file URI location
-        of the software pack. The URL can be used by installers for downloading,
-        updating, or checking versions. If left empty, the Pack cannot be updated automatically from a server location. | 
-    xs:anyURI  | 
-    1..1  | 
-  
-
-  
-  | 
-    supportContact | 
-    HTTPS URL or e-mail address for users to get support for the content of the Pack | 
-    xs:string | 
-    0..1  | 
-  
-
-  
-  | 
-    license | 
-    Path to a license document. | 
-    xs:string  | 
-    0..1  | 
-  
-
-  
-  | 
-    licenseSets | 
-    Section listing one or more collections of license files which can be associated with one, multiple or all components | 
-    LicenseSetsType | 
-    0..1  | 
-  
-
-  | 
-    dominate | 
-    A pack that has this element overrules other packs that provide identical device, API, or component definitions. | 
-    DominateType | 
-    0..1 | 
-  
-
-  | 
-    requirements | 
-    Specifies other CMSIS-Packs, programming languages and compiler as well as their respective version
-        or version range required by the components in this pack.
-     | 
-    RequirementsType | 
-    0..1  | 
-   | 
-  | 
-    create | 
-    !!! Deprecated, use cprj format instead !!! Use only when creating CMSIS software projects. | 
-    CreateType | 
-    0..1  | 
-  
-
-  | 
-    repository | 
-    HTTPS URL of a public repository the pack originates from. | 
-    xs:anyURI | 
-    0..1  | 
-  
-
-
-  | 
-    releases | 
-    Version release history with brief information about a software pack. | 
-    ReleasesGroup | 
-    1..1  | 
-  
-
-  
-  | 
-    changelogs | 
-    Section describing one or more changelog files which can be associated with one, multiple or all components and apis in the pack (default="true") | 
-    ChangelogsType | 
-    0..1  | 
-  
-
-  | 
-    keywords | 
-    Defines keywords that might be used to find a software pack. Keywords may be also exported to web page to provide information for search engines, such as Google. | 
-    group | 
-    0..1  | 
-  
-
-  | 
-    environments | 
-    Grouping element for environments information. Each inner environment element may be used to provide tool-specific information pertaining to the package as a whole. | 
-    group | 
-    0..1 | 
-  
-
-  | 
-    generators | 
-    Specifies generator tools that have been used to create components. | 
-    GeneratorsType | 
-    0..1  | 
-  
-
-  | 
-    devices | 
-    Defines the device family, the devices, and optionally variants (such as boards). | 
-    group | 
-    0..1  | 
-  
-
-  | 
-    boards | 
-    Defines the development board support package. | 
-    BoardsType | 
-    0..1  | 
-  
-
-  | 
-    parts | 
-    Defines the parts support package. | 
-    PartsType | 
-    0..1  | 
-  
-
-  | 
-    taxonomy  | 
-    Contains the description for a component class or for the combination between a component class and component group.
-     | 
-    TaxonomyType | 
-    0..1  | 
-  
-
-  | 
-    element_part-taxonomy "part-taxonomy"  | 
-    Contains the description for a part class or for the combination between a part class and part group.
-     | 
-    PartTaxonomyType | 
-    0..1  | 
-  
-
-  | 
-    apis | 
-    Defines the API (Application Programming Interfaces) specifications contained in the software pack. | 
-    ApisType | 
-    0..1  | 
-  
-
-  | 
-    conditions | 
-    Is a group that contains dependency definitions used within the Pack.
-    These rules can describe dependencies on various levels: device attributes, components, or tools.
-    Conditions are referenced by components and files. | 
-    ConditionsType | 
-    0..1  | 
-  
-
-  | 
-    examples | 
-    Lists the examples that are included in the Pack. | 
-    group | 
-    0..1  | 
-  
-
-  | 
-    csolution | 
-    Lists the clayer description files that are included in the Pack. | 
-    group | 
-    0..1  | 
-  
-
-  | 
-    components | 
-    Lists the software components that are included in the Pack. | 
-    group | 
-    0..1  | 
-  
+| Parent Element | Element Chain |  |  |  |  |  |  |
+|---|---|---|---|---|---|---|---|
+| root | Document root |  |  |  |  |  |  |
+| Attributes | Description | Type | Use |  |  |  |  |
+| schemaVersion | CMSIS-PDSC schema version used for describing the software pack (for example, `"1.2"`). The version format is described in Version Type. | VersionType | required |  |  |  |  |
+| xmlns:xs | Is set to: `"http://www.w3.org/2001/XMLSchema-instance"` to indicate compliance to the XML format. | xs:string | required |  |  |  |  |
+| xs:noNamespaceSchemaLocation | Path and file name of the PACK.xsd Schema. For example, `"PACK.xsd"`. | xs:string | required |  |  |  |  |
+| Dcore | Pack only used for a specific processor core. Use predefined values as listed in the table Device Cores. Note: do not apply for packs that define a device | DcoreEnum | optional |  |  |  |  |
+| Dvendor | Pack only used for a specific silicon vendor of the device. Use predefined values as listed in the table Device Vendor. Note: do not apply for packs that define a device | DeviceVendorEnum | optional |  |  |  |  |
+| Dname***** | Pack only used for a specific name of the device. Note: do not apply for packs that define a device | xs:string | optional |  |  |  |  |
+| Tcompiler | Pack only used for a specific compiler toolchain (ARMCC, GCC, IAR, Tasking, ...). Use predefined values as listed in table Compiler Types. | CompilerEnumType | optional |  |  |  |  |
+| Child Elements | Description | Type | Occurrence |  |  |  |  |
+| name | Name of the software pack. Could be displayed by an installer. | xs:string | 1..1 |  |  |  |  |
+| vendor | Name of the supplier or vendor of the software pack. | xs:string | 1..1 |  |  |  |  |
+| description | Brief description of the software pack (maximum 256 characters, recommended 128 characters). | BriefDescType | 1..1 |  |  |  |  |
+| `<ECCN>` | Section listing Export Control Classification Numbers (ECCN) for EU and US. | ECCNType | 0..1 |  |  |  |  |
+| url | [URL](https://en.wikipedia.org/wiki/Uniform_resource_locator) (only [HTTPS](https://en.wikipedia.org/wiki/HTTPS) allowed) or [file URI](https://en.wikipedia.org/wiki/File_URI_scheme) location of the software pack. The URL can be used by installers for downloading, updating, or checking versions. If left empty, the Pack cannot be updated automatically from a server location. | xs:anyURI | 1..1 |  |  |  |  |
+| supportContact | HTTPS URL or e-mail address for users to get support for the content of the Pack | xs:string | 0..1 |  |  |  |  |
+| license | Path to a license document. | xs:string | 0..1 |  |  |  |  |
+| licenseSets | Section listing one or more collections of license files which can be associated with one, multiple or all components | LicenseSetsType | 0..1 |  |  |  |  |
+| dominate | A pack that has this element overrules other packs that provide identical device, API, or component definitions. | DominateType | 0..1 |  |  |  |  |
+| requirements | Specifies other CMSIS-Packs, programming languages and compiler as well as their respective version or version range required by the components in this pack. | RequirementsType | 0..1 | create | !!! Deprecated, use cprj format instead !!! Use only when creating CMSIS software projects. | CreateType | 0..1 |
+| repository | HTTPS URL of a public repository the pack originates from. | xs:anyURI | 0..1 |  |  |  |  |
+| releases | Version release history with brief information about a software pack. | ReleasesGroup | 1..1 |  |  |  |  |
+| changelogs | Section describing one or more changelog files which can be associated with one, multiple or all components and apis in the pack (default="true") | ChangelogsType | 0..1 |  |  |  |  |
+| keywords | Defines keywords that might be used to find a software pack. Keywords may be also exported to web page to provide information for search engines, such as Google. | group | 0..1 |  |  |  |  |
+| environments | Grouping element for environments information. Each inner environment element may be used to provide tool-specific information pertaining to the package as a whole. | group | 0..1 |  |  |  |  |
+| generators | Specifies generator tools that have been used to create components. | GeneratorsType | 0..1 |  |  |  |  |
+| devices | Defines the device family, the devices, and optionally variants (such as boards). | group | 0..1 |  |  |  |  |
+| boards | Defines the development board support package. | BoardsType | 0..1 |  |  |  |  |
+| parts | Defines the parts support package. | PartsType | 0..1 |  |  |  |  |
+| taxonomy | Contains the description for a component class or for the combination between a component class and component group. | TaxonomyType | 0..1 |  |  |  |  |
+| element_part-taxonomy "part-taxonomy" | Contains the description for a part class or for the combination between a part class and part group. | PartTaxonomyType | 0..1 |  |  |  |  |
+| apis | Defines the API (Application Programming Interfaces) specifications contained in the software pack. | ApisType | 0..1 |  |  |  |  |
+| conditions | Is a group that contains dependency definitions used within the Pack. These rules can describe dependencies on various levels: device attributes, components, or tools. Conditions are referenced by components and files. | ConditionsType | 0..1 |  |  |  |  |
+| examples | Lists the examples that are included in the Pack. | group | 0..1 |  |  |  |  |
+| csolution | Lists the clayer description files that are included in the Pack. | group | 0..1 |  |  |  |  |
+| components | Lists the software components that are included in the Pack. | group | 0..1 |  |  |  |  |
 
 
 

@@ -19,19 +19,20 @@
   "evidence": [
    "tools/projmgr/src/ProjMgrWorker.cpp:5224",
    "tools/projmgr/src/ProjMgrWorker.cpp:5230",
-   "tools/projmgr/src/ProjMgr.cpp:179",
-   "tools/projmgr/src/ProjMgr.cpp:183",
+   "tools/projmgr/src/ProjMgr.cpp:175",
+   "tools/projmgr/src/ProjMgr.cpp:168",
    "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7672"
   ],
   "confidence": "high"
  },
  {
   "id": "ts-csolution-improper-quotes",
-  "cause": "An entry under `define:` (or `define-asm:`) has a value with misplaced double quotes; `<…>` is that value. csolution accepts a value with no `\"` at all, or one quoted completely: exactly two quotes, either as `\"...\"` at both ends or as escaped `\\\"...\\\"` at both ends. A quote in the middle, a missing closing quote or a mix of `\"` and `\\\"` is rejected. Quotes that are YAML syntax (`- KEY: \"value\"`) are removed by YAML and do not count.",
+  "cause": "An entry under `define:`, `define-asm:`, `west-defs:` or `linker:` - `define:` has a value with misplaced double quotes; `<…>` is that value. csolution accepts a value with no `\"` at all, or one quoted completely: exactly two quotes, either as `\"...\"` at both ends or as escaped `\\\"...\\\"` at both ends. A quote in the middle, a missing closing quote or a mix of `\"` and `\\\"` is rejected. Quotes that are YAML syntax (`- KEY: \"value\"`) are removed by YAML and do not count.",
   "fix": "Quote the whole value or not at all. To pass a C string literal write the escaped form, e.g. `- KEY3: \\\"valid\\\"` or `- \\\"Test 3\\\"`; for a plain token write `- KEY: value`.",
   "evidence": [
    "tools/projmgr/src/ProjMgrYamlParser.cpp:420",
    "tools/projmgr/src/ProjMgrYamlParser.cpp:449",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:1073",
    "tools/projmgr/test/data/TestSolution/test_invalid_defines.csolution.yml:19",
    "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7407"
   ],
@@ -73,7 +74,7 @@
    "tools/projmgr/src/ProjMgrWorker.cpp:2462",
    "tools/projmgr/src/ProjMgrWorker.cpp:2355",
    "tools/projmgr/src/ProjMgrUtils.cpp:199",
-   "tools/projmgr/templates/gcc_linker_script.ld.src",
+   "tools/projmgr/templates/gcc_linker_script.ld.src:1",
    "tools/projmgr/test/src/ProjMgrWorkerUnitTests.cpp:1549"
   ],
   "confidence": "high"
@@ -92,10 +93,11 @@
  {
   "id": "ts-csolution-list-args-was-not-specified",
   "cause": "`csolution list` was run without saying what to list.",
-  "fix": "Add the subject after `list`, e.g. `csolution list packs`, `csolution list devices`, `csolution list components my.csolution.yml` or `csolution list contexts my.csolution.yml`; `csolution list -h` shows the choices.",
+  "fix": "Add the subject after `list`, e.g. `csolution list packs`, `csolution list devices`, `csolution list components my.csolution.yml` or `csolution list contexts my.csolution.yml`; `csolution --help` lists the choices.",
   "evidence": [
    "tools/projmgr/src/ProjMgr.cpp:414",
-   "tools/projmgr/src/ProjMgr.cpp:420"
+   "tools/projmgr/src/ProjMgr.cpp:420",
+   "tools/projmgr/src/ProjMgr.cpp:26"
   ],
   "confidence": "medium"
  },
@@ -117,11 +119,10 @@
   "fix": "Close the access sequence, e.g. `$OutDir(project)$` or `$SolutionDir()$`, or remove the stray `$`.",
   "evidence": [
    "tools/projmgr/src/ProjMgrWorker.cpp:3720",
-   "libs/rteutils/src/RteUtils.cpp:600",
-   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:8025"
+   "libs/rteutils/src/RteUtils.cpp:600"
   ],
   "confidence": "medium",
-  "note": "The test at ProjMgrUnitTests.cpp:8025 hits this path for mlops image paths but does not check the message text."
+  "note": "No test produces this message; the MLOps test commented as 'malformed access sequence' (ProjMgrUnitTests.cpp:8025) uses `$BadVar$`, which is closed and leads to 'unknown access sequence' instead."
  },
  {
   "id": "ts-csolution-manifest-file-does-not-exist",
@@ -142,7 +143,7 @@
   "evidence": [
    "tools/projmgr/src/ProjMgrWorker.cpp:1347",
    "tools/projmgr/src/ProjMgrWorker.cpp:774",
-   "tools/projmgr/src/ProjMgrWorker.cpp:3062",
+   "tools/projmgr/src/ProjMgrWorker.cpp:3065",
    "tools/projmgr/test/src/ProjMgrUnitTests.cpp:3098"
   ],
   "confidence": "high"
@@ -175,8 +176,8 @@
   "cause": "`mlops:` - `hardware:` or `simulator:` - `target:` selects a target set whose `images:` list has no `project-context:` that names a project of the solution, so there is no context to build or run for that target. `<…>` is the target. Example: `images:` - `project-context: wrong_context`.",
   "fix": "In that target set add or correct an `images:` entry so that `project-context:` names a project from `projects:` in the csolution.yml, e.g. `- project-context: core0`.",
   "evidence": [
-   "tools/projmgr/src/ProjMgrMlops.cpp:166",
-   "tools/projmgr/src/ProjMgrMlops.cpp:198",
+   "tools/projmgr/src/ProjMgrMlops.cpp:170",
+   "tools/projmgr/src/ProjMgrMlops.cpp:201",
    "tools/projmgr/test/data/MLOps/failure3.csolution.yml:6",
    "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7991"
   ],
@@ -190,6 +191,592 @@
    "tools/projmgr/src/ProjMgrMlops.cpp:25",
    "tools/projmgr/src/ProjMgrMlops.cpp:76",
    "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7989"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-mlops-npu-macs-value-does-not-match-dfp-device-i",
+  "cause": "`mlops:` - `npu:` - `macs:` in the csolution.yml (possibly combined with `npu: type:`) names a MAC count that no NPU of the selected device offers. csolution compares it with the `<feature type=\"NPU\">` entries the DFP declares for the processors of the MLOps contexts; a type and a MAC count that each exist but not on the same NPU also trigger it. The value is still used for the Vela options.",
+  "fix": "Set `macs:` to a value the device supports, or leave `npu:` out so that csolution takes type and MACs of the first NPU in the DFP. `csolution list npus my.csolution.yml` shows the NPUs and MAC counts per device.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrMlops.cpp:286",
+   "tools/projmgr/src/ProjMgrMlops.cpp:253",
+   "tools/projmgr/src/ProjMgrWorker.cpp:6485",
+   "tools/projmgr/test/data/MLOps/npu_mismatch.csolution.yml:8",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7950"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-mlops-npu-type-value-does-not-match-dfp-device-i",
+  "cause": "`mlops:` - `npu:` - `type:` in the csolution.yml names an NPU type (e.g. Ethos-U85) that the DFP does not declare as an NPU feature for the processors of the MLOps contexts. The comparison is exact text. The value is still used for the Vela options.",
+  "fix": "Write the NPU type exactly as the DFP declares it, or remove `type:` so that csolution takes it from the DFP. `csolution list npus my.csolution.yml` shows the types per device.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrMlops.cpp:277",
+   "tools/projmgr/src/ProjMgrWorker.cpp:6485",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7958"
+  ],
+  "confidence": "medium",
+  "note": "The tests check that this warning is absent in the mismatch and no-NPU cases; none provokes it."
+ },
+ {
+  "id": "ts-csolution-more-than-one-valid-serialwire-element-found",
+  "cause": "The device description in the DFP has more than one `<serialwire>` element in its `<trace>` sections that apply to the whole device (trace elements with a Pname attribute are ignored). csolution writes only one serial-wire trace sink into the cbuild-run.yml. It is a flaw of the pack, not of the project.",
+  "fix": "Nothing to change in the project; the run and debug files are still written. Report the duplicate `<serialwire>` to the DFP vendor or update to a DFP version that fixes it.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrRunDebug.cpp:575",
+   "tools/projmgr/src/ProjMgrRunDebug.cpp:604",
+   "test/packs/ARM/RteTest_DFP/0.2.0/ARM.RteTest_DFP.pdsc:229",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7165"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-multiple-cdefault-files-were-found",
+  "cause": "The csolution.yml has `cdefault:`, and one of the folders csolution searches for the cdefault file (the solution folder first, then the compiler root, i.e. CMSIS_COMPILER_ROOT or the toolbox's `etc` folder) contains both `cdefault.yml` and `cdefault.yaml`. The message's location is that folder.",
+  "fix": "Keep only one of `cdefault.yml` and `cdefault.yaml` in that folder.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:1154",
+   "tools/projmgr/src/ProjMgr.cpp:496",
+   "libs/rtefsutils/src/RteFsUtils.cpp:809"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-no-board-was-found-with-filter",
+  "cause": "`csolution list boards -f <words>` found boards, but none whose line (`Vendor::Board[:Revision] (Vendor::Pack@version)`) contains all the filter words; `<…>` is the filter. Matching is case-insensitive substring matching, and every word must match.",
+  "fix": "Use fewer or shorter filter words, e.g. `-f STM32` instead of a full board name, or run without `-f` to see the full list. Without a csolution.yml the list covers all installed packs; with one, only the packs the solution loads.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:4301",
+   "libs/rteutils/src/RteUtils.cpp:616",
+   "tools/projmgr/src/ProjMgr.cpp:285"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-no-compatible-software-layer-found-review-requir",
+  "cause": "`csolution list layers` could not complete layer discovery for the context named with the message. Mostly no combination of clayer.yml files (from the loaded packs or from `-L`/`--clayer-path`) provides the `connections:` that the project and its layers consume; the lines before it list the connection checks. Earlier failures for the context (pack loading, a `-L` path that does not exist, undefined layer variables) end with the same message.",
+  "fix": "Read the connection report printed before the message (add `-v` or `-d` for detail). Install the board or device pack that ships a matching layer, point `-L` to a folder with compatible clayer.yml files, or adjust the `connections:` the project consumes; fix any earlier error first.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:1012",
+   "tools/projmgr/src/ProjMgrWorker.cpp:4938",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:2334",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:2466",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:2543"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-no-component-was-found-for-device",
+  "cause": "`csolution list components` with a csolution.yml found no software component in the loaded packs that applies to the context's device; `<…>` is the device. Typically the solution's `packs:` list contains only packs whose components do not match that device, or the device pack has no components.",
+  "fix": "Add the packs that provide components for the device under `packs:` in the csolution.yml (for example the DFP and `- pack: ARM::CMSIS`), install them with cpackget, and run the command again.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:4463",
+   "tools/projmgr/src/ProjMgrWorker.cpp:4449"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-no-component-was-found-with-filter",
+  "cause": "`csolution list components -f <words>` found components, but none whose component ID contains all the filter words; `<…>` is the filter. Matching is case-insensitive substring matching and every word must match.",
+  "fix": "Loosen the filter, e.g. `-f CORE` or `-f Device`, or run without `-f` to see all component IDs.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:4481",
+   "libs/rteutils/src/RteUtils.cpp:616"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-no-context-was-found-with-filter",
+  "cause": "`csolution list contexts -f <words>` found no context name (`<project>.<build-type>+<target-type>`) that contains all the filter words; `<…>` is the filter. Matching is case-insensitive substring matching.",
+  "fix": "Use a part of a project, build-type or target-type name that exists, e.g. `-f Debug`, or run `csolution list contexts my.csolution.yml` without `-f`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:4834",
+   "tools/projmgr/src/ProjMgr.cpp:903"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-no-default-rwx-memory-nor-algorithm-with-ramstar",
+  "cause": "While writing the run and debug information (cbuild-run.yml), csolution needs a RAM area to run a flash programming algorithm that has no RAM address of its own: a default DFP/BSP algorithm without RAMstart/RAMsize, or a `memory:` entry of the target type with `algorithm:` but without `ram-start:`/`ram-size:`. It falls back to the first default memory with `rwx` access or the first algorithm with RAMstart/RAMsize in the DFP or BSP, and found neither.",
+  "fix": "For your own algorithm add the RAM to the `memory:` entry under `target-types:` in the csolution.yml, e.g. `ram-start: 0x20000000` and `ram-size: 0x10000`. If the algorithm comes from the DFP or BSP, report the missing RAM information to the pack vendor.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrRunDebug.cpp:387",
+   "tools/projmgr/src/ProjMgrRunDebug.cpp:137",
+   "tools/projmgr/src/ProjMgrRunDebug.cpp:240",
+   "tools/projmgr/schemas/common.schema.json:2134",
+   "tools/projmgr/test/src/ProjMgrWorkerUnitTests.cpp:178"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-no-device-was-found-with-filter",
+  "cause": "`csolution list devices -f <words>` found devices, but none whose line (`Vendor::Device[:Pname] (Vendor::Pack@version)`) contains all the filter words; `<…>` is the filter. Matching is case-insensitive substring matching and every word must match.",
+  "fix": "Loosen the filter (e.g. `-f STM32U5`), or run without `-f`. If the device belongs to a pack that is not installed, install it with `cpackget add <Vendor>::<Pack>`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:4346",
+   "libs/rteutils/src/RteUtils.cpp:616"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-no-installed-board-was-found",
+  "cause": "`csolution list boards` found no board in the packs it loaded: the CMSIS pack root has no pack that describes boards, or the csolution.yml given restricts loading to `packs:` that contain no boards.",
+  "fix": "Install a board support pack, e.g. `cpackget add <Vendor>::<Board>_BSP`, and check that CMSIS_PACK_ROOT points to the pack root in use. With a csolution.yml, add the BSP under `packs:`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:4277",
+   "tools/projmgr/src/ProjMgrWorker.cpp:4292",
+   "tools/projmgr/src/ProjMgrWorker.cpp:561"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-no-installed-component-was-found",
+  "cause": "`csolution list components` without a solution context found no software component in the installed packs, which usually means the CMSIS pack root is empty or holds no pack with components.",
+  "fix": "Install packs with cpackget (for example `cpackget add ARM::CMSIS`) and check that CMSIS_PACK_ROOT points to that pack root. To list components for a device, pass the csolution.yml.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:4463",
+   "tools/projmgr/src/ProjMgrWorker.cpp:4466"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-no-installed-device-was-found",
+  "cause": "`csolution list devices` found no device in the packs it loaded: the CMSIS pack root has no device family pack (DFP), or the csolution.yml given loads only `packs:` without devices.",
+  "fix": "Install the DFP, e.g. `cpackget add Keil::STM32U5xx_DFP`, and check CMSIS_PACK_ROOT. With a csolution.yml, add the DFP under `packs:`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:4310",
+   "tools/projmgr/src/ProjMgrWorker.cpp:4337"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-no-installed-npu-was-found",
+  "cause": "`csolution list npus` found no NPU: none of the devices in the loaded packs (or, with a csolution.yml, the device of the selected contexts) declares an NPU feature (`<feature type=\"NPU\">`) in its DFP.",
+  "fix": "Install the DFP of a device with an NPU (for example an Ethos-U based device) or select a context whose device has one. Run `csolution list devices` to check which devices are loaded.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:4355",
+   "tools/projmgr/src/ProjMgrWorker.cpp:4385",
+   "tools/projmgr/src/ProjMgrWorker.cpp:6485"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-no-npu-was-found-with-filter",
+  "cause": "`csolution list npus -f <words>` found NPUs, but no entry matched all filter words; `<…>` is the filter. A word matches either the NPU line (type and MACs) or one of its device lines (vendor, device, processor, core); matching is case-insensitive.",
+  "fix": "Loosen the filter, e.g. `-f U55` or a device name part, or run without `-f`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:4407",
+   "tools/projmgr/src/ProjMgrWorker.cpp:4436"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-no-pack-was-found-with-filter",
+  "cause": "`csolution list packs -f <words>` found packs, but none whose line (`Vendor::Pack@version` and, when shown, its path) contains all the filter words; `<…>` is the filter. Matching is case-insensitive substring matching.",
+  "fix": "Loosen the filter (e.g. `-f CMSIS`) or run without `-f`. A pack that is not installed does not appear; install it with `cpackget add <Vendor>::<Pack>`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:4267",
+   "libs/rteutils/src/RteUtils.cpp:616"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-no-packs-were-found-for-version-check",
+  "cause": "`csolution check pack-updates` loaded no pack for the selected contexts, so there is nothing to compare with the pack index. That happens when the pack root has no installed packs and the solution names no pack with a local `path:`.",
+  "fix": "Install the packs the solution needs (`cpackget add <Vendor>::<Pack>` or `csolution list packs -m my.csolution.yml` to see the missing ones) and check CMSIS_PACK_ROOT, then run the check again.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:6137",
+   "tools/projmgr/src/ProjMgrWorker.cpp:6202"
+  ],
+  "confidence": "low"
+ },
+ {
+  "id": "ts-csolution-no-packs-were-found-for-version-check-with-filte",
+  "cause": "`csolution check pack-updates` with `-f <words>` found packs, but no result line (`Vendor::Pack@version -> newer` or `(up-to-date)`) contains all the filter words; `<…>` is the filter.",
+  "fix": "Loosen the filter, e.g. the pack name only, or run the check without `-f`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:6209",
+   "tools/projmgr/src/ProjMgr.cpp:1089"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-no-target-set-was-found-with-filter",
+  "cause": "`csolution list target-sets` (or `list targets`) with `-f <words>` found no `<target-type>[@<set>]` entry from `target-types:` - `target-set:` in the csolution.yml that contains all the filter words; `<…>` is the filter. A target type without `target-set:` entries is not listed.",
+  "fix": "Use part of an existing target-type or set name in the filter, or run without `-f` to see the target sets the csolution.yml defines.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:4856",
+   "tools/projmgr/src/ProjMgrWorker.cpp:4868",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7471"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-no-unresolved-dependency-was-found-with-filter",
+  "cause": "`csolution list dependencies -f <words>` or `csolution list configs -f <words>` produced entries, but none contains all the filter words; `<…>` is the filter. Both commands print this same text, so for `list configs` it means that no configuration file matched the filter, not anything about dependencies.",
+  "fix": "Loosen the filter or run the command without `-f` to see all unresolved dependencies or all configuration files of the selected contexts.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:4492",
+   "tools/projmgr/src/ProjMgrWorker.cpp:4509",
+   "tools/projmgr/src/ProjMgrWorker.cpp:4544"
+  ],
+  "confidence": "medium",
+  "note": "The cited line 4509 is in ListConfigs; ListDependencies raises the identical text at line 4544."
+ },
+ {
+  "id": "ts-csolution-shall-contain-mapping-elements",
+  "cause": "A node that must hold key/value pairs is written as a scalar or empty in a csolution, cproject, clayer, cbuild-pack or cbuild-set YAML file; `<…>` is the node, with file, line and column. The nodes checked are `processor:`, `output-dirs:`, `generators:`, `rte:` and `west:`. A key left without a value (`processor:` with nothing indented under it) also counts.",
+  "fix": "Write the node as a mapping with indented keys, e.g. `processor:` followed by `  trustzone: secure`, or remove the empty node.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:1753",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:1640"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-shall-contain-sequence-elements",
+  "cause": "A node that must be a list is written as a scalar, a mapping or left empty in a csolution, cproject, clayer, cbuild-pack or cbuild-set YAML file; `<…>` is the node, with file, line and column. The nodes checked are `projects:`, `target-types:`, `build-types:`, `misc:`, `packs:`, `resolved-packs:`, `components:`, `connections:`, `layers:`, `groups:`, `files:`, `setups:`, `linker:`, `executes:` and `input:`. Example: `misc: 1`.",
+  "fix": "Write the node as a list whose entries start with `- `, e.g. `packs:` followed by `  - pack: ARM::CMSIS`, or remove the empty node.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:1745",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:1621",
+   "tools/projmgr/test/data/TestSolution/PackLocking/cbuild_pack_with_disallowed_field.cbuild-pack.yml:1",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:1643"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-number-must-be-integer-or-hexadecimal-prefixed-b",
+  "cause": "A numeric node holds a value that is neither a plain decimal integer nor a hexadecimal number written with a lowercase `0x` prefix; the message carries file, line and column. The nodes checked are `debugger:` - `clock:`, the `memory:` entries' `start:`, `size:`, `ram-start:` and `ram-size:`, and the `images:` entries' `load-offset:`. Values like `1.5`, `-4`, `1e6`, `64K` or `0X1000` are rejected.",
+  "fix": "Write the value as a decimal integer (`clock: 10000000`) or as `0x`-prefixed hex (`start: 0x20000000`).",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:387",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:647",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:1141",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:1219"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-one-or-more-selected-contexts-are-unrelated-rede",
+  "cause": "`csolution run -g <generator>` was called with a context selection that spans contexts the generator cannot serve in one call. A global generator runs for one group of sibling contexts (same generator and generator folder, same device, classified as single-core, multi-core or TrustZone), and a selected context whose project is outside that group is unrelated; the context is named with the message.",
+  "fix": "Run the generator once per group: narrow `-c`/`--context` to the contexts of one device and generator (e.g. `-c +MultiCore`), or use `-S` with a cbuild-set.yml that holds such a selection.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:5850",
+   "tools/projmgr/src/ProjMgrWorker.cpp:5866",
+   "tools/projmgr/src/ProjMgrWorker.cpp:5812",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:5891"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-output-lib-is-incompatible-with-other-output-typ",
+  "cause": "The `output:` - `type:` settings that apply to a context combine `lib` with `elf`, `hex` or `bin`; output types from several `output:` nodes (in cproject.yml, setups, clayer.yml) add up. Example: a setup with `type: [elf, hex, bin, map]` and another with `type: lib` that both match the same build type.",
+  "fix": "Make each context build either a library or an executable: restrict the `output:` nodes with `for-context:`/`not-for-context:` so that `type: lib` never meets `elf`, `hex` or `bin`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:5608",
+   "tools/projmgr/test/data/TestSolution/outputFiles.cproject.yml:2",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:4703"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-does-not-exist",
+  "cause": "A `packs:` entry has a `path:` to a local pack folder that does not exist; `<…>` is the resolved path. The path is relative to the YAML file that holds the entry (csolution.yml, cproject.yml or clayer.yml).",
+  "fix": "Correct `path:` so that it points to the folder that contains the pack's pdsc file, e.g. `- pack: ARM::RteTest_DFP` with `path: ./packs/RteTest_DFP`, or remove `path:` to use the installed pack.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:1800",
+   "tools/projmgr/src/ProjMgrWorker.cpp:1746",
+   "tools/projmgr/test/data/TestSolution/test_local_pack_path_not_found.csolution.yml:73",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:3900"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-parsing-installed-packs-failed",
+  "cause": "csolution wanted to load the installed packs (no pack is required by the YAML, or `-l all`/`-l latest` is set) but has no pack root: CMSIS_PACK_ROOT is not set and no default location could be derived from the user environment.",
+  "fix": "Set CMSIS_PACK_ROOT to the pack folder, e.g. `export CMSIS_PACK_ROOT=$HOME/.cache/arm/packs`, and initialise it with `cpackget init` if it does not exist yet.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:566",
+   "libs/rtemodel/src/RteKernel.cpp:415",
+   "tools/projmgr/src/ProjMgrWorker.cpp:486",
+   "libs/crossplatform/src/CrossPlatformUtils.cpp:37"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-pdsc-file-was-not-found-in",
+  "cause": "A `packs:` entry with `path:` points to a folder that exists but does not contain `<Vendor>.<Name>.pdsc` for the pack named in `pack:`; `<…>` is the path. The file name is built from the `pack:` value, so a vendor or name that differs from the pdsc file name also triggers it.",
+  "fix": "Point `path:` to the folder that holds the pdsc file, and make `pack: <Vendor>::<Name>` match the file `<Vendor>.<Name>.pdsc` there.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:1807",
+   "tools/projmgr/test/data/TestSolution/test_local_pack_file_not_found.csolution.yml:73",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:3919"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-does-not-match-any-device-pname",
+  "cause": "A `telnet:` entry under `target-set:` - `debugger:` in the csolution.yml has `pname:` set to a processor name the device does not have; `<…>` is that name. The entry is ignored.",
+  "fix": "Use one of the device's processor names (shown by `csolution list devices`, after the colon in `Device:Pname`) in `pname:`, or remove the entry.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrRunDebug.cpp:482",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:615",
+   "tools/projmgr/test/data/TestRunDebug/telnet.csolution.yml:86",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7369"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-processing-context",
+  "cause": "One or more errors occurred while csolution processed the named context (packs, device or board, components, linker, output types, compiler or other settings). This line only sums them up; the specific errors are printed before it.",
+  "fix": "Fix the errors reported before this line for the same context, e.g. a missing pack, a component not found or a redefinition, then run again.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:742",
+   "tools/projmgr/src/ProjMgrWorker.cpp:4107",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:4351",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:4787"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-processing-contexts-list-failed",
+  "cause": "`csolution list contexts` could not produce a list: a `-f` filter matched no context (the line before reports `no context was found with filter`), or the solution yielded no contexts at all.",
+  "fix": "Fix the error printed before it; drop or loosen `-f`, and check that the csolution.yml has `projects:` and `target-types:`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:909",
+   "tools/projmgr/src/ProjMgrWorker.cpp:4834"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-processing-target-sets-list-failed",
+  "cause": "`csolution list target-sets` (or `list targets`) failed because the `-f` filter matched no target set; the line before reports `no target-set was found with filter`.",
+  "fix": "Loosen or drop `-f` so that it matches a `<target-type>[@<set>]` defined in the csolution.yml.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:925",
+   "tools/projmgr/src/ProjMgrWorker.cpp:4856",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7471"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-processor-name",
+  "cause": "The processor part of `device:` (after the colon, as in `device: <Device>:<Pname>` or `device: :<Pname>`) names a processor that the selected device does not have; `<…>` is that name. Single-core devices usually have no processor name at all.",
+  "fix": "Use a processor name of the device as listed by `csolution list devices` (`Vendor::Device:Pname`), or drop the `:<Pname>` part for a single-core device.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:1513",
+   "tools/projmgr/src/ProjMgrWorker.cpp:774",
+   "tools/projmgr/test/data/TestSolution/test_no_device_name.csolution.yml:6",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:3085"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-project-descriptors-project-west-and-cmake-are-m",
+  "cause": "One entry under `projects:` in the csolution.yml has more than one of `project:`, `west:` and `cmake:`; the message points to that entry. Each entry describes exactly one project. The schema check reports the same problem, so this message appears mainly with `-n`.",
+  "fix": "Split the entry into separate list items, one with `- project: ...`, another with `- west: ...` or `- cmake: ...`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:879",
+   "tools/projmgr/schemas/common.schema.json:753"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-projects-not-found",
+  "cause": "The csolution.yml lists no project: `projects:` is missing or empty and there is no `west:` or `cmake:` entry. Only a solution whose target sets contain `images:` without any `project-context:` (an image-only solution) may do without projects.",
+  "fix": "Add the projects under `projects:` in the csolution.yml, e.g. `projects:` followed by `  - project: ./blinky/blinky.cproject.yml`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:505",
+   "tools/projmgr/src/ProjMgr.cpp:1286",
+   "tools/projmgr/test/data/TestSolution/missing_projects.csolution.yml:3",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:5198"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-redefinition-from-2",
+  "cause": "The compiler selected on the command line with `-t`/`--toolchain` differs from the `compiler:` that the YAML files set for the context; the first `<…>` is the YAML compiler, the second the command-line one. The command line wins, and the context is built with that compiler.",
+  "fix": "No change is needed if the override is intended. Otherwise drop `-t`, or pass the compiler the YAML sets (e.g. `-t AC6`), or change `compiler:` in the csolution.yml.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:3000",
+   "tools/projmgr/src/ProjMgrWorker.cpp:3099",
+   "tools/projmgr/src/ProjMgrUtils.cpp:151",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:4798"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-redefinition-from",
+  "cause": "A setting that takes a single value is given two different values for the same context at different places (csolution.yml, a target-type or build-type, cproject.yml, a setup or a clayer.yml); the first `<…>` is the value found first, the second the conflicting one. It applies to the parts of `board:` and `device:` (vendor, name, revision or processor), `compiler:` (different names or versions that do not overlap), `optimize:`, `debug:`, `warnings:`, `language-C:`, `language-CPP:`, the `processor:` options, the `linker:` script and regions file, and `output:` - `base-name:`.",
+  "fix": "Set the value in one place only, or make the values agree; restrict a differing setting with `for-context:` so that only one applies to each context. For the compiler, a version range such as `AC6@>=6.18` combines with `AC6`; `AC6` and `GCC` do not.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:794",
+   "tools/projmgr/src/ProjMgrWorker.cpp:2991",
+   "tools/projmgr/src/ProjMgrWorker.cpp:3040",
+   "tools/projmgr/src/ProjMgrWorker.cpp:3164",
+   "tools/projmgr/test/data/TestSolution/toolchain-redefinition.csolution.yml:5",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:4787",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:4701",
+   "tools/projmgr/test/src/ProjMgrWorkerUnitTests.cpp:1504"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-regions-header-file-generation-failed",
+  "cause": "csolution tried to generate the memory regions header `regions_<board or device>.h` in the project's RTE device folder, either for a default linker script template or because `linker:` - `regions:` names a file that does not exist, and could not. The header is built from the device memories of the DFP (and BSP); it fails when the target has no resolved device or the file cannot be written.",
+  "fix": "Make sure the device or board resolves (its DFP is installed and listed under `packs:`) and that the RTE folder is writable. Alternatively provide the regions file yourself and name it in `linker:` - `regions:`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:2332",
+   "tools/projmgr/src/ProjMgrWorker.cpp:2302",
+   "libs/rtemodel/src/RteTarget.cpp:1931",
+   "libs/rtemodel/src/RteTarget.cpp:1799",
+   "tools/projmgr/test/src/ProjMgrWorkerUnitTests.cpp:1566"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-required-packs-must-be-specified",
+  "cause": "csolution was run with `-l required` (`--load required`), which loads only the packs the project names, but the selected contexts name none: there is no `packs:` entry in the csolution.yml, cproject.yml or clayer.yml and no cbuild-pack.yml with resolved packs.",
+  "fix": "List the packs under `packs:` in the csolution.yml, e.g. `- pack: ARM::CMSIS` and `- pack: Keil::STM32U5xx_DFP`, or run without `-l required` so that csolution uses the installed packs.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:561",
+   "tools/projmgr/src/ProjMgrWorker.cpp:543",
+   "tools/projmgr/src/ProjMgrWorker.cpp:1837",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:3973"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-solution-created-for-unknown-tool",
+  "cause": "`created-for:` in the csolution.yml does not have the form `CMSIS-Toolbox@<major>.<minor>.<patch>`; `<…>` is the value. Another tool name, or a version with a pre-release or build suffix such as `CMSIS-Toolbox@2.6.0-rc1`, is not recognised, and the minimum-version check is skipped.",
+  "fix": "Write `created-for: CMSIS-Toolbox@2.6.0` with the plain three-part version of the toolbox the solution needs, or remove the node.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:1172",
+   "tools/projmgr/src/ProjMgr.cpp:1204",
+   "tools/projmgr/schemas/common.schema.json:1920",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:6521"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-is-not-among-board-mounted-devices",
+  "cause": "The context sets both `board:` and `device:`, and the device (`<…>`) is not one of the devices the BSP declares as mounted on that board. csolution builds for the device given, not for the board's device.",
+  "fix": "If the board carries that device, remove `device:` and let the board determine it, or set `device:` to the mounted device (`csolution list boards` and the BSP show it). Keep the combination only if you deliberately target a different device on the board.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:1480",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:3430"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-does-not-exist-in-solution-2",
+  "cause": "A `for-context:` or `not-for-context:` entry refers to target type `+<name>`, but the csolution.yml has no target type of that name, so the filter never matches. If a build type of that name exists, csolution suggests `.<name>`: `.` and `+` were mixed up.",
+  "fix": "Use an existing target type after `+`, or write `.<name>` when a build type is meant, e.g. `for-context: .Debug` instead of `for-context: +Debug`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:4076",
+   "tools/projmgr/src/ProjMgrWorker.cpp:4099",
+   "tools/projmgr/test/data/TestSolution/typefilters.cproject.yml:17",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:5508"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-target-types-not-found",
+  "cause": "The csolution.yml defines no usable target type: `target-types:` is missing or empty, or a `type:` name contains `.` or `+`, in which case an `invalid target type(s)` error lists those names first. The schema check also demands `target-types:`, so the bare message appears mainly with `-n`.",
+  "fix": "Add at least one target type with a name made of letters, digits, `_` and `-`, e.g. `target-types:` - `type: CM0` with `device: ARMCM0`; rename types that contain `.` or `+`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:94",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:1033",
+   "tools/projmgr/schemas/common.schema.json:1256",
+   "tools/projmgr/test/data/TestSolution/missing_target_types.csolution.yml:3",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:5180"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-too-many-command-line-arguments",
+  "cause": "The command-line parser reported arguments that it could not assign to an option or to the positional arguments.",
+  "fix": "Remove stray words from the command line and quote values that contain spaces; `csolution <command> -h` lists the valid options.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:320",
+   "tools/projmgr/src/ProjMgr.cpp:214",
+   "tools/projmgr/src/ProjMgr.cpp:257"
+  ],
+  "confidence": "low",
+  "note": "All positional words go into one catch-all list, of which csolution uses the solution file, the command and its first argument and silently ignores the rest, so this check is hard to reach; no test covers it. The cxxopts submodule was not checked out to confirm when unmatched() is non-empty."
+ },
+ {
+  "id": "ts-csolution-it-must-start-with-or-for-normal-strings-and-wit",
+  "cause": "A `for-context:` or `not-for-context:` entry does not begin with `.` (build type), `+` (target type), `^` or `\\` (regular expression); `<…>` is the entry, e.g. `Debug` or `CM0+Debug`. The schema rejects such values too, so this message appears mainly with `-n`.",
+  "fix": "Start the entry with the right prefix: `.Debug`, `+CM0`, `.Debug+CM0`, or a regex such as `^\\.Debug\\+.*`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:707",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:684",
+   "tools/projmgr/schemas/common.schema.json:14"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-unknown-access-sequence",
+  "cause": "A value contains `$<name>$` or `$<name>(<arg>)$` that is neither a defined variable nor a known access sequence; `<…>` is the text between the `$` signs. Known ones include `$Dname$`, `$Pname$`, `$Bname$`, `$Compiler$`, `$Solution$`, `$Project$`, `$BuildType$`, `$TargetType$`, `$TargetSet$`, `$Dpack$`, `$Bpack$`, `$SolutionDir()$`, `$ProjectDir(<context>)$`, `$OutDir(<context>)$`, `$elf()$`, `$bin()$`, `$hex()$`, `$lib()$`, `$map()$`, `$cmse()$` and `$Pack(<pack>)$`, plus variables from `variables:`. Example: `path: $UnknownAccessSequence()$` in a generator file.",
+  "fix": "Correct the spelling or case of the access sequence, or define the variable under `variables:` of the target type or build type in the csolution.yml.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:3783",
+   "tools/projmgr/src/ProjMgrWorker.cpp:21",
+   "tools/projmgr/src/ProjMgrWorker.cpp:238",
+   "tools/projmgr/src/ProjMgrWorker.cpp:3112",
+   "tools/projmgr/test/data/ExternalGenerator/wrong-gendir.generator.yml:5",
+   "tools/projmgr/test/data/MLOps/failure_image_only_hw.csolution.yml:18",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:5834"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-it-must-be-latest-all-or-required",
+  "cause": "The `-l`/`--load` option was given a value other than `latest`, `all` or `required`; `<…>` is that value.",
+  "fix": "Use one of the three values, e.g. `-l latest`, or leave the option out to use the default pack loading.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:468",
+   "tools/projmgr/src/ProjMgr.cpp:298",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:3990"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-valid-tracebuffer-elements-must-be-named-when-mo",
+  "cause": "The device description in the DFP declares several `<tracebuffer>` elements in its device-wide `<trace>` section and at least one of them has no `name` attribute, so the trace sinks written to the cbuild-run.yml cannot be told apart. It is a flaw of the pack, not of the project.",
+  "fix": "Nothing to change in the project; the run and debug files are still written. Report the unnamed `<tracebuffer>` to the DFP vendor or update to a DFP version that names them.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrRunDebug.cpp:587",
+   "tools/projmgr/src/ProjMgrRunDebug.cpp:607",
+   "test/packs/ARM/RteTest_DFP/0.2.0/ARM.RteTest_DFP.pdsc:233",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7166"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-redefined-from",
+  "cause": "The same variable is set to different values under `variables:` at more than one level of the csolution.yml, at solution level, in a build type and in a target type; the placeholders are the name, the earlier and the later value. They are applied in that order and the later value wins, so the target-type value takes precedence. A user variable that reuses a built-in name such as `Project` or `BuildType` also triggers it.",
+  "fix": "Define the variable at one level only, or give it the same value everywhere; rename variables that clash with built-in names.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:272",
+   "tools/projmgr/src/ProjMgrWorker.cpp:238",
+   "tools/projmgr/test/data/TestLayers/variables-redefinition.csolution.yml:5",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:2498"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-yaml-schemas-were-not-found-file-cannot-be-valid",
+  "cause": "csolution looks for `<type>.schema.json` (e.g. `cproject.schema.json`) next to its executable, in `../etc/` or in `../../etc/`, and did not find the schema for the file named with the message. The file is processed without schema validation. This points to an incomplete CMSIS-Toolbox installation or a csolution binary moved away from its `etc` folder.",
+  "fix": "Use csolution from a complete CMSIS-Toolbox installation whose `etc` folder contains the *.schema.json files, or reinstall the toolbox. `-n` suppresses the schema check and this warning.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:26",
+   "tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:41",
+   "libs/rtefsutils/src/RteFsUtils.cpp:869",
+   "tools/projmgr/test/src/ProjMgrSchemaCheckerUnitTests.cpp:66"
   ],
   "confidence": "high"
  }

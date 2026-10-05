@@ -79,83 +79,18 @@ The list of the pre-defined features for Devices (Device Feature Types) can be u
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    family | 
-    element_family | 
-  
-
-  | 
-    subFamily | 
-    element_subFamily | 
-  
-
-  | 
-    device | 
-    element_device | 
-  
-
-  | 
-    part | 
-    element_part | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    Pname | 
-    Processor Identifier. This attribute **is mandatory for devices that embed multiple processors**.
-        Only alphabetical characters, decimal digits, '-' and '_' are allowed.
-        
-
-
-        Must not be used for package/parts/part. | 
-    RestrictedString | 
-    optional | 
-  
-
-  | 
-    type | 
-    A feature (peripheral), such as `CAN`, `DMA`, `I/O`, `LCD`, etc. Predefined values must be used
-        as listed in the table Device Feature Types.
-        
-
-
-        Can be also used to describe the package/parts/part features. Predefined values must be used as listed in the table Device Feature Types. | 
-    DeviceFeatureTypeEnum | 
-    required | 
-  
-
-  | 
-    n | 
-    Depends on the element **\b** type. Check table Device Feature Types. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    m | 
-    Depends on the elemen **\b** type. Check table Device Feature Types. | 
-    xs:string | 
-    optional | 
-  
-
-  | 
-    name | 
-    Descriptive name of the feature. For example, "16-bit down counting timer". If omitted, the **Default Name** is used 
-    as described in the table Device Feature Types. | 
-    xs:string | 
-    optional | 
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| family | element_family |  |  |
+| subFamily | element_subFamily |  |  |
+| device | element_device |  |  |
+| part | element_part |  |  |
+| Attributes | Description | Type | Use |
+| Pname | Processor Identifier. This attribute **is mandatory for devices that embed multiple processors**. Only alphabetical characters, decimal digits, '-' and '_' are allowed. Must not be used for package/parts/part. | RestrictedString | optional |
+| type | A feature (peripheral), such as `CAN`, `DMA`, `I/O`, `LCD`, etc. Predefined values must be used as listed in the table Device Feature Types. Can be also used to describe the package/parts/part features. Predefined values must be used as listed in the table Device Feature Types. | DeviceFeatureTypeEnum | required |
+| n | Depends on the element **\b** type. Check table Device Feature Types. | xs:string | optional |
+| m | Depends on the elemen **\b** type. Check table Device Feature Types. | xs:string | optional |
+| name | Descriptive name of the feature. For example, "16-bit down counting timer". If omitted, the **Default Name** is used as described in the table Device Feature Types. | xs:string | optional |
 
 
 

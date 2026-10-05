@@ -29,46 +29,10 @@ mode: "V"
 **/package**
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    packages | 
-    element_packages | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    vendor | 
-    specify vendor of the package (e.g. "ARM") | 
-    RestrictedString | 
-    required | 
-  
-
-  | 
-    name | 
-    Name of the pack | 
-    RestrictedString | 
-    required | 
-  
-
-  | 
-    version | 
-    Version of the required software pack which can be:
-       - Minimum version (higher versions are accepted).
-       - Version range specified with _min_version_**:**_max_version_. _min_version_ must be lower or
-         equal than _max_version_. For a version range that retains the major version, the _max_version_ is set
-         to the next major version with minor, patch and release qualifier set to "0".
-       - Fixed version is specified if _min_version_ and _max_version_ are equal.
-       - If no version is specified, the latest available installed version is accepted and used.
-     | 
-    VersionType | 
-    optional |
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| packages | element_packages |  |  |
+| Attributes | Description | Type | Use |
+| vendor | specify vendor of the package (e.g. "ARM") | RestrictedString | required |
+| name | Name of the pack | RestrictedString | required |
+| version | Version of the required software pack which can be: - Minimum version (higher versions are accepted). - Version range specified with min_version **:** max_version . min_version must be lower or equal than max_version . For a version range that retains the major version, the max_version is set to the next major version with minor, patch and release qualifier set to "0". - Fixed version is specified if min_version and max_version are equal. - If no version is specified, the latest available installed version is accepted and used. | VersionType | optional |

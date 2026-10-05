@@ -23,10 +23,10 @@ The YAML structure of the section `projects:` is:
 `projects:`                                               |              | Content
 :---------------------------------------------------------|:-------------|:------------------------------------
 [`- project:`](#project)                                  |   Optional   | Path to the `*.cproject.yml` file.
-&nbsp;&nbsp;&nbsp; [`west:`](#west)                       |   Optional   | Enable West "build orchestration wrapper" for Zephyr projects.
-&nbsp;&nbsp;&nbsp; [`cmake:`](#cmake)                     |   Optional   | Enable native CMake project build orchestration.
-&nbsp;&nbsp;&nbsp; [`for-context:`](#for-context)         |   Optional   | Include project for a list of *build* and *target* types.
-&nbsp;&nbsp;&nbsp; [`not-for-context:`](#not-for-context) |   Optional   | Exclude project for a list of *build* and *target* types.
+    [`west:`](#west)                       |   Optional   | Enable West "build orchestration wrapper" for Zephyr projects.
+    [`cmake:`](#cmake)                     |   Optional   | Enable native CMake project build orchestration.
+    [`for-context:`](#for-context)         |   Optional   | Include project for a list of *build* and *target* types.
+    [`not-for-context:`](#not-for-context) |   Optional   | Exclude project for a list of *build* and *target* types.
 
 !!! Note
   - The nodes `project:`, `west:`, and `cmake:` are mutually exclusive in one list node. A list may contain several nodes of each type.

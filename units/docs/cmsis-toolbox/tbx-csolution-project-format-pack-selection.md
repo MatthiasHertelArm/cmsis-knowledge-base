@@ -31,7 +31,7 @@ The `packs:` node is the start of a pack selection.
 
 `packs:`                                              | Content
 :-----------------------------------------------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; [`- pack:`](#pack)                 | Explicit pack specification (additive)
+    [`- pack:`](#pack)                 | Explicit pack specification (additive)
 
 ### `pack:`
 
@@ -39,9 +39,9 @@ The `pack:` list allows to add [specific software packs](#pack-name-conventions)
 
 `pack:`                                                     | Content
 :-----------------------------------------------------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `path:`                                  | Explicit path name that stores the software pack. This can be a relative path to your project workspace.
-&nbsp;&nbsp;&nbsp; [`for-context:`](#for-context)           | Include pack for a list of *build* and *target* types.
-&nbsp;&nbsp;&nbsp; [`not-for-context:`](#not-for-context)   | Exclude pack for a list of *build* and *target* types.
+    `path:`                                  | Explicit path name that stores the software pack. This can be a relative path to your project workspace.
+    [`for-context:`](#for-context)           | Include pack for a list of *build* and *target* types.
+    [`not-for-context:`](#not-for-context)   | Exclude pack for a list of *build* and *target* types.
 
 !!! Note
     When an explicit `path:` to the pack is specified, an explicit pack version cannot be specified as the path directly specifies the pack to include.

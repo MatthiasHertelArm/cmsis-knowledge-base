@@ -28,48 +28,11 @@ element can exist in \`<generator>`.
 
 
 
-  | 
-    Parent | 
-    Chain | 
-  
-
-  | 
-    generator | 
-    element_generator | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    Dvendor | 
-	Vendor name of the targeted device. Use predefined values as listed in the table Device Vendor.
-	 | 
-	DeviceVendorEnum | 
-	required | 
-  
-
-  | 
-    Dname | 
-	Name of the targeted device. If no Dvariant is specified this tag is required | 
-	xs:string | 
-	optional | 
-  
-
-  | 
-    Dvariant | 
-	Name of the targeted device variant. If a variant is specified, the device name will be ignored and the
-	    variant rules. If no Dname is specified, this tag is required. | 
-	xs:string | 
-	optional | 
-  
-
-  | 
-    Pname | 
-	Name of the targeted processor of a device with multiple processors. For devices with multiple processors this tag is required. | 
-	xs:string | 
-	optional |
+| Parent | Chain |  |  |
+|---|---|---|---|
+| generator | element_generator |  |  |
+| Attributes | Description | Type | Use |
+| Dvendor | Vendor name of the targeted device. Use predefined values as listed in the table Device Vendor. | DeviceVendorEnum | required |
+| Dname | Name of the targeted device. If no Dvariant is specified this tag is required | xs:string | optional |
+| Dvariant | Name of the targeted device variant. If a variant is specified, the device name will be ignored and the variant rules. If no Dname is specified, this tag is required. | xs:string | optional |
+| Pname | Name of the targeted processor of a device with multiple processors. For devices with multiple processors this tag is required. | xs:string | optional |

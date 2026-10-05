@@ -48,100 +48,18 @@ Describes a patch a debugger shall apply when reading data from the device.
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    debug | 
-    element_debug | 
-  
-
-  | 
-    Attributes | 
-    Description | 
-    Type | 
-    Use | 
-  
-
-  | 
-    type | 
-    
-      The type of data access to patch. Predefined tokens must be used as defined in Table: Data Patch Access Type.
-      This attribute defaults to `Mem` if not set.
-     | 
-    DataPatchAccessTypeEnum | 
-    optional | 
-  
-
-  | 
-    address | 
-    The address for which to apply the patch.
-
-    For an `AP` data patch for an APv2 as referenced by **__apid**, the address is the APv2 register offset added to the APv2's base address
-    defined in the corresponding accessportV2 element. It must within the 4-KByte address range of the APv2 block. | 
-    NonNegativeInteger | 
-    required | 
-  
-
-  | 
-    __dp | 
-    
-      The debug port ID to apply the patch for. The allowed values are defined by the **__dp** attribute of **debugport**
-      elements for this device. If no debugport element exists, the only allowed value is 0. If this attribute is not set, the debug port
-      ID for the data patch is set to the default **__dp** of this **debug** section.
-
-      If accessportV1 or accessportV2 elements are specified then this attribute is only
-      allowed for `DP` and `ACCESS_AP` accesses. Use **__apid** for all others.
-     | 
-    xs:unsignedInt | 
-    optional | 
-  
-
-  | 
-    __ap | 
-    
-      The CoreSight access port index to apply the patch for. If this attribute is not set, the access port index
-      for the data patch is set to the default **__ap** of this **debug** section.
-
-      Must not be used if accessportV1 or accessportV2 elements are specified. Use **__apid** instead.
-     | 
-    xs:unsignedInt | 
-    optional | 
-  
-
-  | 
-    __apid | 
-    
-      The unique ID of a CoreSight access port to apply the patch for. Requires accessportV1 and/or
-      accessportV2 elements to be specified. If this attribute is not set, the access port ID
-      for the data patch is set to the default **__apid** of this **debug** section.
-     | 
-    xs:unsignedInt | 
-    optional | 
-  
-
-  | 
-    value | 
-    The value with which the debugger patches the data access. **value** is specified in little-endian format. | 
-    NonNegativeInteger | 
-    required | 
-  
-
-  | 
-    mask | 
-    The bits of the data access to patch. The mask value is specified in little-endian format. | 
-    NonNegativeInteger | 
-    optional | 
-  
-
-  | 
-    info | 
-    Descriptive text to display for example for error diagnostics. | 
-    xs:string | 
-    optional | 
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| debug | element_debug |  |  |
+| Attributes | Description | Type | Use |
+| type | The type of data access to patch. Predefined tokens must be used as defined in Table: Data Patch Access Type. This attribute defaults to `Mem` if not set. | DataPatchAccessTypeEnum | optional |
+| address | The address for which to apply the patch. For an `AP` data patch for an APv2 as referenced by **__apid**, the address is the APv2 register offset added to the APv2's base address defined in the corresponding accessportV2 element. It must within the 4-KByte address range of the APv2 block. | NonNegativeInteger | required |
+| __dp | The debug port ID to apply the patch for. The allowed values are defined by the **__dp** attribute of **debugport** elements for this device. If no debugport element exists, the only allowed value is 0. If this attribute is not set, the debug port ID for the data patch is set to the default **__dp** of this **debug** section. If accessportV1 or accessportV2 elements are specified then this attribute is only allowed for `DP` and `ACCESS_AP` accesses. Use **__apid** for all others. | xs:unsignedInt | optional |
+| __ap | The CoreSight access port index to apply the patch for. If this attribute is not set, the access port index for the data patch is set to the default **__ap** of this **debug** section. Must not be used if accessportV1 or accessportV2 elements are specified. Use **__apid** instead. | xs:unsignedInt | optional |
+| __apid | The unique ID of a CoreSight access port to apply the patch for. Requires accessportV1 and/or accessportV2 elements to be specified. If this attribute is not set, the access port ID for the data patch is set to the default **__apid** of this **debug** section. | xs:unsignedInt | optional |
+| value | The value with which the debugger patches the data access. **value** is specified in little-endian format. | NonNegativeInteger | required |
+| mask | The bits of the data access to patch. The mask value is specified in little-endian format. | NonNegativeInteger | optional |
+| info | Descriptive text to display for example for error diagnostics. | xs:string | optional |
 
 
 
@@ -153,30 +71,9 @@ Describes a patch a debugger shall apply when reading data from the device.
 The table lists the allowed values for data patch access types.
 
 
-  | 
-    type= | 
-    Description | 
-  
-
-  | 
-    AP | 
-    CoreSight Access Port register access.  | 
-  
-
-  | 
-    Mem | 
-    Memory access.  | 
-  
-
-  | 
-    DP | 
-    **Removed from specification starting version 1.7.49**: CoreSight Debug Port register access.
-
-    **Note:** This type refers to accesses via the **DPACC** instruction for **CoreSight JTAG-DPs**. Please refer to the
-    corresponding documentation for differences in the register interface between JTAG and Serial Wire debug ports.
-     | 
-  
-
-  | 
-    ACCESS_AP | 
-    **Removed from specification starting version 1.7.49**: Top-level Access Port access for a CoreSight ADIv6 DAP.  |
+| type= | Description |
+|---|---|
+| AP | CoreSight Access Port register access. |
+| Mem | Memory access. |
+| DP | **Removed from specification starting version 1.7.49**: CoreSight Debug Port register access. **Note:** This type refers to accesses via the **DPACC** instruction for **CoreSight JTAG-DPs**. Please refer to the corresponding documentation for differences in the register interface between JTAG and Serial Wire debug ports. |
+| ACCESS_AP | **Removed from specification starting version 1.7.49**: Top-level Access Port access for a CoreSight ADIv6 DAP. |

@@ -19,36 +19,12 @@ target's TDI pin.
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    platform | 
-    /system_description/platform | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    sdf_element_dap | 
-    Describes a DAP and a list of devices associated with that DAP. | 
-    complexType | 
-    0..* |   
-  
-
-  | 
-    sdf_element_device | 
-    Describes a single device on the scan chain. | 
-    complexType | 
-    0..* |   
-  
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| platform | /system_description/platform |  |  |
+| Child Elements | Description | Type | Occurrence |
+| sdf_element_dap | Describes a DAP and a list of devices associated with that DAP. | complexType | 0..* |
+| sdf_element_device | Describes a single device on the scan chain. | complexType | 0..* |
 
 
 

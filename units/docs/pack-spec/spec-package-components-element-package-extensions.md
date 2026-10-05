@@ -34,30 +34,9 @@ The group **extensions** can appear in various Pack elements. This group is the 
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    component | 
-    /package/components/component | 
-  
-
-  | 
-    component | 
-    /package/components/bundle/component | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    extension | 
-    Frame for the individual extension of a component.
-    group | 
-    1..* |
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| component | /package/components/component |  |  |
+| component | /package/components/bundle/component |  |  |
+| Child Elements | Description | Type | Occurrence |
+| extension | Frame for the individual extension of a component. group | 1..* |  |

@@ -49,35 +49,10 @@ The group **environments** can appear in component element and in package elemen
 
 
 
-  | 
-    Parents | 
-    Element Chain | 
-  
-
-  | 
-    component | 
-    /package/components/component | 
-  
-
-  | 
-    component | 
-    /package/components/bundle/component | 
-  
-
-  | 
-    package | 
-    /package | 
-  
-
-  | 
-    Child Elements | 
-    Description | 
-    Type | 
-    Occurrence | 
-  
-
-  | 
-    environment | 
-    Specify tool options.
-    EnvironmentType | 
-    1..* |
+| Parents | Element Chain |  |  |
+|---|---|---|---|
+| component | /package/components/component |  |  |
+| component | /package/components/bundle/component |  |  |
+| package | /package |  |  |
+| Child Elements | Description | Type | Occurrence |
+| environment | Specify tool options. EnvironmentType | 1..* |  |

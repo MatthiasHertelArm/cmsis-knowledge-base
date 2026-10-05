@@ -20,11 +20,11 @@ pyOCD):
 
 | View | Read | Edit |
 |------|------|------|
-| [**Memory Inspector**](#memory-inspector) | &#9989;  | &#9989;  |
-| [**Peripherals**](#peripherals)           | &#9989;  | &#9989;  |
-| [**Live Watch**](#trace-and-live-view)    | &#9989;  | &#10060; |
-| [**Component Viewer**](#component-viewer) | &#9989;  | &#10060; |
-| [**Core Peripherals**](#core-peripherals) | &#9989;  | &#10060; |
-| [**VARIABLES**](#variables)               | &#10060; | &#10060; |
-| [**WATCH**](#watch)                       | &#10060; | &#10060; |
-| [**CALL STACK**](#call-stack)             | &#10060; | &#10060; |
+| [**Memory Inspector**](#memory-inspector) | ✅  | ✅  |
+| [**Peripherals**](#peripherals)           | ✅  | ✅  |
+| [**Live Watch**](#trace-and-live-view)    | ✅  | ❌ |
+| [**Component Viewer**](#component-viewer) | ✅  | ❌ |
+| [**Core Peripherals**](#core-peripherals) | ✅  | ❌ |
+| [**VARIABLES**](#variables)               | ❌ | ❌ |
+| [**WATCH**](#watch)                       | ❌ | ❌ |
+| [**CALL STACK**](#call-stack)             | ❌ | ❌ |

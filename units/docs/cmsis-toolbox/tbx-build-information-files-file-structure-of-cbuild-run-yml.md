@@ -18,27 +18,27 @@ The following describes the overall structure of the `*.cbuild-run.yml` file.  W
 
 `cbuild-run:`                                                             |            | Content
 :-------------------------------------------------------------------------|:-----------|-------------------------
-&nbsp;&nbsp;&nbsp; `generated-by:`                                        |  Optional  | Tool name that generated this file.
-&nbsp;&nbsp;&nbsp; `solution:`                                            |  Optional  | Name of the `*.csolution.yml` file.
-&nbsp;&nbsp;&nbsp; [`target-type:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#target-types)     |  Optional  | Name of the target-type that was selected.
-&nbsp;&nbsp;&nbsp; [`target-set:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#target-set)        |  Optional  | Name of the target-set that was selected.
-&nbsp;&nbsp;&nbsp; `compiler:`                                            |  Optional  | [Compiler toolchain](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#compiler) used for code generation.
-&nbsp;&nbsp;&nbsp; `board:`                                               |  Optional  | [Board name](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#board) used for this target.
-&nbsp;&nbsp;&nbsp; `board-pack:`                                          |  Optional  | BSP that is defining the [Board name](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#board) used for this target.
-&nbsp;&nbsp;&nbsp; `board-pack-path:`                                     |  Optional  | Path to the BSP on the host computer.
-&nbsp;&nbsp;&nbsp; `device:`                                              |  Optional  | [Device name](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#device) used in this target.
-&nbsp;&nbsp;&nbsp; `device-pack:`                                         |  Optional  | DFP that is defining the [Device](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#device) used in this target.
-&nbsp;&nbsp;&nbsp; `device-pack-path:`                                    |  Optional  | Path to the DFP on the host computer.
-&nbsp;&nbsp;&nbsp; [`output:`](#output)                                   |**Required**| List of the image (ELF, HEX, BIN) files generated.
-&nbsp;&nbsp;&nbsp; [`system-resources:`](#system-resources)               |  Optional  | List of the system resources available in target.
-&nbsp;&nbsp;&nbsp; [`system-descriptions:`](#system-descriptions)         |  Optional  | List of description files for peripherals and software components.
-&nbsp;&nbsp;&nbsp; [`debugger:`](#debugger)                               |**Required**| Configuration information for the debug connection.
-&nbsp;&nbsp;&nbsp; [`debug-vars:`](#debug-vars)                           |  Optional  | Pass user settings to debug access sequences.
-&nbsp;&nbsp;&nbsp; [`debug-sequences:`](#debug-sequences)                 |  Optional  | Tool actions for debugging, tracing, or programming.
-&nbsp;&nbsp;&nbsp; [`debug-sequences-conf:`](#debug-sequences-conf)       |  Optional  | Configuration information for how to use debug sequences.
-&nbsp;&nbsp;&nbsp; [`programming:`](#programming)                         |  Optional  | Algorithms for flash download.
-&nbsp;&nbsp;&nbsp; [`flash-info:`](#flash-info)                           |  Optional  | Memory where the debugger uses JTAG/SWD sequences for programming.
-&nbsp;&nbsp;&nbsp; [`debug-topology:`](#debug-topology)                   |  Optional  | Properties of the system hardware for debug functionality.
+    `generated-by:`                                        |  Optional  | Tool name that generated this file.
+    `solution:`                                            |  Optional  | Name of the `*.csolution.yml` file.
+    [`target-type:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#target-types)     |  Optional  | Name of the target-type that was selected.
+    [`target-set:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#target-set)        |  Optional  | Name of the target-set that was selected.
+    `compiler:`                                            |  Optional  | [Compiler toolchain](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#compiler) used for code generation.
+    `board:`                                               |  Optional  | [Board name](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#board) used for this target.
+    `board-pack:`                                          |  Optional  | BSP that is defining the [Board name](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#board) used for this target.
+    `board-pack-path:`                                     |  Optional  | Path to the BSP on the host computer.
+    `device:`                                              |  Optional  | [Device name](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#device) used in this target.
+    `device-pack:`                                         |  Optional  | DFP that is defining the [Device](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#device) used in this target.
+    `device-pack-path:`                                    |  Optional  | Path to the DFP on the host computer.
+    [`output:`](#output)                                   |**Required**| List of the image (ELF, HEX, BIN) files generated.
+    [`system-resources:`](#system-resources)               |  Optional  | List of the system resources available in target.
+    [`system-descriptions:`](#system-descriptions)         |  Optional  | List of description files for peripherals and software components.
+    [`debugger:`](#debugger)                               |**Required**| Configuration information for the debug connection.
+    [`debug-vars:`](#debug-vars)                           |  Optional  | Pass user settings to debug access sequences.
+    [`debug-sequences:`](#debug-sequences)                 |  Optional  | Tool actions for debugging, tracing, or programming.
+    [`debug-sequences-conf:`](#debug-sequences-conf)       |  Optional  | Configuration information for how to use debug sequences.
+    [`programming:`](#programming)                         |  Optional  | Algorithms for flash download.
+    [`flash-info:`](#flash-info)                           |  Optional  | Memory where the debugger uses JTAG/SWD sequences for programming.
+    [`debug-topology:`](#debug-topology)                   |  Optional  | Properties of the system hardware for debug functionality.
 
 #### `output:`
 
@@ -48,12 +48,12 @@ The `output:` node also contains other required files that are added with [`imag
 `output:`                                                 |             | Content
 :---------------------------------------------------------|-------------|:------------------------------------
 `- file:`                                                 |**Required** | Specifies the file name.
-&nbsp;&nbsp;&nbsp; `project:`                             |  Optional   | Project associated with the image file.
-&nbsp;&nbsp;&nbsp; [`type:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#type)    |**Required** | Specifies the file type.
-&nbsp;&nbsp;&nbsp; `info:`                                |  Optional   | Brief description of the file.
-&nbsp;&nbsp;&nbsp; [`load:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#load)    |**Required** | Load mode of the image file for programmers and debug tools.
-&nbsp;&nbsp;&nbsp; `load-offset:`                         |  Optional   | Offset applied in `*.csolution.yml` when loading the image file.
-&nbsp;&nbsp;&nbsp; `pname:`                               |  Optional   | Image belongs to processor in a multi-core system.
+    `project:`                             |  Optional   | Project associated with the image file.
+    [`type:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#type)    |**Required** | Specifies the file type.
+    `info:`                                |  Optional   | Brief description of the file.
+    [`load:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#load)    |**Required** | Load mode of the image file for programmers and debug tools.
+    `load-offset:`                         |  Optional   | Offset applied in `*.csolution.yml` when loading the image file.
+    `pname:`                               |  Optional   | Image belongs to processor in a multi-core system.
 
 **`load:` mode**
 
@@ -85,19 +85,19 @@ The `system-resources:` node lists the resources of a target system. It includes
 
 `system-resources:`                                       |             | Content
 :---------------------------------------------------------|-------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `memory:`                              |  Optional   | Identifies the section for memory.
-&nbsp;&nbsp;&nbsp; `processors:`                          |  Optional   | List of processor capabilities extracted from the DFP.
+    `memory:`                              |  Optional   | Identifies the section for memory.
+    `processors:`                          |  Optional   | List of processor capabilities extracted from the DFP.
 
 `memory:`                                                 |             | Content
 :---------------------------------------------------------|-------------|:------------------------------------
 `- name:`                                                 |**Required** | Name of the memory region (when PDSC contains id, it uses the id as name).
-&nbsp;&nbsp;&nbsp; `access:`                              |**Required** | Access attribute string for the memory (see table below).
-&nbsp;&nbsp;&nbsp; `start:`                               |**Required** | Base address of the memory.
-&nbsp;&nbsp;&nbsp; `size:`                                |**Required** | Size of the memory.
-&nbsp;&nbsp;&nbsp; `pname:`                               |  Optional   | Only accessible by a specific processor.
-&nbsp;&nbsp;&nbsp; `alias:`                               |  Optional   | Name of identical memory exposed at a different address.
-&nbsp;&nbsp;&nbsp; `default:`                             |  Optional   | Indicates a general purpose memory region.
-&nbsp;&nbsp;&nbsp; `from-pack:`                           |  Optional   | Pack that defines this memory.
+    `access:`                              |**Required** | Access attribute string for the memory (see table below).
+    `start:`                               |**Required** | Base address of the memory.
+    `size:`                                |**Required** | Size of the memory.
+    `pname:`                               |  Optional   | Only accessible by a specific processor.
+    `alias:`                               |  Optional   | Name of identical memory exposed at a different address.
+    `default:`                             |  Optional   | Indicates a general purpose memory region.
+    `from-pack:`                           |  Optional   | Pack that defines this memory.
 
 The table lists the letters and their meaning for use in the access attribute string.
 
@@ -134,18 +134,18 @@ The `processors:` node collects the information of all [processors](https://open
 `processors:`                                            |             | Content
 :--------------------------------------------------------|-------------|:------------------------------------
 `- core:`                                                |**Required** | Specifies the core type. Use predefined values as listed in the table [Device Cores](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#DcoreEnum).
-&nbsp;&nbsp;&nbsp; `max-clock:`                          |**Required** | Specifies the max clock frequency of the processor subsystem.
-&nbsp;&nbsp;&nbsp; `revision:`                           |  Optional   | Hardware revision of the processor core.
-&nbsp;&nbsp;&nbsp; `pname:`                              |  Optional   | Processor identifier. Mandatory for devices that embed multiple processors.
-&nbsp;&nbsp;&nbsp; `punits:`                             |  Optional   | Specifies the number of processor units in a symmetric multi-processor core (MPCore) (default: `1`).
-&nbsp;&nbsp;&nbsp; `endian:`                             |  Optional   | Specifies the endianess of the processor: `little`, `big`, `configurable` (default: `little`).
-&nbsp;&nbsp;&nbsp; `fpu:`                                |  Optional   | Specifies whether a hardware Floating Point Unit is present: `sp`, `dp`, `none` (default: `none`).
-&nbsp;&nbsp;&nbsp; `mpu:`                                |  Optional   | Specifies whether an Arm-based Memory Protection Unit is present: `present`, `none` (default: `none`).
-&nbsp;&nbsp;&nbsp; `dsp:`                                |  Optional   | Specifies whether the device supports the DSP instruction set: `present`, `none` (default: `none`).
-&nbsp;&nbsp;&nbsp; `trustzone:`                          |  Optional   | Specifies whether an Armv8-M based device implements TrustZone: `present`, `none` (default: `none`).
-&nbsp;&nbsp;&nbsp; `mve:`                                |  Optional   | Specifies whether the device supports the M-Profile Vector extension: `int`, `fp`, `none` (default: `none`).
-&nbsp;&nbsp;&nbsp; `cdecp:`                              |  Optional   | Specifies Custom Datapath Extension Coprocessors and usable coprocessor interfaces (default: `0`). See [Custom Datapath Extensions](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#DcdecpEnum).
-&nbsp;&nbsp;&nbsp; `pacbti:`                             |  Optional   | Specifies whether the device implements PAC/BTI instructions: `present`, `none` (default: `none`).
+    `max-clock:`                          |**Required** | Specifies the max clock frequency of the processor subsystem.
+    `revision:`                           |  Optional   | Hardware revision of the processor core.
+    `pname:`                              |  Optional   | Processor identifier. Mandatory for devices that embed multiple processors.
+    `punits:`                             |  Optional   | Specifies the number of processor units in a symmetric multi-processor core (MPCore) (default: `1`).
+    `endian:`                             |  Optional   | Specifies the endianess of the processor: `little`, `big`, `configurable` (default: `little`).
+    `fpu:`                                |  Optional   | Specifies whether a hardware Floating Point Unit is present: `sp`, `dp`, `none` (default: `none`).
+    `mpu:`                                |  Optional   | Specifies whether an Arm-based Memory Protection Unit is present: `present`, `none` (default: `none`).
+    `dsp:`                                |  Optional   | Specifies whether the device supports the DSP instruction set: `present`, `none` (default: `none`).
+    `trustzone:`                          |  Optional   | Specifies whether an Armv8-M based device implements TrustZone: `present`, `none` (default: `none`).
+    `mve:`                                |  Optional   | Specifies whether the device supports the M-Profile Vector extension: `int`, `fp`, `none` (default: `none`).
+    `cdecp:`                              |  Optional   | Specifies Custom Datapath Extension Coprocessors and usable coprocessor interfaces (default: `0`). See [Custom Datapath Extensions](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#DcdecpEnum).
+    `pacbti:`                             |  Optional   | Specifies whether the device implements PAC/BTI instructions: `present`, `none` (default: `none`).
 
 !!! Note
     This node does not reuse `processors:` under [`debug-topology:`](#debug-topology) to keep a separation of concerns between processor capabilities and debug access properties.
@@ -176,9 +176,9 @@ List of the description files for peripherals and software components used in th
 `system-descriptions:`                            | Value  |   Use        | Content
 :-------------------------------------------------|--------|--------------|:------------------------------------
 `- file:`                                         | string | **Required** | Specifies the file name including the path.
-&nbsp;&nbsp;&nbsp; `type:`                        | string | **Required** | Specifies the file type (see table below).
-&nbsp;&nbsp;&nbsp; `info:`                        | string |   Optional   | Brief description of the file.
-&nbsp;&nbsp;&nbsp; `pname:`                       | string |   Optional   | File is used only for a specific processor; default is for all processors.
+    `type:`                        | string | **Required** | Specifies the file type (see table below).
+    `info:`                        | string |   Optional   | Brief description of the file.
+    `pname:`                       | string |   Optional   | File is used only for a specific processor; default is for all processors.
 
 `type:` | Description
 :-------|:------------------
@@ -194,21 +194,21 @@ This node contains connection information for a debugger with initial settings c
 
 `debugger:`                                               |             | Content
 :---------------------------------------------------------|-------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `name:`                                |**Required** | Identifies the debug configuration.
-&nbsp;&nbsp;&nbsp; `info:`                                |  Optional   | Brief description from target-set.
-&nbsp;&nbsp;&nbsp; `protocol:`                            |  Optional   | Selected debug protocol (jtag or swd).
-&nbsp;&nbsp;&nbsp; `clock:`                               |  Optional   | Selected debug clock speed in Hz.
-&nbsp;&nbsp;&nbsp; `dbgconf:`                             |  Optional   | Debugger configuration file (pinout, trace).
-&nbsp;&nbsp;&nbsp; `start-pname:`                         |  Optional   | Debugger connects at start to this processor.
-&nbsp;&nbsp;&nbsp; `gdbserver:`                           |  Optional   | Information for GDB server option of debugger.
-&nbsp;&nbsp;&nbsp; `stdio:`                               |  Optional   | Standard I/O service configuration.
-&nbsp;&nbsp;&nbsp; `connect:`                             |  Optional   | Connect mode to hardware.
-&nbsp;&nbsp;&nbsp; `reset:`                               |  Optional   | Reset type configuration for various cores.
-&nbsp;&nbsp;&nbsp; `load-setup:`                          |  Optional   | Reset type and Halt configuration for Load command.
-&nbsp;&nbsp;&nbsp; `rtt:`                                 |  Optional   | Segger RTT configuration.
-&nbsp;&nbsp;&nbsp; `systemview:`                          |  Optional   | Segger SystemView configuration.
-&nbsp;&nbsp;&nbsp; `trace:`                               |  Future     | Trace port of the debugger.
-&nbsp;&nbsp;&nbsp; `*:`                                   |  Optional   | Other debugger specific options specified under [target-set](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#target-set).
+    `name:`                                |**Required** | Identifies the debug configuration.
+    `info:`                                |  Optional   | Brief description from target-set.
+    `protocol:`                            |  Optional   | Selected debug protocol (jtag or swd).
+    `clock:`                               |  Optional   | Selected debug clock speed in Hz.
+    `dbgconf:`                             |  Optional   | Debugger configuration file (pinout, trace).
+    `start-pname:`                         |  Optional   | Debugger connects at start to this processor.
+    `gdbserver:`                           |  Optional   | Information for GDB server option of debugger.
+    `stdio:`                               |  Optional   | Standard I/O service configuration.
+    `connect:`                             |  Optional   | Connect mode to hardware.
+    `reset:`                               |  Optional   | Reset type configuration for various cores.
+    `load-setup:`                          |  Optional   | Reset type and Halt configuration for Load command.
+    `rtt:`                                 |  Optional   | Segger RTT configuration.
+    `systemview:`                          |  Optional   | Segger SystemView configuration.
+    `trace:`                               |  Future     | Trace port of the debugger.
+    `*:`                                   |  Optional   | Other debugger specific options specified under [target-set](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#target-set).
 
 !!! Note
     - `protocol:` and `clock:` are required by pyOCD but optional for other debug adapters. The file [`./etc/debug-adapters.yml`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/build-operation.md#debug-adapter-integration) allows to specify default values for required options.
@@ -224,8 +224,8 @@ The information for the `debugger:` node may be configured using the [`debugger:
 `*.cbuild-run.yml`            | `*.csolution.yml`            | BSP                                | DFP
 :-----------------------------|:-----------------------------|:-----------------------------------|:--------------------------
 `debugger:`                   | [`debugger:`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/YML-Input-Format.md#debugger) | [`<boards><board><debugProbe ...`](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_boards_pg.html#element_board_debugProbe) | [`<device><debugconfig ...`](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_debugconfig)
-&nbsp;&nbsp;&nbsp; `protocol:`|&nbsp;&nbsp;&nbsp; `protocol:`|&nbsp;&nbsp;&nbsp; `debugLink`      |&nbsp;&nbsp;&nbsp; `default`
-&nbsp;&nbsp;&nbsp; `clock:`   |&nbsp;&nbsp;&nbsp; `clock:`   |&nbsp;&nbsp;&nbsp; `debugClock`     |&nbsp;&nbsp;&nbsp; `clock`
+    `protocol:`|    `protocol:`|    `debugLink`      |    `default`
+    `clock:`   |    `clock:`   |    `debugClock`     |    `clock`
 
 If no input (`*.csolution.yml`, BSP or DFP) provides debugger option values, the CMSIS-Toolbox uses the values under `defaults:` from the file [`./etc/debug-adapters.yml`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/build-operation.md#debug-adapter-integration).
 
@@ -250,8 +250,8 @@ These are options for the pyOCD GDB server configuration (could be optionally us
 `gdbserver:`                                              |              | Content
 :---------------------------------------------------------|--------------|:------------------------------------
 `- port:`                                                 | **Required** | Port number of processor
-&nbsp;&nbsp;&nbsp; `pname:`                               |   Optional   | Processor name of the processor (only required for multi-core systems)
-&nbsp;&nbsp;&nbsp; `punit:`                               |   Future     | Identifies the processor core in a SMP system.
+    `pname:`                               |   Optional   | Processor name of the processor (only required for multi-core systems)
+    `punit:`                               |   Future     | Identifies the processor core in a SMP system.
 
 **Example:**
 
@@ -277,7 +277,7 @@ These initial values are overwritten by explicit settings in the `*.dbgconf` fil
 
 `debug-vars:`                                             |              | Content
 :---------------------------------------------------------|--------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `vars:`                                |   Optional   | Initial values for variables used in [`debug-sequences:`](#debug-sequences).
+    `vars:`                                |   Optional   | Initial values for variables used in [`debug-sequences:`](#debug-sequences).
 
 **Example:**
 
@@ -297,19 +297,19 @@ This node contains the [debug sequences](https://open-cmsis-pack.github.io/Open-
 `debug-sequences:`                                        |              | Content
 :---------------------------------------------------------|--------------|:------------------------------------
 `- name:`                                                 | **Required** | Name of the sequence.
-&nbsp;&nbsp;&nbsp; `info:`                                |   Optional   | Descriptive text to display for example for error diagnostics.
-&nbsp;&nbsp;&nbsp; `blocks:`                              |   Optional   | A list of command blocks in order of execution.
-&nbsp;&nbsp;&nbsp; `pname:`                               |   Optional   | Executes sequence only for a specific processor; default is for all processors.
+    `info:`                                |   Optional   | Descriptive text to display for example for error diagnostics.
+    `blocks:`                              |   Optional   | A list of command blocks in order of execution.
+    `pname:`                               |   Optional   | Executes sequence only for a specific processor; default is for all processors.
 
 `blocks:`                                                 |              | Content
 :---------------------------------------------------------|--------------|:------------------------------------
 `- info:`                                                 |   Optional   | Descriptive text to display for example for error diagnostics.
-&nbsp;&nbsp;&nbsp; `blocks:`                              |   Optional   | A list of command blocks in the order of execution.
-&nbsp;&nbsp;&nbsp; `execute:`                             |   Optional   | Commands for execution.
-&nbsp;&nbsp;&nbsp; `atomic:`                              |   Optional   | Atomic execution of commands; cannot be used with `blocks:`.
-&nbsp;&nbsp;&nbsp; `if:`                                  |   Optional   | Only executed when expression is true.
-&nbsp;&nbsp;&nbsp; `while:`                               |   Optional   | Executed in loop until while expression is true.
-&nbsp;&nbsp;&nbsp; `timeout:`                             |   Optional   | Timeout value (integer) in milliseconds for while loop.
+    `blocks:`                              |   Optional   | A list of command blocks in the order of execution.
+    `execute:`                             |   Optional   | Commands for execution.
+    `atomic:`                              |   Optional   | Atomic execution of commands; cannot be used with `blocks:`.
+    `if:`                                  |   Optional   | Only executed when expression is true.
+    `while:`                               |   Optional   | Executed in loop until while expression is true.
+    `timeout:`                             |   Optional   | Timeout value (integer) in milliseconds for while loop.
 
 !!! Note
     - When `atomic:` is applied, sequences execute with no interrupts as fast as possible using [CMSIS-DAP Atomic Commands](https://arm-software.github.io/CMSIS-DAP/latest/group__DAP__atomic__gr.html). It has therefore restrictions and cannot be combined with `blocks:`.
@@ -432,7 +432,7 @@ This node contains configuration information for how [debug sequences](https://o
 
 `debug-sequences-conf:`              |              | Content
 :------------------------------------|--------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `trace-setup:`     |   Optional   | Configure how to use trace sequences. Can be `full` or `legacy` (default: `legacy`).
+    `trace-setup:`     |   Optional   | Configure how to use trace sequences. Can be `full` or `legacy` (default: `legacy`).
 
 Value `full` for `trace-setup:` informs the debugger that all trace component setup is done by the trace sequences. Opposed to that, the `legacy` mode expected debuggers to program the CoreSight trace components as per built-in support knowledge. Going forward, `full` is the preferred mode to allow new CoreSight component support without debug tool updates.
 
@@ -455,11 +455,11 @@ The algorithm in the DFP and BSP must have the attribute `default="1"` set. If i
 `programming:`                                    |              | Content
 :-------------------------------------------------|--------------|:------------------------------------
 `- algorithm:`                                    | **Required** | Programming algorithm file including the path.
-&nbsp;&nbsp;&nbsp; `start:`                       | **Required** | Start address of memory covered by the programming algorithm.
-&nbsp;&nbsp;&nbsp; `size:`                        | **Required** | Size of memory covered by the programming algorithm.
-&nbsp;&nbsp;&nbsp; `ram-start:`                   | **Required** | Start address of RAM where the algorithm will be executed from.
-&nbsp;&nbsp;&nbsp; `ram-size:`                    | **Required** | Maximum size of RAM available for executing the programming algorithm.
-&nbsp;&nbsp;&nbsp; `pname:`                       |   Optional   | Specifies the processor for the execution of the algorithm.
+    `start:`                       | **Required** | Start address of memory covered by the programming algorithm.
+    `size:`                        | **Required** | Size of memory covered by the programming algorithm.
+    `ram-start:`                   | **Required** | Start address of RAM where the algorithm will be executed from.
+    `ram-size:`                    | **Required** | Maximum size of RAM available for executing the programming algorithm.
+    `pname:`                       |   Optional   | Specifies the processor for the execution of the algorithm.
 
 !!! Note
     When `pname:` is specified the memory can only be programmed using the specified processor. Otherwise any processor in a multi-processor system can execute the programming algorithm.
@@ -471,20 +471,20 @@ The algorithm in the DFP and BSP must have the attribute `default="1"` set. If i
 `flash-info:`                                     |              | Content
 :-------------------------------------------------|--------------|:------------------------------------
 `- name:`                                         | **Required** | Name of the specified flash device.
-&nbsp;&nbsp;&nbsp; `start:`                       | **Required** | Base address of the memory.
-&nbsp;&nbsp;&nbsp; `page-size:`                   | **Required** | Page size. A page is the smallest unit that can be programmed.
-&nbsp;&nbsp;&nbsp; `blocks:`                      | **Required** | List of blocks. A block is the smallest unit that can be erased.
-&nbsp;&nbsp;&nbsp; `blank-val:`                   |   Optional   | 64-bit value in erased memory (default 0xFFFFFFFFFFFFFFFF). Value is truncated to match the access size.
-&nbsp;&nbsp;&nbsp; `fill-val:`                    |   Optional   | 64-bit value that a debugger uses to fill the remainder of a page (default 0xFFFFFFFFFFFFFFFF).  Value is truncated to match the access size.
-&nbsp;&nbsp;&nbsp; `ptime:`                       |   Optional   | Timeout in milliseconds for programming a page (default 300).
-&nbsp;&nbsp;&nbsp; `etime:`                       |   Optional   | Timeout in milliseconds for erasing a block (default 300).
-&nbsp;&nbsp;&nbsp; `pname:`                       |   Optional   | Executes programming only for a specific processor (default for all processors).
+    `start:`                       | **Required** | Base address of the memory.
+    `page-size:`                   | **Required** | Page size. A page is the smallest unit that can be programmed.
+    `blocks:`                      | **Required** | List of blocks. A block is the smallest unit that can be erased.
+    `blank-val:`                   |   Optional   | 64-bit value in erased memory (default 0xFFFFFFFFFFFFFFFF). Value is truncated to match the access size.
+    `fill-val:`                    |   Optional   | 64-bit value that a debugger uses to fill the remainder of a page (default 0xFFFFFFFFFFFFFFFF).  Value is truncated to match the access size.
+    `ptime:`                       |   Optional   | Timeout in milliseconds for programming a page (default 300).
+    `etime:`                       |   Optional   | Timeout in milliseconds for erasing a block (default 300).
+    `pname:`                       |   Optional   | Executes programming only for a specific processor (default for all processors).
 
 `blocks:`                                         |              | Content
 :-------------------------------------------------|--------------|:------------------------------------
 `- count:`                                        | **Required** | Number of blocks.
-&nbsp;&nbsp;&nbsp; `size:`                        | **Required** | Block size in bytes. Total memory size (in bytes) is `size * count`.
-&nbsp;&nbsp;&nbsp; `arg:`                         |   Optional   | Optional value that a debugger writes to the pre-defined debug access variable `__FlashArg` at start of a flash operation (default 0).
+    `size:`                        | **Required** | Block size in bytes. Total memory size (in bytes) is `size * count`.
+    `arg:`                         |   Optional   | Optional value that a debugger writes to the pre-defined debug access variable `__FlashArg` at start of a flash operation (default 0).
 
 !!! Note
     - The [`gap` element](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_flashgap) is not used.
@@ -514,31 +514,31 @@ debug-topology:
 
 `debug-topology:`                                 |              | Content
 :-------------------------------------------------|--------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `debugports:`                  |   Optional   | Describes the CoreSight debug ports of the device and its capabilities.
-&nbsp;&nbsp;&nbsp; `processors:`                  |   Optional   | Map of `pname` identifiers to access port IDs (mandatory for multi-processor devices).
-&nbsp;&nbsp;&nbsp; `trace-sinks:`                 |   Optional   | Trace sinks supported by the device.
-&nbsp;&nbsp;&nbsp; `swj:`                         |   Optional   | Device allows switching between Serial Wire Debug (SWD) and JTAG protocols (`true` or `false`).
-&nbsp;&nbsp;&nbsp; `dormant:`                     |   Optional   | Device requires the dormant state to switch debug protocols (`true` or `false`).
-&nbsp;&nbsp;&nbsp; *`sdf:`*                       |   Optional   | [System Description File (`*.sdf`)](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/sdf_pg.html) specified in the [DFP](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_debugconfig).
+    `debugports:`                  |   Optional   | Describes the CoreSight debug ports of the device and its capabilities.
+    `processors:`                  |   Optional   | Map of `pname` identifiers to access port IDs (mandatory for multi-processor devices).
+    `trace-sinks:`                 |   Optional   | Trace sinks supported by the device.
+    `swj:`                         |   Optional   | Device allows switching between Serial Wire Debug (SWD) and JTAG protocols (`true` or `false`).
+    `dormant:`                     |   Optional   | Device requires the dormant state to switch debug protocols (`true` or `false`).
+    *`sdf:`*                       |   Optional   | [System Description File (`*.sdf`)](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/sdf_pg.html) specified in the [DFP](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_debugconfig).
 
 `debugports:`                                     |              | Content
 :-------------------------------------------------|--------------|:------------------------------------
 `- dpid:`                                         | **Required** | Unique ID of this debug port.
-&nbsp;&nbsp;&nbsp; `jtag:`                        |   Optional   | Describes JTAG Test Access Port (TAP) properties of this debug port.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `tapindex:`  |   Optional   | TAP index in the JTAG scan chain of this device from TDI to TDO (default `0`).
-&nbsp;&nbsp;&nbsp; `swd:`                         |   Optional   | Describes CoreSight Serial Wire Debug Port (SW-DP) properties of this debug port.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `targetsel:` |   Optional   | SWD multi-drop target selection.
-&nbsp;&nbsp;&nbsp; `accessports:`                 |   Optional   | List of CoreSight access ports (APv1/APv2) (mandatory for multi-processor devices).
+    `jtag:`                        |   Optional   | Describes JTAG Test Access Port (TAP) properties of this debug port.
+       `tapindex:`  |   Optional   | TAP index in the JTAG scan chain of this device from TDI to TDO (default `0`).
+    `swd:`                         |   Optional   | Describes CoreSight Serial Wire Debug Port (SW-DP) properties of this debug port.
+       `targetsel:` |   Optional   | SWD multi-drop target selection.
+    `accessports:`                 |   Optional   | List of CoreSight access ports (APv1/APv2) (mandatory for multi-processor devices).
 
 `accessports:`                                    |              | Content
 :-------------------------------------------------|--------------|:------------------------------------
 `- apid:`                                         | **Required** | Unique ID of this access port. If only `apid` is provided, access port (APv1) with index `0` will be implicitly used.
-&nbsp;&nbsp;&nbsp; `index:`                       |   Optional   | Index to select this access port (APv1) for a target access.
-&nbsp;&nbsp;&nbsp; `address:`                     |   Optional   | Address to select this access port (APv2) in its parent's address space for a target access.
-&nbsp;&nbsp;&nbsp; `HPROT:`                       |   Optional   | Value for HPROT (AHB Protection Control) bits.
-&nbsp;&nbsp;&nbsp; `SPROT:`                       |   Optional   | Value for SPROT (Secure Protection Control) bit.
-&nbsp;&nbsp;&nbsp; `datapatch:`                   |   Optional   | [List of patch values](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_dbg_datapatch) a debugger shall apply when reading from the device.
-&nbsp;&nbsp;&nbsp; *`accessports:`*               |   Optional   | Nested CoreSight access ports (APv2).
+    `index:`                       |   Optional   | Index to select this access port (APv1) for a target access.
+    `address:`                     |   Optional   | Address to select this access port (APv2) in its parent's address space for a target access.
+    `HPROT:`                       |   Optional   | Value for HPROT (AHB Protection Control) bits.
+    `SPROT:`                       |   Optional   | Value for SPROT (Secure Protection Control) bit.
+    `datapatch:`                   |   Optional   | [List of patch values](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_dbg_datapatch) a debugger shall apply when reading from the device.
+    *`accessports:`*               |   Optional   | Nested CoreSight access ports (APv2).
 
 !!! Note
     `index:` and `address:` cannot be specified at the same time.
@@ -546,9 +546,9 @@ debug-topology:
 `processors:`                                     |              | Content
 :-------------------------------------------------|--------------|:------------------------------------
 `- pname:`                                        | **Required** | Processor identifier  (mandatory for multi-processor devices).
-&nbsp;&nbsp;&nbsp; *`punits:`*                    |   Optional   | Specifies processor units in a symmetric multi-processor core (MPCore) (mandatory when more than one CPU debug block is accessible).
-&nbsp;&nbsp;&nbsp; `apid:`                        |   Optional   | Access port ID to use for this processor.
-&nbsp;&nbsp;&nbsp; `reset-sequence:`              |   Optional   | Name of debug sequence for reset operation (default: `ResetSystem` sequence).
+    *`punits:`*                    |   Optional   | Specifies processor units in a symmetric multi-processor core (MPCore) (mandatory when more than one CPU debug block is accessible).
+    `apid:`                        |   Optional   | Access port ID to use for this processor.
+    `reset-sequence:`              |   Optional   | Name of debug sequence for reset operation (default: `ResetSystem` sequence).
 
 `trace-sinks:`                                    |              | Content
 :-------------------------------------------------|--------------|:------------------------------------
@@ -574,10 +574,10 @@ debug-topology:
 `datapatch:`                                      |              | Content
 :-------------------------------------------------|--------------|:------------------------------------
 `- address:`                                      | **Required** | Address for which to apply the patch.
-&nbsp;&nbsp;&nbsp; `value:`                       | **Required** | Value to overwrite from device (for example in a ROM table).
-&nbsp;&nbsp;&nbsp; `mask:`                        |   Optional   | The bits to patch. Default: complete value is replaced.
-&nbsp;&nbsp;&nbsp; `type:`                        |   Optional   | Type of data access to patch (see table below). Default is `Mem`.
-&nbsp;&nbsp;&nbsp; `info:`                        |   Optional   | Descriptive text for diagnostics messages.
+    `value:`                       | **Required** | Value to overwrite from device (for example in a ROM table).
+    `mask:`                        |   Optional   | The bits to patch. Default: complete value is replaced.
+    `type:`                        |   Optional   | Type of data access to patch (see table below). Default is `Mem`.
+    `info:`                        |   Optional   | Descriptive text for diagnostics messages.
 
 The table lists the allowed values for data patch access types.
 
@@ -589,7 +589,7 @@ Mem        | Memory access (default when type is not specified)
 *`punits:`*                                       |              | Content
 :-------------------------------------------------|--------------|:------------------------------------
 *`- punit:`*                                      | **Required** | Specifies a specific processor unit of a symmetric MPCore.
-&nbsp;&nbsp;&nbsp; *`address:`*                   | **Required** | Specifies the base address of the CPU debug block.
+    *`address:`*                   | **Required** | Specifies the base address of the CPU debug block.
 
 !!! Note
     The nodes in *italic* are specified for future expansion, but currently not implemented.

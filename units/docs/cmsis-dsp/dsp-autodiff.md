@@ -1,0 +1,22 @@
+---
+id: "dsp-autodiff"
+type: "concept"
+domain: "optimization"
+title: "Autodiff"
+summary: "Autodiff"
+status: "draft"
+collection: "cmsis-dsp"
+source: "ARM-software/CMSIS-DSP@83a2d7b:Documentation/Doxygen/src/autodiff_main.md"
+doc_source: "https://github.com/ARM-software/CMSIS-DSP/blob/83a2d7b/Documentation/Doxygen/src/autodiff_main.md"
+license: "Apache-2.0"
+mode: "V"
+---
+
+* @subpage autodiff_introduction "Introduction"
+* @subpage autodiff_concepts "Concepts and memory model"
+* @subpage autodiff_implementation_flow "Worked implementation flow"
+* @subpage autodiff_operators "Operators"
+* @subpage autodiff_optimizers "Optimizers"
+* @subpage autodiff_training_loop "Training loop"
+* @subpage autodiff_ethos_cmsis_nn_fine_tuning "Fine-tuning an output layer after Ethos-U"
+* @subpage autodiff_pytorch_conversion "Converting PyTorch modules"

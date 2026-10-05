@@ -18,7 +18,7 @@ Add include paths to the command line of the development tools for assembly sour
 
 `add-path-asm:`                                            | Content
 :----------------------------------------------------------|:------------------------------------
-&nbsp;&nbsp;&nbsp; `- <path-name>`                         | Named path to be added
+    `- <path-name>`                         | Named path to be added
 
 !!! Note
     This control only applies to assembler source files.  For C and C++ source files use the `add-path:` node.
