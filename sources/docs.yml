@@ -283,12 +283,13 @@ sources:
     repo: zephyrproject-rtos/zephyr
     sparse: [doc/build/dts, doc/build/kconfig, doc/develop/debug, doc/develop/test, doc/develop/west, doc/hardware/arch,
              doc/kernel, doc/services/logging, doc/services/shell, doc/hardware/porting, doc/develop/getting_started,
-             doc/services/tracing, doc/hardware/pinctrl]
+             doc/services/tracing, doc/hardware/pinctrl, doc/services/debugging, doc/services/tfm, doc/services/pm]
     include: ["doc/kernel/**/*.rst", "doc/build/dts/*.rst", "doc/build/kconfig/*.rst", "doc/develop/west/*.rst",
               "doc/develop/test/*.rst", "doc/develop/debug/*.rst", "doc/services/logging/*.rst", "doc/services/shell/*.rst",
               "doc/hardware/arch/arm_cortex_m.rst", "doc/hardware/arch/semihost.rst",
               "doc/hardware/porting/board_porting.rst", "doc/hardware/porting/shields.rst", "doc/hardware/porting/soc_porting.rst",
-              "doc/develop/getting_started/*.rst", "doc/services/tracing/index.rst", "doc/hardware/pinctrl/index.rst"]
+              "doc/develop/getting_started/*.rst", "doc/services/tracing/index.rst", "doc/hardware/pinctrl/index.rst",
+              "doc/services/debugging/*.rst", "doc/services/tfm/*.rst", "doc/services/pm/*.rst"]
     # An index.rst that is only a table of contents yields no unit (too little prose); the others are pages.
     exclude: ["doc/develop/west/release-notes.rst", "doc/develop/west/west-apis.rst"]
     license: Apache-2.0
@@ -296,6 +297,8 @@ sources:
     domains:
       - {paths: ["doc/build/*", "doc/develop/west/*", "doc/develop/getting_started/*"], domain: project}
       - {paths: ["doc/hardware/porting/*", "doc/hardware/pinctrl/*"], domain: bring-up}
+      - {paths: ["doc/services/tfm/*"], domain: security}
+      - {paths: ["doc/services/pm/*"], domain: optimization}
       - {paths: ["doc/develop/test/*"], domain: test}
       - {paths: ["doc/develop/debug/*", "doc/services/*"], domain: debug}
 
