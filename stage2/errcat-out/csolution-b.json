@@ -1,0 +1,196 @@
+[
+ {
+  "id": "ts-csolution-input-csolution-yml-was-not-specified",
+  "cause": "`csolution check pack-updates` was run without a solution file. The command needs the *.csolution.yml either with `-s`/`--solution` or as a positional argument whose name ends in `.csolution.yml` (or `.csolution.yaml`); a file with any other name is not recognised as the solution.",
+  "fix": "Pass the solution file: `csolution check pack-updates my.csolution.yml` or `csolution check pack-updates -s path/to/my.csolution.yml`. Rename the file to `<name>.csolution.yml` if it does not follow that pattern.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:1074",
+   "tools/projmgr/src/ProjMgr.cpp:257",
+   "tools/projmgr/src/ProjMgr.cpp:266",
+   "tools/projmgr/src/ProjMgr.cpp:455",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:675"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-invalid-arguments-a-option-cannot-be-used-in-com",
+  "cause": "The command line contains both `-a`/`--active` (select a target-type and target-set) and `-S`/`--context-set` (take the context selection from the <solution>.cbuild-set.yml). Both select the contexts to process, so csolution rejects the combination.",
+  "fix": "Use only one of them: `-a <target-type>[@<target-set>]` to select by target, or `-S` to reuse the selection stored in the cbuild-set.yml.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:5224",
+   "tools/projmgr/src/ProjMgrWorker.cpp:5230",
+   "tools/projmgr/src/ProjMgr.cpp:179",
+   "tools/projmgr/src/ProjMgr.cpp:183",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7672"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-improper-quotes",
+  "cause": "An entry under `define:` (or `define-asm:`) has a value with misplaced double quotes; `<…>` is that value. csolution accepts a value with no `\"` at all, or one quoted completely: exactly two quotes, either as `\"...\"` at both ends or as escaped `\\\"...\\\"` at both ends. A quote in the middle, a missing closing quote or a mix of `\"` and `\\\"` is rejected. Quotes that are YAML syntax (`- KEY: \"value\"`) are removed by YAML and do not count.",
+  "fix": "Quote the whole value or not at all. To pass a C string literal write the escaped form, e.g. `- KEY3: \\\"valid\\\"` or `- \\\"Test 3\\\"`; for a plain token write `- KEY: value`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:420",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:449",
+   "tools/projmgr/test/data/TestSolution/test_invalid_defines.csolution.yml:19",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7407"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-invalid-pattern",
+  "cause": "A `for-context:` or `not-for-context:` entry starts with `^` or `\\`, so csolution treats it as a regular expression, but the expression does not compile; the first `<…>` is the entry, the second the regex library's error text. Example: `for-context: ^.Debug+(CM0` has an unclosed parenthesis.",
+  "fix": "Correct the regular expression, escaping the literal `.` and `+` of context names, e.g. `for-context: ^\\.Debug\\+(CM0|CM3)`. If no pattern is meant, use the plain form `.Debug+CM0` without a leading `^` or `\\`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:684",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:710",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:715",
+   "tools/projmgr/test/data/TestSolution/ForContextRegex/regex-fail.csolution.yml:19",
+   "tools/projmgr/test/data/TestSolution/ForContextRegex/regex.cproject.yml:13",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:6764"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-was-not-recognized",
+  "cause": "A YAML file csolution reads (csolution.yml, cproject.yml, clayer.yml, cdefault.yml, cbuild-pack.yml or cbuild-set.yml) contains a key that is not valid at that place; `<…>` is the key and the message carries its file, line and column. It is usually a typo or a key placed under the wrong parent. With the schema check on, the schema normally reports the key first; this warning is what remains with `-n`/`--no-check-schema` or when the schemas are not installed.",
+  "fix": "Fix the spelling or move the key to the node where the YAML schema allows it (schemas/*.schema.json), or remove it. Run without `-n` to get the schema's report on the same line.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:1733",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:1663",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:71",
+   "tools/projmgr/test/data/TestSolution/PackLocking/cbuild_pack_with_disallowed_field.cbuild-pack.yml:1",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:1638"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-linker-script-template-for-compiler",
+  "cause": "The project has no linker script of its own (no `linker:` - `script:` in cproject.yml or clayer.yml and none from a component), or uses `linker:` - `auto:`, so csolution looks for the template `<compiler>_linker_script.*` of the selected compiler; `<…>` is that compiler. It searches the compiler root (environment variable CMSIS_COMPILER_ROOT, otherwise the `etc` folder of the CMSIS-Toolbox installation) and found no template there. Templates exist for AC6, GCC, IAR, CLANG, CLANG_TI and XC. The context then has no linker script.",
+  "fix": "Check that CMSIS_COMPILER_ROOT points to the toolbox's `etc` folder, or that the CMSIS-Toolbox installation is complete, and that `compiler:` names a supported toolchain. Alternatively give the project its own script: `linker:` - `script: path/to/file.sct` in the cproject.yml.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:2449",
+   "tools/projmgr/src/ProjMgrWorker.cpp:2462",
+   "tools/projmgr/src/ProjMgrWorker.cpp:2355",
+   "tools/projmgr/src/ProjMgrUtils.cpp:199",
+   "tools/projmgr/templates/gcc_linker_script.ld.src",
+   "tools/projmgr/test/src/ProjMgrWorkerUnitTests.cpp:1549"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-list-args-was-not-found",
+  "cause": "`csolution list` was given a subject it does not know; the word after `list` must be one of packs, boards, devices, npus, components, configs, dependencies, examples, templates, contexts, targets, target-sets, debuggers, generators, layers, toolchains or environment. A solution file whose name does not end in `.csolution.yml` is also taken as that subject.",
+  "fix": "Correct the subject, e.g. `csolution list devices my.csolution.yml`, and pass the solution as `<name>.csolution.yml` or with `-s`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:420",
+   "tools/projmgr/src/ProjMgr.cpp:440",
+   "tools/projmgr/src/ProjMgr.cpp:257"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-list-args-was-not-specified",
+  "cause": "`csolution list` was run without saying what to list.",
+  "fix": "Add the subject after `list`, e.g. `csolution list packs`, `csolution list devices`, `csolution list components my.csolution.yml` or `csolution list contexts my.csolution.yml`; `csolution list -h` shows the choices.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:414",
+   "tools/projmgr/src/ProjMgr.cpp:420"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ts-csolution-does-not-match-specified-metadata",
+  "cause": "A `packs:` entry pins a version with build metadata, such as `- pack: ARM::RteTest_DFP@0.1.1+user_metadata`, but the installed pack of that version carries different metadata after the `+` in its release version. The first `<…>` is the loaded pack (printed without the `@` before the version), the second the metadata from the YAML. The pack is still used.",
+  "fix": "Make the `+<metadata>` suffix in the `packs:` entry match the installed pack, or drop the suffix: `- pack: ARM::RteTest_DFP@0.1.1`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:586",
+   "tools/projmgr/src/ProjMgrWorker.cpp:1779",
+   "tools/projmgr/test/data/TestSolution/PackMetadata/metadata.csolution.yml:18",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:6345"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-malformed-access-sequence",
+  "cause": "A path or value in the YAML (for example under `add-path:`, `define:`, `misc:`, `output-dirs:`, `linker:`, a debugger or image file, or a generator path) contains a `$` that opens an access sequence but has no closing `$`. `<…>` is the whole value after variables were expanded.",
+  "fix": "Close the access sequence, e.g. `$OutDir(project)$` or `$SolutionDir()$`, or remove the stray `$`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:3720",
+   "libs/rteutils/src/RteUtils.cpp:600",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:8025"
+  ],
+  "confidence": "medium",
+  "note": "The test at ProjMgrUnitTests.cpp:8025 hits this path for mlops image paths but does not check the message text."
+ },
+ {
+  "id": "ts-csolution-manifest-file-does-not-exist",
+  "cause": "The csolution.yml has `created-for: CMSIS-Toolbox@<version>`, and to compare versions csolution looks for `manifest_<x.y.z>*.yml` in the CMSIS-Toolbox installation directory (the parent of the folder that holds the csolution executable). No such file is there, so the minimum-version check is skipped.",
+  "fix": "Use csolution from a complete CMSIS-Toolbox installation, whose root folder contains the manifest file; reinstall the toolbox if it is missing. The warning does not stop the run.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgr.cpp:1209",
+   "tools/projmgr/src/ProjMgr.cpp:1184",
+   "tools/projmgr/src/ProjMgrKernel.cpp:36",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7104"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-missing-device-and-or-board-info",
+  "cause": "The context has neither a `board:` nor a device name in `device:` at any level (target-types in the csolution.yml, the cproject.yml or a clayer.yml). A `device:` with only a processor name, such as `device: :cm0_core0`, does not count.",
+  "fix": "Add a board or a device to the target type in the csolution.yml, e.g. `target-types:` - `type: CM0` with `device: ARMCM0` or `board: <vendor>::<board name>`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:1347",
+   "tools/projmgr/src/ProjMgrWorker.cpp:774",
+   "tools/projmgr/src/ProjMgrWorker.cpp:3062",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:3098"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-missing-rte-target",
+  "cause": "csolution reached component or configuration-file processing for a context that has no RTE target; the target is created when packs are loaded for the context. It is an internal guard that normal project input does not reach, and no test exercises it.",
+  "fix": "Fix the errors reported before this message (pack loading, device or board selection). If it is the only error, report it to the CMSIS-Toolbox maintainers with the solution that produces it.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:1974",
+   "tools/projmgr/src/ProjMgrWorker.cpp:737",
+   "tools/projmgr/src/ProjMgrWorker.cpp:597"
+  ],
+  "confidence": "low"
+ },
+ {
+  "id": "ts-csolution-no-default-unnamed-target-set-for",
+  "cause": "`mlops:` - `hardware:` or `simulator:` - `target:` names a target type whose target sets do not contain the requested one. Without `@<set>` (e.g. `target: Hardware`) csolution needs a `target-set:` entry with an empty `set:` name and reports `no default unnamed target set for '<type>'`; with `target: <type>@<set>` it reports `target set '<type>@<set>' not found` when no entry has that `set:` name.",
+  "fix": "Name an existing set in `target: <type>@<set>`, or add the set under the target type in the csolution.yml: `target-set:` - `set: <set>` (an entry with an empty `set:` serves as the default).",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrMlops.cpp:35",
+   "tools/projmgr/src/ProjMgrMlops.cpp:84",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:1176",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7990"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-mlops-no-image-or-project-context-specified-for-",
+  "cause": "`mlops:` - `hardware:` or `simulator:` - `target:` selects a target set whose `images:` list has no `project-context:` that names a project of the solution, so there is no context to build or run for that target. `<…>` is the target. Example: `images:` - `project-context: wrong_context`.",
+  "fix": "In that target set add or correct an `images:` entry so that `project-context:` names a project from `projects:` in the csolution.yml, e.g. `- project-context: core0`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrMlops.cpp:166",
+   "tools/projmgr/src/ProjMgrMlops.cpp:198",
+   "tools/projmgr/test/data/MLOps/failure3.csolution.yml:6",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7991"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ts-csolution-mlops-target-type",
+  "cause": "`mlops:` - `hardware:` or `simulator:` - `target:` names a target type that is not declared under `target-types:` in the csolution.yml; `<…>` is that name (the part before `@`).",
+  "fix": "Use the `type:` of an existing target type in `target: <type>[@<set>]`, or add that target type under `target-types:`.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrMlops.cpp:25",
+   "tools/projmgr/src/ProjMgrMlops.cpp:76",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7989"
+  ],
+  "confidence": "high"
+ }
+]

@@ -1,0 +1,93 @@
+---
+id: "rtos2-memory-pool-osmemorypoolnew"
+type: "concept"
+domain: "rtos"
+title: "Memory Pool: osMemoryPoolNew"
+summary: "The function osMemoryPoolNew creates and initializes a memory pool object and returns the pointer to the memory pool object identifier or NULL in case of an error."
+status: "draft"
+collection: "cmsis-rtos2"
+source: "ARM-software/CMSIS_6@26206e4:CMSIS/Documentation/Doxygen/RTOS2/src/ref_cmsis_os2_mem_pool.txt"
+doc_source: "https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/RTOS2/src/ref_cmsis_os2_mem_pool.txt"
+license: "Apache-2.0"
+mode: "V"
+---
+
+```c
+osMemoryPoolId_t osMemoryPoolNew (uint32_t block_count, uint32_t block_size, const osMemoryPoolAttr_t *attr)
+```
+
+
+The function **osMemoryPoolNew** creates and initializes a memory pool object and returns the pointer to the memory pool
+object identifier or `NULL` in case of an error. It can be safely called before the RTOS is
+started (call to osKernelStart), but not before it is initialized (call to osKernelInitialize).
+
+The total amount of memory needed is at least `block_count * block_size`. Memory from the pool can only be
+allocated/freed in fixed portions of `block_size.`
+
+**Note:** This function **cannot** be called from Interrupt Service Routines.
+
+**Code** **Example**
+```
+#include "cmsis_os2.h"                          // CMSIS RTOS header file
+ 
+/*----------------------------------------------------------------------------
+     Memory Pool creation & usage
+---------------------------------------------------------------------------*/
+ 
+#define MEMPOOL_OBJECTS 16                      // number of Memory Pool Objects
+ 
+typedef struct {                                // object data type
+  uint8_t Buf[32];
+  uint8_t Idx;
+} MEM_BLOCK_t;
+ 
+osMemoryPoolId_t mpid_MemPool;                  // memory pool id
+ 
+osThreadId_t tid_Thread_MemPool;                // thread id
+ 
+void Thread_MemPool (void *argument);           // thread function
+ 
+int Init_MemPool (void) {
+ 
+  mpid_MemPool = osMemoryPoolNew(MEMPOOL_OBJECTS, sizeof(MEM_BLOCK_t), NULL);
+  if (mpid_MemPool == NULL) {
+    ; // MemPool object not created, handle failure
+  }
+ 
+  tid_Thread_MemPool = osThreadNew(Thread_MemPool, NULL, NULL);
+  if (tid_Thread_MemPool == NULL) {
+    return(-1);
+  }
+ 
+  return(0);
+}
+ 
+void Thread_MemPool (void *argument) {
+  MEM_BLOCK_t *pMem;
+  osStatus_t status;
+ 
+  while (1) {
+    ; // Insert thread code here...
+ 
+    pMem = (MEM_BLOCK_t *)osMemoryPoolAlloc(mpid_MemPool, 0U);  // get Mem Block
+    if (pMem != NULL) {                                         // Mem Block was available
+      pMem->Buf[0] = 0x55U;                                     // do some work...
+      pMem->Idx    = 0U;
+ 
+      status = osMemoryPoolFree(mpid_MemPool, pMem);            // free mem block
+      switch (status)  {
+        case osOK:
+          break;
+        case osErrorParameter:
+          break;
+        case osErrorNoMemory:
+          break;
+        default:
+          break;
+      }
+    }
+ 
+    osThreadYield();                                            // suspend thread
+  }
+}
+```

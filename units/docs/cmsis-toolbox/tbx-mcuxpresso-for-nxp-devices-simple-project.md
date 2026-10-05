@@ -1,0 +1,155 @@
+---
+id: "tbx-mcuxpresso-for-nxp-devices-simple-project"
+type: "concept"
+domain: "project"
+title: "MCUXpresso for NXP Devices: Simple Project"
+summary: "Below is a simple project that just adds the MCUXpresso-generated components."
+status: "draft"
+collection: "cmsis-toolbox"
+source: "Open-CMSIS-Pack/cmsis-toolbox@6c04673:docs/MCUXpressoConfig.md"
+doc_source: "https://open-cmsis-pack.github.io/cmsis-toolbox/MCUXpressoConfig/#simple-project"
+license: "Apache-2.0"
+mode: "V"
+---
+
+Below is a simple project that just adds the MCUXpresso-generated components.
+
+!!! Tip
+    The packs required for boards and devices are listed on [www.keil.arm.com/boards](https://www.keil.arm.com/boards/) and [www.keil.arm.com/devices](https://www.keil.arm.com/devices/).
+
+**File: `Simple.csolution.yml`**
+
+```yml
+solution:
+  created-for: CMSIS-Toolbox@2.6.0
+
+  # List of tested compilers that can be selected
+  select-compiler:
+    - compiler: AC6
+    - compiler: GCC
+    - compiler: IAR
+
+  # List the packs that define the device and/or board.
+  packs:
+    - pack: NXP::FRDM-MCXN947_BSP
+    - pack: NXP::MCXN947_DFP
+    - pack: ARM::CMSIS
+
+  # List different hardware targets that are used to deploy the solution.
+  target-types:
+    - type: MCXN947VDF
+      board: NXP::FRDM-MCXN947
+      device: NXP::MCXN947VDF
+
+  # List of different build configurations.
+  build-types:
+    - type: Debug
+      debug: on
+      optimize: none
+
+    - type: Release
+      debug: off
+      optimize: balanced
+
+  # List related projects.
+  projects:
+    - project: Simple.cproject.yml
+```
+
+**File: `Simple.cproject.yml`**
+
+```yml
+project:
+  device: :cm33_core0
+
+  generators:
+    options:
+      - generator: MCUXpressoConfig
+        path: ./MCUXpressoConfig
+        name: ConfigTools
+
+  # List components to use for your application.
+  # A software component is a reusable unit that may be configurable.
+  components:
+    - component: Device:Config Tools:Init
+    - component: Device:Startup
+    - component: Device:CMSIS:MCXN947_header
+    - component: Device:CMSIS:MCXN947_system
+
+    - component: Device:SDK Drivers:clock
+    - component: Device:SDK Drivers:common
+    - component: Device:SDK Drivers:mcx_spc
+    - component: Device:SDK Drivers:reset
+
+    - component: CMSIS:CORE
+
+  groups:
+    - group: Main
+      files:
+        - file: ./main.c
+```
+
+Such a project cannot be built directly as the `*.cgen.yml` file is initially missing. It requires running the MCUXpresso generator. Before you start, you may need to [`install missing packs`](https://open-cmsis-pack.github.io/cmsis-toolbox/MCUXpressoConfig/build-tools.md#install-missing-packs).
+
+- Identify the required generator and the directory where the generated files are stored with:
+
+```bash
+csolution Simple.csolution.yml list generators --verbose
+MCUXpressoConfig (Global Registered Generator MCUXpresso Config tools)
+  base-dir: MCUXpressoConfig
+    cgen-file: MCUXpressoConfig/ConfigTools.cgen.yml
+      context: Simple.Debug+MCXN947VDF
+      context: Simple.Release+MCXN947VDF
+```
+
+- Using the above information to run the generator using this command:
+
+```bash
+csolution Simple.csolution.yml run --generator MCUXpressoConfig --context Simple.Debug+MCXN947VDF
+```
+
+   It starts MCUXpresso and passes information about the selected board, device, and selected toolchain. For a project that selects a board, MCUXpresso imports the default configuration for the evaluation kit. In MCUXpresso, review and adjust configuration options as required for your application, then just click the button `Update Code`. The generated files will be stored in the directory `./MCUXpressoConfig`.
+
+- Build the project using this command:
+
+```bash
+cbuild Simple.csolution.yml --update-rte
+```
+
+!!! Note
+    You may run the MCUXpresso Config Tools at any time to change the configuration setting of your device or board.
+
+**Directory with generated files**
+
+MCUXpresso generates the following content in the generator output directory of the *csolution project*. In our example, the generator output directory is `./MCUXpressoConfig`.
+
+Directory `./MCUXpressoConfig`      | Content
+:-----------------------------------|:---------------
+`ConfigTools.cgen.yml`              | Import file, which adds the generated files to the *csolution project*.
+`FRDM-MCXN947.mex`                  | MCUXpresso Config Tools configuration file.
+`board/clock_config.c`              | Clock setup using clock driver functions.
+`board/clock_config.h`              | Clock configuration header file.
+`board/peripherals.c`               | Board peripherals are set up via init functions.
+`board/peripherals.h`               | Board peripherals setup header file.
+`board/pin_mux.c`                   | Board pin setup via init functions.
+`board/pin_mux.h`                   | Board pin setup header file.
+
+**Content of Generator Import File: `ConfigTools.cgen.yml`**
+
+The file `ConfigTools.cgen.yml` lists the files and settings that are generated by MCUXpresso and imported into the *csolution project*. You may add further [user files](https://open-cmsis-pack.github.io/cmsis-toolbox/MCUXpressoConfig/YML-Input-Format.md#files) here.
+
+```yml
+generator-import:
+  generated-by: 'MCUXpresso config tools Generated: 09/12/2024 17:02:22'
+  for-device: MCXN947
+  for-board: FRDM-MCXN947
+  groups:
+  - group: ConfigTools board
+    files:
+    - file: board/clock_config.c
+    - file: board/clock_config.h
+    - file: board/peripherals.c
+    - file: board/peripherals.h
+    - file: board/pin_mux.c
+    - file: board/pin_mux.h
+```

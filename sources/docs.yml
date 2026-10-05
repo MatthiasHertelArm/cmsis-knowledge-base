@@ -1,0 +1,166 @@
+# Documentation sources converted by tools/doc2ku.py: mode V only (open licence, full text).
+# Order and modes follow docs/design/04_quellenliste.md. Each source is a git clone in .work/docs/<dir>.
+#   include/exclude: globs relative to the repository root
+#   format: md (default) | doxmd (doxygen-flavoured Markdown) | doxtxt (doxygen comment files and doxygen Markdown)
+#   url: published page, {stem} = file name without extension, {page} = doxygen page id; default: the file on GitHub
+#   domains: path rules that override the default domain
+sources:
+  - name: cmsis-toolbox
+    prefix: tbx
+    repo: Open-CMSIS-Pack/cmsis-toolbox
+    include: ["docs/*.md"]
+    exclude: ["docs/README.md"]
+    license: Apache-2.0
+    domain: project
+    url: "https://open-cmsis-pack.github.io/cmsis-toolbox/{stem}/"
+    domains:
+      - {paths: ["docs/pack-tools.md"], domain: pack}
+      - {paths: ["docs/pyOCD-Debugger.md", "docs/JLink-Debugger.md"], domain: debug}
+
+  - name: pack-spec
+    prefix: spec
+    repo: Open-CMSIS-Pack/Open-CMSIS-Pack-Spec
+    include: ["doxygen/src/*.txt", "doxygen/src/*.md", "doc/Glossary.md"]
+    format: doxtxt
+    license: Apache-2.0
+    domain: pack
+    url: "https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/{page}.html"
+    anchors: false
+
+  - name: svd-spec
+    prefix: svd
+    repo: Open-CMSIS-Pack/svd-spec
+    include: ["doxygen/src/*.txt"]
+    format: doxtxt
+    license: Apache-2.0
+    domain: pack
+    url: "https://open-cmsis-pack.github.io/svd-spec/main/{page}.html"
+    anchors: false
+
+  - name: cmsis-core
+    prefix: core
+    repo: ARM-software/CMSIS_6
+    dir: CMSIS_6
+    include: ["CMSIS/Documentation/Doxygen/Core/src/*", "CMSIS/Documentation/Doxygen/General/src/*.md"]
+    exclude: ["*/misra.md", "*/ref_deprecated.txt"]
+    format: doxtxt
+    license: Apache-2.0
+    domain: core
+
+  - name: cmsis-rtos2
+    prefix: rtos2
+    repo: ARM-software/CMSIS_6
+    dir: CMSIS_6
+    include: ["CMSIS/Documentation/Doxygen/RTOS2/src/*"]
+    format: doxtxt
+    license: Apache-2.0
+    domain: rtos
+
+  - name: cmsis-driver
+    prefix: drv
+    repo: ARM-software/CMSIS_6
+    dir: CMSIS_6
+    include: ["CMSIS/Documentation/Doxygen/Driver/src/*"]
+    exclude: ["*_Demo.c", "*/vStream_Example.c"]
+    format: doxtxt
+    license: Apache-2.0
+    domain: drivers
+
+  - name: cmsis-rtx
+    prefix: rtx
+    repo: ARM-software/CMSIS-RTX
+    include: ["Documentation/Doxygen/src/*", "Examples/**/README.md"]
+    exclude: ["*/misra.md"]
+    format: doxtxt
+    license: Apache-2.0
+    domain: rtos
+
+  - name: cmsis-view
+    prefix: view
+    repo: ARM-software/CMSIS-View
+    include: ["Documentation/Doxygen/src/*", "Examples/**/README.md", "tools/eventlist/README.md"]
+    format: doxtxt
+    license: Apache-2.0
+    domain: trace
+
+  - name: cmsis-compiler
+    prefix: cc
+    repo: ARM-software/CMSIS-Compiler
+    include: ["documentation/doxygen/src/*.md", "example/README.md"]
+    format: doxmd
+    license: Apache-2.0
+    domain: core
+
+  - name: pyocd
+    prefix: pyocd
+    repo: pyocd/pyOCD
+    include: ["docs/*.md", "docs/api/*.md"]
+    exclude: ["docs/README.md", "docs/automated_tests.md", "docs/developers_guide.md", "docs/remote_probe_protocol.md", "docs/builtin-targets.md"]
+    license: Apache-2.0
+    domain: debug
+
+  - name: cmsis-debugger
+    prefix: dbgx
+    repo: Open-CMSIS-Pack/vscode-cmsis-debugger
+    include: ["README.md", "docs/component-viewer/README.md", "docs/trace-configuration/*.md", "configs/core-peripherals/README.md"]
+    license: Apache-2.0
+    domain: debug
+
+  - name: sds-framework
+    prefix: sds
+    repo: ARM-software/SDS-Framework
+    include: ["documentation/*.md", "layer/**/README.md", "template/**/README.md", "utilities/README.md"]
+    license: Apache-2.0
+    domain: test
+
+  - name: avh
+    prefix: avh
+    repo: ARM-software/AVH
+    include: ["DoxyGen/**/*.md", "interface/**/README.md", "example/*/README.md"]
+    format: doxmd
+    license: Apache-2.0
+    domain: test
+
+  - name: gen-pack
+    prefix: genpack
+    repo: Open-CMSIS-Pack/gen-pack
+    include: ["README.md"]
+    license: Apache-2.0
+    domain: pack
+
+  - name: csolution-examples
+    prefix: csx
+    repo: Open-CMSIS-Pack/csolution-examples
+    include: ["README.md", "*/README.md", "Templates/*/README.md"]
+    license: Apache-2.0
+    domain: project
+
+  - name: vscode-get-started
+    prefix: vgs
+    repo: Open-CMSIS-Pack/vscode-get-started
+    include: ["README.md"]
+    license: Apache-2.0
+    domain: project
+
+  - name: cmsis-zephyr
+    prefix: czep
+    repo: Arm-Examples/CMSIS-Zephyr
+    include: ["README.md"]
+    license: Apache-2.0
+    domain: project
+
+  - name: cmsis-actions
+    prefix: cact
+    repo: ARM-software/cmsis-actions
+    include: ["README.md"]
+    license: Apache-2.0
+    domain: devops
+
+  - name: cda-guides
+    prefix: cda
+    repo: Open-CMSIS-Pack/CMSIS-Developer-Assistant
+    dir: CMSIS-Developer-Assistant
+    # debug_instructions.md is left out: get_debug_instructions serves it by topic, and as units it would compete with cmsis-debug-live.
+    include: ["docs/agent-resources/cmsis-embedded-guide.md", "docs/agent-resources/troubleshooting/*.md", "docs/agent-resources/tool-contract.md"]
+    license: Apache-2.0
+    domain: debug
