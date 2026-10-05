@@ -436,3 +436,22 @@ sources:
     include: ["README.md"]
     license: Apache-2.0
     domain: debug
+
+  # Smaller Open-CMSIS-Pack repositories with a licence: trace setup, the reference application framework
+  # (layers and their connections), the component taxonomy, the sensor example, the scalable-software workshop,
+  # and the READMEs of cbuild, cbuild2cmake and vidx2pidx.
+  - name: ocp-tools-readmes
+    prefix: ocp
+    repo: Open-CMSIS-Pack/various
+    multi:
+      - {dir: ocp-pyTS, repo: Open-CMSIS-Pack/pyTS, include: ["README.md"], domain: trace}
+      - {dir: ocp-cmsis-trace-extension, repo: Open-CMSIS-Pack/cmsis-trace-extension, include: ["README.md"], domain: trace}
+      - {dir: ocp-RefApp-Framework, repo: Open-CMSIS-Pack/RefApp-Framework, include: ["**/README.md", "README.md"], domain: project}
+      - {dir: ocp-Open-CMSIS-Pack-Taxonomy, repo: Open-CMSIS-Pack/Open-CMSIS-Pack-Taxonomy, include: ["README.md"], domain: pack}
+      - {dir: ocp-Sensor-SDK-Example, repo: Open-CMSIS-Pack/Sensor-SDK-Example, include: ["**/README.md", "README.md"], domain: project}
+      - {dir: ocp-Create-Scalable-SW, repo: Open-CMSIS-Pack/Create-Scalable-SW, include: ["README.md", "Demo/*.md"], domain: project}
+      - {dir: ocp-cbuild, repo: Open-CMSIS-Pack/cbuild, include: ["README.md"], domain: project}
+      - {dir: ocp-cbuild2cmake, repo: Open-CMSIS-Pack/cbuild2cmake, include: ["README.md"], domain: project}
+      - {dir: ocp-vidx2pidx, repo: Open-CMSIS-Pack/vidx2pidx, include: ["README.md"], domain: pack}
+    license: Apache-2.0
+    domain: project

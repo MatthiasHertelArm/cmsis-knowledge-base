@@ -385,6 +385,71 @@
       "expect": [
         "iss-devtools-22"
       ]
+    },
+    {
+      "q": "which data types to use for Helium vectorization",
+      "expect": [
+        "helium-helium-optimization-topics-1-the-b-selection-of-data-types"
+      ]
+    },
+    {
+      "q": "vectorize a C data processing function with Helium MVE",
+      "expect": [
+        "helium-helium-optimization-topics-2-optim-vectorize-a-data-processing-function"
+      ]
+    },
+    {
+      "q": "FileX media structure",
+      "expect": [
+        "txmw-chapter-3-functional-components-of-media-description"
+      ]
+    },
+    {
+      "q": "create a NetX Duo IP instance",
+      "expect": [
+        "txmw-chapter-3-functional-components-of-creating-ip-instances"
+      ]
+    },
+    {
+      "q": "J-Link options for the debugger node in csolution",
+      "expect": [
+        "dbgadapter-j-link-server",
+        "tbx-csolution-project-format-j-link-server"
+      ]
+    },
+    {
+      "q": "create the board directory when porting a board to Zephyr",
+      "expect": [
+        "zep-board-porting-guide-create-your-board-directory"
+      ]
+    },
+    {
+      "q": "add a secure partition to TF-M",
+      "expect": [
+        "tfm-adding-secure-partition-add-manifest",
+        "tfm-adding-secure-partition-add-source-folder",
+        "tfm-adding-secure-partition-reference"
+      ]
+    },
+    {
+      "q": "Kconfig menuconfig symbols",
+      "expect": [
+        "zep-kconfig-tips-and-best-practices-menuconfig-symbols"
+      ]
+    },
+    {
+      "q": "component taxonomy Cclass and Cgroup",
+      "expect": [
+        "ocp-open-cmsis-pack-taxonomy",
+        "spec-package-taxonomy-element-package-taxonomy-description"
+      ]
+    },
+    {
+      "q": "LevelX NOR flash support",
+      "expect": [
+        "txmw-chapter-5-levelx-nor-support",
+        "txmw-chapter-5-levelx-nor-support-nor-driver-requirements"
+      ]
     }
   ]
 }

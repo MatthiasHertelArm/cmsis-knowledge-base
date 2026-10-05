@@ -114,3 +114,13 @@ Issue digests get no prior of their own: a negative one helped the documentation
 | CC BY-SA collection | 2,203 units in `units/docs-ccbysa`: Memfault's Interrupt blog 1,127 (Cortex-M faults, GDB, linker scripts, build systems, Zephyr; link roundups, Linux, Python, Rust and Memfault-product posts left out), Arm Learning Paths 819, install guides 77, FreeRTOS Kernel Book 132, AAPCS32 and semihosting 48 |
 | Second build | `build/knowledge.ccbysa.db` (87 MB, git-ignored) holds the default units plus the share-alike ones, for trying them before decision 4: point `knowledge.indexPath` at it. On the golden set it scores lower (hit@1 0.60, MRR 0.733) because its units answer the same questions as the expected ones, often well (the Interrupt HardFault article, the TF-M learning path); the golden set has no question aimed at them yet |
 | Vectors | `tests/eval_search.py` runs the golden set through the prototype search with and without embeddings: BM25 alone hit@1 0.62, MRR 0.749; with vectors 0.62, 0.727. So the extension's BM25-only search loses nothing today; embeddings are not worth an ONNX runtime in the extension yet |
+
+## Update 5 Oct 2026, last: adapters, middleware, small repositories, browser
+
+| Item | State |
+|---|---|
+| Debug adapters | `tools/adapters2ku.py`: one unit per adapter of the debug adapter registry (13): the names `debugger: name:` accepts, the defaults cbuild writes into cbuild-run.yml, the options the CMSIS Solution extension offers |
+| Documentation | 47 sources: ThreadX middleware (FileX, USBX, NetX Duo, LevelX, TraceX, Modules; descriptive chapters only, the service chapters would have added 2,000 units), the debug adapter registry README, and nine small Open-CMSIS-Pack repositories as one collection `ocp-tools-readmes` (trace setup, RefApp framework layers, taxonomy, sensor example, scalable-software workshop, cbuild, vidx2pidx) |
+| Index | 6,346 knowledge units, 72 MB |
+| Golden set | 68 queries: hit@1 0.60  hit@5 0.91  MRR 0.742  failures 0 |
+| Extension (pr/2.7.0-knowledge, uncommitted) | Search: question words out of BM25, procedure prior 0.001, none for routing units, exact messages ordered by line. Browser: filter and overview by collection. 1138 unit tests pass; installed locally as 2.5.10 (needs a window reload) |

@@ -577,7 +577,13 @@ def main(cfg, docs, out, only=None, get=False):
     out = Path(out)
     used = set()
     total = 0
+    expanded = []
     for src in sources:
+        # A source with `multi:` is several small repositories under one collection name.
+        for part in src.get("multi") or [None]:
+            expanded.append({**src, **part, "multi": None, "first": part is src["multi"][0]} if part else src)
+    cleared = set()
+    for src in expanded:
         if only and src["name"] not in only:
             continue
         if src.get("mode", "V") != "V":
@@ -591,9 +597,10 @@ def main(cfg, docs, out, only=None, get=False):
             print(f"{src['name']:28s} missing clone {repo}")
             continue
         target = out / src["name"]
-        if target.exists():
+        if target.exists() and src["name"] not in cleared:
             for old in target.glob("*.md"):
                 old.unlink()
+        cleared.add(src["name"])
         n = convert(src, repo, out, used)
         total += n
         print(f"{src['name']:28s} {n:4d} units  {src['repo']}@{src['commit']}  {src['license']}")

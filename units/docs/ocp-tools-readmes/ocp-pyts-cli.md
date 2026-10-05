@@ -1,0 +1,117 @@
+---
+id: "ocp-pyts-cli"
+type: "concept"
+domain: "trace"
+title: "pyTS: CLI"
+summary: "Generate a trace run configuration from a CMSIS cbuild-run file:"
+status: "draft"
+collection: "ocp-tools-readmes"
+source: "Open-CMSIS-Pack/pyTS@3433343:README.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/pyTS/blob/3433343/README.md#cli"
+license: "Apache-2.0"
+mode: "V"
+---
+
+Generate a trace run configuration from a CMSIS cbuild-run file:
+
+```sh
+pyts <cbuild-run.yml>
+```
+
+The command returns status `0` when generation succeeds without `error`
+entries. If the written trace run file contains an `error`, it returns `2`.
+Use `--pedantic` to also return `2` for `warning` entries; `info` entries do
+not affect the status. The file and result summary are still written when
+generation reports these diagnostics. `--allow-missing` permits writing the
+file with unresolved symbols, but any resulting `error` still returns `2`.
+
+The command reads `.cmsis/<solution>+<target-type>[@<target-set>].ctrace.yml`, resolves
+symbols from the cbuild-run ELF outputs, and writes the generated trace setup to
+`.trace/<solution>+<target-type>[@<target-set>].ctrace-run.yml`.
+If a `.cmsis/~<solution>+<target-type>[@<target-set>].ctrace.yml` file exists, pyTS
+prefers it and writes `.trace/~<solution>+<target-type>[@<target-set>].ctrace-run.yml`
+instead, leaving the production trace files unchanged.
+
+When `cbuild-run.system-resources.processors` is available, pyTS uses each
+processor's `core` and `pname` to generate CMSIS `ctrace-run.ctrace-disable` and
+`ctrace-run.ctrace-refs` entries. The disable entries clear all modeled DWT
+comparators before active references are applied. Their content is independent
+of the selected trace features, allowing a debugger to turn off settings that
+were removed while an interactive session was running. Active reference `regs`
+lists contain masked architectural ITM and DWT register writes for ITM channels,
+timestamps, basic DWTv1/DWTv2 data trace, exception trace, event trace, PC
+sampling, and DWT synchronization. Unsupported processor or feature combinations
+are reported on the corresponding reference with `error`.
+
+DWT capabilities are derived from the processor core because `cbuild-run` does
+not provide comparator counts. Trace slots can be allocated for data trace;
+additional match slots are disabled by `ctrace-disable` but reserved for future
+instruction-trace start/stop support.
+
+Core | Trace slots | Additional match slots
+:----|------------:|-----------------------:
+Cortex-M0 | 0 | 0
+Cortex-M0+, Cortex-M23 | 0 | 2
+Cortex-M3, Cortex-M4, Cortex-M7, Cortex-M33 | 4 | 0
+SecurCore SC300, Cortex-M35P, STAR-MC1, STAR-MC3 | 4 | 0
+Cortex-M52, Cortex-M55, Cortex-M85 | 4 | 4
+Other or unknown cores | 0 | 0
+
+The data-trace allocator never consumes the additional match slots. Requests
+that exceed the trace-slot count are reported on the corresponding reference.
+Optional `null` values in trace lists and objects are treated as not configured;
+for optional properties they are treated as omitted and use the documented
+default. In particular, `synchronization.DWT` defaults to `16M`. The
+presence-only `disable`, `timestamps`, `timesync`, and `exceptions` nodes retain
+their meaning when empty.
+Additional properties in `ctrace` configurations are preserved but ignored,
+allowing future schema extensions without validation failures. Property names
+remain case-sensitive: an incorrectly cased optional property is ignored,
+while an incorrectly cased required property is reported as missing.
+The `ctrace-run.ctrace-setup` node retains the original source `ctrace.setup`
+content. Enriched location metadata is used internally when generating
+`ctrace-refs`. Symbol extents and types are emitted as `data[].symbol-size`
+and `data[].symbol-type` in the generated references; `data[].size` remains
+the trace access size. DWARF types use language-neutral categories derived from
+their tags and encodings, such as `signed`, `unsigned`, `bool`, `float`,
+`pointer`, `array`, and `struct`; source-language type names are not emitted.
+When a symbol type cannot be deduced from DWARF, `symbol-type` is omitted.
+Addresses and register values and masks are written as 32-bit hexadecimal YAML
+integers. The generated `ctrace-run` mapping contains only `generated-by`,
+`ctrace-setup`, `ctrace-disable`, and `ctrace-refs`; other source `ctrace`
+properties are not copied. If no processor has DWT resources,
+`ctrace-disable` is emitted without children.
+Location-style and legacy `symbol`/`address` entries may coexist in one trace
+document; pyTS resolves both styles in document order using the same ELF cache.
+PC sampling periods use integer CPU-cycle counts: `0` disables sampling, while
+supported enabled periods are `64 * n` or `1024 * n`, where `n` is an integer
+from `1` through `16`.
+
+Data trace supports the CMSIS output modes `value`, `offset`, `PC`, `match`,
+`PC+value`, `offset+value`, and `PC+offset`. DWTv1 supports `value`,
+`offset`, `PC+value`, and `offset+value` for all access types, plus `PC` for
+`RW`; it cannot produce `match` or `PC+offset`. One DWTv1 `match:` condition
+per processor can use the portable comparator 0/1 address-value pair with any
+otherwise supported output. Its address range size and matched data width are
+encoded independently. DWTv2 Main Extension processors support all output
+modes. Cortex-M23 cannot generate the required data trace packets. DWTv1
+comparator ranges must be a naturally aligned power of two; when `data[].size`
+is not a power of two, or `data[].address` is not aligned to the comparator
+range, pyTS enlarges the size and realigns the address (rounding the address
+down) to the smallest naturally aligned power-of-two range that still covers
+the entire requested `address`/`size` range. The adjustment is reported on
+the corresponding reference with `warning`, naming the originally requested
+address and size, and the reference's `address` and `size` are updated to the
+effective values used for register generation. A `data.size` that exceeds the
+DWT mask capability (larger than `1 << 31`) is still reported with `error`
+and no register setup.
+
+DWTv2 offset output and arbitrary or unaligned ranges consume consecutive
+lower/limit comparator pairs. A one-byte range cannot emit an offset packet.
+A DWTv2 `match:` condition consumes an address/linked-value pair. The requested
+`output` applies to the address comparator (default `value`), while the linked
+value comparator implicitly uses `match` output. Data and match sizes must be
+equal and naturally aligned. Match sizes are 1, 2, or 4 bytes (default 4), and
+values must be unsigned and fit the selected width. Requests that cannot be
+represented exactly are reported on the corresponding reference with `error`
+and no register setup.
