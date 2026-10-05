@@ -1,0 +1,80 @@
+{
+  "id": "proc-start-zephyr-project",
+  "summary": "Create and validate one initial west-integrated CMSIS Zephyr Blinky solution for a board already supported by Zephyr, from verified environment, board, and pack information, using `cbuild setup` and `cbuild`.",
+  "triggers": [
+    "Zephyr and CMSIS environments",
+    "exact Zephyr board target",
+    "matching CMSIS BSP or DFP",
+    "west-integrated CMSIS solution"
+  ],
+  "applies_to": {
+    "tool": ["cbuild", "west"],
+    "toolchain": [],
+    "core": [],
+    "component": [],
+    "api": []
+  },
+  "unmapped": [
+    "CMSIS-Toolbox `cbuild` 2.14.0 or later",
+    "CMSIS-Toolbox west integration",
+    "existing Zephyr workspace and its virtual environment",
+    "publicly available CMSIS packs when `cbuild --packs` needs them",
+    "`led0` devicetree alias"
+  ],
+  "verification": [
+    "Run the exact `cbuild setup` and `cbuild` commands below in the verified CMSIS and Zephyr environment.",
+    "Confirm that `west` resolves from that virtual environment and stop when it does not.",
+    "`cbuild setup <solution-name>.csolution.yml --active <target-type> --packs --update-rte`: Confirm that `cbuild setup` exits successfully.",
+    "`cbuild <solution-name>.csolution.yml --active <target-type> --packs`: Confirm that `cbuild` exits successfully and report the generated output artifacts identified by the command."
+  ],
+  "stop_conditions": [
+    "Reuse only current verified prerequisite results and stop when the board, support, compiler, or environment information is absent or ambiguous.",
+    "Stop before writing project files unless both environment checks pass, the Zephyr board matches, and CMSIS support resolves to a BSP or DFP.",
+    "Compare the semantic version reported by `cbuild --version`. If the version is missing, cannot be parsed, or is older than 2.14.0, report the failed prerequisite and stop before writing project files.",
+    "If `check-cmsis-environment` finds no compiler, report the missing prerequisite and stop before writing project files.",
+    "If multiple compilers are detected, list their exact identifiers and versions, ask the user to choose one, and stop until the user makes an explicit choice.",
+    "If `zephyr.csolution.yml` or a `blinky` directory already exists, inspect and preserve it; do not overwrite existing content without the user's approval.",
+    "Confirm that `west` resolves from that virtual environment and stop when it does not.",
+    "Confirm that `cbuild setup` exits successfully. Report the failure and stop before compilation when it fails.",
+    "Report the failure and stop when this build fails.",
+    "Report every pack installation and stop when a required pack cannot be obtained."
+  ],
+  "rules": [
+    {"id": "rule-critical-blockers-start-zephyr-project", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-no-fabrication-start-zephyr-project", "class": "generic", "canonical_id": "rule-no-fabrication", "delta": "identifiers, paths, pack relationships, dependencies, compiler availability, or test results"},
+    {"id": "rule-portability-start-zephyr-project", "class": "generic", "canonical_id": "rule-portability", "delta": "RTOS-specific setting unless the verified inputs require it; retain the conditional GCC-only configuration below."},
+    {"id": "rule-scope-start-zephyr-project", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-tone-and-style", "class": "generic", "canonical_id": "rule-tone-and-style", "delta": ""},
+    {"id": "rule-unnamed-start-zephyr-project-2", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-unnamed-start-zephyr-project-3", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-unnamed-start-zephyr-project-4", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-unnamed-start-zephyr-project-5", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-unnamed-start-zephyr-project-6", "class": "generic", "canonical_id": "rule-no-fabrication", "delta": "identifiers, paths, dependencies, or test results"},
+    {"id": "rule-unnamed-start-zephyr-project-7", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-unnamed-start-zephyr-project-8", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-unnamed-start-zephyr-project-9", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-unnamed-start-zephyr-project", "class": "generic", "canonical_id": "rule-no-install", "delta": "upgrade, repair, or reconfigure prerequisite tools"}
+  ],
+  "extracted": [
+    {
+      "type": "pattern",
+      "title": "GCC libc settings for a CMSIS Zephyr application",
+      "body": "When selecting GCC, add the reference project's libc configuration to `blinky/prj.conf`:\n\nCONFIG_NEWLIB_LIBC=y\nCONFIG_PICOLIBC=n\nCONFIG_PICOLIBC_USE_MODULE=n\nCONFIG_MINIMAL_LIBC=n\n\nDo not add these GCC-specific settings when selecting another compiler; retain that compiler's Zephyr libc configuration."
+    },
+    {
+      "type": "pattern",
+      "title": "Zephyr virtual environment for cbuild with west integration",
+      "body": "Before running `cbuild`, configure the verified Zephyr virtual environment in the current shell. Activate the virtual environment for an interactive shell; for non-interactive execution, prepend its executable directory to `PATH`. Confirm that `west` resolves from that virtual environment and stop when it does not. Apply this environment to both `cbuild` commands because `cbuild` invokes `west` as a subprocess."
+    },
+    {
+      "type": "concept",
+      "title": "First west-integrated cbuild run can take several minutes",
+      "body": "Pack installation, initial RTE generation, Zephyr toolchain-cache creation, and the first build can take several minutes, especially on slower computers. Treat limited output as normal while the process remains active. Continue monitoring and do not terminate the process or report a timeout prematurely. Subsequent builds are usually faster because they reuse cached data."
+    },
+    {
+      "type": "concept",
+      "title": "What cbuild setup with --update-rte checks and generates",
+      "body": "cbuild setup <solution-name>.csolution.yml --active <target-type> --packs --update-rte\n\nThis invokes west's CMake-only setup and helps detect invalid paths, board targets, pack identifiers, and project contexts before compilation. `--update-rte` generates required RTE files, including board debug configuration files."
+    }
+  ]
+}

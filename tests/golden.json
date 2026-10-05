@@ -1,5 +1,5 @@
 {
-  "about": "Retrieval golden set: a question or tool output, and the units that answer it (any of them counts). Hand-picked on 5 Oct 2026 from what the units say, not from what the search returned. tests/eval_search.js runs it against the extension's search.",
+  "about": "Retrieval golden set: a question or tool output, and the units that answer it (any of them counts). Hand-picked on 5 Oct 2026 from what the units say, not from what the search returned; the last eleven aim at issue digests. tests/eval_search.js runs it against the extension's search.",
   "queries": [
     {
       "q": "start a new project in an empty VS Code window",
@@ -314,6 +314,76 @@
       "q": "SDS recorder data blocks and records",
       "expect": [
         "sds-theory-data-blocks-records-and-values"
+      ]
+    },
+    {
+      "q": "CMSIS-DAP v1 HID probe on macOS reports already open",
+      "expect": [
+        "iss-dbg-382"
+      ]
+    },
+    {
+      "q": "flashing an LPC55S69 fails when the device was erased before",
+      "expect": [
+        "iss-dbg-128"
+      ]
+    },
+    {
+      "q": "GCC array-bounds warning in __TZ_set_STACKSEAL_S",
+      "expect": [
+        "iss-cmsis6-259"
+      ]
+    },
+    {
+      "q": "debug session keeps waiting for a timeout although the gdbserver exited with code 1",
+      "expect": [
+        "iss-dbg-89"
+      ]
+    },
+    {
+      "q": "pyOCD does not find packs in the default CMSIS_PACK_ROOT",
+      "expect": [
+        "iss-dbg-241",
+        "iss-dbg-84"
+      ]
+    },
+    {
+      "q": "ld.lld: error: duplicate symbol: _start",
+      "expect": [
+        "iss-toolbox-338"
+      ],
+      "top1": true
+    },
+    {
+      "q": "CMake error: target name reserved or not valid, the context name contains a blank",
+      "expect": [
+        "iss-devtools-1731"
+      ]
+    },
+    {
+      "q": "0000927 C Error: 'CoreSightTarget' object has no attribute 'debugger_clock' [__main__]",
+      "expect": [
+        "iss-dbg-472"
+      ],
+      "top1": true
+    },
+    {
+      "q": "gdbserver for PSoC6 crashes: object has no attribute options",
+      "expect": [
+        "iss-pyocd-680",
+        "iss-pyocd-713"
+      ]
+    },
+    {
+      "q": "nRF91 auto unlock fails with a probe without nRESET",
+      "expect": [
+        "iss-pyocd-1576"
+      ]
+    },
+    {
+      "q": "packgen says packchk not found",
+      "expect": [
+        "iss-devtools-22"
       ]
     }
   ]

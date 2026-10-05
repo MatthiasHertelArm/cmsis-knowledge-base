@@ -1,0 +1,635 @@
+[
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/2031",
+    "tool": "pyocd",
+    "title": "pack-based reset fails with FAULT ACK on ATSAM4L since pyOCD 0.44",
+    "symptoms": [
+      "Memory transfer fault (Error while running debug sequence 'ResetSystem' (core Cortex-M4): Memory transfer fault (SWD/JTAG communication failure (FAULT ACK)))"
+    ],
+    "cause": "When a CMSIS-Pack defines no ResetSystem sequence, pyOCD 0.44 and later run a new built-in default reset sequence. On this Cortex-M4 part that default fails with a FAULT ACK, while the generic reset without the pack still works.",
+    "fix": "Override the reset type so pyOCD uses its own SYSRESETREQ implementation instead of the default pack sequence: add -Oreset_type=sysresetreq to the reset, flash or load command. Confirmed to restore flashing.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ],
+      "device": [
+        "ATSAM4LS8C"
+      ],
+      "core": [
+        "Cortex-M4"
+      ]
+    },
+    "versions": "Regression from v0.44.0; still present in v0.45.1.",
+    "resolution": "workaround",
+    "confidence": "medium",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1992",
+    "tool": "pyocd",
+    "title": "pyocd pack install silently installs nothing when index and pdsc versions differ",
+    "symptoms": [
+      "Target type mimxrt1171dvmab not recognized. Use 'pyocd list --targets' to see currently available target types."
+    ],
+    "cause": "The pack index lists one version of the pack, but the vendor's pdsc file lists a newer release first. pyOCD builds its index from the newest release, then looks for a cached pdsc under that version name, which does not exist, so the pack download never starts and no error is shown. Several NXP packs were non-compliant with the pack schema.",
+    "fix": "Download the pack file yourself in the version the index really offers and pass it directly, for example: pyocd flash --target MIMXRT1171DVMAB --pack=NXP.MIMXRT1171_DFP.25.12.00.pack <image>. The vendor was fixing the metadata for its next pack release.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ],
+      "device": [
+        "MIMXRT1171DVMAB"
+      ]
+    },
+    "versions": "",
+    "resolution": "workaround",
+    "confidence": "medium",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1915",
+    "tool": "pyocd",
+    "title": "RTT config node in pyocd.yaml opens no port with pyocd gdbserver",
+    "symptoms": [],
+    "cause": "The rtt: configuration node is only honoured by pyocd run, not by pyocd gdbserver, so no RTT server port is ever opened. Running RTT independently of a GDB client was also not supported by the remote probe server.",
+    "fix": "With gdbserver, set RTT up through the GDB monitor commands after connecting: monitor rtt setup <control-block address> <search size> SEGGER RTT, then monitor rtt start, monitor rtt channels and monitor rtt server start <port> <channel>. Config-file support for gdbserver was announced for a later release.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ]
+    },
+    "versions": "",
+    "resolution": "workaround",
+    "confidence": "medium",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1826",
+    "tool": "pyocd",
+    "title": "LPC802 flash write gives partly written words with old pyOCD",
+    "symptoms": [],
+    "cause": "With pyOCD 0.34.3 the LPC802 reset-and-halt behaved differently from later versions, and a single word written to flash came out with only some bits set until the write was repeated. A reporter reproduced it on 0.34.3 with both the Keil and NXP packs and found that 0.36.0 and later program the chip correctly, attributing it to the debug-sequence work in 0.35 and 0.36.",
+    "fix": "Upgrade to pyOCD 0.36.0 or newer. If you must stay on 0.34.3, a user script with a will_reset/did_reset delegate that clears the reset vector catch and waits for the core to halt after reset worked around it. The original reporter had other chips fail on 0.36, so test your parts.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ],
+      "device": [
+        "LPC802"
+      ]
+    },
+    "versions": "Seen on 0.34.3; reported working from 0.36.0.",
+    "resolution": "workaround",
+    "confidence": "medium",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1766",
+    "tool": "pyocd",
+    "title": "nRF9160/nRF91x1 shows APPROTECT enabled and 'No cores were discovered' with older pyOCD",
+    "symptoms": [
+      "W nRF9160_xxAA APPROTECT enabled: will try to unlock via mass erase [target_nRF91]",
+      "C No cores were discovered! [__main__]"
+    ],
+    "cause": "Older pyOCD releases misdetect or mishandle APPROTECT on nRF91 devices and trigger a mass erase, which also wipes settings storage; with some versions no core is found afterwards. One user found the older release was the problem.",
+    "fix": "Upgrade pyOCD (0.35.1 to 0.39.0 fixed it for one user). An explicit chip erase (pyocd load -e chip, or pyocd erase -c) was also suggested. With newer versions, use -t nrf91 for the modem firmware update command.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ],
+      "family": [
+        "nRF91 Series"
+      ]
+    },
+    "versions": "Reported with 0.35.1, fixed by upgrading to 0.39.0.",
+    "resolution": "workaround",
+    "confidence": "low",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1696",
+    "tool": "pyocd",
+    "title": "STM32H753 firmware hard-faults after pyOCD flashing with the pack target",
+    "symptoms": [],
+    "cause": "The flash algorithm from the Keil STM32H7 pack can corrupt flash on these parts, so the programmed image is bad even though pyOCD reports success. A built-in target for the same die programs correctly.",
+    "fix": "Use the built-in target stm32h743xx (or stm32h750xx) instead of the pack-provided H753 target, e.g. -t stm32h750xx. A pull request also corrected sector sizes and a wrong RDP security-lock detection on that built-in target.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ],
+      "family": [
+        "STM32H7 Series"
+      ],
+      "device": [
+        "STM32H753ZI"
+      ],
+      "core": [
+        "Cortex-M7"
+      ]
+    },
+    "versions": "",
+    "resolution": "workaround",
+    "confidence": "medium",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1695",
+    "tool": "pyocd",
+    "title": "target was not halted as expected after calling flash algorithm routine since pyOCD 0.36",
+    "symptoms": [
+      "C target was not halted as expected after calling flash algorithm routine (IPSR=3) [__main__]",
+      "W Timed out waiting for core to halt after reset (state is RUNNING) [cortex_m]"
+    ],
+    "cause": "Starting with the 0.36 series the halt-after-reset sequence is unreliable on several pack-based targets (HK32, STM32L0, Nuvoton, NXP MCX): the core sometimes keeps running, so the flash algorithm cannot start. The thread has no root cause; it affects 0.41 and 0.44.1 too.",
+    "fix": "Install pyOCD 0.35.1 (pip install pyocd==0.35.1), which works on the same hardware. For NXP MCX boards under Zephyr, west flash -r linkserver avoids the problem. Tuning connect mode and reset timing did not make the failure reliable.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ]
+    },
+    "versions": "Regression from 0.36.0; still seen in 0.41 and 0.44.1; 0.35.1 works.",
+    "resolution": "workaround",
+    "confidence": "medium",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1693",
+    "tool": "pyocd",
+    "title": "pyOCD cannot find CMSIS-DAP v2 or ST-Link probes on Windows with Python 3.12 or 3.13",
+    "symptoms": [
+      "STLink, CMSIS-DAPv2 and PicoProbe probes are not supported because no libusb library was found."
+    ],
+    "cause": "The libusb DLL is not found by the USB backend in this Python and pyOCD combination, so all libusb based probe types are disabled. Copying libusb-1.0.dll next to python.exe or into system32 did not help.",
+    "fix": "Workaround reported: put the folder holding libusb-1.0.dll on PATH from Python before the backend loads, e.g. os.environ['PATH'] = r'<libusb dll dir>' + os.pathsep + os.environ['PATH'] at the top of pyocd/probe/pydapaccess/interface/pyusb_v2_backend.py. Python 3.11 works without this.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ]
+    },
+    "versions": "pyOCD 0.36 with Python 3.12 and 3.13.",
+    "resolution": "workaround",
+    "confidence": "low",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1637",
+    "tool": "pyocd",
+    "title": "pack target crashes at session init on multi-AP Cortex-M33 devices like EFR32BG22/24",
+    "symptoms": [],
+    "cause": "pyOCD's pack target looks up each discovered core's access port in the pack's processor-to-AP map. On these devices some discovered AP has no entry in the map (the pack does not describe it), so the lookup fails during session initialisation. A fix landed through pull request 1865.",
+    "fix": "Use a release containing the fix from PR 1865. Interim options: add a check in pack_target.py so cores whose AP address is missing from processors_ap_map are skipped, or create a built-in target from the pack's flash algorithm (docs/adding_new_targets.md), which made 0.36.0 work with the EFR32BG24.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ],
+      "device": [
+        "EFR32BG22",
+        "EFR32BG24"
+      ],
+      "core": [
+        "Cortex-M33"
+      ]
+    },
+    "versions": "",
+    "resolution": "workaround",
+    "confidence": "medium",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1629",
+    "tool": "pyocd",
+    "title": "flash algorithm not halting (IPSR=3) when its RAM load address is invalid for the MCU",
+    "symptoms": [
+      "C target was not halted as expected after calling flash algorithm routine (IPSR=3) [__main__]"
+    ],
+    "cause": "IPSR=3 means the core ended in the HardFault handler while running the flash algorithm init. One user found the cause was that the algorithm was loaded at RAM address 0x20000000, which did not exist in their MCU's memory design, so the init routine crashed. On NXP LPC55S36 revision D1 the same message was reported with a new chip ROM; no fix was found there.",
+    "fix": "Check that the flash algorithm's load address and stack lie in RAM that really exists on the device, and change the algorithm's load address to a valid RAM region.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ],
+      "device": [
+        "LPC55S36"
+      ]
+    },
+    "versions": "",
+    "resolution": "configuration",
+    "confidence": "low",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1611",
+    "tool": "pyocd",
+    "title": "write_memory to STM32G0 option bytes address has no effect",
+    "symptoms": [],
+    "cause": "STM32 option bytes live in flash and are protected by lock registers. A plain memory write to 0x1FFF7800 is ignored. The option bytes are loaded from flash into FLASH_OPTR and related registers at power-on and only rewritten through the flash controller.",
+    "fix": "Either program them via pyOCD's flash classes (MemoryLoader.program_binary_data or MemoryLoader.add_data and commit), or follow the reference-manual sequence: unlock FLASH_KEYR then FLASH_OPTKEYR, write the new value to FLASH_OPTR, start the update in FLASH_CR, and expect a reset from OBL_LAUNCH. The session is invalid afterwards, so open a new one. Make sure flash is not busy first.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ],
+      "family": [
+        "STM32G0 Series"
+      ],
+      "device": [
+        "STM32G071KBUx"
+      ],
+      "core": [
+        "Cortex-M0+"
+      ]
+    },
+    "versions": "",
+    "resolution": "workaround",
+    "confidence": "medium",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1587",
+    "tool": "pyocd",
+    "title": "i.MX RT1176 pack target: DebugPortStart not run and second core not created",
+    "symptoms": [],
+    "cause": "The RT1176 pack defines DebugPortStart per core, which the pack spec does not handle for multi-core debugging. In addition pyOCD wrongly applied its IMXRT family class to the pack target, and that class creates only the first core.",
+    "fix": "Remove the family match for IMXRT pack targets in pyocd/target/family/__init__.py, or use a build containing the fix of PR 1594, which drops it. Then both cores are found. A branch honouring the pname of the debug sequences only runs DebugPortStart for the core named by the primary_core option. A user script is needed to release the second core.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ],
+      "device": [
+        "MIMXRT1176DVMAA"
+      ],
+      "core": [
+        "Cortex-M7",
+        "Cortex-M4"
+      ]
+    },
+    "versions": "",
+    "resolution": "workaround",
+    "confidence": "medium",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1580",
+    "tool": "pyocd",
+    "title": "pyocd rtt cannot find the control block; using RTT with gdbserver needs monitor commands",
+    "symptoms": [],
+    "cause": "pyOCD's RTT control-block search only scans the first RAM region and a short range, so a block in a later RAM (for example 0x20002300 on LPC55S16, whose first RAM is code RAM) is not found. gdbserver has no preset, so RTT must be set up manually.",
+    "fix": "Give pyocd rtt an explicit search address/size covering the RAM that holds _SEGGER_RTT. For gdbserver use: monitor rtt setup <address> <size> SEGGER RTT, monitor rtt start, monitor rtt server start <port> 0, monitor rtt channels, then connect with nc localhost <port>. Widening the default search range was planned.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ],
+      "device": [
+        "LPC55S16"
+      ]
+    },
+    "versions": "",
+    "resolution": "workaround",
+    "confidence": "medium",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1545",
+    "tool": "pyocd",
+    "title": "S32K3xx hard-faults on gdb attach because the pack's RAMInitialize clears the vector table",
+    "symptoms": [],
+    "cause": "The Keil S32K3xx pack's RAMInitialize sequence, controlled by the debug variable DoRAMInitialize, clears RAM, and the reset sequence that should return the core to reset state does not run. A vector table moved to RAM is wiped and the core faults.",
+    "fix": "Set the debug variable off: -Opack.debug_sequences.debugvars=\"DoRAMInitialize=0;\". For attach after flashing, also use --connect under-reset and, as a pack patch, alias ResetCatchClear to ResetHardwareDeassert.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ],
+      "family": [
+        "S32K3 Series"
+      ],
+      "device": [
+        "S32K344"
+      ]
+    },
+    "versions": "",
+    "resolution": "workaround",
+    "confidence": "medium",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1537",
+    "tool": "pyocd",
+    "title": "pyOCD cannot step off a bkpt instruction compiled into the firmware",
+    "symptoms": [],
+    "cause": "A BKPT instruction in the code is not managed by pyOCD's breakpoint manager, so removing it does nothing, and resuming or stepping re-executes it forever. gdb cannot remove it either.",
+    "fix": "Before resuming, check whether the instruction at PC is a bkpt and skip it: pc = target.read_core_register('pc'); if (target.read16(pc) & 0xff00) == 0xbe00: target.write_core_register('pc', pc + 2). In gdb use set $pc += 2. Native handling in pyOCD was planned.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ],
+      "core": [
+        "Cortex-M33"
+      ]
+    },
+    "versions": "",
+    "resolution": "workaround",
+    "confidence": "medium",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1532",
+    "tool": "pyocd",
+    "title": "flashing a FRDM-K66F fails with core not halted when writing flash algorithm registers",
+    "symptoms": [
+      "pyocd.core.exceptions.CoreRegisterAccessError: cannot write registers pc, r0, r1, r2, r9, sp, lr because core #0 is not halted"
+    ],
+    "cause": "pyOCD could not halt the core before calling the flash algorithm. The maintainer suspects connecting to a locked or secured device, which has been troublesome.",
+    "fix": "Try connecting in attach mode, e.g. pyocd flash -M attach <file>. If the device is locked, unlock it with a mass erase first.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ],
+      "device": [
+        "MK66FN2M0VMD18"
+      ]
+    },
+    "versions": "pyOCD 0.34.3",
+    "resolution": "workaround",
+    "confidence": "low",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1529",
+    "tool": "pyocd",
+    "title": "PyInstaller-built pyOCD app fails to open ST-Link session or lacks probes, targets",
+    "symptoms": [
+      "AssertionError",
+      "Target type stm32l431vctx not recognized. Use 'pyocd list --targets' to see currently available target types."
+    ],
+    "cause": "pyOCD finds probe drivers, RTOS plug-ins and targets through package entry points, which PyInstaller does not collect by default, so the frozen app lacks them or loads them incompletely.",
+    "fix": "In the .spec file use collect_entry_point('pyocd.probe') and collect_entry_point('pyocd.rtos') from PyInstaller.utils.hooks and add their datas and hidden imports. Also bundle the pyocd package data and keep the _internal folder with the executable. The target-not-recognized case after this stayed unresolved.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ]
+    },
+    "versions": "",
+    "resolution": "workaround",
+    "confidence": "low",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1528",
+    "tool": "pyocd",
+    "title": "gdb cannot read SCB or peripheral registers through pyocd gdbserver",
+    "symptoms": [
+      "Cannot access memory at address 0xe000ed00"
+    ],
+    "cause": "gdb by default restricts memory access to the memory map the server supplies. CMSIS-Pack memory maps normally list only flash and RAM, not device regions such as the peripheral area or PPB, so gdb refuses those reads.",
+    "fix": "Tell gdb to ignore the supplied map: set mem inaccessible-by-default no. Invalid accesses then simply fault on the target. Alternatively add DeviceRegion entries for Peripheral and PPB in a user script's will_connect.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ],
+      "device": [
+        "nRF52840"
+      ]
+    },
+    "versions": "",
+    "resolution": "configuration",
+    "confidence": "high",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1506",
+    "tool": "pyocd",
+    "title": "pyocd pack update aborts with 'relative URL without a base'",
+    "symptoms": [
+      "Exception: b'\\nrelative URL without a base'"
+    ],
+    "cause": "A pack vendor's index entry has a bad relative URL, and older cmsis-pack-manager versions abort the whole index update on one failing descriptor.",
+    "fix": "Upgrade pyocd and cmsis-pack-manager (pyocd 0.34.3 with cmsis-pack-manager 0.5.2 skips failing descriptors and finishes the update).",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ]
+    },
+    "versions": "Seen with pyocd 0.29 and cmsis-pack-manager 0.3.0.",
+    "resolution": "workaround",
+    "confidence": "medium",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1493",
+    "tool": "pyocd",
+    "title": "ATSAMD21G18A connect fails with No ACK; deprecated Keil pack shadows Microchip pack",
+    "symptoms": [
+      "pyocd.probe.pydapaccess.dap_access_api.DAPAccessIntf.TransferError: No ACK received"
+    ],
+    "cause": "Two packs describe the same part and the pack cache is keyed by part number, so the deprecated Keil pack for ATSAMD21G18A wins and cannot connect to this chip.",
+    "fix": "Install the Microchip pack by naming a part only in that pack, for example pyocd pack install ATSAMD21J17D. Alternatively delete the Keil pdsc entry from the local pack cache.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ],
+      "device": [
+        "ATSAMD21G18A"
+      ],
+      "core": [
+        "Cortex-M0+"
+      ]
+    },
+    "versions": "",
+    "resolution": "workaround",
+    "confidence": "medium",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1491",
+    "tool": "pyocd",
+    "title": "pyocd pack find or install returns nothing after pack update",
+    "symptoms": [
+      "W No matching devices. Please make sure the pack index is up to date. [pack_cmd]"
+    ],
+    "cause": "cmsis-pack-manager 0.5.1 started too many descriptor downloads at once, so many pdsc downloads failed and the index was incomplete.",
+    "fix": "Update cmsis-pack-manager to 0.5.2 or newer (pip install -U cmsis-pack-manager), run pyocd pack update again.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ]
+    },
+    "versions": "cmsis-pack-manager 0.5.1 affected; 0.5.2 fixes.",
+    "resolution": "workaround",
+    "confidence": "medium",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1450",
+    "tool": "pyocd",
+    "title": "flash algorithm overflowed stack after converting a Keil FLM to a built-in target",
+    "symptoms": [
+      "C flash algorithm overflowed stack (4096 bytes) [__main__]"
+    ],
+    "cause": "The generated FLASH_ALGO uses a page size different from the sector size, and the page buffers pyOCD sets up overlap the stack. For STM32C031 the page was 0x400 but pyOCD assumed 0x800.",
+    "fix": "Adjust the page_buffers, begin_stack and end_stack values in the generated target so the stack does not overlap the page buffers (one user shifted them by 0x1000), and set page_size explicitly. Using the pack directly picked the correct sizes.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ],
+      "device": [
+        "STM32C031"
+      ]
+    },
+    "versions": "pyocd 0.36.0",
+    "resolution": "workaround",
+    "confidence": "low",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1396",
+    "tool": "pyocd",
+    "title": "GD32 flashing fails with Memory transfer fault and SVD load ParseError",
+    "symptoms": [
+      "xml.etree.ElementTree.ParseError: XML or text declaration not at start of entity: line 1, column 2",
+      "C Memory transfer fault @ 0x08000000-0x0800001f [__main__]"
+    ],
+    "cause": "GigaDevice packs had SVD files with whitespace before the XML declaration, which pyOCD's strict parser rejects. A built-in target with a hand-built memory map showed the same fault, so this may not be the only cause.",
+    "fix": "Unpack the pack, fix the SVD files (strip leading whitespace so the XML declaration starts the file), repack or pass the folder with --pack, and report the issue to the vendor.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ],
+      "device": [
+        "GD32F350G8"
+      ],
+      "core": [
+        "Cortex-M4"
+      ]
+    },
+    "versions": "pyocd 0.33.1",
+    "resolution": "workaround",
+    "confidence": "low",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1323",
+    "tool": "pyocd",
+    "title": "gdb memory reads on Cortex-M7 return stale data instead of D-cache contents",
+    "symptoms": [],
+    "cause": "pyOCD reads memory through the MEM-AP with default HPROT 0x3, which ignores the CPU data cache. Data in cache not yet cleaned is therefore not visible.",
+    "fix": "Make AP transfers cacheable: monitor set hprot 0xb after connecting (check with monitor show hprot), for cortex-debug in postAttachCommands. In a user script: def did_connect(): target.aps[0].hprot = 0xb.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ],
+      "device": [
+        "STM32H750"
+      ],
+      "core": [
+        "Cortex-M7"
+      ]
+    },
+    "versions": "",
+    "resolution": "configuration",
+    "confidence": "high",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1264",
+    "tool": "pyocd",
+    "title": "enable_semihosting option in pyocd.yaml or -O is ignored",
+    "symptoms": [],
+    "cause": "The -S/--semihosting command line flag always overrides the initial value of the enable_semihosting option from -O or config, even if the flag is not given.",
+    "fix": "Pass --semihosting on the pyocd gdbserver command line, or enable it at runtime with monitor arm semihosting enable.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ]
+    },
+    "versions": "",
+    "resolution": "workaround",
+    "confidence": "high",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1262",
+    "tool": "pyocd",
+    "title": "flash erase sector failure (result code 0x67) on micro:bit V2",
+    "symptoms": [
+      "flash erase sector failure (address 0x00000000; result code 0x67)"
+    ],
+    "cause": "The micro:bit uses a Nordic SoftDevice, which locks its flash sectors once installed, so the normal erase refuses.",
+    "fix": "Run a mass erase (pyocd erase --mass -t nrf52833) once, then flash normally. Chip erase leaves the SoftDevice in place.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ],
+      "device": [
+        "nRF52833"
+      ],
+      "core": [
+        "Cortex-M4"
+      ]
+    },
+    "versions": "pyocd 0.32.1",
+    "resolution": "workaround",
+    "confidence": "high",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1223",
+    "tool": "pyocd",
+    "title": "pyocd pack update reports certificate errors and 404s for some vendors",
+    "symptoms": [
+      "error trying to connect: invalid certificate: CertExpired",
+      "error trying to connect: invalid certificate: UnknownIssuer"
+    ],
+    "cause": "Some vendor servers have expired TLS certificates or incomplete chains that browsers tolerate but cmsis-pack-manager does not; 404s were a known cmsis-pack-manager defect.",
+    "fix": "Only vendors' own sites must fix this. Download the packs manually from the Keil pack list and use pyocd --pack <file>.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ]
+    },
+    "versions": "",
+    "resolution": "workaround",
+    "confidence": "medium",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1222",
+    "tool": "pyocd",
+    "title": "DAPLink probe: DP IDCODE read failed or No ACK, board not auto-detected",
+    "symptoms": [
+      "DP IDCODE read failed; resending SWJ sequence (use dormant=False)"
+    ],
+    "cause": "These errors mean the probe cannot talk to the target, often because the target is in a low-power mode. Board auto-detection needs a DAPLink build that has a built-in target ID.",
+    "fix": "Connect under reset: pyocd erase --connect=under-reset (the option is --connect, not --connect-mode). Check wiring, power and probe. Use a DAPLink build that names its board for auto-detection.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ],
+      "device": [
+        "STM32WB55RG"
+      ]
+    },
+    "versions": "",
+    "resolution": "workaround",
+    "confidence": "low",
+    "open": true
+  },
+  {
+    "issue": "https://github.com/pyocd/pyOCD/issues/1212",
+    "tool": "pyocd",
+    "title": "new micro:bit V2 fails to flash with chip or sector erase until mass erase",
+    "symptoms": [],
+    "cause": "Factory micro:bit V2 units have access-port protection set. Only a mass erase removes it.",
+    "fix": "Once: pyocd erase --mass -t nrf52833, then flash as usual. Dragging a file to the MSD also works.",
+    "applies_to": {
+      "tool": [
+        "pyocd"
+      ],
+      "device": [
+        "nRF52833"
+      ]
+    },
+    "versions": "pyocd 0.32",
+    "resolution": "workaround",
+    "confidence": "medium",
+    "open": true
+  }
+]

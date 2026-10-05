@@ -2,7 +2,7 @@
 """build_index: baut knowledge.db aus Wissenseinheiten (Markdown + Frontmatter) und Entity-Graph.
 
 Schema nach 01_konzept_und_schema.md, ergaenzt um:
-  - nodes_fts mit triggers-Spalte (Stufe 2) neben symptoms
+  - nodes_fts mit triggers-Spalte (Stufe 2, dazu die Skill-Beschreibung aus Stufe 1) neben symptoms
   - Tabelle unresolved: applies_to-Ziele, die sich nicht aufloesen lassen (Stale-Erkennung)
   - Embeddings optional (--no-vec), Modell BAAI/bge-small-en-v1.5, 384 Dimensionen
 
@@ -16,7 +16,7 @@ import yaml
 KNOWLEDGE_TYPES = {"concept", "procedure", "rule", "pattern", "troubleshooting"}
 RELATIONS = ("requires", "refines", "conflicts_with", "supersedes", "constrains",
              "produces", "consumes", "references")
-TOOLS = ["csolution", "cbuild", "cpackget", "packchk", "svdconv", "pyocd", "west", "vcpkg", "vela"]
+TOOLS = ["csolution", "cbuild", "cpackget", "packchk", "svdconv", "pyocd", "west", "vcpkg", "vela", "gdb", "cmsis-debugger", "cmsis-solution"]
 APPLIES_KEYS = {"device", "family", "board", "core", "component", "api", "pack", "toolchain", "compiler", "tool"}
 EMBED_MODEL = "BAAI/bge-small-en-v1.5"
 
@@ -142,7 +142,8 @@ def main():
                         meta.get("summary", ""), body, json.dumps(m, ensure_ascii=False)))
             db.execute("INSERT INTO nodes_fts VALUES(?,?,?,?,?,?)",
                        (nid, meta["title"], meta.get("summary", ""), body,
-                        " ".join(meta.get("symptoms") or []), " ".join(meta.get("triggers") or [])))
+                        " ".join(meta.get("symptoms") or []),
+                        " ".join((meta.get("triggers") or []) + ([meta["description"]] if meta.get("description") else []))))
             for rel in RELATIONS:
                 for dst in meta.get(rel) or []:
                     db.execute("INSERT OR IGNORE INTO edges VALUES(?,?,?,NULL)", (nid, rel, dst))

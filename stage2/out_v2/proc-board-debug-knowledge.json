@@ -1,0 +1,28 @@
+{
+  "id": "proc-board-debug-knowledge",
+  "summary": "Document a named board's supported debug and trace connector, jumper, pin-routing, and configuration choices without narrowing device-level Pack support, returning an evidenced option inventory and candidate runtime choices in conversation.",
+  "triggers": [
+    "explicitly requested board-specific debug or trace configuration",
+    "knowledge workflow records optional board alternatives",
+    "Pack workflow designs a runtime variable"
+  ],
+  "applies_to": {"tool": [], "toolchain": [], "core": [], "component": [], "api": []},
+  "unmapped": [],
+  "verification": [
+    "Confirm each option against the board documentation and preserve all device-level Pack options.",
+    "Derive a candidate runtime choice only when its values and supported default are documented; do not infer an unsupported choice.",
+    "Recheck that every reported option remains board-specific and that the result does not omit a documented device-level option."
+  ],
+  "stop_conditions": [
+    "Stop if the board identity or requested purpose is ambiguous.",
+    "Stop when an option lacks authoritative board evidence, its board revision is incompatible with the request, or a proposed default is undocumented."
+  ],
+  "rules": [
+    {"id": "rule-critical-blockers-board-debug-knowledge", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-no-fabrication-board-debug-knowledge", "class": "generic", "canonical_id": "rule-no-fabrication", "delta": "connector pins, jumper positions, routes, voltages, electrical settings, board revisions, variable values, or defaults"},
+    {"id": "rule-portability-board-debug-knowledge", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-scope-board-debug-knowledge", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-tone-and-style", "class": "generic", "canonical_id": "rule-tone-and-style", "delta": ""}
+  ],
+  "extracted": []
+}

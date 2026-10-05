@@ -16,14 +16,14 @@ Read the procedure with `knowledge_get` before acting on it, and follow its own 
 
 | If the task is to … | Procedure |
 |---|---|
-| Document a named board's supported debug and trace connector, jumper, pin-routing, and configuration choices without narrowing device-level Pack support. | `proc-board-debug-knowledge` |
+| Document a named board's supported debug and trace connector, jumper, pin-routing, and configuration choices without narrowing device-level Pack support, returning an evidenced option inventory and candidate runtime choices in conversation. | `proc-board-debug-knowledge` |
 | Checks whether pyOCD is available, preferring the bundled copy of the active Visual Studio Code CMSIS Debugger extension and otherwise a runnable pyocd in the active shell, and returns one … | `proc-check-pyocd-availability` |
 | Look up registers, peripherals, errata and board facts in the target's manuals, with page citations | `proc-cmsis-pack-docs` |
-| Build a documentation-led, verifiable record of an existing SoC's reusable CMSIS debug access topology: processor association, debug port and access-port path, protocol, and dormant-state decision. | `proc-debug-access-knowledge` |
-| Build a documentation-led, verifiable knowledge record of an existing SoC's reset, unlock, authentication, boot, flash, processor-control, and low-power debug behavior after `$debug-access-knowledge` has established the reusable access topology. | `proc-debug-knowledge` |
-| Capture supplementary, non-authoritative CMSIS debug and CoreSight topology evidence from the complete stdout/stderr of `pyocd gdbserver -vv --target cortex_m` after `$check-pyocd-availability` succeeds. | `proc-pyocd-detect-debug-topology` |
+| Build a documentation-led, verifiable record of an existing SoC's reusable CMSIS debug access topology: processor association, debug port and access-port path, protocol, and dormant-state decision, in `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` for user review. | `proc-debug-access-knowledge` |
+| Build a documentation-led, verifiable knowledge record of an existing SoC's reset, unlock, authentication, boot, flash, processor-control, and low-power debug behavior after `$debug-access-knowledge` has established the reusable access topology, for user … | `proc-debug-knowledge` |
+| Capture supplementary, non-authoritative CMSIS debug and CoreSight topology evidence from the complete stdout/stderr of `pyocd gdbserver -vv --target cortex_m` after `$check-pyocd-availability` succeeds, returning the observation table and limitations in conversation. | `proc-pyocd-detect-debug-topology` |
 | Recover or conclusively account for an unavailable vendor device-documentation URL by finding the current official source and returning a traceable retrieval result. | `proc-resolve-official-device-documentation` |
-| Build a documentation-led, verifiable knowledge record of an existing SoC's CoreSight trace paths, components, operating requirements, and constraints for subsequent generation of PDSC trace sequences. | `proc-trace-knowledge` |
+| Build a documentation-led, verifiable knowledge record of an existing SoC's CoreSight trace paths, components, operating requirements, and constraints for subsequent generation of PDSC trace sequences, and present it for user … | `proc-trace-knowledge` |
 
 ## Typical order
 

@@ -1,0 +1,55 @@
+{
+  "id": "proc-identify-cmsis-board-layer",
+  "summary": "Identify packaged CMSIS board layers compatible with an existing solution target and its required connections, returning `MATCHES`, `NO MATCH`, or `NOT REQUIRED` with exact command evidence.",
+  "triggers": [
+    "board or device target and its verified DFP/BSP entries exist",
+    "before selecting or copying a layer into the project"
+  ],
+  "applies_to": {
+    "tool": ["csolution", "cpackget"],
+    "toolchain": [],
+    "core": [],
+    "component": [],
+    "api": []
+  },
+  "unmapped": [
+    "CMSIS-Toolbox",
+    "access to install the verified DFP and BSP when absent"
+  ],
+  "verification": [
+    "Accept only tool-reported candidates whose target constraints and provided connections satisfy the active project requirements.",
+    "`csolution --version`, `csolution list layers -h`, and `csolution list layers`."
+  ],
+  "stop_conditions": [
+    "Confirm that the requested target type exists in the solution and that its unqualified `board:` or `device:` value matches the verified identification result. Stop on any mismatch or ambiguity.",
+    "If the context does not use a board layer, return `NOT REQUIRED` rather than searching for one.",
+    "Require the installed command to support `--active` and `--verbose`; stop if either option is unavailable.",
+    "If this or any other `csolution` command in this workflow reports a command-line syntax or option-parsing error, stop immediately and report the command and error; do not retry with altered syntax.",
+    "If several candidates remain, return all of them so the caller can ask the user which one to use.",
+    "Stop on a missing target, mismatch with the verified identity, unavailable required pack, unsupported required `csolution` option, `csolution` syntax or option-parsing error, failed layer query, missing candidate source, or ambiguous active context that cannot be resolved from the project."
+  ],
+  "rules": [
+    {"id": "rule-command-integrity-identify-cmsis-board-layer", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-compatibility-identify-cmsis-board-layer", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-critical-blockers-identify-cmsis-board-layer", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-exact-packs-identify-cmsis-board-layer", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-no-fabrication-identify-cmsis-board-layer", "class": "generic", "canonical_id": "rule-no-fabrication", "delta": "target, pack, version, layer, path, file, connection, compatibility result, or command result"},
+    {"id": "rule-no-selection-or-copy-identify-cmsis-board-layer", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-portability-identify-cmsis-board-layer", "class": "generic", "canonical_id": "rule-portability", "delta": "build-system, or RTOS assumption beyond the verified target, input project, or candidate metadata."},
+    {"id": "rule-scope-identify-cmsis-board-layer", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-target-selection-identify-cmsis-board-layer", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-tone-and-style", "class": "generic", "canonical_id": "rule-tone-and-style", "delta": ""}
+  ],
+  "extracted": [
+    {
+      "type": "concept",
+      "title": "Compatibility checks for a packaged board-layer candidate",
+      "body": "Start with only layers that `csolution` reports as compatible for the selected context. For each candidate, verify:\n- `for-board:` or `for-device:` matches the exact target;\n- its active `connections.provides` satisfies every applicable project or layer `connections.consumes` entry;\n- any candidate `connections.consumes` requirements are also satisfied;\n- the reported source pack version, `path`, `file`, and optional `copy-to` exist.\n\nA matching board or device name alone is insufficient; the active required connections must also be satisfied."
+    },
+    {
+      "type": "pattern",
+      "title": "List packaged layers for one target type with csolution",
+      "body": "Record the active CMSIS-Toolbox version with `csolution --version` and inspect `csolution list layers -h`. Require the installed command to support `--active` and `--verbose`; stop if either option is unavailable.\n\ncsolution list layers <solution>.csolution.yml --active \"<target-type>\" --verbose\n\nDo not omit or replace either option and do not replace target selection with context-pattern selection. Do not pass `--version` to `list layers`; it prints the tool version and exits."
+    }
+  ]
+}

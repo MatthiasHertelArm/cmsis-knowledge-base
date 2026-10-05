@@ -2,7 +2,7 @@
 type: "procedure"
 domain: "pack"
 title: "manage-pdsc-debugvars"
-summary: "Design a documented CMSIS-Pack PDSC `debugvars` runtime choice through the active conversation. Use when defining or revising a `__var`, checking collisions and scope, or proposing its minimal sequence use and Configuration Wizard annotation; do not create agent-artifact records, edit files, invent device behavior, or redesign debug or trace sequences."
+summary: "Design a documented CMSIS-Pack PDSC `debugvars` runtime choice through the active conversation, returning the `__var` definition, sequence use, scope, collision result, and optional `.dbgconf` annotation without creating or updating workspace files."
 status: "draft"
 source: "pack/manage-pdsc-debugvars/SKILL.md"
 preconditions: "Target PDSC, selected device-tree scope, documented runtime choice, existing `<debugvars>`, and optional existing `.dbgconf` content."
@@ -11,6 +11,12 @@ output: "Return the variable proposal in conversation. Do not create or update w
 sections: ["Execution Steps", "Expected Output", "Guardrails & Constraints", "Prerequisites & Context", "Target & Persona", "Validation Resources"]
 id: "proc-manage-pdsc-debugvars"
 references: ["doc-open-cmsis-pack-github-io-open-cmsis-pack-spec-main-html-deb"]
+description: "Design a documented CMSIS-Pack PDSC `debugvars` runtime choice through the active conversation. Use when defining or revising a `__var`, checking collisions and scope, or proposing its minimal sequence use and Configuration Wizard annotation; do not create agent-artifact records, edit files, invent device behavior, or redesign debug or trace sequences."
+triggers: ["defining or revising a `__var`", "checking collisions and scope", "proposing its minimal sequence use and Configuration Wizard annotation"]
+verification: ["Confirm that every proposed sequence reference is minimal and controls only a verified behavior.", "Reject undocumented register values, routes, delays, or missing facts disguised as a user choice.", "Use the selected PDSC's inherited `<debugvars>` definitions and the current Debug Description specification to validate scope, naming, and sequence use."]
+stop_conditions: ["stop for direction on a name conflict", "Stop for an undocumented choice, unsupported default, conflicting existing definition, or unverified consuming path."]
+unmapped: ["CMSIS-Pack PDSC", "debugvars", ".dbgconf", "Configuration Wizard annotation"]
+stage2: "proc-manage-pdsc-debugvars.json"
 ---
 
 # Manage PDSC Debug Variables

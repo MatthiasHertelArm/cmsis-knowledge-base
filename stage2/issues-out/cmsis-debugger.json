@@ -1,0 +1,1396 @@
+[
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1123",
+  "tool": "cmsis-debugger",
+  "title": "Memory Inspector cells do not re-render: no periodic update, no edit, no keyboard nav",
+  "symptoms": [],
+  "cause": "The Memory Inspector memoized cell and row data that did not change identity although the contents changed, so the view showed stale cells.",
+  "fix": "Update the Memory Inspector extension to 1.3.0 or later, which contains the fix.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "Memory Inspector 1.2.0 affected, fixed in 1.3.0",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1054",
+  "tool": "pyocd",
+  "title": "pyOCD 0.45.0 skips flash algorithm when its RAM address is not a declared memory region",
+  "symptoms": [],
+  "cause": "pyOCD 0.45.0 rejects a flash algorithm whose RAMstart lies outside every explicit RAM region of the pack description. The algorithm is dropped and the flash region ends up without a flash instance, although the address is valid RAM on the device.",
+  "fix": "Use a pyOCD build with the relaxed check (pyOCD PR 2012, shipped in the CMSIS Debugger nightly and later releases). Alternatively the DFP can declare a memory element that covers the algorithm RAM.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "Nuvoton M55M1"
+   ]
+  },
+  "versions": "0.44.1 and earlier fine, 0.45.0 affected",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1049",
+  "tool": "cmsis-debugger",
+  "title": "Mark Active Source Lines switches itself off after every debug session",
+  "symptoms": [],
+  "cause": "The CDT GDB Adapter extension wrote cdt.debug.sourceHighlighting=false to the persisted settings when a GDB session ended.",
+  "fix": "Update the CDT GDB Adapter extension (eclipse-cdt.cdt-gdb-vscode) to 2.9.1 or later. As a stopgap, re-enable the highlighting through the editor context menu, which sets the setting again.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "CDT GDB Adapter 2.9.0 affected, fixed in 2.9.1",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1009",
+  "tool": "pyocd",
+  "title": "pyocd load: \"flash erase sector sequence not available\" with flashinfo plus FLM in DFP",
+  "symptoms": [
+   "0009000 W flash uninit sequence not available [flash_dsq]",
+   "0009000 W flash init sequence not available [flash_dsq]",
+   "0009003 C flash erase sector sequence not available (address 0x0804a000) [__main__]"
+  ],
+  "cause": "The generated cbuild-run file contains both a programming algorithm and a flash-info block for the same region. From pyOCD 0.44 on the flash-info block wins and selects the debug-sequence flash backend, but the DFP defined no flash debug sequences, so programming aborts although a working FLM was present.",
+  "fix": "Use a pyOCD that falls back to the algorithm when no flash sequences exist (CMSIS Debugger nightly from mid-June 2026, then the next release). Older workaround: delete the flash-info block from the cbuild-run file. A pack should not declare flashinfo without matching sequences.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "STM32C562RETx"
+   ],
+   "core": [
+    "Cortex-M33"
+   ]
+  },
+  "versions": "pyOCD 0.44 and later until the fallback",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1003",
+  "tool": "cmsis-debugger",
+  "title": "Memory Inspector cannot load back a hex file dumped from addresses above 0x80000000",
+  "symptoms": [],
+  "cause": "The Memory Inspector mishandled addresses in the upper half of the 32-bit range when re-importing a dumped hex file; this was an upstream defect of the extension.",
+  "fix": "Update Memory Inspector to 1.3.0 or later.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "fixed in Memory Inspector 1.3.0",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1001",
+  "tool": "cmsis-debugger",
+  "title": "Live Watch, Component Viewer, Core Peripherals stale after variable or memory write",
+  "symptoms": [],
+  "cause": "The views did not react to the DAP events (invalidated, memory) that the adapter sends when memory changes through variable edits or GDB set commands, so only the built-in Watch refreshed.",
+  "fix": "Use CDT GDB Adapter 2.9.0 together with CMSIS Debugger 1.7.1 or later.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "fixed with CDT GDB Adapter 2.9.0 and CMSIS Debugger 1.7.1",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/972",
+  "tool": "pyocd",
+  "title": "pyOCD gdbserver TypeError after adding an extra access port to debug-topology",
+  "symptoms": [
+   "0001483 C Error: 'NoneType' object cannot be interpreted as an integer [__main__]"
+  ],
+  "cause": "Adding a further access port (for example an APB-AP for the debug/trace subsystem) to the debug-topology of a cbuild-run file made pyOCD create a GDB server for an entry without a port, which crashed at socket bind. The problem affects ADIv5 and ADIv6 devices.",
+  "fix": "Use a pyOCD build with the fix (pyOCD PR 1965, available from the nightly after 0.44.0).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "pyOCD 0.44.0 affected",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/971",
+  "tool": "pyocd",
+  "title": "pyocd load exits 1 after a good flash because the post-load reset drops the connection",
+  "symptoms": [],
+  "cause": "The default post-load reset for cbuild-run targets is a hardware reset. With a default or faulty ResetHardware sequence the debug connection is lost right after, the board uninit steps fail, and load returns non-zero although programming worked; the CMSIS Load pre-launch task then shows an error pop-up.",
+  "fix": "Use a pyOCD with PR 1971 (hardware reset done after uninit; other reset types only report problems as information and exit 0). Or choose the reset type via load-setup post-reset in the solution.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "pyOCD 0.44 and 0.45",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/942",
+  "tool": "pyocd",
+  "title": "pyocd load says \"Invalid .cbuild-run.yml file\" when given a .cbuild.yml file",
+  "symptoms": [
+   "0000732 C Invalid .cbuild-run.yml file '<project>/out/App/App.cbuild.yml' [__main__]"
+  ],
+  "cause": "The --cbuild-run option was pointed at the cbuild.yml build description instead of the generated *.cbuild-run.yml, and the message did not say what was wrong.",
+  "fix": "Pass the file ending in .cbuild-run.yml. pyOCD later improved the wording (PR 2003).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/890",
+  "tool": "cmsis-debugger",
+  "title": "Run control becomes unresponsive while Component Viewer is open on a multi-core target",
+  "symptoms": [],
+  "cause": "The Component Viewer sent requests to GDB at inconvenient moments (during run and step) that could leave the CDT GDB Adapter or GDB hanging; Reset Target sometimes did not recover it.",
+  "fix": "Update to CMSIS Debugger 1.4.1 or later, which throttles those requests.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "fixed in CMSIS Debugger 1.4.1",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/882",
+  "tool": "pyocd",
+  "title": "RTT broken on single-core devices when control block is found by ELF symbol",
+  "symptoms": [],
+  "cause": "pyOCD handled the pname of a single-core target wrongly, so the symbol lookup of the RTT control block in the ELF failed.",
+  "fix": "Update to pyOCD 0.43.1 / CMSIS Debugger 1.4.1 or later; as an alternative give the control block address explicitly.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "fixed in pyOCD 0.43.1",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/855",
+  "tool": "cmsis-debugger",
+  "title": "App does not resume from main() with Serial Monitor open (Nu-Link2 probe)",
+  "symptoms": [],
+  "cause": "The behaviour came from the Nu-Link2 debug probe firmware, not from the extension.",
+  "fix": "Update the Nu-Link2 firmware to the latest release from Nuvoton.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ],
+   "device": [
+    "Nuvoton M55M1"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/827",
+  "tool": "cmsis-debugger",
+  "title": "Component Viewer shows thread names as addresses while the target is running",
+  "symptoms": [],
+  "cause": "While the target runs, GDB evaluations had no frame, and the string lookup for names fell back to showing the raw pointer.",
+  "fix": "Update CMSIS Debugger (fix PR 835 lets such calls run with an undefined frameId, handled by the driver).",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/819",
+  "tool": "cmsis-debugger",
+  "title": "Component Viewer stays empty when one SCVD file is missing or invalid",
+  "symptoms": [],
+  "cause": "One unreadable SCVD (missing file, broken path in the cbuild-run file, syntax error) made the whole view fail instead of only that component.",
+  "fix": "Update CMSIS Debugger; unreadable SCVD files are now skipped and the others are shown. Check the SCVD paths in the cbuild-run file if a component is missing.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/812",
+  "tool": "cmsis-debugger",
+  "title": "\"No view is registered with id: cmsis-debugger.componentViewer\" after extension update",
+  "symptoms": [
+   "No view is registered with id: cmsis-debugger.componentViewer"
+  ],
+  "cause": "After updating from a release without Component Viewer to one with it, and only restarting extensions, VS Code has not registered the new view container.",
+  "fix": "Reload or restart the VS Code window after the update. Newer versions show a warning with a Reload Window button when they detect this state.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/799",
+  "tool": "cmsis-debugger",
+  "title": "Component Viewer shows current instead of maximum stack with OS_STACK_WATERMARK",
+  "symptoms": [],
+  "cause": "The numeric conversion of the string returned by GDB for the values was wrong, so current and maximum came out identical on some devices.",
+  "fix": "Update to a CMSIS Debugger containing PR 854.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/758",
+  "tool": "pyocd",
+  "title": "CMSIS Load fails with SWD \"No ACK\" on Infineon T2G after a pyOCD update",
+  "symptoms": [],
+  "cause": "pyOCD now does a hardware reset after load. The ResetHardware sequence of the DFP breaks the debug connection, so closing the connection reports an error although programming worked.",
+  "fix": "Set a different post-load reset in the solution, for example under target-set/debugger: load-setup: post-reset: system. pyOCD 0.45 also copes with this better; the DFP sequence should be corrected.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "T2G-B-H"
+   ]
+  },
+  "versions": "CMSIS Debugger 1.3.0 affected; 0.45 more robust",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/741",
+  "tool": "pyocd",
+  "title": "pyocd gdb accepts only one client connection; dual-core semihosting output missing",
+  "symptoms": [],
+  "cause": "Without --persist pyOCD ends its GDB server after the first client disconnects, so a second attach fails. Semihosting for the second core only worked while both cores were attached, a known pyOCD limitation tracked separately.",
+  "fix": "Add --persist when starting pyocd gdbserver, or use the generated CMSIS Run task which passes the required options. Attach both cores for semihosting output.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "CMSIS Debugger 1.3.0",
+  "resolution": "user-error",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/701",
+  "tool": "pyocd",
+  "title": "Connect mode pre-reset fails with ST-Link probes",
+  "symptoms": [
+   "0000735 C STLink error (66): Unknown command [__main__]"
+  ],
+  "cause": "In pre-reset mode pyOCD ran its post-reset recovery on a device that was not yet connected, which the ST-Link rejects.",
+  "fix": "Use a pyOCD with PR 2036.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "STM32H743ZITx"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/693",
+  "tool": "pyocd",
+  "title": "pyOCD internal pack support fails when an algorithm path contains \"..\"",
+  "symptoms": [],
+  "cause": "The flash algorithm path from the PDSC was used without normalization, so paths such as Pack/../other/Flash/x.FLM could not be opened.",
+  "fix": "Use a pyOCD with the normalization fix (PR 1867, merged into develop in December 2025).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/692",
+  "tool": "pyocd",
+  "title": "Live View / Memory Inspector values freeze while the CPU runs (Zephyr idle with WFI)",
+  "symptoms": [],
+  "cause": "pyOCD memory cache returns stale values when the target sits in sleep (WFI) in Zephyr idle; reads then do not reach the target. It shows with CMSIS-DAP and ULINKplus but not with J-Link.",
+  "fix": "Disable the memory cache with -Ocache.enable_memory=false in the pyOCD arguments, or build Zephyr so that it skips WFI while debugging (CONFIG_ARM_ON_ENTER_CPU_IDLE_HOOK with a hook returning false).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/685",
+  "tool": "gdb",
+  "title": "GDB warnings \"pc ... in read in CU, but not in symtab\" with Arm Compiler images",
+  "symptoms": [
+   "warning: (Internal error: pc 0x8020a6d8 in read in CU, but not in symtab.)",
+   "warning: (Error: pc 0x8020a6d8 in address map, but not in symtab.)"
+  ],
+  "cause": "GDB treats all addresses in a CU address table as code addresses, including const objects placed in code sections of AC6 images, then fails a cross-check; reading objects such as osRtxConfig triggers it. The debug info itself looks fine.",
+  "fix": "The warnings are harmless. CMSIS Debugger 1.3.0 filters this GDB output from the console; GDB CLI use outside VS Code still shows it.",
+  "applies_to": {
+   "tool": [
+    "gdb"
+   ]
+  },
+  "versions": "AC6 .axf images",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/684",
+  "tool": "pyocd",
+  "title": "pyOCD discovery stops with a critical error when a core AP has no pname in the pack",
+  "symptoms": [],
+  "cause": "A core access point discovered during CoreSight discovery (a hidden core) had no matching pname entry in the PDSC, and the mapping step raised instead of ignoring it.",
+  "fix": "Use a pyOCD with the fix (PR 1865, in develop since December 2025).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "Microchip"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/664",
+  "tool": "pyocd",
+  "title": "Internal pyOCD targets fail to program after double buffering was disabled",
+  "symptoms": [],
+  "cause": "Disabling double buffering changed the buffer address the algorithm uses, and algorithms of some internal targets relied on the old begin_data location.",
+  "fix": "Use a pyOCD containing PR 1898 (double buffering kept for internal targets, page_buffers cleaned up, STM32H7 excluded).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/662",
+  "tool": "pyocd",
+  "title": "pyOCD load crashes on flash algorithms without an RW section",
+  "symptoms": [
+   "C Error: 'MemoryRange' object has no attribute 'data' [__main__]"
+  ],
+  "cause": "pyOCD assumed every flash algorithm has an RW section and failed on a missing section object.",
+  "fix": "Use a pyOCD nightly or release after December 2025 that skips absent sections.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/645",
+  "tool": "gdb",
+  "title": "GDB warning \"unable to determine psp alias, assuming psp_s\" during Zephyr debug",
+  "symptoms": [
+   "warning: Invalid state, unable to determine psp alias, assuming psp_s."
+  ],
+  "cause": "pyOCD Zephyr thread awareness does not model Secure and Non-secure state, so GDB cannot tell which PSP alias belongs to a paused thread.",
+  "fix": "Ignore it: only the PSP/MSP alias register values of paused threads may be wrong. The unrelated \"pc ... in read in CU\" warning has the same harmless nature.",
+  "applies_to": {
+   "tool": [
+    "gdb"
+   ]
+  },
+  "versions": "",
+  "resolution": "not-a-bug",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/628",
+  "tool": "cmsis-debugger",
+  "title": "Breakpoints cannot be set in assembler files",
+  "symptoms": [],
+  "cause": "VS Code only allows breakpoints for languages that a debug extension declares; assembler was not declared.",
+  "fix": "Update the CDT GDB Adapter extension to 2.5.0 or later, which contributes the assembler language entry.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/625",
+  "tool": "pyocd",
+  "title": "CMSIS-DAP v1 probe initialisation fails because of wrong HID report size handling",
+  "symptoms": [],
+  "cause": "pyOCD used incorrect HID report sizes with some CMSIS-DAP v1 probes.",
+  "fix": "Use a pyOCD with PR 1854 (verified on Windows and macOS; the Linux backend is not hidapi and unchanged).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/618",
+  "tool": "other",
+  "title": "Debug of Alif DevKit-E8 with CMSIS-DAP fails",
+  "symptoms": [],
+  "cause": "The reset sequences in the Alif DFP 2.0.x were broken, and the device additionally had to be provisioned with the Alif security tools.",
+  "fix": "Use Alif DFP 2.1.0 or later, a current CMSIS-Toolbox, and provision the device with the Alif SE tools when switching cores.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "Alif DevKit-E8"
+   ]
+  },
+  "versions": "DFP 2.0.2 to 2.0.4 affected",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/606",
+  "tool": "cmsis-debugger",
+  "title": "XRTOS view shows \"No RTOS detected\" or no threads for RTX5 while the application runs",
+  "symptoms": [],
+  "cause": "The RTOS view reads RTOS data only while the target is halted and after osKernelStart.",
+  "fix": "Pause the target after the kernel started; the threads then show.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/599",
+  "tool": "cmsis-debugger",
+  "title": "XRTOS view stuck on \"Loading\" with Zephyr",
+  "symptoms": [],
+  "cause": "RTOS Views 0.0.12 changed Zephyr thread state names and did not work with the Zephyr examples.",
+  "fix": "Install RTOS Views 0.0.13 or later.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "RTOS Views 0.0.12 affected",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/595",
+  "tool": "cmsis-debugger",
+  "title": "Live View only updates when the target is stopped (ST-Link)",
+  "symptoms": [],
+  "cause": "The launch configuration had auxiliaryGdb set to true, which does not work for the used server, so live reads were not possible.",
+  "fix": "Set \"auxiliaryGdb\": false in the launch configuration for that setup.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "configuration",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/591",
+  "tool": "cmsis-debugger",
+  "title": "Debug Console flooded by \"Failed to decode cstring\" while RTOS Views is open",
+  "symptoms": [
+   "Failed to decode cstring '241 'ñ''. {}"
+  ],
+  "cause": "The CDT GDB Adapter failed to decode non-UTF-8 bytes in strings read by the RTOS view and logged each one.",
+  "fix": "Update CDT GDB Adapter to 2.5.0 or later.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/567",
+  "tool": "cmsis-debugger",
+  "title": "Generated J-Link launch configuration on macOS uses JLinkGDBServerCLExe",
+  "symptoms": [],
+  "cause": "The debug adapter template used the Windows-style CLExe name, which is not the stable binary on macOS.",
+  "fix": "Use a CMSIS Solution release with the updated debug adapter registry (template now uses JLinkGDBServerCL), or edit the server name in launch.json.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/566",
+  "tool": "cmsis-debugger",
+  "title": "Noisy \"Selected thread is running\" and \"stream was destroyed\" errors in Debug Console",
+  "symptoms": [
+   "Selected thread is running",
+   "Cannot call write after a stream was destroyed"
+  ],
+  "cause": "Views send requests while the target changes state (step/run, disconnect), and the adapter surfaced the resulting internal errors to the user.",
+  "fix": "Update CDT GDB Adapter to 2.6.0 or later. The related AC6 \"not in symtab\" warnings come from reading osRtxConfig.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "fixed in CDT GDB Adapter 2.6.0",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/520",
+  "tool": "pyocd",
+  "title": "HE core on Alif E7 does not start after flashing",
+  "symptoms": [],
+  "cause": "Implicit resets between multiple loaded images and a missing clean post-load reset left the core in a bad state.",
+  "fix": "Use pyOCD 0.40 / CMSIS Debugger 1.2.0 or later (reset catch on all cores, no implicit resets between images, hardware reset after flashing).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "Alif E7"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/504",
+  "tool": "pyocd",
+  "title": "pyOCD load picks the wrong file type for ELF files with an unusual extension such as .out",
+  "symptoms": [],
+  "cause": "Without a cbuild-run file pyOCD decides the format from the file extension; IAR produces .out ELF files.",
+  "fix": "Use pyOCD 0.39.0 or later, which takes the file type from the cbuild-run file; otherwise pass --format elf.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "toolchain": [
+    "IAR"
+   ]
+  },
+  "versions": "fixed in pyOCD 0.39.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/472",
+  "tool": "pyocd",
+  "title": "pyocd load with a missing cbuild-run file continues with a generic target and crashes",
+  "symptoms": [
+   "0000927 C Error: 'CoreSightTarget' object has no attribute 'debugger_clock' [__main__]",
+   "0000883 W Generic 'cortex_m' target type is selected by default; is this intentional? You will be able to debug most devices, but not program flash."
+  ],
+  "cause": "The cbuild-run file path was wrong, the access error was only logged, and pyOCD went on with a generic Cortex-M target.",
+  "fix": "Check the path of the --cbuild-run file. From pyOCD 0.39.0 the missing file ends the command instead.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/461",
+  "tool": "pyocd",
+  "title": "GD-Link (CMSIS-DAP v1 without serial number) not found by pyOCD 0.38 / extension 1.0.0",
+  "symptoms": [],
+  "cause": "The hidapi backend regressed for CMSIS-DAP v1 probes that report no USB serial number, although pyocd list shows the probe.",
+  "fix": "Use a pyOCD with the fix by the CMSIS Debugger team (released after 1.0.0). To test a custom build, change the pyocd path in both launch.json and tasks.json.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "GD32"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/435",
+  "tool": "pyocd",
+  "title": "Load fails with an empty critical error at 10 MHz debug clock on Alif E7 with ULINKplus",
+  "symptoms": [
+   "0013264 C  [__main__]"
+  ],
+  "cause": "The device answers memory requests slowly and SWD/JTAG returns WAIT; pyOCD gave up after too few retries. Lower clocks merely hid it.",
+  "fix": "Use a pyOCD with more WAIT retries (100, later 150) and better SWD/JTAG error texts; as a workaround reduce the debug clock to 5 MHz.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "AE722F80F55D5LS"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/428",
+  "tool": "cmsis-debugger",
+  "title": "PERIPHERALS view missing when attaching to a GDB server started by Load & Run",
+  "symptoms": [],
+  "cause": "The attach launch configuration did not pass the cbuild-run file, so the SVD path was not found.",
+  "fix": "Use CMSIS Debugger 1.0.0 or later with CMSIS Solution templates that add cmsis/cbuildRunFile to attach configurations; or add that setting manually.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/387",
+  "tool": "pyocd",
+  "title": "Symbol file paths in cbuild-run are relative to the file, which moved to the out folder",
+  "symptoms": [],
+  "cause": "pyOCD resolved relative paths against the working directory; with CMSIS-Toolbox 2.11 the cbuild-run file sits in out.",
+  "fix": "Use pyOCD with PR 1788 (paths resolved relative to the cbuild-run file location).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "CMSIS-Toolbox 2.11 and later",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/386",
+  "tool": "pyocd",
+  "title": "Erase device fails on STM32 dual-core boards",
+  "symptoms": [],
+  "cause": "The memory region lookup ignored the pname attribute, so it picked the wrong core region.",
+  "fix": "Use pyOCD 0.40.0 or later.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "STM32H745",
+    "STM32H747"
+   ]
+  },
+  "versions": "fixed in pyOCD 0.40.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/382",
+  "tool": "pyocd",
+  "title": "CMSIS-DAP v1 (HID) probes fail on macOS with \"already open\"",
+  "symptoms": [
+   "0100505 C Error: already open [__main__]"
+  ],
+  "cause": "The libusb path timed out on HID probes on macOS, and the follow-up open raised.",
+  "fix": "Use a pyOCD with the hidapi change (PR 1792), shipped from CMSIS Debugger 1.0.0.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/377",
+  "tool": "cmsis-debugger",
+  "title": "Attach to a core without program image is refused",
+  "symptoms": [],
+  "cause": "The CDT GDB Adapter required a program for attach requests.",
+  "fix": "Use a CDT GDB Adapter release containing the fix (PR 262), so attach works without \"program\".",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/370",
+  "tool": "pyocd",
+  "title": "Unclear errors \"No ACK received\" and empty \"Error:\" when probe or target is missing",
+  "symptoms": [
+   "0001410 C No ACK received [__main__]",
+   "0019032 C Error:  [__main__]"
+  ],
+  "cause": "pyOCD printed bare SWD/JTAG status for typical wiring or clock problems.",
+  "fix": "Use a pyOCD with PR 1804: messages read like \"SWD/JTAG communication failure (No ACK received); check USB cable, reduce debugger clock\". Check cable, power, and lower the debug clock.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/345",
+  "tool": "cmsis-debugger",
+  "title": "Custom Reset button fails with \"The custom reset command failed\" while the target runs",
+  "symptoms": [
+   "The custom reset command failed"
+  ],
+  "cause": "GDB refuses remote commands while the CPU is running, and the adapter issued the reset without halting first.",
+  "fix": "Pause the target before pressing Custom Reset. The adapter was changed (PR 464) to halt first; it does not auto-resume afterwards.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/343",
+  "tool": "pyocd",
+  "title": "pyocd load prints a TypeError in load-svd and \"flash init timed out\"",
+  "symptoms": [
+   "TypeError: expected str, bytes or os.PathLike object, not NoneType",
+   "0005770 C flash init timed out [__main__]"
+  ],
+  "cause": "The installed DFP version lacked the SVD file, so the SVD loader got None as path.",
+  "fix": "Update the DFP to a version that ships the SVD; the cbuild-run file lists it under system-descriptions.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "CMSIS Debugger 0.3.1",
+  "resolution": "user-error",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/330",
+  "tool": "cmsis-debugger",
+  "title": "Peripheral view does not update during single stepping",
+  "symptoms": [],
+  "cause": "The debug-tracker-vscode extension (dependency of RTOS Views) clashed with the Peripheral Inspector, which could not tell session IDs apart.",
+  "fix": "Update Peripheral Inspector to 1.8.1 or later; disabling mcu-debug.debug-tracker-vscode also helps.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "fixed in Peripheral Inspector 1.8.1",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/327",
+  "tool": "cmsis-debugger",
+  "title": "Target reset button disappears when a second core is attached",
+  "symptoms": [],
+  "cause": "The launch configuration of the second core had no customResetCommands.",
+  "fix": "Use a CMSIS Solution release with the updated debug adapter templates, or add customResetCommands to the attach configuration.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/326",
+  "tool": "cmsis-debugger",
+  "title": "Misleading error for attach request when no GDB server runs",
+  "symptoms": [],
+  "cause": "The adapter passed through GDB messages, which differ by OS (a drive-joining text on Windows, a timeout text on macOS).",
+  "fix": "Update CDT GDB Adapter (PR 413 unifies the message). Start the GDB server first.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/289",
+  "tool": "pyocd",
+  "title": "pyocd erase says \"unrecognized arguments: --cbuild-run\"",
+  "symptoms": [
+   "pyocd: error: unrecognized arguments: --cbuild-run"
+  ],
+  "cause": "A pyOCD without cbuild-run support was used, not the one shipped with the CMSIS Debugger extension.",
+  "fix": "Use the pyOCD of the CMSIS Debugger extension (launch server \"pyocd\") and CMSIS Solution tasks that match it.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "user-error",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/286",
+  "tool": "cmsis-debugger",
+  "title": "Leftover pyOCD process blocks later sessions with \"Access denied\"",
+  "symptoms": [],
+  "cause": "After a failed launch (for example missing GDB) the adapter left the pyOCD server running.",
+  "fix": "Update CDT GDB Adapter to 2.1.0 or later; as a workaround end the pyocd process.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/241",
+  "tool": "pyocd",
+  "title": "pyOCD does not use the default CMSIS_PACK_ROOT",
+  "symptoms": [],
+  "cause": "pyOCD only read the environment variable and ignored the documented platform default.",
+  "fix": "Use a newer pyOCD that applies the default, or set CMSIS_PACK_ROOT.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/166",
+  "tool": "pyocd",
+  "title": "monitor reset leaves GUI out of sync; use monitor reset halt",
+  "symptoms": [],
+  "cause": "pyOCD monitor commands change the CPU state without GDB async records, so the GUI does not learn about running or stopped.",
+  "fix": "Use \"monitor reset halt\" and the adapter reset button (resetDeviceCommands/customResetCommands such as monitor reset halt hardware). Step once to resync.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/165",
+  "tool": "cmsis-debugger",
+  "title": "Typing GDB commands in the Debug Console gives var-create errors",
+  "symptoms": [
+   "-var-create: unable to create variable object"
+  ],
+  "cause": "The Debug Console treats input as expressions; the CDT GDB Adapter takes GDB CLI commands only with a \">\" prefix.",
+  "fix": "Start the command with \">\" for example \"> help\".",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/164",
+  "tool": "pyocd",
+  "title": "Attach again to the same core fails after detaching",
+  "symptoms": [],
+  "cause": "pyOCD gdbserver exits after the client disconnects unless --persist is given.",
+  "fix": "Add --persist to the pyOCD gdbserver arguments (now in the templates).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/160",
+  "tool": "cmsis-debugger",
+  "title": "Memory reads and views fail while the CPU runs (SIGINT interrupts)",
+  "symptoms": [],
+  "cause": "GDB suppresses remote commands while the target runs; non-stop mode did not work well with RTOS threads.",
+  "fix": "Use pyOCD 0.40+ with CDT GDB Adapter 2.4.0+ which opens an auxiliary GDB connection to the same port (auxiliaryGdb); set auxiliaryGdb false where the server does not allow it.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/133",
+  "tool": "pyocd",
+  "title": "Cannot read memory at peripheral register addresses with pyOCD",
+  "symptoms": [
+   "Unable to read memory"
+  ],
+  "cause": "GDB had no memory map entry for peripheral ranges, so reads failed.",
+  "fix": "Use pyOCD patch release 0.1.1 or later (alternative: set mem inaccessible-by-default off).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/132",
+  "tool": "pyocd",
+  "title": "Debug sequence fails with invalid __apid on Access Port v2 devices",
+  "symptoms": [
+   "E Error while running debug sequence 'ResetSystem' (core M55_HP): __apid has invalid value (2097152)"
+  ],
+  "cause": "The AP address classes lacked apid handling for APv2.",
+  "fix": "Use a pyOCD from the CMSIS Debugger 0.2/1.0 era or later.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "Alif E7"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/131",
+  "tool": "pyocd",
+  "title": "CoreSight discovery fails on MEM-APs with SPROT field",
+  "symptoms": [
+   "E Transfer error while reading AHB-AP#1 ROM table: Memory transfer fault @ 0xe00fefd0-0xe00fefff [ap]"
+  ],
+  "cause": "The HNONSEC bit in CSW was handled wrongly for MEM-APs that implement SPROT.",
+  "fix": "Use a pyOCD with the SPROT CSW handling (CMSIS Debugger 0.2 and later).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "LPC55S69"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/130",
+  "tool": "cmsis-debugger",
+  "title": "Debugger hangs when more breakpoints are set than hardware allows",
+  "symptoms": [],
+  "cause": "GDB accepts all and fails at continue with \"Command aborted\" after sending ^running; the adapter had already dropped the command.",
+  "fix": "Update CDT GDB Adapter (PR 415); remove surplus breakpoints. Workaround: set breakpoint always-inserted on in initCommands.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/128",
+  "tool": "pyocd",
+  "title": "Flash programming fails on LPC55S69 when the device is erased",
+  "symptoms": [],
+  "cause": "Reading erased flash for the compare step produced bus errors.",
+  "fix": "Use a pyOCD that skips reading erased sectors when the algorithm has Verify (CMSIS Debugger 0.2+).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "LPC55S69"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/127",
+  "tool": "pyocd",
+  "title": "CoreSight root components on APv2 are read from wrong addresses",
+  "symptoms": [],
+  "cause": "ap_address was passed to the memory interface for root components.",
+  "fix": "Use CMSIS Debugger 0.2+ pyOCD.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/126",
+  "tool": "pyocd",
+  "title": "Flash programming fails when erased flash reads as 0x00",
+  "symptoms": [],
+  "cause": "If PC reads 0 after reset the Thumb bit in xPSR is clear, so running the algorithm faults.",
+  "fix": "Use a pyOCD that sets the Thumb bit in xPSR before algorithm calls.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/125",
+  "tool": "pyocd",
+  "title": "Unreliable flash programming on STM32H7 (hard fault after load)",
+  "symptoms": [],
+  "cause": "Double-buffered downloads stall on buses with strict timing.",
+  "fix": "Use a pyOCD with double buffering off by default (later restored only for internal targets).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "STM32H7 Series"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/109",
+  "tool": "pyocd",
+  "title": "Warning \"invalid control node\" and then connect crash on multi-core Infineon T2G",
+  "symptoms": [
+   "0001777 W invalid 'control' node in debug sequence 'PrintDeviceInfo' [cmsis_pack]",
+   "0000954 C Error: <APv1Address@0x1a968104350 #1 dp=0> [__main__]"
+  ],
+  "cause": "Old native pack sequence handling skipped a control node without if/while; and multi-core devices need a debug-topology in the cbuild-run file.",
+  "fix": "Use pyOCD with cbuild-run debug sequences (0.0.3 pre-release and later) and a CMSIS-Toolbox 2.9+ cbuild-run file with debug-topology (debugports, accessports, processors).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "configuration",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/108",
+  "tool": "pyocd",
+  "title": "GDB server exits with \"RW section does not follow RO section\"",
+  "symptoms": [
+   "0001679 C RW section does not follow RO section [__main__]"
+  ],
+  "cause": "pyOCD checked the flash algorithm layout too strictly and ignored section alignment.",
+  "fix": "Use a pyOCD with PR 1795 (CMSIS Debugger 1.0.0 and later).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "T2G"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/103",
+  "tool": "cmsis-debugger",
+  "title": "Target stays halted after disconnect with pyOCD",
+  "symptoms": [],
+  "cause": "The adapter killed the GDB server immediately, before pyOCD could turn off debug and resume the CPU.",
+  "fix": "Use CDT GDB Adapter with a server kill delay (PRs 405/175); keep automaticallyKillServer.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/100",
+  "tool": "pyocd",
+  "title": "pyOCD without libusb on macOS cannot connect to CMSIS-DAPv2 probes",
+  "symptoms": [
+   "0001425 W STLink, CMSIS-DAPv2 and PicoProbe probes are not supported because no libusb library was found. [common]"
+  ],
+  "cause": "The bundled pyOCD did not contain libusb.",
+  "fix": "Use CMSIS Debugger 0.2+ which bundles libusb.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/94",
+  "tool": "pyocd",
+  "title": "Auto-detection fails on NXP K32L3A6 multi-core device",
+  "symptoms": [
+   "0001184 C Error: <APv1Address@0x1e77c825b50 #2 dp=0> [__main__]"
+  ],
+  "cause": "Debug-topology missing from cbuild-run; DFP 19.0.0 listed wrong AP index for the M0+.",
+  "fix": "Add debug-topology with cm4 apid 0 index 0 and cm0plus apid 1 index 2 to the cbuild-run file, or use a corrected DFP and newer toolbox.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "K32L3A6"
+   ]
+  },
+  "versions": "",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/93",
+  "tool": "pyocd",
+  "title": "LPC55S69 flash download via GDB fails with memory transfer fault",
+  "symptoms": [
+   "0007677 E Error while running debug sequence 'ResetSystem' (core cm33_core0): Memory transfer fault [pack_target]"
+  ],
+  "cause": "Same root cause as the monitor reset halt failure: ResetSystem handling and missing multi-core topology.",
+  "fix": "Use CMSIS Debugger 0.2+ pyOCD and ensure the cbuild-run debug-topology lists both APs.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/92",
+  "tool": "pyocd",
+  "title": "monitor reset halt fails on LPC55S69 with CMSIS-Pack debug support",
+  "symptoms": [
+   "0007776 E Error while running debug sequence 'ResetSystem' (core cm33_core0): Memory transfer fault [pack_target]"
+  ],
+  "cause": "Handling of __errorcontrol and __ap in sequences was wrong; two APs must be declared.",
+  "fix": "Use pyOCD with the fix and give two accessports (apid 0 index 0, apid 1 index 1) with cm33_core0/cm33_core1.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/91",
+  "tool": "pyocd",
+  "title": "\"Zephyr kernel detected\" warning when debugging bare metal",
+  "symptoms": [
+   "0002477 W Zephyr kernel detected. Build your Zephyr application with `CONFIG_DEBUG_THREAD_INFO=y` to enable thread awareness. [zephyr]"
+  ],
+  "cause": "A newer pyOCD main change raised the warning without checking an RTOS.",
+  "fix": "Use CMSIS Debugger 0.2+ pyOCD.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/89",
+  "tool": "cmsis-debugger",
+  "title": "GDB server fails to start but the adapter keeps waiting for a timeout",
+  "symptoms": [
+   "gdbserver has exited with code 1"
+  ],
+  "cause": "The adapter did not notice early exit of the GDB server.",
+  "fix": "Update CDT GDB Adapter to 2.1.0 or later; check the server error in the console.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/86",
+  "tool": "cmsis-debugger",
+  "title": "Hover shows \"-var-create: unable to create variable object\" for non-variables",
+  "symptoms": [
+   "-var-create: unable to create variable object"
+  ],
+  "cause": "Hovering text that is no variable made the adapter report the GDB error.",
+  "fix": "Update CDT GDB Adapter to 2.0.4 or later.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/84",
+  "tool": "cmsis-debugger",
+  "title": "Connect fails with cbuild-run when CMSIS_PACK_ROOT is not set",
+  "symptoms": [],
+  "cause": "The pack-based support needed CMSIS_PACK_ROOT and the default was not applied.",
+  "fix": "Set CMSIS_PACK_ROOT or use a version that applies defaults (see the toolbox default locations).",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/82",
+  "tool": "cmsis-debugger",
+  "title": "GDB commands in Debug Console fail while CPU runs: no frameId",
+  "symptoms": [
+   "Evaluation of expression without frameId is not supported."
+  ],
+  "cause": "The adapter required a frame for evaluation, which does not exist while running.",
+  "fix": "Use CDT GDB Adapter 2.4+ with an auxiliary GDB connection (auxiliaryGdb) for running targets.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/68",
+  "tool": "cmsis-debugger",
+  "title": "\"GDB unhandled notify: breakpoint-created\" for breakpoints set from the console",
+  "symptoms": [
+   "GDB unhandled notify: breakpoint-created"
+  ],
+  "cause": "The adapter did not handle GDB breakpoint notifications, so CLI breakpoints did not show in the GUI.",
+  "fix": "Update CDT GDB Adapter beyond 2.0.x as announced in that thread.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ }
+]

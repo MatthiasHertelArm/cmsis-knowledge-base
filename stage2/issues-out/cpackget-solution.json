@@ -1,0 +1,1179 @@
+[
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/835",
+    "tool": "cpackget",
+    "title": "cpackget add crashes (nil pointer) with a locally generated index.pidx",
+    "symptoms": [
+      "runtime error: invalid memory address or nil pointer dereference"
+    ],
+    "cause": "vidx2pidx wrote the index file name into the url element (file:///.../index.pidx), so cpackget built a doubled path index.pidx/index.pidx and then dereferenced a missing file info instead of reporting an error.",
+    "fix": "Use a CMSIS-Toolbox nightly from 2026-09-16 or later, where both vidx2pidx and cpackget are fixed; the url element of a local index must name only the folder (file:///C:/packs/Vendor/). As a workaround place an update.cfg in .Web with a future Date and Auto=false to suppress the implicit update-index.",
+    "applies_to": {
+      "tool": [
+        "cpackget",
+        "vidx2pidx"
+      ]
+    },
+    "versions": "fixed in CMSIS-Toolbox nightly 2026-09-16",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/778",
+    "tool": "cpackget",
+    "title": "cpackget init: 'remote server is offline or cannot be reached' though browser works",
+    "symptoms": [
+      "E: \"https://www.keil.com/pack/keil.vidx\": remote server is offline or cannot be reached"
+    ],
+    "cause": "cpackget checks connectivity by downloading a small index file first. In the reported case the machine had an empty /etc/resolv.conf (systemd-resolved setup), so Go could not resolve host names even though curl with redirects seemed to work elsewhere. Proxy and CA-store problems produce the same message.",
+    "fix": "Check name resolution (on systemd-resolved link /etc/resolv.conf to the resolved stub file), then check HTTP_PROXY/HTTPS_PROXY/NO_PROXY and the system CA bundle, and test the keil.com pack URLs with curl -L. Not a cpackget defect.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "cpackget 2.2.1 / CMSIS-Toolbox 2.14.1",
+    "resolution": "configuration",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/776",
+    "tool": "cpackget",
+    "title": "Cannot remove a local pack entry whose pdsc file was deleted",
+    "symptoms": [
+      "E: Pack \"arm::sds@3.0.0-dev\" is not installed",
+      "E: pack not installed"
+    ],
+    "cause": "A pack registered via its pdsc file stays in .Local/local_repository.pidx after the pdsc is deleted. The rm attempt in the report used a name that did not match the entry (and a pdsc path with a typo), hence the refusal.",
+    "fix": "Remove the entry with cpackget rm using the exact packID (vendor::name, optionally with the version) or the exact pdsc path as shown by cpackget list; if that still fails, delete the matching pdsc line from <CMSIS_PACK_ROOT>/.Local/local_repository.pidx by hand. The maintainers documented this and made no tool change.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "cpackget 2.2.1",
+    "resolution": "workaround",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/696",
+    "tool": "cpackget",
+    "title": "Local pack with +build version keeps metadata; rm fails when pdsc is gone",
+    "symptoms": [
+      "E: open <packs>\\ARM.CMSIS-Compiler.2.2.0-dev24+g3f9552c\\ARM.CMSIS-Compiler.pdsc: The system cannot find the path specified."
+    ],
+    "cause": "cpackget copied the full version including +meta into local_repository.pidx and, on rm without a version, tried to read the missing pdsc to learn the version instead of just matching vendor and pack name.",
+    "fix": "Update to cpackget 2.2.0-4 or later (CMSIS-Toolbox nightly of March 2026): meta information is stripped on add, and rm removes the local_repository entry even when the pdsc file no longer exists.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "fixed after 2.2.0",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/609",
+    "tool": "cpackget",
+    "title": "cpackget add: 'certificate signed by unknown authority' on old Debian image",
+    "symptoms": [
+      "E: Get \"https://itools.infineon.com/cmsis_packs/T2G-B-H/Infineon.T2G-B-H_DFP.1.2.1.pack\": tls: failed to verify certificate: x509: certificate signed by unknown authority"
+    ],
+    "cause": "The pack server's certificate chain ends in a root CA that is missing from the CA store of that Debian 12 image (wget fails too; Debian 13 and Ubuntu work). It is a host trust-store problem, not a pack problem.",
+    "fix": "Update ca-certificates or the OS image so the issuing root is trusted. If that is impossible, use a cpackget/CMSIS-Toolbox build that has the --insecure-skip-verify option and accept the risk: cpackget add <pack> --insecure-skip-verify.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "--insecure-skip-verify added in 2025/2026 releases",
+    "resolution": "workaround",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/570",
+    "tool": "cpackget",
+    "title": "cpackget add prints 'E: invalid dimensions' in a very small terminal window",
+    "symptoms": [
+      "E: invalid dimensions"
+    ],
+    "cause": "The license text is shown in a text window that needs a minimum terminal size. If the terminal (for example a VS Code panel reduced to a few lines) is smaller, the UI library fails with this cryptic message.",
+    "fix": "Enlarge the terminal (about 50 columns by 8 rows or more) and repeat the command; newer cpackget prints 'increase window size to display license information and obtain user response to at least 50x8'. Alternatively pass --agree-embedded-license.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "clearer message from 2.1.8 nightly 2025-09-10",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/552",
+    "tool": "cpackget",
+    "title": "cpackget add reports 'pdsc not found' inside a freshly downloaded pack",
+    "symptoms": [
+      "E: \"ARM.ethos-u-core-driver.pdsc\" not found in \"<packs>\\.Download\\Arm.ethos-u-core-driver.1.24.11.pack\"",
+      "E: pdsc not found"
+    ],
+    "cause": "The .Web folder still held an old pdsc of the pack, which was no longer being updated, so the pack lookup and the downloaded pack disagreed.",
+    "fix": "Remove the stale <vendor>.<name>.pdsc from .Web (or run cpackget update-index) and add again; the maintainers verified a fix in a later nightly.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "cpackget 2.1.8; fixed in a later nightly",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/511",
+    "tool": "cpackget",
+    "title": "cpackget add fails with 'zip: not a valid zip file' (corrupt cached pack)",
+    "symptoms": [
+      "E: Can't decompress \"<packs>/.Download/ARM.CMSIS.6.1.0.pack\": zip: not a valid zip file",
+      "E: fail to decompress file"
+    ],
+    "cause": "The cached file in .Download is incomplete or corrupted (interrupted or failed download, sometimes 0 bytes) and cpackget reuses the cache.",
+    "fix": "Remove the bad cache entry with cpackget rm --purge ARM::CMSIS@6.1.0 (or delete the file in .Download) and run cpackget add again; if it recurs run with -v and check the network/proxy.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "",
+    "resolution": "workaround",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/499",
+    "tool": "cpackget",
+    "title": "cpackget add fails because pack IDs were matched case-sensitively",
+    "symptoms": [],
+    "cause": "Pack ID lookup compared vendor and pack names case-sensitively, but the pack is published as Arm.ethos-u-core-driver while projects reference ARM::ethos-u-core-driver.",
+    "fix": "Use CMSIS-Toolbox nightly 2025-04-10 or later (cpackget 2.1.7+), which searches pack IDs case-insensitively.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "2.1.6 affected",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/412",
+    "tool": "cpackget",
+    "title": "cpackget download of an NXP pack fails with 404 although curl works",
+    "symptoms": [
+      "D: bad status: 404 Not Found",
+      "E: \"https://mcuxpresso.nxp.com/cmsis_pack/repo/NXP.MCXN947_DFP.19.0.0.pack\": bad request"
+    ],
+    "cause": "The pack server rejected requests that carried cpackget's own User-Agent string (introduced in 2.1.5), while a generic Go User-Agent worked.",
+    "fix": "The server-side rule was corrected by the vendor; retry the download. No change on the client was needed.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "cpackget 2.1.5",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/387",
+    "tool": "cpackget",
+    "title": "Stale pdsc files remain in .Web after a vendor withdraws packs from the index",
+    "symptoms": [],
+    "cause": "cpackget init only downloads the new index.pidx and does not clean .Web; removing pdsc files that are no longer listed is done by update-index -a.",
+    "fix": "Run cpackget update-index -a; it prints a warning per pdsc no longer present in the index and deletes the file. Make sure copies of pdsc files keep file name and the name element consistent.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "",
+    "resolution": "user-error",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/383",
+    "tool": "cpackget",
+    "title": "cpackget add Vendor::Pack@>=3.0.0 silently does nothing on the Windows command line",
+    "symptoms": [],
+    "cause": "The shell treats > as output redirection before cpackget starts, so the version text becomes a file name and the message goes into that file. The same applies to ^ in cmd.",
+    "fix": "Quote the pack specification: cpackget add \"Keil::STM32U5xx_DFP@>=3.0.0\" or \"Vendor::Pack@^3.0.0\".",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "",
+    "resolution": "user-error",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/272",
+    "tool": "cpackget",
+    "title": "cpackget add ARM::CMSIS@>=6.0.0 exits with code 255 and prints nothing",
+    "symptoms": [],
+    "cause": "The unquoted > is interpreted by the shell as redirection, so the real error (bad pack name) is written to a file named after the version.",
+    "fix": "Quote the argument (cpackget add \"ARM::CMSIS@>=6.0.0\") or check for a stray file named 6.0.0 in the working directory.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "cpackget 2.0.0",
+    "resolution": "user-error",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/357",
+    "tool": "cpackget",
+    "title": "cpackget add of a newly published pack: 'pack version not found in the pdsc file'",
+    "symptoms": [
+      "E: pack version not found in the pdsc file"
+    ],
+    "cause": "The local .Web/index.pidx and pdsc are older than the publication of that pack version, so the requested release is not listed yet.",
+    "fix": "Run cpackget update-index and repeat. From the CMSIS-Toolbox nightly of 2024-12-09 cpackget add refreshes an outdated index and downloads the missing pdsc itself.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "cpackget 2.1.4",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/307",
+    "tool": "cpackget",
+    "title": "cpackget add: 'zip: not a valid zip file' for a damaged downloaded pack",
+    "symptoms": [
+      "E: Can't decompress \"<cache>/arm/packs/.Download/AlifSemiconductor.Ensemble.1.1.3.pack\": zip: not a valid zip file",
+      "E: fail to decompress file"
+    ],
+    "cause": "The downloaded pack file was corrupted; installing the same damaged file again reproduces the error.",
+    "fix": "Delete the file (cpackget rm --purge for the pack or remove it from .Download) and download it again.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "",
+    "resolution": "workaround",
+    "confidence": "low"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/290",
+    "tool": "cpackget",
+    "title": "cpackget add of a local pdsc registers a wrong path (no drive letter, C: vs c:)",
+    "symptoms": [
+      "The system cannot find the path specified."
+    ],
+    "cause": "On Windows a path starting with a backslash but no drive letter was joined to the current directory, and drive letters in different case were treated as different entries in local_repository.pidx.",
+    "fix": "Use a cpackget release after 2.1.1 (fixed September 2024), or give the full path including the drive letter in the same case everywhere.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "2.1.1 affected",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/283",
+    "tool": "cpackget",
+    "title": "cpackget add of a BSP fails to install required packs: 'does not match pack version \"\"'",
+    "symptoms": [
+      "E: The latest release (18.0.0) in pack's pdsc (NXP.MIMXRT1064_DFP.pdsc) does not match pack version \"\"",
+      "E: pack version is not the latest in the pdsc file"
+    ],
+    "cause": "Regression in 2.1.1: for dependencies of the form >=x.y.z cpackget uses an internal open upper bound (x.y.z:_) that the range comparison did not support, and the version and range arguments were swapped in the modifier resolution.",
+    "fix": "Update cpackget beyond 2.1.1 (fixed in April 2024); as a workaround install the dependency packs explicitly first.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "2.1.1 affected, duplicate of issue 282",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/268",
+    "tool": "cpackget",
+    "title": "cpackget add ARM::CMSIS@6.0.0+meta fails with 'pack version not found in the pdsc file'",
+    "symptoms": [
+      "E: pack version not found in the pdsc file"
+    ],
+    "cause": "Build metadata after + must be ignored for comparison (SemVer), but cpackget compared it literally against the releases in the pdsc. Packs differing only in metadata are the same version and share one install folder.",
+    "fix": "Use a cpackget with the fix (PR 273, March 2024) or omit the +meta part from the pack specification.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/229",
+    "tool": "cpackget",
+    "title": "cpackget add crashes with a nil pointer for a local pack whose url is a file:/// location",
+    "symptoms": [
+      "panic: runtime error: invalid memory address or nil pointer dereference"
+    ],
+    "cause": "FileExists used the result of os.Stat without checking for an error, which panicked for the file:/// source pack path.",
+    "fix": "Use a cpackget release from after July 2024 where FileExists handles the nil file info.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "2.1.x",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/213",
+    "tool": "cpackget",
+    "title": "cpackget add: 'mkdir ...: permission denied' in a non-writable working directory",
+    "symptoms": [
+      "E: mkdir KSLBEmaCod/: permission denied",
+      "E: fail to create directory"
+    ],
+    "cause": "cpackget created a temporary pdsc working folder relative to the current working directory instead of the system temp directory.",
+    "fix": "Use a later release (fixed in March 2024 with os.TempDir), or run cpackget from a writable directory.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/197",
+    "tool": "cpackget",
+    "title": "cpackget update-index -a leaves some pdsc files missing in .Web",
+    "symptoms": [],
+    "cause": "The concurrent download scheduler spawned more workers than configured and did not wait for the last ones, so some downloaded files were cut off or never moved to .Web.",
+    "fix": "Use a cpackget with the semaphore-based scheduler (fixed September 2023); as a workaround run update-index -a -C 0 to disable concurrency.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/174",
+    "tool": "cpackget",
+    "title": "Two different default pack folders on macOS (gen-pack vs cpackget)",
+    "symptoms": [],
+    "cause": "gen-pack looked in a different default than cpackget; the default is ~/.cache/arm/packs (all lower case, with a dot) on macOS and Linux, and XDG_CACHE_HOME is honoured by cpackget.",
+    "fix": "Set CMSIS_PACK_ROOT explicitly, or remove the stray differently-cased folder and let cpackget recreate ~/.cache/arm/packs.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "2023",
+    "resolution": "configuration",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/169",
+    "tool": "cpackget",
+    "title": "cpackget add -f packs.txt downloads required packs that are already installed",
+    "symptoms": [],
+    "cause": "The check for already satisfied requirement packs did not handle the internal unbounded upper version marker, so installed dependencies were not recognised.",
+    "fix": "Use cpackget 0.9.4 or later.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "fixed in 0.9.4",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/166",
+    "tool": "cpackget",
+    "title": "cpackget add of a keil.com URL fails with an expired certificate error",
+    "symptoms": [
+      "E: Get \"https://keil.com/pack/ARM.CMSIS.5.9.0.pack\": tls: failed to verify certificate: x509: certificate has expired or is not yet valid"
+    ],
+    "cause": "The URL without www points to a host with an expired certificate; the official pack host is www.keil.com. Typing URLs by hand also bypasses the index lookup.",
+    "fix": "Use cpackget add ARM::CMSIS@5.9.0 so cpackget resolves the URL from the index, or use https://www.keil.com/pack/... in the URL.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "",
+    "resolution": "user-error",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/158",
+    "tool": "cpackget",
+    "title": "cpackget add panics 'index out of range' for pre-release versions like -alpha.1.9",
+    "symptoms": [
+      "panic: runtime error: index out of range [1] with length 1"
+    ],
+    "cause": "Version parsing of requirement entries in the pdsc with a complex pre-release such as 2.0.0-alpha.1.9 produced a different number of regex matches than expected (regression in 0.9.2).",
+    "fix": "Skip dependency installation with -n until a fixed release; later releases align the version regular expression with semver.org.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "0.9.2 affected, 0.9.0 fine",
+    "resolution": "workaround",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/143",
+    "tool": "cpackget",
+    "title": "cpackget rejects pack names that start with a digit",
+    "symptoms": [
+      "E: bad pack name: it should be one of the following formats: Vendor.Pack, Vendor.Pack.x.y.z, Vendor.Pack.x.y.z.pack, or Vendor.Pack.pdsc"
+    ],
+    "cause": "The name pattern required a letter as first character, whereas the pack schema allows digits, underscores and dashes in any position.",
+    "fix": "Use cpackget newer than 0.9.0, where the pattern follows the pack schema.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "0.9.0 affected",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/122",
+    "tool": "cpackget",
+    "title": "cpackget init fails with 'no such host' behind a proxy after a toolbox update",
+    "symptoms": [
+      "E: Get \"https://www.keil.com/pack/keil.pidx\": dial tcp: lookup www.keil.com: no such host",
+      "E: failed to download file"
+    ],
+    "cause": "A proxy handling bug in the HTTP client of cpackget 0.8.0; HTTPS downloads through a proxy also need HTTPS_PROXY pointing to a proxy with a trusted certificate (HTTP_PROXY alone does not apply to https URLs).",
+    "fix": "Update cpackget beyond 0.8.0 and set HTTPS_PROXY (and HTTP_PROXY) to the corporate proxy.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "0.8.0",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/98",
+    "tool": "cpackget",
+    "title": "cpackget rejects pack versions with leading zeros such as 1.22.02",
+    "symptoms": [
+      "E: bad pack name: it should be one of the following formats: Vendor.Pack, Vendor.Pack.x.y.z, Vendor.Pack.x.y.z.pack, or Vendor.Pack.pdsc"
+    ],
+    "cause": "The strict semantic-versioning regular expression disallowed leading zeros in numeric fields, but the pack schema permits them.",
+    "fix": "Use a cpackget after 0.5.0 where the expression was relaxed (install folders keep the leading zeros).",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "0.5.0",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/90",
+    "tool": "cpackget",
+    "title": "cpackget init fails with 'expected element type <index> but have <html>'",
+    "symptoms": [
+      "E: expected element type <index> but have <html>"
+    ],
+    "cause": "The index URL was given without www; keil.com redirects to a web page, so an HTML document was downloaded instead of index.pidx.",
+    "fix": "Use the exact URL https://www.keil.com/pack/index.pidx.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "",
+    "resolution": "user-error",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/80",
+    "tool": "cpackget",
+    "title": "cpackget add: 'pack version not found' for versions like 2.0.0-alpha.0.5",
+    "symptoms": [
+      "E: pack version not found in the pdsc file"
+    ],
+    "cause": "The semantic-version expression in the pack index spec had a repeating capture group that returned a variable number of matches for dotted pre-release parts, breaking version splitting.",
+    "fix": "Use a cpackget release after 0.4.1 (the specification regex was also corrected).",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "0.4.1 affected",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/68",
+    "tool": "cpackget",
+    "title": "cpackget add behind a VPN/proxy fails and later errors with 'zip: not a valid zip file'",
+    "symptoms": [
+      "E: Get \"http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.4.0.pack\": dial tcp 23.11.231.137:80: connectex: No connection could be made because the target machine actively refused it.",
+      "E: Can't decompress \"<packs>\\.Download\\Keil.STM32F1xx_DFP.2.4.0.pack\": zip: not a valid zip file"
+    ],
+    "cause": "cpackget ignores Windows system proxy settings and only honours the http_proxy/https_proxy environment variables. The failed download left a 0-byte file in .Download that was reused on the next run.",
+    "fix": "Set http_proxy/https_proxy for the shell; delete the empty pack in .Download. Later releases remove failed downloads automatically.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "0.4.0",
+    "resolution": "workaround",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/57",
+    "tool": "cpackget",
+    "title": "cpackget add of an older pack version fails with 'URL for the pack cannot be determined'",
+    "symptoms": [
+      "E: URL for the pack cannot be determined. Please consider updating the public index. Ex: cpackget update-index"
+    ],
+    "cause": "In 2022 cpackget searched index.pidx for vendor, name and the requested version, but the index only lists the latest version of each pack; the pdsc should have been located by vendor and name and the version taken from its releases.",
+    "fix": "Use a cpackget release after 0.4.x (fixed 2022), or run cpackget update-index. The message itself was later corrected to name update-index.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "0.4.x",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/56",
+    "tool": "cpackget",
+    "title": "cpackget index/update-index fails with 'Access is denied' when index.pidx is read-only",
+    "symptoms": [
+      "E: Can't move file \"<packs>\\.Download\\index.pidx\" to \"<packs>\\.Web\\index.pidx\": rename ... Access is denied."
+    ],
+    "cause": "Pack folders are kept read-only by design. A folder created by another tool (MDK Pack Installer) had a read-only index.pidx that cpackget could not overwrite.",
+    "fix": "Remove the read-only attribute from the files in the pack root (or let cpackget manage the folder); later cpackget releases handle the read-only flag when replacing files.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "2022",
+    "resolution": "workaround",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/43",
+    "tool": "cpackget",
+    "title": "cpackget add .pack: 'has no release tag matching version' with older local pdsc",
+    "symptoms": [
+      "E: The pack's pdsc (<packs>\\.Local\\STMicroelectronics.STM32U5xx_DFP.pdsc) has no release tag matching version \"0.1.1\"",
+      "E: pack version not found in the pdsc file"
+    ],
+    "cause": "cpackget validated the version against the pdsc already registered in .Local instead of the pdsc inside the pack being installed.",
+    "fix": "Use a cpackget after 0.4.x where the pack's own pdsc is extracted first; as a workaround remove the local_repository.pidx entry before installing.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "2022",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/cpackget/issues/36",
+    "tool": "cpackget",
+    "title": "cpackget list fails in git-bash with 'Pack vendor \"\" does not match' and lists nothing",
+    "symptoms": [
+      "E: Pack vendor \"\" does not match ^[0-9a-zA-Z_\\-]+$",
+      "E: A pack in the cache folder has malformed pack name: C:.CMSIS_PACKS.ARM.CMSIS-Driver.2.6.1.pack"
+    ],
+    "cause": "In git-bash/MinGW an unquoted CMSIS_PACK_ROOT or -R value such as C:\\PACKS loses its backslashes (escape characters), yielding a bogus path like C:PACKS.",
+    "fix": "Quote the path or double the backslashes (export CMSIS_PACK_ROOT='C:\\\\PACKS'), or use cmd/PowerShell.",
+    "applies_to": {
+      "tool": [
+        "cpackget"
+      ]
+    },
+    "versions": "0.3.x",
+    "resolution": "user-error",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/542",
+    "tool": "cmsis-solution",
+    "title": "${env:AVH_FVP_PLUGINS} empty in tasks and launch.json until window reload",
+    "symptoms": [],
+    "cause": "The Arm Tools Environment Manager activates the variable after VS Code has built the environment used by its ${env:...} resolver, and the resolver is not refreshed afterwards. process.env in the extension host already has the value.",
+    "fix": "Run Developer: Reload Window after the environment was activated; this makes ${env:AVH_FVP_PLUGINS} available for Load & Debug. It is documented in the CMSIS Solution tips and tricks.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "",
+    "resolution": "workaround",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/526",
+    "tool": "cmsis-solution",
+    "title": "Create Solution from a reference app with several csolution files edits the wrong solution",
+    "symptoms": [],
+    "cause": "The reference application contains three *.csolution.yml files in one folder; the create flow copies the app and takes 'the' solution file, which was not the selected one.",
+    "fix": "Fixed in the CMSIS Solution nightly of 2026-09-18 by using the load value of the pack description. Note the new target must be selected in Manage Solution before compiler and layer selection starts.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/517",
+    "tool": "cmsis-solution",
+    "title": "Solution is not converted after a generator creates the cgen.yml file",
+    "symptoms": [],
+    "cause": "The extension had no file watch for the missing cgen.yml because cbuild-idx.yml did not list it.",
+    "fix": "Use CMSIS Solution nightly of 2026-09-09 or later (csolution now lists the cgen file before it exists).",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/452",
+    "tool": "cmsis-solution",
+    "title": "Generator start floods output with 'Input redirection is not supported'",
+    "symptoms": [
+      "ERROR: Input redirection is not supported, exiting the process immediately."
+    ],
+    "cause": "The generator's Windows launch script contained TIMEOUT commands that fail when stdin is redirected, as done when started from the extension. The cgen.yml was still written.",
+    "fix": "Use the updated generator launch script in a CMSIS-Toolbox nightly after 2026-06-09.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/406",
+    "tool": "cmsis-solution",
+    "title": "Software Components view stays empty after reopening VS Code",
+    "symptoms": [],
+    "cause": "Intermittent loading problem, often seen after installing a new extension version.",
+    "fix": "Close and reopen the Software Components view; reported fixed in later CMSIS Solution builds.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "",
+    "resolution": "workaround",
+    "confidence": "low"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/404",
+    "tool": "cmsis-solution",
+    "title": "CMake error 'Command failed: 1' for the database target after a successful build",
+    "symptoms": [
+      "CMake Error at <build>/<context>-stamp/<context>-database-.cmake:37 (message):",
+      "  Command failed: 1"
+    ],
+    "cause": "A user-set CMSIS_COMPILER_ROOT pointed to a toolbox etc folder that did not match the extension's CMSIS-Toolbox version, so the compile-database step failed.",
+    "fix": "Unset CMSIS_COMPILER_ROOT or point it at the folder of the toolbox the extension uses.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "",
+    "resolution": "user-error",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/394",
+    "tool": "cmsis-solution",
+    "title": "CMSIS View and PROBLEMS do not update after a generator creates the cgen.yml file",
+    "symptoms": [],
+    "cause": "Regression: file watches are derived from cbuild-idx.yml, which did not list the not-yet-existing cgen.yml.",
+    "fix": "Fixed with csolution listing the cgen file in cbuild-idx.yml and CMSIS Solution nightly of 2026-07-24; refresh manually on older versions.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/360",
+    "tool": "cmsis-solution",
+    "title": "Layer selection omits the empty variable (Shield-Layer: ) for unused layers",
+    "symptoms": [
+      "error csolution: undefined variables in Demo.csolution.yml:"
+    ],
+    "cause": "Layer variables of the cproject must be set, with an empty string when a layer is unused; the extension stopped writing the empty value, so the build failed and the dialog reopened.",
+    "fix": "Use CMSIS Solution nightly of 2026-07-13 or later; as a workaround add the variable with an empty string value to the csolution.yml.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "1.68.0 affected",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/343",
+    "tool": "cmsis-solution",
+    "title": "Software Components stuck on 'Saving changes...' for layers outside solution folder",
+    "symptoms": [],
+    "cause": "The active solution tracker ignored changes in files outside the solution directory, so saving a clayer there never completed.",
+    "fix": "Use CMSIS Solution nightly of 2026-07-03 or later.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "1.68.x",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/336",
+    "tool": "cmsis-solution",
+    "title": "Saving Software Components strips packs/components from other contexts' clayer files",
+    "symptoms": [
+      "board 'KIT_T2G-B-H_LITE:V1' was not found"
+    ],
+    "cause": "Saving for one context rewrote packs: and components: nodes in layer files used only by other contexts.",
+    "fix": "Fixed after 1.68.0 (CI build of 2026-06-30); restore the removed nodes from version control.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "1.68.0",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/332",
+    "tool": "cmsis-solution",
+    "title": "tasks.json keeps old image or target arguments after a target change and Build",
+    "symptoms": [],
+    "cause": "Debug tasks and launch configuration were not updated when csolution convert regenerated cbuild-run.yml during build.",
+    "fix": "Use CMSIS Solution nightly of 2026-07-14 or later; it saves pending changes per task.saveBeforeRun and refreshes tasks.json. Workaround: press Save in Manage Solution.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/330",
+    "tool": "cmsis-solution",
+    "title": "Switching solutions reports 'pack ... is duplicated' for solution-local packs",
+    "symptoms": [
+      "csolution error: component 'CMSIS:NN Lib' not found in included packs",
+      "warning #500: pack 'ARM::CMSIS-NN@4.1.0' is duplicated:"
+    ],
+    "cause": "Local packs of the previously loaded solution stayed in the pack cache when another solution was loaded.",
+    "fix": "Fixed in CMSIS Solution nightly of 2026-06-29; solution-local packs are removed on reload.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "1.68.0",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/323",
+    "tool": "cmsis-solution",
+    "title": "Stuck on 'Loading Solution...' with empty key in environmentVariables setting",
+    "symptoms": [],
+    "cause": "A setting with an empty name caused an unhandled error that blocked solution loading.",
+    "fix": "Remove the empty \"\": \"\" entry from settings.json; fixed in nightly of 2026-06-25 where settings are validated.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "1.68.0",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/322",
+    "tool": "cmsis-solution",
+    "title": "CMSIS View stuck on 'Loading' when a VS Code workspace has additional folders",
+    "symptoms": [
+      "NoPermissions (FileSystemError): Error: EPERM: operation not permitted, scandir 'c:\\GitRepos\\REPO_NAME\\.pytest_cache'"
+    ],
+    "cause": "Activation failed when the solution roots watcher tried to read a workspace folder it had no permission for.",
+    "fix": "Use CMSIS Solution nightly of 2026-07-01 or later, or fix the folder permissions.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "1.66-1.68",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/313",
+    "tool": "cmsis-solution",
+    "title": "Create Solution fails with 'cproject not parsed, adding context failed'",
+    "symptoms": [
+      "csolution error: Blank.cproject.yml - cproject file was not found",
+      "csolution error: cproject not parsed, adding context failed"
+    ],
+    "cause": "Race: the solution was loaded before all project files were written to disk.",
+    "fix": "Fix merged after 1.68.0; try Refresh (Reload Packs, Update RTE), which did not help for the reporter.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "1.68.0",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/312",
+    "tool": "cmsis-solution",
+    "title": "Outline view shows no files for a Zephyr/West project when first opened",
+    "symptoms": [],
+    "cause": "The cbuild.yml file list is completed only after cbuild setup, but the view refreshed after convert.",
+    "fix": "Fixed: the Outline now refreshes after cbuild setup for Zephyr/West projects (CI build of June 2026).",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/311",
+    "tool": "cmsis-solution",
+    "title": "Deselecting the secure project removes Secure_CMSE_Lib.o; non-secure build fails",
+    "symptoms": [],
+    "cause": "The non-secure project uses $cmse-lib(CM33_s)$ from the secure build output; if that project is not part of the build the library does not exist, and the out folder is regenerated.",
+    "fix": "Add a target-type (for example AVH-NS-only) whose set builds only the non-secure project and reference ../out/<secure>/<target>/$BuildType$/<lib>.o with for-context; build the full target first. Use load: none in the set to skip programming the secure part.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "",
+    "resolution": "configuration",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/310",
+    "tool": "cmsis-solution",
+    "title": "uVision opens only the secure project for TrustZone solutions",
+    "symptoms": [],
+    "cause": "uVision still relies on the context-set while CMSIS Solution uses target-set.",
+    "fix": "Generate a cbuild-set containing both contexts: cbuild setup <solution>.csolution.yml -S -c *.Debug.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "",
+    "resolution": "workaround",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/302",
+    "tool": "cmsis-solution",
+    "title": "Switching to another solution keeps the previous target-set and shows a context error",
+    "symptoms": [],
+    "cause": "Backend bug that carried the active target-set selection from the previously opened solution.",
+    "fix": "Use nightly toolbox/extension of 2026-06-12 or later.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/271",
+    "tool": "cmsis-solution",
+    "title": "Changing a component's instance count makes it vanish after Save",
+    "symptoms": [],
+    "cause": "Editing instances changed the file references of the component and broke the view's mapping.",
+    "fix": "Fixed in CMSIS Solution nightly of 2026-06-09 (reported on 1.67.2).",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "1.67.2",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/265",
+    "tool": "cmsis-solution",
+    "title": "Build after a target change in Manage Solution produces no output files",
+    "symptoms": [],
+    "cause": "Build saved the changes and started cbuild and cbuild setup concurrently; when cbuild finished first, the later setup removed its outputs.",
+    "fix": "Use CMSIS Solution nightly of 2026-06-10 or later; the build now saves files first and converts before building. Save explicitly before building on older versions.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "1.67.2",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/255",
+    "tool": "cmsis-solution",
+    "title": "Pack lock cannot be removed after switching from a local to a released pack",
+    "symptoms": [],
+    "cause": "Stale local-pack information after installing the released pack while cbuild-pack.yml still pinned the local one.",
+    "fix": "Fixed in nightly of 2026-06-10; then the lock can be resolved and the installed version selected.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "1.67.2",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/245",
+    "tool": "cmsis-solution",
+    "title": "clangd reports a header of a newly added component as not found until Rebuild all",
+    "symptoms": [],
+    "cause": "compile_commands.json for clangd was not refreshed after components were added.",
+    "fix": "Fixed with CMSIS-Toolbox nightly 2026-05-07 (cbuild2cmake) and the matching extension; run Rebuild all on older versions.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "1.67",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/200",
+    "tool": "cmsis-solution",
+    "title": "PROBLEMS view is empty while the status bar is red when Software Components view is open",
+    "symptoms": [],
+    "cause": "Race between the views' RPC calls and the problem collection.",
+    "fix": "Fixed in nightly of 2026-04-21.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "",
+    "resolution": "fixed-in-release",
+    "confidence": "low"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/188",
+    "tool": "cmsis-solution",
+    "title": "Loading Solution never ends after modifying debug-adapters.yml",
+    "symptoms": [],
+    "cause": "Runtime errors while processing the debug adapter registry were not caught, so tasks and launch update never completed.",
+    "fix": "Fixed (PR 199): the solution loads and the error is reported as a normal VS Code problem; restore the original debug-adapters.yml.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "1.67.2",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/186",
+    "tool": "cmsis-solution",
+    "title": "Error for a non-existent pack version stays in PROBLEMS after correcting it",
+    "symptoms": [],
+    "cause": "The invalid version was still referenced in another file (for example the csolution.yml) when a valid one was added to the cproject.yml.",
+    "fix": "Use Find in Files from the problem to remove the stale reference; the underlying fix is in devtools PR 2463 (nightly 2026-04-05).",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "1.67.2",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/131",
+    "tool": "cmsis-solution",
+    "title": "Changes to cmsis-csolution.environmentVariables are not seen by the running RPC server",
+    "symptoms": [],
+    "cause": "The RPC daemon kept the environment it was started with.",
+    "fix": "Fixed: changing the setting restarts the RPC server; on older versions reload the window.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/110",
+    "tool": "cmsis-solution",
+    "title": "Outline: removing a file from a layer leaves the clayer.yml entry",
+    "symptoms": [],
+    "cause": "File items in the outline tree lacked the layer URI, so the YAML edit targeted nothing.",
+    "fix": "Fixed in early 2026 builds (verified).",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/70",
+    "tool": "cmsis-solution",
+    "title": "CMSIS View does not refresh after changing target-type or target-set",
+    "symptoms": [],
+    "cause": "Missing update trigger for active target changes.",
+    "fix": "Fixed in nightly from 2026-03-31; use Refresh (Reload Packs, Update RTE) as workaround on 1.66.0.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "1.66.0",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/46",
+    "tool": "cmsis-solution",
+    "title": "Debugger-only solution without projects shows 'Solution could not be loaded'",
+    "symptoms": [],
+    "cause": "A solution with no projects passed cbuild setup but the extension could not load it.",
+    "fix": "Fixed in nightly of 2026-03-24; device and board information now show.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/30",
+    "tool": "cmsis-solution",
+    "title": "Loading Solution never stops when the csolution lists a project file that does not exist",
+    "symptoms": [
+      "error csolution: unknown selected context(s):"
+    ],
+    "cause": "The missing cproject.yml left the load process hanging.",
+    "fix": "Fixed in nightly of 2026-03-23: the outline shows 'Solution cannot be loaded'; correct the project path in the csolution.yml.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "1.60.0",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/27",
+    "tool": "cmsis-solution",
+    "title": "Browse for UV4.exe in Manage Solution inserts a relative path and launching uVision fails",
+    "symptoms": [
+      "'..' is not recognized as an internal or external command,"
+    ],
+    "cause": "The relative path was passed unresolved to the shell task.",
+    "fix": "Fixed in nightly 1.66.1-32; enter an absolute path on older versions.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "1.66.0",
+    "resolution": "fixed-in-release",
+    "confidence": "high"
+  },
+  {
+    "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/22",
+    "tool": "cmsis-solution",
+    "title": "Software Components list incomplete when opened a second time with a repository-local pack",
+    "symptoms": [],
+    "cause": "csolution RPC returned only selected components on repeated requests (devtools PR 2394).",
+    "fix": "Fixed in devtools nightly of 2026-03-13 and the matching extension build.",
+    "applies_to": {
+      "tool": [
+        "cmsis-solution"
+      ]
+    },
+    "versions": "1.66",
+    "resolution": "fixed-in-release",
+    "confidence": "medium"
+  }
+]

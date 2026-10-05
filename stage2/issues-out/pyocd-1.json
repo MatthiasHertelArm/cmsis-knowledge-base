@@ -1,0 +1,1241 @@
+[
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/2023",
+  "tool": "pyocd",
+  "title": "Flash load after halting a running target fails with IPSR=3 or flash init timeout",
+  "symptoms": [
+   "target was not halted as expected after calling flash algorithm routine (IPSR=3)",
+   "flash init timed out"
+  ],
+  "cause": "Flash algorithms assume the core starts from a reset state. Halting a running application and then loading leaves its MPU, stack limits and other state active, so the RAM-resident algorithm faults or never finishes.",
+  "fix": "Reset the target and halt it before programming: use 'reset halt' in the commander, or 'monitor reset halt' before 'load' in gdb. 'pyocd flash' already does this by default.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.45.0",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/2019",
+  "tool": "pyocd",
+  "title": "J-Link SWO reader thread dies with IndexError: invalid index",
+  "symptoms": [
+   "IndexError: invalid index"
+  ],
+  "cause": "The J-Link probe's SWO read passed the byte count straight to pylink, even when no data was available (count 0), which pylink cannot turn into a buffer.",
+  "fix": "Skip the read when the available byte count is zero. Fixed in pyOCD by a follow-up change; update pyOCD. A monkey patch returning an empty list for a zero count works meanwhile.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "seen on 0.45.1",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/2009",
+  "tool": "pyocd",
+  "title": "pyocd hangs forever on first connect with hidapi backend on Windows",
+  "symptoms": [],
+  "cause": "The hidapi USB backend on Windows had no read timeout, so a read that never completes blocks the process and it cannot exit.",
+  "fix": "Update to a pyOCD release that includes the fix for the hidapi read timeout (change #2011).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/2000",
+  "tool": "pyocd",
+  "title": "CMSIS-DAP v2 probe without USB serial number is listed but 'not found' when opening",
+  "symptoms": [
+   "Probe NKBA2RU557ZLCOPTYPWHIX3IZUQ5ZH7B not found [__main__]"
+  ],
+  "cause": "A probe with no USB serial string gets a generated unique ID in the probe list, but the open path compared that ID against the real (missing) serial number and failed to match the device.",
+  "fix": "Use a pyOCD version containing the fix for serial-less CMSIS-DAP v2 probes (change #2007), which the reporter confirmed.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "seen on 0.44.1",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1995",
+  "tool": "pyocd",
+  "title": "RTT up channel bytes_available raises AttributeError on 'target'",
+  "symptoms": [
+   "'GenericRTTUpChannel' object has no attribute 'target'"
+  ],
+  "cause": "Typo in the RTT channel code: it used an attribute named target where the object stores it as _target.",
+  "fix": "Fixed upstream; use a pyOCD release that includes the correction.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1983",
+  "tool": "pyocd",
+  "title": "fast_program with smart_flash leaves parts of erased sectors blank (silent data loss)",
+  "symptoms": [
+   "Erased 32768 bytes (2 sectors), programmed 8192 bytes (2 pages), skipped 57344 bytes (14 pages)"
+  ],
+  "cause": "With fast_program and smart_flash, pages whose CRC matched were marked unchanged and the step that forces all pages of a dirty sector to be rewritten was skipped. Sector erase then wiped pages that were never reprogrammed, on devices whose sectors are larger than pages.",
+  "fix": "Update pyOCD to a release including change #2004. Until then avoid -O fast_program=true together with smart_flash on parts with sector size larger than page size, and verify read-back.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "STM32F4 Series"
+   ]
+  },
+  "versions": "seen on 0.44.1",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1970",
+  "tool": "pyocd",
+  "title": "J-Link open by serial number fails with 'No emulator with serial number found'",
+  "symptoms": [
+   "No emulator with serial number <SN> found."
+  ],
+  "cause": "With jlink.non_interactive enabled (default), pyOCD disables dialog boxes in the J-Link DLL before opening the probe, and with some DLL versions this breaks opening by serial number.",
+  "fix": "Set 'jlink.non_interactive: false' in pyocd.yaml as a workaround, or upgrade to a pyOCD release with the reordering fix (change #1927).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "seen on 0.44.0 with J-Link DLL 9.24",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1962",
+  "tool": "pyocd",
+  "title": "load --cbuild-run: post-load hardware reset breaks SWD without ResetHardware sequence",
+  "symptoms": [
+   "Error while running debug sequence 'DebugCoreStop' (core Cortex-M0+): SWD/JTAG communication failure (No ACK) [cbuild_run]"
+  ],
+  "cause": "From 0.42.0 the load command defaults the post-reset to a hardware reset when the cbuild-run file has no load-setup section. On devices whose pack lacks a custom ResetHardware sequence, the plain nRESET also resets the debug port and reconnecting fails, even though programming succeeded.",
+  "fix": "Upgrade to 0.44.1, which reworked post-reset handling. Meanwhile pass '-O load.post_reset=sysresetreq' to pyocd load.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "core": [
+    "Cortex-M0+"
+   ]
+  },
+  "versions": "introduced 0.42.0, fixed 0.44.1",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1958",
+  "tool": "pyocd",
+  "title": "pyocd pack install with a name prefix finds no devices on Python 3.14",
+  "symptoms": [
+   "W No matching devices"
+  ],
+  "cause": "A change in how prefix matching worked broke under Python 3.14; the same command works on Python 3.13 and a full part name always works.",
+  "fix": "Use Python 3.13 or earlier, install the full part number, or upgrade to a pyOCD release containing change #1993.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "seen on 0.44.0 with Python 3.14",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1955",
+  "tool": "pyocd",
+  "title": "Pack defines DHCSR_Addr in <debugvars>: 'attempt to modify read-only variable'",
+  "symptoms": [
+   "RuntimeError: attempt to modify read-only variable 'DHCSR_Addr'"
+  ],
+  "cause": "Variables declared in a pack's global debugvars are read-only. From 0.44.0 the default debug sequences (such as DebugCoreStart) are used when a pack lacks its own, and they declared locals with the same names, which clashed with the pack's global.",
+  "fix": "Upgrade to 0.44.1, where the locals in the default sequences carry a '__' prefix. Alternatively avoid reusing the register-address variable names as global debugvars.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "SAML11"
+   ]
+  },
+  "versions": "broken 0.44.0, fixed 0.44.1",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1925",
+  "tool": "pyocd",
+  "title": "J-Link fails to open with 'No emulator with serial number' on newer J-Link DLLs",
+  "symptoms": [
+   "pylink.errors.JLinkException: No emulator with serial number 1064xxxxx2 found."
+  ],
+  "cause": "A known incompatibility between pylink and J-Link DLL versions above about 9.12: opening by serial number fails, apparently after dialog boxes are disabled or several JLink instances are created.",
+  "fix": "Use a pyOCD build containing change #1927 (reorders disabling of dialog boxes). On Windows some dialog boxes may then reappear.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "J-Link DLL 9.14 to 9.26",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1904",
+  "tool": "pyocd",
+  "title": "pack install silently does nothing when index version differs from vendor pdsc",
+  "symptoms": [
+   "Downloading packs (press Control-C to cancel):"
+  ],
+  "cause": "The pack listed in the index has a newer version than what the vendor's pdsc or the download actually provides, so the expected version never appears locally and the part stays 'not installed'.",
+  "fix": "Workaround reported: rename the locally downloaded pdsc/pack to the expected version, or use --pack with the pack file. Retrying after the index was corrected also worked for some packs.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1871",
+  "tool": "pyocd",
+  "title": "CMSIS-DAP v2 bulk: stray zero byte after transfers sized as multiple of endpoint size",
+  "symptoms": [],
+  "cause": "pyOCD's USB backend appends a dummy zero byte to bulk writes whose length is a multiple of wMaxPacketSize but shorter than the DAP packet size, to terminate the transfer. Probe firmware that treats every byte as data sees a bogus one-byte packet.",
+  "fix": "The extra byte was introduced on purpose to end the USB transfer; a later change (#1882) altered it so it no longer shows up in the command stream. Update pyOCD or make probe firmware tolerate it.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1862",
+  "tool": "pyocd",
+  "title": "pip install pyocd fails building hidapi on Python 3.14",
+  "symptoms": [
+   "Building wheel for hidapi (pyproject.toml) ... error"
+  ],
+  "cause": "hidapi had no wheel for Python 3.14 so pip compiled it and needed a C++ build toolchain; libusb-package also lacked a 3.14 wheel at first.",
+  "fix": "Use a recent pyOCD: hidapi 0.15.0 and a newer libusb-package ship Python 3.14 wheels, so install works without a compiler. Otherwise use an older Python.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1856",
+  "tool": "pyocd",
+  "title": "Flashing AIR001 fails with Memory transfer fault (write) after 0.36.0",
+  "symptoms": [
+   "C Memory transfer fault (write) @ 0x20001000-0x2000107f [__main__]"
+  ],
+  "cause": "The built-in flash algorithm placed its data buffer at a RAM address that was wrong for the target when double buffering was not in use; this affected many internal targets, not only AIR001.",
+  "fix": "Upgrade to a release containing change #1898 (generic fix for all internal targets). Workaround was moving the begin_data address in the target file to RAM start plus 0x270.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "AIR001"
+   ]
+  },
+  "versions": "worked 0.36.0, broken above",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1847",
+  "tool": "pyocd",
+  "title": "EFR32BG22 pack: 'Memory regions must have a non-zero length'",
+  "symptoms": [
+   "C Error: Memory regions must have a non-zero length. [__main__]"
+  ],
+  "cause": "The Silicon Labs DFP 2025.6.2 contained a faulty memory region definition and a flash loader problem.",
+  "fix": "Install the DFP version 2025.12.1 or later, which fixes both. Passing -O adi.v5.max_invalid_ap_count=0 helped with non-responsive APs during enumeration.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "EFR32BG22"
+   ]
+  },
+  "versions": "fixed in DFP 2025.12.1",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1846",
+  "tool": "pyocd",
+  "title": "CMSIS-DAP v1 probe 'not found' on Windows/macOS after upgrading from 0.36 to 0.40",
+  "symptoms": [
+   "Probe 0226000005d968d700000000000000000000000097969905 not found"
+  ],
+  "cause": "A rework of the hidapi backend in 0.40 mishandled report sizes for some HID-based CMSIS-DAP v1 probes.",
+  "fix": "Use a release including change #1854, which fixes the hidapi backend by reading the HID report descriptor.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "broken 0.40.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1842",
+  "tool": "pyocd",
+  "title": "pyocd load fails on boards without nRESET wired (3-wire SWD) since 0.40",
+  "symptoms": [],
+  "cause": "From 0.40.0 the load command always performs a hardware reset via nSRST afterwards, which does nothing useful or breaks SWD when the reset pin is not connected.",
+  "fix": "Workaround: 'pyocd load --no-reset ...' followed by 'pyocd reset'. The fixed releases add pre-reset and post-reset session options and restore the old default behaviour.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "broken 0.40.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1825",
+  "tool": "pyocd",
+  "title": "Low-speed USB CMSIS-DAP v1 probe fails on Windows: packet size error then 'already open'",
+  "symptoms": [
+   "DAP_Info Packet Size 64 exceeds endpoint wMaxPacketSize 8",
+   "Error: already open"
+  ],
+  "cause": "On Windows and Linux the hidapi backend derives HID report size from the endpoint size (8 bytes for a low-speed device) instead of the HID report descriptor, which says 64. The failed open leaves the device open so a retry errors.",
+  "fix": "Windows and macOS were fixed by the hidapi backend rework (change #1854). Linux uses the pyusb backend and remained broken in the thread.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "seen on 0.39.0",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1817",
+  "tool": "pyocd",
+  "title": "Cannot write STM32F1 option bytes: no memory region defined at 0x1ffff800",
+  "symptoms": [
+   "no memory region defined for address 0x1ffff800"
+  ],
+  "cause": "The pack lists the option-byte flash algorithm as non-default, so pyOCD does not create a flash region for it.",
+  "fix": "Add the region yourself in a pyocd_user.py script: load the unprocessed pack algorithms and add a FlashRegion for the option-byte algorithm to the memory map.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "STM32F103C6"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1810",
+  "tool": "pyocd",
+  "title": "Semihosting read of zero bytes crashes the gdbserver with TypeError",
+  "symptoms": [
+   "TypeError: object of type 'NoneType' has no len()"
+  ],
+  "cause": "The semihosting console read computed the result from the data length before checking that any data was returned.",
+  "fix": "Fixed in change #1811; update pyOCD.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1808",
+  "tool": "pyocd",
+  "title": "cbuild-run load rejects IAR .out ELF files",
+  "symptoms": [],
+  "cause": "CMSIS-Toolbox names IAR output with the .out extension, which pyOCD's file programmer did not recognise as ELF.",
+  "fix": "Fixed in a pyOCD commit that adds the extension; use a release containing it.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "toolchain": [
+    "IAR"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1800",
+  "tool": "pyocd",
+  "title": "Connect fails on devices with an extra core not described in the debug topology",
+  "symptoms": [
+   "C Error: <APv1Address@0x1d6da825540 #1 dp=0> [__main__]"
+  ],
+  "cause": "Discovery found a second AP/core that the pack's topology does not list, and creating it raised an exception during session open.",
+  "fix": "Fixed in later releases (changes #1865 and follow-ups): unknown cores are not added to the core list, but remain reachable through direct AP access.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "PIC32CK2051SG01144"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1754",
+  "tool": "pyocd",
+  "title": "CMSIS-DAP bulk SWO: 'read thread exited unexpectedly'",
+  "symptoms": [
+   "pyocd.core.exceptions.ProbeError: Probe 0123456789 read thread exited unexpectedly"
+  ],
+  "cause": "A flag marking the SWO thread as finished stayed set when the USB interface was closed and reused, so the reader reported failure although the thread was running.",
+  "fix": "Fixed by changes #1755 and #1824; update pyOCD.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1729",
+  "tool": "pyocd",
+  "title": "RTT: 'Control block not found' although the SEGGER RTT ID is in RAM",
+  "symptoms": [
+   "C Control block not found [__main__]"
+  ],
+  "cause": "pyOCD's RTT search could only find a control block aligned to 16 or 32 bytes.",
+  "fix": "Compile the firmware with SEGGER_RTT_CB_ALIGN set to 16 or 32; a search fix was merged in change #1730.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1700",
+  "tool": "pyocd",
+  "title": "STM32H7 flash corrupted occasionally with double buffering",
+  "symptoms": [],
+  "cause": "Double-buffered flash programming can stall on the bus of devices with strict timing such as STM32H7, leaving pages partly written (rest 0xFF) without any error.",
+  "fix": "Upgrade to 0.37 or later, which disables double buffering by default; a built-in H743 target also worked better than the pack loader. Always verify flash after programming.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "STM32H750VBTx"
+   ]
+  },
+  "versions": "fixed 0.37/0.38",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1694",
+  "tool": "pyocd",
+  "title": "Executable built with PyInstaller reports 'No connected debug probes'",
+  "symptoms": [
+   "No connected debug probes"
+  ],
+  "cause": "PyInstaller does not bundle pyOCD's probe plugins (entry points), the libusb DLL and native extensions by default, so no probe backend loads.",
+  "fix": "Collect the 'pyocd.probe' and 'pyocd.rtos' entry points, pyocd and pylink package data and the libusb DLL in the .spec file. Releases from 0.38.0 provide prebuilt binaries.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "seen on 0.36",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1682",
+  "tool": "pyocd",
+  "title": "pyocd list shows no probe with Python 3.12 and 0.36.0 on Windows",
+  "symptoms": [
+   "No available debug probes are connected"
+  ],
+  "cause": "libusb-package had no wheel for Python 3.12, so pip tried to build it and, without Visual Studio, installed it without libusb-1.0.dll.",
+  "fix": "Place libusb-1.0.dll (from the libusb releases) in a location on the search path such as C:\\Windows\\System32, or use a Python/libusb-package combination that has a wheel.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.36.0 with Python 3.12.2",
+  "resolution": "workaround",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1661",
+  "tool": "pyocd",
+  "title": "RTT control block not found when its ID string straddles a 32-byte boundary",
+  "symptoms": [
+   "C Control block not found [__main__]"
+  ],
+  "cause": "The control block search code read memory in chunks and missed an ID string that crossed a chunk boundary.",
+  "fix": "Workaround: start the search 16 bytes later (change -a address by 0x10) or force 16-byte alignment of the block. Fixed by change #1669 in a later release.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1646",
+  "tool": "pyocd",
+  "title": "Erase/load fails with IPSR=3 after upgrading to 0.36 on Cortex-M0 devices",
+  "symptoms": [
+   "W T bit in XPSR is invalid; the vector table may be invalid or corrupt [cortex_m]",
+   "C target was not halted as expected after calling flash algorithm routine (IPSR=3) [__main__]"
+  ],
+  "cause": "The flash algorithm was started with the Thumb bit clear in xPSR, which faults on Cortex-M.",
+  "fix": "Fixed in 0.37.0 by writing the Thumb bit before running algorithm functions; upgrade.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "core": [
+    "Cortex-M0"
+   ]
+  },
+  "versions": "broken 0.35/0.36, fixed 0.37.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1600",
+  "tool": "pyocd",
+  "title": "HC32F460 flash fails with IPSR=3 after 0.35: wrong target name used with the pack",
+  "symptoms": [
+   "C target was not halted as expected after calling flash algorithm routine (IPSR=3) [__main__]"
+  ],
+  "cause": "The user selected the part name hc32f460jeua; the valid target names are hc32f460xc and hc32f460xe. Also, 0.35 changed flash algorithm RAM layout and 0.34 might have skipped programming through smart flash.",
+  "fix": "Use -t hc32f460xe (or xc). Pass -Osmart_flash=0 to force programming when comparing versions.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "HC32F460"
+   ]
+  },
+  "versions": "0.35.0 and 0.35.1",
+  "resolution": "user-error",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1589",
+  "tool": "pyocd",
+  "title": "HC32L130 built-in target cannot write above 32 KB",
+  "symptoms": [
+   "W Failed to add data chunk: no memory region defined for address 0x00008000 [file_programmer]"
+  ],
+  "cause": "The built-in memory map for the part covered only the first 32 KB of flash.",
+  "fix": "Fixed by change #1590; use a release containing it, or use the vendor pack with the specific part name.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "HC32L130F8UA"
+   ]
+  },
+  "versions": "0.35.1",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1585",
+  "tool": "pyocd",
+  "title": "XDS110-based LaunchPad: USB read timeout during flash",
+  "symptoms": [
+   "usb.core.USBTimeoutError: [Errno 110] Operation timed out"
+  ],
+  "cause": "The probe firmware does not cope with several outstanding CMSIS-DAP requests; reads time out.",
+  "fix": "Add -Ocmsis_dap.limit_packets to prevent multiple outstanding commands. Note: reflashing an identical image is skipped by smart flash; use -Osmart_flash=0 to force programming.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "MSPM0G3507"
+   ]
+  },
+  "versions": "0.35.1",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1576",
+  "tool": "pyocd",
+  "title": "nRF91 auto-unlock fails with a probe that has no nRESET line",
+  "symptoms": [],
+  "cause": "Unlocking this SiP revision requires pin reset from the probe, which a probe offering only SWCLK and SWDIO cannot provide.",
+  "fix": "Unlock the device and then power cycle it before reconnecting, or use a probe wired to nRST.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "nRF9160"
+   ]
+  },
+  "versions": "0.35.1",
+  "resolution": "workaround",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1572",
+  "tool": "pyocd",
+  "title": "pyocd list shows target n/a for standalone ST-Link",
+  "symptoms": [],
+  "cause": "Automatic target detection only works for on-board probes whose firmware reports the board type; a standalone ST-Link cannot identify the MCU.",
+  "fix": "Map the probe unique ID to a target in pyocd.yaml under 'probes:' with 'target_override', or pass -t.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.35.1",
+  "resolution": "not-a-bug",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1556",
+  "tool": "pyocd",
+  "title": "-Ocmsis_dap.prefer_v1 ignored by load/gdbserver; v2 open fails on Windows",
+  "symptoms": [
+   "C Error: Operation not supported or unimplemented on this platform [__main__]"
+  ],
+  "cause": "Probe enumeration reads cmsis_dap.prefer_v1 before command-line options are parsed, so it is ignored. The underlying v2 failure was a libusb bug: interface numbers of 10 or higher are mis-parsed on Windows.",
+  "fix": "Renumber the probe's USB interfaces so the v2 interface is below 10, or use a different libusb build. Use a config file for prefer_v1.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.35",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1553",
+  "tool": "pyocd",
+  "title": "RTT 'Control block not found' after upgrading from 0.34.3 to 0.35",
+  "symptoms": [
+   "C Control block not found [__main__]"
+  ],
+  "cause": "The search compared a full 16-byte padded ID, so a block whose ID string is followed by non-zero bytes ('SEGGER RTT' is shorter than 16) was missed.",
+  "fix": "Fix the search to match only the real ID length; a local fix worked and a maintainer asked for a pull request. Downgrading to 0.34.3 is a stop-gap.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "broken 0.35.0 and 0.35.1",
+  "resolution": "workaround",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1549",
+  "tool": "pyocd",
+  "title": "SPSDK breaks with pyOCD 0.35.0: DPConnector missing 'dp' argument",
+  "symptoms": [
+   "Entering into ISP mode failed: DPConnector.__init__() missing 1 required positional argument: 'dp'"
+  ],
+  "cause": "pyOCD 0.35.0 changed the DPConnector constructor signature, breaking callers that passed only the probe.",
+  "fix": "The maintainer planned to revert the API change; alternatively pass the debug port explicitly as second argument.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.35.0",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1547",
+  "tool": "pyocd",
+  "title": "i.MX RT685 pack: debug sequence parse error on 'U' integer suffix and no cores discovered",
+  "symptoms": [
+   "Unexpected token Token('IDENT', 'U') at line 3, column 34.",
+   "C No cores were discovered! [__main__]"
+  ],
+  "cause": "The NXP pack uses C-style 'U' suffixes in debug sequence literals, which pyOCD's parser rejected. Later, DebugPortStart was bound to a named core, so pyOCD did not run it and the debug AP stayed locked.",
+  "fix": "Parser fix in change #1548. For the second problem remove Pname=\"cm33\" from the DebugPortStart sequence in the pdsc (use an expanded pack directory) until core-specific port sequences are supported. Use the .FLM from the pack, not the .cfx.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "MIMXRT685S"
+   ]
+  },
+  "versions": "0.35",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1518",
+  "tool": "pyocd",
+  "title": "Semihosting binary file write raises UnicodeDecodeError",
+  "symptoms": [
+   "UnicodeDecodeError: 'utf-8' codec can't decode byte 0x81 in position 0: invalid start byte"
+  ],
+  "cause": "The semihosting layer decodes target data as UTF-8 text even when the file is opened as binary.",
+  "fix": "Maintainers agreed the string helper must return bytes and only text-mode files should be encoded or decoded; also let the target open files in binary mode. Check for a release with the change.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1499",
+  "tool": "pyocd",
+  "title": "Board ID maps to a target name pyOCD does not recognise (stm32h745zihx)",
+  "symptoms": [
+   "Target type stm32h745zihx not recognized. Use 'pyocd list --targets' to see currently available target types."
+  ],
+  "cause": "The board ID table assigned a wrong target name for the discovery board.",
+  "fix": "Pass the right target explicitly, e.g. -t STM32H745XIHx. Flash loading then still faulted (IPSR=3) in this thread, left open.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "STM32H745XIHx"
+   ]
+  },
+  "versions": "0.34",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1498",
+  "tool": "pyocd",
+  "title": "'Target type ... not recognized' for an STM32 board; pack not installed",
+  "symptoms": [
+   "Target type stm32f407vgtx not recognized. Use 'pyocd list --targets' to see currently available target types."
+  ],
+  "cause": "The target comes from a CMSIS-Pack that was not installed. Errors from 'pyocd pack update' about vendor servers are expected, and large packs download slowly without progress.",
+  "fix": "Run 'pyocd pack update' then 'pyocd pack install <part>' and wait for the download to finish.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.34.3",
+  "resolution": "configuration",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1496",
+  "tool": "pyocd",
+  "title": "pyocd pack install finds no devices; pack update produces XML warnings",
+  "symptoms": [
+   "W No matching devices. Please make sure the pack index is up to date. [pack_cmd]"
+  ],
+  "cause": "Updating the index with many concurrent requests triggered server protection at Keil and NXP, leaving corrupted descriptors.",
+  "fix": "Upgrade cmsis-pack-manager to 0.5.2 or later and run 'pyocd pack update --clean'. Some remaining download errors for broken vendor entries are normal.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.34.3",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1486",
+  "tool": "pyocd",
+  "title": "reset_and_halt then resume logs 'cannot resume: target not halted'",
+  "symptoms": [],
+  "cause": "The message came from the automatic resume on disconnect, not from the resume call, so the script behaved correctly.",
+  "fix": "Pass resume_on_disconnect=False; the message was reworded in change #1487.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.34.3",
+  "resolution": "not-a-bug",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1472",
+  "tool": "pyocd",
+  "title": "PyInstaller build cannot load cmsis_pack_manager native library or plugins",
+  "symptoms": [
+   "OSError: cannot load library"
+  ],
+  "cause": "The frozen app lacks the native cmsis_pack_manager module and libusb library, so plugin loading fails and no probe is found.",
+  "fix": "Add the libusb DLL and the cmsis_pack_manager native module as data/binaries in the PyInstaller spec (see the pyOCD discussion on binary builds).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1460",
+  "tool": "pyocd",
+  "title": "Renesas RA pack: flash algorithm not found, target type not recognized",
+  "symptoms": [
+   "KeyError: \"There is no item named 'Flash/RA2A1_256K.FLM' in the archive\""
+  ],
+  "cause": "The Renesas pack stores its pdsc in a subdirectory; pyOCD found it but resolved algorithm paths relative to the archive root.",
+  "fix": "Fixed by change #1461 which supports the non-standard layout; upgrade.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "Renesas RA"
+   ]
+  },
+  "versions": "0.34",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1437",
+  "tool": "pyocd",
+  "title": "LPC54 devices use the LPC55 unlock sequence and cannot reset and halt",
+  "symptoms": [
+   "W had to forcibly halt core after reset [target_lpc5500]"
+  ],
+  "cause": "The LPC5500 family regular expression also matched LPC54xx parts, so the LPC55 debug-mailbox unlock sequence ran on a chip that has no such access port.",
+  "fix": "Fixed by change #1440; upgrade.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "LPC54"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1424",
+  "tool": "pyocd",
+  "title": "File path containing '@' breaks flash/load",
+  "symptoms": [
+   "invalid literal for int() with base 0:"
+  ],
+  "cause": "The load command treats '@<address>' after a file name as a load address, so a directory name with '@' is cut apart.",
+  "fix": "The maintainer planned to check whether the full argument is an existing file first. Meanwhile avoid '@' in paths or use --base-address.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.33",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1400",
+  "tool": "pyocd",
+  "title": "pip install from git develop fails in setuptools_scm with GPG signature",
+  "symptoms": [
+   "Getting requirements to build wheel ... error"
+  ],
+  "cause": "setuptools_scm 6.4.2 chokes on signed commits when git log shows signatures; fixed in 6.4.3.",
+  "fix": "Run 'git config --global log.showSignature false' before installing, or upgrade setuptools_scm.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "setuptools_scm 6.4.2",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1395",
+  "tool": "pyocd",
+  "title": "WCH-Link CMSIS-DAP probe not detected",
+  "symptoms": [
+   "No available debug probes are connected"
+  ],
+  "cause": "pyOCD matches probes by name strings rather than VID/PID, and this WCH-Link answers string descriptor requests incorrectly in some conditions.",
+  "fix": "Matching by VID/PID pair was added in change #1399; upgrade. Workaround on Linux: use the hidapi backend (PYOCD_USB_BACKEND=hidapiusb) after allowing the product name.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.33.1",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1387",
+  "tool": "pyocd",
+  "title": "gdbserver answers an unsupported qXfer request with a malformed '9+' reply",
+  "symptoms": [],
+  "cause": "pyOCD only handled target.xml for qXfer feature reads and returned a garbled packet for other files such as arm-m-profile.xml, leaving the client waiting.",
+  "fix": "Fixed by change #1414; update pyOCD.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.31 to 0.33.1",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1363",
+  "tool": "pyocd",
+  "title": "pyocd reset with hardware reset does nothing on K64F",
+  "symptoms": [],
+  "cause": "The hardware reset path was broken for this target; software reset worked.",
+  "fix": "Use 'pyocd reset -m sw' meanwhile; fixed in a later release.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "K64F"
+   ]
+  },
+  "versions": "0.29.0",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1345",
+  "tool": "pyocd",
+  "title": "Session open fails: 'SYS_AP_PSoC64' object has no attribute 'core'",
+  "symptoms": [
+   "'SYS_AP_PSoC64' object has no attribute 'core'"
+  ],
+  "cause": "GenericMemAPTarget lost its CoreSightCoreComponent base class in a refactor.",
+  "fix": "Fixed by change #1350; update pyOCD.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.33",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1327",
+  "tool": "pyocd",
+  "title": "i.MX RT mass erase prints 'Mass erase failed' although flash is erased",
+  "symptoms": [
+   "E Mass erase failed. [eraser]"
+  ],
+  "cause": "The erase actually succeeded; the reported failure was a spurious message in 0.33.1 and the chosen reset type was not honoured by the target class.",
+  "fix": "Verify by reading flash; the message is fixed in the next release.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "i.MX RT"
+   ]
+  },
+  "versions": "0.33.1",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1322",
+  "tool": "pyocd",
+  "title": "0.33.0: 'USB Error: Operation timed out' on pyocd list",
+  "symptoms": [
+   "C USB Error: [Errno 10060] Operation timed out [__main__]"
+  ],
+  "cause": "Seen with the bundled libusb of 0.33.0 and some ST-Link probes; updating ST-Link firmware helped some users.",
+  "fix": "Use 0.33.1 (which dropped the bundled libusb), update the probe firmware, check USB permissions or try another port or cable.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.33.0",
+  "resolution": "workaround",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1313",
+  "tool": "pyocd",
+  "title": "Picoprobe unreliable with pyocd (PC register not available)",
+  "symptoms": [
+   "PC register is not available"
+  ],
+  "cause": "Probable signal-integrity trouble; the picoprobe optimizes by assuming target acknowledgements.",
+  "fix": "Lower the SWD clock (-f 400000), try -Opicoprobe.safeswd=True, replug the probe, or use a CMSIS-DAP firmware on the Pico.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.32.3",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1303",
+  "tool": "pyocd",
+  "title": "LPC55 factory-new chip: erase/flash fails after reset with memory transfer fault",
+  "symptoms": [
+   "Core #0 is not accessible after reset",
+   "link exception during target disconnect: Memory transfer fault @ 0xe000edf0-0xe000edf3"
+  ],
+  "cause": "A new LPC55 starts with debug access locked; pyOCD unlocks it on connect but the reset done before flashing locks it again and the unlock was not repeated.",
+  "fix": "Fixed in v0.33.0: the unlock is re-run after reset.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "LPC5526"
+   ]
+  },
+  "versions": "0.32.3 broken, 0.33.0 fixed",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1276",
+  "tool": "pyocd",
+  "title": "-f frequency option ignored with ST-Link V3",
+  "symptoms": [],
+  "cause": "A copy and paste bug stopped the requested SWD frequency from being applied; the probe itself only produces certain frequencies.",
+  "fix": "Fixed on the develop branch (later release); measured actual clock may differ from requested because of ST-Link V3 prescalers.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.32",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1257",
+  "tool": "pyocd",
+  "title": "nRF52 flash over CMSIS-DAP on macOS fails with DAP_TRANSFER response error",
+  "symptoms": [
+   "DAP_TRANSFER response error"
+  ],
+  "cause": "Command packets arrived out of order or mixed up with a custom CMSIS-DAP firmware at high USB performance.",
+  "fix": "Add -Ocmsis_dap.limit_packets (the =True form was broken until change #1259) and rebase the firmware on current DAPLink.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.32.1",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1247",
+  "tool": "pyocd",
+  "title": "ModuleNotFoundError: No module named 'pyocd._version' when installed from source",
+  "symptoms": [
+   "ModuleNotFoundError: No module named 'pyocd._version"
+  ],
+  "cause": "pyocd._version is generated by setuptools_scm at build time, which setup.py does not install by itself.",
+  "fix": "Install with 'pip install .' or install setuptools_scm[toml] first.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1232",
+  "tool": "pyocd",
+  "title": "pyyaml version conflict between pyocd and cmsis-pack-manager",
+  "symptoms": [
+   "ERROR: cmsis-pack-manager 0.4.0 has requirement pyyaml<7.0,>=6.0, but you'll have pyyaml 5.4.1 which is incompatible."
+  ],
+  "cause": "pyOCD pinned pyyaml below 6.0 while newer cmsis-pack-manager required 6.0.",
+  "fix": "Upgrade to pyOCD 0.32.1.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "fixed 0.32.1",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1227",
+  "tool": "pyocd",
+  "title": "RP2040 over DAPLink probe: requires a probe with SWD sequence capability",
+  "symptoms": [
+   "pyocd.core.exceptions.TargetSupportError: RP2040 requires a debug probe with SWD sequence capability"
+  ],
+  "cause": "RP2040 needs CMSIS-DAP commands added in protocol version 1.2.0; the probe runs older DAPLink firmware.",
+  "fix": "Update the probe's DAPLink firmware to release 0254 or later.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "RP2040"
+   ]
+  },
+  "versions": "",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1225",
+  "tool": "pyocd",
+  "title": "PSoC 5LP kit with KitProg v1 is not detected",
+  "symptoms": [],
+  "cause": "That kit's programmer has no CMSIS-DAP mode, and pyOCD supports only KitProg2/3 in CMSIS-DAP mode; PSoC 5LP is not supported either.",
+  "fix": "Use a vendor tool or a kit with KitProg3 or KitProg2 in CMSIS-DAP mode.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "not-a-bug",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1206",
+  "tool": "pyocd",
+  "title": "LPC55S28 flash fails with 'No ACK received'",
+  "symptoms": [
+   "No ACK received"
+  ],
+  "cause": "The target was not responding to SWD; here one SWD pin had been reconfigured to another function in the application.",
+  "fix": "Remove the pin mux for the SWD pins or recover the device (reset or erase) so the debug port is reachable.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "LPC55S28"
+   ]
+  },
+  "versions": "0.31.0",
+  "resolution": "user-error",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1202",
+  "tool": "pyocd",
+  "title": "Microchip nEDBG: 'DAP_CONNECT failed' with default protocol",
+  "symptoms": [
+   "DAP_CONNECT failed"
+  ],
+  "cause": "The nEDBG probe did not respond properly to the default port selection.",
+  "fix": "Connect with -O dap_protocol=swd. The device identity (variant) selected may also matter for actual programming.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1192",
+  "tool": "pyocd",
+  "title": "STM32L475 built-in target has wrong DBGMCU register addresses",
+  "symptoms": [],
+  "cause": "A typo in the built-in target put the freeze registers at wrong addresses.",
+  "fix": "Fixed by change #1193. For other STM32 parts use the CMSIS pack with a user script or debug sequences for DBGMCU.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "STM32L475"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ }
+]

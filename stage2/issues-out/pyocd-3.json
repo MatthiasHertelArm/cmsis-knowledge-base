@@ -1,0 +1,944 @@
+[
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/675",
+  "tool": "pyocd",
+  "title": "pyocd gdb as normal user fails on FreeBSD when detaching the kernel HID driver",
+  "symptoms": [
+   "0000749:ERROR:__main__:uncaught exception: [Errno None] Other error"
+  ],
+  "cause": "On open, the CMSIS-DAP USB backend tries to detach the kernel driver of the HID interface. An unprivileged user may not do that, and the resulting libusb error was not caught, so the session aborted. The detach is not needed for DAPLink to work.",
+  "fix": "Run with a pyOCD that catches errors from the kernel-driver detach and carries on (fixed on master after 0.19.0). As a stop-gap, run as root or patch the detach call out.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.19.0 affected; fix merged on master afterwards",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/674",
+  "tool": "pyocd",
+  "title": "pip install pyocd 0.21.0 fails because cmsis-pack-manager has no build for the platform",
+  "symptoms": [
+   "ERROR: Could not find a version that satisfies the requirement cmsis-pack-manager>=0.2.7 (from pyocd) (from versions: 0.1.0)",
+   "ERROR: No matching distribution found for cmsis-pack-manager>=0.2.7 (from pyocd)"
+  ],
+  "cause": "pyOCD 0.20 and later require cmsis-pack-manager, which contains compiled Rust code. On platforms without a prebuilt wheel (FreeBSD, some ARM hosts) pip could only see an old source version and the install failed.",
+  "fix": "Install an older pyOCD such as `pip install pyocd==0.19.0`, or wait for or upgrade to cmsis-pack-manager 0.2.8 or newer, which builds with stable Rust.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "pyocd 0.21.0 with cmsis-pack-manager below 0.2.8",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/654",
+  "tool": "pyocd",
+  "title": "STM32L4 pack target: gdbserver errors with IntervalTree has no attribute overlap on halt",
+  "symptoms": [
+   "ERROR:gdbserver:Unhandled exception in handle_message: 'IntervalTree' object has no attribute 'overlap'"
+  ],
+  "cause": "The Python environment had intervaltree 2.1.0 installed, while pyOCD needs 3.x. A source or editable install does not refresh dependencies after pulling new code. The generic cortex_m target avoided the error only because it has no memory map to cache.",
+  "fix": "Upgrade intervaltree to 3.0.2 or newer (reinstall pyOCD or `pip install -r dev-requirements.txt`), preferably in a clean Python 3 virtualenv.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "STM32L4 Series"
+   ],
+   "core": [
+    "Cortex-M4"
+   ]
+  },
+  "versions": "intervaltree 2.1.0 (Python 2 install)",
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/652",
+  "tool": "pyocd",
+  "title": "pyocd list --targets fails with BadZipFile after a broken pack index download",
+  "symptoms": [
+   "uncaught exception: 'module' object has no attribute 'BadZipFile'"
+  ],
+  "cause": "cmsis-pack-manager built a wrong download URL for a pack whose index URL lacks a trailing slash, so a garbage file was stored. The BadZipFile name does not exist in the Python 2 zipfile module, which hid the real error.",
+  "fix": "Update pyOCD and cmsis-pack-manager (fix released after this report), clear the cache with `pyocd pack --clean`, and meanwhile use a manually downloaded pack via `--pack <file>` or the `pack:` list in pyocd.yaml. Prefer Python 3.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "pyocd 0.20.0 with Python 2.7",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/647",
+  "tool": "pyocd",
+  "title": "pyocd cmd W32 to a flash address fails with NameError flashPtr",
+  "symptoms": [
+   "uncaught exception: name 'flashPtr' is not defined"
+  ],
+  "cause": "A coding bug in the flash write path used an undefined variable in the alignment check (the check should have tested the address against the minimum write length).",
+  "fix": "Use a pyOCD release containing the fix; to program flash use `pyocd flash` or the flash loader rather than raw memory writes.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "nRF51 Series"
+   ]
+  },
+  "versions": "early 2019 builds",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/643",
+  "tool": "pyocd",
+  "title": "Target from a downloaded CMSIS-Pack not found: --pack must be given on every pyocd command",
+  "symptoms": [
+   "pyocd-flashtool: error: argument -t/--target: invalid choice: 'stm32l476rg'"
+  ],
+  "cause": "The pack was only supplied to gdbserver. Each tool invocation loads packs independently, and the old pyocd-flashtool does not know pack targets at all.",
+  "fix": "Pass `--pack <file>` to every pyocd invocation, or list the packs once under `pack:` in a pyocd.yaml in the working directory, then use the new combined `pyocd` tool (`pyocd flash`, `pyocd gdbserver`).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "STM32L4 Series"
+   ]
+  },
+  "versions": "0.20.0",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/634",
+  "tool": "pyocd",
+  "title": "Loading an STM32F401RE pack under Python 2.7 crashes with unbound method error",
+  "symptoms": [
+   "uncaught exception: unbound method _pack_target__init__() must be called with _PackTargetMethods instance as first argument (got Session instance instead)"
+  ],
+  "cause": "The pack-target code dynamically built methods in a way that works only on Python 3; on Python 2.7 the bound-method check fails. A typo (isinstane) was also found in the pack target module.",
+  "fix": "Use Python 3 (the maintainer recommends 3.7) or a pyOCD build with the fix.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "STM32F401RETx"
+   ]
+  },
+  "versions": "development build 0.19.1.dev",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/632",
+  "tool": "pyocd",
+  "title": "pip install pyocd fails in setup.py egg_info on Debian with bad marshal data",
+  "symptoms": [
+   "ERROR: Complete output from command python setup.py egg_info:"
+  ],
+  "cause": "The installed setuptools was older than 40, which pyOCD's setup (setuptools_scm based) needs.",
+  "fix": "Upgrade pip and setuptools first (`pip install -U pip setuptools`), then reinstall pyOCD; `pip install --force-reinstall setuptools_scm_git_archive` can also repair a corrupt helper package.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "pyocd 0.2x with setuptools below 40",
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/625",
+  "tool": "pyocd",
+  "title": "Config file not named pyocd.yaml is ignored, target stays generic cortex_m",
+  "symptoms": [],
+  "cause": "The target override and test_binary options were placed in a file called test_boards.yaml. pyOCD only reads a config named pyocd.yaml, so the target stayed at the generic cortex_m type, which has no flash or memory map.",
+  "fix": "Name the file pyocd.yaml (or give it with --config), set target_override and test_binary there, and check the log line 'Target type is ...' to confirm which target is used.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.19 to 0.20",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/624",
+  "tool": "pyocd",
+  "title": "gdb 'load' fails and warns about missing <memory> element: target is the generic cortex_m",
+  "symptoms": [
+   "warning: while parsing target memory map (at line 3): Required element <memory> is missing"
+  ],
+  "cause": "No target type was set, so pyOCD used the generic cortex_m target. It provides no memory map and no flash algorithm, hence gdb complains and cannot load. STLink probes were not auto-detected at that time.",
+  "fix": "Obtain the device pack (or use a release with pack support), then start with `--pack <file> -t <device>`, for example `pyocd gdbserver --pack <Keil.STM32F1xx_DFP>.pack -t stm32f103ze`. The pack subcommand only exists from 0.20.0.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "STM32F1 Series",
+    "STM32F4 Series"
+   ]
+  },
+  "versions": "0.19.0",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/614",
+  "tool": "pyocd",
+  "title": "pyocd gdbserver aborts with 'The device has no langid' when an Android phone is attached",
+  "symptoms": [
+   "0000506:ERROR:__main__:uncaught exception: The device has no langid"
+  ],
+  "cause": "While enumerating USB devices pyOCD read string descriptors of every device; one device (a phone) has none and pyusb raised ValueError, which killed the probe scan.",
+  "fix": "Use pyOCD after the fix that tolerates such devices (merged shortly after 0.20.0), or unplug the other device.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "regression after 0.19; fixed on master",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/613",
+  "tool": "pyocd",
+  "title": "pyocd list -p crashes with a utf16 decode error on old ST-Link firmware",
+  "symptoms": [
+   "0000387:ERROR:__main__:uncaught exception: 'utf16' codec can't decode byte 0x6c in position 30: truncated data"
+  ],
+  "cause": "ST-Link firmware older than V2J28 reports a USB interface name with an odd number of bytes, which cannot be decoded as UTF-16.",
+  "fix": "Update pyOCD to a version with the workaround (change #616, 0.20.0 era); updating the ST-Link firmware also helps.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "ST-Link firmware V2J27 and below",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/612",
+  "tool": "pyocd",
+  "title": "STM32F401RE pack fails: not enough space for flash algorithm, then TypeError",
+  "symptoms": [
+   "0000464:WARNING:flash_algo:Not enough space for flash algorithm",
+   "0000464:ERROR:__main__:uncaught exception: unsupported operand type(s) for -: 'tuple' and 'int'"
+  ],
+  "cause": "The device has 128 kB sectors, so the flash algorithm plus a sector-sized data buffer did not fit in RAM; the pack sector table parsing also mishandled (start,size) tuples.",
+  "fix": "Use a pyOCD release in which pack flash algorithms support separate erase and program sizes (0.20.0).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "STM32F401RETx"
+   ],
+   "core": [
+    "Cortex-M4"
+   ]
+  },
+  "versions": "development builds before 0.20.0",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/590",
+  "tool": "pyocd",
+  "title": "pyocd flash with a nonexistent file raises UnboundLocalError instead of a clear message",
+  "symptoms": [
+   "uncaught exception: local variable 'file_obj' referenced before assignment"
+  ],
+  "cause": "The file-opening error path was broken and the exception class used for reporting was not yet defined.",
+  "fix": "Check the path to the image; use a pyOCD version containing the fix that reports a proper error.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "around 0.19",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/585",
+  "tool": "pyocd",
+  "title": "pyOCD cannot find libusb on Windows: 32-bit Python was installed",
+  "symptoms": [],
+  "cause": "The libusb DLL from the 64-bit folder only loads in a 64-bit Python process. The user's Python was 32-bit, so only the 32-bit DLL worked.",
+  "fix": "Install 64-bit Python (or match the DLL bitness to the interpreter) and place libusb-1.0.dll where Python finds it.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/584",
+  "tool": "pyocd",
+  "title": "Running pyOCD tests from a source tree fails: No module named pyocd._version",
+  "symptoms": [
+   "ModuleNotFoundError: No module named 'pyocd._version'"
+  ],
+  "cause": "The version module is generated by setuptools_scm at install time. Running from an unpacked source tree without installing never creates it.",
+  "fix": "Create a virtualenv and run `pip install -r dev-requirements.txt` in the repository root, which installs pyOCD in editable mode and generates the file.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.18",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/575",
+  "tool": "pyocd",
+  "title": "STLink probe appears and disappears with 'The device has no langid' on Windows",
+  "symptoms": [],
+  "cause": "Probe discovery used a custom USB match that opened every device; on Windows reading the string descriptor failed at times, so the probe list flickered between filled and empty.",
+  "fix": "Upgrade to a pyOCD release that fixed probe enumeration (confirmed by the reporter after the maintainer's change); a workaround was to match the ST-Link VID/PID directly.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.19 to 0.20",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/570",
+  "tool": "pyocd",
+  "title": "pyocd-gdbserver rejects pack-defined targets with 'invalid target option'",
+  "symptoms": [
+   "pyocd-gdbserver: error: invalid target option 'efm32g890f128'"
+  ],
+  "cause": "The deprecated pyocd-gdbserver tool validates the --target name against built-in targets only, so pack targets are rejected, while the new `pyocd gdbserver` accepts them.",
+  "fix": "Launch `pyocd gdbserver --pack <file> -t <target>` instead of pyocd-gdbserver (for example in an IDE debug configuration).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.20",
+  "resolution": "workaround",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/557",
+  "tool": "other",
+  "title": "objcopy 8-2018-q4 on Windows: address out of range for Intel Hex",
+  "symptoms": [
+   "arm-none-eabi-objcopy: c:\\Temp\\<elfFile> 64-bit address 0x4b4fa300000000 out of range for Intel Hex file"
+  ],
+  "cause": "A bug in the Windows build of the GNU Arm Embedded 8-2018-q4-major toolchain breaks binary to ihex conversion; Mac and Linux builds were fine.",
+  "fix": "Use an earlier release (7-2018-q2-update or 7-2017-q4-major) or a toolchain build that contains the fix (GNU MCU Eclipse 8.2.1-1.2).",
+  "applies_to": {
+   "tool": [
+    "pyocd",
+    "gdb"
+   ],
+   "toolchain": [
+    "GCC"
+   ]
+  },
+  "versions": "GNU Arm Embedded 8-2018-q4-major, Windows",
+  "resolution": "workaround",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/527",
+  "tool": "pyocd",
+  "title": "pyocd list crashes on macOS when hidapi returns the product name as bytes",
+  "symptoms": [
+   "0000350:ERROR:__main__:uncaught exception: argument should be integer or bytes-like object, not 'str'"
+  ],
+  "cause": "On Python 3 with macOS, hid.enumerate can return the product string as bytes, and the CMSIS-DAP name check used a str search on it.",
+  "fix": "Update to a pyOCD with the fix (PR #526 era) that converts the name to str.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "around 0.17 to 0.19",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/521",
+  "tool": "pyocd",
+  "title": "pyOCD 0.12 install pulls enum34 on Python 3.4+ and breaks the standard library",
+  "symptoms": [],
+  "cause": "The requirements listed enum34 unconditionally. Installed on Python 3.4 or newer it shadows the standard enum module and breaks code that needs IntFlag.",
+  "fix": "Install pyOCD 0.12.1 or later, which restricts enum34 to Python below 3.4; or uninstall enum34.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.12.0 affected; 0.12.1 fixed",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/508",
+  "tool": "pyocd",
+  "title": "pip install pyocd 0.14.x fails in CI because of a non-UTF-8 locale",
+  "symptoms": [
+   "Command \"python setup.py egg_info\" failed with error code 1"
+  ],
+  "cause": "setup.py read a text file with the default encoding. In containers with a C or POSIX locale (and on Windows with a legacy code page) decoding failed.",
+  "fix": "Upgrade to pyOCD 0.15.0 or later, or set a UTF-8 locale (for example LANG and LC_ALL) before running pip.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.14.3 affected; 0.15.0 fixed",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/505",
+  "tool": "pyocd",
+  "title": "pip install pyocd fails on Windows with a gbk UnicodeDecodeError in setup.py",
+  "symptoms": [
+   "UnicodeDecodeError: 'gbk' codec can't decode byte 0xa6 in position 6075: illegal multibyte sequence"
+  ],
+  "cause": "On a system whose default code page is gbk, setup.py opened a file containing non-ASCII characters without specifying an encoding.",
+  "fix": "Use pyOCD 0.15.0 or later, which fixed the file reading.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.14.3 affected",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/497",
+  "tool": "pyocd",
+  "title": "KeyError: 0 on Nucleo with cortex_m target: no AP found, old ST-Link firmware",
+  "symptoms": [
+   "0000857:ERROR:__main__:uncaught exception: 0"
+  ],
+  "cause": "pyOCD found no CoreSight access port even though the DP ID read worked. The on-board ST-Link firmware was very old (2015 build).",
+  "fix": "Update the ST-Link firmware, then rerun; the AP and ROM table scan succeeded afterwards.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "STM32F401RETx"
+   ]
+  },
+  "versions": "0.14.3",
+  "resolution": "workaround",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/487",
+  "tool": "pyocd",
+  "title": "pip install pyocd 0.14 fails with pip 18 and old setuptools",
+  "symptoms": [
+   "Command \"python setup.py egg_info\" failed with error code 1"
+  ],
+  "cause": "The install requirements use environment markers that need a newer setuptools than the one installed (older than about 20.5).",
+  "fix": "Upgrade setuptools (`pip install -U setuptools`) and retry.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.12 to 0.14",
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/467",
+  "tool": "pyocd",
+  "title": "mbedgt fails with 'No module named pyOCD.board' after upgrading pyOCD to 0.13 or newer",
+  "symptoms": [
+   "mbedgt: No module named pyOCD.board"
+  ],
+  "cause": "pyOCD 0.13 renamed the package to lowercase pyocd; the greentea host tests (htrun) still imported the old name.",
+  "fix": "Upgrade mbed-host-tests to 1.4.4 or newer (and mbed-greentea), or keep greentea in its own virtualenv with an old pyOCD.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "pyOCD 0.13 and later with htrun below 1.4.4",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/465",
+  "tool": "pyocd",
+  "title": "ImportError for pyocd.tools.gdb_server after upgrading to 0.13",
+  "symptoms": [
+   "ImportError: No module named pyocd.tools.gdb_server"
+  ],
+  "cause": "The 0.13.0 source package on PyPI shipped the package folder with mixed case (pyOCD) because the release was built on a case-insensitive filesystem; imports of pyocd then failed.",
+  "fix": "Install pyOCD 0.13.1 or newer; if stuck, reinstall in a clean virtualenv.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.13.0 affected; 0.13.1 fixed",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/444",
+  "tool": "pyocd",
+  "title": "pyocd-flashtool / pyocd-gdbserver ImportError after installing pyOCD 0.13.0",
+  "symptoms": [
+   "ImportError: No module named pyocd.tools.flash_tool"
+  ],
+  "cause": "The released 0.13.0 sdist contained the package directory with the wrong letter case, so Python could not import pyocd on case-sensitive or case-aware setups.",
+  "fix": "Upgrade to pyOCD 0.13.1 or later; temporary workaround was renaming the installed folder to lowercase pyocd.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.13.0 affected; 0.13.1 fixed",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/442",
+  "tool": "pyocd",
+  "title": "pip install pyocd 0.13.0 fails on Linux in setup.py egg_info",
+  "symptoms": [],
+  "cause": "Same release mistake as the lowercase-rename problem: the sdist carried a mixed-case package folder, which broke the setuptools_scm based install on Linux.",
+  "fix": "Use pyOCD 0.13.1 or newer.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.13.0 affected; 0.13.1 fixed",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/399",
+  "tool": "pyocd",
+  "title": "pyocd does not list an nRF52 board that only has a J-Link firmware",
+  "symptoms": [
+   "No available boards are connected"
+  ],
+  "cause": "The pyOCD of that time only spoke CMSIS-DAP over USB. A board whose on-board interface runs J-Link firmware is invisible to it.",
+  "fix": "Flash CMSIS-DAP interface firmware to the board's debug MCU (from the vendor) or use a CMSIS-DAP probe; newer pyOCD versions also support J-Link probes.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "nRF52 Series"
+   ]
+  },
+  "versions": "0.11.x",
+  "resolution": "configuration",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/389",
+  "tool": "pyocd",
+  "title": "gdb load through pyocd-gdbserver ends with AssertionError in progress reporting",
+  "symptoms": [
+   "0018874:ERROR:gdbserver:Unhandled exception in handleMsg: ",
+   "AssertionError"
+  ],
+  "cause": "A progress-bar assertion introduced in 0.11 when progress reporting was unified could fire near the end of a load; flashing itself was unaffected.",
+  "fix": "Use pyOCD 0.13.0b2 or later, where the assertion was disabled; 0.10.0 does not have it.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "MK66FN2M0xxx18"
+   ]
+  },
+  "versions": "0.11.x to 0.13.0b1",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/371",
+  "tool": "pyocd",
+  "title": "hidapi 'Unable to open device' on macOS with system Python",
+  "symptoms": [
+   "uncaught exception: Unable to open device"
+  ],
+  "cause": "With the Python shipped by macOS (or one with an empty hidapi path) the HID device path came back empty so the CMSIS-DAP interface could not be opened.",
+  "fix": "Use a different Python install such as one from Homebrew, and reinstall pyOCD and hidapi with its pip.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "pyocd master of mid-2018",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/346",
+  "tool": "pyocd",
+  "title": "pyocd-gdbserver raises AssertionError on K64F when run under Python 3",
+  "symptoms": [
+   "uncaught exception: ",
+   "AssertionError"
+  ],
+  "cause": "The old pyOCD (0.8 era) only supported Python 2.7, so startup under Python 3.6 failed.",
+  "fix": "Run it with Python 2.7 or, better, a modern pyOCD that supports Python 3.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "MK64FN1M0xxx12"
+   ]
+  },
+  "versions": "pyocd 0.8 and older",
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/337",
+  "tool": "pyocd",
+  "title": "pyocd-gdbserver TransferError right after 'DAP SWD MODE initialized' on an LPC812 board",
+  "symptoms": [
+   "uncaught exception:",
+   "TransferError"
+  ],
+  "cause": "pyOCD could not even read the DP IDCODE register, which is always readable if SWD is wired and powered, so the cause is on the hardware or probe side rather than software.",
+  "fix": "Check wiring, target power and the debug interface firmware before suspecting pyOCD.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "LPC812M101JDH20"
+   ]
+  },
+  "versions": "0.2x",
+  "resolution": "not-a-bug",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/335",
+  "tool": "pyocd",
+  "title": "K64F via Raspberry Pi: 'read thread exited' errors during reset or flashing",
+  "symptoms": [
+   "DeviceError: ... read thread exited"
+  ],
+  "cause": "USB instability on the Raspberry Pi 3 (and some VMs such as VirtualBox) loses packets between host and CMSIS-DAP probe.",
+  "fix": "Lower the SWD clock with `-f`, or pass `--daparg limit_packets=True`; alternatively reset the target by sending a BREAK over the DAPLink serial port.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "MK66FN2M0xxx18"
+   ]
+  },
+  "versions": "0.2x",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/321",
+  "tool": "pyocd",
+  "title": "pyocd-gdbserver appears to hang or fails with SyntaxError on Windows",
+  "symptoms": [
+   "SyntaxError: invalid syntax"
+  ],
+  "cause": "Old pyOCD only runs on Python 2; under Python 3 the entry point raises SyntaxError. Without a recognised board the server simply waits for one, and K64F firmware older than 0242 needs the Windows serial driver to be visible.",
+  "fix": "Use Python 2.7 with that pyOCD version, update the interface firmware (0242 or newer) or install the mbed serial driver, and confirm the board is listed with `-l`.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.8.1a1",
+  "resolution": "user-error",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/313",
+  "tool": "pyocd",
+  "title": "pyocd-gdbserver AssertionError at start because another program holds the probe",
+  "symptoms": [
+   "uncaught exception:",
+   "AssertionError"
+  ],
+  "cause": "The probe is opened for exclusive access; the assertion fires when another process (an IDE, mbed tools, a serial tool) already has the CMSIS-DAP interface open.",
+  "fix": "Close other programs that use the board, replug it, and start pyOCD again.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "MK64FN1M0xxx12"
+   ]
+  },
+  "versions": "0.8.1",
+  "resolution": "user-error",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/306",
+  "tool": "pyocd",
+  "title": "gdbserver crashes with KeyError 'kl27z' for a FRDM-KL27Z without -t",
+  "symptoms": [
+   "uncaught exception: 'kl27z'"
+  ],
+  "cause": "The board table named the target kl27z while the target registry used kl27z4, so the automatic lookup failed.",
+  "fix": "Pass `-t kl27z4` or use a pyOCD version with the corrected board table (fix #307).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "MKL27Z64xxx4"
+   ]
+  },
+  "versions": "0.8.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/294",
+  "tool": "pyocd",
+  "title": "Flash programming errors 102 on FRDM-KL28Z because old DAPLink reports a clashing board ID",
+  "symptoms": [
+   "ERROR:root:programPage(0x0) error: 102",
+   "ERROR:root:Too many page programming errors, aborting program operation"
+  ],
+  "cause": "A pre-production DAPLink image on the board used board ID 0290, which pyOCD maps to the FRDM-KW40Z, so the wrong flash algorithm was loaded.",
+  "fix": "Update the DAPLink firmware (the KL28Z ID became 0205), or force the target with `-t frdmkl28z`.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "MKL28Z512xxx7"
+   ]
+  },
+  "versions": "0.8",
+  "resolution": "workaround",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/270",
+  "tool": "pyocd",
+  "title": "pyocd lists no boards on Linux unless run with sudo",
+  "symptoms": [
+   "No available boards are connected"
+  ],
+  "cause": "Normal users have no permission on the USB device nodes of the debug probe, so enumeration finds nothing.",
+  "fix": "Install a udev rule that grants access to the probe (the project ships udev/50-pyocd.rules), reload udev and replug; pyOCD logs a debug-level permission hint.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.8",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/246",
+  "tool": "pyocd",
+  "title": "eraseAll error 104 on a KL25Z chip erase",
+  "symptoms": [
+   "ERROR:root:eraseAll error: 104"
+  ],
+  "cause": "Error 104 is the flash driver status for a protection violation: sectors are write-protected through the flash configuration field at 0x400, which blocks a normal chip erase.",
+  "fix": "Run a mass erase that clears protection: connect with pyocd-tool and run `unlock` (the flashtool unlock option was not implemented).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "MKL25Z128xxx4"
+   ],
+   "core": [
+    "Cortex-M0+"
+   ]
+  },
+  "versions": "0.7.x",
+  "resolution": "workaround",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/241",
+  "tool": "pyocd",
+  "title": "'The device has no langid' on Linux is an USB permission problem",
+  "symptoms": [
+   "uncaught exception: The device has no langid"
+  ],
+  "cause": "pyusb stores an empty language list when the descriptor read is denied, and then raises ValueError. The real cause is missing access rights to the USB device.",
+  "fix": "Add a udev rule for the probe or run as root; later pyOCD versions handle the error and log a permission hint.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.7.1",
+  "resolution": "configuration",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/239",
+  "tool": "pyocd",
+  "title": "DAP TransferError when flashing a K64F with blank flash",
+  "symptoms": [],
+  "cause": "On a Kinetis device whose flash was erased and left blank, the target executes an erased reset vector and the debug access fails, so pyOCD cannot reconnect.",
+  "fix": "Recover by copying a valid image over the mass-storage interface, then use pyOCD; fixed later by handling blank flash on Kinetis parts.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "MK64FN1M0xxx12"
+   ]
+  },
+  "versions": "0.7.1",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/237",
+  "tool": "pyocd",
+  "title": "Installing pyOCD from a GitHub source zip fails: setuptools-scm unable to detect version",
+  "symptoms": [
+   "LookupError: setuptools-scm was unable to detect version for"
+  ],
+  "cause": "GitHub's archive downloads lack the git metadata that setuptools_scm uses to derive the version.",
+  "fix": "Install from PyPI or from a git clone (`pip install git+https://github.com/...`); the problem was avoided for release zips from 0.12.0.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.7.0 affected; fixed in 0.12.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/227",
+  "tool": "pyocd",
+  "title": "Repeated flashing from a Linux VM randomly hangs",
+  "symptoms": [],
+  "cause": "USB transfers in some virtual machines (VirtualBox, VMware) can stall without a timeout. A timeout was later added to the pyusb backend.",
+  "fix": "Use a pyOCD with USB timeouts, or run natively; resetting the target first with the tool avoided the hang.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "MK64FN1M0xxx12"
+   ]
+  },
+  "versions": "0.7.x",
+  "resolution": "workaround",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/226",
+  "tool": "pyocd",
+  "title": "Flashing two boards at the same time on Linux fails with USB Resource busy",
+  "symptoms": [
+   "usb.core.USBError: [Errno 16] Resource busy"
+  ],
+  "cause": "Old pyOCD claimed all matching probes during enumeration, so a second instance collided with the first.",
+  "fix": "Use a version containing simultaneous multi-device access (PR #268) and select each probe by its unique id.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.7.x",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/212",
+  "tool": "pyocd",
+  "title": "gdbserver 'Errno 10013' socket access forbidden on Windows",
+  "symptoms": [
+   "ERROR:root:Unexpected exception: [Errno 10013] An attempt was made to access a socket in a way forbidden by its access permissions"
+  ],
+  "cause": "The GDB port (3333) could not be bound, typically because another service such as a VPN client already uses it.",
+  "fix": "Choose another port with `-p`; the server then waits for gdb to connect, which is normal.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.8",
+  "resolution": "configuration",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/189",
+  "tool": "pyocd",
+  "title": "External nRF51 board cannot be flashed through an nRF51-DK running mbed interface firmware",
+  "symptoms": [],
+  "cause": "The CMSIS-DAP firmware only drives the SWD pins to the on-board chip; the Debug Out header is not selected.",
+  "fix": "Use an interface firmware that supports Debug Out switching, or a separate probe wired to the external target.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "nRF51 Series"
+   ]
+  },
+  "versions": "2015",
+  "resolution": "not-a-bug",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/161",
+  "tool": "pyocd",
+  "title": "gdb 'load' fails on a custom W7500 target until the flash analyzer is enabled",
+  "symptoms": [],
+  "cause": "The new target's flash definition had analyzer support off and a wrong RAM buffer address, so loads from gdb failed.",
+  "fix": "In the target's flash algo definition set analyzer_supported to true and put begin_data at a valid RAM address (0x20002000 for that device).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.4",
+  "resolution": "configuration",
+  "confidence": "medium"
+ }
+]

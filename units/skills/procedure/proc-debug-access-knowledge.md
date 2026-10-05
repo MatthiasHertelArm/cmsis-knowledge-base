@@ -2,7 +2,7 @@
 type: "procedure"
 domain: "bring-up"
 title: "debug-access-knowledge"
-summary: "Build a documentation-led, verifiable record of an existing SoC's reusable CMSIS debug access topology: processor association, debug port and access-port path, protocol, and dormant-state decision. Use before work that needs those access facts, including debug-definition, debug-behavior, or CoreSight trace knowledge; no active target connection is required."
+summary: "Build a documentation-led, verifiable record of an existing SoC's reusable CMSIS debug access topology: processor association, debug port and access-port path, protocol, and dormant-state decision, in `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` for user review."
 status: "draft"
 source: "bring-up/debug-access-knowledge/SKILL.md"
 preconditions: "An existing target `.pdsc`, selected family/subFamily/device/variant scope, affected processor descriptions, and available device documentation or startup logs."
@@ -13,6 +13,13 @@ sections: ["Completion checklist", "Debug access topology", "Documents requiring
 id: "proc-debug-access-knowledge"
 requires: ["proc-board-debug-knowledge", "proc-pyocd-detect-debug-topology", "proc-resolve-official-device-documentation"]
 produces: ["artifact-pdsc-stem-debug-access-knowledge-md"]
+description: "Build a documentation-led, verifiable record of an existing SoC's reusable CMSIS debug access topology: processor association, debug port and access-port path, protocol, and dormant-state decision. Use before work that needs those access facts, including debug-definition, debug-behavior, or CoreSight trace knowledge; no active target connection is required."
+triggers: ["work that needs those access facts", "debug-definition knowledge", "debug-behavior knowledge", "CoreSight trace knowledge", "no active target connection is required"]
+verification: ["Cite each fact with document edition/revision and section/page when known, or repository/version, path, and symbol/line for source.", "When documentation does not establish a required access observation, run `$pyocd-detect-debug-topology` and cite its result as supplementary evidence.", "Record unknown, conflicting, and unavailable facts without inference.", "Use the current Debug Description specification to distinguish explicit access definitions from standard defaults.", "Re-read the selected PDSC subtree and inspect every evidence-table row before marking the record `READY`"]
+stop_conditions: ["Stop if no device description exists.", "Create or update the owned record, present it for review as `DRAFT — AWAITING USER REVIEW`, and set `READY` only after user confirmation and sufficient evidence for the intended downstream work.", "Stop when the target PDSC, selected scope, processor association, or an access fact required by the intended downstream work is unavailable, contradictory, or insufficiently evidenced."]
+unmapped: ["CMSIS Device Family Pack PDSC"]
+applies_to: {"tool": ["pyocd"]}
+stage2: "proc-debug-access-knowledge.json"
 ---
 
 # Debug Access Knowledge

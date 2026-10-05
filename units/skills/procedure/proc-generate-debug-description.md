@@ -2,7 +2,7 @@
 type: "procedure"
 domain: "pack"
 title: "generate-debug-description"
-summary: "Add or review non-sequence CMSIS-Pack Debug Description content in an existing Device Family Pack PDSC. Use for debug, debugconfig, dbg_datapatch, debug-port, or access-port definitions after `$debug-access-knowledge` has established the required access facts. Do not collect knowledge, generate or update debugvars, implement device debug sequences, or generate CoreSight trace sequences."
+summary: "Add or review non-sequence CMSIS-Pack Debug Description content in an existing Device Family Pack PDSC, applying only user-confirmed definitions and reporting their XML placement, applicability, evidence, unresolved items, and validation results."
 status: "draft"
 source: "pack/generate-debug-description/SKILL.md"
 preconditions: "An existing target `.pdsc`, selected family/subFamily/device/variant scope, affected `<processor>` descriptions, and a current `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` record."
@@ -13,6 +13,12 @@ id: "proc-generate-debug-description"
 requires: ["proc-debug-access-knowledge", "proc-validate-pdsc-sequence-xml", "concept-description-contract"]
 consumes: ["artifact-pdsc-stem-debug-access-knowledge-md"]
 references: ["doc-open-cmsis-pack-github-io-open-cmsis-pack-spec-main-html-deb"]
+description: "Add or review non-sequence CMSIS-Pack Debug Description content in an existing Device Family Pack PDSC. Use for debug, debugconfig, dbg_datapatch, debug-port, or access-port definitions after `$debug-access-knowledge` has established the required access facts. Do not collect knowledge, generate or update debugvars, implement device debug sequences, or generate CoreSight trace sequences."
+triggers: ["debugconfig definitions", "dbg_datapatch definitions", "debug-port definitions", "access-port definitions", "after `$debug-access-knowledge` has established the required access facts"]
+verification: ["Run `$validate-pdsc-sequence-xml` after applying the confirmed change.", "For a non-sequence-only change, inspect its file-wide block-format matches and record that the change introduced no C-like block content; resolve every relevant validation failure."]
+stop_conditions: ["Require a current record covering the selected connection and non-sequence definitions; return to `$debug-access-knowledge` when it is absent, blocked, stale, contradictory, or insufficient.", "Present the debug-access knowledge record and proposed XML, then apply only user-confirmed changes.", "Return missing or contradictory hardware facts to `$debug-access-knowledge`.", "Stop when no existing device description exists, the knowledge record is inadequate, user confirmation is absent, or XML/PDSC validation fails."]
+unmapped: ["CMSIS Device Family Pack PDSC", "CMSIS-Pack Debug Description"]
+stage2: "proc-generate-debug-description.json"
 ---
 
 # Generate Debug Description

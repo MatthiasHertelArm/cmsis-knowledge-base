@@ -2,7 +2,7 @@
 type: "procedure"
 domain: "project"
 title: "identify-zephyr-board"
-summary: "Resolve a user-supplied physical board to its exact Zephyr board target and fitted MCU or SoC using the installed west board catalog. Use when a project, build, or support lookup needs a version-matched Zephyr board identifier."
+summary: "Resolve a user-supplied physical board to its exact Zephyr board target and fitted MCU or SoC using the installed west board catalog."
 status: "draft"
 source: "project/identify-zephyr-board/SKILL.md"
 preconditions: "The physical board manufacturer, model, relevant revision, and a verified Zephyr workspace with its venv-local west executable."
@@ -12,6 +12,13 @@ output: "Report:\n\n- status: `MATCH` or `NO MATCH`;\n- physical board manufactu
 sections: ["Execution Steps", "Expected Output", "Guardrails & Constraints", "Prerequisites & Context", "Target & Persona", "Validation Resources"]
 id: "proc-identify-zephyr-board"
 references: ["doc-docs-zephyrproject-org-latest-boards-index-html"]
+description: "Resolve a user-supplied physical board to its exact Zephyr board target and fitted MCU or SoC using the installed west board catalog. Use when a project, build, or support lookup needs a version-matched Zephyr board identifier."
+triggers: ["project, build, or support lookup", "version-matched Zephyr board identifier"]
+verification: ["Confirm the marketing name, vendor, fitted device, revision, and qualifiers; compare with the current online board listing without overriding local installed data."]
+stop_conditions: ["Request the intended target when multiple SoCs, CPU clusters, or variants remain possible.", "Stop when the physical board, exact target, or fitted device remains ambiguous."]
+unmapped: ["installed Zephyr workspace", "Zephyr supported-boards page"]
+applies_to: {"tool": ["west"]}
+stage2: "proc-identify-zephyr-board.json"
 ---
 
 # Identify Zephyr Board

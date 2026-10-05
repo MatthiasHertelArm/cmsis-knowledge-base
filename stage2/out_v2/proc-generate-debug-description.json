@@ -1,0 +1,34 @@
+{
+  "id": "proc-generate-debug-description",
+  "summary": "Add or review non-sequence CMSIS-Pack Debug Description content in an existing Device Family Pack PDSC, applying only user-confirmed definitions and reporting their XML placement, applicability, evidence, unresolved items, and validation results.",
+  "triggers": [
+    "debugconfig definitions",
+    "dbg_datapatch definitions",
+    "debug-port definitions",
+    "access-port definitions",
+    "after `$debug-access-knowledge` has established the required access facts"
+  ],
+  "applies_to": {"tool": [], "toolchain": [], "core": [], "component": [], "api": []},
+  "unmapped": [
+    "CMSIS Device Family Pack PDSC",
+    "CMSIS-Pack Debug Description"
+  ],
+  "verification": [
+    "Run `$validate-pdsc-sequence-xml` after applying the confirmed change.",
+    "For a non-sequence-only change, inspect its file-wide block-format matches and record that the change introduced no C-like block content; resolve every relevant validation failure."
+  ],
+  "stop_conditions": [
+    "Require a current record covering the selected connection and non-sequence definitions; return to `$debug-access-knowledge` when it is absent, blocked, stale, contradictory, or insufficient.",
+    "Present the debug-access knowledge record and proposed XML, then apply only user-confirmed changes.",
+    "Return missing or contradictory hardware facts to `$debug-access-knowledge`.",
+    "Stop when no existing device description exists, the knowledge record is inadequate, user confirmation is absent, or XML/PDSC validation fails."
+  ],
+  "rules": [
+    {"id": "rule-critical-blockers-generate-debug-description", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-no-fabrication-generate-debug-description", "class": "generic", "canonical_id": "rule-no-fabrication", "delta": "topology facts, addresses, protocols, patches, values, or applicability. Return missing or contradictory hardware facts to `$debug-access-knowledge`."},
+    {"id": "rule-portability-generate-debug-description", "class": "generic", "canonical_id": "rule-portability", "delta": "unless authoritative inputs require it. Identify each required dependency in the output."},
+    {"id": "rule-scope-generate-debug-description", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-tone-and-style", "class": "generic", "canonical_id": "rule-tone-and-style", "delta": ""}
+  ],
+  "extracted": []
+}

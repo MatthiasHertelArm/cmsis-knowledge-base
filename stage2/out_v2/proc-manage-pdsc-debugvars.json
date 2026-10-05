@@ -1,0 +1,39 @@
+{
+  "id": "proc-manage-pdsc-debugvars",
+  "summary": "Design a documented CMSIS-Pack PDSC `debugvars` runtime choice through the active conversation, returning the `__var` definition, sequence use, scope, collision result, and optional `.dbgconf` annotation without creating or updating workspace files.",
+  "triggers": [
+    "defining or revising a `__var`",
+    "checking collisions and scope",
+    "proposing its minimal sequence use and Configuration Wizard annotation"
+  ],
+  "applies_to": {
+    "tool": [],
+    "toolchain": [],
+    "core": [],
+    "component": [],
+    "api": []
+  },
+  "unmapped": [
+    "CMSIS-Pack PDSC",
+    "debugvars",
+    ".dbgconf",
+    "Configuration Wizard annotation"
+  ],
+  "verification": [
+    "Confirm that every proposed sequence reference is minimal and controls only a verified behavior.",
+    "Reject undocumented register values, routes, delays, or missing facts disguised as a user choice.",
+    "Use the selected PDSC's inherited `<debugvars>` definitions and the current Debug Description specification to validate scope, naming, and sequence use."
+  ],
+  "stop_conditions": [
+    "stop for direction on a name conflict",
+    "Stop for an undocumented choice, unsupported default, conflicting existing definition, or unverified consuming path."
+  ],
+  "rules": [
+    {"id": "rule-critical-blockers-manage-pdsc-debugvars", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-no-fabrication-manage-pdsc-debugvars", "class": "generic", "canonical_id": "rule-no-fabrication", "delta": "variable values, defaults, register behavior, sequence branches, or Configuration Wizard annotations"},
+    {"id": "rule-portability-debug-access-knowledge", "class": "generic", "canonical_id": "rule-portability", "delta": "unless authoritative inputs require it"},
+    {"id": "rule-scope-manage-pdsc-debugvars", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-tone-and-style", "class": "generic", "canonical_id": "rule-tone-and-style", "delta": ""}
+  ],
+  "extracted": []
+}

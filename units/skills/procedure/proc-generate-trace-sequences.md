@@ -2,7 +2,7 @@
 type: "procedure"
 domain: "pack"
 title: "generate-trace-sequences"
-summary: "Add modular, evidence-backed CoreSight trace sequences to an existing CMSIS Device Family Pack PDSC. Use after `$trace-knowledge` has produced a READY trace knowledge record that evidences available trace paths, when assembling per-component trace snippets into TraceStart, TraceCapture, TraceFlush, and TraceStop sequences, or when maintaining trace setup with device-specific extension placeholders; use the shared PDSC preparation, debugvars, application, and XML-validation skills for their respective integration work. Consult `$debug-access-knowledge` only when a required access fact is not self-contained in the trace record."
+summary: "Add modular, evidence-backed CoreSight trace sequences to an existing CMSIS Device Family Pack PDSC, keep a private proposal record, apply the confirmed trace XML, and report trace paths, placement, placeholders, and validation results."
 status: "draft"
 source: "pack/generate-trace-sequences/SKILL.md"
 preconditions: "Existing target `.pdsc`, selected family/subFamily/device/variant scope, a READY `.agent-artifacts/<pdsc-stem>.trace-knowledge.md` record, and documentation for the selected CoreSight topology. Use `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` only for a required processor, connection, DP/AP path, protocol, or dormant-state fact absent from the trace record."
@@ -13,6 +13,12 @@ id: "proc-generate-trace-sequences"
 requires: ["proc-apply-confirmed-pdsc-proposal", "proc-debug-access-knowledge", "proc-manage-pdsc-debugvars", "proc-prepare-pdsc-sequence-change", "proc-trace-knowledge", "proc-validate-pdsc-sequence-xml", "concept-component-index", "concept-legacy-to-full-migration", "concept-trace-sequence-contract"]
 consumes: ["artifact-pdsc-stem-debug-access-knowledge-md", "artifact-pdsc-stem-trace-knowledge-md", "artifact-pdsc-stem-trace-sequences-md"]
 references: ["asset-generate-trace-sequences-assets-components-etb-xml", "asset-generate-trace-sequences-assets-components-etf-xml", "asset-generate-trace-sequences-assets-components-etr-catu-xml", "asset-generate-trace-sequences-assets-components-funnel-xml", "asset-generate-trace-sequences-assets-components-replicator-xml", "asset-generate-trace-sequences-assets-components-swo-xml", "asset-generate-trace-sequences-assets-components-tpiu-xml", "asset-generate-trace-sequences-assets-scaffolds-full-trace-xml", "doc-open-cmsis-pack-github-io-open-cmsis-pack-spec-main-html-deb"]
+description: "Add modular, evidence-backed CoreSight trace sequences to an existing CMSIS Device Family Pack PDSC. Use after `$trace-knowledge` has produced a READY trace knowledge record that evidences available trace paths, when assembling per-component trace snippets into TraceStart, TraceCapture, TraceFlush, and TraceStop sequences, or when maintaining trace setup with device-specific extension placeholders; use the shared PDSC preparation, debugvars, application, and XML-validation skills for their respective integration work. Consult `$debug-access-knowledge` only when a required access fact is not self-contained in the trace record."
+triggers: ["READY trace knowledge record that evidences available trace paths", "assembling per-component trace snippets", "TraceStart, TraceCapture, TraceFlush, and TraceStop sequences", "maintaining trace setup with device-specific extension placeholders"]
+verification: ["Run `$apply-confirmed-pdsc-proposal` with `$validate-pdsc-sequence-xml` as the common validation step, then complete trace-specific scaffold, routing, asset-fidelity, marker, and lifecycle gates.", "Set `APPLIED` only after all checks pass."]
+stop_conditions: ["Return missing trace facts to `$trace-knowledge`", "Present it with selected assets and proposed XML, then obtain confirmation.", "do not create legacy setup, omit verified paths, or modify `.dbgconf` without explicit confirmation.", "Stop when the trace record is not READY or is insufficient, a required debug record is absent or insufficient, required assets or documentation are missing, confirmation is absent, or validation fails."]
+unmapped: ["CMSIS Device Family Pack PDSC", "CoreSight trace sequences", "debugvars", ".dbgconf"]
+stage2: "proc-generate-trace-sequences.json"
 ---
 
 # Generate Trace Sequences

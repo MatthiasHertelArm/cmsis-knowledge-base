@@ -1,0 +1,45 @@
+{
+  "id": "proc-identify-zephyr-board",
+  "summary": "Resolve a user-supplied physical board to its exact Zephyr board target and fitted MCU or SoC using the installed west board catalog.",
+  "triggers": [
+    "project, build, or support lookup",
+    "version-matched Zephyr board identifier"
+  ],
+  "applies_to": {
+    "tool": ["west"],
+    "toolchain": [],
+    "core": [],
+    "component": [],
+    "api": []
+  },
+  "unmapped": [
+    "installed Zephyr workspace",
+    "Zephyr supported-boards page"
+  ],
+  "verification": [
+    "Confirm the marketing name, vendor, fitted device, revision, and qualifiers; compare with the current online board listing without overriding local installed data."
+  ],
+  "stop_conditions": [
+    "Request the intended target when multiple SoCs, CPU clusters, or variants remain possible.",
+    "Stop when the physical board, exact target, or fitted device remains ambiguous."
+  ],
+  "rules": [
+    {"id": "rule-critical-blockers-identify-zephyr-board", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-no-fabrication-identify-zephyr-board", "class": "generic", "canonical_id": "rule-no-fabrication", "delta": "Zephyr target, fitted device, revision, qualifier, or board match from a probe, directory name, or fuzzy search alone."},
+    {"id": "rule-portability-identify-zephyr-board", "class": "generic", "canonical_id": "rule-portability", "delta": "Keep the installed Zephyr board catalog authoritative for its version; do not introduce CMSIS-pack … assumptions."},
+    {"id": "rule-scope-identify-zephyr-board", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-tone-and-style", "class": "generic", "canonical_id": "rule-tone-and-style", "delta": ""}
+  ],
+  "extracted": [
+    {
+      "type": "pattern",
+      "title": "Query the installed Zephyr board catalog with west",
+      "body": "From the verified Zephyr workspace, run the venv-local `west boards` command. Treat this version-matched catalog, generated from the installed `board.yml` files, as authoritative for the installed Zephyr version.\n\nFind candidates with `west boards --fuzzy-match \"<candidate>\"`. Normalize punctuation and capitalization only for searching; do not confirm a fuzzy result without checking its metadata.\n\nFor each candidate, run:\n\nwest boards --board <board-name> --cmakeformat \"{NAME}|{VENDOR}|{SOCS}|{QUALIFIERS}|{REVISION_DEFAULT}|{REVISIONS}|{DIR}\""
+    },
+    {
+      "type": "concept",
+      "title": "Exact Zephyr board target syntax",
+      "body": "Construct the exact target as `board-name[@revision][/qualifiers]`."
+    }
+  ]
+}

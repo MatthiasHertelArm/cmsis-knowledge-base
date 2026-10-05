@@ -2,7 +2,7 @@
 type: "procedure"
 domain: "project"
 title: "check-zephyr-environment"
-summary: "Verify an existing Zephyr workspace, its Python virtual environment, and the venv-local west installation. Use before running Zephyr commands or creating projects that depend on an installed Zephyr workspace."
+summary: "Verify an existing Zephyr workspace, its Python virtual environment, and the venv-local west installation, returning a `PASS` or `FAIL` report without installing, upgrading, repairing, or reconfiguring Zephyr, Python, or west."
 status: "draft"
 source: "project/check-zephyr-environment/SKILL.md"
 preconditions: "A Zephyr workspace path, or permission to use the default location named below."
@@ -12,6 +12,13 @@ output: "Report:\n\n- status: `PASS` or `FAIL`;\n- workspace path;\n- virtual-en
 sections: ["Execution Steps", "Expected Output", "Guardrails & Constraints", "Prerequisites & Context", "Target & Persona", "Validation Resources"]
 id: "proc-check-zephyr-environment"
 references: ["doc-github-com-arm-examples-cmsis-zephyr"]
+description: "Verify an existing Zephyr workspace, its Python virtual environment, and the venv-local west installation. Use before running Zephyr commands or creating projects that depend on an installed Zephyr workspace."
+triggers: ["before running Zephyr commands", "creating projects that depend on an installed Zephyr workspace"]
+verification: ["Confirm virtual-environment isolation, west operation, workspace identity, and the installed Zephyr repository path.", "Run the selected Python executable with `-c \"import sys; print(sys.prefix); print(sys.base_prefix)\"`. Confirm that `sys.prefix` differs from `sys.base_prefix`.", "Run the selected `west` executable with `--version`. Do not substitute a global `west` executable.", "From the Zephyr workspace, run the selected `west` executable with `topdir`. Confirm that it succeeds and resolves to the expected workspace.", "From the same directory, run the selected `west` executable with `list zephyr -f \"{abspath}\"`. Confirm that it returns an existing Zephyr repository path.", "Return `PASS` only when every check succeeds."]
+stop_conditions: ["Obtain the Zephyr workspace path.", "Stop on the first failed check.", "Stop at the first missing workspace, virtual environment, executable, failed command, or mismatched west top-level directory."]
+unmapped: ["Zephyr workspace", "Python", "`.venv` virtual environment"]
+applies_to: {"tool": ["west"]}
+stage2: "proc-check-zephyr-environment.json"
 ---
 
 # Check Zephyr Environment

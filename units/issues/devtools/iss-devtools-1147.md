@@ -1,0 +1,41 @@
+---
+id: "iss-devtools-1147"
+type: "troubleshooting"
+domain: "project"
+title: "cbuild: Path not found with backslashes in include path of a pack on macOS or Linux"
+summary: "The pack's pdsc uses backslashes in file and include paths; they are valid only on Windows. packchk reports them as M327."
+status: "draft"
+tool: "cbuild"
+symptoms: ["*** ERROR M204:\n  Path not found: '<packs>/GigaDevice/GD32F10x_DFP/2.0.3/Device\\Include'!"]
+collection: "issues-devtools"
+source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1147"
+doc_source: "https://github.com/Open-CMSIS-Pack/devtools/issues/1147"
+resolution: "workaround"
+versions: "toolbox 2.1.0"
+confidence: "high"
+cause_origin: "issue-digest"
+applies_to: {"tool": ["cbuild", "packchk"], "family": ["GD32F10x"]}
+license: "own summary of a GitHub issue"
+mode: "S"
+---
+
+## Symptom
+
+`*** ERROR M204:
+  Path not found: '<packs>/GigaDevice/GD32F10x_DFP/2.0.3/Device\Include'!`
+
+## Cause
+
+The pack's pdsc uses backslashes in file and include paths; they are valid only on Windows. packchk reports them as M327.
+
+## Fix
+
+Report it to the pack vendor, or edit the installed pdsc to use forward slashes. Later toolbox versions (2.7.0) convert backslashes themselves.
+
+## Source
+
+Resolution: workaround
+
+Versions: toolbox 2.1.0
+
+From [Open-CMSIS-Pack/devtools #1147](https://github.com/Open-CMSIS-Pack/devtools/issues/1147), summarized in own words; confidence high, not reviewed yet.

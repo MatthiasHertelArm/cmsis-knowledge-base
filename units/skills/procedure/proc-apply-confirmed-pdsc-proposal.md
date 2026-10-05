@@ -2,7 +2,7 @@
 type: "procedure"
 domain: "pack"
 title: "apply-confirmed-pdsc-proposal"
-summary: "Apply a complete, explicitly confirmed CMSIS-Pack PDSC sequence or `debugvars` proposal provided through the active conversation and run its required validation. Use after a debug or trace proposal has been reviewed and the user has authorized edits to the named PDSC files; do not create agent-artifact records, infer missing technical behavior, or apply changes before confirmation."
+summary: "Apply a complete, explicitly confirmed CMSIS-Pack PDSC sequence or `debugvars` proposal from the active conversation unchanged, run the common and domain-specific validation, and return the application result in conversation."
 status: "draft"
 source: "pack/apply-confirmed-pdsc-proposal/SKILL.md"
 preconditions: "Complete debug or trace proposal in conversation with exact XML and target paths, explicit confirmation for every user-owned file, and a named common plus domain-specific validation plan."
@@ -11,6 +11,12 @@ output: "Return the application result in conversation. The calling generator up
 sections: ["Execution Steps", "Expected Output", "Guardrails & Constraints", "Prerequisites & Context", "Target & Persona", "Validation Resources"]
 id: "proc-apply-confirmed-pdsc-proposal"
 requires: ["proc-validate-pdsc-sequence-xml"]
+description: "Apply a complete, explicitly confirmed CMSIS-Pack PDSC sequence or `debugvars` proposal provided through the active conversation and run its required validation. Use after a debug or trace proposal has been reviewed and the user has authorized edits to the named PDSC files; do not create agent-artifact records, infer missing technical behavior, or apply changes before confirmation."
+triggers: ["debug or trace proposal has been reviewed", "user has authorized edits to the named PDSC files"]
+verification: ["Run `$validate-pdsc-sequence-xml`, then the calling skill's domain-specific checks.", "Resolve validation failures before completion.", "Run `$validate-pdsc-sequence-xml` for common syntax and block checks, then the current domain contract for debug or trace semantic checks."]
+stop_conditions: ["Report meaningful drift and obtain a refreshed proposal rather than applying stale XML.", "edit `.dbgconf` only when that file is explicitly confirmed.", "Stop when the proposal, target, confirmation, or validation plan is incomplete; also stop on meaningful file drift or validation failure."]
+unmapped: ["CMSIS Device Family Pack PDSC", "debugvars", ".dbgconf"]
+stage2: "proc-apply-confirmed-pdsc-proposal.json"
 ---
 
 # Apply Confirmed PDSC Proposal

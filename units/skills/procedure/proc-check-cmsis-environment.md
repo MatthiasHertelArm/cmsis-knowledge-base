@@ -2,7 +2,7 @@
 type: "procedure"
 domain: "project"
 title: "check-cmsis-environment"
-summary: "Verify the CMSIS tools environment exported by the CMSIS Solution extension, CMSIS-Toolbox, CMake, Ninja, and available compiler toolchains. Use before creating or building a CMSIS solution project."
+summary: "Verify the CMSIS tools environment exported by the CMSIS Solution extension, CMSIS-Toolbox, CMake, Ninja, and available compiler toolchains, and return a `PASS` or `FAIL` report without installing or reconfiguring tools."
 status: "draft"
 source: "project/check-cmsis-environment/SKILL.md"
 preconditions: "The workspace root and, when present, its `.cmsis/tools-environment.yml` and `vcpkg-configuration.json` files."
@@ -12,6 +12,13 @@ output: "Report:\n\n- status: `PASS` or `FAIL`;\n- workspace `.cmsis/tools-envir
 sections: ["Execution Steps", "Expected Output", "Guardrails & Constraints", "Missing Tools", "Prerequisites & Context", "Target & Persona", "Validation Resources"]
 id: "proc-check-cmsis-environment"
 references: ["doc-github-com-arm-software-vscode-environment-manager", "doc-open-cmsis-pack-github-io-cmsis-toolbox-build-tools", "doc-open-cmsis-pack-github-io-cmsis-toolbox-installation", "doc-open-cmsis-pack-github-io-cmsis-toolbox-installation-compile"]
+description: "Verify the CMSIS tools environment exported by the CMSIS Solution extension, CMSIS-Toolbox, CMake, Ninja, and available compiler toolchains. Use before creating or building a CMSIS solution project."
+triggers: ["creating a CMSIS solution project", "building a CMSIS solution project"]
+verification: ["Confirm `cbuild`, CMake, Ninja, and the required compiler toolchain through the listed `cbuild` commands.", "Resolve the effective `cbuild` executable and run `cbuild --version`. Confirm that the command succeeds and record both its path and reported CMSIS-Toolbox version.", "When the generated file lists CMSIS-Toolbox, confirm that the effective executable comes from its selected directory and that the reported version matches the listed version.", "Run `cbuild list environment`. Record the reported environment and confirm that CMake and Ninja are both found.", "Run `cbuild list toolchains`. Record every detected compiler identifier and version. Use `cbuild list toolchains --verbose` to verify compiler paths and registration variables.", "Return `PASS` only when `cbuild` is available, CMake and Ninja are found, and at least one compiler toolchain is detected.", "When the generated environment identifies a compiler through `tools` or a compiler registration variable, also require `cbuild list toolchains` to report that compiler and version.", "When the manifest fallback is used and requests a compiler, require the reported compiler and version to match that request."]
+stop_conditions: ["Stop when YAML parsing fails or any consumed field has the wrong structure.", "Stop when it resolves outside the workspace, does not exist, or identifies a different solution.", "Stop on a missing path or tool directory.", "Stop when an artifact is absent or when its location is ambiguous.", "Stop when multiple extension installations make the selection ambiguous.", "Stop when `cbuild` is unavailable.", "When CMake or Ninja is missing, return `FAIL` and recommend that the user set up the build environment outside this skill.", "When no compiler is detected, return `FAIL` and recommend that the user set up a compiler outside this skill.", "When a requested vcpkg artifact is not already installed, return `FAIL` and ask the user to activate or repair the workspace environment outside this skill.", "When `.cmsis/tools-environment.yml` has structural errors in fields consumed by this skill, is stale, or references missing paths, return `FAIL` and ask the user to convert the solution or reactivate the tools environment in the CMSIS Solution extension.", "Stop when a selected artifact is absent or ambiguous, `cbuild` is unavailable, or a required environment check fails."]
+unmapped: ["CMSIS-Toolbox", "CMake", "Ninja", "compiler artifacts", "CMSIS Solution extension (arm.cmsis-csolution), optional discovery source", "Arm Tools Environment Manager, optional discovery source"]
+applies_to: {"tool": ["cbuild", "vcpkg"]}
+stage2: "proc-check-cmsis-environment.json"
 ---
 
 # Check CMSIS Environment

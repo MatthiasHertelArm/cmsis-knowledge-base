@@ -1,0 +1,174 @@
+# PROCEDURE
+
+---
+type: "procedure"
+domain: "project"
+title: "identify-zephyr-board"
+summary: "Resolve a user-supplied physical board to its exact Zephyr board target and fitted MCU or SoC using the installed west board catalog. Use when a project, build, or support lookup needs a version-matched Zephyr board identifier."
+status: "draft"
+source: "project/identify-zephyr-board/SKILL.md"
+preconditions: "The physical board manufacturer, model, relevant revision, and a verified Zephyr workspace with its venv-local west executable."
+portability: "Applies to boards represented by the installed Zephyr version. It depends on Zephyr board metadata but has no CMSIS-pack, compiler, debugger, or RTOS configuration assumption beyond Zephyr itself. Require:"
+tools: ["west"]
+output: "Report:\n\n- status: `MATCH` or `NO MATCH`;\n- physical board manufacturer, model, and revision;\n- Zephyr board name and exact board target;\n- vendor, default revision, revisions, and qualifiers from west;\n- fitted MCU or SoC;\n- installed board directory;\n- supporting local files and documentation URLs;\n- unresolved choice or mismatch when status is `NO MATCH`."
+sections: ["Execution Steps", "Expected Output", "Guardrails & Constraints", "Prerequisites & Context", "Target & Persona", "Validation Resources"]
+id: "proc-identify-zephyr-board"
+references: ["doc-docs-zephyrproject-org-latest-boards-index-html"]
+---
+
+# Identify Zephyr Board
+
+## Target & Persona
+
+- **Role:** Zephyr Project Integrator
+- **Objective:** Resolve one physical board to its exact target in the installed Zephyr board catalog and identify its fitted MCU or SoC.
+
+## Prerequisites & Context
+
+- **Expected input:** The physical board manufacturer, model, relevant revision, and a verified Zephyr workspace with its venv-local west executable.
+- **Dependencies:** An installed Zephyr workspace, its venv-local west executable, local board metadata and documentation, and the Zephyr supported-boards page for comparison.
+- **Portability:** Applies to boards represented by the installed Zephyr version. It depends on Zephyr board metadata but has no CMSIS-pack, compiler, debugger, or RTOS configuration assumption beyond Zephyr itself.
+
+Require:
+
+- physical board manufacturer and model;
+- board revision when it affects the device or Zephyr configuration;
+- verified Zephyr workspace and venv-local west executable.
+
+Do not select a board on the user's behalf or infer it solely from a connected
+debug probe or directory name.
+
+## Execution Steps (Strict Workflow)
+
+1. **Analysis:** Verify the supplied physical-board facts and use the installed west catalog as the version-matched source of candidates.
+2. **Processing:** Search candidates, inspect their metadata and local documentation, and construct an exact target only from confirmed data.
+3. **Validation:** Confirm the marketing name, vendor, fitted device, revision, and qualifiers; compare with the current online board listing without overriding local installed data.
+4. **Formatting:** Return the defined `MATCH` or `NO MATCH` report with local evidence, URLs, and unresolved choices.
+
+### Detailed procedure
+
+1. From the verified Zephyr workspace, run the venv-local `west boards` command.
+   Treat this version-matched catalog, generated from the installed `board.yml`
+   files, as authoritative for the installed Zephyr version.
+2. Find candidates with `west boards --fuzzy-match "<candidate>"`. Normalize
+   punctuation and capitalization only for searching; do not confirm a fuzzy
+   result without checking its metadata.
+3. For each candidate, run:
+
+   ```text
+   west boards --board <board-name> --cmakeformat "{NAME}|{VENDOR}|{SOCS}|{QUALIFIERS}|{REVISION_DEFAULT}|{REVISIONS}|{DIR}"
+   ```
+
+4. Read the referenced `board.yml` and board documentation. Confirm the marketing
+   name, vendor, fitted SoC, revision, and qualifiers against the physical board.
+5. Construct the exact target as `board-name[@revision][/qualifiers]`. Request the
+   intended target when multiple SoCs, CPU clusters, or variants remain possible.
+6. Identify the exact fitted MCU or SoC from the board metadata, devicetree files,
+   and documentation. Do not derive it solely from a board-name substring.
+7. Compare the result with the latest [Zephyr Supported Boards and Shields](https://docs.zephyrproject.org/latest/boards/index.html)
+   page. Report differences; keep the installed board data authoritative for the
+   installed Zephyr version.
+
+Stop when the physical board, exact target, or fitted device remains ambiguous.
+
+## Guardrails & Constraints (Strict Rules)
+
+- **No fabrication:** Do not invent a Zephyr target, fitted device, revision, qualifier, or board match from a probe, directory name, or fuzzy search alone.
+- **Portability:** Keep the installed Zephyr board catalog authoritative for its version; do not introduce CMSIS-pack, toolchain, debugger, or hardware assumptions.
+- **Critical blockers:** Stop when the physical board, exact target, fitted device, or a required variant choice remains ambiguous.
+- **Scope:** Resolve board identity only; do not create a project, build firmware, or configure a debug connection.
+- **Tone and style:** Respond factually and directly. Omit conversational filler.
+
+## Expected Output
+
+Report:
+
+- status: `MATCH` or `NO MATCH`;
+- physical board manufacturer, model, and revision;
+- Zephyr board name and exact board target;
+- vendor, default revision, revisions, and qualifiers from west;
+- fitted MCU or SoC;
+- installed board directory;
+- supporting local files and documentation URLs;
+- unresolved choice or mismatch when status is `NO MATCH`.
+
+## Validation Resources
+
+- [Zephyr Supported Boards and Shields](https://docs.zephyrproject.org/latest/boards/index.html)
+- Installed Zephyr `board.yml`, devicetree, and board documentation files
+
+
+# RULE
+
+---
+type: "rule"
+title: "Critical blockers"
+severity: "must"
+status: "draft"
+shared: false
+id: "rule-critical-blockers-identify-zephyr-board"
+constrains: ["proc-identify-zephyr-board"]
+---
+
+Stop when the physical board, exact target, fitted device, or a required variant choice remains ambiguous.
+
+
+# RULE
+
+---
+type: "rule"
+title: "No fabrication"
+severity: "must"
+status: "draft"
+shared: false
+id: "rule-no-fabrication-identify-zephyr-board"
+constrains: ["proc-identify-zephyr-board"]
+---
+
+Do not invent a Zephyr target, fitted device, revision, qualifier, or board match from a probe, directory name, or fuzzy search alone.
+
+
+# RULE
+
+---
+type: "rule"
+title: "Portability"
+severity: "must"
+status: "draft"
+shared: false
+id: "rule-portability-identify-zephyr-board"
+constrains: ["proc-identify-zephyr-board"]
+---
+
+Keep the installed Zephyr board catalog authoritative for its version; do not introduce CMSIS-pack, toolchain, debugger, or hardware assumptions.
+
+
+# RULE
+
+---
+type: "rule"
+title: "Scope"
+severity: "must"
+status: "draft"
+shared: false
+id: "rule-scope-identify-zephyr-board"
+constrains: ["proc-identify-zephyr-board"]
+---
+
+Resolve board identity only; do not create a project, build firmware, or configure a debug connection.
+
+
+# RULE
+
+---
+type: "rule"
+title: "Tone and style"
+severity: "must"
+status: "draft"
+shared: true
+id: "rule-tone-and-style"
+constrains: ["proc-add-cmsis-target", "proc-apply-confirmed-pdsc-proposal", "proc-board-debug-knowledge", "proc-check-cmsis-environment", "proc-check-pyocd-availability", "proc-check-zephyr-environment", "proc-cmsis-stream", "proc-create-csolution-github-action", "proc-debug-access-knowledge", "proc-debug-knowledge", "proc-evaluate-ethos-u-variants", "proc-generate-debug-description", "proc-generate-debug-sequences", "proc-generate-trace-sequences", "proc-identify-cmsis-board-layer", "proc-identify-cmsis-board-support", "proc-identify-zephyr-board", "proc-manage-pdsc-debugvars", "proc-prepare-pdsc-sequence-change", "proc-pyocd-detect-debug-topology", "proc-resolve-official-device-documentation", "proc-start-zephyr-project", "proc-validate-pdsc-sequence-xml"]
+canonical: true
+---
+
+Respond factually and directly. Omit conversational filler.

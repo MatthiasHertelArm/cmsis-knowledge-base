@@ -1,0 +1,66 @@
+{
+  "id": "proc-fvp-debug-setup",
+  "summary": "Make Load & Debug and Run work against an Arm FVP model",
+  "triggers": [
+    "debug firmware on a Corstone FVP",
+    "migrate off fvp-gdb/Iris",
+    "map the CMSIS view buttons to an FVP in a csolution project"
+  ],
+  "applies_to": {
+    "tool": [],
+    "toolchain": [],
+    "core": [],
+    "component": [],
+    "api": []
+  },
+  "unmapped": [
+    "MDK FVP models 11.32.23+ with the GDBServer plugin (`arm:models/arm/avh-fvp` >= 11.32.23 in `vcpkg-configuration.json`)",
+    "Docker on macOS",
+    "arm-none-eabi-gdb",
+    "activated Arm user-based license in `~/.armlm`",
+    "CMSIS Solution extension (`arm.cmsis-csolution`)",
+    "gdbtarget debug adapter (`eclipse-cdt.cdt-gdb-vscode`)"
+  ],
+  "verification": [
+    "Regenerate and confirm the node landed: the `debugger:` block in `out/<solution>+<target>.cbuild-run.yml` should show `name: Arm-FVP`, `model:`, `config-file:`.",
+    "`cmsis_action { action: 'build' }`, then `cmsis_action { action: 'load_and_debug' }` with the FVP target active.",
+    "The result reports a session that stopped at `main`. `get_call_stack` shows `main` on top.",
+    "`get_recent_problems { sources: ['gdb-server'], minSeverity: 'info' }` lists the model's output. The line `GDBServer: Listening address=\"0.0.0.0\" port=3333` must appear **before** the session came up. A line `gdb connection lost` followed by the banner means fix 5(a) or 5(b) is missing.",
+    "`continue_execution`, then read the firmware's output: the model's stdout is in the debug console, and the UART is in its telnet or log file, as the model's configuration says.",
+    "`stop_debugging`. On macOS, `docker ps` must be empty afterwards.",
+    "`cmsis_action { action: 'load_and_run' }` for the free-running path (no `-D`, no plugin), and check that the firmware's output appears; `cmsis_action { action: 'stop_run' }` ends it.",
+    "When the session cannot be started through VS Code, or the user asks for the launch path to be replayed outside it, `templates/verify-launch.py` in this skill directory does that: it parses the committed `launch.json`, spawns `target.server` with `target.serverParameters` as VS Code would expand them, reads the server's output until `serverPortRegExp` matches, then runs `arm-none-eabi-gdb -batch` with the configuration's `initCommands` plus `continue`, `bt`, `detach`. It talks to the model only, never to a board. It exits non-zero unless the breakpoint was hit and no container was left behind, and it says so when `target.port` is still set, which means fix 5(a) was never applied.",
+    "Success looks like:\n\nport detected: 3333 after 0.9s\nTemporary breakpoint 1, main () at board/.../main.c:31\n[Inferior 1 (Remote target) detached]"
+  ],
+  "stop_conditions": [],
+  "rules": [],
+  "extracted": [
+    {
+      "type": "concept",
+      "title": "FVP GDBServer plugin: -D starts the model halted, RSP detach does not resume",
+      "body": "**`-D` / `--allow-debug-plugin` is what makes the model start halted at the reset vector.** With the plugin but without `-D` the model opens the port *and free-runs to completion* — a `tbreak main` would never fire. With `-D` it waits, and GDB attaches at `Reset_Handler`.\n**RSP detach does not resume the target.** After `detach` the core stays halted at wherever it was, and `monitor help` lists only logging commands — there is no resume. So a \"Run\" action cannot resume a halted debug instance; it must start its own free-running model (no plugin, no `-D`)."
+    },
+    {
+      "type": "troubleshooting",
+      "title": "GDB connects before the FVP model is listening",
+      "symptoms": ["gdb connection lost"],
+      "body": "The template sets both `port` and `serverParameters`, so GDB connects immediately while the model still needs a second or more to build the platform (plus a container start on macOS). The symptom is a session that tears itself down and only *then* prints the banner:\n\ngdb connection lost\nGDBServer: Listening address=\"0.0.0.0\" port=3333    ← too late\nInfo: <model>: Stopping simulation...\n\nBlank the port to select the event-driven branch — better than `serverStartupDelay`, which is a fixed cost paid on every single launch:\n\n\"port\": \"\",\n\"serverPortRegExp\": \"GDBServer: Listening .*port=([0-9]+)\",\n\"portDetectionTimeout\": 300000\n\n**(b) The banner is stuck in a pipe buffer.** The model block-buffers its own stdout whenever it is not a TTY — which it never is under VS Code — so the banner (and every semihosting `printf`) sits in a 4KB buffer until the model exits. Fix (a) reads that banner, so it depends on this. Run the model under `stdbuf -oL -eL`"
+    },
+    {
+      "type": "troubleshooting",
+      "title": "Arm FVP license refused inside a Docker container",
+      "symptoms": ["Fatal: license error: The license found is assigned to another user."],
+      "body": "The container must run as the **host user name and uid** (`groupadd`/`useradd` from build args), with `~/.armlm` mounted and `ARMLM_CACHED_LICENSES_LOCATION` set — the Arm user-based license is bound to the account that activated it, otherwise: `Fatal: license error: The license found is assigned to another user.`"
+    },
+    {
+      "type": "concept",
+      "title": "No macOS build of the Arm FVP",
+      "body": "**Host support.** The artifact has demands for `windows and x64`, `linux and x64`, `linux and arm64` — **no darwin**. On macOS `vcpkg activate` silently installs nothing (you get an artifact dir containing only `artifact.json`), so the model has to run in Docker. Check `docker info` there."
+    },
+    {
+      "type": "concept",
+      "title": "How the CMSIS Solution extension regenerates CMSIS tasks and launch configurations",
+      "body": "On regeneration the extension rewrites every `CMSIS *` task and every launch config carrying `\"cmsis\": {\"updateConfiguration\": \"auto\"}`, and *removes* auto configs that are not in the generated set. `\"manual\"` survives both. Regeneration also fires on a plain file-watch of the csolution yml — useful for testing: `touch <name>.csolution.yml`, wait, re-read `.vscode/launch.json`."
+    }
+  ]
+}

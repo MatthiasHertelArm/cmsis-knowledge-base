@@ -3,12 +3,18 @@ type: "procedure"
 domain: "debug"
 title: "debugger-troubleshooting"
 summary: "Find out why a debug or flash session fails to start, connect or program"
-triggers: ["Diagnose a failing embedded debug or flash session: the GDB server will not start, the target will not connect, \"Failed to power up DAP\", \"Could not find core in Coresight setup\", \"Could not read memory\", \"Waiting for a debug probe\", flashing succeeds but the firmware faults or is silent, or programming is implausibly slow. Covers pyOCD and J-Link sessions of the CMSIS Debugger, CMSIS-Toolbox cbuild-run files and FVP setups, and works through the CMSIS Developer Assistant tools first. Use when cmsis_action load_and_debug, attach, load or flash fails and the cause is not obvious from the error text."]
+triggers: ["cmsis_action load_and_debug, attach, load or flash fails", "the cause is not obvious from the error text"]
 status: "draft"
 source: "debugger-troubleshooting/SKILL.md"
 tools: ["cbuild", "pyocd"]
 sections: ["0. Read the error for what it actually says", "1. Is something already holding the probe or the port?", "2. Is it the core you think it is?", "3. Connection failures, in increasing severity", "4. `Could not read memory` at an external-memory window", "5. It flashed, but the firmware faults or prints nothing", "6. Flashing an ELF that drops its RW init data", "7. Programming is implausibly slow", "8. J-Link device definitions", "9. pyOCD specifics", "When you are through"]
 id: "proc-debugger-troubleshooting"
+description: "Diagnose a failing embedded debug or flash session: the GDB server will not start, the target will not connect, \"Failed to power up DAP\", \"Could not find core in Coresight setup\", \"Could not read memory\", \"Waiting for a debug probe\", flashing succeeds but the firmware faults or is silent, or programming is implausibly slow. Covers pyOCD and J-Link sessions of the CMSIS Debugger, CMSIS-Toolbox cbuild-run files and FVP setups, and works through the CMSIS Developer Assistant tools first. Use when cmsis_action load_and_debug, attach, load or flash fails and the cause is not obvious from the error text."
+verification: ["Verify instead of assuming: `get_section_layout` gives the load address of the RW section; `read_memory` there must show the initial values, not `0xFF`.", "Validating the XML on the host is allowed: `xmllint --noout JLinkDevices.xml`."]
+stop_conditions: ["Those steps are for the user to run, or for you once the user asks for that specific command: say what the command would show and why it is needed, and wait.", "Identify the process before anything is stopped: it may be a session the user wants. Tell the user what holds the port and let them decide.", "Ask the user to unplug and replug power; the reset button is often not enough.", "The probe vendor's own loader, if it supports the part. That is the user's call and the user's command.", "These need J-Link's own tools. Explain, and let the user run them.", "Other pyOCD session options, such as a longer timeout for a flash algorithm that brings up a memory controller, have no node there: that is a change for the user to make and test.", "That is a defect of the pack: report it with the device and the region, and see `cmsis-pack` for the debug description.", "If no check found it, say which ones passed, and stop."]
+unmapped: ["CMSIS Debugger", "J-Link", "CMSIS-Toolbox cbuild-run files", "FVP setups"]
+applies_to: {"tool": ["pyocd"]}
+stage2: "proc-debugger-troubleshooting.json"
 ---
 
 # Debugger troubleshooting

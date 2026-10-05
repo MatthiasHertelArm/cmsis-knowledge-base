@@ -18,6 +18,9 @@ python3 tools/review_csv.py units/troubleshooting messages-to-review.csv
 # Documentation of open-licence repositories, one unit per section (sources/docs.yml).
 python3 tools/doc2ku.py sources/docs.yml "$W/docs" units/docs --fetch
 DOC_UNITS=(--units units/docs)
+# Closed GitHub issues of the tools, digested in own words (stage2/issues_prompt.md, mode S).
+python3 tools/issues2ku.py stage2/issues-out units/issues
+DOC_UNITS+=(--units units/issues)
 if [ -n "${CCBYSA:-}" ]; then
   python3 tools/doc2ku.py sources/docs-ccbysa.yml "$W/docs" units/docs-ccbysa --fetch
   DOC_UNITS+=(--units units/docs-ccbysa)
@@ -27,6 +30,12 @@ CDA_UNITS=()
 if [ -n "${CDA:-}" ]; then
   rm -rf units/cda-skills units/cda-routes
   python3 tools/skill2ku.py "$CDA/skills" units/cda-skills --known units/skills
+fi
+# Stage 2 of the extension's skills; also without CDA, since units/extracted was cleared above.
+if [ -d units/cda-skills ]; then
+  python3 tools/stage2_merge.py units/cda-skills stage2/out_cda
+fi
+if [ -n "${CDA:-}" ]; then
   python3 tools/routes2ku.py "$CDA/scripts/skills.config.json" units/cda-routes units/skills units/cda-skills
 fi
 [ -d units/cda-skills ] && CDA_UNITS+=(--units units/cda-skills)

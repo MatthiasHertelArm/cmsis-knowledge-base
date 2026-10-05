@@ -2,7 +2,7 @@
 """stage2_merge: schreibt Stufe-2-Ergebnisse (JSON je Procedure) in die Einheiten aus Stufe 1.
 
 - summary, triggers, applies_to, unmapped, verification, stop_conditions -> Frontmatter der Procedure.
-  Der Body bleibt unveraendert.
+  Der Body bleibt unveraendert. Die Beschreibung aus Stufe 1 bleibt als description erhalten.
 - rules generic ohne delta: Procedure wandert von der spezifischen Rule zur kanonischen Rule.
   Bleibt die spezifische Rule ohne constrains, wird sie geloescht.
 - rules generic mit delta: Rule bleibt, Body wird zum delta, refines -> canonical_id.
@@ -44,6 +44,10 @@ def main(units, jdir):
         pid = d["id"]
         pp = units / "procedure" / f"{pid}.md"
         meta, body = load(pp)
+        # Die Skill-Beschreibung aus Stufe 1 bleibt durchsuchbar: Stufe 2 kuerzt summary und triggers,
+        # die Beschreibung nennt aber Symptome und Begriffe (HardFault, Hang), nach denen gesucht wird.
+        if not meta.get("description"):
+            meta["description"] = " ".join(meta.get("triggers") or []) or meta.get("summary", "")
         for k in ("summary", "triggers", "verification", "stop_conditions", "unmapped"):
             if d.get(k):
                 meta[k] = d[k]

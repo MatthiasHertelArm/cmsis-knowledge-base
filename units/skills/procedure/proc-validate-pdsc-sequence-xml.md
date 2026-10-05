@@ -2,7 +2,7 @@
 type: "procedure"
 domain: "pack"
 title: "validate-pdsc-sequence-xml"
-summary: "Validate common CMSIS-Pack PDSC sequence XML and C-like block formatting through the active conversation after a proposed or applied change. Use for debug or trace PDSC sequence edits that need XML/PDSC syntax, block layout, and complete match inspection; do not create agent-artifact records or validate device behavior."
+summary: "Validate common CMSIS-Pack PDSC sequence XML and C-like block formatting through the active conversation after a proposed or applied change, returning commands, inspected matches, failures, resolutions, and `PASS` or `FAIL`."
 status: "draft"
 source: "pack/validate-pdsc-sequence-xml/SKILL.md"
 preconditions: "Target PDSC, changed XML, proposed or applied change details, and available XML/PDSC toolchain."
@@ -12,6 +12,13 @@ output: "Return the common validation result in conversation. Do not create or u
 sections: ["Execution Steps", "Expected Output", "Guardrails & Constraints", "Prerequisites & Context", "Target & Persona", "Validation Resources"]
 id: "proc-validate-pdsc-sequence-xml"
 references: ["doc-open-cmsis-pack-github-io-open-cmsis-pack-spec-main-html-deb"]
+description: "Validate common CMSIS-Pack PDSC sequence XML and C-like block formatting through the active conversation after a proposed or applied change. Use for debug or trace PDSC sequence edits that need XML/PDSC syntax, block layout, and complete match inspection; do not create agent-artifact records or validate device behavior."
+triggers: ["debug or trace PDSC sequence edits", "XML/PDSC syntax", "block layout", "complete match inspection"]
+verification: ["Run and inspect every relevant match from `rg -n '<block>.*;</block>' <target.pdsc>` and `rg -n '^[[:space:]]*[^<].*;.*;' <target.pdsc>`.", "Resolve each C-like match; one-line block bodies and multiple statements on one line fail validation.", "When the requested change also affects an SVD, run `svdconv`; when pack consumption must be checked, register or install the local PDSC or pack with `cpackget`.", "Use the current Debug Description specification for sequence grammar; `packchk` with `-i` options for PDSC and dependency-pack validation; and the two required `rg` checks for block-format inspection.", "Use `cpackget` to check local-pack registration or installation when required, and `svdconv` for an affected SVD."]
+stop_conditions: ["Stop when `packchk` or required XML/PDSC validation cannot run, a required match remains unresolved, or the target PDSC is unavailable."]
+unmapped: ["rg", "CMSIS-Toolbox", "XML/PDSC validation toolchain", "CMSIS-Pack PDSC"]
+applies_to: {"tool": ["packchk", "cpackget", "svdconv"]}
+stage2: "proc-validate-pdsc-sequence-xml.json"
 ---
 
 # Validate PDSC Sequence XML

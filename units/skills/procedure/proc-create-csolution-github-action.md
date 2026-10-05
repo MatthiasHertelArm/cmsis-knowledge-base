@@ -2,7 +2,7 @@
 type: "procedure"
 domain: "devops"
 title: "create-csolution-github-action"
-summary: "Create a GitHub Actions workflow that builds selected targets from the currently loaded CMSIS solution and optionally tests configured FVP targets. Use when a CMSIS solution workspace needs single-target or target-matrix CI."
+summary: "Create one GitHub Actions workflow that builds selected targets from the currently loaded CMSIS solution and optionally tests configured FVP targets, and report the selected targets, FVP rows, and validation results."
 status: "draft"
 source: "devops/create-csolution-github-action/SKILL.md"
 preconditions: "A Git repository containing `.vscode/cmsis.json`, the loaded `*.csolution.yml`, and a reproducible CI tool configuration."
@@ -12,6 +12,13 @@ output: "Create one workflow:\n\n- `.github/workflows/build-<solution-name>.yml`
 sections: ["Execution Steps", "Expected Output", "Guardrails & Constraints", "Prerequisites & Context", "Target & Persona", "Validation Resources"]
 id: "proc-create-csolution-github-action"
 references: ["asset-create-csolution-github-action-assets-workflow-matrix-yml", "asset-create-csolution-github-action-assets-workflow-single-yml", "doc-github-com-arm-software-cmsis-actions", "doc-open-cmsis-pack-github-io-cmsis-toolbox-build-tools"]
+description: "Create a GitHub Actions workflow that builds selected targets from the currently loaded CMSIS solution and optionally tests configured FVP targets. Use when a CMSIS solution workspace needs single-target or target-matrix CI."
+triggers: ["CMSIS solution workspace needs single-target or target-matrix CI", "single-target CI", "target-matrix CI"]
+verification: ["Parse the generated YAML, verify its paths and target names, and prove that non-FVP targets cannot start a simulator.", "Parse the completed workflow with a YAML parser. Run `actionlint` when it is already installed; do not install it.", "Verify the solution, active target, every matrix target, manifest path, and FVP config path against the project.", "Confirm that non-FVP rows have `fvp: \"\"` and cannot execute FVP steps.", "Confirm the workflow has top-level `permissions: contents: read` and grants no additional permissions.", "Search for unresolved `__NAME__` tokens and machine-specific absolute paths.", "Run `git diff --check`."]
+stop_conditions: ["If several solutions are listed, ask the user which one to use.", "Stop if it is missing or ambiguous.", "If the repository uses another CI tool setup, use it only when the user identifies it.", "With multiple target-types, ask whether to build only the active target or all targets.", "When at least one selected target is FVP-capable, offer to add **test on FVP simulation model**. Add no simulator steps when the user declines.", "When FVP testing is selected, offer to run an existing local test to obtain representative output. Run it only after the user agrees.", "Show candidate success lines and require user confirmation before adding exact `grep -Fq` checks.", "Stop when the loaded solution is ambiguous, the active target is invalid, CI tool provisioning is undefined, a required pack is not public, an FVP configuration is incomplete, or the workflow fails YAML validation."]
+unmapped: ["CMSIS-Toolbox", "GitHub Actions", "`ARM-software/cmsis-actions/vcpkg@v1`", "`ARM-software/cmsis-actions/armlm@v1`", "FVP provided by the project tool environment", "actionlint", "git"]
+applies_to: {"tool": ["cbuild", "vcpkg"]}
+stage2: "proc-create-csolution-github-action.json"
 ---
 
 # Create CMSIS Solution GitHub Action

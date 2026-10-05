@@ -12,6 +12,7 @@ output: "Return one availability record in the stated format, preferring a verif
 sections: ["Execution Steps", "Expected Output", "Guardrails & Constraints", "Prerequisites & Context", "Target & Persona", "Validation Resources"]
 id: "proc-check-pyocd-availability"
 requires: ["proc-pyocd-detect-debug-topology"]
+description: "Prefer the active Visual Studio Code CMSIS Debugger extension's bundled pyOCD, or otherwise check whether pyOCD is runnable from the active shell. Use before a workflow needs to run pyOCD without installing, configuring, or modifying it."
 triggers: ["before a workflow needs to run pyOCD", "without installing, configuring, or modifying it"]
 verification: ["Confirm the result in the environment used for the lookup", "a bundled result requires the exact extension ID and its `tools/pyocd/` directory", "a PATH result requires a successful `pyocd --version`", "otherwise report pyOCD unavailable", "Use `pyocd --version` as the repeatable runnable-command check.", "In Visual Studio Code, use the exact installed-extension identifier `arm.vscode-cmsis-debugger` and verify its actual `tools/pyocd/` subdirectory."]
 stop_conditions: ["When verified, report this bundled directory as the preferred pyOCD installation and stop: it is not necessary to check `PATH`.", "Do not proceed to target detection or install software.", "Report the relevant check as unavailable when the required terminal, extension query, or extension directory cannot be accessed. Do not search unrelated directories or request a target connection."]

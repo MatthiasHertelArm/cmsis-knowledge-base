@@ -1,0 +1,51 @@
+{
+  "id": "proc-check-zephyr-environment",
+  "summary": "Verify an existing Zephyr workspace, its Python virtual environment, and the venv-local west installation, returning a `PASS` or `FAIL` report without installing, upgrading, repairing, or reconfiguring Zephyr, Python, or west.",
+  "triggers": [
+    "before running Zephyr commands",
+    "creating projects that depend on an installed Zephyr workspace"
+  ],
+  "applies_to": {"tool": ["west"], "toolchain": [], "core": [], "component": [], "api": []},
+  "unmapped": [
+    "Zephyr workspace",
+    "Python",
+    "`.venv` virtual environment"
+  ],
+  "verification": [
+    "Confirm virtual-environment isolation, west operation, workspace identity, and the installed Zephyr repository path.",
+    "Run the selected Python executable with `-c \"import sys; print(sys.prefix); print(sys.base_prefix)\"`. Confirm that `sys.prefix` differs from `sys.base_prefix`.",
+    "Run the selected `west` executable with `--version`. Do not substitute a global `west` executable.",
+    "From the Zephyr workspace, run the selected `west` executable with `topdir`. Confirm that it succeeds and resolves to the expected workspace.",
+    "From the same directory, run the selected `west` executable with `list zephyr -f \"{abspath}\"`. Confirm that it returns an existing Zephyr repository path.",
+    "Return `PASS` only when every check succeeds."
+  ],
+  "stop_conditions": [
+    "Obtain the Zephyr workspace path.",
+    "Stop on the first failed check.",
+    "Stop at the first missing workspace, virtual environment, executable, failed command, or mismatched west top-level directory."
+  ],
+  "rules": [
+    {"id": "rule-critical-blockers-check-zephyr-environment", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-no-fabrication-check-zephyr-environment", "class": "generic", "canonical_id": "rule-no-fabrication", "delta": "workspace paths, executable paths, Zephyr repository locations, or command results"},
+    {"id": "rule-portability-check-zephyr-environment", "class": "generic", "canonical_id": "rule-portability", "delta": "Use only the documented platform-specific venv paths"},
+    {"id": "rule-scope-check-cmsis-environment", "class": "generic", "canonical_id": "rule-no-install", "delta": "Verify the existing environment only; … update, repair, or reconfigure tools."},
+    {"id": "rule-tone-and-style", "class": "generic", "canonical_id": "rule-tone-and-style", "delta": ""}
+  ],
+  "extracted": [
+    {
+      "type": "concept",
+      "title": "Zephyr workspace virtual-environment executables per host",
+      "body": "- Windows: `.venv/Scripts/python.exe` and `.venv/Scripts/west.exe`\n- macOS/Linux: `.venv/bin/python` and `.venv/bin/west`"
+    },
+    {
+      "type": "pattern",
+      "title": "Confirm that a Python executable runs inside a virtual environment",
+      "body": "Run the selected Python executable with `-c \"import sys; print(sys.prefix); print(sys.base_prefix)\"`. Confirm that `sys.prefix` differs from `sys.base_prefix`."
+    },
+    {
+      "type": "concept",
+      "title": "Default CMSIS-Zephyr workspace location",
+      "body": "Use `$HOME/zephyrproject` when the user followed the default CMSIS-Zephyr installation instructions and did not choose another location."
+    }
+  ]
+}

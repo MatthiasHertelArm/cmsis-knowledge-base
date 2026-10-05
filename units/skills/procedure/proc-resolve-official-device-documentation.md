@@ -2,7 +2,7 @@
 type: "procedure"
 domain: "bring-up"
 title: "resolve-official-device-documentation"
-summary: "Recover or conclusively account for an unavailable vendor device-documentation URL by finding the current official source and returning a traceable retrieval result. Use when a CMSIS device, debug, trace, board, or Pack research workflow has a broken, moved, or inaccessible vendor document reference."
+summary: "Recover or conclusively account for an unavailable vendor device-documentation URL by finding the current official source and returning a traceable retrieval result."
 status: "draft"
 source: "bring-up/resolve-official-device-documentation/SKILL.md"
 preconditions: "A failed URL, document title or identifier when known, vendor, product or device family, and the required document type."
@@ -10,6 +10,12 @@ portability: "Support any vendor and MCU family. Do not assume a vendor portal, 
 output: "Return this Markdown table in conversation:\n\n```markdown\n| Title | Failed URL | Retrieval issue and search terms | Replacement official URL | Requested workspace path |\n|---|---|---|---|---|\n```\n\nCallers copy the returned row into their own document-download table and retain the failed URL even when a replacement is found. For an unavailable source, write `Unavailable` in `Replacement official URL` and state the precise reason in `Retrieval issue and search terms`."
 sections: ["Execution Steps", "Expected Output", "Guardrails & Constraints", "Prerequisites & Context", "Target & Persona", "Validation Resources"]
 id: "proc-resolve-official-device-documentation"
+description: "Recover or conclusively account for an unavailable vendor device-documentation URL by finding the current official source and returning a traceable retrieval result. Use when a CMSIS device, debug, trace, board, or Pack research workflow has a broken, moved, or inaccessible vendor document reference."
+triggers: ["CMSIS device, debug, trace, board, or Pack research workflow", "broken, moved, or inaccessible vendor document reference"]
+verification: ["Return `Resolved` only when the replacement is an official vendor source and its identity is sufficiently evidenced.", "Do not replace a missing official source with an unofficial mirror, distributor copy, forum post, or search-result snippet.", "Validate every `Resolved` row against the vendor's own domain, document portal, or authenticated vendor download flow, and compare its title/identifier, product applicability, and revision with the supplied context.", "Record the exact validation limitation for every `Unavailable` row."]
+stop_conditions: ["If no source can be verified, return `Unavailable` with the attempted terms and precise reason.", "Stop with `Unavailable` when the supplied identity is too ambiguous to distinguish a document or no official replacement can be verified."]
+unmapped: ["access to the web or supplied vendor documentation"]
+stage2: "proc-resolve-official-device-documentation.json"
 ---
 
 # Resolve Official Device Documentation

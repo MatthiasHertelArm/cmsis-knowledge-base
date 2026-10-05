@@ -3,7 +3,7 @@ type: "procedure"
 domain: "bring-up"
 title: "cmsis-pack-docs"
 summary: "Look up registers, peripherals, errata and board facts in the target's manuals, with page citations"
-triggers: ["Look things up in the documentation of the current CMSIS csolution target through the CMSIS Developer Assistant documentation tools (list_target_docs, search_target_docs, read_doc_pages, fetch_doc, get_peripheral_docs) — the reference manual, datasheet, errata and board manual the packs ship or link, the Arm documents for the device's core (architecture reference manual, ADIv5/ADIv6, CoreSight and ETM specifications, core TRM), and the datasheets of third-party parts (sensors, ADCs, codecs) the user added or fetch_doc downloaded. Use for any part number before searching the web, before assuming what a peripheral register or bit does, when the SVD gives a bit position but not its meaning, when a peripheral does not behave as expected (check the errata), when a debug/trace bring-up skill needs a vendor or Arm document, or when the user asks where something is documented. Cites document id, edition and page. The tools are on by default; the setting `cmsis-developer-assistant.packDocs.enabled` drops or restores them (window reload)."]
+triggers: ["any part number before searching the web", "before assuming what a peripheral register or bit does", "the SVD gives a bit position but not its meaning", "a peripheral does not behave as expected", "the user asks where something is documented"]
 status: "draft"
 source: "cmsis-pack-docs/SKILL.md"
 tools: ["csolution", "cbuild"]
@@ -11,6 +11,11 @@ sections: ["Citing", "For the bring-up skills", "Rules of thumb", "What the docu
 id: "proc-cmsis-pack-docs"
 requires: ["proc-resolve-official-device-documentation"]
 consumes: ["artifact-docs"]
+description: "Look things up in the documentation of the current CMSIS csolution target through the CMSIS Developer Assistant documentation tools (list_target_docs, search_target_docs, read_doc_pages, fetch_doc, get_peripheral_docs) — the reference manual, datasheet, errata and board manual the packs ship or link, the Arm documents for the device's core (architecture reference manual, ADIv5/ADIv6, CoreSight and ETM specifications, core TRM), and the datasheets of third-party parts (sensors, ADCs, codecs) the user added or fetch_doc downloaded. Use for any part number before searching the web, before assuming what a peripheral register or bit does, when the SVD gives a bit position but not its meaning, when a peripheral does not behave as expected (check the errata), when a debug/trace bring-up skill needs a vendor or Arm document, or when the user asks where something is documented. Cites document id, edition and page. The tools are on by default; the setting `cmsis-developer-assistant.packDocs.enabled` drops or restores them (window reload)."
+verification: ["`read_doc_pages { doc, pages }` for the full page(s) around the best hit before answering — snippets are 400 characters.", "Never cite a snippet alone; read the page."]
+stop_conditions: ["When a pack ships no manual and a document is needed, tell the user about *CMSIS Developer Assistant: Import Document for Current Target* — a PDF they have becomes searchable in one step.", "Or tell the user to drop the PDF into the workspace `docs/` folder, or to import it with the scope *board* or *all targets*.", "Only then add the *Documents requiring user download* row, with **Requested workspace path** `.agent-artifacts/docs/<file>.pdf` — a copy placed there is listed and searched automatically.", "If the tools are missing from your tool list they are switched off: point the user at `cmsis-developer-assistant.packDocs.enabled` (window reload) instead of asking for documents."]
+unmapped: ["CMSIS Developer Assistant documentation tools (setting `cmsis-developer-assistant.packDocs.enabled`)", "csolution target whose device family pack (DFP) and board pack (BSP) ship or link the vendor documentation"]
+stage2: "proc-cmsis-pack-docs.json"
 ---
 
 # CMSIS Pack Docs

@@ -2,7 +2,7 @@
 type: "procedure"
 domain: "project"
 title: "identify-cmsis-board-layer"
-summary: "Identify packaged CMSIS board layers compatible with an existing solution target and its required connections. Use after a board or device target and its verified DFP/BSP entries exist, before selecting or copying a layer into the project."
+summary: "Identify packaged CMSIS board layers compatible with an existing solution target and its required connections, returning `MATCHES`, `NO MATCH`, or `NOT REQUIRED` with exact command evidence."
 status: "draft"
 source: "project/identify-cmsis-board-layer/SKILL.md"
 preconditions: "An existing `*.csolution.yml`, the exact target-type name to inspect, and verified board, device, DFP, and optional BSP identifiers from `identify-cmsis-board-support`."
@@ -13,6 +13,13 @@ sections: ["Execution Steps", "Expected Output", "Guardrails & Constraints", "Pr
 id: "proc-identify-cmsis-board-layer"
 requires: ["proc-identify-cmsis-board-support"]
 references: ["doc-open-cmsis-pack-github-io-cmsis-toolbox-referenceapplication", "doc-open-cmsis-pack-github-io-cmsis-toolbox-yml-input-format-aut"]
+description: "Identify packaged CMSIS board layers compatible with an existing solution target and its required connections. Use after a board or device target and its verified DFP/BSP entries exist, before selecting or copying a layer into the project."
+triggers: ["board or device target and its verified DFP/BSP entries exist", "before selecting or copying a layer into the project"]
+verification: ["Accept only tool-reported candidates whose target constraints and provided connections satisfy the active project requirements.", "`csolution --version`, `csolution list layers -h`, and `csolution list layers`."]
+stop_conditions: ["Confirm that the requested target type exists in the solution and that its unqualified `board:` or `device:` value matches the verified identification result. Stop on any mismatch or ambiguity.", "If the context does not use a board layer, return `NOT REQUIRED` rather than searching for one.", "Require the installed command to support `--active` and `--verbose`; stop if either option is unavailable.", "If this or any other `csolution` command in this workflow reports a command-line syntax or option-parsing error, stop immediately and report the command and error; do not retry with altered syntax.", "If several candidates remain, return all of them so the caller can ask the user which one to use.", "Stop on a missing target, mismatch with the verified identity, unavailable required pack, unsupported required `csolution` option, `csolution` syntax or option-parsing error, failed layer query, missing candidate source, or ambiguous active context that cannot be resolved from the project."]
+unmapped: ["CMSIS-Toolbox", "access to install the verified DFP and BSP when absent"]
+applies_to: {"tool": ["csolution", "cpackget"]}
+stage2: "proc-identify-cmsis-board-layer.json"
 ---
 
 # Identify CMSIS Board Layer

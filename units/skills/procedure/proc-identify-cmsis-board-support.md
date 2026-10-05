@@ -2,7 +2,7 @@
 type: "procedure"
 domain: "project"
 title: "identify-cmsis-board-support"
-summary: "Resolve a supplied board or device to exactly one verified CMSIS identity, identify its BSP or DFP, and ask the user when multiple candidates remain. Use when a CMSIS solution needs verified board, device, and pack identifiers."
+summary: "Resolve a supplied board or device to exactly one verified CMSIS identity, identify its BSP or DFP, and ask the user when multiple candidates remain."
 status: "draft"
 source: "project/identify-cmsis-board-support/SKILL.md"
 preconditions: "A user-supplied board or device name, which may be fuzzy. Manufacturer, board revision, and fitted MCU or SoC evidence should be included when available."
@@ -13,6 +13,13 @@ sections: ["Execution Steps", "Expected Output", "Guardrails & Constraints", "Pr
 id: "proc-identify-cmsis-board-support"
 requires: ["proc-identify-zephyr-board"]
 references: ["doc-www-keil-arm-com-boards", "doc-www-keil-arm-com-devices"]
+description: "Resolve a supplied board or device to exactly one verified CMSIS identity, identify its BSP or DFP, and ask the user when multiple candidates remain. Use when a CMSIS solution needs verified board, device, and pack identifiers."
+triggers: ["CMSIS solution", "verified board, device, and pack identifiers"]
+verification: ["Confirm every accepted catalog result against the board, device, processor/core, family, and optional installed-pack query.", "CMSIS-Toolbox `csolution list boards` and `csolution list devices` commands"]
+stop_conditions: ["If more than one plausible board remains, return `AMBIGUOUS`, list the exact candidates and distinguishing details, and ask the user to choose.", "If the physical board cannot be established, return `NO MATCH`.", "If more than one plausible `Dname` or required processor remains, return `AMBIGUOUS`, list the exact candidates and distinguishing details, and ask the user to choose.", "If no device can be established, return `NO MATCH`.", "Stop when a required identity has no authoritative match, neither catalog match is established, or the user has not resolved an `AMBIGUOUS` result."]
+unmapped: ["access to the Keil Boards and Devices catalogs", "CMSIS-Toolbox"]
+applies_to: {"tool": ["csolution"]}
+stage2: "proc-identify-cmsis-board-support.json"
 ---
 
 # Identify CMSIS Board Support

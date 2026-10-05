@@ -1,0 +1,428 @@
+[
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1148",
+  "tool": "pyocd",
+  "title": "STM32H743 ROM table probe fails with memory transfer fault on connect",
+  "symptoms": [
+   "0000861:WARNING:rom_table:Invalid coresight component, cidr=0x0"
+  ],
+  "cause": "STM32H7 parts must have the DBGMCU control register set to enable debug clocks and low-power debug before CoreSight discovery. Without it parts of the debug domain are asleep and the ROM table reads fault.",
+  "fix": "Add a pyocd_user.py (or --script) that writes DBGMCU_CR (0xE00E1004 on H743) through raw AP register writes right after dp_init, as for the L4S5 case. One reporter found it still failed with connect_mode=under-reset, but pyocd connected once STM32CubeIDE had connected first and under-reset was not used, so try both without under-reset.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "STM32H7 Series"
+   ],
+   "device": [
+    "STM32H743ZITx"
+   ],
+   "core": [
+    "Cortex-M7"
+   ]
+  },
+  "versions": "seen with pyOCD 0.30 era builds",
+  "open": true,
+  "resolution": "workaround",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1147",
+  "tool": "pyocd",
+  "title": "STM32L4S5 'DP wait' or invalid CoreSight IDs when firmware uses deep sleep",
+  "symptoms": [
+   "STLink error (20): DP wait"
+  ],
+  "cause": "The firmware enters a low-power mode (Mbed sleep_for puts the MCU into Stop2). Recent STM32 parts need the DBGMCU_CR debug bits set to wake the debug domain before discovery, so ROM table reads return invalid IDs and the probe reports errors.",
+  "fix": "Put a pyocd_user.py in the working directory (or pass --script) whose will_init_target hook inserts a step after dp_init that writes DBGMCU_CR (0xE0042004 on L4) via AP0 CSW/TAR/DRW writes with value 0x00700007. Confirmed to fix debugging in pyocd and Mbed Studio. Alternatively avoid sleep in debug builds (use wait_us instead of sleep_for). Built-in handling was planned via CMSIS-Pack debug sequences.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "STM32L4 Series"
+   ],
+   "device": [
+    "STM32L4S5VITx"
+   ],
+   "core": [
+    "Cortex-M4"
+   ]
+  },
+  "versions": "pyOCD 0.30.3 and earlier",
+  "open": true,
+  "resolution": "workaround",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1129",
+  "tool": "pyocd",
+  "title": "PowerShell window closes after pyocd list, flash or reset on Windows",
+  "symptoms": [
+   "Unhandled exception. System.ArgumentOutOfRangeException: Console key values must be between 0 and 255 inclusive. (Parameter 'key')"
+  ],
+  "cause": "The crash comes from PowerShell's own console key reader (PSReadLine) after pyocd has used the console, not from the probe or target. It reproduces with Windows PowerShell 5.1 and 7.x but not with cmd.exe.",
+  "fix": "Run pyocd from cmd.exe (also works when started from a PowerShell window), or use a different terminal. Commands such as 'pyocd --version' are harmless; the crash follows probe-accessing commands.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "pyOCD 0.29 to 0.32 on Windows 10/11",
+  "open": true,
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1107",
+  "tool": "pyocd",
+  "title": "Eclipse debug session: 'reset init' rejected by pyocd gdbserver",
+  "symptoms": [
+   "0005859:ERROR:gdbserver:Exception while executing remote command 'reset init': unexpected value for reset_type option ('init')"
+  ],
+  "cause": "An outdated Eclipse Embedded CDT pyOCD plugin sends the OpenOCD-style monitor command 'reset init', which pyocd does not accept as a reset type.",
+  "fix": "Update the Eclipse Embedded CDT plugins to 6.1.1 or later; this removed the error for the reporter.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "Embedded CDT before 6.1.1",
+  "open": true,
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1076",
+  "tool": "pyocd",
+  "title": "pyocd 0.29 crashes (NoneType) on probes without a USB serial string",
+  "symptoms": [
+   "0000542:CRITICAL:__main__:uncaught exception: 'NoneType' object is not subscriptable"
+  ],
+  "cause": "pyocd needs a serial number string from every probe to identify it. A CMSIS-DAP firmware that has no USB serial descriptor leaves it None. The earlier version seemed to work only because Windows had cached an old descriptor.",
+  "fix": "Give the probe firmware a USB serial number string. A pyocd change that synthesises a stable ID from other USB data for such probes was in review at the time (CMSIS-DAP v1 via pyusb first).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.29.0 on Linux",
+  "open": true,
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1023",
+  "tool": "pyocd",
+  "title": "pyocd on Raspberry Pi: DistributionNotFound for cmsis-pack-manager after --no-deps install",
+  "symptoms": [],
+  "cause": "pyocd's entry-point loading still requires cmsis-pack-manager, which has no prebuilt wheel for ARM and needs Rust to build, so the documented --no-deps route no longer works.",
+  "fix": "Build and install cmsis-pack-manager from source on the device first (Rust toolchain and system packages needed), then install pyocd. Expect Rust-version build breakage; the non-x86 install document was outdated.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "pyOCD 0.29, ARM Linux (Raspberry Pi, aarch64)",
+  "open": true,
+  "resolution": "workaround",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1000",
+  "tool": "pyocd",
+  "title": "gdb drops pyocd gdbserver connection: 'Reply contains invalid hex digit 120'",
+  "symptoms": [
+   "Reply contains invalid hex digit 120"
+  ],
+  "cause": "The core was not halted when gdb connected (here a watchdog reset the target after pyocd halted it). Register reads then fail and pyocd returns 'xxxxxxxx' as unavailable values in the first stop reply, which gdb cannot parse as hex.",
+  "fix": "Make sure the core is halted when gdb attaches: disable or freeze the watchdog while debugging (for example the debug-halt option of the watchdog), then restart pyocd gdbserver.",
+  "applies_to": {
+   "tool": [
+    "pyocd",
+    "gdb"
+   ]
+  },
+  "versions": "pyOCD dev builds late 2020; seen on SAM4L and nRF5340",
+  "open": true,
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/949",
+  "tool": "pyocd",
+  "title": "Flashing a .bin fails: pack has a flash algorithm but no flash memory element",
+  "symptoms": [],
+  "cause": "The device pack defines a flash algorithm for an address range but has no matching memory element for that flash, so pyocd finds no flash region.",
+  "fix": "Add a memory element for the flash range to a local copy of the pack and pass it with --pack (or the pack session option). A pyocd change to derive a region from an algorithm without a memory was on the todo list.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "LPC54018M"
+   ]
+  },
+  "versions": "",
+  "open": true,
+  "resolution": "configuration",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/917",
+  "tool": "pyocd",
+  "title": "J-Link probe with leading zeros in serial number is not found by pyocd",
+  "symptoms": [
+   "pylink.errors.JLinkException: No emulator with serial number 261002616 found."
+  ],
+  "cause": "The J-Link driver treats the serial number as an integer, so pyocd lists and matches it without leading zeros, while the USB descriptor shows them.",
+  "fix": "Select the probe by the number as pyocd list prints it (leading zeros dropped) or any unique part of it. Passing the zero-padded USB serial does not match.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "open": true,
+  "resolution": "workaround",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/896",
+  "tool": "pyocd",
+  "title": "STM32H743 'No cores were discovered' in Mbed Studio",
+  "symptoms": [
+   "0000721:CRITICAL:__main__:No cores were discovered!"
+  ],
+  "cause": "STM32H7 needs the DBGMCU CR bits set (TRACECLKEN, D1DBGCKEN, D3DBGCKEN and the DBGSLEEP/STOP/STBY bits) for CoreSight discovery to work.",
+  "fix": "Use a pyocd user script that writes DBGMCU_CR before discovery, or set the bits at start of your firmware and load the first image by drag and drop. A branch with CMSIS-Pack debug sequences configured it automatically. Mbed Studio's bundled pyocd is customised, so also ask that team.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "STM32H7 Series"
+   ],
+   "device": [
+    "STM32H743ZITx"
+   ],
+   "core": [
+    "Cortex-M7"
+   ]
+  },
+  "versions": "pyOCD 0.2x era",
+  "open": true,
+  "resolution": "workaround",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/874",
+  "tool": "pyocd",
+  "title": "KV11Z flash erase_sector fails with error 105 on second programming",
+  "symptoms": [
+   "FlashEraseFailure: erase_sector(0x400) error: 105"
+  ],
+  "cause": "Error 105 is the flash driver's command-failure status (erase verify failed), typically worn flash. Sector erase failed while chip erase worked on the same board.",
+  "fix": "Add -O chip_erase=auto (or choose chip erase) so the whole chip is erased instead of sector by sector; also try another board to rule out worn flash.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "MKV11Z128VFM7"
+   ],
+   "core": [
+    "Cortex-M0+"
+   ]
+  },
+  "versions": "0.26.1",
+  "open": true,
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/863",
+  "tool": "pyocd",
+  "title": "STM32F7 (F746) 'No cores were discovered' in Mbed Studio",
+  "symptoms": [
+   "0000421:CRITICAL:__main__:No cores were discovered!"
+  ],
+  "cause": "STM32F7 and H7 parts need special handling to wake from low-power modes before discovery; the generic target lacked it. The F767 target had the DBGMCU handling.",
+  "fix": "Use a pyocd with the F767 support and select -t stm32f767zi on an F746 (worked for one user, it only warns about dual bank). Use debug builds that do not sleep, or set DBGMCU_CR early in firmware. Be careful with dual-bank option bytes (nDBANK=0): sector erase may then erase too little; use chip erase or switch to single bank.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "STM32F7 Series"
+   ],
+   "device": [
+    "STM32F746ZGTx"
+   ],
+   "core": [
+    "Cortex-M7"
+   ]
+  },
+  "versions": "before pyOCD 0.27",
+  "open": true,
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/862",
+  "tool": "pyocd",
+  "title": "MIMXRT1050-EVK stops connecting after flashing: 'No cores were discovered'",
+  "symptoms": [
+   "No cores were discovered!"
+  ],
+  "cause": "The application goes to deep sleep soon after reset (for example Mbed wait(0.2) with no other thread), and on this target the debugger cannot reconnect to a sleeping core; connect under reset did not help.",
+  "fix": "Keep the target awake in debug builds: use wait_us() instead of wait(), or define the MBED_DEBUG macro to disable deep sleep. Recover a locked-out board with the DIP switch and erase.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "MIMXRT1050"
+   ],
+   "core": [
+    "Cortex-M7"
+   ]
+  },
+  "versions": "0.26.0",
+  "open": true,
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/812",
+  "tool": "pyocd",
+  "title": "NUCLEO-H743ZI2 flash fails with STLink error (5) No device connected",
+  "symptoms": [
+   "STLink error (5): No device connected"
+  ],
+  "cause": "The ST-Link loses the target after the first AP ID read, suggesting the STM32H7 goes to sleep or the debug domain is not awake.",
+  "fix": "Retry with -Oconnect_mode=under-reset; one participant reported this solved it, another reported it still failed, so also use a DBGMCU_CR user script or a non-sleeping build.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "STM32H7 Series"
+   ],
+   "device": [
+    "STM32H743ZITx"
+   ]
+  },
+  "versions": "0.24.1 and 0.25.0",
+  "open": true,
+  "resolution": "workaround",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/772",
+  "tool": "pyocd",
+  "title": "STM32WB55 Nucleo: 'STLink error (9): Get IDCODE error'",
+  "symptoms": [
+   "0002270:CRITICAL:__main__:STLink error (9): Get IDCODE error"
+  ],
+  "cause": "Failure to read IDCODE usually means the target is unpowered or in deep sleep.",
+  "fix": "Use a debug build that does not sleep, or connect with -Oconnect_mode=under-reset (or set it in pyocd.yaml). Prefer the combined 'pyocd' tool over pyocd-gdbserver.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "0.2x",
+  "open": true,
+  "resolution": "configuration",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/665",
+  "tool": "pyocd",
+  "title": "AssertionError: flash pages do not fit evenly into sector (STM32L0/H7 Keil pack)",
+  "symptoms": [
+   "Flash pages (1024 bytes) do not fit evenly into sector (128 bytes)"
+  ],
+  "cause": "The flash algorithm in the Keil STM32 device packs declares a page size larger than its sector size, which pyocd refuses.",
+  "fix": "The pack needs fixing by the pack vendor; update to a pack version with a corrected algorithm. Pyocd planned workarounds for such pack mistakes.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "STM32L0 Series",
+    "STM32H7 Series"
+   ]
+  },
+  "versions": "seen with Keil.STM32L0xx_DFP and Keil.STM32H7xx_DFP 3.1.1",
+  "open": true,
+  "resolution": "not-a-bug",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/661",
+  "tool": "pyocd",
+  "title": "Nucleo-L476RG 'STLink error (9): Get IDCODE error' after removing CN2 jumpers",
+  "symptoms": [
+   "0001855:ERROR:__main__:uncaught exception: STLink error (9): Get IDCODE error"
+  ],
+  "cause": "With both CN2 jumpers off, the on-board ST-LINK is routed to the external CN4 header and no longer talks to the on-board STM32 target.",
+  "fix": "Put the CN2 jumpers back on to program the on-board MCU. Leave them off only to debug an external target through CN4.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "STM32L476RGTx"
+   ]
+  },
+  "versions": "",
+  "open": true,
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/317",
+  "tool": "pyocd",
+  "title": "gdb 'Cannot access memory' when setting breakpoint on Realtek RTL8195AM SDRAM code",
+  "symptoms": [
+   "Cannot access memory at address 0x3001c660"
+  ],
+  "cause": "Code lives in SDRAM at 0x3xxxxxxx, outside the hardware breakpoint range, so a software breakpoint is needed, and SDRAM is not accessible until the bootloader has initialised it after reset.",
+  "fix": "Break early after boot first (for example at the platform start function), run to it, then set breakpoints in SDRAM code. Full target support was not available in pyocd.",
+  "applies_to": {
+   "tool": [
+    "pyocd",
+    "gdb"
+   ]
+  },
+  "versions": "pyocd-gdbserver 0.8.x",
+  "open": true,
+  "resolution": "workaround",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/309",
+  "tool": "pyocd",
+  "title": "pyocd gdbserver crashes when a serial terminal on a K64F is closed (macOS)",
+  "symptoms": [
+   "ERROR:root:Unhandled exception in handleMsg:"
+  ],
+  "cause": "On macOS closing a serial port sends a break, and DAPLink treats a serial break as a command to reset the target; pyocd does not expect the target to reset under it and fails reading registers.",
+  "fix": "Avoid closing the serial terminal during a debug session on macOS (or use a terminal that does not send break on close). Newer DAPLink may allow disabling reset-on-break; no pyocd setting existed.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "MK64FN1M0xxx12"
+   ]
+  },
+  "versions": "DAPLink 0243, pyOCD 0.8 era",
+  "open": true,
+  "resolution": "workaround",
+  "confidence": "medium"
+ }
+]

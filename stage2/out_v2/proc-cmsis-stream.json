@@ -1,0 +1,63 @@
+{
+  "id": "proc-cmsis-stream",
+  "summary": "Generate the Python description and C++ wrapper for a new CMSIS Stream component from the user's specification, update the Python package's `__init__.py` import, and report checks and functionality left for the user to implement.",
+  "triggers": [
+    "create new components for CMSIS Stream",
+    "Python description and C++ wrapper for a component"
+  ],
+  "applies_to": {"tool": [], "toolchain": [], "core": [], "component": [], "api": []},
+  "unmapped": [
+    "CMSIS Stream Python package",
+    "CMSIS Stream C++ headers",
+    "`cg_enums.h` and `app_config.hpp` supplied by the integrating project",
+    "Python environment containing the CMSIS Stream package"
+  ],
+  "verification": [
+    "Compare both files with the confirmed specification and the Python and C++ requirements below. Perform the available checks in Validation Resources and report any checks that could not be completed.",
+    "Verify the Python and C++ class names, destination folders, filenames, and `__init__.py` import. Compare every requested port, fixed or variable type and length, parameter, visibility setting, event, and state requirement with both generated files.",
+    "When a configured Python environment is available, import the new component through its package and instantiate it with representative arguments from the confirmed specification. Otherwise, review these requirements structurally and report that the import check was not performed.",
+    "Verify its base class, `typeName`, dataflow and event ports, the `identified` value corresponding to the requested visibility, `selectors` settings when used, and variable constructor arguments. Confirm ports are defined before `self.addVariableArg` calls and that `evtQueue` is supplied when the user requests events without event output ports.",
+    "Verify the required header preamble, the base class for the dataflow port count, template arguments, FIFO references, constructor argument order, and applicable `run`, `subscribe`, `EventOutput`, `selectors`, and `processEvent` definitions. For a custom `NodeBase` extension, check that its FIFO and buffer-access layout agrees with the Python ports. Verify that `processEvent` returns `cg_status` and matches `StreamNode.hpp`. Check component-defined events through their local selectors, default events through the IDs in `cg_enums.h`, and event-queue storage and use when required. For stateful components, verify `ContextSwitch` inheritance and the `int pause()` and `int resume()` method skeletons.",
+    "Do not compile the generated C++ code; focus on structural and syntactic correctness and report the limits of those checks.",
+    "Record the checks and their results. Identify missing validation dependencies and incomplete functionality the user must implement."
+  ],
+  "stop_conditions": [
+    "Ask for missing details before generating files.",
+    "If the integrating runtime requires identification for context switching, clarify that requirement with the user instead of silently changing the requested visibility.",
+    "Stop generation when the component specification or destination folders are missing or ambiguous, or the required API behavior cannot be established."
+  ],
+  "rules": [
+    {"id": "rule-critical-blockers-cmsis-stream", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-no-fabrication-cmsis-stream", "class": "generic", "canonical_id": "rule-no-fabrication", "delta": "assume component properties or invent CMSIS Stream APIs, event names, parameter definitions, state-management behavior, paths, or validation results. Ask the user for all missing information needed to generate a complete and accurate component description."},
+    {"id": "rule-portability-cmsis-stream", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-scope-cmsis-stream", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-tone-and-style", "class": "generic", "canonical_id": "rule-tone-and-style", "delta": ""}
+  ],
+  "extracted": [
+    {
+      "type": "concept",
+      "title": "CMSIS Stream C++ dataflow base class by port count",
+      "body": "Select the C++ dataflow base class according to the number of dataflow input and output ports. Event ports do not count toward this selection. Set its template parameters according to the type and length of each dataflow port.\n\n| Dataflow inputs | Dataflow outputs | C++ base class |\n| --- | --- | --- |\n| 1 | 1 | `GenericNode` |\n| 1 | 2 | `GenericNode12` |\n| 1 | 3 | `GenericNode13` |\n| 2 | 1 | `GenericNode21` |\n| 3 | 1 | `GenericNode31` |\n| 1 | 0 | `GenericSink` |\n| 0 | 1 | `GenericSource` |"
+    },
+    {
+      "type": "concept",
+      "title": "CMSIS Stream Python node base classes",
+      "body": "If the class only has event ports, it inherits from `BaseNode`.\nIf the class has some dataflow ports it must inherit from `GenericSink` if those dataflow ports are only input ports, from `GenericSource` if those dataflow ports are only output ports, and from `GenericNode` if those dataflow ports are both input and output ports."
+    },
+    {
+      "type": "concept",
+      "title": "CMSIS Stream sample types",
+      "body": "The type is defined with `CType(DT)` where `DT` as defined by CMSIS Stream can be :\n- F64\n- F32\n- F16\n- Q31\n- Q15\n- Q7\n- UINT32\n- UINT16\n- UINT8\n- SINT32\n- SINT16\n- SINT8"
+    },
+    {
+      "type": "concept",
+      "title": "CMSIS Stream evtQueue argument for nodes that send events without event output ports",
+      "body": "If the component has no event output port but must still be able to send events, the Python should define a new argument for the C++ constructor\n```python\nself.addVariableArg(\"evtQueue\")\n```\n\nThe name `evtQueue` is special and will be used by the code generator to set the value of this argument to the pointer of the EventQueue that is used internally by the component to send events."
+    },
+    {
+      "type": "pattern",
+      "title": "Test event IDs in a CMSIS Stream processEvent method",
+      "body": "Testing for a event defined by the component is done with the `selectors` array.\n\nExample:\n```C++\n if (evt.event_id == selectors[selMessage])\n```\n\nIf the event is a default event as define in `cg_enums.h` CMSIS stream header then the test can use directly the global ID since this ID will not change for different graphs:\nExample:\n```C++\n if (evt.event_id == kValue)\n```"
+    }
+  ]
+}

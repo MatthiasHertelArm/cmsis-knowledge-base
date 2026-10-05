@@ -264,15 +264,20 @@ sources:
     prefix: zep
     repo: zephyrproject-rtos/zephyr
     sparse: [doc/build/dts, doc/build/kconfig, doc/develop/debug, doc/develop/test, doc/develop/west, doc/hardware/arch,
-             doc/kernel, doc/services/logging, doc/services/shell]
+             doc/kernel, doc/services/logging, doc/services/shell, doc/hardware/porting, doc/develop/getting_started,
+             doc/services/tracing, doc/hardware/pinctrl]
     include: ["doc/kernel/**/*.rst", "doc/build/dts/*.rst", "doc/build/kconfig/*.rst", "doc/develop/west/*.rst",
               "doc/develop/test/*.rst", "doc/develop/debug/*.rst", "doc/services/logging/*.rst", "doc/services/shell/*.rst",
-              "doc/hardware/arch/arm_cortex_m.rst", "doc/hardware/arch/semihost.rst"]
-    exclude: ["*/index.rst", "doc/develop/west/release-notes.rst", "doc/develop/west/west-apis.rst"]
+              "doc/hardware/arch/arm_cortex_m.rst", "doc/hardware/arch/semihost.rst",
+              "doc/hardware/porting/board_porting.rst", "doc/hardware/porting/shields.rst", "doc/hardware/porting/soc_porting.rst",
+              "doc/develop/getting_started/*.rst", "doc/services/tracing/index.rst", "doc/hardware/pinctrl/index.rst"]
+    # An index.rst that is only a table of contents yields no unit (too little prose); the others are pages.
+    exclude: ["doc/develop/west/release-notes.rst", "doc/develop/west/west-apis.rst"]
     license: Apache-2.0
     domain: rtos
     domains:
-      - {paths: ["doc/build/*", "doc/develop/west/*"], domain: project}
+      - {paths: ["doc/build/*", "doc/develop/west/*", "doc/develop/getting_started/*"], domain: project}
+      - {paths: ["doc/hardware/porting/*", "doc/hardware/pinctrl/*"], domain: bring-up}
       - {paths: ["doc/develop/test/*"], domain: test}
       - {paths: ["doc/develop/debug/*", "doc/services/*"], domain: debug}
 
@@ -363,5 +368,46 @@ sources:
     dir: ml-embedded-evaluation-kit
     sparse: [docs]
     include: ["docs/**/*.md", "docs/*.md"]
+    license: Apache-2.0
+    domain: edge-ai
+
+  # Arm-Examples with a licence: Helium (MVE) optimization guide, SystemView, AVH VSI, the CMSIS MLEK packs, Ethos-U integration.
+  - name: helium-optimization
+    prefix: helium
+    repo: Arm-Examples/Helium-Optimization
+    dir: ae-Helium-Optimization
+    include: ["**/*.md", "*.md"]
+    license: Apache-2.0
+    domain: optimization
+
+  - name: segger-systemview-example
+    prefix: sysview
+    repo: Arm-Examples/SEGGER-SystemView
+    dir: ae-SEGGER-SystemView
+    include: ["**/*.md", "*.md"]
+    license: Apache-2.0
+    domain: trace
+
+  - name: avh-vsi
+    prefix: vsi
+    repo: Arm-Examples/AVH-VSI
+    dir: ae-AVH-VSI
+    include: ["README.md", "hello_vsi/README.md", "hello_video_vsi/README.md"]
+    license: Apache-2.0
+    domain: debug
+
+  - name: cmsis-mlek-packs
+    prefix: cmlek
+    repo: Arm-Examples/cmsis-mlek
+    dir: ae-cmsis-mlek
+    include: ["README.md", "docs/*.md", "overview/*.md"]
+    license: Apache-2.0
+    domain: edge-ai
+
+  - name: cmsis-ethos-integration
+    prefix: ethint
+    repo: Arm-Examples/CMSIS-Ethos-Integration
+    dir: ae-CMSIS-Ethos-Integration
+    include: ["README.md", "script/README.md", "Board/*/README.md"]
     license: Apache-2.0
     domain: edge-ai

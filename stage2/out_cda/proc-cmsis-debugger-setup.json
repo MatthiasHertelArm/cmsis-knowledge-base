@@ -1,0 +1,68 @@
+{
+  "id": "proc-cmsis-debugger-setup",
+  "summary": "Wire the debug adapter of a csolution target and verify Load & Debug",
+  "triggers": [
+    "a new target has no debugger yet",
+    "launch.json has no gdbtarget configuration",
+    "cmsis_action says a CMSIS task is not offered",
+    "the probe changes"
+  ],
+  "applies_to": {
+    "tool": ["csolution"],
+    "toolchain": [],
+    "core": [],
+    "component": [],
+    "api": []
+  },
+  "unmapped": [
+    "CMSIS Solution extension (setting `cmsis-csolution.autoDebugLaunch`)",
+    "debug probe on the board or on the desk",
+    "flash algorithm for the internal flash in the cbuild-run file"
+  ],
+  "verification": [
+    "Check the cbuild-run file: its `debugger:` block names the adapter.",
+    "Check `.vscode/launch.json`: a configuration of `\"type\": \"gdbtarget\"` named after the adapter, such as `CMSIS_DAP@pyOCD (launch)`, `STLink@pyOCD (launch)` or `JLink (launch)`, and `.vscode/tasks.json` with the `CMSIS Load` task.",
+    "`serial_list_ports`: the probe's virtual COM port is a sign that the board is connected. `serial_open` it before anything runs, so that no output is lost.",
+    "`add_breakpoint` at the entry of the application code, not only at `main`.",
+    "`cmsis_action { action: 'load_and_debug' }`. Never `start_debugging` for a CMSIS target: it skips the flash download.",
+    "`continue_execution` and `wait_for_stop` to the breakpoint; `get_call_stack`, `get_variables_values` and one `read_peripheral_register` to show that stepping and reads work.",
+    "`clear_all_breakpoints`, let it run, and `serial_read` the application's output."
+  ],
+  "stop_conditions": [
+    "If the internal flash has no algorithm in the cbuild-run file, programming cannot work whatever the adapter is. Report that first.",
+    "Ask the user which probe is on the board or on the desk.",
+    "With several probes connected, the probe is chosen by the setting `cmsis-csolution.probe-id`, not in the csolution. Ask the user to set it.",
+    "When the files did not change: ask the user to open **Manage Solution Settings** in the CMSIS view and to confirm the debugger there, or to check that `cmsis-csolution.autoDebugLaunch` is on.",
+    "A launch configuration whose `cmsis` node says `\"updateConfiguration\": \"manual\"` is never rewritten; leave it alone and tell the user.",
+    "Ask the user to connect the board.",
+    "Read the hint of the failed result and `get_recent_problems` (`sources: ['gdb-server']`, `minSeverity: 'info'` shows what pyOCD or J-Link said), then continue with `$debugger-troubleshooting`."
+  ],
+  "rules": [],
+  "extracted": [
+    {
+      "type": "concept",
+      "title": "CMSIS debug adapter name for each probe",
+      "body": "| Probe | Adapter name |\n|---|---|\n| CMSIS-DAP, DAPLink, on-board CMSIS-DAP | `CMSIS-DAP@pyOCD` |\n| ST-Link, on-board ST-Link | `ST-Link@pyOCD` |\n| ULINKplus | `ULINKplus@pyOCD` |\n| MCU-Link, Nu-Link, KitProg3, PICkit, Raspberry Pi Debug Probe | `MCU-Link@pyOCD`, `Nu-Link@pyOCD`, `KitProg3@pyOCD`, `PICkit@pyOCD`, `RPiDebugProbe@pyOCD` |\n| SEGGER J-Link | `J-Link Server` |\n\nUse a name exactly as `csolution list debuggers` prints it."
+    },
+    {
+      "type": "concept",
+      "title": "Load runs the firmware before the debugger attaches",
+      "body": "**Load runs the firmware before the debugger attaches.** In `load_and_debug` the pre-launch `CMSIS Load` task programs and starts the image; the session then restarts it and halts at `main`. A complete run's output can already be in the serial buffer at the first stop. Do not count that run twice."
+    },
+    {
+      "type": "concept",
+      "title": "At -Og a readback can show the old value right after a store",
+      "body": "**At `-Og` the line table can be one volatile store early.** Right after stepping past a store, a readback may still show the old value. Let the code run on and read again before you suspect the hardware."
+    },
+    {
+      "type": "pattern",
+      "title": "Diagnose a silent UART",
+      "body": "**A silent UART**: halt, and read the UART's status, control and baud-rate registers with `read_peripheral_register`. A status register at its reset value means the peripheral is alive and its configuration is wrong; all zeros, or the same value in every register, means its clock was never enabled."
+    },
+    {
+      "type": "concept",
+      "title": "When the CMSIS Solution extension rewrites launch.json and tasks.json",
+      "body": "The CMSIS Solution extension rewrites both files when the csolution changes, as long as its setting `cmsis-csolution.autoDebugLaunch` is on (the default). Do not write them by hand.\nA launch configuration whose `cmsis` node says `\"updateConfiguration\": \"manual\"` is never rewritten; leave it alone and tell the user."
+    }
+  ]
+}

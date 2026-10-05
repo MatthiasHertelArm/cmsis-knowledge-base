@@ -1,0 +1,1390 @@
+[
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2611",
+  "tool": "csolution",
+  "title": "GDB call stack loops or never ends with AC6/ATfE code built with debug enabled",
+  "symptoms": [],
+  "cause": "Armclang and the Arm Toolchain for Embedded optimise functions marked noreturn (such as RTOS threads) so that they reuse the link register without emitting the matching unwind info. GDB then cannot stop walking the stack.",
+  "fix": "Add -funwind-tables to the compile options of debug builds (for example via misc: in the project or cdefault). The code keeps LR on the stack, costing a little stack, and unwinding becomes reliable. The thread was closed as a duplicate of a proposal to add it by default.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ],
+   "toolchain": [
+    "AC6",
+    "CLANG"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2603",
+  "tool": "csolution",
+  "title": "Paths of a CubeMX component duplicated and wrong when a setups: node is present",
+  "symptoms": [
+   "armclang: error: no such file or directory: '@<absolute_path>/../../../Core/compiler_args.txt'"
+  ],
+  "cause": "With a Device:CubeMX component plus a setups: node in the cproject.yml, csolution emitted every path twice, the second copy resolved against the wrong base directory so it escaped the project.",
+  "fix": "Fixed in a CMSIS-Toolbox nightly after 2.14.1 (build 2.14.1-68 confirmed); update the toolbox. Putting the options in a plain misc: node instead of setups: avoided the problem before.",
+  "applies_to": {
+   "tool": [
+    "csolution",
+    "cbuild"
+   ],
+   "toolchain": [
+    "AC6"
+   ]
+  },
+  "versions": "seen in 2.14.1, fixed after",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2569",
+  "tool": "svdconv",
+  "title": "SVDConv M227 says enumerated values exceed 256 elements for narrow fields",
+  "symptoms": [
+   "SFD Code generation warning: Enumerated values list for field 'MYFIELD1' exeeds maximum of 256 elements. List will not be generated."
+  ],
+  "cause": "The real limit for generating enumerated value lists for the SFR/MDK5 output is a field width of 6 bits (64 entries), chosen to keep the debugger combo box usable. The message wrongly named 256 entries.",
+  "fix": "The message now states the field width and the 6-bit limit. For wide fields describe the unlisted values with an enumeratedValue carrying isDefault true, which other tools can interpret without a full list. Message corrected in the svdconv shipped after 3.3.50.",
+  "applies_to": {
+   "tool": [
+    "svdconv"
+   ]
+  },
+  "versions": "seen in 3.3.39 to 3.3.50",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2527",
+  "tool": "csolution",
+  "title": "Layer search finds nothing when the project names only a board and no device",
+  "symptoms": [],
+  "cause": "Layer detection required device: to be given and did not derive the device from the board's mounted device.",
+  "fix": "Fixed in a 2.14.x nightly: the device is derived from the board and the layer selection appears. The pack that holds the layer must still be installed.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "seen in CMSIS-Toolbox 2.14",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2510",
+  "tool": "csolution",
+  "title": "Schema check rejects pname: under memory: in a target-type",
+  "symptoms": [],
+  "cause": "The documented memory: child node pname: was missing from the JSON schema, so the schema check failed although the documentation lists it.",
+  "fix": "Fixed in a toolbox build after 2.14.1; update. Reporter confirmed with a nightly.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "seen in 2.14.1",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2491",
+  "tool": "csolution",
+  "title": "CLANG fatal backend error on Cortex-M55 when the FPU is selected on its own",
+  "symptoms": [],
+  "cause": "With Compiler CLANG (LLVM Embedded Toolchain 22.1) and a Cortex-M55 device with FPU enabled, the option pair -mcpu=cortex-m55 -mfpu=fpv5-sp-d16 can trigger a fatal compiler backend error (a toolchain bug).",
+  "fix": "Do not choose the FPU separately for Cortex-M55 with CLANG; if one must be given use -mfpu=fp-armv8-fullfp16-d16. The toolbox mitigation was validated in a nightly.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ],
+   "core": [
+    "Cortex-M55"
+   ],
+   "toolchain": [
+    "CLANG"
+   ]
+  },
+  "versions": "LLVM Embedded Toolchain 22.1.0",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2480",
+  "tool": "csolution",
+  "title": "Scatter file reported missing right after creating a project from a pack example",
+  "symptoms": [
+   "file '<project>/RTE/Device/<device>/<name>.sct' was not found"
+  ],
+  "cause": "The example project is not fully configured: its cproject.yml references the scatter file explicitly under linker:, but the RTE config files are not yet present because the extension does not run update-rte when it loads an existing solution. A reload creates them.",
+  "fix": "Reload or refresh the solution, which runs update-rte. Lasting fix is in the example: keep the scatter file in the project tree and reference it, instead of relying on the component config file.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "2.13.0",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2447",
+  "tool": "csolution",
+  "title": "cbuild-run.yml rejected: flash blocks must be unique, but pdsc repeats blocks",
+  "symptoms": [
+   "csolution error: Blank_solution+PIC32CZ8110CA90208.cbuild-run.yml:702:7\n  - items have to be unique for this array"
+  ],
+  "cause": "A flashinfo section with several identical block elements separated by gaps is valid per the PDSC specification, but the cbuild-run schema demanded unique array items.",
+  "fix": "Schema relaxed (uniqueItems false for the blocks array); fixed in toolbox builds from late April 2026 onward.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "fixed in toolbox nightly 2026-04-22",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2433",
+  "tool": "svdconv",
+  "title": "Header type name uses peripheral name (WDT0_Type) instead of groupName",
+  "symptoms": [],
+  "cause": "SVDConv names the struct after the peripheral name unless told otherwise; groupName is not used for this.",
+  "fix": "Add <headerStructName>WDT</headerStructName> to the peripheral, then all peripherals of the group share the WDT_Type struct.",
+  "applies_to": {
+   "tool": [
+    "svdconv"
+   ]
+  },
+  "versions": "3.3.49",
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2363",
+  "tool": "packchk",
+  "title": "packchk M371 for unknown device feature type such as LGA",
+  "symptoms": [],
+  "cause": "The PDSC schema now accepts any string as device feature type, but packchk still validated against the old fixed enumeration.",
+  "fix": "Fixed in packchk shipped with toolbox nightlies after 2026-04-07; update the toolbox.",
+  "applies_to": {
+   "tool": [
+    "packchk"
+   ]
+  },
+  "versions": "fixed in toolbox builds after 2026-04-07",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2339",
+  "tool": "csolution",
+  "title": "csolution cannot find cproject.yml when names contain non-ASCII characters on Windows",
+  "symptoms": [],
+  "cause": "csolution passes UTF-8 strings from YAML and JSON to std::filesystem without conversion to the Windows code page, so paths with non-ASCII characters get corrupted. CMake additionally restricts target names (project, build type, target type, execute names) to a limited character set.",
+  "fix": "Workaround: enable the Windows option Beta Use Unicode UTF-8 for worldwide language support (system-wide, may affect legacy tools). Keep project, type and execute names ASCII. A documentation note was requested.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2335",
+  "tool": "csolution",
+  "title": "Non-ASCII characters in user path become replacement characters in $G generator file",
+  "symptoms": [],
+  "cause": "Same encoding limitation as the non-ASCII project name problem: csolution does no UTF-8 conversion on Windows, so cbuild-gen.yml written under a profile path such as an accented user name contains the replacement character.",
+  "fix": "Workaround: enable Windows Unicode UTF-8 worldwide language support, or work from a path with ASCII characters only.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "2.11.0",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2330",
+  "tool": "csolution",
+  "title": "Schema check rejects define values with C integer suffixes U, UL, ULL",
+  "symptoms": [],
+  "cause": "The JSON schema pattern for define: values did not allow C-style suffixes on hex or decimal numbers.",
+  "fix": "Schema extended; the allowed forms are now described in the define: section of the YML input format documentation. Update the toolbox if the schema check still rejects such a value.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2325",
+  "tool": "cbuild",
+  "title": "cbuild setup fails because image files in a target-set are not built yet",
+  "symptoms": [],
+  "cause": "Images listed under target-set images: (for example post-build signed .bin files) were checked as dependencies during setup, and evaluating the $OutDir()$ access sequences created cyclic dependencies, so setup failed before anything could be built.",
+  "fix": "Fixed in toolbox nightly 2.12.0-41 and later; update. Output directories via $OutDir()$ work afterwards.",
+  "applies_to": {
+   "tool": [
+    "cbuild",
+    "csolution"
+   ]
+  },
+  "versions": "seen before 2.12.0-41",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2318",
+  "tool": "csolution",
+  "title": "GCC link errors with generated linker script and startup file of old STM32F4xx_DFP",
+  "symptoms": [],
+  "cause": "The old STM32F4xx_DFP (2.17.1) startup file and generated GCC linker script do not match; ST families rely on STM32CubeMX for consistent startup and linker files.",
+  "fix": "Use the latest STM32F4xx_DFP and set the project up with the CubeMX generator as the pack overview and the toolbox CubeMX documentation describe.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ],
+   "family": [
+    "STM32F4 Series"
+   ],
+   "toolchain": [
+    "GCC"
+   ]
+  },
+  "versions": "Keil::STM32F4xx_DFP 2.17.1",
+  "resolution": "configuration",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2286",
+  "tool": "csolution",
+  "title": "cbuild-pack.yml contains only an empty resolved-packs entry",
+  "symptoms": [],
+  "cause": "The for-context value was written as +AVH* without escaping; the leading plus is a special character, which broke pack resolution.",
+  "fix": "Escape it as \\+AVH* in for-context:. Later toolbox builds also clean up when switching target sets, and the report could no longer be reproduced.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "2.12",
+  "resolution": "user-error",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2235",
+  "tool": "cbuild",
+  "title": "AC6 link step fails on map file option with quoted path (CMake 4.x, macOS)",
+  "symptoms": [
+   "armlink --cpu=Cortex-M33 --scatter=<tmp>/ac6_linker_script.sct --map --list=\\\"<out>/TrafficLight.map\\\""
+  ],
+  "cause": "The map file path in the armlink command was wrapped in quote characters that ended up literally in the command, so the link step broke.",
+  "fix": "Fixed in a toolbox nightly after 2.9; confirmed building with CMake 4.1.2. Update the toolbox.",
+  "applies_to": {
+   "tool": [
+    "cbuild",
+    "csolution"
+   ],
+   "toolchain": [
+    "AC6"
+   ]
+  },
+  "versions": "quoting introduced by a change in the 2.9 timeframe, fixed in October 2025 nightly",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2234",
+  "tool": "csolution",
+  "title": "Error that the solution requires a newer CMSIS-Toolbox version",
+  "symptoms": [
+   "error csolution: solution requires newer CMSIS-Toolbox version 2.12.0"
+  ],
+  "cause": "The created-for: node of the solution names a minimum CMSIS-Toolbox version that is higher than the version of the installed toolbox manifest.",
+  "fix": "Install a CMSIS-Toolbox at least as new as created-for, or lower created-for if the solution does not need it. Newer builds print the file, required and current version; in RPC mode (VS Code) it is only a warning.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "message reworded after 2.11.0",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2142",
+  "tool": "cbuild",
+  "title": "Pre-build execute step output shows up after compiler output",
+  "symptoms": [],
+  "cause": "A nested CMake/Ninja build started by an execute: step was run with ninja --quiet, and Ninja buffers the output of the subprocess until it ends, so messages of the pre-build step appeared to come last.",
+  "fix": "Fixed in a toolbox nightly from July 2025 that no longer passes --quiet; the real order of execution was always correct.",
+  "applies_to": {
+   "tool": [
+    "cbuild",
+    "csolution"
+   ]
+  },
+  "versions": "seen around 2.9",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2141",
+  "tool": "cbuild",
+  "title": "execute: step with always: seems skipped on the second build",
+  "symptoms": [],
+  "cause": "always: was honoured and the step did run (the log prints Executing: <context>-<execute name>). The step itself starts an inner CMake project that checks its own dependencies and so decides not to regenerate the output.",
+  "fix": "Put the dependency logic in the inner CMakeLists (inputs and outputs of the real tool) or remove the dependency check there. The step still runs on each build if always: is set.",
+  "applies_to": {
+   "tool": [
+    "cbuild",
+    "csolution"
+   ]
+  },
+  "versions": "",
+  "resolution": "not-a-bug",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2139",
+  "tool": "csolution",
+  "title": "cbuild-run.yml output list wrong for dual-core; AC6 .bin is a directory",
+  "symptoms": [],
+  "cause": "With armlink/fromelf, converting an image with several load regions to --bin creates a directory instead of a single file, so the expected .bin file seems missing. Also, load: image+symbols from a project-context was applied to hex and bin outputs too.",
+  "fix": "Fixed in toolbox builds after 2.10: project-context load: now applies only to the generated ELF, and the type: node is no longer allowed there. For AC6 the image still comes from the hex file when one is generated, with symbols from the AXF.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ],
+   "toolchain": [
+    "AC6"
+   ]
+  },
+  "versions": "2.10",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2127",
+  "tool": "csolution",
+  "title": "list dependencies suggests components from other bundles of the same Cclass",
+  "symptoms": [],
+  "cause": "When a bundled component needed another component of the same Cclass, csolution offered candidates from all bundles although components of different bundles of one class cannot be selected together.",
+  "fix": "Fixed in toolbox builds after 2.10.0; only components from the same bundle are proposed now.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "2.10.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2099",
+  "tool": "csolution",
+  "title": "pyOCD launch error because cbuild-run.yml has a dbgconf node the device does not define",
+  "symptoms": [],
+  "cause": "csolution wrote dbgconf: into cbuild-run.yml even when the pack's debugvars element has no configfile attribute, so the debugger tried to use a file that does not exist.",
+  "fix": "Fixed in toolbox builds after 2.9.0; the dbgconf node is only written when the pack specifies a configfile.",
+  "applies_to": {
+   "tool": [
+    "csolution",
+    "pyocd"
+   ]
+  },
+  "versions": "2.9.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2093",
+  "tool": "packchk",
+  "title": "packchk 2.9.0 warns M300 for XML namespace URLs that start with http",
+  "symptoms": [
+   "*** WARNING M300: <pack>.pdsc (Line 776) \n  at must use 'https://'"
+  ],
+  "cause": "The https check looped over all attributes of extension elements, including xmlns declarations. A namespace URI is only an identifier and cannot be changed, so only schemaLocation should be checked.",
+  "fix": "Harmless warning for xmlns attributes of extensions; the check was reported as a bug in packchk 2.9.0 and narrowed afterwards. Change schemaLocation to https if it triggers.",
+  "applies_to": {
+   "tool": [
+    "packchk"
+   ]
+  },
+  "versions": "2.9.0",
+  "resolution": "fixed-in-release",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2041",
+  "tool": "csolution",
+  "title": "cbuild-run.yml debug-topology lacks processors not used by the selected context",
+  "symptoms": [],
+  "cause": "csolution filtered debug topology and flash algorithm data by the pname of the selected context, but pyOCD examines the whole device when connecting and needs the complete topology.",
+  "fix": "Fixed in toolbox nightly 444 (April 2025) and later: debug-topology lists all debug ports and processors of the device. Update the toolbox.",
+  "applies_to": {
+   "tool": [
+    "csolution",
+    "pyocd"
+   ]
+  },
+  "versions": "seen in 2.8 to 2.9 timeframe",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2026",
+  "tool": "csolution",
+  "title": "cbuild-run.yml flash algorithm limited to one processor on multi-core devices",
+  "symptoms": [],
+  "cause": "csolution wrote a pname for each algorithm based on the processors of the selected contexts, even where the pack gave no Pname, which restricted a shared algorithm to a single core.",
+  "fix": "Fixed in toolbox nightly 435 (April 2025) and later; pname is only written when the pack specifies it.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ],
+   "family": [
+    "K32L3A60"
+   ]
+  },
+  "versions": "seen in 2.8",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2015",
+  "tool": "csolution",
+  "title": "Schema check of cbuild files rejects component versions in MAJOR.MINOR form",
+  "symptoms": [],
+  "cause": "The failing file was generated by CMSIS-Toolbox 2.7.0, which wrote the short component version that the newer schema does not accept; 2.8.0 normalises it.",
+  "fix": "Regenerate the cbuild*.yml files with CMSIS-Toolbox 2.8 or later (delete the stale generated files and run setup again).",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "files from 2.7.0 against schema 2.8.0",
+  "resolution": "user-error",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2003",
+  "tool": "csolution",
+  "title": "cbuild-run.yml invalid: empty debug sequence block gives unexpected instance type",
+  "symptoms": [
+   "/Simple+MCXN947VDF.cbuild-run.yml:193:11 - error csolution: unexpected instance type"
+  ],
+  "cause": "An empty <block/> in a pack's debug sequence (or one containing only comments) was written as an empty map into cbuild-run.yml, which then failed its own schema check.",
+  "fix": "Fixed in toolbox nightly 435 and later: empty blocks are no longer emitted. Workaround before: remove the empty <block/> from the pdsc.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ],
+   "device": [
+    "MCXN947"
+   ]
+  },
+  "versions": "2.8.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1952",
+  "tool": "csolution",
+  "title": "Misleading ninja error when the linker script named in the project does not exist",
+  "symptoms": [
+   "ninja: error: '<project>/RTE/Device/<device>/ac6_linker_script.sct.srcx', needed by '<out>/CubeMX.axf', missing and no known rule to make it"
+  ],
+  "cause": "csolution did not check linker: script: files, so a typo only surfaced as a ninja error late in the build.",
+  "fix": "Check the file name under linker: script: in the cproject.yml. Toolbox builds after 2.7.0 report error csolution: file '...' was not found at setup time.",
+  "applies_to": {
+   "tool": [
+    "csolution",
+    "cbuild"
+   ]
+  },
+  "versions": "2.7.0, fixed in later nightly",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1906",
+  "tool": "cpackget",
+  "title": "cpackget add fails to download a pack from a server that sets cookies",
+  "symptoms": [
+   "E: \"https://www.geehy.com/uploads/tool/Geehy.APM32A0xx_DFP.1.0.0.pack\": failed to download file"
+  ],
+  "cause": "The pack server redirects through a JavaScript page and only serves the file after it has set a cookie, so a client without cookie handling never gets the pack although a browser does.",
+  "fix": "Fixed by cookie support in cpackget (2.1.5 line, seen in 2.1.5-6). Update the toolbox. A failed cbuild setup also should no longer overwrite an existing cbuild-run.yml.",
+  "applies_to": {
+   "tool": [
+    "cpackget"
+   ]
+  },
+  "versions": "2.1.4, fixed in 2.1.5",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1904",
+  "tool": "cbuild",
+  "title": "CLANG 19 fails to compile for Armv8.1-M with --target=armv8.1m.main-none-unknown-eabihf",
+  "symptoms": [],
+  "cause": "LLVM Embedded Toolchain 19.1.1 expects target triples starting with thumbv7m, thumbv8m, thumbv8.1m instead of armv7m, armv8m, armv8.1m, which the CLANG toolchain file of the toolbox used.",
+  "fix": "Fixed in the CLANG cmake file of CMSIS-Toolbox 2.7.0; update the toolbox. Before that the file CLANG.17.0.1.cmake in the toolbox etc folder could be replaced by the one from devtools main.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ],
+   "core": [
+    "Cortex-M55"
+   ],
+   "toolchain": [
+    "CLANG"
+   ]
+  },
+  "versions": "LLVM 19.1.1 with toolbox before 2.7.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1900",
+  "tool": "csolution",
+  "title": "unexpected instance type for empty variables: node, then cbuild-pack.yml not written",
+  "symptoms": [
+   "C:/w/AWS_MQTT_Demo/Demo.csolution.yml:43:7 - error csolution: unexpected instance type",
+   "/.cbuild-pack.yml - error csolution: file cannot be written"
+  ],
+  "cause": "A variables: node in a target-type had no valid - variable: entries (all items were commented out), so the YAML is invalid; the second error line was only a follow-up with an empty path.",
+  "fix": "Remove the empty variables: node or give it at least one list entry. Later toolbox builds no longer print the misleading second error.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "2.6.x",
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1889",
+  "tool": "cbuild",
+  "title": "CMake error that the cache source does not match after switching the target type",
+  "symptoms": [
+   "CMake Error: The source \"<tmp>/Demo.Debug+MyBoard/CMakeLists.txt\" does not match the source \"<tmp>/Demo.Debug+AVH/CMakeLists.txt\" used to generate cache."
+  ],
+  "cause": "After the active target type changed, the shared tmp CMake directory still held a cache of the previous context.",
+  "fix": "Fixed in CMSIS-Toolbox nightlies from December 2024 (released in 2.7.0): switching the target type cleans and sets up the new context. Workaround on older versions: delete the tmp directory of the solution.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "2.6.1",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1846",
+  "tool": "csolution",
+  "title": "Regions header not found when board: includes the vendor and $Bname$ is used",
+  "symptoms": [
+   "RTE/Device/MCXN947VDF_cm33_core0/regions_NXP::FRDM-MCXN947.h - warning csolution: specified regions header was not found"
+  ],
+  "cause": "$Bname$ expanded to the whole board string including vendor::, so the file name looked up differs from the generated regions_<board>.h.",
+  "fix": "Workaround: write board: without the vendor:: prefix. Fixed in toolbox nightlies after 2.6.1.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "2.6.1",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1826",
+  "tool": "cbuild",
+  "title": "Build with an old pack fails on Linux and macOS because of backslashes in paths",
+  "symptoms": [
+   "CMake Error at CMakeLists.txt:43:\n  Parse error.  Function missing ending \")\".  Instead found bad character\n  with text \"\\\"."
+  ],
+  "cause": "Older packs have backslashes in file paths of the pdsc, which csolution passed unchanged into the generated CMake file; on Windows this works, elsewhere it breaks the CMake syntax.",
+  "fix": "Fixed in CMSIS-Toolbox 2.7.0 (backslashes converted to forward slashes). On older versions use a newer version of the pack or correct the path in the pack.",
+  "applies_to": {
+   "tool": [
+    "cbuild",
+    "csolution"
+   ]
+  },
+  "versions": "2.6.1, fixed in 2.7.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1812",
+  "tool": "csolution",
+  "title": "csolution run -g fails with missing component of an unselected sibling context",
+  "symptoms": [
+   "error csolution: no component was found with identifier 'Security:mbed TLS'"
+  ],
+  "cause": "All contexts that share the generator id, base-dir and cgen-file (and multi-core, secure/non-secure and map: siblings) are processed together, and a defect did not load packs additionally required by the unselected siblings, causing a false dependency failure.",
+  "fix": "Workaround: run the generator for all sibling contexts by leaving out -c, for example csolution run <solution> -g CubeMX. csolution list generators -v shows the siblings. Defect fixed in later 2.6.x/2.7 builds.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "2.6.1",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1809",
+  "tool": "cbuild",
+  "title": "cbuild clean fails with missing RTE files on a multi-target project",
+  "symptoms": [],
+  "cause": "Cleaning relied on files of all targets, including RTE files of targets that were never set up, so it errored and left out and tmp in place. RTE files should also be kept in version control.",
+  "fix": "Cleanup strategy changed in cbuild (released with CMSIS-Toolbox 2.7.0): tmp is deleted, and out files only for the selected contexts. Also commit the RTE folder and run cbuild setup --packs.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "2.6.0 and 2.6.1, fixed in 2.7.0",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1801",
+  "tool": "cbuild",
+  "title": "cbuild --rebuild cannot remove tmp directory",
+  "symptoms": [
+   "Error removing directory \"<project>/tmp\".",
+   "error cbuild: error cleaning '<project>/<name>.cbuild-idx.yml'"
+  ],
+  "cause": "The tmp directory was in use (opened as working directory in a shell or an editor), so Windows could not delete it.",
+  "fix": "Close terminals and editors that sit in tmp; with the changed cleanup in CMSIS-Toolbox 2.7.0 the error no longer occurred.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "2.6.1",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1731",
+  "tool": "cbuild",
+  "title": "CMake error about invalid target name when a context name contains a blank",
+  "symptoms": [
+   "The target name \"Hello.Debug+AVH Test\" is reserved or not valid for certain CMake features, such as generator expressions, and may result in undefined behavior."
+  ],
+  "cause": "Project, build-type and target-type names form the context name, which becomes a CMake target name; blanks and other characters CMake restricts are not allowed.",
+  "fix": "Use names without blanks (underscore or dash instead). The restriction was added to the toolbox documentation.",
+  "applies_to": {
+   "tool": [
+    "cbuild",
+    "csolution"
+   ]
+  },
+  "versions": "2.5.0",
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1715",
+  "tool": "csolution",
+  "title": "cmse-lib access sequence error for the non-secure project since 2.5.0",
+  "symptoms": [
+   "error csolution: context 'secure' referenced by access sequence 'cmse-lib' does not exist or is not selected",
+   "*** ERROR M204:\n  Path not found: 'C:/xxx/non_secure/$cmse-lib(secure)!"
+  ],
+  "cause": "From 2.5.0 the CMake backend resolves $cmse-lib(project)$ to the selected build of the secure project, so that project must be part of the same context set. Building the non-secure context alone cannot resolve it (2.4.0 mapped it to the same build and target type by convention).",
+  "fix": "Select both projects, for example cbuild <solution> --context CM33s.Release+CS300 --context CM33ns.Debug+CS300, or use a context-set for the whole target type.",
+  "applies_to": {
+   "tool": [
+    "csolution",
+    "cbuild"
+   ]
+  },
+  "versions": "2.5.0",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1711",
+  "tool": "cbuild",
+  "title": "GCC link fails for a Secure project without non-secure callable entries",
+  "symptoms": [
+   "CM33_s_CMSE_Lib.o: no symbol found for import library",
+   "ld.exe: final link failed: no symbols"
+  ],
+  "cause": "GCC cannot generate a CMSE import library when the secure project exports no cmse entry functions; AC6 only warns.",
+  "fix": "Set the secure-only option of the trustzone: node under processor: so no import library is generated. Available from CMSIS-Toolbox nightly of September 2024 (2.6.0).",
+  "applies_to": {
+   "tool": [
+    "cbuild",
+    "csolution"
+   ],
+   "toolchain": [
+    "GCC"
+   ]
+  },
+  "versions": "2.5.0, fixed in 2.6.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1683",
+  "tool": "csolution",
+  "title": "Error that source modules are added by multiple components since 2.5.0",
+  "symptoms": [
+   "error csolution: source modules added by multiple components:"
+  ],
+  "cause": "Since CMSIS-Toolbox 2.5.0 the default CMake generator (cbuild2cmake) builds per component, so the same source file listed by two components would be compiled twice and clash at link time. The check is intended; the older cbuildgen mode only warned.",
+  "fix": "Fix the pack so the file belongs to one component. Short term: run cbuild with --cbuildgen, or pin the toolbox to 2.4.0 in vcpkg-configuration.json. Later toolbox versions hide the duplicate from the later component.",
+  "applies_to": {
+   "tool": [
+    "csolution",
+    "cbuild"
+   ]
+  },
+  "versions": "2.5.0",
+  "resolution": "workaround",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1674",
+  "tool": "csolution",
+  "title": "--toolchain GCC conflicts with layer that fixes compiler AC6",
+  "symptoms": [
+   "warning csolution: redefinition from 'AC6' into 'GCC'",
+   "error csolution: redefinition from 'GCC' into 'AC6' is not allowed"
+  ],
+  "cause": "For projects with layers, the compiler given with --toolchain was not applied consistently: the layer still set AC6 afterwards and the redefinition was rejected.",
+  "fix": "Fixed in a toolbox release after 2.5.0 (internal release at the time). Update, or remove compiler: from the layer.",
+  "applies_to": {
+   "tool": [
+    "csolution",
+    "cbuild"
+   ]
+  },
+  "versions": "2.5.0",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1671",
+  "tool": "csolution",
+  "title": "board with vendor prefix not found although the pack is installed",
+  "symptoms": [
+   "error csolution: board 'ABOV::StarterKit-A31G112CL:V1.1' was not found"
+  ],
+  "cause": "The board identifier was built from the device vendor (ABOV Semiconductor) or pack vendor string instead of the board's vendor attribute; the board is defined with a different vendor attribute than the pack vendor.",
+  "fix": "Fixed in csolution nightlies after 2.5.0: csolution list boards now prints the matching board id (ABOV::StarterKit-A31G112CL:V1.1). Use the id from csolution list boards -f <name>.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "2.5.0",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1668",
+  "tool": "csolution",
+  "title": "found multiple mounted devices although device: is specified",
+  "symptoms": [
+   "error csolution: found multiple mounted devices",
+   "error csolution: one of the following devices must be specified:"
+  ],
+  "cause": "The board in the pack lists two mountedDevice entries with the same deviceIndex, which the specification does not allow, and csolution 2.5.0 did not cope with it even when device: named one of them.",
+  "fix": "Fixed in a toolbox release after 2.5.0 so the specified device selects the mounted device. The pack should also use distinct deviceIndex values.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "2.5.0",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1659",
+  "tool": "csolution",
+  "title": "Schema check failed when compiler: is set to LLVM",
+  "symptoms": [
+   "error csolution: schema check failed, verify syntax"
+  ],
+  "cause": "The value of compiler: must be one of GCC, CLANG, AC6 or IAR; LLVM is not valid, so the schema check fails at the compiler node.",
+  "fix": "Use compiler: CLANG for LLVM-based toolchains.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ],
+   "toolchain": [
+    "CLANG"
+   ]
+  },
+  "versions": "2.5.0",
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1658",
+  "tool": "csolution",
+  "title": "Layer detection fails on a multi-core device: processor must be specified",
+  "symptoms": [
+   "error csolution: one of the following processors must be specified:",
+   "error csolution: error occurred during layer detection. Please review the project and its dependencies"
+  ],
+  "cause": "Like board and device names, the processor name (Pname) must be fixed before layers are filtered from packs, even if the layer itself names the core.",
+  "fix": "Add the processor to the device in the target-type, for example device: NXP::LPC55S69JBD100:cm33_core0.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "2.5.0",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1650",
+  "tool": "csolution",
+  "title": "Partial component name resolves to an unexpected pack's component",
+  "symptoms": [],
+  "cause": "Partly specified component identifiers resolve to the best match, so ARM::CMSIS Driver:USART silently selected a Custom variant from another pack, and CMSIS:OS Tick stopped resolving where several subgroups exist.",
+  "fix": "Write the full identifier including Csub (for example CMSIS:OS Tick:SysTick) and the vendor you want. Partial identifiers are only safe where a default implementation exists without Csub.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "2.5.0",
+  "resolution": "configuration",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1649",
+  "tool": "cbuild",
+  "title": "cbuild prints 'bad pack name' from cpackget with --context-set",
+  "symptoms": [
+   "E: bad pack name: it should be one of the following formats: Vendor.Pack, Vendor.Pack.x.y.z, Vendor.Pack.x.y.z.pack, or Vendor.Pack.pdsc"
+  ],
+  "cause": "A regression in a 2.5.0 pre-release: csolution list packs output with --context-set began with an info line about cbuild-set.yml, which cbuild parsed as a pack name.",
+  "fix": "Fixed before the 2.5.0 release; use the final 2.5.0 or later.",
+  "applies_to": {
+   "tool": [
+    "cbuild",
+    "cpackget"
+   ]
+  },
+  "versions": "2.5.0-devint5",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1646",
+  "tool": "csolution",
+  "title": "csolution convert aborts when no toolchain environment variable is registered",
+  "symptoms": [
+   "error csolution: cmake configuration file and compiler registration environment variable missing, format: GCC_TOOLCHAIN_<major>_<minor>_<patch>"
+  ],
+  "cause": "2.5.0 enforced a registered toolchain even for csolution convert, which before did not need one.",
+  "fix": "Fixed in a later 2.5.x build; update. Otherwise register a toolchain via the GCC_TOOLCHAIN_<major>_<minor>_<patch> environment variable.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ],
+   "toolchain": [
+    "GCC"
+   ]
+  },
+  "versions": "2.5.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1620",
+  "tool": "csolution",
+  "title": "Build fails because an optional layer variable such as Shield-Layer is undefined",
+  "symptoms": [
+   "error csolution: undefined variables in <name>.csolution.yml:\n  - $Shield-Layer$"
+  ],
+  "cause": "Layer variables referenced in layers: must be defined; there is no implicit skipping of an optional layer.",
+  "fix": "Define the variable as an empty string in the target-type (variables: - Shield-Layer: \"\"); an entry with an empty layer path is ignored. Layer detection writes this into the cbuild-idx configurations from 2.6 on.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "2.5.0",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1553",
+  "tool": "csolution",
+  "title": "Schema 2.3 rejects cbuild.yml files written by toolbox 2.1/2.2 (from-pack missing)",
+  "symptoms": [
+   "missing properties: 'from-pack'"
+  ],
+  "cause": "Schema version 2.3 made from-pack required for generators, but files from older toolbox versions do not contain it, so validating them with that schema fails.",
+  "fix": "The schema was changed so from-pack is optional again; use a newer schema, or regenerate the files with a current toolbox.",
+  "applies_to": {
+   "tool": [
+    "csolution",
+    "cbuild"
+   ]
+  },
+  "versions": "schema 2.3",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1529",
+  "tool": "csolution",
+  "title": "Layer rejected because the project provides a connection that no layer consumes",
+  "symptoms": [
+   "provided combined connections not consumed:"
+  ],
+  "cause": "The rule that a layer is unused when none of its provided connections are consumed was also applied to the project itself, so a project whose provides: entry had no consumer was skipped in layer detection.",
+  "fix": "Fixed in a toolbox release after 2.5.0: a project stays valid even if none of its provided connections are consumed; the rule remains for layers.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "2.5.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1468",
+  "tool": "csolution",
+  "title": "Generated regions header ignores memory defined in the board of a BSP",
+  "symptoms": [],
+  "cause": "With automatic linker script generation (linker: - auto:) only memory from the device was written to regions_<board>.h; memory elements of the board (for example external RAM and flash from the BSP) were missing.",
+  "fix": "Fixed in CMSIS-Toolbox 2.4.0; update.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "before 2.4.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1460",
+  "tool": "svdconv",
+  "title": "SVDConv 3.3.46 reports error M364 for sauNumRegions equal to 0",
+  "symptoms": [],
+  "cause": "A value of 0 is valid by the SVD schema, but the new check rejected it.",
+  "fix": "Fixed in SVDConv 3.3.47, which compares sauNumRegions with the configured SAU regions: warning M391 when regions exceed the number, error M387 when it is 0 but regions exist.",
+  "applies_to": {
+   "tool": [
+    "svdconv"
+   ]
+  },
+  "versions": "3.3.46 (MDK 5.39), fixed in 3.3.47",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1451",
+  "tool": "cbuild",
+  "title": "Linker error for symbol defined twice when two components reference the same source file",
+  "symptoms": [
+   "Error: L6200E: Symbol func multiply defined (by test.o and test.o)."
+  ],
+  "cause": "Two components of a pack list the same source module. The modular CMake backend compiles it once per component, so the linker sees duplicate symbols; the older RteModel silently overwrote duplicates and hid this.",
+  "fix": "Make only one component of the pack reference the file. Newer toolboxes report the duplicates in csolution and then hide the duplicate from later components (see the 2.5.0 duplicate-source error).",
+  "applies_to": {
+   "tool": [
+    "cbuild",
+    "csolution"
+   ],
+   "toolchain": [
+    "AC6"
+   ]
+  },
+  "versions": "2.3 to 2.5",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1430",
+  "tool": "csolution",
+  "title": "Local repository packs handled inconsistently by list packs and convert",
+  "symptoms": [],
+  "cause": "Local repository packs were added to the pack list without version filtering and ignored when the cbuild-pack requirements were established, so an older installed pack could win over a newer local one.",
+  "fix": "Fixed in CMSIS-Toolbox 2.4: local packs are visible wherever installed packs are used and take precedence when their version is equal or larger within the requested range.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "2.2.1 to 2.3.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1420",
+  "tool": "csolution",
+  "title": "Redefinition of optimize level from project and solution is rejected",
+  "symptoms": [
+   "error csolution: redefinition from 'balanced' into 'none' is not allowed"
+  ],
+  "cause": "Translation controls such as optimize may only be set once across project, solution, target-type and build-type; redefining them is deliberately an error, regardless of order.",
+  "fix": "Set optimize: at only one level, for example only in the build-type of the solution.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "",
+  "resolution": "not-a-bug",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1402",
+  "tool": "csolution",
+  "title": "Warning that key 'selected-by' was not recognized in cbuild-pack.yml",
+  "symptoms": [
+   "warning csolution: key 'selected-by' was not recognized"
+  ],
+  "cause": "The cbuild-pack.yml was written by an older toolbox (2.2) that used selected-by, later renamed selected-by-pack.",
+  "fix": "Fixed in CMSIS-Toolbox 2.3.0, which accepts both keys. Alternatively delete the stale cbuild-pack.yml and run convert again.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "2.3.0-dev0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1401",
+  "tool": "csolution",
+  "title": "Layer variable with relative path fails when the cproject is in a subdirectory",
+  "symptoms": [],
+  "cause": "A relative path assigned to a variable in the csolution.yml is evaluated relative to the cproject.yml that uses it, which sits in another directory.",
+  "fix": "Workaround: prefix the variable in the layer node with the relative path to the solution folder, for example layer: ../$Board-Layer$. Access sequences were not yet accepted in layer: at the time of that report.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "2.3.0-dev0",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1397",
+  "tool": "csolution",
+  "title": "cbuild-idx.yml schema validation fails because cdefault node is missing in the schema",
+  "symptoms": [],
+  "cause": "The cbuild-idx.yml schema did not define the cdefault node that newer toolbox versions write, and additionalProperties is false, so validation of generated files failed.",
+  "fix": "Schema corrected (cdefault added, tolerant of older keys); fixed with the schema updates of April 2024 (toolbox 2.3.0).",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "2.3.0-dev",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1367",
+  "tool": "csolution",
+  "title": "Duplicate entry error in cbuild.yml when a define repeats one set by the device",
+  "symptoms": [],
+  "cause": "The solution defined CPU_K32L3A60VPJ1A_cm4 itself although the pack's device description already adds that define, so the generated cbuild.yml listed it twice and the schema reported a duplicate.",
+  "fix": "Remove the redundant define from the csolution. The duplicate tolerance was addressed in CMSIS-Toolbox 2.3.0.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "2.2.1, fixed in 2.3.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1356",
+  "tool": "csolution",
+  "title": "Warning that a required pack is not loaded or not specified",
+  "symptoms": [
+   "warning csolution: context 'Project.Debug+SSE-310-MPS3_FVP': required pack 'ARM::CMSIS-Compiler@2.0.0' is not loaded"
+  ],
+  "cause": "A pack in use (for example a BSP) lists other packs under requirements in its pdsc; csolution warns when those are not part of the pack selection, as a hint where an unresolved component or dependency could come from.",
+  "fix": "Informational. Add the named pack to packs: if a component or dependency is not resolved; otherwise the warning can be ignored. The text was reworded to name the pack that requires it.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "2.2.1",
+  "resolution": "not-a-bug",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1308",
+  "tool": "cbuild",
+  "title": "CLANG build crashes or cannot find C headers with LLVM 17 for Cortex-M",
+  "symptoms": [],
+  "cause": "The CLANG toolchain file used an -mfpu option that crashes the compiler, a wrong CLANG_ARCH runtime folder, and explicit -isystem paths that did not find the standard headers.",
+  "fix": "Fixed in CMSIS-Toolbox 2.3.0 (confirmed with 2.3.0-dev0): the CLANG cmake file drops -mfpu and uses sysroot so the compiler finds its runtime.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ],
+   "toolchain": [
+    "CLANG"
+   ]
+  },
+  "versions": "2.2.x, fixed in 2.3.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1264",
+  "tool": "svdconv",
+  "title": "SVDConv M382 reset mask does not fit for a 64-bit register",
+  "symptoms": [
+   "*** WARNING M382: RESET_MASK.svd (Line 51)\n  Register 'ABS': Reset Mask '0xFFFFFFFFFFFFFFFF' does not fit into Register width: 64 Bit."
+  ],
+  "cause": "The check of the reset mask against the register width was calculated wrongly for 64-bit registers.",
+  "fix": "Fixed in a later SVDConv release (64-bit mask calculation corrected). Note that 64-bit registers are not officially supported by svdconv.",
+  "applies_to": {
+   "tool": [
+    "svdconv"
+   ]
+  },
+  "versions": "3.3.46",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1262",
+  "tool": "csolution",
+  "title": "Warning #500 duplicate pack ignored when the pack vendor is written in a different case",
+  "symptoms": [
+   "warning #500: pack 'ARM::CMSIS@6.0.0' is already defined in file <packs>/ARM/CMSIS/6.0.0/ARM.CMSIS.pdsc - duplicate is ignored"
+  ],
+  "cause": "Pack names are matched case-insensitively on Windows, so pack: Arm::CMSIS finds the ARM::CMSIS folder while cbuild-pack.yml from an earlier run records the upper-case name, and the pack is seen twice.",
+  "fix": "Write the vendor exactly as in the pack (ARM::CMSIS), including in cproject and clayer files, so projects stay portable to case-sensitive systems.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "2.2.1",
+  "resolution": "user-error",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1260",
+  "tool": "cbuild",
+  "title": "CMake configuration step takes minutes with Arm Compiler 6",
+  "symptoms": [
+   "-- Configuring done (188.5s)"
+  ],
+  "cause": "Compiler detection runs armclang several times; with a floating-license (FlexNet) server each start waits for the license check, while GCC has no such delay.",
+  "fix": "The latency comes from the license server, not from the toolbox. Arm Compiler in MDK v6 uses user-based licensing, which avoids it; CMake caches the result so later configures are faster.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ],
+   "toolchain": [
+    "AC6"
+   ]
+  },
+  "versions": "toolbox 2.1.0, AC6 6.19",
+  "resolution": "configuration",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1242",
+  "tool": "cpackget",
+  "title": "Installing a local .pack with spaces in the path fails with bad pack name",
+  "symptoms": [
+   "E: bad pack name: it should be one of the following formats: Vendor.Pack, Vendor.Pack.x.y.z, Vendor.Pack.x.y.z.pack, or Vendor.Pack.pdsc",
+   "E: file not found"
+  ],
+  "cause": "The MDK Pack Installer (uVision 5.39) called cpackget without quoting the pack path, so a path containing a space was split into two arguments.",
+  "fix": "Not a cpackget defect: running cpackget add \"<path with spaces>\\Vendor.Pack.1.0.0.pack\" with quotes works. The problem was tracked as a product bug of the Pack Installer; meanwhile install from a path without spaces or from the command line.",
+  "applies_to": {
+   "tool": [
+    "cpackget"
+   ]
+  },
+  "versions": "MDK 5.39",
+  "resolution": "workaround",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1148",
+  "tool": "svdconv",
+  "title": "SVDConv rejects protection tag inside addressBlock",
+  "symptoms": [
+   "*** ERROR M201: test.svd (Line 28) \n  Tag <protection> unknown or not allowed on this level."
+  ],
+  "cause": "The protection element in addressBlock is part of the SVD schema since 1.3.2, but SVDConv 3.3.46 did not know it there.",
+  "fix": "Use an SVDConv release that supports the SVD 1.3.2 element (newer than 3.3.46) and make sure the file declares a matching schemaVersion.",
+  "applies_to": {
+   "tool": [
+    "svdconv"
+   ]
+  },
+  "versions": "3.3.46",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1147",
+  "tool": "cbuild",
+  "title": "Path not found with backslashes in include path of a pack on macOS or Linux",
+  "symptoms": [
+   "*** ERROR M204:\n  Path not found: '<packs>/GigaDevice/GD32F10x_DFP/2.0.3/Device\\Include'!"
+  ],
+  "cause": "The pack's pdsc uses backslashes in file and include paths; they are valid only on Windows. packchk reports them as M327.",
+  "fix": "Report it to the pack vendor, or edit the installed pdsc to use forward slashes. Later toolbox versions (2.7.0) convert backslashes themselves.",
+  "applies_to": {
+   "tool": [
+    "cbuild",
+    "packchk"
+   ],
+   "family": [
+    "GD32F10x"
+   ]
+  },
+  "versions": "toolbox 2.1.0",
+  "resolution": "workaround",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1146",
+  "tool": "cbuild",
+  "title": "IAR build error for Cortex-M55 when Dfpu is SP_FPU",
+  "symptoms": [],
+  "cause": "The IAR toolchain file mapped single-precision FPU to ERROR on Cortex-M55/M85, but the hardware FPU there is double precision or none.",
+  "fix": "Fixed in the IAR toolchain files of the toolbox (2.2 timeframe): SP_FPU now maps to the double-precision hardware setting on M55 and M85.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ],
+   "core": [
+    "Cortex-M55",
+    "Cortex-M85"
+   ],
+   "toolchain": [
+    "IAR"
+   ]
+  },
+  "versions": "before 2.2",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1124",
+  "tool": "csolution",
+  "title": "Component with older API major version gets the wrong API from the newest pack",
+  "symptoms": [],
+  "cause": "With two versions of a pack loaded, the newest one always wins when no version is given, so a component implementing API 0.1.0 was built against the incompatible API 1.0.0.",
+  "fix": "Fixed by new API resolution in the 2.2 timeframe: the highest API version inside the major version the component requires is chosen, an error is raised if none fits. Also avoid specifying two major pack versions concurrently.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "2.1.0, fixed in 2.2",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1082",
+  "tool": "svdconv",
+  "title": "svdconv --generate partition loops endlessly when the SVD has no sauNumRegions",
+  "symptoms": [],
+  "cause": "Without sauNumRegions the internal default (an unset marker, all bits set) was used as region count, so the generated partition header ran SAU_INIT_REGION far beyond any sensible number.",
+  "fix": "Fixed in SVDConv 3.3.46: the count is checked and the header contains an #error that the number of SAU regions is not set. Add sauNumRegions under cpu in the SVD.",
+  "applies_to": {
+   "tool": [
+    "svdconv"
+   ]
+  },
+  "versions": "3.3.45, fixed in 3.3.46",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1052",
+  "tool": "packchk",
+  "title": "packchk does not warn about missing Cvariant components referenced in accept",
+  "symptoms": [],
+  "cause": "The RTE model only reports a missing component (M504) for require expressions; components named only in accept conditions were not checked, so a missing variant went unnoticed.",
+  "fix": "packchk was extended to check all references; as a quick test temporarily change accept to require to see M504 messages for missing components.",
+  "applies_to": {
+   "tool": [
+    "packchk"
+   ]
+  },
+  "versions": "before 1.4",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1026",
+  "tool": "csolution",
+  "title": "Context set with several -c values or a comma list behaves unexpectedly",
+  "symptoms": [],
+  "cause": "Several contexts can be given as repeated -c options or as one comma-separated list, but there must be no space after a comma, otherwise the second name is not read as part of the option.",
+  "fix": "Use csolution convert <solution> -c cm33_s.Debug+AVH -c cm33_ns.Release+AVH, or -c a,b without spaces.",
+  "applies_to": {
+   "tool": [
+    "csolution",
+    "cbuild"
+   ]
+  },
+  "versions": "",
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/978",
+  "tool": "cbuild",
+  "title": "cbuild fails on macOS/Linux: empty cmake.in files missing after vcpkg install",
+  "symptoms": [],
+  "cause": "The tar extraction used by vcpkg artifacts dropped three empty files (CMakeTestAS_ARMCompiler.cmake.in, _GNUCompiler, _LEGCompiler) in the toolbox etc/CMakeASM folder, but CMake needs them.",
+  "fix": "Fixed from CMSIS-Toolbox 2.0.0-dev2 by putting a comment into the files so they are not empty. On older installs create the three files manually.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "1.7.0, fixed in 2.0.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ }
+]

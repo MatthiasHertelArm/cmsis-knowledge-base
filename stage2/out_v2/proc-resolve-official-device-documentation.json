@@ -1,0 +1,36 @@
+{
+  "id": "proc-resolve-official-device-documentation",
+  "summary": "Recover or conclusively account for an unavailable vendor device-documentation URL by finding the current official source and returning a traceable retrieval result.",
+  "triggers": [
+    "CMSIS device, debug, trace, board, or Pack research workflow",
+    "broken, moved, or inaccessible vendor document reference"
+  ],
+  "applies_to": {
+    "tool": [],
+    "toolchain": [],
+    "core": [],
+    "component": [],
+    "api": []
+  },
+  "unmapped": [
+    "access to the web or supplied vendor documentation"
+  ],
+  "verification": [
+    "Return `Resolved` only when the replacement is an official vendor source and its identity is sufficiently evidenced.",
+    "Do not replace a missing official source with an unofficial mirror, distributor copy, forum post, or search-result snippet.",
+    "Validate every `Resolved` row against the vendor's own domain, document portal, or authenticated vendor download flow, and compare its title/identifier, product applicability, and revision with the supplied context.",
+    "Record the exact validation limitation for every `Unavailable` row."
+  ],
+  "stop_conditions": [
+    "If no source can be verified, return `Unavailable` with the attempted terms and precise reason.",
+    "Stop with `Unavailable` when the supplied identity is too ambiguous to distinguish a document or no official replacement can be verified."
+  ],
+  "rules": [
+    {"id": "rule-critical-blockers-resolve-official-device-documentation", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-no-fabrication-resolve-official-device-documentation", "class": "generic", "canonical_id": "rule-no-fabrication", "delta": "document identifier, revision, URL, retrieval result, or product applicability"},
+    {"id": "rule-portability-resolve-official-device-documentation", "class": "generic", "canonical_id": "rule-portability", "delta": ""},
+    {"id": "rule-scope-resolve-official-device-documentation", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-tone-and-style", "class": "generic", "canonical_id": "rule-tone-and-style", "delta": ""}
+  ],
+  "extracted": []
+}

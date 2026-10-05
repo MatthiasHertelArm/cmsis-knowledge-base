@@ -2,7 +2,7 @@
 type: "procedure"
 domain: "bring-up"
 title: "pyocd-detect-debug-topology"
-summary: "Capture supplementary, non-authoritative CMSIS debug and CoreSight topology evidence from the complete stdout/stderr of `pyocd gdbserver -vv --target cortex_m` after `$check-pyocd-availability` succeeds. Use when documentation does not establish a required processor, debug-port, access-port, or CoreSight-component observation; do not use detection to infer missing hardware behavior."
+summary: "Capture supplementary, non-authoritative CMSIS debug and CoreSight topology evidence from the complete stdout/stderr of `pyocd gdbserver -vv --target cortex_m` after `$check-pyocd-availability` succeeds, returning the observation table and limitations in conversation."
 status: "draft"
 source: "bring-up/pyocd-detect-debug-topology/SKILL.md"
 preconditions: "Complete captured stdout and stderr from `pyocd gdbserver -vv --target cortex_m`, or an accessible target plus a successful `$check-pyocd-availability` result for a new scan. No supplied target or probe context is required when exactly one target is attached; provide a selection only when multiple targets are attached. Documented unlock, power-up, and recovery steps are required before a repeat scan."
@@ -12,6 +12,13 @@ output: "Return this Markdown record in conversation:\n\n```markdown\nScan sourc
 sections: ["Execution Steps", "Expected Output", "Guardrails & Constraints", "Prerequisites & Context", "Scan limitations", "Target & Persona", "Validation Resources"]
 id: "proc-pyocd-detect-debug-topology"
 requires: ["proc-check-pyocd-availability"]
+description: "Capture supplementary, non-authoritative CMSIS debug and CoreSight topology evidence from the complete stdout/stderr of `pyocd gdbserver -vv --target cortex_m` after `$check-pyocd-availability` succeeds. Use when documentation does not establish a required processor, debug-port, access-port, or CoreSight-component observation; do not use detection to infer missing hardware behavior."
+triggers: ["documentation does not establish a required processor", "debug-port", "access-port", "CoreSight-component observation"]
+verification: ["Extract only explicitly observed processor, DP, AP, APID, protocol, component, address, and scan-failure information.", "Preserve the complete captured stdout/stderr in the task context.", "Record the shutdown request and outcome when this workflow started the server.", "Do not treat an absent observation as evidence that a subsystem does not exist.", "Use the complete captured stdout/stderr from `pyocd gdbserver -vv --target cortex_m` as the sole runtime evidence source.", "Before a new scan, verify the successful `$check-pyocd-availability` result.", "Then verify that each table row is traceable to the captured output, every repeat scan records its documented unlock or power-up prerequisite, and every server started by this workflow records its graceful shutdown result, including a forced termination after the 10-second grace period when required."]
+stop_conditions: ["Use the target directly if exactly one is available; stop for selection when multiple targets are attached.", "Stop when a new scan lacks a successful `$check-pyocd-availability` result, an accessible target, a selection among multiple attached targets, or documented unlock/power-up steps for a repeat scan."]
+unmapped: ["CoreSight", "accessible target"]
+applies_to: {"tool": ["pyocd"]}
+stage2: "proc-pyocd-detect-debug-topology.json"
 ---
 
 # pyOCD Detect Debug Topology

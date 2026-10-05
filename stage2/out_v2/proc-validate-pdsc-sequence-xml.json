@@ -1,0 +1,52 @@
+{
+  "id": "proc-validate-pdsc-sequence-xml",
+  "summary": "Validate common CMSIS-Pack PDSC sequence XML and C-like block formatting through the active conversation after a proposed or applied change, returning commands, inspected matches, failures, resolutions, and `PASS` or `FAIL`.",
+  "triggers": [
+    "debug or trace PDSC sequence edits",
+    "XML/PDSC syntax",
+    "block layout",
+    "complete match inspection"
+  ],
+  "applies_to": {
+    "tool": ["packchk", "cpackget", "svdconv"],
+    "toolchain": [],
+    "core": [],
+    "component": [],
+    "api": []
+  },
+  "unmapped": [
+    "rg",
+    "CMSIS-Toolbox",
+    "XML/PDSC validation toolchain",
+    "CMSIS-Pack PDSC"
+  ],
+  "verification": [
+    "Run and inspect every relevant match from `rg -n '<block>.*;</block>' <target.pdsc>` and `rg -n '^[[:space:]]*[^<].*;.*;' <target.pdsc>`.",
+    "Resolve each C-like match; one-line block bodies and multiple statements on one line fail validation.",
+    "When the requested change also affects an SVD, run `svdconv`; when pack consumption must be checked, register or install the local PDSC or pack with `cpackget`.",
+    "Use the current Debug Description specification for sequence grammar; `packchk` with `-i` options for PDSC and dependency-pack validation; and the two required `rg` checks for block-format inspection.",
+    "Use `cpackget` to check local-pack registration or installation when required, and `svdconv` for an affected SVD."
+  ],
+  "stop_conditions": [
+    "Stop when `packchk` or required XML/PDSC validation cannot run, a required match remains unresolved, or the target PDSC is unavailable."
+  ],
+  "rules": [
+    {"id": "rule-critical-blockers-validate-pdsc-sequence-xml", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-no-fabrication-validate-pdsc-sequence-xml", "class": "generic", "canonical_id": "rule-no-fabrication", "delta": "syntax, formatting, or toolchain validation passed without running and inspecting the required checks"},
+    {"id": "rule-portability-debug-access-knowledge", "class": "generic", "canonical_id": "rule-portability", "delta": "unless authoritative inputs require it"},
+    {"id": "rule-scope-validate-pdsc-sequence-xml", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-tone-and-style", "class": "generic", "canonical_id": "rule-tone-and-style", "delta": ""}
+  ],
+  "extracted": [
+    {
+      "type": "pattern",
+      "title": "Validate a PDSC with packchk and its required packs",
+      "body": "Validate XML/PDSC syntax with `packchk <target.pdsc>` and include every required pack through its `-i` option."
+    },
+    {
+      "type": "pattern",
+      "title": "C-like block layout in PDSC sequences and its rg checks",
+      "body": "Require matching XML-tag alignment. Require C-like content to start after `<block>`, be indented one level inside it, use one semicolon-terminated statement per line, and preserve XML entities.\n\nRun and inspect every relevant match from `rg -n '<block>.*;</block>' <target.pdsc>` and `rg -n '^[[:space:]]*[^<].*;.*;' <target.pdsc>`. Resolve each C-like match; one-line block bodies and multiple statements on one line fail validation."
+    }
+  ]
+}

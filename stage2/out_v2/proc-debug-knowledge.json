@@ -1,0 +1,32 @@
+{
+  "id": "proc-debug-knowledge",
+  "summary": "Build a documentation-led, verifiable knowledge record of an existing SoC's reset, unlock, authentication, boot, flash, processor-control, and low-power debug behavior after `$debug-access-knowledge` has established the reusable access topology, for user review before `READY`.",
+  "triggers": [
+    "device-debug facts need establishing or refreshing",
+    "PDSC debug sequences",
+    "no active target connection is required"
+  ],
+  "applies_to": {"tool": [], "toolchain": [], "core": [], "component": [], "api": []},
+  "unmapped": [
+    "CMSIS Device Family Pack PDSC"
+  ],
+  "verification": [
+    "Update the owned record using the required evidence tables and readiness state.",
+    "Before writing a draft, make a second evidence pass for each unresolved prerequisite of the intended downstream work.",
+    "Identify unresolved, unavailable, and conflicting facts; do not infer missing values."
+  ],
+  "stop_conditions": [
+    "Stop if no device description or sufficient access record exists.",
+    "Present the record and its unresolved facts to the user. Use `DRAFT — AWAITING USER REVIEW` before confirmation; set `READY` only after confirmation, a `READY` access record, and sufficient evidence for the intended downstream work.",
+    "Return missing connection, protocol, DP/AP, or dormant-state facts to `$debug-access-knowledge`.",
+    "Stop when the access record is absent, non-READY, stale, contradictory, or insufficient; also stop for an unavailable required behavior input and name it."
+  ],
+  "rules": [
+    {"id": "rule-critical-blockers-debug-knowledge", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-no-fabrication-debug-knowledge", "class": "generic", "canonical_id": "rule-no-fabrication", "delta": "reset, unlock, authentication, boot, flash, processor-control, low-power behavior, or board routing. Return missing connection, protocol, DP/AP, or dormant-state facts to `$debug-access-knowledge`."},
+    {"id": "rule-portability-debug-access-knowledge", "class": "generic", "canonical_id": "rule-portability", "delta": "unless authoritative inputs require it."},
+    {"id": "rule-scope-debug-knowledge", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-tone-and-style", "class": "generic", "canonical_id": "rule-tone-and-style", "delta": ""}
+  ],
+  "extracted": []
+}

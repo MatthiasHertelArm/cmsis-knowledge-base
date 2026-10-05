@@ -1,0 +1,50 @@
+{
+  "id": "proc-identify-cmsis-board-support",
+  "summary": "Resolve a supplied board or device to exactly one verified CMSIS identity, identify its BSP or DFP, and ask the user when multiple candidates remain.",
+  "triggers": [
+    "CMSIS solution",
+    "verified board, device, and pack identifiers"
+  ],
+  "applies_to": {
+    "tool": ["csolution"],
+    "toolchain": [],
+    "core": [],
+    "component": [],
+    "api": []
+  },
+  "unmapped": [
+    "access to the Keil Boards and Devices catalogs",
+    "CMSIS-Toolbox"
+  ],
+  "verification": [
+    "Confirm every accepted catalog result against the board, device, processor/core, family, and optional installed-pack query.",
+    "CMSIS-Toolbox `csolution list boards` and `csolution list devices` commands"
+  ],
+  "stop_conditions": [
+    "If more than one plausible board remains, return `AMBIGUOUS`, list the exact candidates and distinguishing details, and ask the user to choose.",
+    "If the physical board cannot be established, return `NO MATCH`.",
+    "If more than one plausible `Dname` or required processor remains, return `AMBIGUOUS`, list the exact candidates and distinguishing details, and ask the user to choose.",
+    "If no device can be established, return `NO MATCH`.",
+    "Stop when a required identity has no authoritative match, neither catalog match is established, or the user has not resolved an `AMBIGUOUS` result."
+  ],
+  "rules": [
+    {"id": "rule-critical-blockers-identify-cmsis-board-support", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-exactly-one-gate-identify-cmsis-board-support", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-no-fabrication-identify-cmsis-board-support", "class": "generic", "canonical_id": "rule-no-fabrication", "delta": "CMSIS board, device, BSP, or DFP identifiers, and do not infer support from a similar part name."},
+    {"id": "rule-portability-identify-cmsis-board-support", "class": "generic", "canonical_id": "rule-portability", "delta": "RTOS, debugger, or probe assumptions beyond the verified catalog result."},
+    {"id": "rule-scope-identify-cmsis-board-support", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-tone-and-style", "class": "generic", "canonical_id": "rule-tone-and-style", "delta": ""}
+  ],
+  "extracted": [
+    {
+      "type": "concept",
+      "title": "Installed-pack queries are supporting evidence only",
+      "body": "When the CMSIS-Toolbox environment is active, cross-check installed packs with `csolution list boards --filter <terms>` or `csolution list devices --filter <terms>`. Installed-pack results are supporting evidence only: they may be a subset of the online catalog and therefore cannot establish uniqueness or eliminate other candidates. An empty local result does not prove that the online catalog lacks a BSP or DFP."
+    },
+    {
+      "type": "concept",
+      "title": "A CMSIS device identity is the exact Dname",
+      "body": "Normalize and de-duplicate device candidates by exact CMSIS `Dname`. Multiple processor `Pname` entries belonging to the same `Dname` are one device identity unless the requested target must select a processor."
+    }
+  ]
+}

@@ -93,3 +93,15 @@ Not done: cmsis-help has no unit; the three older own skills got a short descrip
 | Search | An exact message on an earlier line of tool output now ranks before one on a later line (the cause before "processing context failed"); the same rule is in the extension |
 
 Golden set: `tests/golden.json`, 47 queries over all domains, run with `tests/eval_search.js` against the extension's search (BM25, no vectors). With it the extension's ranking was tuned: procedure prior halved, none for routing units, question words left out of BM25; hit@1 0.43 → 0.55, hit@5 0.89, MRR 0.643 → 0.713. Weak spots: wording that splits a term ("set up" for setup, "time stamp" for timestamp), and short units with many common words. The error catalog's titles now show the whole message; ids are unchanged.
+
+## Update 5 Oct 2026, later: issues, stage 2 complete, more documentation
+
+| Item | State |
+|---|---|
+| Issue digests | 583 troubleshooting units in `units/issues/<repo>` from closed issues (519), open issues with a workaround (64, marked open) and answered pyOCD discussions (11) of pyOCD 231, devtools 133, CMSIS Debugger 84, cmsis-toolbox 40, CMSIS Solution 36, cpackget 35, CMSIS_6 17, RTX 6, View 1. Read by eleven parallel readers after `stage2/issues_prompt.md`: title, cause and fix in own words (mode S, link to the thread), tool output as the only verbatim text, 242 with an exact-message pattern. Confidence high 291, medium 247, low 45. A check against the threads found no copied prose. Raw threads stay in `.work/issues` (not committed) |
+| Stage 2 | Run on all 24 cmsis-skills procedures and the 7 of the extension (`stage2/out_v2`, `stage2/out_cda`): summaries within 40 words (lint errors 13 → 0), short triggers, verification, stop conditions; 48 procedure rules refined against the canonical ones; 64 extracted units. The skill description of stage 1 stays searchable (`description`, indexed with the triggers): without it the short triggers lost words such as HardFault, and the debug procedure fell out of the top ten |
+| Documentation | 45 sources, 4,687 units: Zephyr board and SoC porting, getting started, tracing and pinctrl added; Arm-Examples with a licence: Helium optimization guide, SystemView, AVH VSI, CMSIS MLEK packs, Ethos-U integration |
+| Index | 5,893 knowledge units, 67.6 MB with embeddings, lint clean |
+| Golden set | 58 queries (11 aim at issue digests): hit@1 0.64, hit@5 0.90, MRR 0.760 |
+
+Issue digests get no prior of their own: a negative one helped the documentation questions but hurt the issue questions more. Open points: older issues describe the cbuildgen era (CMSIS-Toolbox 1.x) and say so in `versions`; nothing removes them when a release makes them obsolete. The extracted units are not deduplicated yet; a few repeat each other (unclocked peripheral reads in three procedures).

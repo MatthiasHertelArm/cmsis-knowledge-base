@@ -2,7 +2,7 @@
 type: "procedure"
 domain: "bring-up"
 title: "trace-knowledge"
-summary: "Build a documentation-led, verifiable knowledge record of an existing SoC's CoreSight trace paths, components, operating requirements, and constraints for subsequent generation of PDSC trace sequences. Use when documented trace facts need establishing or refreshing before generating or maintaining CoreSight trace setup. No active target connection is required; treat runtime scanning as supplementary evidence."
+summary: "Build a documentation-led, verifiable knowledge record of an existing SoC's CoreSight trace paths, components, operating requirements, and constraints for subsequent generation of PDSC trace sequences, and present it for user review before `READY`."
 status: "draft"
 source: "bring-up/trace-knowledge/SKILL.md"
 preconditions: "An existing target `.pdsc`, selected family/subFamily/device/variant scope, affected processor descriptions, and available device documentation or target startup logs. A current `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` record is supporting input when trace evidence needs a processor association, debug connection, DP/AP path, protocol, or dormant-state fact."
@@ -13,6 +13,12 @@ id: "proc-trace-knowledge"
 requires: ["proc-board-debug-knowledge", "proc-debug-access-knowledge", "proc-pyocd-detect-debug-topology", "proc-resolve-official-device-documentation", "concept-trace-knowledge-contract"]
 produces: ["artifact-pdsc-stem-trace-knowledge-md"]
 consumes: ["artifact-pdsc-stem-debug-access-knowledge-md"]
+description: "Build a documentation-led, verifiable knowledge record of an existing SoC's CoreSight trace paths, components, operating requirements, and constraints for subsequent generation of PDSC trace sequences. Use when documented trace facts need establishing or refreshing before generating or maintaining CoreSight trace setup. No active target connection is required; treat runtime scanning as supplementary evidence."
+triggers: ["documented trace facts need establishing or refreshing", "before generating or maintaining CoreSight trace setup"]
+verification: ["Before writing a draft, make a second evidence pass for every unresolved trace prerequisite: a complete evidenced source-to-sink route, clock control, pin-function or electrical configuration, source selection, and device-specific sink constraints.", "Board evidence may supplement an optional configuration but cannot limit device-level Pack options.", "Identify unresolved, unavailable, and conflicting facts; do not infer missing values, treat topology alone as trace readiness, or assign every discovered TPIU to every trace mode."]
+stop_conditions: ["Stop if no device description exists.", "Present the record and every available, unavailable, or unresolved trace path to the user. Use `DRAFT — AWAITING USER REVIEW` before confirmation; set `READY` only after confirmation and only when sufficient evidence exists for the intended downstream work.", "Use `BLOCKED` only when a required input is unavailable and name that input.", "Return missing reusable access facts to `$debug-access-knowledge`."]
+unmapped: ["CoreSight", "CMSIS-Pack PDSC", "TPIU"]
+stage2: "proc-trace-knowledge.json"
 ---
 
 # CMSIS Trace Knowledge Acquisition

@@ -1,0 +1,540 @@
+[
+ {
+  "issue": "https://github.com/ARM-software/CMSIS_6/issues/269",
+  "tool": "cmsis-core",
+  "title": "ITM->LAR / LSR no longer compile after moving a Cortex-M33 project to CMSIS 6",
+  "symptoms": [],
+  "cause": "CMSIS 6 deliberately dropped the LAR and LSR lock registers from ITM_Type in core_cm33.h, because the common ARMv8-M ground does not require them. A vendor SDK that was written against CMSIS 5 and still touches ITM->LAR therefore fails to build.",
+  "fix": "Take the register declaration from the device family pack of the vendor if it provides one, or declare it yourself in the project (for example write the unlock key 0xC5ACCE55 straight to the ITM lock address of your device). Check in the device manual that the part really implements the ITM lock mechanism before adding it.",
+  "applies_to": {
+   "tool": [
+    "cmsis-core"
+   ],
+   "core": [
+    "Cortex-M33"
+   ]
+  },
+  "versions": "Removed in CMSIS 6; CMSIS 5 headers still declare the registers.",
+  "resolution": "workaround",
+  "open": true,
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS_6/issues/255",
+  "tool": "cmsis-core",
+  "title": "__disable_irq() returns void in CMSIS 6, code relying on the old return value breaks",
+  "symptoms": [],
+  "cause": "Older Arm Compiler support headers declared __disable_irq() as returning the previous mask state. When the compat header was dropped from the CMSIS toolchain headers, the CMSIS variant kept only the void signature, so code that saved the return value to restore interrupts later no longer works.",
+  "fix": "Do not use the return value. Save the state explicitly before disabling, for example read it with __get_PRIMASK() (Cortex-M) first, then call __disable_irq(), and restore with __set_PRIMASK(saved) afterwards. Maintainers agreed the signature should be brought back but no release containing that is named in the thread.",
+  "applies_to": {
+   "tool": [
+    "cmsis-core"
+   ]
+  },
+  "versions": "Behaviour changed between CMSIS 5.0.0 and later versions; the thread does not name a fixed release.",
+  "resolution": "workaround",
+  "open": true,
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS_6/issues/159",
+  "tool": "cmsis-core",
+  "title": "Telling Cortex-M33 and Cortex-M85 apart in the preprocessor",
+  "symptoms": [],
+  "cause": "Compilers do not agree on the architecture macros: GCC reports the same __ARM_ARCH and __ARM_ARCH_8M_MAIN__ values for both cores, other toolchains differ again, so the ACLE macros cannot reliably separate the two.",
+  "fix": "Test the CMSIS core revision macro instead, for example #if defined (__CM85_REV) for a Cortex-M85. CMSIS provides a fallback value when the device header does not define the revision, so the macro exists for every device.",
+  "applies_to": {
+   "tool": [
+    "cmsis-core"
+   ],
+   "core": [
+    "Cortex-M33",
+    "Cortex-M85"
+   ],
+   "toolchain": [
+    "GCC",
+    "AC6",
+    "LLVM",
+    "IAR"
+   ]
+  },
+  "versions": "",
+  "resolution": "configuration",
+  "open": true,
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/704",
+  "tool": "cbuild",
+  "title": "cbuild --rebuild --active removes secure outputs needed by the non-secure target",
+  "symptoms": [
+   "ninja: error: '.../out/CM33_s/AVH/Debug/CM33_s_CMSE_Lib.o', needed by '.../out/CM33_ns/AVH-NS-only/Debug/CM33_ns.elf', missing and no known rule to make it"
+  ],
+  "cause": "Two separate effects. In the reported project the target-set of the non-secure-only target pointed at the Release project context while the Debug set was selected, so the wrong context was built. In addition, --rebuild with --active cleans every context of the solution, not only those of the selected target-set, which deletes prebuilt secure artifacts that the non-secure image consumes.",
+  "fix": "Make each target-set reference the project contexts of its own build type (CM33_ns.Debug in the Debug set). When using --rebuild, build the secure image again afterwards (or build the non-secure context directly with --context), because the clean step also removes images owned by the other target type.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ],
+   "toolchain": [
+    "AC6",
+    "GCC"
+   ]
+  },
+  "versions": "Seen with CMSIS-Toolbox 2.14.x.",
+  "resolution": "user-error",
+  "open": true,
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/423",
+  "tool": "csolution",
+  "title": "cdefault.yml compiler option overrides the same option set in csolution or cproject",
+  "symptoms": [],
+  "cause": "The misc options of the different levels are additive and their order on the command line is implementation defined: cproject, then csolution, then cdefault, then build-type, then target-type. Because the last occurrence of a repeated option wins in AC6, Clang and GCC, a value from cdefault.yml (for example -gdwarf4) beats one from csolution.yml (-gdwarf5). Maintainers see this as a possible future change, which would be a breaking one.",
+  "fix": "To override a cdefault.yml option today, put the replacement option in a level that is emitted later, i.e. under build-types or target-types, or remove the conflicting option from cdefault.yml. Check the generated compile_commands.json to see the final order.",
+  "applies_to": {
+   "tool": [
+    "csolution",
+    "cbuild"
+   ]
+  },
+  "versions": "",
+  "resolution": "not-a-bug",
+  "open": true,
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2314",
+  "tool": "other",
+  "title": "ExecuTorch with Clang embedded toolchain lacks std::chrono::steady_clock and random_device",
+  "symptoms": [],
+  "cause": "The libc++ shipped with the Clang-based embedded toolchain has no monotonic clock or entropy source implementation for bare metal, so ExecuTorch code using them does not compile or link.",
+  "fix": "Provide the missing pieces through stub implementations (the CMSIS-Executorch project ships a posix stub source for this) and use a Clang toolchain file equivalent to the GCC one. A temporary alternative in the thread was to take libstdc++ from a GCC installation.",
+  "applies_to": {
+   "tool": [
+    "other"
+   ],
+   "toolchain": [
+    "Clang"
+   ]
+  },
+  "versions": "ATfE 21.1.1",
+  "resolution": "workaround",
+  "open": true,
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1172",
+  "tool": "cpackget",
+  "title": "Local pack clone with pdsc version 0.0.0 loses to installed pack releases",
+  "symptoms": [],
+  "cause": "A pack whose pdsc gets its release history generated in CI contains only a dummy release 0.0.0 in the working tree. Local repository entries are treated like installed packs, with precedence only for the same version, so any installed release with a higher version wins.",
+  "fix": "Either add a release element to the local pdsc whose version equals or exceeds the newest installed release (and fix the history again before merging), or remove all installed versions of that pack from the pack cache so only the local repository entry remains. Projects with pack version constraints still select the constrained version.",
+  "applies_to": {
+   "tool": [
+    "cpackget",
+    "csolution"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "open": true,
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/1048",
+  "tool": "packchk",
+  "title": "packchk from CMSIS-Toolbox 2.0.0 aborts on Ubuntu 20.04",
+  "symptoms": [
+   "packchk: dl-call-libc-early-init.c:37: _dl_call_libc_early_init: Assertion `sym != NULL' failed.",
+   "Aborted"
+  ],
+  "cause": "The schema validation uses the Xerces library, which converts input through iconv; the glibc behaviour of that path changed between Ubuntu 20.04 and 22.04, so the binary built on the newer system crashes on the older one.",
+  "fix": "Run packchk with --disable-validation, which skips the Xerces schema check and lets the remaining checks run. A rebuild of packchk for the older glibc was discussed; the binaries are otherwise intended for newer distributions.",
+  "applies_to": {
+   "tool": [
+    "packchk"
+   ]
+  },
+  "versions": "packchk 1.4.1 from cmsis-toolbox 2.0.0 on Ubuntu 20.04",
+  "resolution": "workaround",
+  "open": true,
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1026",
+  "tool": "pyocd",
+  "title": "pyOCD run prints RTT SWD/JTAG WAIT ACK errors although the test passes (Alif E8)",
+  "symptoms": [
+   "0001754 E Error reading RTT up channel 1: SWD/JTAG communication failure (WAIT ACK) [rtt_server]",
+   "0001754 E Error reading from RTT channel worker 1: SWD/JTAG communication failure (WAIT ACK) [rtt_server]"
+  ],
+  "cause": "The RTT worker polls target memory continuously. On Alif E8 parts a communication error can occur sporadically right after the target is reset and starts running; the failed iteration is abandoned and polling continues. The messages are real link errors, so they stay at error level.",
+  "fix": "A single error after reset or a few sporadic ones are harmless apart from lower RTT bandwidth (SystemView data could overflow). If they keep appearing and RTT stops working, look at the debug link and the target side (for example the processor stubs programmed through the Alif SE tools). In CI, do not treat a lone error line as a test failure unless RTT output is missing.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "family": [
+    "Alif Ensemble E8"
+   ]
+  },
+  "versions": "pyOCD 0.44.1",
+  "resolution": "not-a-bug",
+  "open": true,
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/966",
+  "tool": "cmsis-debugger",
+  "title": "GDB Python pretty printers fail: bundled arm-none-eabi-gdb has no Python support",
+  "symptoms": [
+   "printer.py:1: Error in sourced command file:",
+   "Undefined command: \"\".  Try \"help\"."
+  ],
+  "cause": "The GDB used by the extension is the non-Python build of the Arm GNU Toolchain GDB. Sourcing a .py file therefore fails. The Python-enabled sibling arm-none-eabi-gdb-py needs a separately installed Python 3.8; without it the executable silently exits (a missing python38.dll on Windows) and the gdbserver is killed.",
+  "fix": "Install Python 3.8 and set \"gdb\": \"arm-none-eabi-gdb-py\" in the launch configuration. Copying a Python 3.8 embeddable package next to the GDB executable also worked for one user. The maintainers only test the non-Python build and planned a troubleshooting note.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger",
+    "gdb"
+   ]
+  },
+  "versions": "CMSIS Debugger 1.4.1, Arm GNU Toolchain GDB",
+  "resolution": "workaround",
+  "open": true,
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/754",
+  "tool": "cmsis-debugger",
+  "title": "No \"Show in Memory Inspector\" entry in the Watch view",
+  "symptoms": [],
+  "cause": "The context menu entry needs VS Code 1.103 or newer, a Memory Inspector release that supports it, and a debug adapter that returns memory references for evaluated expressions. Support was missing in the Memory Inspector extension.",
+  "fix": "Update the Memory Inspector extension to 1.3.0 or later; the entry then appears in the WATCH view. The variable name column in the Inspector still stays empty for such entries.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger"
+   ]
+  },
+  "versions": "Fixed by Memory Inspector 1.3.0; seen with Memory Inspector 1.2.0 and CMSIS Debugger 1.3.0",
+  "resolution": "workaround",
+  "open": true,
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/669",
+  "tool": "cmsis-debugger",
+  "title": "GDB internal error at breakpoint and unreadable peripherals without a cbuild-run file",
+  "symptoms": [
+   "internal-error: get_frame_id: Assertion `stashed' failed.",
+   "Failed to read peripheral GPIOA: Error: readMemory failed @ 0x48000000 for 24 bytes: CodeExpectedError: Unable to read memory.",
+   "Internal error: Failed to update peripheral GPIOA after memory reads: Attempt to access memory outside buffer bounds"
+  ],
+  "cause": "The debugger was used standalone with a makefile project and no *.cbuild-run.yml. Without it the debug sequences from the device pack are missing (for an STM32G4 the DBGMCU configuration), so memory and core register accesses can fail while the target is halted, which also made GDB lose its frames in optimized code. The remaining bounds error comes from the Peripheral Inspector extension and is a separate bug.",
+  "fix": "Provide a *.cbuild-run.yml. Easiest route when not using the CMSIS Solution for the build: create a blank or example solution for the same board with the CMSIS Solution extension, copy the generated cbuild-run, dbgconf, launch.json and tasks.json, and point them at your own build output. After doing this the crash and the unreadable-memory errors disappeared for the reporter.",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger",
+    "pyocd",
+    "gdb"
+   ],
+   "family": [
+    "STM32G4 Series"
+   ]
+  },
+  "versions": "CMSIS Debugger 1.2.0, GDB 14.3",
+  "resolution": "workaround",
+  "open": true,
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/419",
+  "tool": "cmsis-debugger",
+  "title": "How to get Event Recorder output without a graphical viewer in VS Code",
+  "symptoms": [],
+  "cause": "The CMSIS Debugger extension has no graphical Event Recorder view yet.",
+  "fix": "Select the component variant CMSIS-View:Event Recorder with Semihosting and build for semihosting; run the application with the debugger attached, which writes EventRecorder.log into the project directory. Decode that log with the eventlist utility from the CMSIS-View tools (shipped with the CMSIS-Toolbox).",
+  "applies_to": {
+   "tool": [
+    "cmsis-debugger",
+    "cmsis-view"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "open": true,
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/550",
+  "tool": "cmsis-solution",
+  "title": "Opening the CubeMX generator does nothing with CMSIS Solution 1.72 on macOS and Linux",
+  "symptoms": [],
+  "cause": "A regression in version 1.72: the generator is started in a pseudo terminal, and on Linux and macOS that terminal ends when cbridge detaches, before the generator has loaded.",
+  "fix": "Copy the launch command from the CMSIS Solution output channel (csolution run <solution>.csolution.yml -g CubeMX -a <target>) and run it in a normal VS Code terminal; or go back to version 1.70. The fix was included in the nightly build of 2 October 2026.",
+  "applies_to": {
+   "tool": [
+    "cmsis-solution",
+    "csolution"
+   ]
+  },
+  "versions": "Broken in 1.72, working in 1.70, fixed in nightly 2026-10-02",
+  "resolution": "workaround",
+  "open": true,
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/352",
+  "tool": "cmsis-solution",
+  "title": "CMake source mismatch error after changing which projects are selected in a solution",
+  "symptoms": [
+   "CMake Error: The source \".../AlgorithmTest.Debug+AppKit-E7-U55/CMakeLists.txt\" does not match the source \".../DataTest.Debug+AppKit-E7-U55/CMakeLists.txt\" used to generate cache."
+  ],
+  "cause": "Adding or removing projects changes the list of contexts and hence the generated CMakeLists files at solution and context level, so the existing CMake cache of the earlier selection no longer matches.",
+  "fix": "Rebuild (clean build) after changing the project selection. To switch between sets of projects without rebuilding, define a separate target-set for each set; each target-set uses its own tmp folder.",
+  "applies_to": {
+   "tool": [
+    "cmsis-solution",
+    "cbuild"
+   ]
+  },
+  "versions": "csolution 1.68.1",
+  "resolution": "configuration",
+  "open": true,
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/273",
+  "tool": "cmsis-solution",
+  "title": "Create Solution view shows no devices when Web Services is enabled",
+  "symptoms": [],
+  "cause": "The device search service returned an error because the number of devices (about 13,041) exceeded the search result window configured on the server (13,000). The server limit was raised to 15,000 afterwards; a client-side change was still pending.",
+  "fix": "Server side already patched. If the list is still empty, disable Web Services, install the BSP and DFP packs for the board or device (copy the cpackget command from the board or device page on keil.arm.com and run it in a VS Code terminal) and pick the board from the installed packs.",
+  "applies_to": {
+   "tool": [
+    "cmsis-solution"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "open": true,
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/discussions/1679",
+  "tool": "pyocd",
+  "title": "Listing probes and installed packs from the pyOCD Python API",
+  "symptoms": [],
+  "cause": "The CLI commands pyocd list and pyocd pack show are thin wrappers over public helpers that are not mentioned in the main docs.",
+  "fix": "Use pyocd.core.helpers.ConnectHelper.get_all_connected_probes(blocking=False) to get probe objects with product_name and unique_id, and pyocd.target.pack.pack_target.ManagedPacks.get_installed_packs() for the installed packs (vendor, pack, version, pack file).",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "configuration",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/discussions/1510",
+  "tool": "pyocd",
+  "title": "Writing a single UICR word after flashing with the API leaves an nRF52 unbootable",
+  "symptoms": [],
+  "cause": "FlashLoader with sector chip-erase mode erased and rewrote more flash than intended for the small UICR write. The command line commander writes only the requested words.",
+  "fix": "Program the extra bytes with the low-level Flash class: create Flash(target, boot_region.algo), set flasher.region to the region, call init(operation=Flash.Operation.PROGRAM), then program_phrase(address, bytes), and finally uninit/reset. Do this after FileProgrammer has loaded the image.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "nRF52832_xxAA"
+   ]
+  },
+  "versions": "",
+  "resolution": "configuration",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/discussions/1416",
+  "tool": "pyocd",
+  "title": "RTT control block address and range cannot be set in the pyOCD YAML config",
+  "symptoms": [],
+  "cause": "At the time of the discussion the RTT settings existed only as command line options for the rtt command and were not session options, so putting them into the config file had no effect. Session options are listed in the options reference of the documentation.",
+  "fix": "Pass the RTT address and size on the command line instead of the config file.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "Old pyOCD releases (around 0.34)",
+  "resolution": "configuration",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/discussions/1380",
+  "tool": "pyocd",
+  "title": "Target type mimxrt1160_cm7 not recognized when flashing with west -r pyocd",
+  "symptoms": [
+   "0023806 C Target type mimxrt1160_cm7 not recognized. Use 'pyocd list --targets' to see currently available target types.",
+   "pyocd.core.exceptions.TargetSupportError: Target type mimxrt1160_cm7 not recognized."
+  ],
+  "cause": "The board ID table maps the RT1160 EVK to a target type that does not exist as a built-in target; it was a mistake in the table.",
+  "fix": "Install the device through its CMSIS-Pack as described in the target support documentation and select that target, or try the built-in mimxrt1170_cm7 target.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "MIMXRT1166"
+   ],
+   "core": [
+    "Cortex-M7"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/discussions/1367",
+  "tool": "pyocd",
+  "title": "Adding an external RTOS or probe driver to pyOCD without editing its sources",
+  "symptoms": [],
+  "cause": "pyOCD loads its probe drivers and RTOS awareness modules as setuptools entry points, so out-of-tree packages can register themselves.",
+  "fix": "Create a Python package that exports an entry point in the group pyocd.rtos or pyocd.probe. The entry point must reference a subclass of pyocd.core.plugin.Plugin whose load() returns the implementation (a ThreadProvider subclass for an RTOS). The built-in FreeRTOS plugin and the entry_points section of pyOCD's setup.cfg are the reference.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "configuration",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/discussions/1215",
+  "tool": "pyocd",
+  "title": "Locking an nRF52 (enabling APPROTECT) with pyOCD",
+  "symptoms": [],
+  "cause": "Debug port protection on nRF52 is controlled by the APPROTECT field in the UICR flash region. The pyOCD security notes only describe unlocking.",
+  "fix": "Create a 1 KiB file filled with 0xFF, set the byte at offset 0x208 to 0x00 (the PALL field of APPROTECT), and load it to the start of UICR with pyocd load -a 0x10001000 <file>.bin. After a reset the device should no longer be connectable (the tool then reports that no cores were found). The answer was derived from the datasheet and not tested on a full lock.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "nRF52840_xxAA"
+   ]
+  },
+  "versions": "",
+  "resolution": "configuration",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/discussions/1161",
+  "tool": "pyocd",
+  "title": "micro:bit v2 not recognised and falls back to generic cortex_m target",
+  "symptoms": [
+   "Board ID 9904 is not recognised, using generic cortex_m target."
+  ],
+  "cause": "The micro:bit v2 uses an nRF52833 with a new board ID that older pyOCD releases did not know, and there was no built-in nRF52833 target.",
+  "fix": "Upgrade pyOCD to 0.31.0 or later, which includes micro:bit v2 and the nRF52833 target.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "nRF52833"
+   ]
+  },
+  "versions": "Fixed in pyOCD 0.31.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/discussions/1113",
+  "tool": "pyocd",
+  "title": "STM32H750: invalid CoreSight component warnings, memory transfer fault, slow flashing",
+  "symptoms": [
+   "0001679:WARNING:rom_table:Invalid coresight component, cidr=0x0"
+  ],
+  "cause": "On STM32H7 parts the trace clock is off after reset, so the CoreSight trace components cannot be read and are reported as invalid. A target made from a pack plus extra memory regions added in a user script can contain overlapping regions, which produces memory transfer faults (a single access crossing a region boundary). Flash speed is limited by the default 1 MHz SWD clock and the pre-programming flash read.",
+  "fix": "In a did_reset() hook of the user script set bit 20 (TRACECLKEN, 0x00100000) in DBGMCU_CR at 0xE00E1004. Check the memory map with: pyocd cmd -c \"show map\" and remove overlapping regions; mark SDRAM with is_default=False and is_powered_on_boot=False. For speed use a higher SWD frequency (--frequency 10m) and, for development flows, -Osmart_flash=0.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "STM32H750"
+   ],
+   "core": [
+    "Cortex-M7"
+   ]
+  },
+  "versions": "pyOCD 0.30.0",
+  "resolution": "configuration",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/discussions/1125",
+  "tool": "pyocd",
+  "title": "Programming several targets in parallel with pyOCD threads fails",
+  "symptoms": [],
+  "cause": "The pyOCD Python API is not designed to be driven from several threads at once, so parallel flashing in threads over separate probes can fail even though each probe works alone.",
+  "fix": "Start one pyocd command line process per probe (each with its own --probe unique ID), for example from a multiprocessing pool, instead of using threads in one process.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "HC32F460"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/discussions/1088",
+  "tool": "pyocd",
+  "title": "pyocd list finds no CMSIS-DAP v1 probe because of the HID report descriptor",
+  "symptoms": [],
+  "cause": "pyOCD itself ignores the HID report descriptor, but on Windows and macOS the OS HID driver and the hidapi or pywinusb backends depend on it, as the kernel driver cannot be detached. A descriptor with unsuitable input and output items, or without a vendor usage on older Windows, makes the probe invisible. On Linux libusb is used directly and the descriptor does not matter.",
+  "fix": "Use a vendor-defined usage page with a vendor usage, a 64-byte report size and both input and output reports declared (for example Input/Output with the Data, Variable, Absolute flags), and check the descriptor with the USB-IF HID descriptor tool.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ]
+  },
+  "versions": "",
+  "resolution": "configuration",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/discussions/1073",
+  "tool": "pyocd",
+  "title": "pyocd flash reports 0 bytes programmed although erase works",
+  "symptoms": [
+   "0001982:INFO:loader:Erased 0 bytes (0 sectors), programmed 0 bytes (0 pages), skipped 0 bytes (0 pages) at 0.00 kB/s"
+  ],
+  "cause": "Most likely the ELF has no loadable sections in the flash range, for example because it was linked to run from RAM. The maintainer's reading; the thread does not show a confirmation.",
+  "fix": "List the sections with arm-none-eabi-objdump -h <file>.elf and check their load addresses against the flash region; relink for flash, or convert to a binary with arm-none-eabi-objcopy -O binary and load that at the flash base address.",
+  "applies_to": {
+   "tool": [
+    "pyocd"
+   ],
+   "device": [
+    "HT32F52253"
+   ],
+   "core": [
+    "Cortex-M0+"
+   ]
+  },
+  "versions": "",
+  "resolution": "user-error",
+  "confidence": "low"
+ }
+]

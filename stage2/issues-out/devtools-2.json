@@ -1,0 +1,979 @@
+[
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/973",
+  "tool": "csolution",
+  "title": "misc options of a setup vanish from the cprj when several setups match one context",
+  "symptoms": [],
+  "cause": "When a context is matched by more than one setup, only the first matching setup is evaluated; its (possibly empty) misc block hides the misc options of later setups, and with the order swapped the defines of the other setups get lost.",
+  "fix": "Keep one setup per context and put compiler-specific options into that setup, for example misc entries with a for-compiler: GCC key under the Debug and Release setups. Merging of additive options for several setups was added in CMSIS-Toolbox 2.0.0-dev2.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "Seen with 2.0.0-dev0; improved in 2.0.0-dev2",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/927",
+  "tool": "csolution",
+  "title": "Files silently missing because for-compiler: appears twice in one group mapping",
+  "symptoms": [],
+  "cause": "A YAML mapping with two for-compiler keys is invalid, but the yaml-cpp parser accepts duplicate keys, so the schema check did not report it and only the last value and files section took effect.",
+  "fix": "Write one group per compiler, or put for-compiler on each file entry. csolution was patched to reject duplicate keys (devtools PR 1107, CMSIS-Toolbox 2.0 era); an editor with YAML schema support also flags the error.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/914",
+  "tool": "cbuild",
+  "title": "GCC link fails with undefined references between static libraries because of link order",
+  "symptoms": [
+   "undefined reference to"
+  ],
+  "cause": "GNU ld scans an archive only once in command-line order, so libraries that reference each other circularly (many small component libraries) fail to link. cbuild passed the libraries without a rescan group.",
+  "fix": "The GCC toolchain cmake file was changed to wrap the library list in -Wl,--start-group ... -Wl,--end-group (set(LIB_FILES -Wl,--start-group ${LIB_FILES} -Wl,--end-group)). The CMake LINK_GROUP genex is not usable because it needs CMake 3.24. Fixed in a CMSIS-Toolbox release after 1.7; as a local patch edit GCC.<version>.cmake.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ],
+   "toolchain": [
+    "GCC"
+   ]
+  },
+  "versions": "Reported with 1.7",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/882",
+  "tool": "cbuild",
+  "title": "ERROR M204 path not found: RTE/_Target_1 when the solution has no build-type",
+  "symptoms": [
+   "*** ERROR M204:\n  Path not found: '...<projectdir>/RTE/_Target_1'!"
+  ],
+  "cause": "With a target-type but no build-type, csolution names the file <project>+<target-type>.cprj and the context RTE folder RTE/_<target-type>, but cbuildgen did not treat '+' as separator and looked for the placeholder folder _Target_1, which cbuild does not create by default.",
+  "fix": "Add a build-type to the csolution.yml, or run cbuild once with --update-rte so the folder is created. Fixed in CMSIS-Toolbox 1.7.0.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "Seen in 1.6.0; fixed in 1.7.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/870",
+  "tool": "cbuild",
+  "title": "IAR object files get a double suffix (file.c.o) unlike the IAR IDE (file.o)",
+  "symptoms": [],
+  "cause": "Object file naming is left to CMake, whose IAR module sets .o as extension without replacing the source extension, so linker scripts that name objects like fsl_clock.o do not match.",
+  "fix": "Proposed: enable CMAKE_C_OUTPUT_EXTENSION_REPLACE, CMAKE_CXX_... and CMAKE_ASM_OUTPUT_EXTENSION_REPLACE (set to 1) in IAR.<version>.cmake; the thread did not confirm the final release.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ],
+   "toolchain": [
+    "IAR"
+   ]
+  },
+  "versions": "1.6.1",
+  "resolution": "workaround",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/858",
+  "tool": "cbuild",
+  "title": "IAR build fails because the preinclude file is passed with -include",
+  "symptoms": [],
+  "cause": "The IAR toolchain cmake file used the ArmClang option -include for pre-include files after a regression; IAR needs --preinclude.",
+  "fix": "Fixed in the updated IAR toolchain file. As a local patch in IAR.<version>.cmake replace set(_PI \"-include\") with set(_PI \"--preinclude \").",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ],
+   "toolchain": [
+    "IAR"
+   ]
+  },
+  "versions": "Seen with 1.6 / 1.6.1",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/816",
+  "tool": "csolution",
+  "title": "Component ID schema check rejects vendor names with a hyphen (MDK-Packs::)",
+  "symptoms": [
+   "String does not match the pattern of \"(^[A-Za-z\\d][\\w+()'\\/\\- \\.]+$)|(^([A-Za-z\\d][A-Za-z\\d ]+::)?"
+  ],
+  "cause": "The regular expression for the component ID in the yml schema did not allow a hyphen in the vendor part; the component itself is valid.",
+  "fix": "Fixed in the release after 1.5.0 (same fix as for the Arm-Packs:: case). Until then omit the vendor or disable the schema check with --no-check-schema.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/815",
+  "tool": "svdconv",
+  "title": "svdconv: DerivedFrom not found when enumeratedValues has the same name as its field",
+  "symptoms": [],
+  "cause": "svdconv's derive lookup first checks whether the referenced name equals the current item (a shortcut for named and unnamed containers), and when the types differ (field vs enumeratedValues) it reports derivedFrom as not found.",
+  "fix": "Give the enumeratedValues container a name different from its field name and refer to it by full path from the peripheral level if needed. A real fix of the derive mechanism was postponed.",
+  "applies_to": {
+   "tool": [
+    "svdconv"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/805",
+  "tool": "csolution",
+  "title": "Regex pattern error for a component whose vendor name contains a hyphen",
+  "symptoms": [
+   "error csolution: instance does not match regex pattern: (^[A-Za-z\\d][\\w+()'\\/\\- \\.]+$)|(^([A-Za-z\\d][A-Za-z\\d ]+::)?"
+  ],
+  "cause": "The component-ID schema pattern did not allow a hyphen in the vendor part (for example Arm-Packs:: or MDK-Packs::), so schema validation rejected valid component names.",
+  "fix": "Fixed after 1.5.0 (devtools PR 777). Workarounds: omit the vendor in the component name or run csolution with --no-check-schema.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "Fixed after 1.5.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/800",
+  "tool": "packchk",
+  "title": "ERROR M313 Associated File/Path is outside PACK root when pack paths contain ./",
+  "symptoms": [
+   "*** ERROR M313: <pack>/./cmsis-pack/.build/<vendor>.<name>.pdsc (Line 30) \n  Associated File/Path is outside PACK root: 'src/include/lwfsm/'"
+  ],
+  "cause": "packchk compares the canonical file path against the pack root with a plain string prefix check; a PDSC location containing ./ segments prevents the match, so valid files look outside the pack.",
+  "fix": "Run packchk on a pdsc whose path has no ./ or ../ segments (call the script with a normalized absolute path). A fix normalizing the paths was proposed in the thread.",
+  "applies_to": {
+   "tool": [
+    "packchk"
+   ]
+  },
+  "versions": "packchk 1.3.98",
+  "resolution": "workaround",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/799",
+  "tool": "cbuild",
+  "title": "ERROR M204 on RTE/_Target_1 for a project converted from uVision with no build-type",
+  "symptoms": [
+   "ERROR M204: Path not found: c:\\projectpath\\RTE\\_Target_1"
+  ],
+  "cause": "A converted solution with target-types but no build-type makes csolution generate RTE/_<target-type> while cbuildgen 1.5.0 expects a phantom RTE/_Target_1. cbuild also no longer modifies the RTE directory by default.",
+  "fix": "Workaround: declare a build-type in csolution.yml (build-types: - type: any), or create the missing directory. Making target-type mandatory was discussed, and the cbuildgen behaviour was fixed in 1.7.0 (see the same symptom in the related issue).",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "1.5.0",
+  "resolution": "workaround",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/791",
+  "tool": "packchk",
+  "title": "Building packchk on Linux fails: attempted static link of dynamic object libcurl.so",
+  "symptoms": [
+   "attempted static link of dynamic object libcurl.so"
+  ],
+  "cause": "Xerces-C picks up libcurl when it is installed, but packchk is linked with -static and libcurl.so cannot be linked statically.",
+  "fix": "Build Xerces with its option network=OFF (packchk does not need network access); alternatively uninstall the libcurl development files.",
+  "applies_to": {
+   "tool": [
+    "packchk"
+   ]
+  },
+  "versions": "",
+  "resolution": "configuration",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/786",
+  "tool": "packchk",
+  "title": "packchk printed nothing when PACK.xsd could not be found",
+  "symptoms": [
+   "*** ERROR M218:\n  Unable to find PACK.xsd schema file. Searched in './, ../etc/, ../../etc/' relative to '<path>'."
+  ],
+  "cause": "packchk looks for the schema in ./, ../etc/ and ../../etc/ relative to the executable and used to stay silent when it was absent.",
+  "fix": "Place PACK.xsd in one of those folders or pass --xsd <file>. Since packchk 1.4.0 error M218 states the searched folders and M219 reports a bad --xsd path.",
+  "applies_to": {
+   "tool": [
+    "packchk"
+   ]
+  },
+  "versions": "fixed in packchk 1.4.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/742",
+  "tool": "csolution",
+  "title": "Generated code ends up in ./generated instead of RTE/Device/<device> for CubeMX generator",
+  "symptoms": [],
+  "cause": "csolution used its own generator directory even when the pack's <generator> element prescribes workingDir and gpdsc location (for example $PRTE/Device), so MDK/Eclipse and csolution disagreed.",
+  "fix": "Fixed in CMSIS-Toolbox 1.5.0: when the pack's generator element sets workingDir or gpdsc with a fixed location, the user cannot override the directory in csolution.yml.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "fixed in 1.5.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/740",
+  "tool": "csolution",
+  "title": "Partly specified component is not resolved using isDefaultVariant of the pack",
+  "symptoms": [],
+  "cause": "csolution first collects all matching components and picks the best one, rather than using the pack's default variant like the RTE model does; a partial name is accepted only if it has exactly one match, otherwise the highest version wins.",
+  "fix": "Name the Cvariant explicitly in the component ID (an empty variant can be written as a trailing &). Behaviour change released in CMSIS-Toolbox 2.0.0-dev3.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/735",
+  "tool": "cbuild",
+  "title": "GCC link error undefined reference to log10 because -lm is placed before the objects",
+  "symptoms": [
+   "ARMCM0.GCC/math_helper.c:103: undefined reference to `log10'"
+  ],
+  "cause": "Everything under misc: Link: is put in front of the object files in the linker command line, so -lm and similar libraries are not resolved.",
+  "fix": "Use the new misc: Library: node (for example - -lm - -lc - -lgcc - -lnosys), which is placed after the objects. Available since CMSIS-Toolbox 1.7.0.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ],
+   "toolchain": [
+    "GCC"
+   ]
+  },
+  "versions": "fixed in 1.7.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/733",
+  "tool": "cbuild",
+  "title": "IAR assembler error because the same define is passed globally and per file",
+  "symptoms": [],
+  "cause": "Defines are additive over the hierarchy, so a define listed at project and at file level appears twice on the command line, which the IAR assembler rejects.",
+  "fix": "csolution removes duplicate defines when generating the cprj (CMSIS-Toolbox 1.5.0); until then list a define only once.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ],
+   "toolchain": [
+    "IAR"
+   ]
+  },
+  "versions": "fixed in 1.5.0",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/684",
+  "tool": "cbuild",
+  "title": "Assembly file with .S extension is not compiled with IAR and CMake 3.21",
+  "symptoms": [],
+  "cause": "CMake 3.21.x does not treat .S as an assembler source for the IAR toolchain; CMake 3.25 does.",
+  "fix": "Use CMake 3.25 or newer (a bump of the minimum for IAR was suggested), and make sure the assembler source uses IAR syntax, since GNU-style assembler files do not build with the IAR assembler.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ],
+   "toolchain": [
+    "IAR"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/676",
+  "tool": "cbuild",
+  "title": "ERROR M204 path not found when a custom rtedir contains a space",
+  "symptoms": [
+   "*** ERROR M204:\n  Path not found: 'C:/Temp/csolution_test/reproducer/white_space/RTE/Device/ARMCM3/ARMCM3_ac6.sct'!"
+  ],
+  "cause": "cbuildgen replaces spaces by underscores in the RTE path (meant for component class names like CMSIS Driver) and also did so for spaces above the RTE folder.",
+  "fix": "Fixed so that only spaces below the RTE folder are replaced; avoid spaces in the rtedir path on older versions.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "fixed in 1.5.0 era",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/667",
+  "tool": "csolution",
+  "title": "IAR linker script .icf is converted to category other and the link fails",
+  "symptoms": [],
+  "cause": "The .icf extension was not recognized as a linker script, so the cprj entry got category other.",
+  "fix": "Fixed in CMSIS-Toolbox 1.5.0; on older versions rename or set the category manually.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ],
+   "toolchain": [
+    "IAR"
+   ]
+  },
+  "versions": "fixed in 1.5.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/657",
+  "tool": "csolution",
+  "title": "Segmentation fault in csolution convert when a pack file name ends with a folder path",
+  "symptoms": [
+   "Segmentation fault (core dumped)"
+  ],
+  "cause": "A pack <file> element whose name attribute is a directory (path/) instead of path/name.ext crashed the parser, and packchk did not flag it.",
+  "fix": "Use proper file names in the pdsc. Fixed in packchk 1.3.98, shipped with CMSIS-Toolbox 1.5.0.",
+  "applies_to": {
+   "tool": [
+    "csolution",
+    "packchk"
+   ]
+  },
+  "versions": "Seen in 1.3.0; fixed in 1.5.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/644",
+  "tool": "cbuild",
+  "title": "cbuild puts pack include paths before user paths, so duplicate headers shadow local ones",
+  "symptoms": [],
+  "cause": "csolution lists user add-paths first and pack paths after them in *.cbuild.yml, but the cbuildgen/cprj route ordered them the other way round, so a header present in a DFP shadowed a local copy.",
+  "fix": "A fix of the include order in cbuild was decided. For modified DFP files the advised clean solution is a local pack: copy the pack into the project and reference its pdsc instead of the installed one.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "1.4/1.5 era",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/620",
+  "tool": "cbuild",
+  "title": "Files declared as headerC/includeC in a pack are missing from the include search path",
+  "symptoms": [
+   "fatal error: 'c_specific_header.h' file not found"
+  ],
+  "cause": "The tools only implemented the pack specification up to 1.7.7, so the language-specific file categories headerC and includeC were ignored; only header/include added -I paths.",
+  "fix": "Use the plain header/include categories, or move to CMSIS-Toolbox 2.5.0 or later where cbuild2cmake supports the language and scope attributes.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "cbuild 1.3.0; language/scope attributes in 2.5.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/614",
+  "tool": "cbuild",
+  "title": "AC6 build of a legacy armasm startup file fails on STM32F1 (GNU syntax assumed)",
+  "symptoms": [],
+  "cause": "armclang assembles with GNU syntax by default (-masm=gnu), but device startup files such as startup_stm32f10x_md.s use legacy armasm syntax.",
+  "fix": "Add the assembler option -masm=auto under misc: ASM: (for example in cdefault.yml build-types). Note that Arm Compiler will remove -masm in a later release, so port the file to GNU syntax long term.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ],
+   "family": [
+    "STM32F1 Series"
+   ],
+   "toolchain": [
+    "AC6"
+   ]
+  },
+  "versions": "csolution 1.3.0",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/613",
+  "tool": "csolution",
+  "title": "RTE/Device contains *.update@<version> files although no *.base@<version> exists",
+  "symptoms": [],
+  "cause": "An .update file is written whenever the pack's config file version differs from the one in the project or no base file is known; a base file can only be written when the original version is known. Mixed .base/.update output for one component was considered confusing.",
+  "fix": "Behaviour changed in CMSIS-Toolbox 1.4.0: .base is created when a config file is first copied into the project RTE, and .update only if a .base exists.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "csolution 1.3.0; changed in 1.4.0",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/600",
+  "tool": "csolution",
+  "title": "Component or variant names with parentheses etc. are rejected by the yml schema",
+  "symptoms": [],
+  "cause": "The component ID pattern in the csolution schemas was narrower than what the pack schema allows for Cclass, Cgroup, Csub and Cvariant (spaces, / ( ) . : + etc.).",
+  "fix": "Pack and yml schemas were aligned in CMSIS-Toolbox 1.5.0; update the tools.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "fixed in 1.5.0",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/566",
+  "tool": "csolution",
+  "title": "Switching the compiler to GCC gives no component found with identifier errors",
+  "symptoms": [
+   "error csolution: no component was found with identifier 'ARM::Device:Definition'",
+   "error csolution: no component was found with identifier 'Keil::Compiler&ARM Compiler:I/O:STDERR&User'"
+  ],
+  "cause": "The components listed in the project (for example Keil::Compiler&ARM Compiler:... or ARM::Device:Definition) exist only for Arm Compiler, so they cannot be resolved for another toolchain.",
+  "fix": "Make compiler-specific components conditional with for-compiler: AC6 (and provide a GCC equivalent such as retargeting sources); the toolbox itself supports GCC.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ],
+   "toolchain": [
+    "GCC"
+   ]
+  },
+  "versions": "",
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/528",
+  "tool": "csolution",
+  "title": "Old yml projects fail the schema check: optimize and warnings values changed in 1.2",
+  "symptoms": [],
+  "cause": "Schema 1.2 replaced the optimize values (max, size, speed, debug) by size, speed, balanced, none and the warnings values (no, all, Misra, AC5-like) by on and off; the old values had never been processed by the tools.",
+  "fix": "Edit the yml files to the new values. It is a deliberate compatibility break of the schema.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "schema 1.1 to 1.2",
+  "resolution": "not-a-bug",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/469",
+  "tool": "packchk",
+  "title": "ERROR M371 Device Feature unknown for a feature that PACK.xsd allows (MIPI)",
+  "symptoms": [
+   "*** ERROR M371: <pack>.pdsc (Line 761)\n  Device Feature for 'STM32U599/5A9': 'MIPI' unknown."
+  ],
+  "cause": "packchk keeps its own hard-coded table of device features that lagged behind the feature list of PACK.xsd.",
+  "fix": "Use packchk 1.3.98 or later, which knows MIPI.",
+  "applies_to": {
+   "tool": [
+    "packchk"
+   ]
+  },
+  "versions": "fixed in packchk 1.3.98",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/427",
+  "tool": "csolution",
+  "title": "$Output(...)$ access sequences stay unresolved in output-dirs for inter-project references",
+  "symptoms": [
+   "Path not found: /trustzone_examples/hello_world/cm33_core0/hello_world_ns/..\\hello_world_s\\$Project$\\$Compiler$\\$BuildType$hello_world_s.debug+Board_CMSE_Lib.o"
+  ],
+  "cause": "Access sequences inside output-dirs were not evaluated when another project referenced the output of a sibling project; also output-dirs is only accepted in csolution.yml, a key in cproject.yml triggers a warning that it was not recognized.",
+  "fix": "Fixed in CMSIS-Toolbox 1.1.0. Put output-dirs into csolution.yml, not into cproject.yml.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "fixed in 1.1.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/412",
+  "tool": "csolution",
+  "title": "csolution convert uses lots of memory when the solution lists no packs",
+  "symptoms": [],
+  "cause": "Without a packs section csolution loaded every installed pack, which can exhaust memory in CI or cloud environments.",
+  "fix": "Since csolution 1.2.0 only the latest pack versions are loaded by default; use --load required to load only the packs named in csolution.yml (fails if none are listed), or --load all for the old behaviour.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "fixed in 1.2.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/397",
+  "tool": "cbuild",
+  "title": "Breakpoints cannot be set when debugging a cbuild-built .axf in uVision",
+  "symptoms": [],
+  "cause": "Debug information in the image contains the source paths of the build machine (for example a Linux or WSL path), which uVision cannot find on the debug host, so no line information is usable.",
+  "fix": "In uVision enter the SET SRC=<path to the sources> debug command (UNC paths work) so it can locate the sources; also use -gdwarf-4 for assembler files if needed.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ],
+   "toolchain": [
+    "AC6"
+   ]
+  },
+  "versions": "",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/374",
+  "tool": "cbuild",
+  "title": "Local pack version read from the pidx instead of the pdsc; cbuild asks for a pack",
+  "symptoms": [
+   "error cbuild: cpackget was not found, missing packs cannot be downloaded",
+   "info cbuild: missing packs must be installed, rerun cbuild with the --packs option"
+  ],
+  "cause": "cbuildgen read the version of a locally referenced pack from the local_repository.pidx entry, which becomes stale when the pdsc version changes.",
+  "fix": "Fixed in CMSIS-Toolbox 1.0.0/1.1.0 (the pack version is read from the pdsc; cbuildgen packlist and the exit code were fixed in 1.1.0). Workaround: keep the version in the pidx equal to the pdsc.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "fixed in 1.1.0",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/357",
+  "tool": "cbuild",
+  "title": "AC6 build tries to use /usr/bin/ld as linker on Linux",
+  "symptoms": [],
+  "cause": "CMake chooses the linker itself; picking the system ld although armlink is the compiler's linker is a symptom of a stale CMake cache from an earlier misconfigured run.",
+  "fix": "Clean the CMake cache with cbuild <project>.cprj --clear; as a workaround set CMAKE_LINKER to the armlink path in the AC6.<version>.cmake toolchain file.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ],
+   "toolchain": [
+    "AC6"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/353",
+  "tool": "packchk",
+  "title": "ERROR M371 device feature SON unknown",
+  "symptoms": [
+   "*** ERROR M371: <pack>.pdsc (Line 35)\n  Device Feature for 'TestDevice': 'SON' unknown."
+  ],
+  "cause": "packchk 1.3.95 did not yet contain the SON package feature that PACK.xsd 1.7.7 defines.",
+  "fix": "Update to packchk 1.3.96 or later.",
+  "applies_to": {
+   "tool": [
+    "packchk"
+   ]
+  },
+  "versions": "fixed in packchk 1.3.96",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/347",
+  "tool": "cbuild",
+  "title": "for-type with a comma list on one line is not a YAML list; file silently not compiled",
+  "symptoms": [
+   "exit.c:(.text.exit+0x16): undefined reference to `_exit'"
+  ],
+  "cause": "for-type: .GCC, .GCC_STATUS written on one line is a single YAML string, not a list, so the filter matched neither type and the source file was left out.",
+  "fix": "Write the type list as a YAML sequence: for-type: [.GCC, .GCC_STATUS] or one entry per line. The documentation example was corrected.",
+  "applies_to": {
+   "tool": [
+    "cbuild",
+    "csolution"
+   ]
+  },
+  "versions": "",
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/343",
+  "tool": "csolution",
+  "title": "Generated cprj references a pack version that was not requested for a local pack",
+  "symptoms": [],
+  "cause": "The version of a locally registered pack came from local_repository.pidx and could differ from the pdsc.",
+  "fix": "Fixed in CMSIS-Toolbox 1.0.0: tools read the version from the pdsc file.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "fixed in 1.0.0",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/330",
+  "tool": "csolution",
+  "title": "error: context was not found when -c gives only a project or an incomplete context",
+  "symptoms": [
+   "error csolution: context 'gpio-toggle.GCC' was not found"
+  ],
+  "cause": "-c needs the fully qualified context <project>.<build-type>+<target-type>; parts cannot be left out when types exist (it may be omitted only when the solution has a single context).",
+  "fix": "List the valid names with csolution -s <file> list contexts and pass one in full. The help text was updated to say build-type and target-type are not optional.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "",
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/329",
+  "tool": "packchk",
+  "title": "M394 Not Semantic Versioning for pre-release versions with dots (2.0.0-alpha.0.5)",
+  "symptoms": [
+   "Not Semantic Versioning: '2.0.0-alpha.0.5'"
+  ],
+  "cause": "packchk's own version parser did not accept dot-separated pre-release identifiers, which SemVer allows; error M394 cannot be suppressed with -x.",
+  "fix": "Fixed by checking versions with the regular expression of PACK.xsd (PackVersionType); use a packchk release containing it.",
+  "applies_to": {
+   "tool": [
+    "packchk"
+   ]
+  },
+  "versions": "fixed in packchk 1.3.9x",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/327",
+  "tool": "packchk",
+  "title": "WARNING M339 says Include Path must not be a file when the directory does not exist",
+  "symptoms": [
+   "*** WARNING M339: **.pdsc (Line **) Include Path '**' must not be a file!"
+  ],
+  "cause": "std::filesystem::is_directory also returns false for missing paths, so a non-existing include folder produced the wrong message.",
+  "fix": "Create or correct the path in the pdsc; packchk 1.3.95 reports the missing path properly.",
+  "applies_to": {
+   "tool": [
+    "packchk"
+   ]
+  },
+  "versions": "fixed in packchk 1.3.95",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/312",
+  "tool": "cbuild",
+  "title": "AC6 assembler error: unexpected token at start of statement for an ST startup .s file",
+  "symptoms": [
+   "error: unexpected token at start of statement"
+  ],
+  "cause": "The startup file is written in armasm syntax (; comments) but armclang assembles it as GNU assembler by default.",
+  "fix": "Add misc: - ASM: - -masm=auto to the build type (written as a single option with = and no spaces).",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ],
+   "toolchain": [
+    "AC6"
+   ]
+  },
+  "versions": "",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/263",
+  "tool": "csolution",
+  "title": "add-paths ignored or error when used under files or repeated as map keys",
+  "symptoms": [],
+  "cause": "add-paths is valid for file, group, component, project, layer and the types, but not for the files list; repeating the add-paths key in one map is invalid YAML (keys must be unique).",
+  "fix": "Put add-paths at group or project level as a list: add-paths: [., ./targets/board] or one entry per line.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "",
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/260",
+  "tool": "csolution",
+  "title": "yaml-cpp error: end of map not found when add-paths is placed next to files",
+  "symptoms": [
+   "error csolution: yaml-cpp: error at line 26, column 9: end of map not found"
+  ],
+  "cause": "add-paths was indented as a sibling of the file items inside the files sequence, which breaks the YAML structure.",
+  "fix": "Put add-paths under the individual file entry or at group level, with correct indentation.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "",
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/216",
+  "tool": "packchk",
+  "title": "WARNING M379 No example(s) found for Board",
+  "symptoms": [
+   "*** WARNING M379: <pack>.pdsc (Line 52)\n  No example(s) found for Board '[STMicroelectronics] B-U585I-IOT02A'."
+  ],
+  "cause": "packchk expects a board support pack to ship at least one example for each board.",
+  "fix": "Add an example, or suppress the message with packchk -x M379.",
+  "applies_to": {
+   "tool": [
+    "packchk"
+   ]
+  },
+  "versions": "",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/177",
+  "tool": "csolution",
+  "title": "error: context was not specified for list dependencies on a solution with several contexts",
+  "symptoms": [
+   "error csolution: context was not specified",
+   "warning csolution: yaml schemas were not found, file cannot be validated"
+  ],
+  "cause": "The solution has several build-type/target-type combinations (contexts), and the command needs exactly one.",
+  "fix": "Pass -c <project>.<build-type>+<target-type>. The schema warning only means the schema files were not found on that installation.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "",
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/175",
+  "tool": "csolution",
+  "title": "Two DFP packs resolve the same device name; the cprj lists both DFPs",
+  "symptoms": [],
+  "cause": "The device exists with the same Dvendor and Dname in two installed packs (for example an official and a vendor-specific DFP), so csolution may select either.",
+  "fix": "Reduce the pack scope: list the wanted DFP under packs: in csolution.yml (pack selection) or install only the relevant packs.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "csolution 0.9.2",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/174",
+  "tool": "cbuild",
+  "title": "ERROR M800 / R817 Toolchain not supported by project when using --toolchain on a cprj",
+  "symptoms": [
+   "*** ERROR M800:\n  RTE Model reports: Error R817: Toolchain not supported by project: GCC: gpio-toggle+STM32U585I-IOT02A.cprj"
+  ],
+  "cause": "A cprj describes one compiler; two compiler: keys in a cproject do not produce a multi-compiler project.",
+  "fix": "Declare one build-type per compiler (compiler: AC6, compiler: GCC) in csolution.yml so csolution generates one cprj per compiler.",
+  "applies_to": {
+   "tool": [
+    "cbuild",
+    "csolution"
+   ]
+  },
+  "versions": "",
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/166",
+  "tool": "cbuild",
+  "title": "cbuildgen rejects a pack whose pdsc file name differs from the pack name",
+  "symptoms": [
+   "*** ERROR M207: <pack root>\\Keil\\ARM_Compiler\\1.6.3\\Keil.ARM_CompilerX.pdsc\n  PDSC file name mismatch!"
+  ],
+  "cause": "The pdsc file name must be <Vendor>.<Name>.pdsc; csolution was more lenient than cbuildgen and packchk.",
+  "fix": "Rename the pdsc to match the pack name. The tools were aligned in CMSIS-Toolbox 1.1.0.",
+  "applies_to": {
+   "tool": [
+    "cbuild",
+    "packchk"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/111",
+  "tool": "packchk",
+  "title": "WARNING M339 Include Path must not be a file for an existing folder",
+  "symptoms": [
+   "*** WARNING M339: <pack>.pdsc (Line 631)\n  Include Path 'Inc' must not be a file!"
+  ],
+  "cause": "The directory test was inverted when the check was ported to RteFsUtils.",
+  "fix": "Use a packchk version containing the fix (1.3.9x); in the meantime use the older PackChk binary from CMSIS 5.",
+  "applies_to": {
+   "tool": [
+    "packchk"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/110",
+  "tool": "packchk",
+  "title": "ERROR M310 Filename mismatch for pdsc paths that begin with a dot (.config/...)",
+  "symptoms": [
+   "*** ERROR M310: <pack>.pdsc (Line 597)\n  Filename mismatch (case sensitive):"
+  ],
+  "cause": "The case-sensitivity check trims leading ./ characters with find_first_not_of, which also strips the dot of a hidden folder name.",
+  "fix": "Use the older PackChk from CMSIS 5 until a fixed devtools packchk is used, or avoid names starting with a dot.",
+  "applies_to": {
+   "tool": [
+    "packchk"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/75",
+  "tool": "packchk",
+  "title": "ERROR M310 Filename mismatch for an example doc attribute with ../ segments",
+  "symptoms": [
+   "*** ERROR M310: <pack>.pdsc (Line 465)\n  Filename mismatch (case sensitive):"
+  ],
+  "cause": "packchk did not resolve ../ segments of the doc attribute relative to the example folder before comparing the names.",
+  "fix": "Fixed in a later packchk release (issue labelled fixed); note that packchk itself does not run a schema check, validate with PACK.xsd separately.",
+  "applies_to": {
+   "tool": [
+    "packchk"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/30",
+  "tool": "cbuild",
+  "title": "ERROR M800 R821 Required pack not installed for a pack registered in local_repository.pidx",
+  "symptoms": [
+   "*** ERROR M800:\n  RTE Model reports: Error R821: Required pack not installed"
+  ],
+  "cause": "Locally referenced packs were not supported by the early build tools.",
+  "fix": "Support was added shortly after the report (devtools PR 33); use a current CMSIS-Toolbox.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "2021",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/22",
+  "tool": "other",
+  "title": "packgen: packchk not found although the PackChk binary was copied to the working folder",
+  "symptoms": [
+   "sh: 1: packchk: not found",
+   "packgen error: packchk failed"
+  ],
+  "cause": "packgen runs packchk from the PATH; a copy in the current folder is not found, and the executable name is case-sensitive on Linux.",
+  "fix": "Add the folder containing packchk (for example Utilities/Linux64) to PATH, or run packgen with --nocheck to skip the check.",
+  "applies_to": {
+   "tool": [
+    "packchk"
+   ]
+  },
+  "versions": "",
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/21",
+  "tool": "other",
+  "title": "Building devtools fails with fatal error: filesystem: No such file or directory",
+  "symptoms": [
+   "fatal error: filesystem: No such file or directory"
+  ],
+  "cause": "The sources use std::filesystem, which needs GCC 8 or newer; GCC 7.5 does not provide the header.",
+  "fix": "Build with GCC 8 or later (the README was corrected).",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "",
+  "resolution": "configuration",
+  "confidence": "high"
+ }
+]

@@ -1,0 +1,1085 @@
+[
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/632",
+  "tool": "cbuild",
+  "title": "cbuild cleans and rebuilds every time when CMSIS_COMPILER_ROOT is set and -c is used",
+  "symptoms": [
+   "(1/1) Cleaning context: \"Hello.Debug+CS300\""
+  ],
+  "cause": "A change of the compiler registration root deliberately forces a rebuild, because generated CMake files from another toolbox installation may hold stale paths. With the context given by -c the check fired on every run.",
+  "fix": "Build with --active (what the VS Code extension does) and the second run reports no work to do. The repeated clean was no longer seen in toolbox 2.14.1 nightlies.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "seen in 2.14.0; gone in 2.14.1 nightly",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/619",
+  "tool": "csolution",
+  "title": "\"board not found\" from csolution run -g when an unselected project lists a missing pack",
+  "symptoms": [
+   "error csolution: board 'STM32H743I-EVAL:Rev.B' was not found"
+  ],
+  "cause": "Running a generator creates cbuild-gen files for every project context sharing the build and target type, so packs listed by projects outside the active target set must be installed too. When one is missing the tool reports a misleading board or device error instead of the missing pack.",
+  "fix": "List the missing packs with csolution list packs <solution> -c *.<build>+<target> -m and install them. The fix passes the active target (-a <target>) when launching the generator so only the selected projects are processed; available from the August 2026 nightly and the matching extension build.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ],
+   "family": [
+    "STM32H7 Series"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/584",
+  "tool": "cbuild",
+  "title": "Startup/linker files in RTE are not replaced after changing compiler in csolution.yml",
+  "symptoms": [],
+  "cause": "The tools never delete configuration files from the RTE folder. If a pack offers compiler-specific config files under the same component, the file names or extensions must differ per compiler; here the pack description did not do that.",
+  "fix": "Fix the pack description so compiler variants have mutually exclusive file names. As a workaround delete the stale RTE files, switch the compiler and run Update RTE.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "",
+  "resolution": "not-a-bug",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/583",
+  "tool": "csolution",
+  "title": "Clang build lacks -mfpu, causing wrong FPU instructions and hard faults",
+  "symptoms": [],
+  "cause": "-mfpu had been removed from the Clang toolchain description because older Clang versions crashed with it. Without it a single-precision FPU target such as Cortex-M7 FPv5-SP may get double-precision instructions.",
+  "fix": "Use a CMSIS-Toolbox that re-added -mfpu (merged after 2.13.0, in nightlies). Check compile_commands.json for -mfpu=fpv5-sp-d16. If the VS Code extension still shows the old behaviour, point CMSIS_SOLUTION_TOOLBOX to the newer toolbox.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ],
+   "toolchain": [
+    "CLANG"
+   ],
+   "core": [
+    "Cortex-M7"
+   ]
+  },
+  "versions": "missing before 2.13.x nightly; Clang 22 tested",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/559",
+  "tool": "cbuild",
+  "title": "Adding a symdefs/ROM symbol file to an AC6 project gives a format error",
+  "symptoms": [],
+  "cause": "Files are classified by extension. A symbol file with .icf is taken as an IAR linker script, and one without a known extension is not passed to armlink as an object.",
+  "fix": "Declare the file with category: object in the group (file: <name>, category: object) or give it the .o extension so it appears on the armlink command line.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ],
+   "toolchain": [
+    "AC6"
+   ]
+  },
+  "versions": "",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/538",
+  "tool": "cbuild",
+  "title": "Whole AC6 map file is printed in the build terminal with CMake 4",
+  "symptoms": [],
+  "cause": "A bare --map linker option in cdefault.yml makes armlink print the map to stdout. CMake 3 silently added a --list file option, CMake 4 does not.",
+  "fix": "Remove --map from misc and request the map through output: type: [map] in the *.cproject.yml. The output node is not allowed in *.csolution.yml.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ],
+   "toolchain": [
+    "AC6"
+   ]
+  },
+  "versions": "CMake 4.2.1 vs 3.x",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/469",
+  "tool": "csolution",
+  "title": "Missing .cmsis/*.dbgconf aborts build with an error",
+  "symptoms": [
+   "error csolution: file '.../.cmsis/project+target.dbgconf' not found; use --update-rte"
+  ],
+  "cause": "csolution convert without RTE update treated a missing dbgconf like a missing component config and failed, although neither the build nor the debug session needs the file (defaults come from debug-vars).",
+  "fix": "Run once with --update-rte to copy the file. Newer toolbox builds (nightly after 2.12.0) only warn and continue.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "error in 2.12.0; warning in later nightlies",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/458",
+  "tool": "cbuild",
+  "title": "$SolutionDir()$ and $ProjectDir()$ in execute steps expand with extra ../ when -O is used",
+  "symptoms": [],
+  "cause": "cbuild2cmake computed the paths relative to the redirected output folder, so the expanded values contained a parent-directory component.",
+  "fix": "Use a toolbox nightly after November 2025 with the cbuild2cmake fix (confirmed by the reporter).",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/457",
+  "tool": "cmsis-solution",
+  "title": "CubeMX does not produce the cgen.yml after changing Project Manager settings",
+  "symptoms": [],
+  "cause": "cbridge cannot create the cgen.yml when no peripheral uses the HAL driver (for example all switched to LL). Same limitation as an open generator-bridge issue.",
+  "fix": "Keep HAL selected for at least one peripheral so cbridge can write the cgen.yml, then generate again.",
+  "applies_to": {
+   "tool": [
+    "cbridge"
+   ],
+   "family": [
+    "STM32F4 Series"
+   ]
+  },
+  "versions": "cbridge with toolbox 2.12.0",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/455",
+  "tool": "cmsis-solution",
+  "title": "cbridge writes wrong relative paths for middleware files in cgen.yml (e.g. FreeRTOS)",
+  "symptoms": [],
+  "cause": "For middleware selected in the CubeMX .ioc the relative path of the files was computed without the STM32CubeMX folder prefix, so the build did not find the sources.",
+  "fix": "Use cbridge 0.9.19-23 or later (toolbox 2.13.0 and CMSIS Solution 1.64.2) and let CubeMX regenerate to rewrite the cgen.yml.",
+  "applies_to": {
+   "tool": [
+    "cbridge"
+   ],
+   "family": [
+    "STM32H5 Series"
+   ]
+  },
+  "versions": "fixed in toolbox 2.13.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/450",
+  "tool": "cbuild",
+  "title": "Legacy armasm sources produce unused-argument warnings for -MD/-MT/-MF",
+  "symptoms": [
+   "armclang: warning: argument unused during compilation: '-MD' |  '-MT' | '-MF' [-Wunused-command-line-argument]"
+  ],
+  "cause": "Dependency-tracking flags added for all assembler files are not understood by the legacy armasm path.",
+  "fix": "Harmless. No fix planned; migrate such files to GNU assembler syntax or the armclang integrated assembler.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ],
+   "toolchain": [
+    "AC6"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/399",
+  "tool": "cpackget",
+  "title": "cpackget rejects pack files whose version is not semantic (e.g. NAMEv0.051)",
+  "symptoms": [
+   "E: bad pack name: it must be either a PackID:  packVendor::Pack[@version|@~version|@^version|@>=version] or a local Pack file: <path>/Vendor.Pack.version.pack or a local Pack Description file: <path>/"
+  ],
+  "cause": "cpackget validates pack names and requires numeric major.minor.patch versions in file name and pdsc release tag. Legacy packs with other version strings fail.",
+  "fix": "Install such packs with the Keil_v5/UV4/packunzip tool instead.",
+  "applies_to": {
+   "tool": [
+    "cpackget"
+   ]
+  },
+  "versions": "cpackget 2.1.8",
+  "resolution": "workaround",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/394",
+  "tool": "cbuild",
+  "title": "Undefined symbol osRtxThreadStackCheck after turning off RTX stack overrun checking",
+  "symptoms": [
+   "Error: L6218E: Undefined symbol osRtxThreadStackCheck (referred from irq_armv7m.o)."
+  ],
+  "cause": "No dependency flags were passed for armclang ASM files, so the assembly source had no recorded dependency on RTX_Config.h and was not reassembled after the configuration change.",
+  "fix": "Rebuild the solution as a workaround. Fixed by adding dependency flags for AC6 assembler files in the toolbox nightly of mid July 2025.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ],
+   "toolchain": [
+    "AC6"
+   ]
+  },
+  "versions": "before July 2025 nightlies",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/374",
+  "tool": "cbuild",
+  "title": "armclang compiler check fails in CI: no target architecture and later permission denied",
+  "symptoms": [],
+  "cause": "Old toolbox versions did not pass a target to the compiler test, and the compiler registration pointed at the wrong location. The ultimate cause was a functional-safety armclang variant that did not run without a MDK Professional licence.",
+  "fix": "Update the toolbox, register the compiler with the toolchain environment variable pointing to the bin folder, verify with cbuild list environment and cbuild list toolchains -v, and use the regular armclang if the FuSa variant lacks a licence.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ],
+   "toolchain": [
+    "AC6"
+   ]
+  },
+  "versions": "toolbox 2.4.0 initially",
+  "resolution": "configuration",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/361",
+  "tool": "csolution",
+  "title": "csolution 2.9.0 stops with \"no default rwx memory\" for a device pack",
+  "symptoms": [
+   "error csolution: no default rwx memory nor algorithm with ramstart/size was found"
+  ],
+  "cause": "The device pack description was invalid (schema errors such as wrong Dvendor, element order and unsupported characters in descriptions); the newer csolution is stricter and cannot derive memory.",
+  "fix": "Run packchk on the pack, fix the schema errors and memory/algorithm definitions, then rebuild.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "worked in 2.8.0, failed in 2.9.0",
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/338",
+  "tool": "cbuild",
+  "title": "LLVM embedded 20.1.0 link fails with duplicate symbol _start",
+  "symptoms": [
+   "ld.lld: error: duplicate symbol: _start"
+  ],
+  "cause": "The Clang 20 runtime already links crt0 itself, so the extra -lcrt0 in the default linker options defined the start symbols twice.",
+  "fix": "Remove -lcrt0 from the Clang linker options in cdefault.yml, or use a toolbox nightly after 6 May 2025 (devtools PR 2066).",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ],
+   "toolchain": [
+    "CLANG"
+   ]
+  },
+  "versions": "CLANG 20.1.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/294",
+  "tool": "csolution",
+  "title": "Project in a directory with a $ in its path fails with malformed access sequence",
+  "symptoms": [
+   "error csolution: malformed access sequence: '/$test/Blinky_FRDM-K32L3A6"
+  ],
+  "cause": "The dollar sign is interpreted as the start of an access sequence in the output path. Marked as won't fix.",
+  "fix": "Avoid $ in directory names, or redirect output with -O to a path without it.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/269",
+  "tool": "csolution",
+  "title": "Packs reported not installed after upgrading to toolbox 2.7.0 (vendor case mismatch)",
+  "symptoms": [
+   "error csolution: required pack: ARM::CMSIS-DSP@1.14.4 not installed, version fixed in *.cbuild-pack.yml file"
+  ],
+  "cause": "Version 2.7.0 checked the letter case of pack vendor names strictly. On Windows packs with ARM and Arm vendor spellings share one folder, so some were not found.",
+  "fix": "Upgrade to 2.8.0 where the strict check was reverted, or stay on 2.6.1 meanwhile.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "regression in 2.7.0; reverted in 2.8.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/245",
+  "tool": "cbuild",
+  "title": "2.7.0 rejects linker regions header that an executes step generates",
+  "symptoms": [
+   "error csolution: specified regions header was not found"
+  ],
+  "cause": "csolution 2.7.0 checks the regions header before the build, so a file produced by an executes node does not exist yet.",
+  "fix": "Create the file beforehand (touch) as workaround. Fixed by treating it like user files in devtools PR 1921, in the next release.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "2.7.0; fixed in 2.8.0 era",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/218",
+  "tool": "cbuild",
+  "title": "No program size printed at the end of a GCC build",
+  "symptoms": [],
+  "cause": "The size line comes from linker options in cdefault.yml (armlink summary), and a local cdefault without them prints nothing; GCC needs its own option.",
+  "fix": "Use the cdefault.yml shipped with toolbox 2.7 or newer, which adds -Wl,-print-memory-usage for GCC, or add that option yourself.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ],
+   "toolchain": [
+    "GCC"
+   ]
+  },
+  "versions": "",
+  "resolution": "configuration",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/217",
+  "tool": "csolution",
+  "title": "\"cgen file was not found\" for CubeMX project built with Arm Compiler",
+  "symptoms": [
+   "error csolution: cgen file was not found, run generator 'CubeMX' for context"
+  ],
+  "cause": "The CubeMX toolchain/IDE setting did not match the compiler of the solution (solution still used AC6 while CubeMX generated for CubeIDE), and generation under the root folder must stay enabled.",
+  "fix": "Make the generator toolchain selection match the compiler in csolution.yml and keep Generate Under Root enabled, then run the generator again.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "",
+  "resolution": "user-error",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/195",
+  "tool": "cbuild",
+  "title": "Files in nested groups are compiled without -g and -O options",
+  "symptoms": [],
+  "cause": "cbuild 2.6.1 did not pass the project-level compile options to files placed in sub-groups, so no debug info was produced and breakpoints failed.",
+  "fix": "Use a toolbox newer than 2.6.1 (nightly of December 2024 and later); or temporarily avoid nested groups.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "2.6.1",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/188",
+  "tool": "csolution",
+  "title": "csolution list configs without a solution file crashes silently",
+  "symptoms": [],
+  "cause": "Calling the command without an input yml file crashed (non-zero exit with no message) on Windows and macOS Arm64.",
+  "fix": "Pass the solution file, for example csolution list configs <name>.csolution.yml. Later builds print an error about missing input files instead of crashing.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "2.6.0",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/168",
+  "tool": "cbuild",
+  "title": "execute scripts do not run when building a single context",
+  "symptoms": [],
+  "cause": "executes nodes are only processed on full application builds; --context builds one project only, and for-context is only valid in cproject files.",
+  "fix": "Use --context-set (what the VS Code build button does) or build without --context. Place execute nodes in the cproject if they must be per-context.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "toolbox 2.5.0",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/158",
+  "tool": "cbuild",
+  "title": ".clangd points to out/ but compile_commands.json is in tmp/",
+  "symptoms": [],
+  "cause": "The compilation database is only copied to the output folder by the database target (cbuild setup), and the copy failed when the out folder structure did not exist yet.",
+  "fix": "Run cbuild setup <solution> --context-set or a normal build first. A cbuild2cmake fix creates the folders. Do not edit tmp manually.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "2.5.0",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/152",
+  "tool": "svdconv",
+  "title": "svdconv writes __VTOR_PRESENT 0 when vtorPresent is missing in the SVD",
+  "symptoms": [],
+  "cause": "The SVD specification says a missing vtorPresent means VTOR is present, but svdconv assumed false.",
+  "fix": "Use svdconv 3.3.51 or later, or set vtorPresent explicitly in the SVD.",
+  "applies_to": {
+   "tool": [
+    "svdconv"
+   ]
+  },
+  "versions": "fixed in svdconv 3.3.51",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/141",
+  "tool": "svdconv",
+  "title": "svdconv --generate=sfr does nothing on Linux or macOS",
+  "symptoms": [],
+  "cause": "The SFR output needs the Windows-only SfrCC2 tool from Keil MDK; svdconv silently skipped it elsewhere.",
+  "fix": "Generate SFR files on Windows only. svdconv 3.3.51 now reports an error with exit code 2 on other systems; SFD generation works everywhere.",
+  "applies_to": {
+   "tool": [
+    "svdconv"
+   ]
+  },
+  "versions": "fixed in svdconv 3.3.51",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/132",
+  "tool": "cbuild",
+  "title": "Working directory of executes commands is the tmp folder",
+  "symptoms": [],
+  "cause": "The working directory of an execute run command is intentionally unspecified (it was the intermediate directory), so relative script paths break.",
+  "fix": "List scripts as input and refer to them with access sequences: run: python $input(0)$ with input: $ProjectDir()$/scripts/script.py.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "toolbox 2.4.0",
+  "resolution": "not-a-bug",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/128",
+  "tool": "cbuild",
+  "title": "Function-like macro in define: is split into many -D options",
+  "symptoms": [],
+  "cause": "Unescaped parentheses and dots are tokenised by the generator, so macros like NAME(...)=value become several defines.",
+  "fix": "Escape the characters or use YAML quoting that preserves inner quotes, e.g. - '\"NAME(...)=((void)0)\"'. Reporter later found a newer CMake accepts the form.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/125",
+  "tool": "csolution",
+  "title": "CubeMX generator run fails with exit code 1 / required pack not installed",
+  "symptoms": [
+   "error csolution: required pack: Keil::B-U585I-IOT02A_BSP@2.0.0-dev0 not installed"
+  ],
+  "cause": "The *.cbuild-pack.yml locks the pack version that was current at conversion, while another (dev) version is installed.",
+  "fix": "Edit the version in cbuild-pack.yml or run with --load latest to use the latest installed packs.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "toolbox 2.3.0",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/119",
+  "tool": "cbuild",
+  "title": "misc options on a single file are missing in compile_commands.json",
+  "symptoms": [],
+  "cause": "The cbuildgen backend did not honor file-level misc: options in the compile command.",
+  "fix": "Use the cbuild2cmake backend (--cbuild2cmake) or upgrade to toolbox 2.4.0 where it is fixed.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "before 2.4.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/118",
+  "tool": "cpackget",
+  "title": "Installing a local pack fails while resolving its dependencies",
+  "symptoms": [
+   "E: The latest release (1.15.0) in pack's pdsc (ARM.CMSIS-DSP.pdsc) does not match pack version \"\""
+  ],
+  "cause": "Regression in the cpackget version of toolbox 2.3.0: the version of a dependency given with a modifier was lost, so an empty version was requested.",
+  "fix": "Use toolbox 2.2.1 until upgrading, or 2.4.0 and later where it is fixed; installing the dependency by hand with cpackget add <pack>@<version> also works.",
+  "applies_to": {
+   "tool": [
+    "cpackget"
+   ]
+  },
+  "versions": "2.3.0; fixed in 2.4.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/99",
+  "tool": "cbuild",
+  "title": "Database generation fails because the RTE folder does not exist yet",
+  "symptoms": [
+   "*** WARNING M634:",
+   "error cbuild: error executing 'cbuildgen cmake'"
+  ],
+  "cause": "The compile_commands.json generation ran before the RTE folder was populated. The warning itself says to use --update-rte; the extension must update RTE first.",
+  "fix": "Run a build or touch the csolution.yml so cbuild runs with --update-rte (or csolution update-rte).",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "toolbox 2.2.1",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/98",
+  "tool": "cbuild",
+  "title": "cbuild exits with status 0xc0000409 when run from Cygwin on Windows",
+  "symptoms": [
+   "error cbuild: exit status 0xc0000409"
+  ],
+  "cause": "Cygwin versions of cmake and ninja combined with MDK-generated RTE files cause the crash. Cygwin is not a supported environment.",
+  "fix": "Use the Windows installation of cmake and ninja or build from a native shell.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ]
+  },
+  "versions": "toolbox 2.2.1",
+  "resolution": "not-a-bug",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/95",
+  "tool": "csolution",
+  "title": "Wrong GCC picked when several GCC toolchains are on PATH",
+  "symptoms": [],
+  "cause": "CMake falls back to a gcc from PATH if the compiler is not registered.",
+  "fix": "Register the compiler with an environment variable such as GCC_TOOLCHAIN_<major>_<minor>_<patch> pointing to its bin folder, and verify with cbuild list toolchains.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ],
+   "toolchain": [
+    "GCC"
+   ]
+  },
+  "versions": "",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/86",
+  "tool": "packchk",
+  "title": "packchk M511: processor element not allowed inside subFamily",
+  "symptoms": [
+   "Xerxes reports: element 'processor' is not allowed for content model '(deprecated?,processor*,debugconfig?,"
+  ],
+  "cause": "The pack schema is order sensitive: processor must come before description in the subFamily body.",
+  "fix": "Move the processor element to the start of the subFamily; use an XML editor with schema validation. A schema PR to relax the order was opened.",
+  "applies_to": {
+   "tool": [
+    "packchk"
+   ]
+  },
+  "versions": "packchk 1.4.1",
+  "resolution": "user-error",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/69",
+  "tool": "cbuild",
+  "title": "Build succeeds but no .axf produced when only a legacy armasm file exists",
+  "symptoms": [
+   "info cbuild: build finished successfully!"
+  ],
+  "cause": "The AS_ARM language used for legacy armasm files had no link rule in the AC6 CMake description, so linking did nothing.",
+  "fix": "Fixed in devtools PR 1101; workaround was setting CMAKE_AS_ARM_LINK_EXECUTABLE to an armlink command in the AC6 cmake file.",
+  "applies_to": {
+   "tool": [
+    "cbuild"
+   ],
+   "toolchain": [
+    "AC6"
+   ]
+  },
+  "versions": "2023 toolbox",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/34",
+  "tool": "csolution",
+  "title": "csolution 1.6 reports \"reading gpdsc failed\" for a hand-made gpdsc",
+  "symptoms": [
+   "error csolution: generator 'STM32CubeMX' from component 'Keil::Device:STM32Cube Framework:STM32CubeMX@2.0.0': reading gpdsc failed"
+  ],
+  "cause": "The placeholder gpdsc referenced conditions and generators without defining them; version 1.6.0 validates gpdsc files strictly.",
+  "fix": "Make the gpdsc complete (define conditions and generators) or let the generator create it.",
+  "applies_to": {
+   "tool": [
+    "csolution"
+   ]
+  },
+  "versions": "1.6.0",
+  "resolution": "user-error",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS_6/issues/312",
+  "tool": "cmsis-core",
+  "title": "tiarmclang build fails: __PROGRAM_START resolves to _start instead of _c_int00",
+  "symptoms": [],
+  "cause": "CMSIS 6 uses the generic clang header, where the program start symbol is _start, while the TI compiler runtime uses _c_int00.",
+  "fix": "Define __PROGRAM_START as _c_int00 (and __INITIAL_SP as __stack) before including the device header for TI clang, or use the CMSIS_6 version containing the TI specifics in the clang header (PR 315).",
+  "applies_to": {
+   "tool": [
+    "cmsis-core"
+   ],
+   "toolchain": [
+    "TI Clang"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS_6/issues/287",
+  "tool": "cmsis-core",
+  "title": "GCC linker script template shows RAM usage 100 percent",
+  "symptoms": [],
+  "cause": "The stack section in the template is placed at the end of RAM and counted as used by the linker report; the layout is intended.",
+  "fix": "Accept the figure or make the stack NOLOAD, which loses the stack at the end of RAM and risks overflows into heap.",
+  "applies_to": {
+   "tool": [
+    "cmsis-core"
+   ],
+   "toolchain": [
+    "GCC"
+   ]
+  },
+  "versions": "",
+  "resolution": "not-a-bug",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS_6/issues/279",
+  "tool": "cmsis-core",
+  "title": "IAR rejects __NO_RETURN in a function pointer typedef",
+  "symptoms": [
+   "Error[Pe2529]: _Noreturn is not allowed here"
+  ],
+  "cause": "For IAR the macro maps to the C11 _Noreturn keyword, which is invalid in a function pointer type.",
+  "fix": "Use __attribute__((__noreturn__)) directly there (needs language extensions on IAR). A CMSIS_6 change (PR 284) falls back to the attribute when available.",
+  "applies_to": {
+   "tool": [
+    "cmsis-core"
+   ],
+   "toolchain": [
+    "IAR"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS_6/issues/259",
+  "tool": "cmsis-core",
+  "title": "GCC -Warray-bounds warning from __TZ_set_STACKSEAL_S in startup file",
+  "symptoms": [
+   "warning: array subscript 'uint64_t {aka long long unsigned int}[0]' is partly outside array bounds of 'uint32_t[1]' {aka 'long unsigned int[1]'} [-Warray-bounds=]"
+  ],
+  "cause": "The linker symbol __StackSeal is 64 bit but was declared as uint32_t in the startup template.",
+  "fix": "Declare extern uint64_t __STACK_SEAL in startup_Device.c (PR 260, plus Cortex_DFP).",
+  "applies_to": {
+   "tool": [
+    "cmsis-core"
+   ],
+   "toolchain": [
+    "GCC"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS_6/issues/236",
+  "tool": "cmsis-core",
+  "title": "IAR C++ compile of startup .c: attribute does not apply to any entity",
+  "symptoms": [
+   "Error[Pe1866]: attribute does not apply to any entity"
+  ],
+  "cause": "CMSIS expects .c files to be compiled as C; in C++ mode IAR maps __NO_RETURN to [[noreturn]], which is invalid inside an extern \"C\" declaration.",
+  "fix": "Compile .c files in C mode.",
+  "applies_to": {
+   "tool": [
+    "cmsis-core"
+   ],
+   "toolchain": [
+    "IAR"
+   ]
+  },
+  "versions": "",
+  "resolution": "user-error",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS_6/issues/235",
+  "tool": "cmsis-core",
+  "title": "__PROGRAM_START not found at link time when startup.c is compiled as C++",
+  "symptoms": [],
+  "cause": "Name mangling when a .c file is built in C++ mode.",
+  "fix": "Build .c files as C; CMSIS does not support compiling them as C++ even with extern \"C\".",
+  "applies_to": {
+   "tool": [
+    "cmsis-core"
+   ]
+  },
+  "versions": "",
+  "resolution": "user-error",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS_6/issues/230",
+  "tool": "cmsis-core",
+  "title": "SCB_VTOR_TBLOFF_Msk differs from the vendor manual",
+  "symptoms": [],
+  "cause": "CMSIS follows the Armv7-M architecture where TBLOFF spans bits 29:7; vendors may restrict the field and require stronger alignment.",
+  "fix": "Align the vector table as the device manual requires; CMSIS cannot encode implementation specifics.",
+  "applies_to": {
+   "tool": [
+    "cmsis-core"
+   ],
+   "core": [
+    "Cortex-M4"
+   ]
+  },
+  "versions": "",
+  "resolution": "not-a-bug",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS_6/issues/195",
+  "tool": "cmsis-core",
+  "title": "NVIC_SystemReset on Cortex-M55 may return without resetting",
+  "symptoms": [],
+  "cause": "On M55 the SYSRESETREQ bit is cleared on entry to WARM_RST; if the power controller denies the transition, no reset happens and nobody sets the bit again. Arm errata 3776408.",
+  "fix": "Re-assert AIRCR.SYSRESETREQ inside the wait loop of NVIC_SystemReset; maintainers asked for a PR with this change.",
+  "applies_to": {
+   "tool": [
+    "cmsis-core"
+   ],
+   "core": [
+    "Cortex-M55"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS_6/issues/192",
+  "tool": "cmsis-view",
+  "title": "Program fails before main with Event Recorder when heap size is 0 on AC6",
+  "symptoms": [],
+  "cause": "Event Recorder uses no heap. The heap-using C/C++ library functions (stdio, C++ library) require heap, and zero heap breaks startup; here the project implicitly used malloc/free through its library setup.",
+  "fix": "Give the library a heap or avoid heap-using library functions per the Arm C library heap documentation.",
+  "applies_to": {
+   "tool": [
+    "cmsis-view"
+   ],
+   "toolchain": [
+    "AC6"
+   ]
+  },
+  "versions": "",
+  "resolution": "user-error",
+  "confidence": "low"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS_6/issues/139",
+  "tool": "cmsis-core",
+  "title": "cmsis_gcc.h: #pragma clang system_header gives an error with -Werror",
+  "symptoms": [
+   "Include/cmsis_gcc.h:28: error: ignoring '#pragma clang system_header' [-Werror=unknown-pragmas]"
+  ],
+  "cause": "A clang pragma was left in the GCC header.",
+  "fix": "Use a CMSIS_6 release including PR 141 (GCC system_header pragma).",
+  "applies_to": {
+   "tool": [
+    "cmsis-core"
+   ],
+   "toolchain": [
+    "GCC"
+   ]
+  },
+  "versions": "6.0.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS_6/issues/129",
+  "tool": "cmsis-core",
+  "title": "\"unknown type name IRQn_Type\" when using only CMSIS-Core with a TI device",
+  "symptoms": [],
+  "cause": "CMSIS-Core does not define device interrupt numbers; the device header from the vendor DFP provides IRQn_Type and includes the core header.",
+  "fix": "Use the device header and startup file from the DFP or SDK, or write a minimal one following the Cortex_DFP template.",
+  "applies_to": {
+   "tool": [
+    "cmsis-core"
+   ],
+   "core": [
+    "Cortex-M0+"
+   ]
+  },
+  "versions": "",
+  "resolution": "user-error",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS_6/issues/120",
+  "tool": "cmsis-core",
+  "title": "Warning \"__ARM_FP is not defined\" with soft float",
+  "symptoms": [
+   "warning: \"__ARM_FP\" is not defined, evaluates to 0 [-Wundef]"
+  ],
+  "cause": "The headers used __ARM_FP without defined() checks.",
+  "fix": "Fixed by guarding with defined(__ARM_FP) in all profiles (PR 124).",
+  "applies_to": {
+   "tool": [
+    "cmsis-core"
+   ]
+  },
+  "versions": "6.0.0",
+  "resolution": "fixed-in-release",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS_6/issues/118",
+  "tool": "cmsis-core",
+  "title": "CoreDebug_Type is gone in CMSIS 6, breaking vendor SDK code",
+  "symptoms": [],
+  "cause": "CMSIS 6 renamed the CoreDebug structure to DCB_Type.",
+  "fix": "Use DCB_Type, or the compatibility change tracked in PR 122 that keeps the old name for existing code.",
+  "applies_to": {
+   "tool": [
+    "cmsis-core"
+   ]
+  },
+  "versions": "6.0.0",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS_6/issues/66",
+  "tool": "other",
+  "title": "Devcontainer postCreate fails with \"vcpkg: command not found\"",
+  "symptoms": [
+   "/home/postCreateCommand.sh: line 12: vcpkg: command not found"
+  ],
+  "cause": "The activation command of vcpkg changed to vcpkg-shell activate.",
+  "fix": "Use vcpkg-shell activate in the script; ensure the .armlm and .iarlm mount folders exist.",
+  "applies_to": {
+   "tool": [
+    "other"
+   ]
+  },
+  "versions": "",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS-RTX/issues/75",
+  "tool": "cmsis-rtx",
+  "title": "No armasm port for CMSIS-RTX: GCC syntax .S files fail to assemble",
+  "symptoms": [],
+  "cause": "The GCC-syntax assembly files are also meant for Arm Compiler 6, but must be assembled by armclang, not armasm.",
+  "fix": "Let the project build the .S files with armclang (set the assembler syntax with -masm=gnu if needed).",
+  "applies_to": {
+   "tool": [
+    "cmsis-rtx"
+   ],
+   "toolchain": [
+    "AC6"
+   ]
+  },
+  "versions": "",
+  "resolution": "configuration",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS-RTX/issues/54",
+  "tool": "cmsis-rtx",
+  "title": "osMessageQueueNew fails with user control block that is larger than required",
+  "symptoms": [],
+  "cause": "RTX with safety features checks that cb_size equals the control block size exactly, contrary to CMSIS 5 text calling it a minimum.",
+  "fix": "Pass exactly osRtxMessageQueueCbSize as cb_size.",
+  "applies_to": {
+   "tool": [
+    "cmsis-rtx"
+   ]
+  },
+  "versions": "",
+  "resolution": "not-a-bug",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS-RTX/issues/43",
+  "tool": "cmsis-rtx",
+  "title": "Compiling RTX for Cortex-A7 gives special purpose register errors",
+  "symptoms": [
+   "Error: selected processor does not support requested special purpose register -- `mrseq r0,msp'"
+  ],
+  "cause": "The M-profile file irq_armv7m.S was compiled for an A-profile target, and irq_armv7a.S was built with -mthumb and without FPU flags.",
+  "fix": "Use irq_armv7a.S for Cortex-A, compile it in ARM mode without -mthumb and with proper FPU flags; or use the RTX_Library csolution.",
+  "applies_to": {
+   "tool": [
+    "cmsis-rtx"
+   ],
+   "core": [
+    "Cortex-A7"
+   ]
+  },
+  "versions": "",
+  "resolution": "configuration",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS-RTX/issues/34",
+  "tool": "cmsis-rtx",
+  "title": "osMutexRelease returns osErrorResource when called from another thread",
+  "symptoms": [],
+  "cause": "A mutex can only be released by its owner by definition.",
+  "fix": "Use a semaphore initialised with one token when different threads acquire and release.",
+  "applies_to": {
+   "tool": [
+    "cmsis-rtx"
+   ]
+  },
+  "versions": "",
+  "resolution": "not-a-bug",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS-RTX/issues/33",
+  "tool": "cmsis-rtx",
+  "title": "osKernelInitialize fails because osRtxInfo memory is all 0xFF at startup",
+  "symptoms": [],
+  "cause": "A broken scatter file generated for a deprecated device pack left RAM uninitialised and damaged the stack before startup.",
+  "fix": "Replace the old DFP or fix the linker script generation.",
+  "applies_to": {
+   "tool": [
+    "cmsis-rtx"
+   ],
+   "device": [
+    "LPC1768"
+   ]
+  },
+  "versions": "RTX 5.8.0",
+  "resolution": "user-error",
+  "confidence": "medium"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS-RTX/issues/30",
+  "tool": "cmsis-rtx",
+  "title": "L6218E undefined osRtxThreadStackCheck after disabling stack overrun checking in uVision",
+  "symptoms": [
+   "Error: L6218E: Undefined symbol osRtxThreadStackCheck (referred from irq_armv7m.o)."
+  ],
+  "cause": "The source is correct (guarded by RTX_STACK_CHECK); the IDE did not rebuild the assembler module after RTX_Config.h changed.",
+  "fix": "Do a full Rebuild.",
+  "applies_to": {
+   "tool": [
+    "cmsis-rtx"
+   ],
+   "toolchain": [
+    "AC6"
+   ]
+  },
+  "versions": "",
+  "resolution": "workaround",
+  "confidence": "high"
+ },
+ {
+  "issue": "https://github.com/ARM-software/CMSIS-View/issues/48",
+  "tool": "cmsis-view",
+  "title": "Downloaded eventlist for Linux is not executable",
+  "symptoms": [],
+  "cause": "The CI zip artifact step removed Unix permissions before the tar.gz was assembled.",
+  "fix": "chmod +x eventlist; fixed in later releases by changing the packaging (PR 50).",
+  "applies_to": {
+   "tool": [
+    "cmsis-view"
+   ]
+  },
+  "versions": "eventlist 1.1.0",
+  "resolution": "fixed-in-release",
+  "confidence": "medium"
+ }
+]

@@ -1,0 +1,63 @@
+{
+  "id": "proc-add-board-layer",
+  "summary": "Add a board layer to an existing csolution by asking for the few open decisions, then build it",
+  "triggers": [
+    "add or author a board layer",
+    "would rather be asked than hand over every parameter up front"
+  ],
+  "applies_to": {
+    "tool": ["csolution", "cbuild", "cpackget"],
+    "toolchain": [],
+    "core": [],
+    "component": [],
+    "api": []
+  },
+  "unmapped": [
+    "existing csolution",
+    "CMSIS Solution extension (setting `cmsis-csolution.downloadPacks`)",
+    "DFP and BSP packs of the board"
+  ],
+  "verification": [
+    "Build with `cmsis_action build { target: '<target-type>' }`.",
+    "Read the ✅/❌ line that ends the result; a build still running when the call's wait ends returns status `running`, and `cmsis_action` with `action: 'status'` waits for it.",
+    "Verify the load-bearing ones on the target later (write via the debugger, read back).",
+    "Show the user the layer file set, the csolution diff, and the green build summary."
+  ],
+  "stop_conditions": [
+    "If the tools are missing from your tool list, suggest the setting instead of asking.",
+    "Open in prose with the one open-ended question — **\"Which board or device are you adding, and is there an on-board debug probe / VCP?\"** — then resolve §2.",
+    "Everything after that is a small set of decisions: ask them with `AskUserQuestion`, **batched**, each with a recommended default derived from what you read in §0/§2.",
+    "A missing internal-flash FLM is a flashing blocker to raise **before** writing a line.",
+    "If a name is fuzzy or several candidates remain, that is the moment for one `AskUserQuestion` to disambiguate — with the resolved candidates as options.",
+    "**Tell the user to run the generator — you cannot do it for them.**",
+    "If the result says RTE or configuration files of the new target-type are missing, ask the user to run **CMSIS: Refresh (Reload Packs, Update RTE)** in VS Code, then build again."
+  ],
+  "rules": [],
+  "extracted": [
+    {
+      "type": "concept",
+      "title": "A DFP with a configuration generator may ship no Device:Startup component",
+      "body": "**Does the DFP ship startup, or a generator?** Check both: `grep -c 'Cgroup=\"Startup\"' <DFP>.pdsc` and `grep -o '<generator id=\"[^\"]*\"' <DFP>.pdsc`. A DFP with a `<generator>` (STM32CubeMX, MCUXpresso Config Tools, Infineon Device Configurator, Microchip MCC, …) may ship **no classic `Device:Startup` component at all** — startup, `SystemInit`, clock and pin configuration exist only as generator output (components carrying `generator=\"<id>\"`)."
+    },
+    {
+      "type": "concept",
+      "title": "Enable only the I-cache during bring-up",
+      "body": "During bring-up enable **I-cache only**; a write-back D-cache makes halted-mode debugger reads stale and poisons the very validation you are about to do."
+    },
+    {
+      "type": "concept",
+      "title": "Register read-back tells: wrong address or unclocked peripheral",
+      "body": "Tells: reads-back-0 always → reserved/wrong address; several registers of one peripheral reading the **same** value → the peripheral is unclocked and the bus is echoing garbage. When the hardware disagrees with the manual, search the errata document before changing code."
+    },
+    {
+      "type": "concept",
+      "title": "RAM at 100% in the build summary",
+      "body": "RAM at \"100%\" in the summary is usually the stack pinned at the region top by the template — read the map before panicking."
+    },
+    {
+      "type": "concept",
+      "title": "CMSIS pack root and automatic pack download",
+      "body": "Pack root: `$CMSIS_PACK_ROOT` (default `~/.cache/arm/packs` on Linux and macOS, `%LOCALAPPDATA%\\Arm\\Packs` on Windows). Missing packs need no command from you: the CMSIS Solution extension downloads them when it loads the solution and when `cmsis_action build` runs (its setting `cmsis-csolution.downloadPacks`, on by default). `cpackget add Vendor::Pack` or `cbuild --packs` only when the user works from a terminal."
+    }
+  ]
+}

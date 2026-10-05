@@ -1,0 +1,76 @@
+{
+  "id": "proc-debugger-troubleshooting",
+  "summary": "Find out why a debug or flash session fails to start, connect or program",
+  "triggers": [
+    "cmsis_action load_and_debug, attach, load or flash fails",
+    "the cause is not obvious from the error text"
+  ],
+  "applies_to": {
+    "tool": ["pyocd"],
+    "toolchain": [],
+    "core": [],
+    "component": [],
+    "api": []
+  },
+  "unmapped": [
+    "CMSIS Debugger",
+    "J-Link",
+    "CMSIS-Toolbox cbuild-run files",
+    "FVP setups"
+  ],
+  "verification": [
+    "Verify instead of assuming: `get_section_layout` gives the load address of the RW section; `read_memory` there must show the initial values, not `0xFF`.",
+    "Validating the XML on the host is allowed: `xmllint --noout JLinkDevices.xml`."
+  ],
+  "stop_conditions": [
+    "Those steps are for the user to run, or for you once the user asks for that specific command: say what the command would show and why it is needed, and wait.",
+    "Identify the process before anything is stopped: it may be a session the user wants. Tell the user what holds the port and let them decide.",
+    "Ask the user to unplug and replug power; the reset button is often not enough.",
+    "The probe vendor's own loader, if it supports the part. That is the user's call and the user's command.",
+    "These need J-Link's own tools. Explain, and let the user run them.",
+    "Other pyOCD session options, such as a longer timeout for a flash algorithm that brings up a memory controller, have no node there: that is a change for the user to make and test.",
+    "That is a defect of the pack: report it with the device and the region, and see `cmsis-pack` for the debug description.",
+    "If no check found it, say which ones passed, and stop."
+  ],
+  "rules": [],
+  "extracted": [
+    {
+      "type": "troubleshooting",
+      "title": "GDB client errors that name a consequence, not a cause",
+      "symptoms": ["EPIPE", "Error getting GDB host-charset"],
+      "body": "Several of these errors name a consequence, not a cause. A GDB client that dies with `EPIPE` or `Error getting GDB host-charset` is almost never a GDB problem: the server exited first and the client wrote into a dead pipe. Read the server's own last lines in the `gdb-server` records."
+    },
+    {
+      "type": "troubleshooting",
+      "title": "Something already holds the probe or the GDB port",
+      "symptoms": [
+        "Waiting for a debug probe matching unique ID",
+        "Failed to open listener port 3333",
+        "gdbserver exited with code 254"
+      ],
+      "body": "`cmsis_action { action: 'status' }` lists this window's CMSIS tasks. A `CMSIS Run` task that is alive holds the probe and the GDB port: `cmsis_action { action: 'stop_run' }` ends it, then repeat the call.\n`list_debug_windows` shows whether another VS Code window has a debug session on the same probe.\nA process outside VS Code can hold the port too, and it is often a different kind of backend than the one you are starting: an FVP bridge or a model left over on 3333 blocks a J-Link or pyOCD GDB server with exactly the message above. These commands only look at the host and are allowed:\n\nlsof -nP -iTCP:3333 -sTCP:LISTEN\nps -ww -o pid,etime,command -p <PID>\n\nIdentify the process before anything is stopped: it may be a session the user wants. Tell the user what holds the port and let them decide."
+    },
+    {
+      "type": "troubleshooting",
+      "title": "Debug connection failures in increasing severity",
+      "symptoms": [
+        "AP[n]: Skipped. Not an AHB-AP",
+        "AP[n]: Skipped. Could not read AHB ROM register",
+        "Could not find core in Coresight setup",
+        "Failed to power up DAP"
+      ],
+      "body": "| Message | Meaning | Action |\n|---|---|---|\n| `AP[n]: Skipped. Not an AHB-AP` | The AP type is not declared (SoC-600 needs an explicit AP map) | The device pack's debug description, or for J-Link a script that declares the map; see section 8 |\n| `AP[n]: Skipped. Could not read AHB ROM register` | The AP is typed correctly but reads fail: the bus hangs, or debug power-up is missing | Retry once; then power-cycle |\n| `Could not find core in Coresight setup` | Consequence of the row above | As above |\n| `Failed to power up DAP` | The SoC's debug power domain is down | Power-cycle the board |\n\n`Failed to power up DAP` is not recoverable in software. The debug port answers while the domain behind it is off, so connecting under reset or at a lower clock fails too. Ask the user to unplug and replug power; the reset button is often not enough.\n\nA hung bus transaction can take the debug port down with it. If the failure started right after the firmware stalled a bus master (a DMA or an NPU waiting for an external memory), suspect that, not the probe. `Could not read AHB ROM register` that recovers on a second or third `cmsis_action load_and_debug` is the signature."
+    },
+    {
+      "type": "troubleshooting",
+      "title": "Could not read memory at an external-memory window",
+      "symptoms": ["Could not read memory"],
+      "body": "For XIP windows (OSPI, QSPI, HyperRAM, PSRAM) a debugger read fails until the firmware has configured the controller. Beyond that:\n**Writes succeed while reads fail**: the controller is up but read capture timing is wrong. A write is posted and needs no reply; a read has to sample the device's read strobe. Check RXDS or DQS delay, wait cycles and the DDR drive edge in the board configuration against the vendor's values for that exact part.\nA `read_memory` of such a window can hang the bus, after which the debug connection itself starts failing (section 3). If `check_target_connection` degrades right after you read an XIP address, that read is the cause."
+    },
+    {
+      "type": "concept",
+      "title": "Flashing an ELF that drops its RW init data (LMA and VMA)",
+      "body": "**Garbage pointers (`0xFFFFFFFF`, or values that look like erased flash) during static initialisation mean that RW data was never initialised.** The usual cause is a flashing mistake, not a linker bug: see section 6.\n\nAn initialised-data section has its execution address in RAM and its load address in flash. A tool that places sections by their virtual address writes those bytes to RAM, where the next reset discards them, and never programs the flash copy. The startup code then copies erased flash into RAM, and the image dies in static initialisation.\n`flash` and `cmsis_action load` program from the cbuild-run file with pyOCD, which uses the load addresses. Prefer them over any hand-made `objcopy` binary or a probe tool's \"load file\" on an ELF.\nVerify instead of assuming: `get_section_layout` gives the load address of the RW section; `read_memory` there must show the initial values, not `0xFF`.\nWhen the image has to be programmed with a vendor tool, program the LOAD segment by its physical address. `arm-none-eabi-readelf -l <image>` lists offset, file size and physical address of each segment; reading the ELF on the host is allowed."
+    }
+  ]
+}

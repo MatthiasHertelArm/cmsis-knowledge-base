@@ -2,7 +2,7 @@
 type: "procedure"
 domain: "bring-up"
 title: "debug-knowledge"
-summary: "Build a documentation-led, verifiable knowledge record of an existing SoC's reset, unlock, authentication, boot, flash, processor-control, and low-power debug behavior after `$debug-access-knowledge` has established the reusable access topology. Use when those device-debug facts need establishing or refreshing for PDSC debug sequences; no active target connection is required."
+summary: "Build a documentation-led, verifiable knowledge record of an existing SoC's reset, unlock, authentication, boot, flash, processor-control, and low-power debug behavior after `$debug-access-knowledge` has established the reusable access topology, for user review before `READY`."
 status: "draft"
 source: "bring-up/debug-knowledge/SKILL.md"
 preconditions: "An existing target `.pdsc`, selected family/subFamily/device/variant scope, affected processor descriptions, documentation or target startup logs, and a current `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` record covering the selected scope."
@@ -13,6 +13,12 @@ id: "proc-debug-knowledge"
 requires: ["proc-board-debug-knowledge", "proc-debug-access-knowledge", "proc-resolve-official-device-documentation", "concept-debug-knowledge-contract"]
 produces: ["artifact-pdsc-stem-debug-knowledge-md"]
 consumes: ["artifact-pdsc-stem-debug-access-knowledge-md"]
+description: "Build a documentation-led, verifiable knowledge record of an existing SoC's reset, unlock, authentication, boot, flash, processor-control, and low-power debug behavior after `$debug-access-knowledge` has established the reusable access topology. Use when those device-debug facts need establishing or refreshing for PDSC debug sequences; no active target connection is required."
+triggers: ["device-debug facts need establishing or refreshing", "PDSC debug sequences", "no active target connection is required"]
+verification: ["Update the owned record using the required evidence tables and readiness state.", "Before writing a draft, make a second evidence pass for each unresolved prerequisite of the intended downstream work.", "Identify unresolved, unavailable, and conflicting facts; do not infer missing values."]
+stop_conditions: ["Stop if no device description or sufficient access record exists.", "Present the record and its unresolved facts to the user. Use `DRAFT — AWAITING USER REVIEW` before confirmation; set `READY` only after confirmation, a `READY` access record, and sufficient evidence for the intended downstream work.", "Return missing connection, protocol, DP/AP, or dormant-state facts to `$debug-access-knowledge`.", "Stop when the access record is absent, non-READY, stale, contradictory, or insufficient; also stop for an unavailable required behavior input and name it."]
+unmapped: ["CMSIS Device Family Pack PDSC"]
+stage2: "proc-debug-knowledge.json"
 ---
 
 # CMSIS: Debug Knowledge

@@ -1,0 +1,53 @@
+{
+  "id": "proc-pyocd-detect-debug-topology",
+  "summary": "Capture supplementary, non-authoritative CMSIS debug and CoreSight topology evidence from the complete stdout/stderr of `pyocd gdbserver -vv --target cortex_m` after `$check-pyocd-availability` succeeds, returning the observation table and limitations in conversation.",
+  "triggers": [
+    "documentation does not establish a required processor",
+    "debug-port",
+    "access-port",
+    "CoreSight-component observation"
+  ],
+  "applies_to": {
+    "tool": ["pyocd"],
+    "toolchain": [],
+    "core": [],
+    "component": [],
+    "api": []
+  },
+  "unmapped": [
+    "CoreSight",
+    "accessible target"
+  ],
+  "verification": [
+    "Extract only explicitly observed processor, DP, AP, APID, protocol, component, address, and scan-failure information.",
+    "Preserve the complete captured stdout/stderr in the task context.",
+    "Record the shutdown request and outcome when this workflow started the server.",
+    "Do not treat an absent observation as evidence that a subsystem does not exist.",
+    "Use the complete captured stdout/stderr from `pyocd gdbserver -vv --target cortex_m` as the sole runtime evidence source.",
+    "Before a new scan, verify the successful `$check-pyocd-availability` result.",
+    "Then verify that each table row is traceable to the captured output, every repeat scan records its documented unlock or power-up prerequisite, and every server started by this workflow records its graceful shutdown result, including a forced termination after the 10-second grace period when required."
+  ],
+  "stop_conditions": [
+    "Use the target directly if exactly one is available; stop for selection when multiple targets are attached.",
+    "Stop when a new scan lacks a successful `$check-pyocd-availability` result, an accessible target, a selection among multiple attached targets, or documented unlock/power-up steps for a repeat scan."
+  ],
+  "rules": [
+    {"id": "rule-critical-blockers-pyocd-detect-debug-topology", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-no-fabrication-pyocd-detect-debug-topology", "class": "generic", "canonical_id": "rule-no-fabrication", "delta": "device behavior, reset behavior, unlock requirements, dormant-state requirements, a missing component, or an undocumented address from a scan or its absence"},
+    {"id": "rule-portability-pyocd-detect-debug-topology", "class": "generic", "canonical_id": "rule-portability", "delta": "operating-system assumption beyond the active scan context"},
+    {"id": "rule-scope-pyocd-detect-debug-topology", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-tone-and-style", "class": "generic", "canonical_id": "rule-tone-and-style", "delta": ""}
+  ],
+  "extracted": [
+    {
+      "type": "pattern",
+      "title": "Stop a pyOCD gdbserver that a workflow started",
+      "body": "Unless the user needs it to remain running, request the host's most graceful supported interrupt and wait up to 10 seconds for exit: Ctrl+C / `CTRL_C_EVENT` on Windows or `SIGINT` on POSIX. If the server is still running after 10 seconds, force-terminate only that server process using the host mechanism: `Stop-Process -Force` on Windows or `SIGKILL` on POSIX."
+    },
+    {
+      "type": "concept",
+      "title": "Limits of a pyOCD topology scan",
+      "body": "Do not assume that a successful scan exposes every powered-down, reset-held, debug-locked, or disabled subsystem.\n\nDo not treat an absent observation as evidence that a subsystem does not exist."
+    }
+  ]
+}

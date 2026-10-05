@@ -2,7 +2,7 @@
 type: "procedure"
 domain: "pack"
 title: "prepare-pdsc-sequence-change"
-summary: "Prepare an evidence-backed CMSIS-Pack PDSC sequence-change summary through the active conversation before debug or trace sequence assembly. Use when scoping a PDSC sequence change, checking verified knowledge facts and inherited definitions, or selecting shared-versus-leaf placement; do not create, read, or update agent-artifact records."
+summary: "Prepare an evidence-backed CMSIS-Pack PDSC sequence-change summary through the active conversation before debug or trace sequence assembly: scope, sources, existing and inherited definitions, proposed placements, evidence, and open questions."
 status: "draft"
 source: "pack/prepare-pdsc-sequence-change/SKILL.md"
 preconditions: "Existing target `.pdsc`, selected device-tree scope, `debug` or `trace` domain, verified facts and source references, and the requested outcome."
@@ -12,6 +12,12 @@ sections: ["Execution Steps", "Expected Output", "Guardrails & Constraints", "Pr
 id: "proc-prepare-pdsc-sequence-change"
 requires: ["proc-debug-access-knowledge", "proc-debug-knowledge", "proc-trace-knowledge"]
 references: ["doc-open-cmsis-pack-github-io-open-cmsis-pack-spec-main-html-deb"]
+description: "Prepare an evidence-backed CMSIS-Pack PDSC sequence-change summary through the active conversation before debug or trace sequence assembly. Use when scoping a PDSC sequence change, checking verified knowledge facts and inherited definitions, or selecting shared-versus-leaf placement; do not create, read, or update agent-artifact records."
+triggers: ["scoping a PDSC sequence change", "checking verified knowledge facts and inherited definitions", "selecting shared-versus-leaf placement"]
+verification: ["Cross-check every proposed placement against the selected descendants and identify missing facts with their required source category.", "Use the selected PDSC subtree and the current Debug Description specification to verify inheritance, placement, and sequence context before returning the summary."]
+stop_conditions: ["Stop when the target PDSC, selected scope, current specification, or required verified facts are insufficient."]
+unmapped: ["CMSIS-Pack PDSC", "debugvars", "sequences"]
+stage2: "proc-prepare-pdsc-sequence-change.json"
 ---
 
 # Prepare PDSC Sequence Change

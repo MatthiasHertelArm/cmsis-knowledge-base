@@ -1,0 +1,35 @@
+{
+  "id": "proc-debug-access-knowledge",
+  "summary": "Build a documentation-led, verifiable record of an existing SoC's reusable CMSIS debug access topology: processor association, debug port and access-port path, protocol, and dormant-state decision, in `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` for user review.",
+  "triggers": [
+    "work that needs those access facts",
+    "debug-definition knowledge",
+    "debug-behavior knowledge",
+    "CoreSight trace knowledge",
+    "no active target connection is required"
+  ],
+  "applies_to": {"tool": ["pyocd"], "toolchain": [], "core": [], "component": [], "api": []},
+  "unmapped": [
+    "CMSIS Device Family Pack PDSC"
+  ],
+  "verification": [
+    "Cite each fact with document edition/revision and section/page when known, or repository/version, path, and symbol/line for source.",
+    "When documentation does not establish a required access observation, run `$pyocd-detect-debug-topology` and cite its result as supplementary evidence.",
+    "Record unknown, conflicting, and unavailable facts without inference.",
+    "Use the current Debug Description specification to distinguish explicit access definitions from standard defaults.",
+    "Re-read the selected PDSC subtree and inspect every evidence-table row before marking the record `READY`"
+  ],
+  "stop_conditions": [
+    "Stop if no device description exists.",
+    "Create or update the owned record, present it for review as `DRAFT — AWAITING USER REVIEW`, and set `READY` only after user confirmation and sufficient evidence for the intended downstream work.",
+    "Stop when the target PDSC, selected scope, processor association, or an access fact required by the intended downstream work is unavailable, contradictory, or insufficiently evidenced."
+  ],
+  "rules": [
+    {"id": "rule-critical-blockers-debug-access-knowledge", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-no-fabrication-debug-access-knowledge", "class": "generic", "canonical_id": "rule-no-fabrication", "delta": "addresses, identifiers, protocols, core associations, DP/AP paths, dormant-state requirements, patches, or access definitions"},
+    {"id": "rule-portability-debug-access-knowledge", "class": "generic", "canonical_id": "rule-portability", "delta": "unless authoritative inputs require it."},
+    {"id": "rule-scope-debug-access-knowledge", "class": "specific", "canonical_id": "", "delta": ""},
+    {"id": "rule-tone-and-style", "class": "generic", "canonical_id": "rule-tone-and-style", "delta": ""}
+  ],
+  "extracted": []
+}

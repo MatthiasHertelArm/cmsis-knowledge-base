@@ -2,7 +2,7 @@
 type: "procedure"
 domain: "project"
 title: "start-zephyr-project"
-summary: "Create an initial CMSIS Zephyr Blinky solution for a board already supported by Zephyr. Use when the Zephyr and CMSIS environments, exact Zephyr board target, and matching CMSIS BSP or DFP must be verified and combined into a west-integrated CMSIS solution."
+summary: "Create and validate one initial west-integrated CMSIS Zephyr Blinky solution for a board already supported by Zephyr, from verified environment, board, and pack information, using `cbuild setup` and `cbuild`."
 status: "draft"
 source: "project/start-zephyr-project/SKILL.md"
 preconditions: "A solution directory, the physical board and exact Zephyr target, verified CMSIS and Zephyr environment results, verified CMSIS BSP/DFP identifiers, and a selected installed CMSIS compiler when more than one is available."
@@ -13,6 +13,13 @@ sections: ["Create the Blinky Solution", "Execution Steps", "Expected Output", "
 id: "proc-start-zephyr-project"
 requires: ["proc-check-cmsis-environment", "proc-identify-zephyr-board"]
 references: ["asset-start-zephyr-project-assets-blinky-cmakelists-txt", "asset-start-zephyr-project-assets-blinky-prj-conf", "asset-start-zephyr-project-assets-blinky-src-main-c", "asset-start-zephyr-project-assets-zephyr-csolution-yml", "doc-github-com-arm-examples-cmsis-zephyr-blob-main-blinky-prj-co", "doc-github-com-arm-examples-cmsis-zephyr-blob-main-zephyr-csolut", "doc-github-com-open-cmsis-pack-vscode-cmsis-solution-blob-main-t", "doc-open-cmsis-pack-github-io-cmsis-toolbox-build-overview-west-", "doc-open-cmsis-pack-github-io-cmsis-toolbox-build-tools"]
+description: "Create an initial CMSIS Zephyr Blinky solution for a board already supported by Zephyr. Use when the Zephyr and CMSIS environments, exact Zephyr board target, and matching CMSIS BSP or DFP must be verified and combined into a west-integrated CMSIS solution."
+triggers: ["Zephyr and CMSIS environments", "exact Zephyr board target", "matching CMSIS BSP or DFP", "west-integrated CMSIS solution"]
+verification: ["Run the exact `cbuild setup` and `cbuild` commands below in the verified CMSIS and Zephyr environment.", "Confirm that `west` resolves from that virtual environment and stop when it does not.", "`cbuild setup <solution-name>.csolution.yml --active <target-type> --packs --update-rte`: Confirm that `cbuild setup` exits successfully.", "`cbuild <solution-name>.csolution.yml --active <target-type> --packs`: Confirm that `cbuild` exits successfully and report the generated output artifacts identified by the command."]
+stop_conditions: ["Reuse only current verified prerequisite results and stop when the board, support, compiler, or environment information is absent or ambiguous.", "Stop before writing project files unless both environment checks pass, the Zephyr board matches, and CMSIS support resolves to a BSP or DFP.", "Compare the semantic version reported by `cbuild --version`. If the version is missing, cannot be parsed, or is older than 2.14.0, report the failed prerequisite and stop before writing project files.", "If `check-cmsis-environment` finds no compiler, report the missing prerequisite and stop before writing project files.", "If multiple compilers are detected, list their exact identifiers and versions, ask the user to choose one, and stop until the user makes an explicit choice.", "If `zephyr.csolution.yml` or a `blinky` directory already exists, inspect and preserve it; do not overwrite existing content without the user's approval.", "Confirm that `west` resolves from that virtual environment and stop when it does not.", "Confirm that `cbuild setup` exits successfully. Report the failure and stop before compilation when it fails.", "Report the failure and stop when this build fails.", "Report every pack installation and stop when a required pack cannot be obtained."]
+unmapped: ["CMSIS-Toolbox `cbuild` 2.14.0 or later", "CMSIS-Toolbox west integration", "existing Zephyr workspace and its virtual environment", "publicly available CMSIS packs when `cbuild --packs` needs them", "`led0` devicetree alias"]
+applies_to: {"tool": ["cbuild", "west"]}
+stage2: "proc-start-zephyr-project.json"
 ---
 
 # Start Zephyr Project

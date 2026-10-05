@@ -2,7 +2,7 @@
 type: "procedure"
 domain: "bring-up"
 title: "board-debug-knowledge"
-summary: "Document a named board's supported debug and trace connector, jumper, pin-routing, and configuration choices without narrowing device-level Pack support. Use only for an explicitly requested board-specific debug or trace configuration before a knowledge workflow records optional board alternatives or a Pack workflow designs a runtime variable."
+summary: "Document a named board's supported debug and trace connector, jumper, pin-routing, and configuration choices without narrowing device-level Pack support, returning an evidenced option inventory and candidate runtime choices in conversation."
 status: "draft"
 source: "bring-up/board-debug-knowledge/SKILL.md"
 preconditions: "A named board, its fitted device when known, board manual/design guide/schematics or equivalent authoritative documentation, and the requested debug or trace purpose."
@@ -11,6 +11,11 @@ output: "Return these tables in conversation:\n\n```markdown\n| Board / revision
 sections: ["Execution Steps", "Expected Output", "Guardrails & Constraints", "Prerequisites & Context", "Target & Persona", "Validation Resources"]
 id: "proc-board-debug-knowledge"
 requires: ["proc-resolve-official-device-documentation"]
+description: "Document a named board's supported debug and trace connector, jumper, pin-routing, and configuration choices without narrowing device-level Pack support. Use only for an explicitly requested board-specific debug or trace configuration before a knowledge workflow records optional board alternatives or a Pack workflow designs a runtime variable."
+triggers: ["explicitly requested board-specific debug or trace configuration", "knowledge workflow records optional board alternatives", "Pack workflow designs a runtime variable"]
+verification: ["Confirm each option against the board documentation and preserve all device-level Pack options.", "Derive a candidate runtime choice only when its values and supported default are documented; do not infer an unsupported choice.", "Recheck that every reported option remains board-specific and that the result does not omit a documented device-level option."]
+stop_conditions: ["Stop if the board identity or requested purpose is ambiguous.", "Stop when an option lacks authoritative board evidence, its board revision is incompatible with the request, or a proposed default is undocumented."]
+stage2: "proc-board-debug-knowledge.json"
 ---
 
 # Board Debug Knowledge

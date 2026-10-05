@@ -6,6 +6,12 @@ status: "draft"
 shared: false
 id: "rule-no-fabrication-identify-zephyr-board"
 constrains: ["proc-identify-zephyr-board"]
+refines: ["rule-no-fabrication"]
+delta_of: "rule-no-fabrication"
 ---
 
 Do not invent a Zephyr target, fitted device, revision, qualifier, or board match from a probe, directory name, or fuzzy search alone.
+
+## Delta zu rule-no-fabrication
+
+Zephyr target, fitted device, revision, qualifier, or board match from a probe, directory name, or fuzzy search alone.
