@@ -5,11 +5,16 @@ Schema nach 01_konzept_und_schema.md, ergaenzt um:
   - nodes_fts mit triggers-Spalte (Stufe 2, dazu die Skill-Beschreibung aus Stufe 1) neben symptoms
   - Tabelle unresolved: applies_to-Ziele, die sich nicht aufloesen lassen (Stale-Erkennung)
   - Embeddings optional (--no-vec), Modell BAAI/bge-small-en-v1.5, 384 Dimensionen
+  - Tabelle info(key, value): schema_version, built_at (die Commit-Zeit von HEAD, damit zwei Builds eines
+    Commits uebereinstimmen; die Bauzeit, wenn die Eingaben vom Commit abweichen), kb_commit, kb_dirty,
+    recipe, units, nodes, edges, license_<id> je Lizenz der Einheiten, dropped und drop (--drop),
+    embed_model bei Vektoren
 
 Aufruf: python build_index.py --units <dir> [--units <dir> ...] --entities <dir> --out knowledge.db [--strict] [--no-vec]
+        [--recipe <name>] [--drop key=value[,key=value]] [--exclude <ids.json>] [--known <knowledge.db>]
 Exit-Code 2 bei --strict und unaufgeloesten applies_to-Zielen (CI-Gate).
 """
-import argparse, json, re, sqlite3, sys
+import argparse, datetime, json, re, sqlite3, subprocess, sys
 from pathlib import Path
 import yaml
 
@@ -65,6 +70,22 @@ def title_aliases(title):
     return out
 
 
+def git_state(inputs):
+    """(commit, dirty, commit time) of the repository this script lives in. dirty is "1" when one of the
+    inputs (unit and entity folders, exclusion lists, this script) differs from the commit, untracked
+    files included; ("", "1", None) when git or the repository is not there."""
+    root = Path(__file__).resolve().parent.parent
+    try:
+        def git(*args):
+            return subprocess.run(["git", *args], cwd=root, capture_output=True, text=True, check=True).stdout.strip()
+        commit, when = git("rev-parse", "HEAD"), git("log", "-1", "--format=%cI")
+        paths = [str(Path(x).resolve()) for x in inputs] + [str(Path(__file__).resolve())]
+        dirty = "1" if git("status", "--porcelain", "--untracked-files=all", "--", *paths) else "0"
+        return commit, dirty, when
+    except (OSError, subprocess.CalledProcessError):
+        return "", "1", None
+
+
 class Resolver:
     """Loest applies_to-Werte gegen Entity-IDs auf. Akzeptiert csolution-Schreibweisen."""
 
@@ -100,11 +121,18 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--strict", action="store_true")
     ap.add_argument("--no-vec", action="store_true")
+    ap.add_argument("--recipe", default="custom",
+                    help="name of the build recipe, recorded in the info table (scripts/build_core.sh: core)")
+    ap.add_argument("--drop", action="append", default=[], metavar="KEY=VALUE[,KEY=VALUE]",
+                    help="leave out every unit whose frontmatter matches all the pairs; repeat for alternatives "
+                         "(scripts/build_core.sh: confidence=low,cause_origin=issue-digest)")
     ap.add_argument("--exclude", action="append", default=[],
                     help="JSON object whose keys are unit ids to leave out (stage2/books-exclusions.json)")
     ap.add_argument("--known", action="append", default=[],
                     help="knowledge.db of another index whose ids are valid edge targets (a pack built next to the core)")
     a = ap.parse_args()
+    drops = [dict(kv.split("=", 1) for kv in spec.split(",")) for spec in a.drop]
+    dropped = 0
     excluded = set()
     for x in a.exclude:
         excluded |= set(json.loads(Path(x).read_text(encoding="utf-8")))
@@ -153,6 +181,9 @@ def main():
                 errors.append(str(ex))
                 continue
             if meta.get("id") in excluded:
+                continue
+            if any(all(str(meta.get(k)) == v for k, v in d.items()) for d in drops):
+                dropped += 1
                 continue
             e = lint(meta, p)
             errors += e
@@ -226,13 +257,31 @@ def main():
         with db:
             for (nid, *_), vec in zip(rows, model.embed(texts, batch_size=64)):
                 db.execute("INSERT INTO nodes_vec VALUES(?,?)", (nid, sqlite_vec.serialize_float32(list(vec))))
-        db.execute("CREATE TABLE info(key TEXT PRIMARY KEY, value TEXT)")
-        db.execute("INSERT INTO info VALUES('embed_model', ?)", (EMBED_MODEL,))
         db.commit()
 
     st = dict(db.execute("SELECT kind||'/'||type, count(*) FROM nodes GROUP BY 1").fetchall())
     kn = {k.split("/")[1]: v for k, v in st.items() if k.startswith("knowledge/")}
-    print("Wissensknoten:", kn, f"(ausgeschlossen: {len(excluded)} Ids)" if excluded else "")
+
+    # Herkunft und Inhalt des Builds; kb_lib liest daraus nur embed_model.
+    commit, dirty, when = git_state(a.units + a.entities + a.exclude)
+    if dirty == "1" or not when:
+        when = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S+00:00")
+        print("Hinweis: Eingaben weichen vom Commit ab (kb_dirty=1), built_at ist die Bauzeit")
+    info = {"schema_version": "1", "built_at": when, "kb_commit": commit, "kb_dirty": dirty, "recipe": a.recipe,
+            "units": str(sum(kn.values())), "nodes": str(sum(st.values())),
+            "edges": str(db.execute("SELECT count(*) FROM edges").fetchone()[0]), "dropped": str(dropped)}
+    if a.drop:
+        info["drop"] = "; ".join(a.drop)
+    for lic, n in db.execute("SELECT coalesce(json_extract(meta,'$.license'), 'unknown'), count(*) "
+                             "FROM nodes WHERE kind='knowledge' GROUP BY 1 ORDER BY 1"):
+        info[f"license_{lic}"] = str(n)
+    if not a.no_vec:
+        info["embed_model"] = EMBED_MODEL
+    with db:
+        db.execute("CREATE TABLE info(key TEXT PRIMARY KEY, value TEXT)")
+        db.executemany("INSERT INTO info VALUES(?,?)", info.items())
+    print("Wissensknoten:", kn, f"(ausgeschlossen: {len(excluded)} Ids)" if excluded else "",
+          f"(--drop: {dropped} Einheiten)" if drops else "")
     print("Entities:", sum(v for k, v in st.items() if k.startswith("entity/")))
     print("Kanten:", dict(db.execute("SELECT rel, count(*) FROM edges GROUP BY rel").fetchall()))
     unres = db.execute("SELECT count(*) FROM unresolved").fetchone()[0]
