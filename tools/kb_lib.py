@@ -17,6 +17,9 @@ import yaml
 
 RRF_K = 60
 FIRST_LINE_BONUS = 0.05     # exakter Treffer in der ersten Zeile vor einem in spaeteren Zeilen
+OVERVIEW_ROLES = ("intro", "summary", "preface")
+OVERVIEW_WEIGHT = 0.6
+
 
 
 def tokens(text):
@@ -209,6 +212,12 @@ class KB:
                 score[nid] = score.get(nid, 0) + 1 / (RRF_K + rank + 1)
         for nid in exact:
             score[nid] = score.get(nid, 0) + 1.0 + FIRST_LINE_BONUS * (1 - first[nid] / len(lines))
+        # Overview units (a chapter's intro or summary, role in the frontmatter) answer the broad question but
+        # must not hide the section that answers the specific one: their score is scaled down, not removed.
+        for nid in list(score):
+            meta = self.db.execute("SELECT json_extract(meta,'$.role') FROM nodes WHERE id=?", (nid,)).fetchone()
+            if meta and meta[0] in OVERVIEW_ROLES:
+                score[nid] *= OVERVIEW_WEIGHT
         rows = []
         for nid in sorted(score, key=lambda x: -score[x]):
             r = self.db.execute("SELECT id,type,domain,title,summary,body,meta FROM nodes WHERE id=?", (nid,)).fetchone()

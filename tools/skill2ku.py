@@ -113,6 +113,15 @@ def norm(s):
     return re.sub(r"\W+", " ", s.lower()).strip()
 
 
+def route_refs(text, targets):
+    """A `$name` hand-over to a skill that is not installed (the extension installs cmsis-help alone)
+    becomes the procedure unit that holds the skill's text: `proc-<name>`, read with knowledge_get."""
+    def unit(name):
+        return f"`proc-{name}` (`knowledge_get`)"
+    text = re.sub(r"`\$([a-z][a-z0-9-]+)`", lambda m: unit(m.group(1)) if m.group(1) in targets else m.group(0), text)
+    return re.sub(r"\$([a-z][a-z0-9-]+)", lambda m: unit(m.group(1)) if m.group(1) in targets else m.group(0), text)
+
+
 def main(src, out, known=()):
     src, out = Path(src), Path(out)
     files = sorted(src.rglob("SKILL.md"))
@@ -152,7 +161,7 @@ def main(src, out, known=()):
             output=sec.get("Expected Output", ""),
             # Ganzer Skill-Body, unveraendert: Procedures werden nie gekuerzt. Die Felder oben sind
             # zusaetzliche Extrakte fuer Index und Filter, kein Ersatz fuer den Text.
-            body=split_body(text), sections=sorted(sec))
+            body=route_refs(split_body(text), (names | known_names) - {name}), sections=sorted(sec))
         for dep in sorted(set(re.findall(r"[$`]([a-z][a-z0-9-]+)`?", text)) & (names | known_names) - {name}):
             edges.append((pid, "requires", f"proc-{dep}"))
         for path, content in asset_files(f.parent):

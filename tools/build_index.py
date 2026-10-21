@@ -100,7 +100,19 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--strict", action="store_true")
     ap.add_argument("--no-vec", action="store_true")
+    ap.add_argument("--exclude", action="append", default=[],
+                    help="JSON object whose keys are unit ids to leave out (stage2/books-exclusions.json)")
+    ap.add_argument("--known", action="append", default=[],
+                    help="knowledge.db of another index whose ids are valid edge targets (a pack built next to the core)")
     a = ap.parse_args()
+    excluded = set()
+    for x in a.exclude:
+        excluded |= set(json.loads(Path(x).read_text(encoding="utf-8")))
+    known = set()
+    for k in a.known:
+        kdb = sqlite3.connect(k)
+        known |= {r[0] for r in kdb.execute("SELECT id FROM nodes")}
+        kdb.close()
 
     out = Path(a.out)
     out.unlink(missing_ok=True)
@@ -139,6 +151,8 @@ def main():
                 meta, body = read_unit(p)
             except Exception as ex:
                 errors.append(str(ex))
+                continue
+            if meta.get("id") in excluded:
                 continue
             e = lint(meta, p)
             errors += e
@@ -180,6 +194,8 @@ def main():
                              WHERE n.id IS NULL AND e.rel IN (%s)""" % ",".join("?" * len(RELATIONS)),
                           RELATIONS).fetchall()
     for s, r, d in dangling:
+        if d in known:
+            continue
         if not d.startswith(("doc-", "artifact-", "asset-")):     # skill2ku-Entities kommen aus graph.json
             errors.append(f"{s}: {r} -> {d} existiert nicht")
 
@@ -216,7 +232,7 @@ def main():
 
     st = dict(db.execute("SELECT kind||'/'||type, count(*) FROM nodes GROUP BY 1").fetchall())
     kn = {k.split("/")[1]: v for k, v in st.items() if k.startswith("knowledge/")}
-    print("Wissensknoten:", kn)
+    print("Wissensknoten:", kn, f"(ausgeschlossen: {len(excluded)} Ids)" if excluded else "")
     print("Entities:", sum(v for k, v in st.items() if k.startswith("entity/")))
     print("Kanten:", dict(db.execute("SELECT rel, count(*) FROM edges GROUP BY rel").fetchall()))
     unres = db.execute("SELECT count(*) FROM unresolved").fetchone()[0]
