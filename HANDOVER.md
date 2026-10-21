@@ -290,3 +290,22 @@ questions (69 without the gate), the expected core unit outranked for 2, golden 
 15 of 16 design questions still reach their pack unit through the set; 12 of 40 generic agent
 requests get a pack unit. The extension lists the pack and answers a factory-function question with
 the book's rule, behind two word-overlap hits of the core, which is the ungated merge at work.
+
+## Update 21 Oct 2026: the shipped index reproducible from a commit; repository on GitHub
+
+The CMSIS Developer Assistant 2.7.0 ships `build/knowledge.core.db` of 16 Oct 13:05 (65 413 120 bytes, sha256
+`a54734078376e95f22926b4862abfa80dba5f376d012d11bbd96dc954253e3e9`, 7 064 units, 33 994 nodes) as its core index.
+That file came from an uncommitted working tree. This update makes it reproducible.
+
+| Item | State |
+|---|---|
+| Open work committed | By kind: `e04f87e` ignore rules, `build/knowledge.db` no longer tracked (it was about 70 MB per version; the old versions stay in the history, nothing was rewritten); `390c41a` tools (`build_index --exclude/--known`, the overview weight, `route_refs`, the book tools); `8f43b36` scripts; `e406a2d` units (the extension's skills re-converted, `proc-start-cmsis-project`, routes, hand-overs as unit links); `cae1a7b` tests and evaluation data; `6f6c984` HANDOVER and README of 9 and 10 Oct. One hunk was dropped: `units/skills/graph.json` had a path of this machine in one `portability` field; the procedure file and the index never had it |
+| Left uncommitted | `stage2/books-exclusions.json`: 1 490 unit ids, each with the classifier's reason in at most ten words. The reasons name a section's topic, nothing more, but they are not ids alone, so the file waits for a decision. `scripts/build_pack.sh` and `build_books.sh` treat it as optional |
+| Licence gate | `tools/check_licences.py` (`cf13385`): every unit declares `license`, allowed are Apache-2.0, MIT, BSD-3-Clause and the issue digests' marker `own summary of a GitHub issue`; anything else, a missing field and `mode: P` fail with the files listed. The 227 units from cmsis-skills and the extension's skills (procedures, rules, concepts, canonical rules, extracted units, routes) had no field; the converters write it now and the files carry it. Over the eight core folders: 7 118 units, Apache-2.0 5 023, MIT 1 022, BSD-3-Clause 493, own summary 580 |
+| `info` table | `build_index.py` (`6ee7cbb`) writes it into every index: `schema_version`, `built_at` (the commit time of HEAD while the inputs match the commit, else the build time), `kb_commit`, `kb_dirty`, `recipe`, `units`, `nodes`, `edges`, `dropped`, `drop`, `license_<id>`, and `embed_model` with vectors. `kb_lib.py` reads `embed_model` alone; the extension ignores the table |
+| Recipe | `scripts/build_core.sh`: the gate, then `build_index.py --no-vec --recipe core --drop confidence=low,cause_origin=issue-digest` over `units/skills`, `canonical`, `extracted`, `troubleshooting`, `cda-skills`, `cda-routes`, `docs`, `issues` with `build/entities`, then `tests/test_kb.py` on the result; about 10 s, offline, `requirements-build.txt` pins PyYAML 6.0.3. The `--drop` step is what the 16 Oct build had done without a script: the 54 issue digests with `confidence: low` were absent from it, while the 24 low-confidence error-catalog units were in |
+| Comparison with the shipped file | Built at `6ee7cbb`: nodes 33 994 with the same counts per kind and type, edges 91 014, `unresolved` 77, FTS rows 7 064. The ordered dumps of nodes (id, kind, type, domain, title, summary, body), edges and `unresolved` hash identically to the shipped file. Differences: `meta` of the 227 units now holds `license`, and the `info` table exists. The new file: 65 429 504 bytes, sha256 `d2bbf54d7eeeb1af4d5c559b350b2638a4b07c64360c1e554371ef452d7d33d8`, `built_at` 2026-10-21T10:35:00+02:00, `kb_dirty` 0. A second build of the same commit is byte-identical; a build at a later commit that changes no input differs in `built_at` and `kb_commit` only |
+| Remote | Private repository `MatthiasHertelArm/cmsis-knowledge-base` on GitHub, branch `master`, pushed this day. The book units, the packs and `.work` are ignored and were never tracked |
+
+Next: let the extension's CI fetch `knowledge.core.db` by commit and sha256 instead of a local copy; review the 54
+low-confidence digests, then drop the `--drop` step; decide on `stage2/books-exclusions.json`.
