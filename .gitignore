@@ -4,6 +4,8 @@ __pycache__/
 *.pyc
 .DS_Store
 build/*.db
+# The assets scripts/release_core.sh writes beside the index; they live on the release
+build/knowledge-core-*
 units/books/
 units/books-refined/
 stage2/books-in/
