@@ -1,0 +1,561 @@
+# The licence files of the repositories the knowledge units come from, as tools/sources_md.py --fetch read
+# them: the identifier detected in the licence file, the file's name, its copyright lines and the text of
+# the repository's NOTICE file. Committed so that SOURCES.md regenerates without network; --refresh reads
+# the files again. Issue repositories are not listed: their digests are own summaries.
+repositories:
+- repo: ARM-software/AVH
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ARM-software/AVH-MLOps
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ARM-software/Arm-2D
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright:
+  - Copyright 2020 signalProcessing
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ARM-software/CMSIS-CV
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ARM-software/CMSIS-Compiler
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ARM-software/CMSIS-DAP
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ARM-software/CMSIS-DSP
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ARM-software/CMSIS-Driver
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ARM-software/CMSIS-Driver_Validation
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE.txt
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ARM-software/CMSIS-Ethos-U
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ARM-software/CMSIS-FreeRTOS
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ARM-software/CMSIS-NN
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ARM-software/CMSIS-RTOS2_Validation
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ARM-software/CMSIS-RTX
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ARM-software/CMSIS-Stream
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ARM-software/CMSIS-View
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ARM-software/CMSIS_6
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ARM-software/Cortex_DFP
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ARM-software/LLVM-embedded-toolchain-for-Arm
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE.txt
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ARM-software/ML-examples
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ARM-software/SDS-Framework
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ARM-software/cmsis-actions
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Arm-Examples/AVH-VSI
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Arm-Examples/CMSIS-Ethos-Integration
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Arm-Examples/CMSIS-Zephyr
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Arm-Examples/Helium-Optimization
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Arm-Examples/SEGGER-SystemView
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Arm-Examples/cmsis-mlek
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Mbed-TLS/mbedtls-docs
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Open-CMSIS-Pack/CMSIS-Developer-Assistant
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright:
+  - Copyright 2022 Arm Limited
+  notice_file: NOTICE
+  notice: |
+    CMSIS Developer Assistant
+    Copyright 2026 Arm Limited and contributors
+
+    This product is dual-licensed under either of
+
+      * Apache License, Version 2.0 ....... see LICENSE
+      * MIT License ....................... see LICENSE-MIT
+
+    at your option (SPDX-License-Identifier: "Apache-2.0 OR MIT").
+
+    ------------------------------------------------------------------------
+    Provenance / third-party attribution
+    ------------------------------------------------------------------------
+
+    This project is derived from DebugMCP (https://github.com/microsoft/DebugMCP),
+    originally created by Oz Zafar, Ori Bar-Ilan and Karin Brisker (Microsoft) and
+    licensed under the MIT License:
+
+      Copyright (c) Microsoft Corporation.
+
+    The MIT copyright notice and permission text (LICENSE-MIT) are retained for the
+    portions of this work derived from DebugMCP, as required by the MIT License.
+    Arm's CMSIS / Cortex-M embedded extensions and subsequent changes are
+    contributed by Arm Limited.
+
+    The Agent Skills under skills/cmsis-skills/ are vendored unmodified from
+    Open-CMSIS-Pack/cmsis-skills (https://github.com/Open-CMSIS-Pack/cmsis-skills),
+    licensed under the Apache License, Version 2.0; the licence text ships as
+    skills/cmsis-skills/LICENSE and the pinned commit is recorded in
+    skills/cmsis-skills.lock.json.
+  fetched: '2026-10-21'
+- repo: Open-CMSIS-Pack/Create-Scalable-SW
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Open-CMSIS-Pack/Open-CMSIS-Pack-Spec
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Open-CMSIS-Pack/Open-CMSIS-Pack-Taxonomy
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Open-CMSIS-Pack/RefApp-Framework
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Open-CMSIS-Pack/Sensor-SDK-Example
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE-Apache-2.0
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Open-CMSIS-Pack/cbuild
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright:
+  - Copyright 2022 Arm Limited
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Open-CMSIS-Pack/cmsis-skills
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Open-CMSIS-Pack/cmsis-toolbox
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Open-CMSIS-Pack/cmsis-trace-extension
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Open-CMSIS-Pack/cpackget
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE.txt
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Open-CMSIS-Pack/csolution-examples
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE-Apache-2.0
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Open-CMSIS-Pack/debug-adapter-registry
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Open-CMSIS-Pack/devtools
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Open-CMSIS-Pack/gen-pack
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Open-CMSIS-Pack/pyTS
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Open-CMSIS-Pack/svd-spec
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Open-CMSIS-Pack/vidx2pidx
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE.txt
+  copyright:
+  - Copyright 2021 Linaro
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Open-CMSIS-Pack/vscode-cmsis-debugger
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE-Apache-2.0
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: Open-CMSIS-Pack/vscode-get-started
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ThrowTheSwitch/CMock
+  host: https://github.com
+  spdx: MIT
+  license_file: LICENSE.txt
+  copyright:
+  - Copyright (c) 2007-26 Mike Karlesky, Mark VanderVoord, & Greg Williams
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ThrowTheSwitch/Ceedling
+  host: https://github.com
+  spdx: MIT
+  license_file: license.txt
+  copyright:
+  - Copyright (c) 2010-26 Mike Karlesky, Mark VanderVoord, & Greg Williams
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: ThrowTheSwitch/Unity
+  host: https://github.com
+  spdx: MIT
+  license_file: LICENSE.txt
+  copyright:
+  - Copyright (c) 2007-26 Mike Karlesky, Mark VanderVoord, & Greg Williams
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: TrustedFirmware-M/trusted-firmware-m
+  host: https://github.com
+  spdx: BSD-3-Clause
+  license_file: license.rst
+  copyright:
+  - Copyright (c) 2017-2019, Arm Limited. All rights reserved.
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: artificial-intelligence/ethos-u/ethos-u-vela
+  host: https://gitlab.arm.com
+  spdx: Apache-2.0
+  license_file: LICENSE.txt
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: artificial-intelligence/ethos-u/ml-embedded-evaluation-kit
+  host: https://gitlab.arm.com
+  spdx: Apache-2.0
+  license_file: LICENSE_APACHE_2.0.txt
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: eclipse-threadx/rtos-docs
+  host: https://github.com
+  spdx: MIT
+  license_file: LICENSE
+  copyright:
+  - Copyright (c) Microsoft Corporation
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: littlefs-project/littlefs
+  host: https://github.com
+  spdx: BSD-3-Clause
+  license_file: LICENSE.md
+  copyright:
+  - Copyright (c) 2022, The littlefs authors.
+  - Copyright (c) 2017, Arm Limited. All rights reserved.
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: mcu-tools/mcuboot
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: NOTICE
+  notice: |
+    Apache Mynewt
+    Copyright 2015-2017 The Apache Software Foundation
+
+    This product includes software developed at
+    The Apache Software Foundation (http://www.apache.org/).
+
+    Portions of this software were developed at
+    Runtime Inc, copyright 2015.
+
+    Portions of this software were developed at
+    Arm Limited, copyright 2019-2021.
+  fetched: '2026-10-21'
+- repo: pyocd/pyOCD
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: pytorch/executorch
+  host: https://github.com
+  spdx: BSD-3-Clause
+  license_file: LICENSE
+  copyright:
+  - Copyright (c) Meta Platforms, Inc. and affiliates.
+  - Copyright 2023 Arm Limited and/or its affiliates.
+  - Copyright (c) Qualcomm Innovation Center, Inc.
+  - Copyright (c) 2023 Apple Inc.
+  - Copyright (c) 2024 MediaTek Inc.
+  - Copyright 2023 NXP
+  - Copyright (c) 2025 Samsung Electronics Co. LTD
+  - Copyright (c) Intel Corporation
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: tensorflow/tflite-micro
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'
+- repo: zephyrproject-rtos/zephyr
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-21'

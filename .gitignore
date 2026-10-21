@@ -6,6 +6,7 @@ __pycache__/
 build/*.db
 # The assets scripts/release_core.sh writes beside the index; they live on the release
 build/knowledge-core-*
+build/SOURCES.md
 units/books/
 units/books-refined/
 stage2/books-in/
