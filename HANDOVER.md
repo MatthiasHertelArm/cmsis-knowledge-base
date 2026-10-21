@@ -151,3 +151,142 @@ smaller ARM-software repositories.
 Open: a human review of the issue digests, starting with `checked: unsupported` and `confidence:
 low`; the error catalog's review list; decision 4 for the share-alike sources; an agent-task
 benchmark (HANDOVER next steps, level 2).
+
+## Update 9 Oct 2026: a second local pack with the content of books (test scenario)
+
+`tools/pdf2ku.py` turns the PDF books of a folder into knowledge units, one per section of the
+book's outline (chapter intro, sections, sub-headings as split points above 12,000 characters;
+running headers, page numbers, index anchors and Packt's promotion boxes dropped; cover, index,
+advertising skipped). It handles the three outline shapes Packt uses. `scripts/build_books.sh`
+converts `~/Documents/C++` (20 books, 4,177 units), builds `packs/Local.CPP_Books/knowledge.db`
+(70 MB, entities pruned as in `build_split.sh`) and copies the pack into
+`~/.cache/arm/packs/Local/CPP_Books/1.0.0/`, where the extension found it at once (next to
+`Local::CMSIS_Knowledge@1.0.0`). Units carry `domain: cpp`, `collection: <book>`, `book`,
+`chapter`, `source: <file>#page=N` and `mode: P` (private): the books are copyrighted, so
+`units/books/` and the pack's index are git-ignored and must never reach a published index or pack.
+
+Observation: without a `domain` filter the book units compete with the core index on general
+questions (a `std::map` query ranks an issue digest first); with `domain: cpp` the ranking is clean.
+
+## Update 10 Oct 2026: stage 3 for books, pilot on the bare-metal book
+
+The book units of 9 Oct were all `concept` with the section's first sentence as summary.
+`tools/stage3_books.py` with `stage2/books_prompt.md` refines them one unit at a time with a small
+model (Claude Haiku 5.5): stage A (no model) strips Packt's promotion boxes, reattaches list numbers
+and marks boilerplate sections with a `role`; stage B asks for type with the fields of that type,
+a 40-word summary, triggers, the body as Markdown, up to three verbatim extracts and `applies_to`
+from fixed lists; stage D (no model) checks every answer before it enters a unit: the Markdown body
+may add at most 2 % new words and lose at most 10 % (figure captions excepted), extracts must be
+verbatim and at least 160 characters, types, domains and `applies_to` values come from the lists,
+a failed field falls back to the input and is listed in `report.csv`. `prepare` writes batch files
+that either reader agents (as for the issue digests) or the Message Batches API (`submit`/`fetch`,
+needs `ANTHROPIC_API_KEY`, none on this Mac) answer; `merge` writes `units/books-refined/<book>`,
+which `scripts/build_books.sh` prefers over `units/books/<book>`.
+
+Pilot, Bare-Metal Embedded C Programming, eight Haiku reader agents, 154 units: 28 dropped (all
+chapter summaries and intros, the requirements lists, advertising), 29 procedures with steps, 5
+patterns, 10 rules, the rest concepts; 37 extracts kept; confidence high 72, medium 36, low 18;
+the body gate rejected 2 bodies (6 % and 2 % new words). `applies_to` was set on 4 units only
+(Cortex-M4, GCC, gdb): the book names STM32F411, which is no entity of the core index.
+Golden set `tests/golden-books.json` (12 questions, `tests/eval_search.py --golden=`), BM25 on the
+pack: hit@1 0.50 → 0.67, MRR 0.722 → 0.792, hit@5 1.00 both. Open: the readers drop chapter intros
+and summaries, which answer broad questions well (decide: keep with `role`, down-weighted);
+stage C (relations) is not built; the C++ books are not refined.
+
+Later the same day: chapter intros and summaries are kept (`role: intro | summary | preface`), the
+readers rewrote their summaries and triggers in a second pass (`prepare --roles=intro,summary,preface
+--first=9`), and the publisher footer whose URL wraps onto a second line is stripped too. With real
+summaries the overviews outranked the sections (MRR 0.660), so the prototype search scales an
+overview unit's score by `OVERVIEW_WEIGHT` (0.6, `tools/kb_lib.py`): MRR 0.812, hit@1 0.67, the
+weight is not sensitive between 0.4 and 0.8. The extension's search (`src/core/knowledge/search.ts`
+on pr/2.7.0-knowledge) does not have this weight yet; until it does, agents see the overviews first
+on broad questions. 154 units: 3 dropped, 29 procedures, 2 patterns, 31 extracts.
+
+## Update 10 Oct 2026, later: generic knowledge out of the book, checked against the core
+
+`tools/books_generic.py` with `stage2/books_generic_prompt.md` and `stage2/books_conflict_prompt.md`:
+two Haiku passes. Pass 1 reads the refined sections and writes pieces that hold beyond the book, in
+own words (mode S), each with a verbatim `evidence` quote; `extract-merge` discards a piece whose
+quote is not in its source unit, whose summary or body is outside the limits, or that repeats an
+earlier piece of the book (title or title-plus-summary words, Jaccard 0.5 without stop words: the
+same rule had come three times under three titles). Pass 2 takes, per piece, the five nearest units
+of `build/knowledge.core.db` and the CMSIS_Knowledge pack (BM25) and has a judge mark each as
+duplicate, contradicts, complements or unrelated; `check-merge` writes kept pieces to
+`units/books-generic/<book>` with `references` to the complemented core units, drops duplicates and
+puts contradictions into `stage2/books-review/<book>`. `build_index.py --known <db>` accepts those
+cross-index edge targets, and `build_books.sh` keeps them through the entity prune.
+
+Bare-metal book: 225 pieces written, 215 kept (128 concept, 36 rule, 27 procedure, 22 pattern,
+2 troubleshooting; 10 repeats), 3 evidence quotes rejected in the readers' own checks before
+output. Conflict check: 215 keep, 0 duplicate, 0 contradiction, 182 complement links to 107 core
+units. The judges all say the same thing: the BM25 candidates are mostly unrelated (pyOCD issues,
+svdconv messages), because the core index has little on register-level programming, so the check
+proves the absence of obvious duplicates, not of contradictions; a vector search or a domain filter
+on the candidates would make it sharper. Several complement links are loose (the RTC crystal piece
+references two Zephyr board pages). Golden set, extended with the generic and chapter-level units
+that answer its questions: hit@1 0.75, hit@5 1.00, MRR 0.875. The extension's `knowledge_expand`
+follows a `references` edge into the core but shows the target's id only, not its title.
+
+## Update 10 Oct 2026, evening: conflicts on the request side; scope ban on tool and project knowledge
+
+**Request-side conflict test.** `tests/eval_conflicts.py` reads the core index, the documentation pack
+and a candidate pack as one set the way the extension does (BM25 lists fused by rank) and runs the
+72 golden CMSIS questions and 40 generic agent requests (`tests/agent-requests.json`: new project,
+build, flash, debug, startup file, drivers, interrupts, low power ...). It reports shadowing (the
+expected core unit outranked by a pack unit) and exposure (pack units in the top 8), and writes
+judge batches (`stage2/books_request_conflict_prompt.md`: contradicts / diverts / complements /
+unrelated per pack unit, decision fine / demote / exclude per request). Ten Haiku judges on the
+unfiltered book pack: 109 requests with pack units in the top 8, 63 fine, 23 demote, 23 exclude;
+31 contradictions, almost all from three units that start OpenOCD or a GDB server by hand or
+build with a Makefile, and 35 diversions (IDE clicks, vendor headers by hand, register code where
+the core has a driver API). `books_generic.py request-merge` applies such judgements (exclusion
+list, `caution` in the frontmatter); it is kept as a tool but superseded by the scope ban below.
+
+**Structural finding.** Rank fusion with equal lists puts every index's top two hits into the set's
+top 8 whatever their relevance: on the unfiltered pack a book unit appeared in the top 8 for 69 of
+72 CMSIS questions and all 40 generic requests ("add a board layer" brought a Logstash chapter). A
+weight on the pack's ranks is useless in RRF (0.7 removes the pack entirely). A relevance gate
+works: admit a pack hit only when its BM25 score reaches a share of the base indexes' best score
+for the query (`--gate`): at 0.7, exposure on CMSIS questions 69 → 11, shadowing 28 → 6, MRR of
+the golden set 0.484 → 0.494 (0.498 without the pack), the book questions still reach their units
+(6 of 9 in the top 5, unchanged), generic requests still get pack units where the pack has
+something (34 of 40). Recommendation for the extension's `KnowledgeSet`: this gate, 0.7.
+
+**Scope ban (decision of 10 Oct).** Books contribute coding and design knowledge only; tool usage
+and project management stay out. `books_generic.py classify-prepare / classify-merge` with
+`stage2/books_scope_prompt.md`: 15 Haiku readers classified all 4,388 book units (refined and
+generic units of the bare-metal book, raw units of the other 19) as coding 2,336, design 806,
+tool 518, project 679, other 49; the 1,246 banned ids are in `stage2/books-exclusions.json`,
+which `build_index.py --exclude` and both merges honour. The CMake books lose almost everything
+(Modern CMake 22 of 262 kept, CMake Best Practices 1 of 190); the bare-metal book keeps 336 of
+397. The pack now holds 3,142 units; the book golden set (9 questions left after the tool-usage
+ones were dropped) hit@1 0.67, hit@5 1.00, MRR 0.833. With the scope ban the contradictions are
+gone (the OpenOCD, GDB-server, Makefile and IDE units are `tool` or `project`); the exposure of
+unrelated coding units on CMSIS requests remains until the gate is in the extension.
+
+## Update 10 Oct 2026, night: the bare-metal book parked; a pack from "Software Architecture with C++"
+
+Decision: the bare-metal book overlaps too much with the modern CMSIS practice (own startup file,
+register code where a driver API exists, hand-run toolchain), so it is parked: its units stay under
+`units/books*`, `Local.CPP_Books` is removed from the pack root and not loaded. The new pack
+`Local.CPP_Architecture` holds one book, "Software Architecture with C++, Second Edition" (460
+sections): stage 3 refinement, generic design knowledge in own words, conflict check against the
+core, scope ban (310 of its raw units were coding or design, 150 tool or project), built by
+`scripts/build_pack.sh CPP_Architecture softwarearchitecturewithcplusplusseconde`.
+
+Result, same night. `Local::CPP_Architecture@1.0.0`, 713 units: 323 concepts, 225 rules, 153 patterns,
+8 procedures, 4 troubleshooting. Pipeline: 19 Haiku readers refined the 460 sections (two readers
+declined to reproduce the full text and delivered type, summary and triggers only; the merge keeps
+the source text as body in that case, as it does for the 12 condensed bodies the gate rejected);
+13 readers extracted 560 generic pieces in own words with evidence quotes (555 kept, 5 repeats);
+19 judges checked them against the core (555 keep, 0 duplicate, 0 contradiction; the candidates
+are almost all unrelated, the core has no generic C++ or architecture units); 3 readers classified
+all 957 units with the tightened scope prompt (infrastructure products are `tool`): design 400,
+coding 313, tool 227, project 17, so 244 units left the pack. Golden set
+`tests/golden-architecture.json` (16 design questions; the generic units that answer them count):
+hit@1 0.94, hit@5 1.00, MRR 0.969 on the pack alone. Request side (`tests/eval_conflicts.py
+--gate=0.7 --book-golden=tests/golden-architecture.json`): pack unit in the top 8 for 5 of 72 CMSIS
+questions (69 without the gate), the expected core unit outranked for 2, golden MRR 0.498 → 0.497;
+15 of 16 design questions still reach their pack unit through the set; 12 of 40 generic agent
+requests get a pack unit. The extension lists the pack and answers a factory-function question with
+the book's rule, behind two word-overlap hits of the core, which is the ungated merge at work.
