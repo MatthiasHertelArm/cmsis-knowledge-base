@@ -6,6 +6,7 @@ summary: "Create, extend or retarget CMSIS csolution and Zephyr projects: which 
 triggers: ["Set up and extend CMSIS csolution projects and Zephyr-based CMSIS solutions: verify the CMSIS-Toolbox, CMake, Ninja and compiler environment or a Zephyr west workspace; resolve a fuzzy board or device name to its exact CMSIS identity and BSP/DFP, or to its Zephyr board target; add a verified target to an existing *.csolution.yml; find compatible packaged board layers; or create an initial west-integrated CMSIS Zephyr Blinky solution. Use when the user wants to create, extend or retarget a csolution, check their build tools, or identify board, device and pack identifiers; this skill routes to the specialised project skills installed next to it. Not for debugging a running target (cmsis-debug-live) or for PDSC authoring (cmsis-pack)."]
 status: "draft"
 source: "CMSIS-Developer-Assistant/scripts/skills.config.json"
+license: "Apache-2.0"
 id: "route-project"
 references: ["proc-add-board-layer", "proc-add-cmsis-target", "proc-check-cmsis-environment", "proc-check-zephyr-environment", "proc-cmsis-bootstrap", "proc-cmsis-debugger-setup", "proc-identify-cmsis-board-layer", "proc-identify-cmsis-board-support", "proc-identify-zephyr-board", "proc-start-cmsis-project", "proc-start-zephyr-project"]
 ---

@@ -5,6 +5,7 @@ title: "identify-cmsis-board-layer"
 summary: "Identify packaged CMSIS board layers compatible with an existing solution target and its required connections, returning `MATCHES`, `NO MATCH`, or `NOT REQUIRED` with exact command evidence."
 status: "draft"
 source: "project/identify-cmsis-board-layer/SKILL.md"
+license: "Apache-2.0"
 preconditions: "An existing `*.csolution.yml`, the exact target-type name to inspect, and verified board, device, DFP, and optional BSP identifiers from `identify-cmsis-board-support`."
 portability: "Applies across MCU and SoC vendors when packs describe software layers and connections. It has no compiler, RTOS, debugger, or probe dependency beyond requirements already present in the solution or candidate layer. Use the [CMSIS-Toolbox software-layer format](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/#auto-select-layers) and [Reference Applications workflow](https://open-cmsis-pack.github.io/cmsis-toolbox/ReferenceApplications/) as authoritative guidance."
 tools: ["csolution", "cpackget"]

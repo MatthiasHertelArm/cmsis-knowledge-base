@@ -6,6 +6,7 @@ summary: "Add a board layer to an existing csolution by asking for the few open 
 triggers: ["add or author a board layer", "would rather be asked than hand over every parameter up front"]
 status: "draft"
 source: "add-board-layer/SKILL.md"
+license: "Apache-2.0"
 tools: ["csolution", "cbuild", "cpackget"]
 sections: ["0. Read before you ask", "1. The interview", "2. Resolve the board and device identity — from the pdsc, never by guess", "3. Choose the layer strategy", "4a. Generator-based layer: integrate, then let the user run the generator", "4b. Minimal bare-metal recipe", "5. Wire into the csolution", "6. Build to green", "7. Confirm and hand off", "Goal and method", "Hardware facts: ask the documentation, not memory"]
 id: "proc-add-board-layer"

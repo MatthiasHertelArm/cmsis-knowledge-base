@@ -3,6 +3,7 @@ type: "rule"
 title: "Portability"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: true
 id: "rule-portability-debug-access-knowledge"
 constrains: ["proc-debug-access-knowledge", "proc-debug-knowledge", "proc-apply-confirmed-pdsc-proposal", "proc-manage-pdsc-debugvars", "proc-prepare-pdsc-sequence-change", "proc-validate-pdsc-sequence-xml"]

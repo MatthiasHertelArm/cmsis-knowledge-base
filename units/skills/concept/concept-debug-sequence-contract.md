@@ -4,6 +4,7 @@ domain: "pack"
 title: "debug-sequence-contract"
 status: "draft"
 source: "pack/generate-debug-sequences/references/debug-sequence-contract.md"
+license: "Apache-2.0"
 id: "concept-debug-sequence-contract"
 ---
 

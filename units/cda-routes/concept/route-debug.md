@@ -5,6 +5,7 @@ title: "Live debugging: which procedure"
 summary: "Live debugging: which procedure fits a task, and the usual order."
 status: "draft"
 source: "CMSIS-Developer-Assistant/scripts/skills.config.json"
+license: "Apache-2.0"
 id: "route-debug"
 references: ["proc-cmsis-debug-live", "proc-debugger-troubleshooting", "proc-fvp-debug-setup"]
 ---

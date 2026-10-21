@@ -3,6 +3,7 @@ type: "rule"
 title: "Do not report overall success unless both required"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: false
 id: "rule-unnamed-start-zephyr-project-8"
 constrains: ["proc-start-zephyr-project"]

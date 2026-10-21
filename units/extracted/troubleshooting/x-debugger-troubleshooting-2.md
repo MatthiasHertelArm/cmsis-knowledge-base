@@ -7,6 +7,7 @@ status: "draft"
 symptoms: ["Waiting for a debug probe matching unique ID", "Failed to open listener port 3333", "gdbserver exited with code 254"]
 extracted_from: "proc-debugger-troubleshooting"
 source: "debugger-troubleshooting/SKILL.md"
+license: "Apache-2.0"
 ---
 
 `cmsis_action { action: 'status' }` lists this window's CMSIS tasks. A `CMSIS Run` task that is alive holds the probe and the GDB port: `cmsis_action { action: 'stop_run' }` ends it, then repeat the call.

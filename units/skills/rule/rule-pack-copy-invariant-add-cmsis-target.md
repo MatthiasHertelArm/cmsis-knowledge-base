@@ -3,6 +3,7 @@ type: "rule"
 title: "Pack copy invariant"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: false
 id: "rule-pack-copy-invariant-add-cmsis-target"
 constrains: ["proc-add-cmsis-target"]

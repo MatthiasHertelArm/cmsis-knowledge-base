@@ -5,6 +5,7 @@ title: "check-cmsis-environment"
 summary: "Verify the CMSIS tools environment exported by the CMSIS Solution extension, CMSIS-Toolbox, CMake, Ninja, and available compiler toolchains, and return a `PASS` or `FAIL` report without installing or reconfiguring tools."
 status: "draft"
 source: "project/check-cmsis-environment/SKILL.md"
+license: "Apache-2.0"
 preconditions: "The workspace root and, when present, its `.cmsis/tools-environment.yml` and `vcpkg-configuration.json` files."
 portability: "Applies to CMSIS solution workspaces on supported host operating systems. It has no MCU-, RTOS-, debugger-, or board-specific assumptions; compiler registrations are discovered from the workspace environment."
 tools: ["csolution", "cbuild", "vcpkg"]

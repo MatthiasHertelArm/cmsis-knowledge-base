@@ -3,6 +3,7 @@ type: "rule"
 title: "Critical blockers"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: false
 id: "rule-critical-blockers-generate-trace-sequences"
 constrains: ["proc-generate-trace-sequences"]

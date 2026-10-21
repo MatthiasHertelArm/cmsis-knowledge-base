@@ -6,6 +6,7 @@ title: "When the variable and the peripheral disagree"
 status: "draft"
 extracted_from: "proc-cmsis-debug-live"
 source: "cmsis-debug-live/SKILL.md"
+license: "Apache-2.0"
 ---
 
 **Read the address directly.** `read_memory` on the register address tells you what the bus sees. A mismatch against the C variable means the write never landed — wrong alias, missing `volatile`, or a peripheral clock that is off.

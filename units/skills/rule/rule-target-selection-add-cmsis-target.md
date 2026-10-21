@@ -3,6 +3,7 @@ type: "rule"
 title: "Target selection"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: false
 id: "rule-target-selection-add-cmsis-target"
 constrains: ["proc-add-cmsis-target"]

@@ -6,6 +6,7 @@ title: "Query the installed Zephyr board catalog with west"
 status: "draft"
 extracted_from: "proc-identify-zephyr-board"
 source: "project/identify-zephyr-board/SKILL.md"
+license: "Apache-2.0"
 ---
 
 From the verified Zephyr workspace, run the venv-local `west boards` command. Treat this version-matched catalog, generated from the installed `board.yml` files, as authoritative for the installed Zephyr version.

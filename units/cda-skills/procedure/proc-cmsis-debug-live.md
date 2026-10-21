@@ -6,6 +6,7 @@ summary: "Investigate a firmware runtime bug on a live Cortex-M debug session: f
 triggers: ["first investigation step whenever live inspection is practical", "instead of adding temporary printf/UART logging", "LED toggles, or console output to diagnose firmware"]
 status: "draft"
 source: "cmsis-debug-live/SKILL.md"
+license: "Apache-2.0"
 tools: ["csolution", "cbuild"]
 sections: ["Before anything else: know your target", "Clean up", "Core loop", "Debugger first — do not start by adding prints", "Reading results", "Root cause, not symptom", "Session state gates everything", "Several VS Code windows open", "When it did not reach your breakpoint", "When it faulted", "When the firmware prints", "When the variable and the hardware disagree", "Why embedded debugging is different"]
 id: "proc-cmsis-debug-live"

@@ -6,6 +6,7 @@ title: "List packaged layers for one target type with csolution"
 status: "draft"
 extracted_from: "proc-identify-cmsis-board-layer"
 source: "project/identify-cmsis-board-layer/SKILL.md"
+license: "Apache-2.0"
 ---
 
 Record the active CMSIS-Toolbox version with `csolution --version` and inspect `csolution list layers -h`. Require the installed command to support `--active` and `--verbose`; stop if either option is unavailable.

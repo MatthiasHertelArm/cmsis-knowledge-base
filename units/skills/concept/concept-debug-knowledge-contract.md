@@ -4,6 +4,7 @@ domain: "bring-up"
 title: "debug-knowledge-contract"
 status: "draft"
 source: "bring-up/debug-knowledge/references/debug-knowledge-contract.md"
+license: "Apache-2.0"
 id: "concept-debug-knowledge-contract"
 ---
 

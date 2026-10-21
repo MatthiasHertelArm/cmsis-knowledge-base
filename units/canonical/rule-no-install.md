@@ -5,6 +5,7 @@ domain: "general"
 title: "No installation or environment changes"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 canonical: true
 constrains: ["proc-check-cmsis-environment", "proc-check-pyocd-availability", "proc-check-zephyr-environment", "proc-evaluate-ethos-u-variants", "proc-start-zephyr-project"]
 ---

@@ -6,6 +6,7 @@ title: "Arm Tools Environment Manager activation is not inherited by other proce
 status: "draft"
 extracted_from: "proc-check-cmsis-environment"
 source: "project/check-cmsis-environment/SKILL.md"
+license: "Apache-2.0"
 ---
 
 Arm Tools Environment Manager activation is local to its VS Code instance and is not inherited by every shell or agent process.

@@ -6,6 +6,7 @@ title: "CMSIS debug adapter name for each probe"
 status: "draft"
 extracted_from: "proc-cmsis-debugger-setup"
 source: "cmsis-debugger-setup/SKILL.md"
+license: "Apache-2.0"
 ---
 
 | Probe | Adapter name |

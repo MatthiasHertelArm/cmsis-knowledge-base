@@ -6,6 +6,7 @@ summary: "Find out why a debug or flash session fails to start, connect or progr
 triggers: ["cmsis_action load_and_debug, attach, load or flash fails", "the cause is not obvious from the error text"]
 status: "draft"
 source: "debugger-troubleshooting/SKILL.md"
+license: "Apache-2.0"
 tools: ["cbuild", "pyocd"]
 sections: ["0. Read the error for what it actually says", "1. Is something already holding the probe or the port?", "2. Is it the core you think it is?", "3. Connection failures, in increasing severity", "4. `Could not read memory` at an external-memory window", "5. It flashed, but the firmware faults or prints nothing", "6. Flashing an ELF that drops its RW init data", "7. Programming is implausibly slow", "8. J-Link device definitions", "9. pyOCD specifics", "When you are through"]
 id: "proc-debugger-troubleshooting"

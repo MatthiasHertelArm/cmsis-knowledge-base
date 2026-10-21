@@ -5,6 +5,7 @@ title: "bring-up: which procedure"
 summary: "bring-up: which procedure fits a task, and the usual order."
 status: "draft"
 source: "CMSIS-Developer-Assistant/scripts/skills.config.json"
+license: "Apache-2.0"
 id: "route-bring-up"
 references: ["proc-board-debug-knowledge", "proc-check-pyocd-availability", "proc-cmsis-pack-docs", "proc-debug-access-knowledge", "proc-debug-knowledge", "proc-pyocd-detect-debug-topology", "proc-resolve-official-device-documentation", "proc-trace-knowledge"]
 ---

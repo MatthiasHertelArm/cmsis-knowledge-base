@@ -6,6 +6,7 @@ title: "Loaded solution and active target in .vscode/cmsis.json"
 status: "draft"
 extracted_from: "proc-create-csolution-github-action"
 source: "devops/create-csolution-github-action/SKILL.md"
+license: "Apache-2.0"
 ---
 
 Find the Git repository root and parse `.vscode/cmsis.json` as JSON.

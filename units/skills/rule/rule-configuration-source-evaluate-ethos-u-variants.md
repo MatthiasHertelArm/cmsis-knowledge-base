@@ -3,6 +3,7 @@ type: "rule"
 title: "Configuration source"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: false
 id: "rule-configuration-source-evaluate-ethos-u-variants"
 constrains: ["proc-evaluate-ethos-u-variants"]

@@ -6,6 +6,7 @@ summary: "Make Load & Debug and Run work against an Arm FVP model"
 triggers: ["debug firmware on a Corstone FVP", "migrate off fvp-gdb/Iris", "map the CMSIS view buttons to an FVP in a csolution project"]
 status: "draft"
 source: "fvp-debug-setup/SKILL.md"
+license: "Apache-2.0"
 tools: ["csolution", "cbuild", "vcpkg"]
 sections: ["1. Verify prerequisites", "2. The plugin's contract", "3. How the CMSIS Solution extension maps its buttons", "4. Set the csolution debugger node", "5. The two readiness bugs — fix both or neither works", "6. Install the model shim", "7. Verify", "Caveats to tell the user"]
 id: "proc-fvp-debug-setup"

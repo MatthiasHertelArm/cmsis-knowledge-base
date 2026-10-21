@@ -5,6 +5,7 @@ title: "check-zephyr-environment"
 summary: "Verify an existing Zephyr workspace, its Python virtual environment, and the venv-local west installation, returning a `PASS` or `FAIL` report without installing, upgrading, repairing, or reconfiguring Zephyr, Python, or west."
 status: "draft"
 source: "project/check-zephyr-environment/SKILL.md"
+license: "Apache-2.0"
 preconditions: "A Zephyr workspace path, or permission to use the default location named below."
 portability: "Supports Windows, macOS, and Linux using the platform-specific virtual-environment executable paths below. It has no MCU-, board-, toolchain-, or debugger-specific assumptions. Obtain the Zephyr workspace path. Use `$HOME/zephyrproject` when the user followed the default CMSIS-Zephyr installation instructions and did not choose another location."
 tools: ["west"]

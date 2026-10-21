@@ -6,6 +6,7 @@ title: "Default CMSIS-Zephyr workspace location"
 status: "draft"
 extracted_from: "proc-check-zephyr-environment"
 source: "project/check-zephyr-environment/SKILL.md"
+license: "Apache-2.0"
 ---
 
 Use `$HOME/zephyrproject` when the user followed the default CMSIS-Zephyr installation instructions and did not choose another location.

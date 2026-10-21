@@ -6,6 +6,7 @@ title: "Evidence that a CMSIS target uses a board layer"
 status: "draft"
 extracted_from: "proc-add-cmsis-target"
 source: "project/add-cmsis-target/SKILL.md"
+license: "Apache-2.0"
 ---
 
 Evidence includes a project `layers:` entry of `type: Board`, a variable reference such as `$Board-Layer$`, or target-specific variables that bind that reference to a `*.clayer.yml` file. Do not infer a board-layer requirement merely from a directory named `Board`.

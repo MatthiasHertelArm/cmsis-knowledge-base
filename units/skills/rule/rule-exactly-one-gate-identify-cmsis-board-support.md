@@ -3,6 +3,7 @@ type: "rule"
 title: "Exactly-one gate"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: false
 id: "rule-exactly-one-gate-identify-cmsis-board-support"
 constrains: ["proc-identify-cmsis-board-support"]

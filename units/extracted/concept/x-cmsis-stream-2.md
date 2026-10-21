@@ -6,6 +6,7 @@ title: "CMSIS Stream Python node base classes"
 status: "draft"
 extracted_from: "proc-cmsis-stream"
 source: "cmsis-stream/SKILL.md"
+license: "Apache-2.0"
 ---
 
 If the class only has event ports, it inherits from `BaseNode`.

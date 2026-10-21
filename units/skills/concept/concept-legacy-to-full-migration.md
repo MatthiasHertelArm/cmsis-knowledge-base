@@ -4,6 +4,7 @@ domain: "pack"
 title: "legacy-to-full-migration"
 status: "draft"
 source: "pack/generate-trace-sequences/references/legacy-to-full-migration.md"
+license: "Apache-2.0"
 id: "concept-legacy-to-full-migration"
 ---
 

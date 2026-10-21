@@ -6,6 +6,7 @@ title: "CMSIS Stream evtQueue argument for nodes that send events without event 
 status: "draft"
 extracted_from: "proc-cmsis-stream"
 source: "cmsis-stream/SKILL.md"
+license: "Apache-2.0"
 ---
 
 If the component has no event output port but must still be able to send events, the Python should define a new argument for the C++ constructor

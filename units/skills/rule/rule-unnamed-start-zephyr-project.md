@@ -3,6 +3,7 @@ type: "rule"
 title: "Do not install, upgrade, repair, or reconfigure prerequisite"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: false
 id: "rule-unnamed-start-zephyr-project"
 constrains: ["proc-start-zephyr-project"]

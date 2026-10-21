@@ -3,6 +3,7 @@ type: "rule"
 title: "Comparable inputs"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: false
 id: "rule-comparable-inputs-evaluate-ethos-u-variants"
 constrains: ["proc-evaluate-ethos-u-variants"]

@@ -6,6 +6,7 @@ summary: "Go from an empty VS Code window to a CMSIS solution that builds and de
 triggers: ["start a new CMSIS project for a board", "get_session_status says that no folder is open", "cmsis_action answers NO_WORKSPACE or CMSIS_NO_SOLUTION"]
 status: "draft"
 source: "cmsis-bootstrap/SKILL.md"
+license: "Apache-2.0"
 tools: ["csolution", "cbuild", "west", "vcpkg"]
 sections: ["1. Find out where you are", "10. Report", "2. Extensions", "3. An existing project, or a new one?", "4. The project folder and its tools", "5. Create the solution", "6. Open the solution in VS Code", "7. Build", "8. The debugger", "9. Flash, debug, hand over", "Goal and method", "Shell commands this skill allows", "What stays with the user"]
 id: "proc-cmsis-bootstrap"

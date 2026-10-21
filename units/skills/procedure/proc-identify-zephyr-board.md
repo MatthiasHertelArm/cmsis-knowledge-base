@@ -5,6 +5,7 @@ title: "identify-zephyr-board"
 summary: "Resolve a user-supplied physical board to its exact Zephyr board target and fitted MCU or SoC using the installed west board catalog."
 status: "draft"
 source: "project/identify-zephyr-board/SKILL.md"
+license: "Apache-2.0"
 preconditions: "The physical board manufacturer, model, relevant revision, and a verified Zephyr workspace with its venv-local west executable."
 portability: "Applies to boards represented by the installed Zephyr version. It depends on Zephyr board metadata but has no CMSIS-pack, compiler, debugger, or RTOS configuration assumption beyond Zephyr itself. Require:"
 tools: ["west"]

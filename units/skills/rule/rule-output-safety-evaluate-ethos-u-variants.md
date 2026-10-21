@@ -3,6 +3,7 @@ type: "rule"
 title: "Output safety"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: false
 id: "rule-output-safety-evaluate-ethos-u-variants"
 constrains: ["proc-evaluate-ethos-u-variants"]

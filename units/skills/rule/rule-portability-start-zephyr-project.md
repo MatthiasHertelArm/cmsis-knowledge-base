@@ -3,6 +3,7 @@ type: "rule"
 title: "Portability"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: false
 id: "rule-portability-start-zephyr-project"
 constrains: ["proc-start-zephyr-project"]

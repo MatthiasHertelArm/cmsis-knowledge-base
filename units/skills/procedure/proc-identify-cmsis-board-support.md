@@ -5,6 +5,7 @@ title: "identify-cmsis-board-support"
 summary: "Resolve a supplied board or device to exactly one verified CMSIS identity, identify its BSP or DFP, and ask the user when multiple candidates remain."
 status: "draft"
 source: "project/identify-cmsis-board-support/SKILL.md"
+license: "Apache-2.0"
 preconditions: "A user-supplied board or device name, which may be fuzzy. Manufacturer, board revision, and fitted MCU or SoC evidence should be included when available."
 portability: "Applies across MCU and SoC vendors when their board or device is represented in the referenced catalogs. It has no compiler, RTOS, debugger, or probe dependency. Collect when available:"
 tools: ["csolution"]

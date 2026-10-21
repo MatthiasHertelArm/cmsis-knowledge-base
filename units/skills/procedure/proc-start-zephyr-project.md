@@ -5,6 +5,7 @@ title: "start-zephyr-project"
 summary: "Create and validate one initial west-integrated CMSIS Zephyr Blinky solution for a board already supported by Zephyr, from verified environment, board, and pack information, using `cbuild setup` and `cbuild`."
 status: "draft"
 source: "project/start-zephyr-project/SKILL.md"
+license: "Apache-2.0"
 preconditions: "A solution directory, the physical board and exact Zephyr target, verified CMSIS and Zephyr environment results, verified CMSIS BSP/DFP identifiers, and a selected installed CMSIS compiler when more than one is available."
 portability: "Applies to Zephyr-supported boards with verified CMSIS BSP or DFP support. It depends on CMSIS-Toolbox west integration and uses GCC-specific libc settings only when GCC is selected; it does not require the Zephyr SDK, sysbuild, or a particular debugger."
 tools: ["csolution", "cbuild", "west"]

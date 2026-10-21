@@ -6,6 +6,7 @@ title: "Flashing an ELF that drops its RW init data (LMA and VMA)"
 status: "draft"
 extracted_from: "proc-debugger-troubleshooting"
 source: "debugger-troubleshooting/SKILL.md"
+license: "Apache-2.0"
 ---
 
 **Garbage pointers (`0xFFFFFFFF`, or values that look like erased flash) during static initialisation mean that RW data was never initialised.** The usual cause is a flashing mistake, not a linker bug: see section 6.

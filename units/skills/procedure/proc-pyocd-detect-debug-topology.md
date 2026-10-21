@@ -5,6 +5,7 @@ title: "pyocd-detect-debug-topology"
 summary: "Capture supplementary, non-authoritative CMSIS debug and CoreSight topology evidence from the complete stdout/stderr of `pyocd gdbserver -vv --target cortex_m` after `proc-check-pyocd-availability` (`knowledge_get`) succeeds, returning the observation table and limitations in conversation."
 status: "draft"
 source: "bring-up/pyocd-detect-debug-topology/SKILL.md"
+license: "Apache-2.0"
 preconditions: "Complete captured stdout and stderr from `pyocd gdbserver -vv --target cortex_m`, or an accessible target plus a successful `proc-check-pyocd-availability` (`knowledge_get`) result for a new scan. No supplied target or probe context is required when exactly one target is attached; provide a selection only when multiple targets are attached. Documented unlock, power-up, and recovery steps are required before a repeat scan."
 portability: "Support any target pyOCD can probe. Do not assume that a successful scan exposes every powered-down, reset-held, debug-locked, or disabled subsystem."
 tools: ["pyocd"]

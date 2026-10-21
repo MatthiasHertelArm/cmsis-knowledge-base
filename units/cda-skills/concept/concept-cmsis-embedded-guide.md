@@ -4,6 +4,7 @@ domain: "debug"
 title: "cmsis-embedded-guide"
 status: "draft"
 source: "cmsis-debug-live/references/cmsis-embedded-guide.md"
+license: "Apache-2.0"
 id: "concept-cmsis-embedded-guide"
 ---
 

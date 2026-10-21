@@ -7,6 +7,7 @@ status: "draft"
 symptoms: ["AP[n]: Skipped. Not an AHB-AP", "AP[n]: Skipped. Could not read AHB ROM register", "Could not find core in Coresight setup", "Failed to power up DAP"]
 extracted_from: "proc-debugger-troubleshooting"
 source: "debugger-troubleshooting/SKILL.md"
+license: "Apache-2.0"
 ---
 
 | Message | Meaning | Action |

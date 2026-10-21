@@ -4,6 +4,7 @@ domain: "pack"
 title: "description-contract"
 status: "draft"
 source: "pack/generate-debug-description/references/description-contract.md"
+license: "Apache-2.0"
 id: "concept-description-contract"
 ---
 

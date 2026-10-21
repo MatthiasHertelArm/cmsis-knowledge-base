@@ -3,6 +3,7 @@ type: "rule"
 title: "Portability"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: true
 id: "rule-portability-generate-debug-description"
 constrains: ["proc-generate-debug-description", "proc-generate-debug-sequences", "proc-generate-trace-sequences"]

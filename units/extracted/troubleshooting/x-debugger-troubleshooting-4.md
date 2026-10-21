@@ -7,6 +7,7 @@ status: "draft"
 symptoms: ["Could not read memory"]
 extracted_from: "proc-debugger-troubleshooting"
 source: "debugger-troubleshooting/SKILL.md"
+license: "Apache-2.0"
 ---
 
 For XIP windows (OSPI, QSPI, HyperRAM, PSRAM) a debugger read fails until the firmware has configured the controller. Beyond that:

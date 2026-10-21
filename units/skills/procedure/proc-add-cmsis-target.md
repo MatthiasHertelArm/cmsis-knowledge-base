@@ -5,6 +5,7 @@ title: "add-cmsis-target"
 summary: "Add a verified board or device target to an existing CMSIS solution, declare its support packs, and offer compatible packaged board layers when the project uses them."
 status: "draft"
 source: "project/add-cmsis-target/SKILL.md"
+license: "Apache-2.0"
 preconditions: "An existing `*.csolution.yml` project and a user-supplied board or device name. The name may be fuzzy; manufacturer, revision, and fitted MCU or SoC information improve identification."
 portability: "Applies to CMSIS solution projects across MCU and SoC vendors. It has no compiler, RTOS, debugger, or probe dependency beyond requirements already present in the input project or selected layer. Use the [CMSIS-Toolbox project format](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/) and [Reference Applications workflow](https://open-cmsis-pack.github.io/cmsis-toolbox/ReferenceApplications/) as authoritative format guidance."
 tools: ["csolution", "cbuild", "cpackget"]

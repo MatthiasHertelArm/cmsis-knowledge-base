@@ -5,6 +5,7 @@ title: "check-pyocd-availability"
 summary: "Checks whether pyOCD is available, preferring the bundled copy of the active Visual Studio Code CMSIS Debugger extension and otherwise a runnable pyocd in the active shell, and returns one availability record without installing or modifying anything."
 status: "draft"
 source: "bring-up/check-pyocd-availability/SKILL.md"
+license: "Apache-2.0"
 preconditions: "The active host environment; an open Visual Studio Code workspace or its integrated terminal when Visual Studio Code is in use."
 portability: "Support Windows, macOS, and Linux. Do not assume a device, probe, target, Python installation, or a default Visual Studio Code extensions directory."
 tools: ["pyocd"]

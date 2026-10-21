@@ -6,6 +6,7 @@ title: "Test event IDs in a CMSIS Stream processEvent method"
 status: "draft"
 extracted_from: "proc-cmsis-stream"
 source: "cmsis-stream/SKILL.md"
+license: "Apache-2.0"
 ---
 
 Testing for a event defined by the component is done with the `selectors` array.

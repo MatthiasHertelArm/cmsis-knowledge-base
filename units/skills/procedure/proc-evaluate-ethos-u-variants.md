@@ -5,6 +5,7 @@ title: "evaluate-ethos-u-variants"
 summary: "Evaluate an existing pre-trained, quantized TFLite or TOSA model across Arm Ethos-U Vela configurations, comparing memory use and estimated performance without installing tools or models."
 status: "draft"
 source: "ethos-u/evaluate-ethos-u-variants/SKILL.md"
+license: "Apache-2.0"
 preconditions: "A user-provided path to an existing pre-trained, quantized `.tflite` or `.tosa` model. Ask for this path when it is absent; do not select or download a model."
 portability: "The runner supports Windows, macOS, and Linux host systems. The default `Arm/vela.ini` systems are generic reference configurations for evaluation, not descriptions of a production device."
 tools: ["vela"]

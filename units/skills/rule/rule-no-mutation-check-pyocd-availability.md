@@ -3,6 +3,7 @@ type: "rule"
 title: "No mutation"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: false
 id: "rule-no-mutation-check-pyocd-availability"
 constrains: ["proc-check-pyocd-availability"]

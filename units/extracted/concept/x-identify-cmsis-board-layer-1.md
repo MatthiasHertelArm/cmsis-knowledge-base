@@ -6,6 +6,7 @@ title: "Compatibility checks for a packaged board-layer candidate"
 status: "draft"
 extracted_from: "proc-identify-cmsis-board-layer"
 source: "project/identify-cmsis-board-layer/SKILL.md"
+license: "Apache-2.0"
 ---
 
 Start with only layers that `csolution` reports as compatible for the selected context. For each candidate, verify:

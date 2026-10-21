@@ -3,6 +3,7 @@ type: "rule"
 title: "Command integrity"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: false
 id: "rule-command-integrity-identify-cmsis-board-layer"
 constrains: ["proc-identify-cmsis-board-layer"]

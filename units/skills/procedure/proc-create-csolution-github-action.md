@@ -5,6 +5,7 @@ title: "create-csolution-github-action"
 summary: "Create one GitHub Actions workflow that builds selected targets from the currently loaded CMSIS solution and optionally tests configured FVP targets, and report the selected targets, FVP rows, and validation results."
 status: "draft"
 source: "devops/create-csolution-github-action/SKILL.md"
+license: "Apache-2.0"
 preconditions: "A Git repository containing `.vscode/cmsis.json`, the loaded `*.csolution.yml`, and a reproducible CI tool configuration."
 portability: "The workflow runs on `ubuntu-latest`. Device, compiler, RTOS, and debugger dependencies come only from the selected project. FVP tests require an FVP provided by the project tool environment."
 tools: ["csolution", "cbuild", "cpackget", "vcpkg"]

@@ -3,6 +3,7 @@ type: "rule"
 title: "Critical blockers"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: false
 id: "rule-critical-blockers-add-cmsis-target"
 constrains: ["proc-add-cmsis-target"]

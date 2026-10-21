@@ -6,6 +6,7 @@ summary: "Look up registers, peripherals, errata and board facts in the target's
 triggers: ["any part number before searching the web", "before assuming what a peripheral register or bit does", "the SVD gives a bit position but not its meaning", "a peripheral does not behave as expected", "the user asks where something is documented"]
 status: "draft"
 source: "cmsis-pack-docs/SKILL.md"
+license: "Apache-2.0"
 tools: ["csolution", "cbuild"]
 sections: ["Citing", "For skills that build debug, trace or board records", "Rules of thumb", "What the documentation tools cover", "Workflow"]
 id: "proc-cmsis-pack-docs"

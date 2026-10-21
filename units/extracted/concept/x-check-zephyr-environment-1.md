@@ -6,6 +6,7 @@ title: "Zephyr workspace virtual-environment executables per host"
 status: "draft"
 extracted_from: "proc-check-zephyr-environment"
 source: "project/check-zephyr-environment/SKILL.md"
+license: "Apache-2.0"
 ---
 
 - Windows: `.venv/Scripts/python.exe` and `.venv/Scripts/west.exe`

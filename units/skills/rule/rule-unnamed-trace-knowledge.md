@@ -3,6 +3,7 @@ type: "rule"
 title: "Do not invent trace component addresses, identifiers, versions,"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: false
 id: "rule-unnamed-trace-knowledge"
 constrains: ["proc-trace-knowledge"]

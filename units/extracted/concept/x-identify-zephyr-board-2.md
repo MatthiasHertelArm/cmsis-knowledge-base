@@ -6,6 +6,7 @@ title: "Exact Zephyr board target syntax"
 status: "draft"
 extracted_from: "proc-identify-zephyr-board"
 source: "project/identify-zephyr-board/SKILL.md"
+license: "Apache-2.0"
 ---
 
 Construct the exact target as `board-name[@revision][/qualifiers]`.

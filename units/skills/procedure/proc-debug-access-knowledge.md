@@ -5,6 +5,7 @@ title: "debug-access-knowledge"
 summary: "Build a documentation-led, verifiable record of an existing SoC's reusable CMSIS debug access topology: processor association, debug port and access-port path, protocol, and dormant-state decision, in `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` for user review."
 status: "draft"
 source: "bring-up/debug-access-knowledge/SKILL.md"
+license: "Apache-2.0"
 preconditions: "An existing target `.pdsc`, selected family/subFamily/device/variant scope, affected processor descriptions, and available device documentation or startup logs."
 portability: "Support any existing CMSIS Device Family Pack. Do not assume a device family, debug probe, toolchain, or active target."
 tools: ["pyocd"]

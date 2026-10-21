@@ -5,6 +5,7 @@ title: "validate-pdsc-sequence-xml"
 summary: "Validate common CMSIS-Pack PDSC sequence XML and C-like block formatting through the active conversation after a proposed or applied change, returning commands, inspected matches, failures, resolutions, and `PASS` or `FAIL`."
 status: "draft"
 source: "pack/validate-pdsc-sequence-xml/SKILL.md"
+license: "Apache-2.0"
 preconditions: "Target PDSC, changed XML, proposed or applied change details, and available XML/PDSC toolchain."
 portability: "Support any existing CMSIS Device Family Pack with XML/PDSC validation available. Do not assume a device family, debugger, toolchain, or active target."
 tools: ["cpackget", "packchk"]

@@ -6,6 +6,7 @@ title: "CMSIS Stream sample types"
 status: "draft"
 extracted_from: "proc-cmsis-stream"
 source: "cmsis-stream/SKILL.md"
+license: "Apache-2.0"
 ---
 
 The type is defined with `CType(DT)` where `DT` as defined by CMSIS Stream can be :

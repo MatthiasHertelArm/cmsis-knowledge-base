@@ -3,6 +3,7 @@ type: "rule"
 title: "Preserve READY unless an affected fact becomes stale,"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: false
 id: "rule-unnamed-trace-knowledge-4"
 constrains: ["proc-trace-knowledge"]

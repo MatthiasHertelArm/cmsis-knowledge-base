@@ -15,6 +15,7 @@ import json, re, sys
 from pathlib import Path
 import yaml
 
+LICENSE = "Apache-2.0"   # the canonical rules are distilled from cmsis-skills; an extracted unit keeps its procedure's licence
 CANON = {
     "rule-no-fabrication": "No fabrication",
     "rule-tone-and-style": "Tone and style",
@@ -65,7 +66,7 @@ def main(units, jdir):
                 cm, cb = load(cp)
             else:
                 cm, cb = dict(id=cid, type="rule", domain="general", title=CANON[cid], severity="must",
-                              status="draft", canonical=True, constrains=[]), "_Kanonischer Text: wird von Hand geschrieben._"
+                              status="draft", license=LICENSE, canonical=True, constrains=[]), "_Kanonischer Text: wird von Hand geschrieben._"
             cm["constrains"] = sorted(set(cm.get("constrains", [])) | {pid})
             save(cp, cm, cb)
             rp = rule_files[r["id"]]
@@ -89,7 +90,8 @@ def main(units, jdir):
 
         for n, x in enumerate(d.get("extracted", []), 1):
             xm = dict(id=f"x-{pid[5:]}-{n}", type=x["type"], domain=meta.get("domain"), title=x["title"],
-                      status="draft", symptoms=x.get("symptoms"), extracted_from=pid, source=meta.get("source"))
+                      status="draft", symptoms=x.get("symptoms"), extracted_from=pid, source=meta.get("source"),
+                      license=meta.get("license", LICENSE))
             save(units.parent / "extracted" / x["type"] / f"{xm['id']}.md", xm, x["body"])
             stats["extracted"] += 1
 

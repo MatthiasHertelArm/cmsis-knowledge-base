@@ -6,6 +6,7 @@ title: "FVP-capable target in csolution debugger settings"
 status: "draft"
 extracted_from: "proc-create-csolution-github-action"
 source: "devops/create-csolution-github-action/SKILL.md"
+license: "Apache-2.0"
 ---
 
 Read `debugger:` directly from each target's selected `target-set` in the `*.csolution.yml`.

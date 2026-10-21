@@ -7,6 +7,7 @@ status: "draft"
 symptoms: ["Workspace: no folder is open", "[NO_WORKSPACE]", "[CMSIS_NO_SOLUTION]", "contains no *.csolution.yml", "A solution file exists"]
 extracted_from: "proc-cmsis-bootstrap"
 source: "cmsis-bootstrap/SKILL.md"
+license: "Apache-2.0"
 ---
 
 | Sign | State |

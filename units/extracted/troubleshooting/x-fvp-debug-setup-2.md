@@ -7,6 +7,7 @@ status: "draft"
 symptoms: ["gdb connection lost"]
 extracted_from: "proc-fvp-debug-setup"
 source: "fvp-debug-setup/SKILL.md"
+license: "Apache-2.0"
 ---
 
 The template sets both `port` and `serverParameters`, so GDB connects immediately while the model still needs a second or more to build the platform (plus a container start on macOS). The symptom is a session that tears itself down and only *then* prints the banner:

@@ -4,6 +4,7 @@ domain: "bring-up"
 title: "trace-knowledge-contract"
 status: "draft"
 source: "bring-up/trace-knowledge/references/trace-knowledge-contract.md"
+license: "Apache-2.0"
 id: "concept-trace-knowledge-contract"
 ---
 

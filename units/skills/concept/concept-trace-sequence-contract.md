@@ -4,6 +4,7 @@ domain: "pack"
 title: "trace-sequence-contract"
 status: "draft"
 source: "pack/generate-trace-sequences/references/trace-sequence-contract.md"
+license: "Apache-2.0"
 id: "concept-trace-sequence-contract"
 ---
 

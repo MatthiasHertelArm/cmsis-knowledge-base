@@ -3,6 +3,7 @@ type: "rule"
 title: "No fabrication"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: false
 id: "rule-no-fabrication-create-csolution-github-action"
 constrains: ["proc-create-csolution-github-action"]

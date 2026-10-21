@@ -3,6 +3,7 @@ type: "rule"
 title: "Fail fast"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: false
 id: "rule-fail-fast-evaluate-ethos-u-variants"
 constrains: ["proc-evaluate-ethos-u-variants"]

@@ -15,6 +15,7 @@ import yaml
 
 MIN_MEMBERS = 2
 SUMMARY_WORDS = 40
+LICENSE = "Apache-2.0"   # the extension's skills.config.json
 LABELS = {"debug": "Live debugging", "devops": "DevOps", "ethos-u": "Ethos-U NPU"}
 
 
@@ -64,7 +65,7 @@ def main(config, out, unit_dirs):
         assert len(summary.split()) <= SUMMARY_WORDS, summary
         meta = dict(type="concept", domain=domain, title=f"{label}: which procedure", summary=summary,
                     triggers=[cat["description"]] if cat.get("description") else [], status="draft",
-                    source="CMSIS-Developer-Assistant/scripts/skills.config.json", id=f"route-{domain}",
+                    source="CMSIS-Developer-Assistant/scripts/skills.config.json", license=LICENSE, id=f"route-{domain}",
                     references=[fm["id"] for fm in members])
         p = out / "concept" / f"route-{domain}.md"
         p.parent.mkdir(parents=True, exist_ok=True)

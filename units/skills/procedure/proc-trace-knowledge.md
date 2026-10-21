@@ -5,6 +5,7 @@ title: "trace-knowledge"
 summary: "Build a documentation-led, verifiable knowledge record of an existing SoC's CoreSight trace paths, components, operating requirements, and constraints for subsequent generation of PDSC trace sequences, and present it for user review before `READY`."
 status: "draft"
 source: "bring-up/trace-knowledge/SKILL.md"
+license: "Apache-2.0"
 preconditions: "An existing target `.pdsc`, selected family/subFamily/device/variant scope, affected processor descriptions, and available device documentation or target startup logs. A current `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` record is supporting input when trace evidence needs a processor association, debug connection, DP/AP path, protocol, or dormant-state fact."
 tools: ["pyocd"]
 output: "Create or update the trace review record defined by the evidence contract, including board-specific configurable-routing-variable proposals when applicable, then provide the concise trace-path summary required for user review before `READY`."

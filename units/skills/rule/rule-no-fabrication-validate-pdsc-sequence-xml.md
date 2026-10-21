@@ -3,6 +3,7 @@ type: "rule"
 title: "No fabrication"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: false
 id: "rule-no-fabrication-validate-pdsc-sequence-xml"
 constrains: ["proc-validate-pdsc-sequence-xml"]

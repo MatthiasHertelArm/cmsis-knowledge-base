@@ -6,6 +6,7 @@ title: "Limits of a pyOCD topology scan"
 status: "draft"
 extracted_from: "proc-pyocd-detect-debug-topology"
 source: "bring-up/pyocd-detect-debug-topology/SKILL.md"
+license: "Apache-2.0"
 ---
 
 Do not assume that a successful scan exposes every powered-down, reset-held, debug-locked, or disabled subsystem.

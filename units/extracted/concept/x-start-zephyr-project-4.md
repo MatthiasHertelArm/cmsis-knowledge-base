@@ -6,6 +6,7 @@ title: "What cbuild setup with --update-rte checks and generates"
 status: "draft"
 extracted_from: "proc-start-zephyr-project"
 source: "project/start-zephyr-project/SKILL.md"
+license: "Apache-2.0"
 ---
 
 cbuild setup <solution-name>.csolution.yml --active <target-type> --packs --update-rte

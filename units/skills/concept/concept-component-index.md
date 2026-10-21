@@ -4,6 +4,7 @@ domain: "pack"
 title: "component-index"
 status: "draft"
 source: "pack/generate-trace-sequences/references/component-index.md"
+license: "Apache-2.0"
 id: "concept-component-index"
 ---
 

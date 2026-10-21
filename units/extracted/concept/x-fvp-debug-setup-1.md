@@ -6,6 +6,7 @@ title: "FVP GDBServer plugin: -D starts the model halted, RSP detach does not re
 status: "draft"
 extracted_from: "proc-fvp-debug-setup"
 source: "fvp-debug-setup/SKILL.md"
+license: "Apache-2.0"
 ---
 
 **`-D` / `--allow-debug-plugin` is what makes the model start halted at the reset vector.** With the plugin but without `-D` the model opens the port *and free-runs to completion* — a `tbreak main` would never fire. With `-D` it waits, and GDB attaches at `Reset_Handler`.

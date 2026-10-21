@@ -3,6 +3,7 @@ type: "rule"
 title: "Scope"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: false
 id: "rule-scope-cmsis-stream"
 constrains: ["proc-cmsis-stream"]

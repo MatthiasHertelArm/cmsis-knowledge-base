@@ -6,6 +6,7 @@ summary: "Wire the debug adapter of a csolution target and verify Load & Debug"
 triggers: ["a new target has no debugger yet", "launch.json has no gdbtarget configuration", "cmsis_action says a CMSIS task is not offered", "the probe changes"]
 status: "draft"
 source: "cmsis-debugger-setup/SKILL.md"
+license: "Apache-2.0"
 tools: ["csolution", "cbuild"]
 sections: ["1. Read before you change", "2. Choose the adapter", "3. Set the debugger node", "4. Let the extension write launch.json and tasks.json", "5. Verify on the target", "6. When it does not connect", "7. Finish", "Goal"]
 id: "proc-cmsis-debugger-setup"

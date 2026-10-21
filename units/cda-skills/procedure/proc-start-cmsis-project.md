@@ -6,6 +6,7 @@ summary: "Create the first csolution for a board or device: a minimal project, o
 triggers: ["Create the first CMSIS solution for a board or device in a folder that has no *.csolution.yml yet: a minimal project (CMSIS CORE, the DFP's Device:Startup component, a bare main) that every device with a DFP can have, or an example or template of the board's pack when one exists; write the files, open the solution with cmsis_action open_solution and build with cmsis_action build, which fetches the packs. Use from cmsis-bootstrap or cmsis-project when a new project has to be started for a verified board, device and pack. Not for extending a solution that exists (add-cmsis-target) and not for Zephyr (start-zephyr-project)."]
 status: "draft"
 source: "start-cmsis-project/SKILL.md"
+license: "Apache-2.0"
 tools: ["csolution", "cbuild", "cpackget", "vcpkg"]
 sections: ["1. Inputs", "2. Choose the starting point", "3. Examples and templates, when the tools are reachable", "4. Write the minimal project", "5. Write an example or a template", "6. The tools manifest", "7. Open and build", "8. Report", "Goal and method", "Shell commands this skill allows", "What stays with the user"]
 id: "proc-start-cmsis-project"

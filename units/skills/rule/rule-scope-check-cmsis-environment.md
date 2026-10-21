@@ -3,6 +3,7 @@ type: "rule"
 title: "Scope"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: true
 id: "rule-scope-check-cmsis-environment"
 constrains: ["proc-check-cmsis-environment", "proc-check-zephyr-environment"]

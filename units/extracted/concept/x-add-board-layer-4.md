@@ -6,6 +6,7 @@ title: "RAM at 100% in the build summary"
 status: "draft"
 extracted_from: "proc-add-board-layer"
 source: "add-board-layer/SKILL.md"
+license: "Apache-2.0"
 ---
 
 RAM at "100%" in the summary is usually the stack pinned at the region top by the template — read the map before panicking.

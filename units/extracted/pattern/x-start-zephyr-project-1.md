@@ -6,6 +6,7 @@ title: "GCC libc settings for a CMSIS Zephyr application"
 status: "draft"
 extracted_from: "proc-start-zephyr-project"
 source: "project/start-zephyr-project/SKILL.md"
+license: "Apache-2.0"
 ---
 
 When selecting GCC, add the reference project's libc configuration to `blinky/prj.conf`:

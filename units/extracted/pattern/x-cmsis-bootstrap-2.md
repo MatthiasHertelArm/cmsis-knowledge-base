@@ -6,6 +6,7 @@ title: "Compiler line in a CMSIS vcpkg-configuration.json"
 status: "draft"
 extracted_from: "proc-cmsis-bootstrap"
 source: "cmsis-bootstrap/SKILL.md"
+license: "Apache-2.0"
 ---
 
 For another compiler replace the GCC line:

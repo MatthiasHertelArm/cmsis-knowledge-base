@@ -3,6 +3,7 @@ type: "rule"
 title: "Critical blockers"
 severity: "must"
 status: "draft"
+license: "Apache-2.0"
 shared: false
 id: "rule-critical-blockers-resolve-official-device-documentation"
 constrains: ["proc-resolve-official-device-documentation"]

@@ -27,6 +27,7 @@ TOOLS = ["csolution", "cbuild", "cpackget", "pyocd", "west", "vcpkg", "packchk",
 SIM = 0.85  # Aehnlichkeit, ab der zwei Guardrails als dieselbe Regel gelten
 ASSET_MAX = 64_000        # bytes; a larger file is not a template an agent should read whole
 SUMMARY_WORDS = 40        # the lint limit of build_index
+LICENSE = "Apache-2.0"   # cmsis-skills and the extension's skills, recorded in every unit (tools/check_licences.py)
 MARKER_BLOCK = re.compile(r"<!-- cmsis-developer-assistant:([a-z-]+):begin -->.*?<!-- cmsis-developer-assistant:\1:end -->\n?", re.S)
 
 
@@ -154,7 +155,7 @@ def main(src, out, known=()):
             summary, triggers = short_description(f.parent), [description]
         nodes[pid] = dict(
             kind="knowledge", type="procedure", domain=domain, title=name,
-            summary=summary, triggers=triggers, status="draft", source=str(f.relative_to(src)),
+            summary=summary, triggers=triggers, status="draft", source=str(f.relative_to(src)), license=LICENSE,
             preconditions=pre.get("Expected input", pre.get("Required input", "")),
             portability=pre.get("Portability", ""),
             tools=[t for t in TOOLS if re.search(rf"\b{t}\b", text)],
@@ -181,7 +182,7 @@ def main(src, out, known=()):
         for ref in sorted(f.parent.glob("references/*.md")):
             cid = f"concept-{ref.stem}"
             nodes[cid] = dict(kind="knowledge", type="concept", domain=domain, title=ref.stem,
-                              status="draft", source=str(ref.relative_to(src)),
+                              status="draft", source=str(ref.relative_to(src)), license=LICENSE,
                               body=ref.read_text(encoding="utf-8"))
             edges.append((pid, "requires", cid))
         for label, body in bullets(sec.get("Guardrails & Constraints", "")):
@@ -208,7 +209,7 @@ def main(src, out, known=()):
             rid = f"{base_rid}-{n}"
         title = c["label"] or " ".join(re.sub(r"[`*]", "", c["body"]).split()[:8])
         nodes[rid] = dict(kind="knowledge", type="rule", title=title, severity="must",
-                          status="draft", shared=shared, body=c["body"])
+                          status="draft", license=LICENSE, shared=shared, body=c["body"])
         edges += [(rid, "constrains", p) for p in c["procs"]]
 
     # Ausgabe: eine Markdown-Datei je Wissensknoten, dazu graph.json
