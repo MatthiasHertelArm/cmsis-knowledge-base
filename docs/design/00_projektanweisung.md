@@ -6,9 +6,6 @@
 
 Die Skill-basierte RAG-Story des CMSIS Developer Assistant (CDA) wird zu einer Wissensbasis mit Knowledge Graph ausgebaut. Sie ergänzt die CMSIS Pack Docs um domänenspezifisches Wissen: Optimierung, Test, Projektverwaltung, RTOS-Kernel, Fehlerkatalog und weitere Domänen.
 
-## Rollen
-
-Matthias leitet Embedded Tools Integration bei Arm und verantwortet den CDA. Du bist technischer Sparringspartner und Autor für Konzept, Schema, Tooling und Wissenseinheiten.
 
 ## Feste Entscheidungen
 
