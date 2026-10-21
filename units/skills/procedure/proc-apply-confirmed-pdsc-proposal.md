@@ -13,7 +13,7 @@ id: "proc-apply-confirmed-pdsc-proposal"
 requires: ["proc-validate-pdsc-sequence-xml"]
 description: "Apply a complete, explicitly confirmed CMSIS-Pack PDSC sequence or `debugvars` proposal provided through the active conversation and run its required validation. Use after a debug or trace proposal has been reviewed and the user has authorized edits to the named PDSC files; do not create agent-artifact records, infer missing technical behavior, or apply changes before confirmation."
 triggers: ["debug or trace proposal has been reviewed", "user has authorized edits to the named PDSC files"]
-verification: ["Run `$validate-pdsc-sequence-xml`, then the calling skill's domain-specific checks.", "Resolve validation failures before completion.", "Run `$validate-pdsc-sequence-xml` for common syntax and block checks, then the current domain contract for debug or trace semantic checks."]
+verification: ["Run `proc-validate-pdsc-sequence-xml` (`knowledge_get`), then the calling skill's domain-specific checks.", "Resolve validation failures before completion.", "Run `proc-validate-pdsc-sequence-xml` (`knowledge_get`) for common syntax and block checks, then the current domain contract for debug or trace semantic checks."]
 stop_conditions: ["Report meaningful drift and obtain a refreshed proposal rather than applying stale XML.", "edit `.dbgconf` only when that file is explicitly confirmed.", "Stop when the proposal, target, confirmation, or validation plan is incomplete; also stop on meaningful file drift or validation failure."]
 unmapped: ["CMSIS Device Family Pack PDSC", "debugvars", ".dbgconf"]
 stage2: "proc-apply-confirmed-pdsc-proposal.json"
@@ -29,14 +29,14 @@ stage2: "proc-apply-confirmed-pdsc-proposal.json"
 ## Prerequisites & Context
 
 - **Expected input:** Complete debug or trace proposal in conversation with exact XML and target paths, explicit confirmation for every user-owned file, and a named common plus domain-specific validation plan.
-- **Dependencies:** `$validate-pdsc-sequence-xml` and the calling domain skill's validation gates.
+- **Dependencies:** `proc-validate-pdsc-sequence-xml` (`knowledge_get`) and the calling domain skill's validation gates.
 - **Portability:** Support any existing CMSIS Device Family Pack. Do not assume a device family, debugger, toolchain, or active target.
 
 ## Execution Steps (Strict Workflow)
 
 1. **Analysis:** Re-read target files and check that the confirmed proposal still applies. Report meaningful drift and obtain a refreshed proposal rather than applying stale XML.
 2. **Processing:** Apply the complete approved change in focused patches. Preserve unrelated PDSC and `.dbgconf` content; edit `.dbgconf` only when that file is explicitly confirmed.
-3. **Validation:** Run `$validate-pdsc-sequence-xml`, then the calling skill's domain-specific checks. Resolve validation failures before completion.
+3. **Validation:** Run `proc-validate-pdsc-sequence-xml` (`knowledge_get`), then the calling skill's domain-specific checks. Resolve validation failures before completion.
 4. **Formatting:** Return applied files, validation results, domain-specific results, and any explicitly deferred user-owned file in conversation.
 
 ## Guardrails & Constraints (Strict Rules)
@@ -53,4 +53,4 @@ Return the application result in conversation. The calling generator updates its
 
 ## Validation Resources
 
-Run `$validate-pdsc-sequence-xml` for common syntax and block checks, then the current domain contract for debug or trace semantic checks.
+Run `proc-validate-pdsc-sequence-xml` (`knowledge_get`) for common syntax and block checks, then the current domain contract for debug or trace semantic checks.

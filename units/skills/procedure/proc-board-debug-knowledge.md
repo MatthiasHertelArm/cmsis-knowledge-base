@@ -28,13 +28,13 @@ stage2: "proc-board-debug-knowledge.json"
 ## Prerequisites & Context
 
 - **Expected input:** A named board, its fitted device when known, board manual/design guide/schematics or equivalent authoritative documentation, and the requested debug or trace purpose.
-- **Dependencies:** `$resolve-official-device-documentation` when a cited board document is unavailable.
+- **Dependencies:** `proc-resolve-official-device-documentation` (`knowledge_get`) when a cited board document is unavailable.
 - **Portability:** Support any board and MCU family. Do not assume a board connector, probe, trace transport, voltage level, or jumper convention.
 
 ## Execution Steps (Strict Workflow)
 
 1. **Analysis:** Identify the board revision and the documents that establish its debug connector, trace connector, relevant jumpers, routing switches, fitted-device constraints, and pin map. Stop if the board identity or requested purpose is ambiguous.
-2. **Processing:** Record every documented selectable configuration that affects the requested debug or trace use. When a cited board source is unavailable, run `$resolve-official-device-documentation`. Distinguish a board-only routing choice from a device capability, and retain connector, jumper, switch, pin, and electrical notes only when documented.
+2. **Processing:** Record every documented selectable configuration that affects the requested debug or trace use. When a cited board source is unavailable, run `proc-resolve-official-device-documentation` (`knowledge_get`). Distinguish a board-only routing choice from a device capability, and retain connector, jumper, switch, pin, and electrical notes only when documented.
 3. **Validation:** Confirm each option against the board documentation and preserve all device-level Pack options. Derive a candidate runtime choice only when its values and supported default are documented; do not infer an unsupported choice.
 4. **Formatting:** Return the option inventory and candidate runtime choices in conversation. The calling knowledge skill owns any project artifact update.
 

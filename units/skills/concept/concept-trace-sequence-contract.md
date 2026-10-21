@@ -11,9 +11,9 @@ id: "concept-trace-sequence-contract"
 
 ## Shared integration ownership
 
-Run `$prepare-pdsc-sequence-change` before domain assembly, `$manage-pdsc-debugvars` for a documented runtime choice, `$apply-confirmed-pdsc-proposal` after confirmation, and `$validate-pdsc-sequence-xml` for common XML/PDSC and `<block>` checks. This contract defines the trace-specific topology, asset, scaffold, routing, marker, and lifecycle requirements that extend those shared workflows.
+Run `proc-prepare-pdsc-sequence-change` (`knowledge_get`) before domain assembly, `proc-manage-pdsc-debugvars` (`knowledge_get`) for a documented runtime choice, `proc-apply-confirmed-pdsc-proposal` (`knowledge_get`) after confirmation, and `proc-validate-pdsc-sequence-xml` (`knowledge_get`) for common XML/PDSC and `<block>` checks. This contract defines the trace-specific topology, asset, scaffold, routing, marker, and lifecycle requirements that extend those shared workflows.
 
-Use the current [Open-CMSIS-Pack *Debug Description* specification](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/debug_description.html) as the grammar authority. Its `Sequence("name")` function calls another debug access sequence; predefined sequence implementations in a PDSC override the debugger-provided behavior. Use `.agent-artifacts/<pdsc-stem>.trace-knowledge.md` from `$trace-knowledge` as read-only input. Consult `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` from `$debug-access-knowledge` only when trace implementation requires a processor, debug connection, DP/AP path, protocol, or dormant-state fact that the trace knowledge record does not provide.
+Use the current [Open-CMSIS-Pack *Debug Description* specification](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/debug_description.html) as the grammar authority. Its `Sequence("name")` function calls another debug access sequence; predefined sequence implementations in a PDSC override the debugger-provided behavior. Use `.agent-artifacts/<pdsc-stem>.trace-knowledge.md` from `proc-trace-knowledge` (`knowledge_get`) as read-only input. Consult `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` from `proc-debug-access-knowledge` (`knowledge_get`) only when trace implementation requires a processor, debug connection, DP/AP path, protocol, or dormant-state fact that the trace knowledge record does not provide.
 
 ## Contents
 
@@ -105,7 +105,7 @@ Put each high-level routing sequence's `__var` declarations in its opening `<blo
 
 When a retained scaffolding sequence has no C-like content other than its standard trace-mode `__var` declarations, put `<!-- No trace operation is required for this mode. -->` after its opening `<block>`. A scaffold-only CoreSight insertion marker may follow it. Remove the comment and marker when a component call or device-specific operation is added.
 
-Before completion, run `$validate-pdsc-sequence-xml`. Then run this trace-specific marker check:
+Before completion, run `proc-validate-pdsc-sequence-xml` (`knowledge_get`). Then run this trace-specific marker check:
 
 ```text
 rg -n 'INSERT-CORESIGHT-SNIPPET-CALLS-HERE' <target.pdsc>
@@ -113,7 +113,7 @@ rg -n 'INSERT-CORESIGHT-SNIPPET-CALLS-HERE' <target.pdsc>
 
 Inspect and resolve every match that is C-like sequence content. Also inspect every retained scaffolding sequence that contains only its standard trace-mode `__var` declarations and require the empty-operation comment. If context or time is tight, stop and continue later rather than producing compressed or partial sequences. Never trade required scaffold structure for schema validity or a shorter response.
 
-Do not invent register addresses, values, funnel routes, timestamping, formatter settings, component order, or a dormant-state requirement. Honor the trace knowledge record's evidence-backed `debugconfig dormant` decision when present; otherwise obtain that decision from `$debug-access-knowledge` when the selected trace configuration requires it. Ask for documentation when a selected snippet needs information not supplied by the verified trace knowledge.
+Do not invent register addresses, values, funnel routes, timestamping, formatter settings, component order, or a dormant-state requirement. Honor the trace knowledge record's evidence-backed `debugconfig dormant` decision when present; otherwise obtain that decision from `proc-debug-access-knowledge` (`knowledge_get`) when the selected trace configuration requires it. Ask for documentation when a selected snippet needs information not supplied by the verified trace knowledge.
 
 Write `.agent-artifacts/<pdsc-stem>.trace-sequences.md` at the project root. Record the selected device-tree scope, each PDSC placement and its applicable descendants, trace component instances, emitted sequence names, extension placeholders, sources, and validation result. Include a `Documents requiring user download` table with `title | URL | retrieval issue | requested workspace path` whenever an identified technical document cannot be downloaded. Ask the user to download and copy it into the target workspace, then inspect that local copy before relying on it.
 

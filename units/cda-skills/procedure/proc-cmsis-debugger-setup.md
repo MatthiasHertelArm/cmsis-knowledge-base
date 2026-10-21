@@ -12,7 +12,7 @@ id: "proc-cmsis-debugger-setup"
 requires: ["proc-debugger-troubleshooting", "proc-fvp-debug-setup"]
 description: "Wire the debug adapter of a CMSIS csolution target so that Load & Debug works, and prove it on the target: choose the adapter (CMSIS-DAP@pyOCD, ST-Link@pyOCD, ULINKplus@pyOCD, J-Link Server, …) from csolution list debuggers, set the debugger node of the target set, let the CMSIS Solution extension write launch.json and tasks.json, then verify with cmsis_action load_and_debug, a breakpoint and the serial console. Use when a new target has no debugger yet, when launch.json has no gdbtarget configuration, when cmsis_action says a CMSIS task is not offered, or when the probe changes. For an Arm FVP use fvp-debug-setup; for a session that fails to connect use debugger-troubleshooting."
 verification: ["Check the cbuild-run file: its `debugger:` block names the adapter.", "Check `.vscode/launch.json`: a configuration of `\"type\": \"gdbtarget\"` named after the adapter, such as `CMSIS_DAP@pyOCD (launch)`, `STLink@pyOCD (launch)` or `JLink (launch)`, and `.vscode/tasks.json` with the `CMSIS Load` task.", "`serial_list_ports`: the probe's virtual COM port is a sign that the board is connected. `serial_open` it before anything runs, so that no output is lost.", "`add_breakpoint` at the entry of the application code, not only at `main`.", "`cmsis_action { action: 'load_and_debug' }`. Never `start_debugging` for a CMSIS target: it skips the flash download.", "`continue_execution` and `wait_for_stop` to the breakpoint; `get_call_stack`, `get_variables_values` and one `read_peripheral_register` to show that stepping and reads work.", "`clear_all_breakpoints`, let it run, and `serial_read` the application's output."]
-stop_conditions: ["If the internal flash has no algorithm in the cbuild-run file, programming cannot work whatever the adapter is. Report that first.", "Ask the user which probe is on the board or on the desk.", "With several probes connected, the probe is chosen by the setting `cmsis-csolution.probe-id`, not in the csolution. Ask the user to set it.", "When the files did not change: ask the user to open **Manage Solution Settings** in the CMSIS view and to confirm the debugger there, or to check that `cmsis-csolution.autoDebugLaunch` is on.", "A launch configuration whose `cmsis` node says `\"updateConfiguration\": \"manual\"` is never rewritten; leave it alone and tell the user.", "Ask the user to connect the board.", "Read the hint of the failed result and `get_recent_problems` (`sources: ['gdb-server']`, `minSeverity: 'info'` shows what pyOCD or J-Link said), then continue with `$debugger-troubleshooting`."]
+stop_conditions: ["If the internal flash has no algorithm in the cbuild-run file, programming cannot work whatever the adapter is. Report that first.", "Ask the user which probe is on the board or on the desk.", "With several probes connected, the probe is chosen by the setting `cmsis-csolution.probe-id`, not in the csolution. Ask the user to set it.", "When the files did not change: ask the user to open **Manage Solution Settings** in the CMSIS view and to confirm the debugger there, or to check that `cmsis-csolution.autoDebugLaunch` is on.", "A launch configuration whose `cmsis` node says `\"updateConfiguration\": \"manual\"` is never rewritten; leave it alone and tell the user.", "Ask the user to connect the board.", "Read the hint of the failed result and `get_recent_problems` (`sources: ['gdb-server']`, `minSeverity: 'info'` shows what pyOCD or J-Link said), then continue with `proc-debugger-troubleshooting` (`knowledge_get`)."]
 unmapped: ["CMSIS Solution extension (setting `cmsis-csolution.autoDebugLaunch`)", "debug probe on the board or on the desk", "flash algorithm for the internal flash in the cbuild-run file"]
 applies_to: {"tool": ["csolution"]}
 stage2: "proc-cmsis-debugger-setup.json"
@@ -53,6 +53,11 @@ CMSIS-Toolbox lists:
 csolution list debuggers
 ```
 
+This step names the command, so it is allowed; it needs the toolbox on your PATH,
+which the Arm Tools Environment Manager gives VS Code's terminals, not your shell.
+When `csolution` is not found, do not search for it: the table below is the
+fallback, it is the toolbox's own `debug-adapters.yml`.
+
 | Probe | Adapter name |
 |---|---|
 | CMSIS-DAP, DAPLink, on-board CMSIS-DAP | `CMSIS-DAP@pyOCD` |
@@ -60,7 +65,7 @@ csolution list debuggers
 | ULINKplus | `ULINKplus@pyOCD` |
 | MCU-Link, Nu-Link, KitProg3, PICkit, Raspberry Pi Debug Probe | `MCU-Link@pyOCD`, `Nu-Link@pyOCD`, `KitProg3@pyOCD`, `PICkit@pyOCD`, `RPiDebugProbe@pyOCD` |
 | SEGGER J-Link | `J-Link Server` |
-| Arm FVP model | `Arm-FVP`: use `$fvp-debug-setup` |
+| Arm FVP model | `Arm-FVP`: use `proc-fvp-debug-setup` (`knowledge_get`) |
 
 Use a name exactly as `csolution list debuggers` prints it.
 
@@ -98,9 +103,12 @@ them by hand.
 1. `cmsis_action { action: 'build' }`. The build also refreshes
    `out/<solution>+<target>.cbuild-run.yml`.
 2. Check the cbuild-run file: its `debugger:` block names the adapter.
-3. Check `.vscode/launch.json`: a configuration of `"type": "gdbtarget"` named after
-   the adapter, such as `CMSIS_DAP@pyOCD (launch)`, `STLink@pyOCD (launch)` or
-   `JLink (launch)`, and `.vscode/tasks.json` with the `CMSIS Load` task.
+3. Check `.vscode/launch.json`: a configuration of `"type": "gdbtarget"` whose
+   `cmsis` node says `"updateConfiguration": "auto"`, named after the adapter's
+   template (`CMSIS_DAP@pyOCD (launch)`, `STLink@pyOCD (launch)`,
+   `ULINKpro@pyOCD (launch)` for ULINKplus and ULINKpro, `JLink (launch)`,
+   `Arm-FVP@GDB (launch)`; a multi-core device prefixes the processor name), and
+   `.vscode/tasks.json` with the `CMSIS Load` task. Do not look for one exact name.
 4. When the files did not change: ask the user to open **Manage Solution Settings**
    in the CMSIS view and to confirm the debugger there, or to check that
    `cmsis-csolution.autoDebugLaunch` is on. A launch configuration whose `cmsis`
@@ -113,13 +121,17 @@ Ask the user to connect the board. Then, in this order:
 
 1. `serial_list_ports`: the probe's virtual COM port is a sign that the board is
    connected. `serial_open` it before anything runs, so that no output is lost.
+   The port is yours until `serial_close` (or 300 s idle): the user's Serial
+   Monitor cannot open it meanwhile, say so.
 2. `add_breakpoint` at the entry of the application code, not only at `main`.
 3. `cmsis_action { action: 'load_and_debug' }`. Never `start_debugging` for a CMSIS
    target: it skips the flash download.
 4. `continue_execution` and `wait_for_stop` to the breakpoint; `get_call_stack`,
    `get_variables_values` and one `read_peripheral_register` to show that stepping
    and reads work.
-5. `clear_all_breakpoints`, let it run, and `serial_read` the application's output.
+5. `clear_all_breakpoints`, let it run, and `serial_read { waitMs: 5000 }` for the
+   application's output; without `waitMs` the call returns at once with what is
+   buffered.
 6. `stop_debugging`, `serial_close`.
 
 Things that otherwise cost an hour each:
@@ -142,7 +154,7 @@ Things that otherwise cost an hour each:
 
 Read the hint of the failed result and `get_recent_problems`
 (`sources: ['gdb-server']`, `minSeverity: 'info'` shows what pyOCD or J-Link said),
-then continue with `$debugger-troubleshooting`. Do not start pyOCD, a J-Link tool or
+then continue with `proc-debugger-troubleshooting` (`knowledge_get`). Do not start pyOCD, a J-Link tool or
 GDB in a shell.
 
 ## 7. Finish

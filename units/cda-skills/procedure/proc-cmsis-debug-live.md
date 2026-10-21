@@ -9,7 +9,7 @@ source: "cmsis-debug-live/SKILL.md"
 tools: ["csolution", "cbuild"]
 sections: ["Before anything else: know your target", "Clean up", "Core loop", "Debugger first — do not start by adding prints", "Reading results", "Root cause, not symptom", "Session state gates everything", "Several VS Code windows open", "When it did not reach your breakpoint", "When it faulted", "When the firmware prints", "When the variable and the hardware disagree", "Why embedded debugging is different"]
 id: "proc-cmsis-debug-live"
-requires: ["proc-cmsis-pack-docs", "concept-cmsis-embedded-guide"]
+requires: ["proc-cmsis-pack-docs", "proc-debugger-troubleshooting", "concept-cmsis-embedded-guide"]
 description: "Drive a live Arm Cortex-M debug session through the CMSIS Debugger to investigate firmware runtime bugs — HardFaults and other faults, crashes, hangs, failing tests, peripherals that do not respond, wrong/null values that are right in simulation but wrong on hardware, unexpected output, code that never reaches the line you expect, timing that does not close. Prefer it as the first investigation step whenever live inspection is practical, and use it instead of adding temporary printf/UART logging, LED toggles, or console output to diagnose firmware — halting the CPU and looking is cheaper and does not perturb the target the way a reflash with extra prints does. Pairs with the CMSIS Developer Assistant MCP server, which exposes the breakpoint / step / memory / register / peripheral tools."
 verification: ["You have found the root cause when you can say which line produced the wrong state, and predict what changing it will do.", "Verify that prediction on the target before you claim it."]
 stop_conditions: ["If `launch.json` is stale, the user has to regenerate it: **CMSIS Solution → Manage Solution → Debugger → Apply**. You cannot do that step for them.", "If the debugger cannot be used — no probe, no `launch.json`, a board that does not enumerate — say what the concrete blocker is before falling back to another method.", "If a fault read answers `PROBE_WEDGED`, the debug port no longer answers (DHCSR could not be read either): stop reading and follow the hint.", "A `load_and_debug` session owns its GDB server; `restart_debugging` and `load_and_debug` re-flash and reset, so to keep the fault state the user restarts the server without a reset and you `cmsis_action attach`.", "Or ask the user to pick one: a click on \"CDA\" in the VS Code status bar opens Select Target Window.", "`WORKER_TIMEOUT` means the target window is alive but the call did not finish in time and still runs there, often because a picker or dialog waits for the user: call `get_session_status` and ask the user to look at that window before you repeat the call.", "`WINDOW_UNREACHABLE` means the window did not answer at all, because its extension host is blocked or it closed: call `list_debug_windows`, and if the window is still listed, ask the user to reload it."]
@@ -72,9 +72,13 @@ then has status `running` and names the job: call `cmsis_action` with
 `action='status'` for the result, and never start the build again to learn
 it — a repeated build attaches to the one in flight.
 
-`load_and_run` leaves the CMSIS Run task holding the probe (it hosts the GDB
-server): `attach` debugs that firmware, and `cmsis_action` `stop_run` frees
-the probe before `load`, `load_and_debug` or `flash`. A `PROBE_BUSY` error
+`run` and `load_and_run` leave the CMSIS Run task holding the probe (with a
+probe adapter it hosts the GDB server; an FVP's Run is the bare model, so
+`attach` has nothing to reach there and `load_and_debug` is the way): `attach`
+debugs that firmware, and `cmsis_action` `stop_run` frees the probe before
+`load`, `load_and_debug` or `flash`. To look at a
+target that is already running without touching its flash, `run` then
+`attach` (the pyOCD task resets the target and lets it run; J-Link's does not). A `PROBE_BUSY` error
 names what holds the probe and the step to take. `flash` uses the CMSIS
 Debugger's bundled pyOCD — never install one.
 If `launch.json` is stale, the user has to regenerate it: **CMSIS Solution →
@@ -94,7 +98,7 @@ never throws.
 
 | State | Correct next action |
 |-------|---------------------|
-| `no-session` | `cmsis_action load_and_debug` for CMSIS projects — builds, flashes, attaches. `start_debugging` only for non-CMSIS targets, or to attach without reflashing. |
+| `no-session` | `cmsis_action load_and_debug` for CMSIS projects — builds, flashes, attaches. `cmsis_action run` then `attach` to look at a target without reflashing; `start_debugging` only for non-CMSIS targets. |
 | `initializing` | Wait, ask again. Do **not** issue a second start. |
 | `stopped` | Inspect freely. |
 | `running` | Reads and steps will be rejected. `pause_execution`, or set a breakpoint (the tool pauses the target briefly to apply it) and `wait_for_stop`. |
@@ -133,7 +137,9 @@ already live, so checking first saves a round trip.
   instructions.
 - When a session does not start, `get_recent_problems` with
   `sources: ['gdb-server']` and `minSeverity: 'info'` shows what pyOCD or
-  J-Link said.
+  J-Link said. When it still does not start, connect or program after that,
+  hand over to `proc-debugger-troubleshooting` (`knowledge_get`), which walks the checks in order
+  (probe, power, GDB server, flash algorithm, image) through the tools.
 
 ## Debugger first — do not start by adding prints
 
@@ -221,7 +227,7 @@ This is the characteristic embedded bug, and the reason the memory tools exist.
   `search_target_docs` (register or bit name) and `get_peripheral_docs` answer
   from the reference manual with page cites, and `lookup_symbol` turns a fault
   PC into a function — when `cmsis-developer-assistant.packDocs.enabled` /
-  `buildInfo.enabled` are on (both by default; see `$cmsis-pack-docs`). Do not
+  `buildInfo.enabled` are on (both by default; see `proc-cmsis-pack-docs` (`knowledge_get`)). Do not
   ask the user for a manual and do not read a PDF into your context: search,
   or suggest the setting; a PDF the user provides goes into `docs/` and is
   searched. Third-party parts (sensors, ADCs, codecs) included: a part-number
@@ -238,7 +244,9 @@ This is the characteristic embedded bug, and the reason the memory tools exist.
 
 ## When it faulted
 
-`diagnose_fault` does the whole first pass in one call: the decoded fault
+A fault does not halt the core by itself: the handler spins. `get_session_status`
+first; when the state is `running`, `pause_execution`, which lands in the handler.
+Then `diagnose_fault` does the whole first pass in one call: the decoded fault
 registers, the stacked exception frame (the PC of the faulting instruction and
 its caller — on a stacked exception the interesting PC is in the frame, not in
 the current registers), the top frames, the faulting address resolved against

@@ -7,7 +7,7 @@ triggers: ["Set up and extend CMSIS csolution projects and Zephyr-based CMSIS so
 status: "draft"
 source: "CMSIS-Developer-Assistant/scripts/skills.config.json"
 id: "route-project"
-references: ["proc-add-board-layer", "proc-add-cmsis-target", "proc-check-cmsis-environment", "proc-check-zephyr-environment", "proc-cmsis-bootstrap", "proc-cmsis-debugger-setup", "proc-identify-cmsis-board-layer", "proc-identify-cmsis-board-support", "proc-identify-zephyr-board", "proc-start-zephyr-project"]
+references: ["proc-add-board-layer", "proc-add-cmsis-target", "proc-check-cmsis-environment", "proc-check-zephyr-environment", "proc-cmsis-bootstrap", "proc-cmsis-debugger-setup", "proc-identify-cmsis-board-layer", "proc-identify-cmsis-board-support", "proc-identify-zephyr-board", "proc-start-cmsis-project", "proc-start-zephyr-project"]
 ---
 
 # CMSIS project setup: which procedure
@@ -25,11 +25,12 @@ Read the procedure with `knowledge_get` before acting on it, and follow its own 
 | Identify packaged CMSIS board layers compatible with an existing solution target and its required connections, returning `MATCHES`, `NO MATCH`, or `NOT REQUIRED` with exact command evidence. | `proc-identify-cmsis-board-layer` |
 | Resolve a supplied board or device to exactly one verified CMSIS identity, identify its BSP or DFP, and ask the user when multiple candidates remain. | `proc-identify-cmsis-board-support` |
 | Resolve a user-supplied physical board to its exact Zephyr board target and fitted MCU or SoC using the installed west board catalog. | `proc-identify-zephyr-board` |
+| Create the first csolution for a board or device: a minimal project, or an example or template of its pack | `proc-start-cmsis-project` |
 | Create and validate one initial west-integrated CMSIS Zephyr Blinky solution for a board already supported by Zephyr, from verified environment, board, and pack information, using `cbuild setup` and `cbuild`. | `proc-start-zephyr-project` |
 
 ## Typical order
 
-1. No folder open or no solution yet: `proc-cmsis-bootstrap` first; it creates or opens the project and comes back here.
+1. No folder open or no solution yet: `proc-cmsis-bootstrap` first; it opens or creates the project folder and hands over to `proc-start-cmsis-project`, which writes a minimal project (CMSIS CORE, the DFP's startup, a bare `main`; Arm Compiler 6 unless the user prefers another compiler) or copies an example of the board's pack, then builds it with `cmsis_action build`.
 2. `proc-check-cmsis-environment` (or `proc-check-zephyr-environment`) to confirm the toolchain before anything is created or built.
 3. `proc-identify-cmsis-board-support` (or `proc-identify-zephyr-board`) to resolve the hardware to exactly one verified identity and its BSP/DFP.
 4. `proc-add-cmsis-target` to extend the solution, then `proc-identify-cmsis-board-layer` for a packaged board layer — or `proc-start-zephyr-project` for a new west-integrated solution.

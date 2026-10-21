@@ -10,8 +10,8 @@ refines: ["rule-no-fabrication"]
 delta_of: "rule-no-fabrication"
 ---
 
-Do not invent trace component addresses, identifiers, versions, DP/AP paths, routes, trace-clock control, pin-function or electrical configuration, path-selection controls, sink behavior, or device-specific lifecycle constraints. Return missing reusable access facts to `$debug-access-knowledge`.
+Do not invent trace component addresses, identifiers, versions, DP/AP paths, routes, trace-clock control, pin-function or electrical configuration, path-selection controls, sink behavior, or device-specific lifecycle constraints. Return missing reusable access facts to `proc-debug-access-knowledge` (`knowledge_get`).
 
 ## Delta zu rule-no-fabrication
 
-trace component addresses, identifiers, versions, DP/AP paths, routes, trace-clock control, pin-function or electrical configuration, path-selection controls, sink behavior, or device-specific lifecycle constraints. Return missing reusable access facts to `$debug-access-knowledge`.
+trace component addresses, identifiers, versions, DP/AP paths, routes, trace-clock control, pin-function or electrical configuration, path-selection controls, sink behavior, or device-specific lifecycle constraints. Return missing reusable access facts to `proc-debug-access-knowledge` (`knowledge_get`).

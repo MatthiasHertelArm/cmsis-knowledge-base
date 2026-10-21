@@ -7,9 +7,8 @@ triggers: ["any part number before searching the web", "before assuming what a p
 status: "draft"
 source: "cmsis-pack-docs/SKILL.md"
 tools: ["csolution", "cbuild"]
-sections: ["Citing", "For the bring-up skills", "Rules of thumb", "What the documentation tools cover", "Workflow"]
+sections: ["Citing", "For skills that build debug, trace or board records", "Rules of thumb", "What the documentation tools cover", "Workflow"]
 id: "proc-cmsis-pack-docs"
-requires: ["proc-resolve-official-device-documentation"]
 consumes: ["artifact-docs"]
 description: "Look things up in the documentation of the current CMSIS csolution target through the CMSIS Developer Assistant documentation tools (list_target_docs, search_target_docs, read_doc_pages, fetch_doc, get_peripheral_docs) — the reference manual, datasheet, errata and board manual the packs ship or link, the Arm documents for the device's core (architecture reference manual, ADIv5/ADIv6, CoreSight and ETM specifications, core TRM), and the datasheets of third-party parts (sensors, ADCs, codecs) the user added or fetch_doc downloaded. Use for any part number before searching the web, before assuming what a peripheral register or bit does, when the SVD gives a bit position but not its meaning, when a peripheral does not behave as expected (check the errata), when a debug/trace bring-up skill needs a vendor or Arm document, or when the user asks where something is documented. Cites document id, edition and page. The tools are on by default; the setting `cmsis-developer-assistant.packDocs.enabled` drops or restores them (window reload)."
 verification: ["`read_doc_pages { doc, pages }` for the full page(s) around the best hit before answering — snippets are 400 characters.", "Never cite a snippet alone; read the page."]
@@ -95,35 +94,16 @@ require "document edition/revision and section/page". For a pack PDF with
 no edition in the output, name the pack version instead
 (`Keil::STM32U5xx_DFP@2.1.0`). Never cite a snippet alone; read the page.
 
-## For the bring-up skills (debug-access-knowledge, debug-knowledge, trace-knowledge, board-debug-knowledge)
+## For skills that build debug, trace or board records
 
-Before writing a row into a record's *Documents requiring user download*
-table:
-
-1. `list_target_docs` — the document is often already there.
-2. Vendor documents first: the reference manual (debug support, RCC, DBGMCU,
-   GPIO alternate functions, boot, option bytes), datasheet (pin tables),
-   errata and board manual come from the packs; a web-linked one is one
-   `fetch_doc { doc }` away.
-3. Arm documents only for the facts that are Arm's to define — DP/AP
-   behaviour, dormant state and `TARGETSEL` (`ihi0031`), APv2 addressing
-   and ROM tables (`ihi0074`), DHCSR/DEMCR/AIRCR reset and halt semantics
-   and debug authentication (`ddi0419`/`ddi0403`/`ddi0553`), fixed PPB
-   addresses, TPIU port sizes and SWO modes (core TRM), identifying a
-   scanned CoreSight component by its part number (CoreSight TRMs). Do
-   **not** fetch CoreSight TRMs to program funnels, replicators, ETF/ETB/
-   ETR, TPIU or SWO: the trace generator templates own that.
-4. If `fetch_doc` reports a dead or unknown URL, run
-   `$resolve-official-device-documentation`, then
-   `fetch_doc { url: <Replacement official URL> }`.
-5. Only then add the *Documents requiring user download* row, with
-   **Requested workspace path** `.agent-artifacts/docs/<file>.pdf` — a copy
-   placed there is listed and searched automatically.
-
-When a document came through these tools, put its id in the record's
-*Requested workspace path* / source column (`arm/ihi0031-latest h`) and copy
-the resolved `version` and `versionLabel` from the `fetch_doc` output into
-the Evidence table, so a later change of `latest` is detectable.
+A skill that collects evidence about a device (debug access, trace, a board's
+routing) takes its documents from here: `list_target_docs` first, vendor
+documents before Arm documents, Arm documents only for what Arm defines (DP/AP
+behaviour in `ihi0031`, APv2 and ROM tables in `ihi0074`, DHCSR/DEMCR/AIRCR and
+debug authentication in `ddi0419`/`ddi0403`/`ddi0553`), `fetch_doc { url }` with
+the document's current official URL when a link is dead, and the resolved
+`version` of the `fetch_doc` result in the record, so a later change is
+detectable.
 
 ## Rules of thumb
 
@@ -134,7 +114,11 @@ the Evidence table, so a later change of `latest` is detectable.
   differently from the manual.
 - Prefer one search with the exact identifier over several vague ones.
 - If `list_target_docs` cannot resolve the target, build the solution first
-  (so `*.cbuild-run.yml` exists) or pass `pack` and `device`.
+  with `cmsis_action build` (so `*.cbuild-run.yml` exists) or pass `pack` and
+  `device` from the `packs:` and `device:` of the `*.csolution.yml`.
+- A `fetch_doc` refused for size names the limit: ask the user to raise
+  `cmsis-developer-assistant.packDocs.maxPdfMb`, or to import the PDF with
+  **Import User Document**; never read the PDF yourself instead.
 - Never ask the user for a datasheet or manual before `list_target_docs` and
   `fetch_doc` have been tried, and never read a PDF into your context — it
   costs hundreds of thousands of tokens and yields no page cites. A document

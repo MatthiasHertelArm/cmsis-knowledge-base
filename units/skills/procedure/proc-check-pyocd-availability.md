@@ -56,7 +56,7 @@ stage2: "proc-check-pyocd-availability.json"
 - **No mutation:** Do not install pyOCD or an extension, change `PATH`, activate an environment, or alter Visual Studio Code settings.
 - **VS Code scope:** Check the active extension before PATH in a Visual Studio Code environment. Prefer a verified bundled directory and do not perform a redundant PATH check. A bundled directory does not establish that `pyocd` is runnable from the current `PATH`.
 - **Critical blockers:** Report the relevant check as unavailable when the required terminal, extension query, or extension directory cannot be accessed. Do not search unrelated directories or request a target connection.
-- **Scope:** Check availability only. Use `$pyocd-detect-debug-topology` for an authorized target scan after pyOCD availability is established.
+- **Scope:** Check availability only. Use `proc-pyocd-detect-debug-topology` (`knowledge_get`) for an authorized target scan after pyOCD availability is established.
 - **Tone and style:** Respond factually and directly. Omit conversational filler.
 
 ## Expected Output

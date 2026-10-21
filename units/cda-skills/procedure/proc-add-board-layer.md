@@ -9,6 +9,7 @@ source: "add-board-layer/SKILL.md"
 tools: ["csolution", "cbuild", "cpackget"]
 sections: ["0. Read before you ask", "1. The interview", "2. Resolve the board and device identity — from the pdsc, never by guess", "3. Choose the layer strategy", "4a. Generator-based layer: integrate, then let the user run the generator", "4b. Minimal bare-metal recipe", "5. Wire into the csolution", "6. Build to green", "7. Confirm and hand off", "Goal and method", "Hardware facts: ask the documentation, not memory"]
 id: "proc-add-board-layer"
+requires: ["proc-cmsis-debug-live", "proc-cmsis-debugger-setup"]
 description: "Add a board layer to an existing CMSIS csolution by interviewing the user for the few facts that cannot be read from the repo — board/device, layer strategy, debugger, STDIO transport, memory — then generating Board.clayer.yml and its startup / retarget-stdio / regions / device-header files (reusing the BSP layer when it fits, running the DFP's configuration generator when startup only comes from it, or a minimal bare-metal layer otherwise) and wiring the target-type into the solution. Use when the user wants to add or author a board layer and would rather be asked than hand over every parameter up front."
 verification: ["Build with `cmsis_action build { target: '<target-type>' }`.", "Read the ✅/❌ line that ends the result; a build still running when the call's wait ends returns status `running`, and `cmsis_action` with `action: 'status'` waits for it.", "Verify the load-bearing ones on the target later (write via the debugger, read back).", "Show the user the layer file set, the csolution diff, and the green build summary."]
 stop_conditions: ["If the tools are missing from your tool list, suggest the setting instead of asking.", "Open in prose with the one open-ended question — **\"Which board or device are you adding, and is there an on-board debug probe / VCP?\"** — then resolve §2.", "Everything after that is a small set of decisions: ask them with `AskUserQuestion`, **batched**, each with a recommended default derived from what you read in §0/§2.", "A missing internal-flash FLM is a flashing blocker to raise **before** writing a line.", "If a name is fuzzy or several candidates remain, that is the moment for one `AskUserQuestion` to disambiguate — with the resolved candidates as options.", "**Tell the user to run the generator — you cannot do it for them.**", "If the result says RTE or configuration files of the new target-type are missing, ask the user to run **CMSIS: Refresh (Reload Packs, Update RTE)** in VS Code, then build again."]
@@ -25,8 +26,8 @@ stage2: "proc-add-board-layer.json"
 Goal: produce a **working board layer** for a new target in an existing
 csolution — `Board.clayer.yml` plus whatever startup / stdio / memory files it
 needs — and wire it in as a target-type, ending on a green build. Real-hardware
-bring-up (probe, serial marker, breakpoints) is the `$csolution-retarget` §6
-flow; hand off to it once the layer builds.
+bring-up (probe, serial marker, breakpoints) belongs to `proc-cmsis-debugger-setup` (`knowledge_get`)
+and then `cmsis-debug-live`; hand off once the layer builds.
 
 The method is an **interview**: read everything the repo already answers, ask
 the user only the handful of decisions it cannot, then generate. Never
@@ -64,7 +65,8 @@ Gather these first — each one you find is a question you do NOT ask:
   (`Board-Layer`, `AI-Layer`, …), `target-set`/`debugger`, `packs`, and any
   solution-level node that cannot fork per target (`mlops:`, a generated layer,
   a single `.vscode`). An un-forkable node means **replace-on-a-branch**, not a
-  new target-type (see `$csolution-retarget` §0).
+  new target-type: the new board replaces the old one in a git branch of the
+  solution, and the layer is written for that branch.
 - An existing board layer in the repo to mirror, and its file set — copy its
   shape rather than inventing one.
 - If the user has already named the board, resolve its identity now (§2) so the
@@ -268,9 +270,10 @@ that terminal's toolbox (`csolution -V` shows whether it knows `mlops:`).
 
 Show the user the layer file set, the csolution diff, and the green build
 summary. Then state the finish line honestly: a build is not a bring-up.
-If a probe + VCP are attached, continue into `$csolution-retarget` §6
-(serial_open → breakpoints → `cmsis_action load_and_debug` → success marker →
-verify the config registers live). If no hardware is attached, say so — the
+If a probe + VCP are attached, continue with `proc-cmsis-debugger-setup` (`knowledge_get`) (the
+`debugger:` node, launch.json, `serial_open` → breakpoints →
+`cmsis_action load_and_debug` → success marker) and `cmsis-debug-live` to verify
+the config registers live. If no hardware is attached, say so — the
 layer is validated to *compile and link*, not to run — and commit the layer
 under `board/<BoardName>/` (generator output included), the csolution edit and
 the regenerated `.vscode` files, noting the new target in the README.
