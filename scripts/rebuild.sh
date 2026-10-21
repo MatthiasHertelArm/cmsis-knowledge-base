@@ -41,6 +41,8 @@ fi
 if [ -n "${CDA:-}" ]; then
   python3 tools/routes2ku.py "$CDA/scripts/skills.config.json" units/cda-routes units/skills units/cda-skills
 fi
+# A skill hand-over `$name` to a skill that is not installed becomes a link to its procedure unit.
+python3 tools/route_refs.py --targets units/skills --targets units/cda-skills units/skills units/cda-skills units/cda-routes units/extracted units/canonical
 [ -d units/cda-skills ] && CDA_UNITS+=(--units units/cda-skills)
 [ -d units/cda-routes ] && CDA_UNITS+=(--units units/cda-routes)
 python3 tools/build_index.py ${NO_VEC:+--no-vec} \
