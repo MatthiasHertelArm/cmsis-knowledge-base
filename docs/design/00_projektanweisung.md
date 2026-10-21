@@ -1,6 +1,6 @@
 # Projektanweisung: CDA Wissensbasis
 
-Diesen Text in die Anweisungen des Claude-Projekts kopieren. Die übrigen Dateien als Projektwissen hochladen.
+
 
 ## Ziel
 
