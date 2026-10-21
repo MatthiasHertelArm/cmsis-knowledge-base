@@ -1,0 +1,70 @@
+collection,kind,source,license,mode,in_build,units,kb,domain,tier
+(core),"cmsis-skills procedures and rules, canonical rules, csolution/packchk/svdconv message catalog, the extension's own skills and routes",Open-CMSIS-Pack/cmsis-skills; Open-CMSIS-Pack/devtools; CMSIS-Developer-Assistant/skills,Apache-2.0,V,default,623,651,,core
+issues-pyocd,issue digests,GitHub issues of pyocd,mode S (own words + link),S,default,230,149,,core
+issues-devtools,issue digests,GitHub issues of devtools,mode S (own words + link),S,default,133,85,,core
+issues-dbg,issue digests,GitHub issues of dbg,mode S (own words + link),S,default,83,52,,core
+issues-toolbox,issue digests,GitHub issues of toolbox,mode S (own words + link),S,default,40,25,,core
+issues-sol,issue digests,GitHub issues of sol,mode S (own words + link),S,default,36,21,,core
+issues-cpackget,issue digests,GitHub issues of cpackget,mode S (own words + link),S,default,34,23,,core
+issues-cmsis6,issue digests,GitHub issues of cmsis6,mode S (own words + link),S,default,17,9,,core
+issues-rtx,issue digests,GitHub issues of rtx,mode S (own words + link),S,default,6,2,,core
+issues-view,issue digests,GitHub issues of view,mode S (own words + link),S,default,1,0,,core
+interrupt-blog,documentation,memfault/interrupt,CC-BY-SA-4.0,V,ccbysa,1127,2685,debug,excluded
+arm-learning-paths,documentation,ArmDeveloperEcosystem/arm-learning-paths,CC-BY-SA-4.0,V,ccbysa,819,918,project,excluded
+freertos-kernel-book,documentation,FreeRTOS/FreeRTOS-Kernel-Book,CC-BY-SA-4.0,V,ccbysa,132,575,rtos,pack
+arm-install-guides,documentation,ArmDeveloperEcosystem/arm-learning-paths,CC-BY-SA-4.0,V,ccbysa,77,62,project,excluded
+arm-abi,documentation,ARM-software/abi-aa,CC-BY-SA-4.0,V,ccbysa,48,152,core,excluded
+zephyr,documentation,zephyrproject-rtos/zephyr,Apache-2.0,V,default,682,1255,rtos,pack
+cmsis-driver,documentation,ARM-software/CMSIS_6,Apache-2.0,V,default,452,475,drivers,pack
+tf-m,documentation,TrustedFirmware-M/trusted-firmware-m,BSD-3-Clause,V,default,406,915,security,pack
+threadx-middleware,documentation,eclipse-threadx/rtos-docs,MIT,V,default,386,613,rtos,pack
+ceedling,documentation,ThrowTheSwitch/Ceedling,MIT,V,default,338,476,test,pack
+mbedtls-kb,documentation,Mbed-TLS/mbedtls-docs,Apache-2.0,V,default,331,510,security,pack
+cmsis-rtx,documentation,ARM-software/CMSIS-RTX,Apache-2.0,V,default,271,235,rtos,pack
+cmsis-toolbox,documentation,Open-CMSIS-Pack/cmsis-toolbox,Apache-2.0,V,default,265,699,project,pack
+threadx,documentation,eclipse-threadx/rtos-docs,MIT,V,default,246,436,rtos,pack
+pack-spec,documentation,Open-CMSIS-Pack/Open-CMSIS-Pack-Spec,Apache-2.0,V,default,210,514,pack,pack
+cmsis-rtos2,documentation,ARM-software/CMSIS_6,Apache-2.0,V,default,172,176,rtos,pack
+,documentation,artificial-intelligence/ethos-u/ethos-u-vela,Apache-2.0,V,default,156,134,edge-ai,pack
+,,,,,,,,,
+zephyr-boards,documentation,zephyrproject-rtos/zephyr,Apache-2.0,V,default,132,246,bring-up,pack
+cmsis-view,documentation,ARM-software/CMSIS-View,Apache-2.0,V,default,129,171,trace,pack
+pyocd,documentation,pyocd/pyOCD,Apache-2.0,V,default,120,192,debug,pack
+cmsis-stream,documentation,ARM-software/CMSIS-Stream,Apache-2.0,V,default,118,222,cmsis-stream,pack
+cmsis-core,documentation,ARM-software/CMSIS_6,Apache-2.0,V,default,107,139,core,pack
+cmsis-ethos-u,documentation,ARM-software/CMSIS-Ethos-U,Apache-2.0,V,default,107,161,edge-ai,pack
+tflite-micro,documentation,tensorflow/tflite-micro,Apache-2.0,V,default,92,115,edge-ai,pack
+devtools-docs,documentation,Open-CMSIS-Pack/devtools,Apache-2.0,V,default,83,206,pack,pack
+mcuboot,documentation,mcu-tools/mcuboot,Apache-2.0,V,default,81,152,boot-update,pack
+cmsis-dap,documentation,ARM-software/CMSIS-DAP,Apache-2.0,V,default,65,66,debug,pack
+executorch-arm,documentation,pytorch/executorch,BSD-3-Clause,V,default,63,101,edge-ai,pack
+avh,documentation,ARM-software/AVH,Apache-2.0,V,default,61,91,test,pack
+cmsis-driver-validation,documentation,ARM-software/CMSIS-Driver_Validation,Apache-2.0,V,default,55,55,drivers,pack
+sds-framework,documentation,ARM-software/SDS-Framework,Apache-2.0,V,default,54,124,test,pack
+ocp-tools-readmes,documentation,Open-CMSIS-Pack/various,Apache-2.0,V,default,51,65,project,pack
+helium-optimization,documentation,Arm-Examples/Helium-Optimization,Apache-2.0,V,default,45,132,optimization,pack
+unity,documentation,ThrowTheSwitch/Unity,MIT,V,default,42,106,test,pack
+cmsis-dsp,documentation,ARM-software/CMSIS-DSP,Apache-2.0,V,default,41,60,optimization,pack
+arm-software-readmes,documentation,ARM-software/various,Apache-2.0,V,default,37,48,project,pack
+cmsis-debugger,documentation,Open-CMSIS-Pack/vscode-cmsis-debugger,Apache-2.0,V,default,35,49,debug,pack
+cmsis-mlek-packs,documentation,Arm-Examples/cmsis-mlek,Apache-2.0,V,default,32,34,edge-ai,pack
+csolution-examples,documentation,Open-CMSIS-Pack/csolution-examples,Apache-2.0,V,default,30,21,project,pack
+svd-spec,documentation,Open-CMSIS-Pack/svd-spec,Apache-2.0,V,default,27,89,pack,pack
+cmsis-compiler,documentation,ARM-software/CMSIS-Compiler,Apache-2.0,V,default,27,23,core,pack
+cda-guides,documentation,Open-CMSIS-Pack/CMSIS-Developer-Assistant,Apache-2.0,V,default,26,37,debug,pack
+cmsis-freertos,documentation,ARM-software/CMSIS-FreeRTOS,Apache-2.0,V,default,26,54,rtos,pack
+llvm-embedded-toolchain,documentation,ARM-software/LLVM-embedded-toolchain-for-Arm,Apache-2.0,V,default,26,17,project,pack
+cmsis-driver-impl,documentation,ARM-software/CMSIS-Driver,Apache-2.0,V,default,24,37,drivers,pack
+,,,,,,,,,
+debug-adapter-registry,documentation,Open-CMSIS-Pack/debug-adapter-registry,Apache-2.0,V,default,16,21,debug,pack
+cmsis-nn,documentation,ARM-software/CMSIS-NN,Apache-2.0,V,default,15,21,optimization,pack
+cmsis-ethos-integration,documentation,Arm-Examples/CMSIS-Ethos-Integration,Apache-2.0,V,default,15,16,edge-ai,pack
+avh-vsi,documentation,Arm-Examples/AVH-VSI,Apache-2.0,V,default,14,11,debug,pack
+,,,,,,,,,
+cmsis-zephyr,documentation,Arm-Examples/CMSIS-Zephyr,Apache-2.0,V,default,9,11,project,pack
+vscode-get-started,documentation,Open-CMSIS-Pack/vscode-get-started,Apache-2.0,V,default,6,8,project,pack
+gen-pack,documentation,Open-CMSIS-Pack/gen-pack,Apache-2.0,V,default,5,11,pack,pack
+segger-systemview-example,documentation,Arm-Examples/SEGGER-SystemView,Apache-2.0,V,default,5,5,trace,pack
+cmsis-actions,documentation,ARM-software/cmsis-actions,Apache-2.0,V,default,4,4,devops,pack
+cpackget,documentation,Open-CMSIS-Pack/cpackget,Apache-2.0,V,default,4,15,pack,pack
+ml-examples,documentation,ARM-software/ML-examples,Apache-2.0,V,default,3,1,edge-ai,pack

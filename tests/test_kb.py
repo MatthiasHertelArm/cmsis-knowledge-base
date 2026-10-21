@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Tests fuer build_index, kb_lib und kb_server. Aufruf: python tests/test_kb.py (aus kb/)."""
-import asyncio, json, sqlite3, subprocess, sys, tempfile
+import asyncio, json, os, sqlite3, subprocess, sys, tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -73,7 +73,7 @@ with tempfile.TemporaryDirectory() as td:
     check("knowledge_get liefert Body ungekuerzt", kb.get("fx-m55")["body"] == "stack sizing fixture body m55")
 
 # Volle Datenbank, falls gebaut
-full = ROOT / "build/knowledge.db"
+full = Path(os.environ.get("KB_INDEX", ROOT / "build/knowledge.db"))  # KB_INDEX names another build
 if full.exists():
     kb = KB(full, use_vec=False)
     r = kb.search("board mounted device 'XYZ123' not found")["results"]

@@ -1,0 +1,72 @@
+{
+  "about": "Retrieval golden set for the book pack (Local.CPP_Books): questions a developer asks that one section of 'Bare-Metal Embedded C Programming' answers. Hand-picked on 10 Oct 2026 from the units. tests/eval_search.py --golden=tests/golden-books.json runs it against packs/Local.CPP_Books/.knowledge/knowledge.db. Extended on 10 Oct 2026 with the generic units (g-*) and chapter-level units that answer the same questions. Tool-usage questions dropped on 10 Oct 2026 when tool and project units left the pack.",
+  "queries": [
+    {
+      "q": "what does the linker script do and what are its sections",
+      "expect": [
+        "bmecp-ch04-the-linker-script-key-components-of-the-linker-script",
+        "bmecp-ch04-the-linker-script-linker-script-directives-p1",
+        "bmecp-ch04-the-linker-script-linker-script-directives-p2",
+        "bmecp-ch04-developing-the-linker-script-and-sta",
+        "bmecp-ch04-the-linker-script",
+        "g-bmecp-a-linker-script-holds-memory-sections-options-and-symbols",
+        "g-bmecp-a-linker-script-lays-out-memory-and-does-not-fill-it-with-da"
+      ]
+    },
+    {
+      "q": "write a startup file with the vector table and Reset_Handler",
+      "expect": [
+        "bmecp-ch04-writing-the-linker-script-and-startu-writing-the-startup-file-p1",
+        "bmecp-ch04-writing-the-linker-script-and-startu-writing-the-startup-file-p2"
+      ]
+    },
+    {
+      "q": "enable the clock for GPIOA with the AHB1 enable register",
+      "expect": [
+        "bmecp-ch02-defining-and-creating-registers-thro-clock-gating",
+        "bmecp-ch02-defining-and-creating-registers-thro-the-ahb1-er"
+      ]
+    },
+    {
+      "q": "set a GPIO pin mode in the GPIOx_MODER register",
+      "expect": [
+        "bmecp-ch02-defining-and-creating-registers-thro-the-gpio-port-mode-register-gpiox-mo"
+      ]
+    },
+    {
+      "q": "set and clear bits in a register with bitwise operators",
+      "expect": [
+        "bmecp-ch02-defining-and-creating-registers-thro-setting-and-clearing-bits-in-registe"
+      ]
+    },
+    {
+      "q": "what is the difference between HAL, LL and bare-metal register programming",
+      "expect": [
+        "bmecp-ch02-the-different-types-of-firmware-deve",
+        "g-bmecp-firmware-access-layers-trade-abstraction-against-control"
+      ]
+    },
+    {
+      "q": "I2C driver for the STM32: start condition, address, data",
+      "expect": [
+        "bmecp-ch13-developing-the-i2c-driver-p1",
+        "bmecp-ch13-developing-the-i2c-driver-p2"
+      ]
+    },
+    {
+      "q": "UART with DMA to receive without blocking the CPU",
+      "expect": [
+        "bmecp-ch17-developing-the-uart-dma-driver-p1",
+        "g-bmecp-receive-uart-bytes-in-circular-dma-and-send-replies-with-one",
+        "g-bmecp-route-uart-receive-and-transmit-through-dma"
+      ]
+    },
+    {
+      "q": "enter standby mode and wake up the microcontroller",
+      "expect": [
+        "bmecp-ch18-developing-a-driver-to-enter-standby",
+        "g-bmecp-enter-a-low-power-mode-with-wfi-or-wfe"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "about": "Retrieval golden set for Local.CPP_Architecture: design and coding questions a developer asks that a section of 'Software Architecture with C++, Second Edition' answers. Hand-picked on 10 Oct 2026 from the refined unit titles. Run: tests/eval_search.py packs/Local.CPP_Architecture/.knowledge/knowledge.db --golden=tests/golden-architecture.json Extended with the generic (g-*) units that answer the same questions.",
+  "queries": [
+    {
+      "q": "how do I apply the dependency inversion principle in C++",
+      "expect": [
+        "sawcse-ch01-following-the-solid-and-dry-principl-dependency-inversion-principle"
+      ]
+    },
+    {
+      "q": "what is hexagonal architecture and when to use it",
+      "expect": [
+        "sawcse-ch02-introducing-hexagonal-architecture"
+      ]
+    },
+    {
+      "q": "run cleanup code when a scope exits, RAII guard",
+      "expect": [
+        "sawcse-ch06-writing-idiomatic-c-automating-scope-exit-actions-using",
+        "g-sawcse-run-cleanup-on-scope-exit-with-an-raii-guard",
+        "g-sawcse-use-a-scope-guard-for-cleanup-around-code-that-does-not-foll"
+      ]
+    },
+    {
+      "q": "rule of zero and rule of five for special member functions",
+      "expect": [
+        "sawcse-ch06-writing-idiomatic-c-adhering-to-the-rule-of-zero",
+        "sawcse-ch06-writing-idiomatic-c-adhering-to-the-rules-of-three-and-f"
+      ]
+    },
+    {
+      "q": "make assignment exception safe with copy and swap",
+      "expect": [
+        "sawcse-ch06-writing-idiomatic-c-providing-exception-safety-using-the",
+        "g-sawcse-implement-assignment-by-value-and-swap-for-strong-exception"
+      ]
+    },
+    {
+      "q": "retry a failed call and avoid cascading failures",
+      "expect": [
+        "sawcse-ch04-making-your-system-fault-tolerant-an-retrying-the-call-retry-pattern",
+        "sawcse-ch04-making-your-system-fault-tolerant-an-avoiding-cascading-failures"
+      ]
+    },
+    {
+      "q": "saga pattern with compensating transactions for distributed consistency",
+      "expect": [
+        "sawcse-ch04-understanding-the-peculiarities-of-d-saga-and-compensating-transaction-pa",
+        "g-sawcse-saga-distributed-transactions-with-compensating-steps",
+        "g-sawcse-orchestration-based-saga-a-central-controller-drives-the-ste"
+      ]
+    },
+    {
+      "q": "return an optional value instead of a sentinel, std::optional",
+      "expect": [
+        "sawcse-ch05-applying-std-optional",
+        "g-sawcse-use-std-optional-for-a-value-that-may-be-absent"
+      ]
+    },
+    {
+      "q": "what should a factory function return, unique_ptr or value",
+      "expect": [
+        "sawcse-ch06-creating-objects-choosing-the-return-type-of-a-factor",
+        "sawcse-ch06-creating-objects-using-factory-functions"
+      ]
+    },
+    {
+      "q": "policy-based design with template parameters",
+      "expect": [
+        "sawcse-ch06-writing-idiomatic-c-using-the-policy-based-design-idiom",
+        "g-sawcse-pass-behaviour-as-a-template-policy-with-a-do-nothing-defaul"
+      ]
+    },
+    {
+      "q": "curiously recurring template pattern for static polymorphism",
+      "expect": [
+        "sawcse-ch06-applying-the-curiously-recurring-tem",
+        "g-sawcse-curiously-recurring-template-pattern-for-static-dispatch"
+      ]
+    },
+    {
+      "q": "avoid heap allocations with small buffer optimization",
+      "expect": [
+        "sawcse-ch06-dealing-with-memory-efficiently-reducing-dynamic-allocations-using-s",
+        "sawcse-ch06-dealing-with-memory-efficiently-ensuring-there-are-no-unexpected-all",
+        "g-sawcse-store-small-heap-bound-data-inline-in-the-owning-object"
+      ]
+    },
+    {
+      "q": "event sourcing: store events instead of state",
+      "expect": [
+        "sawcse-ch02-exploring-the-event-sourcing-pattern",
+        "g-sawcse-store-the-changes-to-state-as-events-event-sourcing",
+        "g-sawcse-event-sourcing-store-every-change-as-an-immutable-event-and"
+      ]
+    },
+    {
+      "q": "layered architecture and its drawbacks",
+      "expect": [
+        "sawcse-ch02-understanding-layered-architecture"
+      ]
+    },
+    {
+      "q": "make a type non-copyable",
+      "expect": [
+        "sawcse-ch06-writing-idiomatic-c-implementing-non-copyable-types",
+        "g-sawcse-delete-copy-and-move-operations-to-make-a-type-non-copyable"
+      ]
+    },
+    {
+      "q": "CQRS separate reads from writes",
+      "expect": [
+        "x-sawcse-ch04-achieving-performance-at-scale-1",
+        "g-sawcse-separate-the-read-model-from-the-write-model-cqrs"
+      ]
+    }
+  ]
+}

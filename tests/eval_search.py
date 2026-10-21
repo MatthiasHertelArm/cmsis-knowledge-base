@@ -1,6 +1,6 @@
 """The golden set against the prototype's search (kb_lib), with and without the embeddings.
 
-Usage: .venv/bin/python tests/eval_search.py [build/knowledge.db] [--k=5]
+Usage: .venv/bin/python tests/eval_search.py [build/knowledge.db] [--k=5] [--golden=tests/golden-books.json]
 Compares BM25 alone with BM25 plus vector search (rank fusion), to judge what embeddings would
 add to the extension, whose search is BM25 only (tests/eval_search.js measures that one).
 """
@@ -15,7 +15,8 @@ from kb_lib import KB  # noqa: E402
 args = [a for a in sys.argv[1:] if not a.startswith("--")]
 k = int(next((a[4:] for a in sys.argv[1:] if a.startswith("--k=")), 5))
 db = Path(args[0]) if args else ROOT / "build/knowledge.db"
-golden = json.loads((ROOT / "tests/golden.json").read_text(encoding="utf-8"))["queries"]
+golden_file = next((a[9:] for a in sys.argv[1:] if a.startswith("--golden=")), None)
+golden = json.loads((Path(golden_file) if golden_file else ROOT / "tests/golden.json").read_text(encoding="utf-8"))["queries"]
 
 for use_vec in (False, True):
     kb = KB(db, use_vec=use_vec)
