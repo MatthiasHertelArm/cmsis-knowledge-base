@@ -236,8 +236,10 @@ def items_errcat(a):
             parts.append("## README fix\n\n" + fix)
         if trigger:
             parts.append("## Trigger in the source\n\n" + trigger)
-        # The hash leaves the source lines out: line numbers move with every commit, the message does not.
-        stable = "\n\n".join(parts)
+        # The hash covers the message, its trigger and where it is printed, not the source lines (line numbers
+        # move with every commit) and not the README or an earlier analysis (errcat_merge.py rewrites them):
+        # the same before and after the merge, so a message is sent once.
+        stable = "\n".join(head[:6] + [f"Source: {src_path}"]) + ("\n\n" + trigger if trigger else "")
         contexts = [c for c in (source_context(a.devtools, s) for s in [src] + list(meta.get("locations") or [])) if c]
         text = NOTES["errcat"] + "\n\n" + stable + ("\n\n## Source lines\n\n" + "\n\n".join(contexts) if contexts else
                                                       "\n\n## Source lines\n\n(the clone is not available: answer from the message and the trigger alone, confidence at most medium)")
@@ -493,9 +495,9 @@ def main():
               f"(--force re-sends all {len(items)})")
     due = [it for it in items if a.force or it.id not in m["items"] or m["items"][it.id]["sha"] != it.sha]
     cut = a.limit and len(due) > a.limit
+    print(f"{stage}: {len(items)} items, {len(due)} due" + (f", {a.limit} sent (--limit)" if cut else ""))
     if cut:
         due = due[:a.limit]
-    print(f"{stage}: {len(items)} items, {len(due)} due" + (f" (limited to {a.limit})" if cut else ""))
     if a.dry_run:
         for it in due[:50]:
             print(f"  {it.id}  ({len(it.text)} chars)")
