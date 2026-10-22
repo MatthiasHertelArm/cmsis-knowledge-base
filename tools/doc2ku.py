@@ -598,27 +598,35 @@ def main(cfg, docs, out, only=None, get=False):
         # A source with `multi:` is several small repositories under one collection name.
         for part in src.get("multi") or [None]:
             expanded.append({**src, **part, "multi": None, "first": part is src["multi"][0]} if part else src)
-    cleared = set()
+    wanted = [s for s in expanded if not (only and s["name"] not in only) and s.get("mode", "V") == "V"]
     for src in expanded:
-        if only and src["name"] not in only:
-            continue
-        if src.get("mode", "V") != "V":
+        if src.get("mode", "V") != "V" and not (only and src["name"] not in only):
             print(f"{src['name']:28s} skipped: mode {src.get('mode')}")
-            continue
-        repo = Path(docs) / src.get("dir", src["repo"].split("/")[-1])
-        if not repo.exists() and get:
-            print(f"{src['name']:28s} cloning {src['repo']}")
-            fetch(src, repo)
-        elif repo.exists() and get and src.get("sparse"):
-            # A second source on the same sparse clone adds its paths.
-            subprocess.run(["git", "-C", str(repo), "sparse-checkout", "add"] + [f"/{p.strip('/')}" for p in src["sparse"]], check=False)
+    clone_of = lambda src: Path(docs) / src.get("dir", src["repo"].split("/")[-1])
+    if get:
+        # Every clone first, so that the conversion knows which repositories are out of reach.
+        for src in wanted:
+            repo = clone_of(src)
+            if not repo.exists():
+                print(f"{src['name']:28s} cloning {src['repo']}")
+                fetch(src, repo)
+            elif src.get("sparse"):
+                # A second source on the same sparse clone adds its paths.
+                subprocess.run(["git", "-C", str(repo), "sparse-checkout", "add"] + [f"/{p.strip('/')}" for p in src["sparse"]], check=False)
+    # The units of a repository without a clone stay as committed, also inside a collection shared with others.
+    missing = {src["repo"] for src in wanted if not clone_of(src).exists()}
+    cleared = set()
+    for src in wanted:
+        repo = clone_of(src)
         if not repo.exists():
             print(f"{src['name']:28s} missing clone {repo}")
             continue
         target = out / src["name"]
         if target.exists() and src["name"] not in cleared:
             for old in target.glob("*.md"):
-                old.unlink()
+                head = old.read_text(encoding="utf-8")[:2000]
+                if not any(f"{r}@" in head for r in missing):
+                    old.unlink()
         cleared.add(src["name"])
         n = convert(src, repo, out, used)
         total += n
