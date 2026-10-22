@@ -6,8 +6,8 @@ title: "MobileSAM Prompt Segmentation on Ethos-U: Limitations"
 summary: "See model export and runtime for details of each stage."
 status: "draft"
 collection: "executorch-arm"
-source: "pytorch/executorch@658390c:examples/arm/mobilesam_prompt_segmentation_example_ethos_u/README.md"
-doc_source: "https://github.com/pytorch/executorch/blob/658390c/examples/arm/mobilesam_prompt_segmentation_example_ethos_u/README.md#limitations"
+source: "pytorch/executorch@6368414:examples/arm/mobilesam_prompt_segmentation_example_ethos_u/README.md"
+doc_source: "https://github.com/pytorch/executorch/blob/6368414/examples/arm/mobilesam_prompt_segmentation_example_ethos_u/README.md#limitations"
 license: "BSD-3-Clause"
 mode: "V"
 ---
@@ -20,5 +20,5 @@ mode: "V"
 - The default fast FVP mode validates correctness. Its counters are not a
   performance benchmark or a measurement of real-device latency.
 
-See [model export](https://github.com/pytorch/executorch/blob/658390c/examples/arm/mobilesam_prompt_segmentation_example_ethos_u/model_export/README.md) and
-[runtime](https://github.com/pytorch/executorch/blob/658390c/examples/arm/mobilesam_prompt_segmentation_example_ethos_u/runtime/README.md) for details of each stage.
+See [model export](https://github.com/pytorch/executorch/blob/6368414/examples/arm/mobilesam_prompt_segmentation_example_ethos_u/model_export/README.md) and
+[runtime](https://github.com/pytorch/executorch/blob/6368414/examples/arm/mobilesam_prompt_segmentation_example_ethos_u/runtime/README.md) for details of each stage.

@@ -6,7 +6,7 @@ title: "Rollback protection in TF-M secure boot: Boot flow with anti-rollback pr
 summary: "During software upgrade as part of the image validation process the new and active image security counters must be compared."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/booting/secure_boot_rollback_protection.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/booting/secure_boot_rollback_protection.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/booting/secure_boot_rollback_protection.html#boot-flow-with-anti-rollback-protection"
 license: "BSD-3-Clause"
 mode: "V"

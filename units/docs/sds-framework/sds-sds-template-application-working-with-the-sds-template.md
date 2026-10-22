@@ -6,25 +6,25 @@ title: "SDS Template Application: Working with the SDS Template"
 summary: "The SDS template application and SDSIO interface layers are part of the SDS pack."
 status: "draft"
 collection: "sds-framework"
-source: "ARM-software/SDS-Framework@4459441:documentation/template.md"
-doc_source: "https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/template.md#working-with-the-sds-template"
+source: "ARM-software/SDS-Framework@c18efee:documentation/template.md"
+doc_source: "https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/template.md#working-with-the-sds-template"
 license: "Apache-2.0"
 mode: "V"
 ---
 
-The SDS template application and [SDSIO interface layers](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/sdsio.md) are part of the [SDS pack](https://www.keil.arm.com/packs/sds-arm).
+The SDS template application and [SDSIO interface layers](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/sdsio.md) are part of the [SDS pack](https://www.keil.arm.com/packs/sds-arm).
 
 Several [Board Support Packs (BSP)](https://www.keil.arm.com/packs/) contain board layers that support the required API interfaces. Refer to the *Overview* page of the pack to check the *Provided connection API Interface* of the layers. The table below lists the required API interfaces that should be provided by the `Board-Layer`.  
 
 Required API Interface      | Description     |
 :---------------------------|:----------------|
-[**SDSIO File System**](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/sdsio.md#layer-sdsio_fs)  |  |
+[**SDSIO File System**](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/sdsio.md#layer-sdsio_fs)  |  |
 CMSIS_MCI                   | [CMSIS-Driver MCI](https://arm-software.github.io/CMSIS_6/latest/Driver/group__mci__interface__gr.html) interface to memory card. |
 CMSIS_VIO, STDOUT, STDERR   | For user button and printf output. |
-[**SDSIO Network**](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/sdsio.md#layer-sdsio_network)  |  |
+[**SDSIO Network**](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/sdsio.md#layer-sdsio_network)  |  |
 CMSIS_ETH                   | [CMSIS-Driver Ethernet](https://arm-software.github.io/CMSIS_6/latest/Driver/group__eth__interface__gr.html) MAC/PHY interface. |
 CMSIS_VIO, STDOUT, STDERR   | For user button and printf output. |
-[**SDSIO USB Device**](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/sdsio.md#layer-sdsio_usb)   |  |
+[**SDSIO USB Device**](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/sdsio.md#layer-sdsio_usb)   |  |
 CMSIS_USB_Device            | [CMSIS-Driver USB Device](https://arm-software.github.io/CMSIS_6/latest/Driver/group__usbd__interface__gr.html) interface. |
 CMSIS_VIO, STDOUT, STDERR   | For user button and printf output. |
 
@@ -56,7 +56,7 @@ In the [**Create a new solution**](https://mdk-packs.github.io/vscode-cmsis-solu
 After the *csolution project* loads, VS Code displays a dialog where you can select a compatible software layer and an installed compiler toolchain.
 
 !!! Note
-    - If no compatible software layer is available for SDS, use the `V2M-MPS3-SSE-300-FVP` board. Then adapt `SDS.csolution.yml` and create a software layer for your target hardware as outlined in [Compile for Custom Hardware](#compile-for-custom-hardware). The [layer: sdsio_rtt](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/sdsio.md#layer-sdsio_rtt) has minimal requirements because it uses the debug adapter as the communication interface to the SDSIO-Server.
+    - If no compatible software layer is available for SDS, use the `V2M-MPS3-SSE-300-FVP` board. Then adapt `SDS.csolution.yml` and create a software layer for your target hardware as outlined in [Compile for Custom Hardware](#compile-for-custom-hardware). The [layer: sdsio_rtt](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/sdsio.md#layer-sdsio_rtt) has minimal requirements because it uses the debug adapter as the communication interface to the SDSIO-Server.
 
 (figure: Configure Solution)
 

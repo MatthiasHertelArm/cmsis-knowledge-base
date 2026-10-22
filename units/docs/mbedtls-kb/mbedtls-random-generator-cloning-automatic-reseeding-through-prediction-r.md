@@ -6,8 +6,8 @@ title: "random generator cloning: Automatic reseeding through prediction resista
 summary: "If the random generator has prediction resistance, it will automatically reseed every time it is used, so cloning does not require any special handling. You can enable prediction resistance in any of the following ways:"
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/random_generator_cloning.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/random_generator_cloning.md#automatic-reseeding-through-prediction-resistance"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/random_generator_cloning.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/random_generator_cloning.md#automatic-reseeding-through-prediction-resistance"
 license: "Apache-2.0"
 mode: "V"
 ---

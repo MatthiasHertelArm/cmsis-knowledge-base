@@ -6,8 +6,8 @@ title: "Introduction to Devicetree Bindings: What the build system does with bin
 summary: "The build system uses bindings both to validate devicetree nodes and to convert the devicetree's contents into the generated :ref:devicetree_generated.h <dt-outputs> header file."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/build/dts/bindings-intro.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/build/dts/bindings-intro.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/build/dts/bindings-intro.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/build/dts/bindings-intro.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

@@ -6,7 +6,7 @@ title: "Initial Attestation Service Integration Guide: Initial attestation token
 summary: "The initial attestation token is planned to be aligned with future version of Entity Attestation Token format. The token is encoded according to the CBOR format and signed according to COSE standard."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/integration_guide/services/tfm_attestation_integration_guide.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/integration_guide/services/tfm_attestation_integration_guide.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/integration_guide/services/tfm_attestation_integration_guide.html#initial-attestation-token-iat-data-encoding"
 license: "BSD-3-Clause"
 mode: "V"

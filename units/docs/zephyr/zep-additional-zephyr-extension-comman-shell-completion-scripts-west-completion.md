@@ -6,8 +6,8 @@ title: "Additional Zephyr extension commands: Shell completion scripts: `west co
 summary: "The completion extension command outputs shell completion scripts that can then be used directly to enable shell completion for the supported shells."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/develop/west/zephyr-cmds.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/develop/west/zephyr-cmds.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/develop/west/zephyr-cmds.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/develop/west/zephyr-cmds.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

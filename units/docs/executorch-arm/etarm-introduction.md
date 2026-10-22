@@ -6,13 +6,13 @@ title: "Introduction"
 summary: "As you have seen in the Arm® Ethos™-U NPU backend tutorial, ExecuTorch has two distinct parts: - Ahead-of-time(AoT) compile flow - Ethos-U on-device runtime"
 status: "draft"
 collection: "executorch-arm"
-source: "pytorch/executorch@658390c:examples/arm/ethos-u-porting-guide.md"
-doc_source: "https://github.com/pytorch/executorch/blob/658390c/examples/arm/ethos-u-porting-guide.md"
+source: "pytorch/executorch@6368414:examples/arm/ethos-u-porting-guide.md"
+doc_source: "https://github.com/pytorch/executorch/blob/6368414/examples/arm/ethos-u-porting-guide.md"
 license: "BSD-3-Clause"
 mode: "V"
 ---
 
-As you have seen in the [Arm® Ethos™-U NPU backend tutorial](https://github.com/pytorch/executorch/blob/658390c/examples/arm/../../docs/source/backends/arm-ethos-u/tutorials/ethos-u-getting-started.md), ExecuTorch has two distinct parts:
+As you have seen in the [Arm® Ethos™-U NPU backend tutorial](https://github.com/pytorch/executorch/blob/6368414/examples/arm/../../docs/source/backends/arm-ethos-u/tutorials/ethos-u-getting-started.md), ExecuTorch has two distinct parts:
 - Ahead-of-time(AoT) compile flow
 - Ethos-U on-device runtime
 

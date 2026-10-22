@@ -6,8 +6,8 @@ title: "Vela Bug Reporting: Bug Reporting Process"
 summary: "The entire process of handling a bug is summarized in the following steps."
 status: "draft"
 collection: "ethos-u-vela"
-source: "artificial-intelligence/ethos-u/ethos-u-vela@eb9cf0d:BUGS.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/eb9cf0d/BUGS.md#bug-reporting-process"
+source: "artificial-intelligence/ethos-u/ethos-u-vela@4bd6685:BUGS.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/4bd6685/BUGS.md#bug-reporting-process"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -107,5 +107,5 @@ A confirmation e-mail will be sent out to the linked e-mail address.
 Any further changes to the report will be sent out in the same way.
 
 If you also have a fix for the issue being reported then please follow the
-[Vela Contributions Guide](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/eb9cf0d/CONTRIBUTING.md) to submit your patch. Also, please
+[Vela Contributions Guide](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/4bd6685/CONTRIBUTING.md) to submit your patch. Also, please
 include a link to your merge request in the issue description.

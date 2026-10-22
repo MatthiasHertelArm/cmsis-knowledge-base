@@ -6,15 +6,15 @@ title: "CMSIS-Core Files: CMSIS-Core Standard Files"
 summary: "The CMSIS-Core Standard file implement all attributes specific to Arm processor cores and generally do not need any modifications."
 status: "draft"
 collection: "cmsis-core"
-source: "ARM-software/CMSIS_6@26206e4:CMSIS/Documentation/Doxygen/Core/src/core_std_files.md"
-doc_source: "https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Core/src/core_std_files.md#cmsis-core-standard-files"
+source: "ARM-software/CMSIS_6@acf7392:CMSIS/Documentation/Doxygen/Core/src/core_std_files.md"
+doc_source: "https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Core/src/core_std_files.md#cmsis-core-standard-files"
 license: "Apache-2.0"
 mode: "V"
 ---
 
 The CMSIS-Core Standard file implement all attributes specific to Arm processor cores and generally do not need any modifications.
 
-The files are provided by Arm as CMSIS-Core software component that is part of the [CMSIS Software pack](https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Core/src/../General/cmsis_pack.html). The CMSIS-Core standard files can be split into following categories explained below:
+The files are provided by Arm as CMSIS-Core software component that is part of the [CMSIS Software pack](https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Core/src/../General/cmsis_pack.html). The CMSIS-Core standard files can be split into following categories explained below:
 
  - cmsis_processor_files
  - cmsis_compiler_files

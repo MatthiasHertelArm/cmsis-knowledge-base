@@ -6,8 +6,8 @@ title: "ctrace multi-source design: Decisions revised after the migration"
 summary: "The following changes supersede assumptions in the original plan:"
 status: "draft"
 collection: "devtools-docs"
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/ctrace/docs/multi-source-design.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/multi-source-design.md#decisions-revised-after-the-migration"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/ctrace/docs/multi-source-design.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/5f04db7/tools/ctrace/docs/multi-source-design.md#decisions-revised-after-the-migration"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -23,7 +23,7 @@ The following changes supersede assumptions in the original plan:
   solution set, including all its supported inputs.
 - CTF bundles now always use `<solution-set>.<channel>.ctf`, also for single-input runs. CSV retains its
   channel-qualified path. Existing `<solution-set>.ctf` bundles are not migrated or removed; the published CTF path
-  still needs alignment as recorded in the [CTF profile](https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/ctf-format.md#files-and-common-structure).
+  still needs alignment as recorded in the [CTF profile](https://github.com/Open-CMSIS-Pack/devtools/blob/5f04db7/tools/ctrace/docs/ctf-format.md#files-and-common-structure).
 - Formatter skips and initial unsynchronized ITM bytes now produce non-failing byte-count Info annotations. They
   carry no invented route or time; a route receiving payload without a committed hardware sync reports an Error.
 - A fatal decoder abort retains committed CSV rows with an unfiltered input-wide abort record. Incomplete CTF

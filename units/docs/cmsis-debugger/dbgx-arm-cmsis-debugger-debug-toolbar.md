@@ -6,8 +6,8 @@ title: "Arm CMSIS Debugger: Debugger User Interface / Debug toolbar"
 summary: "During debugging, the Debug toolbar contains actions to control the flow of the debug session, such as stepping through code, pausing execution, and stopping the debug session."
 status: "draft"
 collection: "cmsis-debugger"
-source: "Open-CMSIS-Pack/vscode-cmsis-debugger@28c1601:README.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/blob/28c1601/README.md#debug-toolbar"
+source: "Open-CMSIS-Pack/vscode-cmsis-debugger@12cb62a:README.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/blob/12cb62a/README.md#debug-toolbar"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -19,7 +19,7 @@ During debugging, the **Debug toolbar** contains actions to control the flow of 
 (figure: Debug toolbar)
 
 | Action | Description |
-|--------|-------------|
+| -------- | ------------- |
 | Continue/Pause | **Continue**: Resume normal program execution (up to the next breakpoint).
 **Pause**: Inspect code executing at the current location. |
 | Step Over | Execute the next statement as a single command without inspecting or following its component steps. |

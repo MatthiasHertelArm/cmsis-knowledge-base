@@ -6,7 +6,7 @@ title: "Cooperative Scheduling Rules: Scheduler Rules for context switching betw
 summary: "To allow coherent cooperative scheduling, following set of rules are imposed on security state changes. The switching between SPE and NSPE can be triggered in multiple ways."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/software/tfm_cooperative_scheduling_rules.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/software/tfm_cooperative_scheduling_rules.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/software/tfm_cooperative_scheduling_rules.html#scheduler-rules-for-context-switching-between-spe-and-nspe"
 license: "BSD-3-Clause"
 mode: "V"

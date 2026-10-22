@@ -2,8 +2,8 @@
 type: "procedure"
 domain: "project"
 title: "start-cmsis-project"
-summary: "Create the first csolution for a board or device: a minimal project, or an example or template of its pack"
-triggers: ["Create the first CMSIS solution for a board or device in a folder that has no *.csolution.yml yet: a minimal project (CMSIS CORE, the DFP's Device:Startup component, a bare main) that every device with a DFP can have, or an example or template of the board's pack when one exists; write the files, open the solution with cmsis_action open_solution and build with cmsis_action build, which fetches the packs. Use from cmsis-bootstrap or cmsis-project when a new project has to be started for a verified board, device and pack. Not for extending a solution that exists (add-cmsis-target) and not for Zephyr (start-zephyr-project)."]
+summary: "Creates the first CMSIS csolution for a verified board or device, either a minimal project or an example or template of its pack, then opens and builds it with cmsis_action."
+triggers: ["Create the first CMSIS solution for a board or device", "a folder that has no *.csolution.yml yet", "Use from cmsis-bootstrap or cmsis-project when a new project has to be started", "a new project has to be started for a verified board, device and pack"]
 status: "draft"
 source: "start-cmsis-project/SKILL.md"
 license: "Apache-2.0"
@@ -12,6 +12,11 @@ sections: ["1. Inputs", "2. Choose the starting point", "3. Examples and templat
 id: "proc-start-cmsis-project"
 requires: ["proc-add-board-layer", "proc-add-cmsis-target", "proc-check-cmsis-environment", "proc-cmsis-bootstrap", "proc-cmsis-debugger-setup", "proc-identify-cmsis-board-support"]
 references: ["asset-start-cmsis-project-assets-project-main-c", "asset-start-cmsis-project-assets-project-project-cproject-yml", "asset-start-cmsis-project-assets-project-csolution-yml", "asset-start-cmsis-project-assets-vcpkg-configuration-json"]
+description: "Create the first CMSIS solution for a board or device in a folder that has no *.csolution.yml yet: a minimal project (CMSIS CORE, the DFP's Device:Startup component, a bare main) that every device with a DFP can have, or an example or template of the board's pack when one exists; write the files, open the solution with cmsis_action open_solution and build with cmsis_action build, which fetches the packs. Use from cmsis-bootstrap or cmsis-project when a new project has to be started for a verified board, device and pack. Not for extending a solution that exists (add-cmsis-target) and not for Zephyr (start-zephyr-project)."
+stop_conditions: ["the folder, which must not contain a `*.csolution.yml` (stop and name `proc-add-cmsis-target` (`knowledge_get`) when it does);", "Show the user the qualifying entries with their descriptions and let them choose, the minimal project always among the options.", "ask when the name does not fit", "otherwise ask which one", "ask when the chosen one is not listed.", "stop and report when there is none.", "take the core the user named, otherwise ask which one; when the user does not care, the first core the DFP lists is the boot core, say so in the report", "ask when it was not named; the first listed core is the boot core", "Show the variants it names, let the user choose, write the full identifier (for example `Device:Startup&C Startup`) into the cproject, build again", "Remove the rendered files, report it, and offer an example or template of the pack (step 3), or `proc-add-board-layer` (`knowledge_get`) once a solution exists.", "Ask the user to answer the prompts of the Arm Tools Environment Manager and the CMSIS Solution extension in the window, then build again", "with `AC6` the user must accept the licence once"]
+unmapped: ["Device Family Pack (DFP)", "Board Support Pack (BSP)", "Arm Tools Environment Manager"]
+applies_to: {"tool": ["csolution", "cmsis-solution"]}
+stage2: "proc-start-cmsis-project.json"
 ---
 
 # Start a CMSIS project

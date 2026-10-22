@@ -6,7 +6,7 @@ title: "CSolution Project Structure: Directory Structure / \\_RTE\\_ Preprocesso
 summary: "The preprocessor symbol RTE is added to the compiler invocation when a CMSIS build system manages the file RTE_Components.h. This symbol can be used as follows:"
 status: "draft"
 collection: "cmsis-toolbox"
-source: "Open-CMSIS-Pack/cmsis-toolbox@6c04673:docs/build-overview.md"
+source: "Open-CMSIS-Pack/cmsis-toolbox@3ce8307:docs/build-overview.md"
 doc_source: "https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview/#rte-preprocessor-symbol"
 license: "Apache-2.0"
 mode: "V"

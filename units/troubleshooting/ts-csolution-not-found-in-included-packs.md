@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["component '<…>' not found in included packs<…>\n  did you mean '<…>'?<…>"]
 symptom_regex: "^component '.+?' not found in included packs.+?\\\n  did you mean '.+?'\\?.+?$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2001"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:2001"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

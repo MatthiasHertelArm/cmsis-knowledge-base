@@ -6,8 +6,8 @@ title: "Why use Ephemeral Diffie-Hellman: Ephemeral Diffie-Hellman vs static Dif
 summary: "When a key exchange uses Ephemeral Diffie-Hellman a temporary DH key is generated for every connection and thus the same key is never used twice."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/cryptography/ephemeral-diffie-hellman.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/cryptography/ephemeral-diffie-hellman.md#ephemeral-diffie-hellman-vs-static-diffie-hellman"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/cryptography/ephemeral-diffie-hellman.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/cryptography/ephemeral-diffie-hellman.md#ephemeral-diffie-hellman-vs-static-diffie-hellman"
 license: "Apache-2.0"
 mode: "V"
 ---

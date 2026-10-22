@@ -6,8 +6,8 @@ title: "Troubleshooting: Error with Python environment"
 summary: "If trying to build and you encounter an error similar to the following:"
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/troubleshooting.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/troubleshooting.md#error-with-python-environment"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/troubleshooting.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/troubleshooting.md#error-with-python-environment"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -47,7 +47,7 @@ You can fix this error by installing Python virtual environment and removing the
 rm -r resources_downloaded
 ```
 
-Follow the instructions to [update Python3 package to a supported version](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./troubleshooting.md#how-to-update-python3-package-to-a-supported-version)
+Follow the instructions to [update Python3 package to a supported version](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./troubleshooting.md#how-to-update-python3-package-to-a-supported-version)
 before attempting a rebuild with:
 
 ```commandline

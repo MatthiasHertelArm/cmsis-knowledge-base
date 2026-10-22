@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["executing generator '<…>' for context '<…>' failed"]
 symptom_regex: "^executing generator '.+?' for context '.+?' failed$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5177"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:5177"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

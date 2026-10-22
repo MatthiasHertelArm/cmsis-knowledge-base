@@ -6,8 +6,8 @@ title: "Memory considerations: Tensor arena and neural network model memory plac
 summary: "The evaluation kit uses the name activation buffer for the tensor arena in the TensorFlow Lite Micro framework and compute buffer region in the ExecuTorch framework."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/memory_considerations.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/memory_considerations.md#tensor-arena-and-neural-network-model-memory-placement"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/memory_considerations.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/memory_considerations.md#tensor-arena-and-neural-network-model-memory-placement"
 license: "Apache-2.0"
 mode: "V"
 ---

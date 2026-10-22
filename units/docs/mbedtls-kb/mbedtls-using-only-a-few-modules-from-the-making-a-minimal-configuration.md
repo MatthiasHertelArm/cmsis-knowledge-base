@@ -6,8 +6,8 @@ title: "Using only a few modules from the library: Making a minimal configuratio
 summary: "The file include/mbedtls/mbedtls_config.h contains a list of features and build-time options. To design a minimal configuration, start with a blank file and add the options you need. The documentation of each option describes its dependencies, if any."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/using-loose-modules-without-the-full-library.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/using-loose-modules-without-the-full-library.md#making-a-minimal-configuration"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/using-loose-modules-without-the-full-library.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/using-loose-modules-without-the-full-library.md#making-a-minimal-configuration"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -20,7 +20,7 @@ Where to put your own configuration file? There are three choices:
 * You can place a file called `mbedtls/mbedtls_config.h` at some location in the include file search path that comes before the `include` directory from the Mbed TLS source tree.
 * You can give your configuration file a different name and set the preprocessor symbol `MBEDTLS_CONFIG_FILE` to the location of that file, including surrounding quotes.
 
-For more information, see [How to configure Mbed TLS](https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/../compiling-and-building/how-do-i-configure-mbedtls.md).
+For more information, see [How to configure Mbed TLS](https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/../compiling-and-building/how-do-i-configure-mbedtls.md).
 
 ### Random generator example
 

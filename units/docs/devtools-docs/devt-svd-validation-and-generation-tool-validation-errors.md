@@ -6,8 +6,8 @@ title: "SVD Validation and Generation Tool: Error and Warning Messages / Validat
 summary: "SVD Validation and Generation Tool: Error and Warning Messages / Validation errors"
 status: "draft"
 collection: "devtools-docs"
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/svdconv/SVDConv/README.md#validation-errors"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/5f04db7/tools/svdconv/SVDConv/README.md#validation-errors"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -59,3 +59,5 @@ _Part of: Error and Warning Messages_
 | M241 |  ERROR |  Parse Error: 'VALUE' invalid for Array generation |  Correct SVD.|
 | M242 |  WARNING |  'LEVEL' 'NAME' `<dimArrayIndex>` found, but no `<dim>` |  Correct SVD.|
 | M243 |  WARNING |  'LEVEL' 'NAME' `<dimArrayIndex>` found, but `<dim>` does not describe an array |  Correct SVD.|
+| M249 |  ERROR |  Dimension expansion exceeds the per-input limit of 'NUM' generated indices and model copies. |  Reduce the total expanded model size.|
+| M250 |  ERROR |  Dimension 'NAME' has an invalid or overflowing index/address range. |  Correct the dimension range or increment.|

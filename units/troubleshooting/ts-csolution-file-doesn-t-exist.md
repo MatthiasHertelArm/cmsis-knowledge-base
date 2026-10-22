@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["file doesn't exist: '<…>'"]
 symptom_regex: "^file doesn't exist: '.+?'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:22"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:22"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

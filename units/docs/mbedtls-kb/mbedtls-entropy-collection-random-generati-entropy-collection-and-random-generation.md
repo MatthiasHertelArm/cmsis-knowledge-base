@@ -6,8 +6,8 @@ title: "Entropy collection, random generation with threads: Entropy collection a
 summary: "Random generators, such as the CTR-DRBG module, require a source of entropy to kick-start and refresh their own internal entropy state. Mbed TLS includes the Entropy collection module to provide a central pool of entropy to extract entropy from."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/development/entropy-collection-and-random-generation-in-threaded-environment.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/development/entropy-collection-and-random-generation-in-threaded-environment.md#entropy-collection-and-random-generation"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/development/entropy-collection-and-random-generation-in-threaded-environment.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/development/entropy-collection-and-random-generation-in-threaded-environment.md#entropy-collection-and-random-generation"
 license: "Apache-2.0"
 mode: "V"
 ---

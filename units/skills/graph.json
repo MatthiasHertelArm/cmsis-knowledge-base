@@ -9,6 +9,7 @@
    "triggers": [],
    "status": "draft",
    "source": "bring-up/board-debug-knowledge/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "A named board, its fitted device when known, board manual/design guide/schematics or equivalent authoritative documentation, and the requested debug or trace purpose.",
    "portability": "Support any board and MCU family. Do not assume a board connector, probe, trace transport, voltage level, or jumper convention.",
    "tools": [],
@@ -31,6 +32,7 @@
    "triggers": [],
    "status": "draft",
    "source": "bring-up/check-pyocd-availability/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "The active host environment; an open Visual Studio Code workspace or its integrated terminal when Visual Studio Code is in use.",
    "portability": "Support Windows, macOS, and Linux. Do not assume a device, probe, target, Python installation, or a default Visual Studio Code extensions directory.",
    "tools": [
@@ -55,6 +57,7 @@
    "triggers": [],
    "status": "draft",
    "source": "bring-up/debug-access-knowledge/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "An existing target `.pdsc`, selected family/subFamily/device/variant scope, affected processor descriptions, and available device documentation or startup logs.",
    "portability": "Support any existing CMSIS Device Family Pack. Do not assume a device family, debug probe, toolchain, or active target.",
    "tools": [
@@ -91,6 +94,7 @@
    "triggers": [],
    "status": "draft",
    "source": "bring-up/debug-knowledge/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "An existing target `.pdsc`, selected family/subFamily/device/variant scope, affected processor descriptions, documentation or target startup logs, and a current `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` record covering the selected scope.",
    "portability": "Support any existing CMSIS Device Family Pack. Do not assume a device family, debug probe, toolchain, or active target.",
    "tools": [],
@@ -115,7 +119,8 @@
    "domain": "bring-up",
    "title": "debug-knowledge-contract",
    "status": "draft",
-   "source": "bring-up/debug-knowledge/references/debug-knowledge-contract.md"
+   "source": "bring-up/debug-knowledge/references/debug-knowledge-contract.md",
+   "license": "Apache-2.0"
   },
   "proc-pyocd-detect-debug-topology": {
    "kind": "knowledge",
@@ -126,6 +131,7 @@
    "triggers": [],
    "status": "draft",
    "source": "bring-up/pyocd-detect-debug-topology/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "Complete captured stdout and stderr from `pyocd gdbserver -vv --target cortex_m`, or an accessible target plus a successful `$check-pyocd-availability` result for a new scan. No supplied target or probe context is required when exactly one target is attached; provide a selection only when multiple targets are attached. Documented unlock, power-up, and recovery steps are required before a repeat scan.",
    "portability": "Support any target pyOCD can probe. Do not assume that a successful scan exposes every powered-down, reset-held, debug-locked, or disabled subsystem.",
    "tools": [
@@ -151,6 +157,7 @@
    "triggers": [],
    "status": "draft",
    "source": "bring-up/resolve-official-device-documentation/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "A failed URL, document title or identifier when known, vendor, product or device family, and the required document type.",
    "portability": "Support any vendor and MCU family. Do not assume a vendor portal, account, product naming scheme, or document revision.",
    "tools": [],
@@ -173,6 +180,7 @@
    "triggers": [],
    "status": "draft",
    "source": "bring-up/trace-knowledge/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "An existing target `.pdsc`, selected family/subFamily/device/variant scope, affected processor descriptions, and available device documentation or target startup logs. A current `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` record is supporting input when trace evidence needs a processor association, debug connection, DP/AP path, protocol, or dormant-state fact.",
    "portability": "",
    "tools": [
@@ -199,7 +207,8 @@
    "domain": "bring-up",
    "title": "trace-knowledge-contract",
    "status": "draft",
-   "source": "bring-up/trace-knowledge/references/trace-knowledge-contract.md"
+   "source": "bring-up/trace-knowledge/references/trace-knowledge-contract.md",
+   "license": "Apache-2.0"
   },
   "proc-cmsis-stream": {
    "kind": "knowledge",
@@ -210,6 +219,7 @@
    "triggers": [],
    "status": "draft",
    "source": "cmsis-stream/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "The component specification listed below and the destination folders for the generated Python description and C++ wrapper. Update `__init__.py` in the specified Python folder to import the new component.",
    "portability": "Generate descriptions and wrappers for the CMSIS Stream APIs described below. Device, compiler, build-system, debugger, and RTOS choices come from the input project; this skill does not select them. Confirm the project's CMSIS Stream API supports the required component features. Each component is self-contained so it can easily be plugged into a CMSIS Stream graph. Generate it from the user's specification; the Python and C++ destination folders determine where to write its files. Knowing or inspecting other components is not a prerequisite.",
    "tools": [],
@@ -232,6 +242,7 @@
    "triggers": [],
    "status": "draft",
    "source": "devops/create-csolution-github-action/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "A Git repository containing `.vscode/cmsis.json`, the loaded `*.csolution.yml`, and a reproducible CI tool configuration.",
    "portability": "The workflow runs on `ubuntu-latest`. Device, compiler, RTOS, and debugger dependencies come only from the selected project. FVP tests require an FVP provided by the project tool environment.",
    "tools": [
@@ -285,6 +296,7 @@
    "triggers": [],
    "status": "draft",
    "source": "ethos-u/evaluate-ethos-u-variants/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "A user-provided path to an existing pre-trained, quantized `.tflite` or `.tosa` model. Ask for this path when it is absent; do not select or download a model.",
    "portability": "The runner supports Windows, macOS, and Linux host systems. The default `Arm/vela.ini` systems are generic reference configurations for evaluation, not descriptions of a production device.",
    "tools": [
@@ -322,6 +334,7 @@
    "triggers": [],
    "status": "draft",
    "source": "pack/apply-confirmed-pdsc-proposal/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "Complete debug or trace proposal in conversation with exact XML and target paths, explicit confirmation for every user-owned file, and a named common plus domain-specific validation plan.",
    "portability": "Support any existing CMSIS Device Family Pack. Do not assume a device family, debugger, toolchain, or active target.",
    "tools": [],
@@ -344,6 +357,7 @@
    "triggers": [],
    "status": "draft",
    "source": "pack/generate-debug-description/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "An existing target `.pdsc`, selected family/subFamily/device/variant scope, affected `<processor>` descriptions, and a current `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` record.",
    "portability": "Support any existing CMSIS Device Family Pack whose selected scope and debug topology are documented. Do not assume a device family, debug probe, toolchain, or runtime target.",
    "tools": [],
@@ -368,7 +382,8 @@
    "domain": "pack",
    "title": "description-contract",
    "status": "draft",
-   "source": "pack/generate-debug-description/references/description-contract.md"
+   "source": "pack/generate-debug-description/references/description-contract.md",
+   "license": "Apache-2.0"
   },
   "proc-generate-debug-sequences": {
    "kind": "knowledge",
@@ -379,6 +394,7 @@
    "triggers": [],
    "status": "draft",
    "source": "pack/generate-debug-sequences/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "Existing target `.pdsc`, selected family/subFamily/device/variant scope, affected processors and non-trace sequences, documented device behavior, and current `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` and `.agent-artifacts/<pdsc-stem>.debug-knowledge.md` records.",
    "portability": "Support any existing CMSIS Device Family Pack with documented device-specific behavior. Do not assume a device family, debug probe, toolchain, or active target; use a target only when available for validation.",
    "tools": [],
@@ -403,7 +419,8 @@
    "domain": "pack",
    "title": "debug-sequence-contract",
    "status": "draft",
-   "source": "pack/generate-debug-sequences/references/debug-sequence-contract.md"
+   "source": "pack/generate-debug-sequences/references/debug-sequence-contract.md",
+   "license": "Apache-2.0"
   },
   "proc-generate-trace-sequences": {
    "kind": "knowledge",
@@ -414,6 +431,7 @@
    "triggers": [],
    "status": "draft",
    "source": "pack/generate-trace-sequences/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "Existing target `.pdsc`, selected family/subFamily/device/variant scope, a READY `.agent-artifacts/<pdsc-stem>.trace-knowledge.md` record, and documentation for the selected CoreSight topology. Use `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` only for a required processor, connection, DP/AP path, protocol, or dormant-state fact absent from the trace record.",
    "portability": "Support any existing CMSIS Device Family Pack with documented CoreSight paths. Do not assume a device family, debug probe, toolchain, active target, or trace transport.",
    "tools": [],
@@ -502,7 +520,8 @@
    "domain": "pack",
    "title": "component-index",
    "status": "draft",
-   "source": "pack/generate-trace-sequences/references/component-index.md"
+   "source": "pack/generate-trace-sequences/references/component-index.md",
+   "license": "Apache-2.0"
   },
   "concept-legacy-to-full-migration": {
    "kind": "knowledge",
@@ -510,7 +529,8 @@
    "domain": "pack",
    "title": "legacy-to-full-migration",
    "status": "draft",
-   "source": "pack/generate-trace-sequences/references/legacy-to-full-migration.md"
+   "source": "pack/generate-trace-sequences/references/legacy-to-full-migration.md",
+   "license": "Apache-2.0"
   },
   "concept-trace-sequence-contract": {
    "kind": "knowledge",
@@ -518,7 +538,8 @@
    "domain": "pack",
    "title": "trace-sequence-contract",
    "status": "draft",
-   "source": "pack/generate-trace-sequences/references/trace-sequence-contract.md"
+   "source": "pack/generate-trace-sequences/references/trace-sequence-contract.md",
+   "license": "Apache-2.0"
   },
   "proc-manage-pdsc-debugvars": {
    "kind": "knowledge",
@@ -529,6 +550,7 @@
    "triggers": [],
    "status": "draft",
    "source": "pack/manage-pdsc-debugvars/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "Target PDSC, selected device-tree scope, documented runtime choice, existing `<debugvars>`, and optional existing `.dbgconf` content.",
    "portability": "Support any existing CMSIS Device Family Pack. Do not assume a device family, debugger, toolchain, or runtime target.",
    "tools": [],
@@ -551,6 +573,7 @@
    "triggers": [],
    "status": "draft",
    "source": "pack/prepare-pdsc-sequence-change/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "Existing target `.pdsc`, selected device-tree scope, `debug` or `trace` domain, verified facts and source references, and the requested outcome.",
    "portability": "Support any existing CMSIS Device Family Pack. Do not assume a device family, debug probe, toolchain, or active target.",
    "tools": [],
@@ -573,6 +596,7 @@
    "triggers": [],
    "status": "draft",
    "source": "pack/validate-pdsc-sequence-xml/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "Target PDSC, changed XML, proposed or applied change details, and available XML/PDSC toolchain.",
    "portability": "Support any existing CMSIS Device Family Pack with XML/PDSC validation available. Do not assume a device family, debugger, toolchain, or active target.",
    "tools": [
@@ -598,6 +622,7 @@
    "triggers": [],
    "status": "draft",
    "source": "project/add-cmsis-target/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "An existing `*.csolution.yml` project and a user-supplied board or device name. The name may be fuzzy; manufacturer, revision, and fitted MCU or SoC information improve identification.",
    "portability": "Applies to CMSIS solution projects across MCU and SoC vendors. It has no compiler, RTOS, debugger, or probe dependency beyond requirements already present in the input project or selected layer. Use the [CMSIS-Toolbox project format](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/) and [Reference Applications workflow](https://open-cmsis-pack.github.io/cmsis-toolbox/ReferenceApplications/) as authoritative format guidance.",
    "tools": [
@@ -634,6 +659,7 @@
    "triggers": [],
    "status": "draft",
    "source": "project/check-cmsis-environment/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "The workspace root and, when present, its `.cmsis/tools-environment.yml` and `vcpkg-configuration.json` files.",
    "portability": "Applies to CMSIS solution workspaces on supported host operating systems. It has no MCU-, RTOS-, debugger-, or board-specific assumptions; compiler registrations are discovered from the workspace environment.",
    "tools": [
@@ -676,6 +702,7 @@
    "triggers": [],
    "status": "draft",
    "source": "project/check-zephyr-environment/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "A Zephyr workspace path, or permission to use the default location named below.",
    "portability": "Supports Windows, macOS, and Linux using the platform-specific virtual-environment executable paths below. It has no MCU-, board-, toolchain-, or debugger-specific assumptions. Obtain the Zephyr workspace path. Use `$HOME/zephyrproject` when the user followed the default CMSIS-Zephyr installation instructions and did not choose another location.",
    "tools": [
@@ -705,6 +732,7 @@
    "triggers": [],
    "status": "draft",
    "source": "project/identify-cmsis-board-layer/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "An existing `*.csolution.yml`, the exact target-type name to inspect, and verified board, device, DFP, and optional BSP identifiers from `identify-cmsis-board-support`.",
    "portability": "Applies across MCU and SoC vendors when packs describe software layers and connections. It has no compiler, RTOS, debugger, or probe dependency beyond requirements already present in the solution or candidate layer. Use the [CMSIS-Toolbox software-layer format](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/#auto-select-layers) and [Reference Applications workflow](https://open-cmsis-pack.github.io/cmsis-toolbox/ReferenceApplications/) as authoritative guidance.",
    "tools": [
@@ -735,6 +763,7 @@
    "triggers": [],
    "status": "draft",
    "source": "project/identify-cmsis-board-support/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "A user-supplied board or device name, which may be fuzzy. Manufacturer, board revision, and fitted MCU or SoC evidence should be included when available.",
    "portability": "Applies across MCU and SoC vendors when their board or device is represented in the referenced catalogs. It has no compiler, RTOS, debugger, or probe dependency. Collect when available:",
    "tools": [
@@ -769,6 +798,7 @@
    "triggers": [],
    "status": "draft",
    "source": "project/identify-zephyr-board/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "The physical board manufacturer, model, relevant revision, and a verified Zephyr workspace with its venv-local west executable.",
    "portability": "Applies to boards represented by the installed Zephyr version. It depends on Zephyr board metadata but has no CMSIS-pack, compiler, debugger, or RTOS configuration assumption beyond Zephyr itself. Require:",
    "tools": [
@@ -798,6 +828,7 @@
    "triggers": [],
    "status": "draft",
    "source": "project/start-zephyr-project/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "A solution directory, the physical board and exact Zephyr target, verified CMSIS and Zephyr environment results, verified CMSIS BSP/DFP identifiers, and a selected installed CMSIS compiler when more than one is available.",
    "portability": "Applies to Zephyr-supported boards with verified CMSIS BSP or DFP support. It depends on CMSIS-Toolbox west integration and uses GCC-specific libc settings only when GCC is selected; it does not require the Zephyr SDK, sysbuild, or a particular debugger.",
    "tools": [
@@ -875,6 +906,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-portability-board-debug-knowledge": {
@@ -883,6 +915,7 @@
    "title": "Portability",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-critical-blockers-board-debug-knowledge": {
@@ -891,6 +924,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-scope-board-debug-knowledge": {
@@ -899,6 +933,7 @@
    "title": "Scope",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-tone-and-style": {
@@ -907,6 +942,7 @@
    "title": "Tone and style",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": true
   },
   "rule-no-fabrication-check-pyocd-availability": {
@@ -915,6 +951,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-mutation-check-pyocd-availability": {
@@ -923,6 +960,7 @@
    "title": "No mutation",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-vs-code-scope-check-pyocd-availability": {
@@ -931,6 +969,7 @@
    "title": "VS Code scope",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-critical-blockers-check-pyocd-availability": {
@@ -939,6 +978,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-scope-check-pyocd-availability": {
@@ -947,6 +987,7 @@
    "title": "Scope",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-fabrication-debug-access-knowledge": {
@@ -955,6 +996,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-portability-debug-access-knowledge": {
@@ -963,6 +1005,7 @@
    "title": "Portability",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": true
   },
   "rule-critical-blockers-debug-access-knowledge": {
@@ -971,6 +1014,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-scope-debug-access-knowledge": {
@@ -979,6 +1023,7 @@
    "title": "Scope",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-fabrication-debug-knowledge": {
@@ -987,6 +1032,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-critical-blockers-debug-knowledge": {
@@ -995,6 +1041,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-scope-debug-knowledge": {
@@ -1003,6 +1050,7 @@
    "title": "Scope",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-fabrication-pyocd-detect-debug-topology": {
@@ -1011,6 +1059,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-portability-pyocd-detect-debug-topology": {
@@ -1019,6 +1068,7 @@
    "title": "Portability",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-critical-blockers-pyocd-detect-debug-topology": {
@@ -1027,6 +1077,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-scope-pyocd-detect-debug-topology": {
@@ -1035,6 +1086,7 @@
    "title": "Scope",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-fabrication-resolve-official-device-documentation": {
@@ -1043,6 +1095,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-portability-resolve-official-device-documentation": {
@@ -1051,6 +1104,7 @@
    "title": "Portability",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-critical-blockers-resolve-official-device-documentation": {
@@ -1059,6 +1113,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-scope-resolve-official-device-documentation": {
@@ -1067,6 +1122,7 @@
    "title": "Scope",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-unnamed-trace-knowledge": {
@@ -1075,6 +1131,7 @@
    "title": "Do not invent trace component addresses, identifiers, versions,",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-unnamed-trace-knowledge-2": {
@@ -1083,6 +1140,7 @@
    "title": "Do not infer that a discovered component, including",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-unnamed-trace-knowledge-3": {
@@ -1091,6 +1149,7 @@
    "title": "Do not edit PDSC debug descriptions or sequences.",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-unnamed-trace-knowledge-4": {
@@ -1099,6 +1158,7 @@
    "title": "Preserve READY unless an affected fact becomes stale,",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-unnamed-trace-knowledge-5": {
@@ -1107,6 +1167,7 @@
    "title": "Treat the artifact as read-only outside this workflow.",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-fabrication-cmsis-stream": {
@@ -1115,6 +1176,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-portability-cmsis-stream": {
@@ -1123,6 +1185,7 @@
    "title": "Portability",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-critical-blockers-cmsis-stream": {
@@ -1131,6 +1194,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-scope-cmsis-stream": {
@@ -1139,6 +1203,7 @@
    "title": "Scope",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-fabrication-create-csolution-github-action": {
@@ -1147,6 +1212,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-portability-create-csolution-github-action": {
@@ -1155,6 +1221,7 @@
    "title": "Portability",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-critical-blockers-create-csolution-github-action": {
@@ -1163,6 +1230,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-scope-create-csolution-github-action": {
@@ -1171,6 +1239,7 @@
    "title": "Scope",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-installation-or-acquisition-evaluate-ethos-u-variants": {
@@ -1179,6 +1248,7 @@
    "title": "No installation or acquisition",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-critical-blockers-evaluate-ethos-u-variants": {
@@ -1187,6 +1257,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-fail-fast-evaluate-ethos-u-variants": {
@@ -1195,6 +1266,7 @@
    "title": "Fail fast",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-configuration-source-evaluate-ethos-u-variants": {
@@ -1203,6 +1275,7 @@
    "title": "Configuration source",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-comparable-inputs-evaluate-ethos-u-variants": {
@@ -1211,6 +1284,7 @@
    "title": "Comparable inputs",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-estimates-evaluate-ethos-u-variants": {
@@ -1219,6 +1293,7 @@
    "title": "Estimates",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-fabrication-evaluate-ethos-u-variants": {
@@ -1227,6 +1302,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-output-safety-evaluate-ethos-u-variants": {
@@ -1235,6 +1311,7 @@
    "title": "Output safety",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-fabrication-apply-confirmed-pdsc-proposal": {
@@ -1243,6 +1320,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-critical-blockers-apply-confirmed-pdsc-proposal": {
@@ -1251,6 +1329,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-scope-apply-confirmed-pdsc-proposal": {
@@ -1259,6 +1338,7 @@
    "title": "Scope",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-fabrication-generate-debug-description": {
@@ -1267,6 +1347,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-portability-generate-debug-description": {
@@ -1275,6 +1356,7 @@
    "title": "Portability",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": true
   },
   "rule-critical-blockers-generate-debug-description": {
@@ -1283,6 +1365,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-scope-generate-debug-description": {
@@ -1291,6 +1374,7 @@
    "title": "Scope",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-fabrication-generate-debug-sequences": {
@@ -1299,6 +1383,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-critical-blockers-generate-debug-sequences": {
@@ -1307,6 +1392,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-scope-generate-debug-sequences": {
@@ -1315,6 +1401,7 @@
    "title": "Scope",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-fabrication-generate-trace-sequences": {
@@ -1323,6 +1410,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-critical-blockers-generate-trace-sequences": {
@@ -1331,6 +1419,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-scope-generate-trace-sequences": {
@@ -1339,6 +1428,7 @@
    "title": "Scope",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-fabrication-manage-pdsc-debugvars": {
@@ -1347,6 +1437,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-critical-blockers-manage-pdsc-debugvars": {
@@ -1355,6 +1446,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-scope-manage-pdsc-debugvars": {
@@ -1363,6 +1455,7 @@
    "title": "Scope",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-fabrication-prepare-pdsc-sequence-change": {
@@ -1371,6 +1464,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-critical-blockers-prepare-pdsc-sequence-change": {
@@ -1379,6 +1473,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-scope-prepare-pdsc-sequence-change": {
@@ -1387,6 +1482,7 @@
    "title": "Scope",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-fabrication-validate-pdsc-sequence-xml": {
@@ -1395,6 +1491,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-critical-blockers-validate-pdsc-sequence-xml": {
@@ -1403,6 +1500,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-scope-validate-pdsc-sequence-xml": {
@@ -1411,6 +1509,7 @@
    "title": "Scope",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-fabrication-add-cmsis-target": {
@@ -1419,6 +1518,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-invented-layer-add-cmsis-target": {
@@ -1427,6 +1527,7 @@
    "title": "No invented layer",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-pack-copy-invariant-add-cmsis-target": {
@@ -1435,6 +1536,7 @@
    "title": "Pack copy invariant",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-user-choice-add-cmsis-target": {
@@ -1443,6 +1545,7 @@
    "title": "User choice",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-hardware-identity-add-cmsis-target": {
@@ -1451,6 +1554,7 @@
    "title": "Hardware identity",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-schema-integrity-add-cmsis-target": {
@@ -1459,6 +1563,7 @@
    "title": "Schema integrity",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-target-selection-add-cmsis-target": {
@@ -1467,6 +1572,7 @@
    "title": "Target selection",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-tool-integrity-add-cmsis-target": {
@@ -1475,6 +1581,7 @@
    "title": "Tool integrity",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-portability-add-cmsis-target": {
@@ -1483,6 +1590,7 @@
    "title": "Portability",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-critical-blockers-add-cmsis-target": {
@@ -1491,6 +1599,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-scope-add-cmsis-target": {
@@ -1499,6 +1608,7 @@
    "title": "Scope",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-fabrication-check-cmsis-environment": {
@@ -1507,6 +1617,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-portability-check-cmsis-environment": {
@@ -1515,6 +1626,7 @@
    "title": "Portability",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-critical-blockers-check-cmsis-environment": {
@@ -1523,6 +1635,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-scope-check-cmsis-environment": {
@@ -1531,6 +1644,7 @@
    "title": "Scope",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": true
   },
   "rule-no-fabrication-check-zephyr-environment": {
@@ -1539,6 +1653,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-portability-check-zephyr-environment": {
@@ -1547,6 +1662,7 @@
    "title": "Portability",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-critical-blockers-check-zephyr-environment": {
@@ -1555,6 +1671,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-fabrication-identify-cmsis-board-layer": {
@@ -1563,6 +1680,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-exact-packs-identify-cmsis-board-layer": {
@@ -1571,6 +1689,7 @@
    "title": "Exact packs",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-compatibility-identify-cmsis-board-layer": {
@@ -1579,6 +1698,7 @@
    "title": "Compatibility",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-target-selection-identify-cmsis-board-layer": {
@@ -1587,6 +1707,7 @@
    "title": "Target selection",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-command-integrity-identify-cmsis-board-layer": {
@@ -1595,6 +1716,7 @@
    "title": "Command integrity",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-selection-or-copy-identify-cmsis-board-layer": {
@@ -1603,6 +1725,7 @@
    "title": "No selection or copy",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-portability-identify-cmsis-board-layer": {
@@ -1611,6 +1734,7 @@
    "title": "Portability",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-critical-blockers-identify-cmsis-board-layer": {
@@ -1619,6 +1743,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-scope-identify-cmsis-board-layer": {
@@ -1627,6 +1752,7 @@
    "title": "Scope",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-fabrication-identify-cmsis-board-support": {
@@ -1635,6 +1761,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-portability-identify-cmsis-board-support": {
@@ -1643,6 +1770,7 @@
    "title": "Portability",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-exactly-one-gate-identify-cmsis-board-support": {
@@ -1651,6 +1779,7 @@
    "title": "Exactly-one gate",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-critical-blockers-identify-cmsis-board-support": {
@@ -1659,6 +1788,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-scope-identify-cmsis-board-support": {
@@ -1667,6 +1797,7 @@
    "title": "Scope",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-fabrication-identify-zephyr-board": {
@@ -1675,6 +1806,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-portability-identify-zephyr-board": {
@@ -1683,6 +1815,7 @@
    "title": "Portability",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-critical-blockers-identify-zephyr-board": {
@@ -1691,6 +1824,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-scope-identify-zephyr-board": {
@@ -1699,6 +1833,7 @@
    "title": "Scope",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-no-fabrication-start-zephyr-project": {
@@ -1707,6 +1842,7 @@
    "title": "No fabrication",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-portability-start-zephyr-project": {
@@ -1715,6 +1851,7 @@
    "title": "Portability",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-critical-blockers-start-zephyr-project": {
@@ -1723,6 +1860,7 @@
    "title": "Critical blockers",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-scope-start-zephyr-project": {
@@ -1731,6 +1869,7 @@
    "title": "Scope",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-unnamed-start-zephyr-project": {
@@ -1739,6 +1878,7 @@
    "title": "Do not install, upgrade, repair, or reconfigure prerequisite",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-unnamed-start-zephyr-project-2": {
@@ -1747,6 +1887,7 @@
    "title": "Do not require the Zephyr SDK; Keil Studio",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-unnamed-start-zephyr-project-3": {
@@ -1755,6 +1896,7 @@
    "title": "Do not use Zephyr sysbuild; CMSIS-Toolbox west integration",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-unnamed-start-zephyr-project-4": {
@@ -1763,6 +1905,7 @@
    "title": "Do not list a combined BSP/DFP pack twice",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-unnamed-start-zephyr-project-5": {
@@ -1771,6 +1914,7 @@
    "title": "Do not rename the generated blinky directory without",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-unnamed-start-zephyr-project-6": {
@@ -1779,6 +1923,7 @@
    "title": "Do not guess identifiers, paths, dependencies, or test",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-unnamed-start-zephyr-project-7": {
@@ -1787,6 +1932,7 @@
    "title": "Do not modify either validation command or use",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-unnamed-start-zephyr-project-8": {
@@ -1795,6 +1941,7 @@
    "title": "Do not report overall success unless both required",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   },
   "rule-unnamed-start-zephyr-project-9": {
@@ -1803,6 +1950,7 @@
    "title": "Stop and report the producing prerequisite when a",
    "severity": "must",
    "status": "draft",
+   "license": "Apache-2.0",
    "shared": false
   }
  },

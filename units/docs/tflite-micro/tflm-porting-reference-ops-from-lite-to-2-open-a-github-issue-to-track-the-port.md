@@ -6,8 +6,8 @@ title: "Porting Reference Ops from Lite to Micro: 2. Open a GitHub issue to trac
 summary: "Open a GitHub issue to announce your intent to port the op, and to begin a record of your work. Document the entire process of porting the op in this issue. Link constituent PRs to this issue."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/porting_reference_ops.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/porting_reference_ops.md#2-open-a-github-issue-to-track-the-port"
+source: "tensorflow/tflite-micro@bd621c2:tensorflow/lite/micro/docs/porting_reference_ops.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/bd621c2/tensorflow/lite/micro/docs/porting_reference_ops.md#2-open-a-github-issue-to-track-the-port"
 license: "Apache-2.0"
 mode: "V"
 ---

@@ -6,7 +6,7 @@ title: "Mixins: Options for loading Mixins"
 summary: "You have three options for telling Ceedling what mixins to load. These options are ordered below according to their precedence."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/configuration/mixins.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/configuration/mixins.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/configuration/mixins/#options-for-loading-mixins"
 license: "MIT"
 mode: "V"
@@ -197,9 +197,10 @@ Each subsection is optional.
 
     Paths containing mixin files to be searched via mixin names. A mixin
     filename in a load path has the form _<name>.yml_ by default. If
-    an alternate filename extension has been specified in your project
-    configuration (`:extension` ↳ `:yaml`) it will be used for file
-    lookups in the mixin load paths instead of _.yml_.
+    alternate filename extensions have been specified in your project
+    configuration (`:extension` ↳ `:yaml`, a single extension or a list)
+    they will be used for file lookups in the mixin load paths instead of
+    _.yml_. Each load path is searched for every extension before the next.
 
     Searches start in the path at the top of the list.
 

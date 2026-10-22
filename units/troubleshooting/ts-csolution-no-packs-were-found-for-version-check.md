@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["no packs were found for version check"]
 symptom_regex: "^no packs were found for version check$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:6202"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:6202"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

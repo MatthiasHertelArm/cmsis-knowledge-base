@@ -9,7 +9,7 @@ severity: "warning"
 symptoms: ["'compiler' setting in cdefault.yml will be deprecated in CMSIS-Toolbox 3.0.0"]
 symptom_regex: "^'compiler' setting in cdefault\\.yml will be deprecated in CMSIS\\-Toolbox 3\\.0\\.0$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:45"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrYamlParser.cpp:45"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

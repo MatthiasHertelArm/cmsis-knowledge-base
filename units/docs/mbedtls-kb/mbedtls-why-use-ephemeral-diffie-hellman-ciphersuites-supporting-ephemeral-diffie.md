@@ -6,8 +6,8 @@ title: "Why use Ephemeral Diffie-Hellman: Ciphersuites supporting Ephemeral Diff
 summary: "There are a lot of ciphersuites that support Ephemeral Diffie-Hellman. The key exchange methods that use (EC)DHE in TLS are:"
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/cryptography/ephemeral-diffie-hellman.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/cryptography/ephemeral-diffie-hellman.md#ciphersuites-supporting-ephemeral-diffie-hellman"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/cryptography/ephemeral-diffie-hellman.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/cryptography/ephemeral-diffie-hellman.md#ciphersuites-supporting-ephemeral-diffie-hellman"
 license: "Apache-2.0"
 mode: "V"
 ---

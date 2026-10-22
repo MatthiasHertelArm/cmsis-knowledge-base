@@ -6,7 +6,7 @@ title: "Build Information Files: Run and Debug Management / File Structure of `*
 summary: "The following describes the overall structure of the .cbuild-run.yml file. While the content of this file is generated using the cbuild command, it is also possible to manually generate this file or modify content."
 status: "draft"
 collection: "cmsis-toolbox"
-source: "Open-CMSIS-Pack/cmsis-toolbox@6c04673:docs/YML-CBuild-Format.md"
+source: "Open-CMSIS-Pack/cmsis-toolbox@3ce8307:docs/YML-CBuild-Format.md"
 doc_source: "https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/#file-structure-of-cbuild-run-yml"
 license: "Apache-2.0"
 mode: "V"

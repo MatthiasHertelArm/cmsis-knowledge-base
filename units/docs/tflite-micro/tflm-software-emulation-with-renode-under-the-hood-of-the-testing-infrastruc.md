@@ -6,8 +6,8 @@ title: "Software Emulation with Renode: Under the hood of the Testing Infrastruc
 summary: "Describe how we wait for a particular string on the UART. Some pointers into the robot files as well as any relevant documentation from Renode."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/renode.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/renode.md#under-the-hood-of-the-testing-infrastructure"
+source: "tensorflow/tflite-micro@bd621c2:tensorflow/lite/micro/docs/renode.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/bd621c2/tensorflow/lite/micro/docs/renode.md#under-the-hood-of-the-testing-infrastructure"
 license: "Apache-2.0"
 mode: "V"
 ---

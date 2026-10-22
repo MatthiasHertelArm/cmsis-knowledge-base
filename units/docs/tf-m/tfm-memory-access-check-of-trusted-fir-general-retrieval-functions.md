@@ -6,7 +6,7 @@ title: "Memory Access Check of Trusted Firmware-M in Multi-Core Topology: Data T
 summary: "TF-M implements 3 general retrieval functions to retrieve memory region security attributes or memory protection configurations, based on static system-level memory layout. Platform specific HAL functions can invoke those 3 general functions to simplify implementations."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/multi-cpu/tfm_multi_core_access_check.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/multi-cpu/tfm_multi_core_access_check.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/multi-cpu/tfm_multi_core_access_check.html#general-retrieval-functions"
 license: "BSD-3-Clause"
 mode: "V"

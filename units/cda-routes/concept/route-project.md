@@ -26,7 +26,7 @@ Read the procedure with `knowledge_get` before acting on it, and follow its own 
 | Identify packaged CMSIS board layers compatible with an existing solution target and its required connections, returning `MATCHES`, `NO MATCH`, or `NOT REQUIRED` with exact command evidence. | `proc-identify-cmsis-board-layer` |
 | Resolve a supplied board or device to exactly one verified CMSIS identity, identify its BSP or DFP, and ask the user when multiple candidates remain. | `proc-identify-cmsis-board-support` |
 | Resolve a user-supplied physical board to its exact Zephyr board target and fitted MCU or SoC using the installed west board catalog. | `proc-identify-zephyr-board` |
-| Create the first csolution for a board or device: a minimal project, or an example or template of its pack | `proc-start-cmsis-project` |
+| Creates the first CMSIS csolution for a verified board or device, either a minimal project or an example or template of its pack, then opens and builds it with cmsis_action. | `proc-start-cmsis-project` |
 | Create and validate one initial west-integrated CMSIS Zephyr Blinky solution for a board already supported by Zephyr, from verified environment, board, and pack information, using `cbuild setup` and `cbuild`. | `proc-start-zephyr-project` |
 
 ## Typical order

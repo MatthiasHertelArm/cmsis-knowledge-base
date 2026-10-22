@@ -1,0 +1,24 @@
+[
+ {
+  "id": "ts-svdconv-m250",
+  "cause": "svdconv prints this error when a <dim> element in the SVD file describes an array of registers or peripherals whose index list or address range is invalid or runs past the addressable space; the %NAME% placeholder is the name of the dimensioned element. The exact trigger is not available here, so this is inferred from the message text alone.",
+  "fix": "Open the SVD file, find the <dim> entry for the named element, and check that <dim> (the number of elements), <dimIncrement> and, if present, <dimIndex> are consistent with each other and do not place the last element beyond the peripheral's address space. Correct the values and rerun svdconv.",
+  "evidence": [
+   "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+  ],
+  "confidence": "medium",
+  "note": "Trigger lines were not available; the cause and fix are inferred from the message wording and should be checked against the source. The README documents this message, but its text was not provided here.",
+  "ref": "Open-CMSIS-Pack/devtools@5f04db72"
+ },
+ {
+  "id": "ts-svdconv-m249",
+  "cause": "The SVD input declares a dimension (a dim array, for example a register or peripheral replicated with dimIncrement and dim) whose expansion produces more generated indices and model copies than svdconv allows for one input file. The %NUM% in the message is the limit value. The source lines were not available, so this is inferred from the message text and the general meaning of dimension expansion, not checked against the code.",
+  "fix": "Check the dim and dimIndex elements of the SVD input for very large dimension counts or nested dimension arrays and reduce them, or split the dimension array into smaller groups that stay under the limit. Then rerun svdconv on the corrected file.",
+  "evidence": [
+   "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+  ],
+  "confidence": "low",
+  "note": "The source lines were not provided, so the trigger condition and the exact limit could not be verified; the cause and fix above are an inference from the message text and should be confirmed against the README and the source before relying on them.",
+  "ref": "Open-CMSIS-Pack/devtools@5f04db72"
+ }
+]

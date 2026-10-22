@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["too many command line arguments"]
 symptom_regex: "^too many command line arguments$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:322"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgr.cpp:322"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

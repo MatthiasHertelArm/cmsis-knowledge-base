@@ -6,8 +6,8 @@ title: "Vela: Getting Started"
 summary: "Once installed, Vela can be run from the command line by specifying just two settings:  Target Ethos-U device; --accelerator-config  Neural network file; .tflite or .tosa"
 status: "draft"
 collection: "ethos-u-vela"
-source: "artificial-intelligence/ethos-u/ethos-u-vela@eb9cf0d:README.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/eb9cf0d/README.md#getting-started"
+source: "artificial-intelligence/ethos-u/ethos-u-vela@4bd6685:README.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/4bd6685/README.md#getting-started"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -36,7 +36,7 @@ provided as part of the installation.
 The optimisation strategy indicates whether the compiler should minimise
 inference time or runtime memory usage.
 
-See [CLI Options](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/eb9cf0d/OPTIONS.md) for more information.
+See [CLI Options](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/4bd6685/OPTIONS.md) for more information.
 
 Example of how to set the system configuration and memory mode:
 ```bash
@@ -70,7 +70,7 @@ that cannot be accelerated are left unchanged.
 
 Raw output contains the command stream and weight data required to run Ethos-U
 parts of the optimised network.  This is stored in [`.npz`](https://numpy.org/doc/stable/reference/generated/numpy.lib.format.html#module-numpy.lib.format)
-format.  See the Output format [CLI Option](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/eb9cf0d/OPTIONS.md) for more information.
+format.  See the Output format [CLI Option](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/4bd6685/OPTIONS.md) for more information.
 This does not contain CPU parts of the network and so cannot be used for
 converting TFLite to TOSA.
 

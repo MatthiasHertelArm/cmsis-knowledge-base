@@ -6,8 +6,8 @@ title: "CMock Summary"
 summary: "What Exactly Are We Talking About Here? ---------------------------------------"
 status: "draft"
 collection: "cmock"
-source: "ThrowTheSwitch/CMock@f2a70b4:docs/CMock_Summary.md"
-doc_source: "https://github.com/ThrowTheSwitch/CMock/blob/f2a70b4/docs/CMock_Summary.md"
+source: "ThrowTheSwitch/CMock@34c26e5:docs/CMock_Summary.md"
+doc_source: "https://github.com/ThrowTheSwitch/CMock/blob/34c26e5/docs/CMock_Summary.md"
 license: "MIT"
 mode: "V"
 ---
@@ -19,9 +19,9 @@ CMock: A Summary
 
 *This documentation is released under a Creative Commons 3.0 Attribution Share-Alike License*
 
- - [Known Issues](https://github.com/ThrowTheSwitch/CMock/blob/f2a70b4/docs/CMockKnownIssues.md)
- - [Change Log](https://github.com/ThrowTheSwitch/CMock/blob/f2a70b4/docs/CMockChangeLog.md)
- - [How Does CMock Validate Arguments](https://github.com/ThrowTheSwitch/CMock/blob/f2a70b4/docs/CMock_ArgumentValidation.md)
+ - [Known Issues](https://github.com/ThrowTheSwitch/CMock/blob/34c26e5/docs/CMockKnownIssues.md)
+ - [Change Log](https://github.com/ThrowTheSwitch/CMock/blob/34c26e5/docs/CMockChangeLog.md)
+ - [How Does CMock Validate Arguments](https://github.com/ThrowTheSwitch/CMock/blob/34c26e5/docs/CMock_ArgumentValidation.md)
 
 What Exactly Are We Talking About Here?
 ---------------------------------------
@@ -560,6 +560,17 @@ from the defaults. We've tried to specify what the defaults are below.
   type. It isn't in the :treat_as list. It isn't in a custom unity_helper).
 
   * default: true
+
+* `:mock_name_include_folder`:
+  Name a mock by the folder it is generated into as well as its filename. The
+  folder is the path below `:mock_path`, built from `:subdir` and any folder
+  given to `setup_mocks`. A mock of "config.h" generated into `uart/` gets an
+  include guard and Init, Verify and Destroy functions named `uart_Mockconfig`
+  rather than `Mockconfig`. This lets two mocks of the same filename coexist in
+  one test. A test should include such a mock by that same folder, and Unity's
+  test runner generator needs its option of the same name enabled to match.
+
+  * default: false
 
 * `:mock_path`:
   The directory where you would like the mock files generated to be

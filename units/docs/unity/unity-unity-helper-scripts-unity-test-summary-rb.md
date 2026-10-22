@@ -6,8 +6,8 @@ title: "Unity Helper Scripts: With a Little Help From Our Friends / `unity_test_
 summary: "Part of: With a Little Help From Our Friends"
 status: "draft"
 collection: "unity"
-source: "ThrowTheSwitch/Unity@2b80d1a:docs/UnityHelperScriptsGuide.md"
-doc_source: "https://github.com/ThrowTheSwitch/Unity/blob/2b80d1a/docs/UnityHelperScriptsGuide.md#unity-test-summary-rb"
+source: "ThrowTheSwitch/Unity@7f1a686:docs/UnityHelperScriptsGuide.md"
+doc_source: "https://github.com/ThrowTheSwitch/Unity/blob/7f1a686/docs/UnityHelperScriptsGuide.md#unity-test-summary-rb"
 license: "MIT"
 mode: "V"
 ---

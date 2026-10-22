@@ -10,8 +10,8 @@ code: "M382"
 symptoms: ["M382", "Requirement <%TAG%> '[%VENDOR%] %NAME% %VER%' could not be resolved.%MSG%. Use option -i PackName.pdsc to resolve external dependencies."]
 symptom_regex: "^Requirement <.+?> '\\[.+?\\] .+? .+?' could not be resolved\\..+?\\. Use option \\-i PackName\\.pdsc to resolve external dependencies\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"

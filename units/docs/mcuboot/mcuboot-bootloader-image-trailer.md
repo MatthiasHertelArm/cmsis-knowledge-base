@@ -6,8 +6,8 @@ title: "Bootloader: Image trailer"
 summary: "For the bootloader to be able to determine the current state and what actions should be taken during the current boot operation, it uses metadata stored in the image flash areas."
 status: "draft"
 collection: "mcuboot"
-source: "mcu-tools/mcuboot@ba2099f:docs/design.md"
-doc_source: "https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/design.md#image-trailer"
+source: "mcu-tools/mcuboot@725d63c:docs/design.md"
+doc_source: "https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/design.md#image-trailer"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -106,7 +106,7 @@ of 3 is explained below.
 
 2. Encryption keys: key-encrypting keys (KEKs).  These keys are needed for
    image encryption and decryption.  See the
-   [encrypted images](https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/encrypted_images.md) document for more information.
+   [encrypted images](https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/encrypted_images.md) document for more information.
 
 3. Swap size: When beginning a new swap operation, the total size that needs
    to be swapped (based on the slot with largest image + TLVs) is written to

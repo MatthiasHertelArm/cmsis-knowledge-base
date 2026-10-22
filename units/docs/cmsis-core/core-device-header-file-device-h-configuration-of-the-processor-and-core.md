@@ -6,8 +6,8 @@ title: "Device Header File `<Device.h>`: Configuration of the Processor and Core
 summary: "The device_h_pg configures the Cortex-M or SecurCore processors and the core peripherals with #define directives that are set prior to including the file core<cpu>.h."
 status: "draft"
 collection: "cmsis-core"
-source: "ARM-software/CMSIS_6@26206e4:CMSIS/Documentation/Doxygen/Core/src/core_device_h.md"
-doc_source: "https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Core/src/core_device_h.md#configuration-of-the-processor-and-core-peripherals"
+source: "ARM-software/CMSIS_6@acf7392:CMSIS/Documentation/Doxygen/Core/src/core_device_h.md"
+doc_source: "https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Core/src/core_device_h.md#configuration-of-the-processor-and-core-peripherals"
 license: "Apache-2.0"
 mode: "V"
 ---

@@ -6,21 +6,21 @@ title: "Bash library for gen-pack scripts: Get Started"
 summary: "In order to use this Bash library for your gen_pack.sh script you can use the template as a starting point."
 status: "draft"
 collection: "gen-pack"
-source: "Open-CMSIS-Pack/gen-pack@2fc9447:README.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/gen-pack/blob/2fc9447/README.md#get-started"
+source: "Open-CMSIS-Pack/gen-pack@81dc8be:README.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/gen-pack/blob/81dc8be/README.md#get-started"
 license: "Apache-2.0"
 mode: "V"
 ---
 
 In order to use this Bash library for your `gen_pack.sh` script you can use
-the [template](https://github.com/Open-CMSIS-Pack/gen-pack/blob/2fc9447/template/gen_pack.sh) as a starting point.
+the [template](https://github.com/Open-CMSIS-Pack/gen-pack/blob/81dc8be/template/gen_pack.sh) as a starting point.
 
 All file references are evaluated relative to the `.pdsc` files parent directory, i.e. you
 can use the same relative file names as within the `.pdsc` file.
 
 1. Copy template
 
-   Copy the [gen_pack.sh](https://github.com/Open-CMSIS-Pack/gen-pack/blob/2fc9447/template/gen_pack.sh) template into the root of your package source.
+   Copy the [gen_pack.sh](https://github.com/Open-CMSIS-Pack/gen-pack/blob/81dc8be/template/gen_pack.sh) template into the root of your package source.
 
 1. Set eXecute permission (**Windows only**!)
 

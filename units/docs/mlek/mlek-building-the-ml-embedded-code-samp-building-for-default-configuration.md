@@ -6,8 +6,8 @@ title: "Building the ML embedded code sample applications from sources: Build pr
 summary: "A helper script build_default.py is provided to configure and build all the applications. It configures the project with default settings i.e., for mps3 target, sse-300 subsystem and Ethos-U55 timing-adapter settings."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/building.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/building.md#building-for-default-configuration"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/building.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/building.md#building-for-default-configuration"
 license: "Apache-2.0"
 mode: "V"
 ---

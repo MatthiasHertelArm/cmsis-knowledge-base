@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["no installed NPU was found"]
 symptom_regex: "^no installed NPU was found$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4386"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:4386"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

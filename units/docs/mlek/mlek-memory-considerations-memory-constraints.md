@@ -6,17 +6,17 @@ title: "Memory considerations: Memory constraints"
 summary: "Both the MPS3 Fixed Virtual Platform (FVP) and the MPS3 FPGA platform share the linker script for Arm® Corstone™-300 design. The CMake configuration parameter TARGET_SUBSYSTEM sets the design, which is described in: build options."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/memory_considerations.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/memory_considerations.md#memory-constraints"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/memory_considerations.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/memory_considerations.md#memory-constraints"
 license: "Apache-2.0"
 mode: "V"
 ---
 
 Both the MPS3 Fixed Virtual Platform (FVP) and the MPS3 FPGA platform share the linker script for Arm® *Corstone™-300*
 design. The CMake configuration parameter `TARGET_SUBSYSTEM` sets the design, which is described in:
-[build options](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./building.md#build-options).
+[build options](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./building.md#build-options).
 
-The memory map exposed by this design is located in the [Appendix](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./appendix.md#appendix), and can be used as a reference when
+The memory map exposed by this design is located in the [Appendix](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./appendix.md#appendix), and can be used as a reference when
 editing the linker script. This is useful to make sure that the region boundaries are respected. The snippet from the
 scatter file is as follows:
 
@@ -86,6 +86,6 @@ used by a Vela optimized neural network model, then the Arm® *Ethos™-U* NPU w
 A bigger region of memory for storing the neural network model is placed in the DDR, or flash, region under
 `LOAD_REGION_1`. The two load regions are necessary as the motherboard configuration controller of the MPS3 limits the
 load size at address `0x00000000` to 1MiB. This has implications on how the application **is deployed** on MPS3, as
-explained under the following section: [Deployment on MPS3](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./deployment.md#mps3-fpga-board).
+explained under the following section: [Deployment on MPS3](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./deployment.md#mps3-fpga-board).
 
-The next section of the documentation covers: [Troubleshooting](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/troubleshooting.md).
+The next section of the documentation covers: [Troubleshooting](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/troubleshooting.md).

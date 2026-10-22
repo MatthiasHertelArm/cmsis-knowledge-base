@@ -6,7 +6,7 @@ title: "Ceedling Wondrous Forest Project: Partials Patterns Used"
 summary: "Ceedling Wondrous Forest Project: Partials Patterns Used"
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/snapshot/examples/wondrous_forest/README.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/snapshot/examples/wondrous_forest/README.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/snapshot/examples/wondrous_forest/#partials-patterns-used"
 license: "MIT"
 mode: "V"
@@ -23,5 +23,6 @@ mode: "V"
 | TestForestMonitor.c     | `TEST_PARTIAL_PUBLIC_MODULE` + `MOCK_PARTIAL_PRIVATE_MODULE`  |
 | TestSensorHal.c         | Traditional — HAL has no private statics                      |
 | TestUartDriver.c        | Traditional — UART driver has no private statics              |
+| TestCalibration.c       | `TEST_PARTIAL_PRIVATE_MODULE_AT` — two same-named modules     |
 
 ---

@@ -6,8 +6,8 @@ title: "Additional Zephyr extension commands: Working with binary descriptors: `
 summary: "The bindesc command allows users to read binary descriptors of executable files. It currently supports .bin, .hex, .elf and .uf2 files as input."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/develop/west/zephyr-cmds.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/develop/west/zephyr-cmds.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/develop/west/zephyr-cmds.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/develop/west/zephyr-cmds.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

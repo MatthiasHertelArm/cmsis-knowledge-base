@@ -6,8 +6,8 @@ title: "Memory Protection Design: Boot Time Memory Configuration"
 summary: "This is the configuration of the MPU after the kernel has started up. It should contain the following:"
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/kernel/usermode/memory_domain.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/kernel/usermode/memory_domain.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/kernel/usermode/memory_domain.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/kernel/usermode/memory_domain.rst"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -25,8 +25,8 @@ contain the following:
   have similar capabilities. See mem_mgmt_api for information on
   how to annotate the system map in the device tree.
 
-- A read-only, executable region or regions for program text and ro-data, that
-  is accessible to user mode. This could be further sub-divided into a
+- One or more read-only, executable regions for program text and ro-data that are
+  accessible to user mode. This could be further sub-divided into a
   read-only region for ro-data, and a read-only, executable region for text, but
   this will require an additional MPU region. This is required so that
   threads running in user mode can read ro-data and fetch instructions.

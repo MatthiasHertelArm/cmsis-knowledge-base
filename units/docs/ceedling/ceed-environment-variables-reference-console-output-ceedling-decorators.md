@@ -6,7 +6,7 @@ title: "Environment Variables Reference: Console output — `CEEDLING_DECORATORS
 summary: "Forces Ceedling's console logging decorators (fancy Unicode characters, emoji, and color) on or off."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/reference/environment-vars.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/reference/environment-vars.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/reference/environment-vars/#console-output-ceedling-decorators"
 license: "MIT"
 mode: "V"

@@ -6,7 +6,7 @@ title: "Corstone SSE-320 with Ethos-U85 Example Subsystem for Ecosystem FVP: Int
 summary: "Corstone-320 is an Arm reference subsystem for secure System on Chips containing an Armv8.1-M Cortex-M85 processor and LCM, KMU and SAM IPs. and an Ethos-U85 neural network processor. It is an MPS4 based platform."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/platform/arm/mps4/corstone320/README.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/platform/arm/mps4/corstone320/README.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/platform/arm/mps4/corstone320/.html#introduction"
 license: "BSD-3-Clause"
 mode: "V"

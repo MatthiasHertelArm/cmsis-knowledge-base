@@ -6,8 +6,8 @@ title: "SmolLM2 -> Ethos-U Quickstart: 0. Prerequisites"
 summary: "Run all commands from the repository root."
 status: "draft"
 collection: "executorch-arm"
-source: "pytorch/executorch@658390c:examples/arm/smollm2_example_ethos_u/README.md"
-doc_source: "https://github.com/pytorch/executorch/blob/658390c/examples/arm/smollm2_example_ethos_u/README.md#0-prerequisites"
+source: "pytorch/executorch@6368414:examples/arm/smollm2_example_ethos_u/README.md"
+doc_source: "https://github.com/pytorch/executorch/blob/6368414/examples/arm/smollm2_example_ethos_u/README.md#0-prerequisites"
 license: "BSD-3-Clause"
 mode: "V"
 ---
@@ -17,7 +17,7 @@ Run all commands from the repository root.
 Use an activated Python environment before running the setup commands below,
 because `examples/arm/setup.sh` installs Python packages into the active
 environment. A conda environment or Python `venv` both work; see
-[`docs/source/using-executorch-building-from-source.md`](https://github.com/pytorch/executorch/blob/658390c/examples/arm/smollm2_example_ethos_u/../../../docs/source/using-executorch-building-from-source.md)
+[`docs/source/using-executorch-building-from-source.md`](https://github.com/pytorch/executorch/blob/6368414/examples/arm/smollm2_example_ethos_u/../../../docs/source/using-executorch-building-from-source.md)
 for the general ExecuTorch environment setup.
 
 ```bash

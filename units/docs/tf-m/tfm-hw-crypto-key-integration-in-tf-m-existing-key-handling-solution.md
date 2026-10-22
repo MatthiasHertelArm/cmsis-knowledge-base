@@ -6,7 +6,7 @@ title: "HW crypto key integration in TF-M secure boot: Existing key handling sol
 summary: "MCUBoot code contains a compile-time built-in key array which can store any number of key(s) for firmware verification: bl2/ext/mcuboot/keys.c. These public key(s) must be available when MCUBoot image is built."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/booting/secure_boot_hw_key_integration.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/booting/secure_boot_hw_key_integration.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/booting/secure_boot_hw_key_integration.html#existing-key-handling-solution"
 license: "BSD-3-Clause"
 mode: "V"

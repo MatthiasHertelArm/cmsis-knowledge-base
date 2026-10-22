@@ -6,7 +6,7 @@ title: "Fixing implicit casting for C enumeration values: Design proposal for TF
 summary: "In TF-M, an action will be taken for all enumerated types and enumeration constants that are used for implicit casting. The goal of this proposal is to remove all implicit casting of enumeration values in TF-M."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/software/enum_implicit_casting.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/software/enum_implicit_casting.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/software/enum_implicit_casting.html#design-proposal-for-tf-m"
 license: "BSD-3-Clause"
 mode: "V"

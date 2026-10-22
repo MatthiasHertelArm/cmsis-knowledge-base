@@ -6,15 +6,15 @@ title: "Mbed TLS CI failure FAQ: Reproducing failures locally"
 summary: "First, determine which component(s) failed. See the CI guide for an overview of component names."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/testing/understanding-ci-failures.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/testing/understanding-ci-failures.md#reproducing-failures-locally"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/testing/understanding-ci-failures.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/testing/understanding-ci-failures.md#reproducing-failures-locally"
 license: "Apache-2.0"
 mode: "V"
 ---
 
 ### How do I reproduce an `all.sh` failure locally?
 
-First, [determine which component(s) failed](#pr-tests-failed-which-components-failed). See the [CI guide](https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/testing/testing-ci.md#high-level-overview-of-the-pr-tests) for an overview of component names.
+First, [determine which component(s) failed](#pr-tests-failed-which-components-failed). See the [CI guide](https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/testing/testing-ci.md#high-level-overview-of-the-pr-tests) for an overview of component names.
 
 Suppose that the CI status for PR tests is
 ```
@@ -26,7 +26,7 @@ You can run these `all.sh` components as follows:
 tests/scripts/all.sh -k full_without_ecdhe_ecdsa test_tls1_2_ccm_psk_dtls
 ```
 
-Note that this may or may not run successfully outside the [official Docker image](https://github.com/Mbed-TLS/mbedtls-test/tree/main/resources/docker_files). See the [CI tooling guide](https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/testing/testing-ci.md#tooling-for-allsh) for more information.
+Note that this may or may not run successfully outside the [official Docker image](https://github.com/Mbed-TLS/mbedtls-test/tree/main/resources/docker_files). See the [CI tooling guide](https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/testing/testing-ci.md#tooling-for-allsh) for more information.
 
 ### Almost all tests fail in the full config
 

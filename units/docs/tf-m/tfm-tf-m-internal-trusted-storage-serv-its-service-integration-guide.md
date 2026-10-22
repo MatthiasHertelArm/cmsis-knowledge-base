@@ -6,7 +6,7 @@ title: "TF-M Internal Trusted Storage Service Integration Guide: ITS Service Int
 summary: "This section describes mandatory (i.e. must implement) or optional (i.e. may implement) interfaces which the system integrator has to take in to account in order to integrate the internal trusted storage service in a new platform."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/integration_guide/services/tfm_its_integration_guide.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/integration_guide/services/tfm_its_integration_guide.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/integration_guide/services/tfm_its_integration_guide.html#its-service-integration-guide"
 license: "BSD-3-Clause"
 mode: "V"

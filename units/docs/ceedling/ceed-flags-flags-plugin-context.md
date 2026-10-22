@@ -6,7 +6,7 @@ title: "`:flags`: `:flags` ↳ `:<plugin context>`"
 summary: "Some advanced plugins make use of build contexts as well. For instance, the Ceedling Gcov plugin uses a context of :gcov, surprisingly enough."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/configuration/reference/flags.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/configuration/reference/flags.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/configuration/reference/flags/#flags-plugin-context"
 license: "MIT"
 mode: "V"
@@ -17,3 +17,7 @@ Ceedling Gcov plugin uses a context of `:gcov`, surprisingly enough. For any
 plugins with tools that take advantage of Ceedling’s internal mechanisms, you
 can add to those tools' flags in the same manner as the built-in contexts and
 operations.
+
+The Gcov and Bullseye plugins' contexts, `:gcov` and `:bullseye`, accept
+per-test matchers in their operations as `:test` does. A plugin’s build uses
+`:test`’s flags for any operation its context lacks.

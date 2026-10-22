@@ -6,7 +6,7 @@ title: "Platform deprecation and removal: Process for Platform deprecation and r
 summary: "A platform may need to be removed from upstream code due to lack of community interest or it may have reached end of life. The below section calls out the process for removing platform support from TF-M."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/integration_guide/platform/platform_deprecation.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/integration_guide/platform/platform_deprecation.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/integration_guide/platform/platform_deprecation.html#process-for-platform-deprecation-and-removal"
 license: "BSD-3-Clause"
 mode: "V"

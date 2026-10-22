@@ -6,8 +6,8 @@ title: "Implementing custom ML application: Implementing main loop"
 summary: "The use-case main loop is the place to put use-case main logic. It is an infinite loop that triggers use-case conditional logic based on the input and present results back to the user."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/customizing.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/customizing.md#implementing-main-loop"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/customizing.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/customizing.md#implementing-main-loop"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -21,9 +21,9 @@ Main loop has knowledge about the platform and has access to the platform compon
 Layer (HAL).
 
 Start by creating a `MainLoop.cc` file in the `src` directory (the one created under
-[Adding custom ML use-case](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./customizing.md#adding-custom-ml-use-case)).  The name used is not important.
+[Adding custom ML use-case](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./customizing.md#adding-custom-ml-use-case)).  The name used is not important.
 
-Now define the `MainLoop` function with the signature described in [Main loop function](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./customizing.md#main-loop-function):
+Now define the `MainLoop` function with the signature described in [Main loop function](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./customizing.md#main-loop-function):
 
 ```C++
 #include "hal.h"
@@ -35,7 +35,7 @@ void MainLoop()
 }
 ```
 
-The preceding code is already a working use-case. If you compile and run it (see [Building custom use-case](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./customizing.md#building-custom-use_case)),
+The preceding code is already a working use-case. If you compile and run it (see [Building custom use-case](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./customizing.md#building-custom-use_case)),
 then the application starts and prints a message to console and exits straight away.
 
 You can now start filling this function with logic.

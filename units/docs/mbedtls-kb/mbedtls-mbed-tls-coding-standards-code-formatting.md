@@ -6,15 +6,15 @@ title: "Mbed TLS coding standards: Code Formatting"
 summary: "In order to maintain a consistent coding style, the C code in Mbed TLS is formatted with Uncrustify. The reference version of Uncrustify is 0.75.1; older or newer versions are not suitable because they give different results."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/development/mbedtls-coding-standards.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/development/mbedtls-coding-standards.md#code-formatting"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/development/mbedtls-coding-standards.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/development/mbedtls-coding-standards.md#code-formatting"
 license: "Apache-2.0"
 mode: "V"
 ---
 
 ### Enforcement with uncrustify
 
-In order to maintain a consistent coding style, the C code in Mbed TLS is formatted with [Uncrustify](https://github.com/uncrustify/uncrustify). The reference version of Uncrustify is 0.75.1; older or newer versions are not suitable because they give different results. See the [“Installing uncrustify”](https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/development/uncrustify.md#installing-uncrustify) article for some tips.
+In order to maintain a consistent coding style, the C code in Mbed TLS is formatted with [Uncrustify](https://github.com/uncrustify/uncrustify). The reference version of Uncrustify is 0.75.1; older or newer versions are not suitable because they give different results. See the [“Installing uncrustify”](https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/development/uncrustify.md#installing-uncrustify) article for some tips.
 
 #### Code style check script
 

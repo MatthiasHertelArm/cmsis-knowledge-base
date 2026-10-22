@@ -6,7 +6,7 @@ title: "Physical attack mitigation in Trusted Firmware-M: Effects of physical at
 summary: "The change in the behavior of the hardware and software cannot be seen in advance when performing a physical attack. On circuit-level they manifest in bit faults."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/tfm_physical_attack_mitigation.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/tfm_physical_attack_mitigation.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/tfm_physical_attack_mitigation.html#effects-of-physical-attacks-in-hardware-and-in-software-execution"
 license: "BSD-3-Clause"
 mode: "V"

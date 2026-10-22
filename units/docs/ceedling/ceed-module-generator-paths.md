@@ -3,35 +3,42 @@ id: "ceed-module-generator-paths"
 type: "concept"
 domain: "test"
 title: "Module Generator: Paths"
-summary: "The directories found in the project :paths: are reused. You can also specify an alternative default generation path using:"
+summary: "Without any hint, each kind of file goes to the first path listed for it under [:paths][paths]. Source files go to the first :source path, headers to the first :include path, and tests to the first :test path."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/module-generator.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/plugins/module-generator.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/module-generator/#paths"
 license: "MIT"
 mode: "V"
 ---
 
-The directories found in the project `:paths:` are reused. You can also specify an alternative default generation path using: 
+Without any hint, each kind of file goes to the first path listed for it under
+[`:paths`][paths]. Source files go to the first `:source` path, headers to the first `:include`
+path, and tests to the first `:test` path. Headers go with the source when your project
+lists no include paths. To choose other default locations, configure them:
 
 ```yaml
 :module_generator:
   :path_src: src/
-  :path_inc: src/
+  :path_inc: include/
   :path_tst: test/
 ```
 
-But what if I don't want it to place my new files in the default location?
+### Path hints
 
-It can do that too! You can give it a hint as to where to find your files. The pattern matching
-here is fairly basic, but it is usually sufficient. It works perfectly if your directory structure
-matches a common pattern. For example, let's say you issue this command:
+A hint before a colon steers a module toward matching paths:
 
 ```sh
-ceedling module:create[lab:SecretLair,mch]
+ceedling "module:create[lab:SecretLair,mch]"
 ```
 
-Say your directory structure looks like this:
+The hint is matched separately against your source, include, and test paths, and each
+kind of file goes to the path the hint matches best. A path matches best when its
+trailing folders match the hint. When the hint matches nothing among one kind of path,
+those files go to the first path of that kind. When it matches nothing at all, the
+command stops with an error and creates nothing.
+
+Say your project lists these paths:
 
 ```yaml
 :paths:
@@ -45,85 +52,70 @@ Say your directory structure looks like this:
     - other/test
 ```
 
-In this case, the `lab:` hint would make the module generator guess you want your files here:
+The `lab:` hint places files here:
 
-- source files: `lab/src` (because it's a close match)
-- include files: `lab/src` (because no include paths were listed)
-- test files: `lab/test` (because it's a close match)
+- source files: `lab/src` (a close match)
+- include files: `lab/src` (no include paths are listed, so headers go with the source)
+- test files: `lab/test` (a close match)
 
-Instead, if your directory structure looks like this:
-
-```yaml
-:paths:
-  :source:
-    - src/**   #this might contain subfolders lab, lair, and other
-  :include:
-    - inc/**   #again, this might contain subfolders lab, lair, other, and shared
-  :test:
-    - test
-```
-
-In this case, the `lab:` hint would make the module generator guess you want your files here:
-
-- source files: `src/lab` (because it's a close match)
-- include files: `inc/lab` (because it's a close match)
-- test files: `test` (because there wasn't a close match, and this was the first entry on our list)
-
-You can see that more complicated structures will have files placed in the wrong place from time to
-time... no worries... you can move the file after it's created... but if your project has any kind of 
-consistent structure, the guessing engine does a good job of making it work.
-
-A few more quick notes about the path-matching:
-
-1. You can give multiple ordered hints that map roughly to folder nesting! `lab:secret:lair` will 
-   happily match to put `lair.c` in a folder like `my/lab/secret/`.
-
-2. If the matcher isn't given any path information or it finds multiple equally good candidates, 
-   it will always guess in the order you have the paths listed in your project.yml file
-
-3. If the matcher completely fails to find a good candidate, it will return an error, allowing you
-   to rectify the situation.
-
-4. What path is "first" when you're using `**` pattern in your `:paths:` specifications? The parent
-   folder is used first, then its children alphabetically, and so on. This is important when 
-   considering where files (or especially subfolders... see below) will be generated.
-
-### Adding to Paths
-
-In addition to the pattern matching above, you can add slashes (`/`) to your filename specification.
-When a slash is used instead of a colon (`:`), it will stop using pattern matching and assume the
-subdirectory is supposed to be there. If the subdir is NOT there, it will automatically add it.
-
-Let's try an example with our previous path specification:
+Instead, say your paths look like this:
 
 ```yaml
 :paths:
   :source:
-    - src/**   #this might contain subfolders lab, lair, and other
+    - src/**   # might contain subfolders lab, lair, and other
   :include:
-    - inc/**   #again, this might contain subfolders lab, lair, other, and shared
+    - inc/**   # might contain subfolders lab, lair, other, and shared
   :test:
     - test
 ```
 
-Then, use the following command:
+Now the `lab:` hint places files here:
+
+- source files: `src/lab` (a close match)
+- include files: `inc/lab` (a close match)
+- test files: `test` (no close match, so the first test path)
+
+A few more notes about hints:
+
+1. Several hints narrow the match through nested folders. `lab:secret:lair` places
+   `lair.c` in a folder like `my/lab/secret/`.
+2. Among equally good matches, and without any hint, the order of your paths in the
+   project file decides.
+3. With a `**` glob under `:paths`, the parent folder comes first, then its
+   subfolders alphabetically, and so on.
+4. A hint may be an absolute path, including one with a Windows drive letter, as in
+   `C:/project/lab:SecretLair`.
+
+More complicated structures will sometimes place a file in the wrong folder, and you
+can move it afterward. A project with a consistent structure gets good placement.
+
+### Adding to paths
+
+A slash in the name, rather than a colon, names a subdirectory to use as given. The
+module generator creates it if it does not exist. With the second set of paths above,
+this call:
 
 ```sh
-ceedling module:create[newlab/SecretLair]
+ceedling "module:create[newlab/SecretLair]"
 ```
 
-This will create the following 3 files:
+creates these files:
 
 - `src/newlab/SecretLair.c`
 - `inc/newlab/SecretLair.h`
-- `test/newlab/TestSecretLair.c`
+- `test/newlab/test_SecretLair.c`
 
-Technically, you can start with a colon and specify part of a path, then use a slash
-to specify the remainder of the path to use. In most circumstances, this should work... however
-it suffers from the same potential issues as the matcher above, with the added joy of creating 
-new subdirectories for you without asking. 
+A hint and a slash can combine, as in `lab:newlab/SecretLair`. A hint picks among
+existing paths, and the slash then adds a subdirectory below the chosen path.
 
-It's important to note the module generator doesn't care if these new subdirectories are covered 
-by the current path specification. This allows you to create the files before updating the
-`project.yml` file if desired, but it also means you might accidentally think you've created
-a file that Ceedling can see, when it can't.
+The module generator does not check whether a new subdirectory is covered by your
+`:paths`. You can create files before updating your project file. You might also create
+a file Ceedling does not see until you add its folder to `:paths`.
+
+### Same-named files
+
+`module:create` warns about each existing source, header, or test file elsewhere in your
+project that shares a name with a file it is about to create, then creates the module.
+Ceedling distinguishes same-named files by their paths, so this is allowed. The warning
+catches the case where you meant to work with the existing module instead.

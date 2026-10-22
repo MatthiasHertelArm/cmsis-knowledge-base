@@ -6,7 +6,7 @@ title: "Cypress PSoC64 Specifics: Provisioning Amazon Web Services root and devi
 summary: "Device running Amazon FreeRTOS and using Amazon Web Services (AWS) requires AWS root and unique device certificate signed with the device key for authentication. These certificates have to be provisioned into device. The process is the following:"
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/platform/cypress/psoc64/cypress_psoc64_spec.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/platform/cypress/psoc64/cypress_psoc64_spec.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/platform/cypress/psoc64/cypress_psoc64_spec.html#provisioning-amazon-web-services-root-and-device-certificates"
 license: "BSD-3-Clause"
 mode: "V"

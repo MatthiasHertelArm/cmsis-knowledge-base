@@ -6,8 +6,8 @@ title: "Implementing custom ML application: Output to MPS3 LCD"
 summary: "The HAL exposes LCD functions to print text or an image to the board LCD. For example:"
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/customizing.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/customizing.md#output-to-mps3-lcd"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/customizing.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/customizing.md#output-to-mps3-lcd"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -52,5 +52,5 @@ by a factor of two:
 hal_display_show_image((uint8_t *) inputTensor->data.data, 224, 224, 3, 10, 35, 2);
 ```
 
-Please refer to the [Hardware Abstraction Layer API](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./customizing.md#hardware-abstraction-layer-api) section for more
+Please refer to the [Hardware Abstraction Layer API](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./customizing.md#hardware-abstraction-layer-api) section for more
 LCD related functions.

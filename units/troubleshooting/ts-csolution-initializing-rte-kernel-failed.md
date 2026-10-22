@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["initializing RTE Kernel failed"]
 symptom_regex: "^initializing RTE Kernel failed$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:506"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:506"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

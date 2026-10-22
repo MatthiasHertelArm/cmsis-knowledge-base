@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["no compatible software layer found. Review required connections of the project"]
 symptom_regex: "^no compatible software layer found\\. Review required connections of the project$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1016"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgr.cpp:1016"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

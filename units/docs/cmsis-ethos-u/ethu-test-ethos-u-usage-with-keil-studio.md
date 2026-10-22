@@ -6,13 +6,13 @@ title: "Test-Ethos-U: Usage with Keil Studio"
 summary: "Test-Ethos-U: Usage with Keil Studio"
 status: "draft"
 collection: "cmsis-ethos-u"
-source: "ARM-software/CMSIS-Ethos-U@b2b641e:examples/Test-Ethos-U/README.md"
-doc_source: "https://github.com/ARM-software/CMSIS-Ethos-U/blob/b2b641e/examples/Test-Ethos-U/README.md#usage-with-keil-studio"
+source: "ARM-software/CMSIS-Ethos-U@cf13d8d:examples/Test-Ethos-U/README.md"
+doc_source: "https://github.com/ARM-software/CMSIS-Ethos-U/blob/cf13d8d/examples/Test-Ethos-U/README.md#usage-with-keil-studio"
 license: "Apache-2.0"
 mode: "V"
 ---
 
-- [vcpkg-configuration.json](https://github.com/ARM-software/CMSIS-Ethos-U/blob/b2b641e/examples/Test-Ethos-U/vcpkg-configuration.json) lists the tool dependencies that can be installed with
+- [vcpkg-configuration.json](https://github.com/ARM-software/CMSIS-Ethos-U/blob/cf13d8d/examples/Test-Ethos-U/vcpkg-configuration.json) lists the tool dependencies that can be installed with
   [Arm Tools Environment Manager](https://marketplace.visualstudio.com/items?itemName=Arm.environment-manager).
 - [Keil Studio for VS Code](https://marketplace.visualstudio.com/items?itemName=Arm.keil-studio-pack)
   can open the example. In the CMSIS view, use the

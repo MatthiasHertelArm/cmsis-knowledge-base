@@ -6,8 +6,8 @@ title: "SDSIO Interface: Layer: sdsio_fvp"
 summary: "The template/sdsio/fvp/sdsio_fvp.clayer.yml targets AVH FVP simulation and is configured for playback from the host computer or a CI system. It uses the SDSIO VSI interface implemented by the file vsi/python/arm_vsi3.py, which is loaded by the FVP simulation model."
 status: "draft"
 collection: "sds-framework"
-source: "ARM-software/SDS-Framework@4459441:documentation/sdsio.md"
-doc_source: "https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/sdsio.md#layer-sdsio-fvp"
+source: "ARM-software/SDS-Framework@c18efee:documentation/sdsio.md"
+doc_source: "https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/sdsio.md#layer-sdsio-fvp"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -22,9 +22,9 @@ pip install pyyaml asyncio
 
 ### Using FVP Simulation Models
 
-VSI3 implements the SDSIO VSI interface and is designed for regression testing on host computer and CI systems. The tests cases are configured using a [`*.sdsio.yml` control file](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/utilities.md#sdsio-control-file-sdsioyml). 
+VSI3 implements the SDSIO VSI interface and is designed for regression testing on host computer and CI systems. The tests cases are configured using a [`*.sdsio.yml` control file](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/utilities.md#sdsio-control-file-sdsioyml). 
 
-VSI3 locates a [`*.sdsio.yml` control file](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/utilities.md#sdsio-control-file-sdsioyml) as follows:
+VSI3 locates a [`*.sdsio.yml` control file](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/utilities.md#sdsio-control-file-sdsioyml) as follows:
 
 - If the environment variable `SDSIO_FVP` is set, it must be an **absolute path** to either a config file or a directory:
     - **File** — used directly as the config file.
@@ -62,7 +62,7 @@ Fatal Python error: _Py_GetConfig: the function must be called with the GIL held
 
 **Log File: `sdsio.log`:**
 
-During FVP simulation, an `sdsio.log` file is generated that records all [SDS data file](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/theory.md#sds-data-files) access operations. This file is located in the folder that is configured the `workdir:` in the `*.sdsio.yml` file.
+During FVP simulation, an `sdsio.log` file is generated that records all [SDS data file](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/theory.md#sds-data-files) access operations. This file is located in the folder that is configured the `workdir:` in the `*.sdsio.yml` file.
 
 **Example:**
 

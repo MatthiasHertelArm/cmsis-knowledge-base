@@ -6,8 +6,8 @@ title: "Image Classification Code Sample: Building the code sample application f
 summary: "In addition to the already specified build option in the main documentation, the Image Classification use-case specifies:"
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/use_cases/img_class.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/img_class.md#building-the-code-sample-application-from-sources"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/use_cases/img_class.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/img_class.md#building-the-code-sample-application-from-sources"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -34,7 +34,7 @@ specifies:
     model in this case results in a runtime error.
 
 - `img_class_NORM_MEAN` and `img_class_NORM_STD` - These options are available
-  when [building with ExecuTorch](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../sections/building.md#build-options) and should be used together.
+  when [building with ExecuTorch](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../sections/building.md#build-options) and should be used together.
   They specify the normalisation mean and standard deviation values for each of the three input channels,
   and are used for converting uint8 image data to float32 which is the input type for the ExecuTorch models
   provided with this use case.
@@ -52,7 +52,7 @@ specifies:
    be used in the application. The default value points to the `resources/img_class/samples` folder containing the
    delivered set of images.
 
-    For further information, please refer to: [Add custom input data section](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/./img_class.md#add-custom-input).
+    For further information, please refer to: [Add custom input data section](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/./img_class.md#add-custom-input).
 
 - `img_class_IMAGE_SIZE`: The NN model requires input images to be of a specific size. This parameter defines the size
   of the image side in pixels. Images are considered squared. The default value is `224`, which is what the supplied
@@ -72,12 +72,12 @@ specifies:
 - `USE_CASE_BUILD`: is set to `img_class` to only build this example.
 
 To build **ONLY** the Image Classification example application, add `-DUSE_CASE_BUILD=img_class` to the `cmake` command
-line, as specified in: [Building](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../documentation.md#Building).
+line, as specified in: [Building](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../documentation.md#Building).
 
 ### Build process
 
 > **Note:** This section describes the process for configuring the build for the *MPS3: SSE-300*. To build for a
-> different target platform, please refer to: [Building](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../documentation.md#Building).
+> different target platform, please refer to: [Building](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../documentation.md#Building).
 
 Create a build directory and navigate inside, like so:
 
@@ -104,9 +104,9 @@ cmake .. \
 
 For further information, please refer to:
 
-- [Configuring with custom TPIP dependencies](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../sections/building.md#configuring-with-custom-tpip-dependencies)
-- [Using Arm Compiler](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../sections/building.md#using-arm-compiler)
-- [Building for different Ethos-U NPU variants](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../sections/building.md#building-for-different-ethos_u-npu-variants)
+- [Configuring with custom TPIP dependencies](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../sections/building.md#configuring-with-custom-tpip-dependencies)
+- [Using Arm Compiler](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../sections/building.md#using-arm-compiler)
+- [Building for different Ethos-U NPU variants](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../sections/building.md#building-for-different-ethos_u-npu-variants)
 
 > **Note:** If re-building with changed parameters values, we recommend that you clean the build directory and re-run
 > the CMake command.
@@ -203,7 +203,7 @@ The application performs inference using the model pointed to by the CMake param
 > **Note:** If you want to run the model using an *Ethos-U*, ensure that your custom model has been successfully run
 > through the Vela compiler *before* continuing.
 
-For further information: [Optimize model with Vela compiler](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../sections/building.md#Optimize-custom-model-with-Vela-compiler).
+For further information: [Optimize model with Vela compiler](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../sections/building.md#Optimize-custom-model-with-Vela-compiler).
 
 To run the application with a custom model, you must provide a `labels_<model_name>.txt` file of labels that are
 associated with the model. Each line of the file must correspond to one of the outputs in your model.

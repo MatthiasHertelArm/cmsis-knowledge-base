@@ -6,8 +6,8 @@ title: "Arm CMSIS Debugger: Debugger User Interface / Number formats"
 summary: "Expressions can be represented in different number formats. The debuggers default format is natural. If you wish to change the radix, there are multiple ways to do so:"
 status: "draft"
 collection: "cmsis-debugger"
-source: "Open-CMSIS-Pack/vscode-cmsis-debugger@28c1601:README.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/blob/28c1601/README.md#number-formats"
+source: "Open-CMSIS-Pack/vscode-cmsis-debugger@12cb62a:README.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/blob/12cb62a/README.md#number-formats"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -25,7 +25,7 @@ change the radix, there are multiple ways to do so:
   format specifier):
 
 | Specifier | Format |
-|-----------|--------|
+| ----------- | -------- |
 | `x` | `hexadecimal` |
 | `d` | `decimal` |
 | `o` | `octal` |

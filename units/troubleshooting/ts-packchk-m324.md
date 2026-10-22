@@ -10,8 +10,8 @@ code: "M324"
 symptoms: ["M324", "Board referenced in Example '%EXAMPLE%' not found: '[%VENDOR%] %BOARD%'"]
 symptom_regex: "^Board referenced in Example '.+?' not found: '\\[.+?\\] .+?'$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"

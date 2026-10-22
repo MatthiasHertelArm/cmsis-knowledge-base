@@ -6,8 +6,8 @@ title: "Memory considerations: Memory available on the target platform"
 summary: "All embedded target platforms supported have platform specific header files that contain memory and other definitions. For example, MPS3 and MPS4 target header files can be found under the HAL sources' platform subdirectory and contains the following definitions:"
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/memory_considerations.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/memory_considerations.md#memory-available-on-the-target-platform"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/memory_considerations.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/memory_considerations.md#memory-available-on-the-target-platform"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -55,7 +55,7 @@ Other than the obvious link between the linker script and the target profile des
 CMake files, there are other parameters linked to what the reserved space for activation
 buffers is. These are:
 
-- The file [npu_config.py](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../scripts/py/mlek_tools/setup/npu_config.py) contains a
+- The file [npu_config.py](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../scripts/py/mlek_tools/setup/npu_config.py) contains a
   parameter called `_DEFAULT_SHARED_SRAM_ARENA_SIZE`:
 
   ```python

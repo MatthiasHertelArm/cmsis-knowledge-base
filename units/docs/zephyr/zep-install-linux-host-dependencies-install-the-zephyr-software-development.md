@@ -6,8 +6,8 @@ title: "Install Linux Host Dependencies: Install the Zephyr Software Development
 summary: "The Zephyr Software Development Kit (SDK) contains toolchains for each of Zephyr's supported architectures. It also includes additional host tools, such as custom QEMU and OpenOCD."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/develop/getting_started/installation_linux.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/develop/getting_started/installation_linux.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/develop/getting_started/installation_linux.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/develop/getting_started/installation_linux.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

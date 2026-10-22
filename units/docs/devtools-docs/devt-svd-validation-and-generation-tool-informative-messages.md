@@ -6,8 +6,8 @@ title: "SVD Validation and Generation Tool: Error and Warning Messages / Informa
 summary: "SVD Validation and Generation Tool: Error and Warning Messages / Informative messages"
 status: "draft"
 collection: "devtools-docs"
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/svdconv/SVDConv/README.md#informative-messages"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/5f04db7/tools/svdconv/SVDConv/README.md#informative-messages"
 license: "Apache-2.0"
 mode: "V"
 ---

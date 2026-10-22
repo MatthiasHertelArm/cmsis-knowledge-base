@@ -6,8 +6,8 @@ title: "Online Memory Allocation Overview in TensorFlow Lite Micro: Model Init P
 summary: "Either through the first call to MicroInterpreter::Invoke() or an explicit call to MicroInterpreter::AllocateTensors() the online model allocation will begin. The MicroInterpreter instance will invoke MicroAllocator::StartModelAllocation()."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/online_memory_allocation_overview.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/online_memory_allocation_overview.md#model-init-phase"
+source: "tensorflow/tflite-micro@bd621c2:tensorflow/lite/micro/docs/online_memory_allocation_overview.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/bd621c2/tensorflow/lite/micro/docs/online_memory_allocation_overview.md#model-init-phase"
 license: "Apache-2.0"
 mode: "V"
 ---

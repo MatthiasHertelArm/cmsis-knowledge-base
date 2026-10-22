@@ -6,7 +6,7 @@ title: "A Build System for All Your C Mad Scientisting Needs: Simple Sample Proj
 summary: "For a project including Unity/CMock unit tests and using the default toolchain gcc, the configuration file could be as simple as this:"
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/overview/build-system.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/overview/build-system.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/overview/build-system/#simple-sample-project-file"
 license: "MIT"
 mode: "V"
@@ -51,5 +51,5 @@ extend Ceedling's capabilities for needs such as custom code metrics
 reporting, build artifact packaging, and much more. A variety of 
 built-in plugins come with Ceedling.
 
-[example-config-file]: ../snapshot/assets/project.yml
+[example-config-file]: ../snapshot/assets/features/project.yml
 [project-configuration]: ../configuration/index.md

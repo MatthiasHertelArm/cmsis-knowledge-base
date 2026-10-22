@@ -6,7 +6,7 @@ title: "Conventions & Behaviors: Duration reporting"
 summary: "Ceedling logs two execution times for every project run."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/testing-guide/conventions.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/testing-guide/conventions.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/testing-guide/conventions/#duration-reporting"
 license: "MIT"
 mode: "V"
@@ -45,9 +45,9 @@ suite abstraction within a given test report format.
 
 Because Ceedling can execute builds with multiple threads, care must be taken
 to interpret test suite duration values — particularly in relation to 
-Ceedling's logged run times.
+Ceedling’s logged run times.
 
-In a multi-threaded build it's quite common for the logged Ceedling project run
+In a multi-threaded build it’s quite common for the logged Ceedling project run
 time to be less than the total suite time in a test report. In multi-threaded 
 builds on multi-core machines, test executables are run on different processors
 simultaneously. As such, the total on-processor time in a test report can 
@@ -64,7 +64,7 @@ supports the time mechanism Unity relies on, Ceedling will automatically
 collect test case time values — generally made use of by test report plugins.
 
 To enable test case duration measurements, they must be enabled as a Unity
-compilation option. Add `UNITY_INCLUDE_EXEC_TIME` to Unity's compilation
+compilation option. Add `UNITY_INCLUDE_EXEC_TIME` to Unity’s compilation
 symbols (`:unity` ↳ `:defines`) in your Ceedling project file (see example
 below). Unity test case durations as reported by Ceedling default to 0 if the
 compilation option is not set.

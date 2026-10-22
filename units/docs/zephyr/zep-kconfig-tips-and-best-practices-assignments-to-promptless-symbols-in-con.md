@@ -6,8 +6,8 @@ title: "Kconfig - Tips and Best Practices: Assignments to promptless symbols in 
 summary: "Assignments to hidden (promptless, also called invisible) symbols in configuration files are always ignored. Hidden symbols get their value indirectly from other symbols, via e.g. default and select."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/build/kconfig/tips.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/build/kconfig/tips.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/build/kconfig/tips.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/build/kconfig/tips.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

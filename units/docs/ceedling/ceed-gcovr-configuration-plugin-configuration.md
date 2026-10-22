@@ -6,7 +6,7 @@ title: "GCovr Configuration: Plugin configuration"
 summary: "The following options are exposed through your project configuration file, all beneath :gcov ↳ :gcovr. Only specify those you need or those whose defaults you need to override."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/gcov/gcovr.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/plugins/gcov/gcovr.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/gcov/gcovr/#plugin-configuration"
 license: "MIT"
 mode: "V"
@@ -20,7 +20,8 @@ Gcov plugin configuration.
 ### `:report_root`
 
 The root directory of your source files. File names are reported relative to
-this root. `:report_root` is also the default `:report_include`.
+this root. Ceedling does not derive a default `:report_include` from it —
+`gcovr` itself only searches beneath `--root` when no `--filter` is given.
 
 !!! warning "`gcovr` accepts only one reporting root path"
     `gcovr` accepts only a single path for `:report_root`. In unusual project
@@ -37,16 +38,20 @@ this root. `:report_root` is also the default `:report_include`.
 Load the specified `gcovr` configuration file. (`gcovr --config`)
 
 When `:config_file` is set, Ceedling passes only `--root` and `--config` to
-`gcovr` and defers all other configuration to the file. This prevents
+`gcovr` and defers (nearly) all other configuration to the file. This prevents
 Ceedling from overriding config file values with its CLI arguments.
 `:report_root` is still applied because Ceedling may invoke `gcovr` from a
-different working directory than your project root.
+different working directory than your project root, and `:custom_args:` is
+still applied too — the one way to pass Gcovr flags of your own alongside a
+config file (see `:custom_args` below).
 
 To preserve the plugin's base filtering behavior, include exclusion patterns
 matching your project layout in the config file itself — see
 [Gcovr configuration file](#gcovr-configuration-file) above.
 
-**Default:** `gcovr.cfg` in the `:report_root` directory, if that file exists.
+**Default:** unset — Ceedling does not look for or autodetect a config file
+on disk; `gcovr` itself is only ever told to load one when `:config_file` is
+explicitly set.
 
 ---
 
@@ -136,9 +141,8 @@ deprecated as of 7.0, though still functional); `gcovr --branches` below it.
 ### `:sort_uncovered`
 
 Sort entries by increasing number of uncovered lines. Applies to text and HTML
-reports. Uses `gcovr --sort uncovered-number` on `gcovr` 7.0+
-(`--sort-uncovered` is deprecated as of 7.0, though still functional);
-`gcovr --sort-uncovered` below it.
+reports. Uses `gcovr --sort uncovered-number` on `gcovr` 7.0+ (`--sort-uncovered`
+is deprecated as of 7.0, though still functional); `gcovr --sort-uncovered` below it.
 
 ---
 
@@ -183,10 +187,10 @@ Ceedling automatically generates and prepends its own exclusion patterns for
 test files, test support files, and generated/vendored build files — see
 [Results filtering](#results-filtering) above for exactly what these cover
 and why. Anything you provide here is combined with those defaults, not a
-replacement for them. This option can only add further exclusions, never
-remove or override one of the three defaults.
-See [Overriding the defaults](#overriding-the-defaults) for how to do 
-that instead.
+replacement for them — this option can only add further exclusions, never
+remove or override one of the three defaults (e.g. to include test files in
+results). See [Overriding the defaults](#overriding-the-defaults) for how to
+do that instead.
 
 **Example:** `"^vendor.*|^build.*|^test.*|^lib.*"`
 
@@ -287,3 +291,32 @@ Delete `.gcda` files after processing. (`gcovr --delete`)
 ### `:threads`
 
 Set the number of threads `gcovr` uses in parallel. (`gcovr -j`)
+
+---
+
+### `:custom_args`
+
+Optional list of one or more raw command line arguments to pass to `gcovr`.
+Useful as an escape hatch for any `gcovr` flag Ceedling has no named option
+for (e.g. limiting `gcovr`'s search root).
+
+Unlike every other option above, these arguments are still applied even when
+`:config_file` is set — the one way to pass `gcovr` flags of your own
+alongside a config file.
+
+This does not, on its own, let you override
+[Results filtering](#results-filtering)'s automatic exclusion defaults when
+`:config_file` is unset — a raw `--filter`/`--exclude` passed here is just as
+additive as [`:report_exclude`](#report_exclude); see
+[Overriding the defaults](#overriding-the-defaults) for the one option that
+actually does.
+
+```yaml
+:gcov:
+  :gcovr:
+    :custom_args:
+      - <argument>
+      - ...
+```
+
+**Default:** `[]`

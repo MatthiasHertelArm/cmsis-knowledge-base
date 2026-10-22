@@ -6,8 +6,8 @@ title: "cmsis-view mainpage: Documentation Structure"
 summary: "This user's guide contains the following chapters:"
 status: "draft"
 collection: "cmsis-view"
-source: "ARM-software/CMSIS-View@fef5aca:Documentation/Doxygen/src/mainpage.md"
-doc_source: "https://github.com/ARM-software/CMSIS-View/blob/fef5aca/Documentation/Doxygen/src/mainpage.md#documentation-structure"
+source: "ARM-software/CMSIS-View@285e935:Documentation/Doxygen/src/mainpage.md"
+doc_source: "https://github.com/ARM-software/CMSIS-View/blob/285e935/Documentation/Doxygen/src/mainpage.md#documentation-structure"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -22,4 +22,4 @@ This user's guide contains the following chapters:
  - SCVD_Format : describes the format of the Software Component View Description (*.SCVD) files that define the content that is displayed.
  - fault : infrastructure and functions to store, record, and analyze the Cortex-M Exception Fault information.
  - ExampleProjects are available demonstrating standard use cases.
- - [**API References**](https://github.com/ARM-software/CMSIS-View/blob/fef5aca/Documentation/Doxygen/src/topics.html) describes the API and the functions of the **Event Recorder** and **Fault** components in details.
+ - [**API References**](https://github.com/ARM-software/CMSIS-View/blob/285e935/Documentation/Doxygen/src/topics.html) describes the API and the functions of the **Event Recorder** and **Fault** components in details.

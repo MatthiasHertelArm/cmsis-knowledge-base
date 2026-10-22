@@ -6,7 +6,7 @@ title: "Memory Access Check of Trusted Firmware-M in Multi-Core Topology: Data T
 summary: "The following flags are defined to indicate the access permission attributes. Each flag is mapped to the corresponding CMSE macro. Please refer to ARMv8-M Security Extensions: Requirements on Development Tools <http://infocenter.arm.com/help/topic/com.arm.doc.ecm0359818/ECM0359818_armv8m_security_extensions_reqs_on_dev_tools_1_0.pdf> for details of each CMSE macro."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/multi-cpu/tfm_multi_core_access_check.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/multi-cpu/tfm_multi_core_access_check.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/multi-cpu/tfm_multi_core_access_check.html#data-types"
 license: "BSD-3-Clause"
 mode: "V"

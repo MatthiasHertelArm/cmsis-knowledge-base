@@ -6,8 +6,8 @@ title: "SDSIO Interface: Layer: sdsio_network"
 summary: "The layer/sdsio/network/sdsio_network.clayer.yml is configured for recording and playback via the Ethernet interface. It uses the MDK-Middleware Network component. Both the target hardware and the SDSIO-Server are connected to a local LAN."
 status: "draft"
 collection: "sds-framework"
-source: "ARM-software/SDS-Framework@4459441:documentation/sdsio.md"
-doc_source: "https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/sdsio.md#layer-sdsio-network"
+source: "ARM-software/SDS-Framework@c18efee:documentation/sdsio.md"
+doc_source: "https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/sdsio.md#layer-sdsio-network"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -25,7 +25,7 @@ The [`layer/sdsio/network/sdsio_network.clayer.yml`](https://github.com/ARM-soft
 
 ### Using Network Interface
 
-To access [SDS data files](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/theory.md#sds-data-files), configure the `*.sdsio.yml` file with the [`interface - socket:`](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/utilities.md#socket) node for Network interface, and start the [SDSIO-Server](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/utilities.md#sdsio-server) on the host computer with:
+To access [SDS data files](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/theory.md#sds-data-files), configure the `*.sdsio.yml` file with the [`interface - socket:`](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/utilities.md#socket) node for Network interface, and start the [SDSIO-Server](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/utilities.md#sdsio-server) on the host computer with:
 
 ```bash
 >python sdsio-server.py -c myproject.sdsio.yml

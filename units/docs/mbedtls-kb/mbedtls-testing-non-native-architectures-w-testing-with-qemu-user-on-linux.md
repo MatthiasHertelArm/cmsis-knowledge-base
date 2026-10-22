@@ -6,8 +6,8 @@ title: "Testing non-native architectures with QEMU: Testing with qemu-user on Li
 summary: "With mtest:"
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/testing/testing-qemu.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/testing/testing-qemu.md#testing-with-qemu-user-on-linux"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/testing/testing-qemu.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/testing/testing-qemu.md#testing-with-qemu-user-on-linux"
 license: "Apache-2.0"
 mode: "V"
 ---

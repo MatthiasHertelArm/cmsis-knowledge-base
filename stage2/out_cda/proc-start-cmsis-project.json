@@ -1,0 +1,49 @@
+{
+  "id": "proc-start-cmsis-project",
+  "summary": "Creates the first CMSIS csolution for a verified board or device, either a minimal project or an example or template of its pack, then opens and builds it with cmsis_action.",
+  "triggers": [
+    "Create the first CMSIS solution for a board or device",
+    "a folder that has no *.csolution.yml yet",
+    "Use from cmsis-bootstrap or cmsis-project when a new project has to be started",
+    "a new project has to be started for a verified board, device and pack"
+  ],
+  "applies_to": {
+    "tool": [
+      "csolution",
+      "cmsis-solution"
+    ],
+    "toolchain": [],
+    "core": [],
+    "component": [],
+    "api": []
+  },
+  "unmapped": [
+    "Device Family Pack (DFP)",
+    "Board Support Pack (BSP)",
+    "Arm Tools Environment Manager"
+  ],
+  "verification": [],
+  "stop_conditions": [
+    "the folder, which must not contain a `*.csolution.yml` (stop and name `proc-add-cmsis-target` (`knowledge_get`) when it does);",
+    "Show the user the qualifying entries with their descriptions and let them choose, the minimal project always among the options.",
+    "ask when the name does not fit",
+    "otherwise ask which one",
+    "ask when the chosen one is not listed.",
+    "stop and report when there is none.",
+    "take the core the user named, otherwise ask which one; when the user does not care, the first core the DFP lists is the boot core, say so in the report",
+    "ask when it was not named; the first listed core is the boot core",
+    "Show the variants it names, let the user choose, write the full identifier (for example `Device:Startup&C Startup`) into the cproject, build again",
+    "Remove the rendered files, report it, and offer an example or template of the pack (step 3), or `proc-add-board-layer` (`knowledge_get`) once a solution exists.",
+    "Ask the user to answer the prompts of the Arm Tools Environment Manager and the CMSIS Solution extension in the window, then build again",
+    "with `AC6` the user must accept the licence once"
+  ],
+  "rules": [],
+  "extracted": [
+    {
+      "type": "concept",
+      "title": "Multi-core devices need Dname:Pname",
+      "symptoms": [],
+      "body": "A device with several processors (the DFP lists more than one `Pname`, as the MCXN947 does with `cm33_core0` and `cm33_core1`) needs `Dname:Pname`: take the core the user named, otherwise ask which one; when the user does not care, the first core the DFP lists is the boot core, say so in the report"
+    }
+  ]
+}

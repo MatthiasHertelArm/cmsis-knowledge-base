@@ -6,7 +6,7 @@ title: "Command Hooks: Configuration"
 summary: "To connect utilties or scripts to build step hooks, Ceedling tools must be defined."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/command-hooks.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/plugins/command-hooks.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/command-hooks/#configuration"
 license: "MIT"
 mode: "V"
@@ -18,7 +18,7 @@ To connect utilties or scripts to build step hooks, Ceedling tools must be defin
 
 A Ceedling tool is just a YAML blob that gathers together a handful of settings and values that tell Ceedling how to build and execute a command line. Your tool can be a command line utility, a script, etc.
 
-Example Ceedling tools follow. When enabled, this plugin ensures any tools you define are executed by the corresponding build step hook they are organized beneath. The configurtion of enabled hooks and tools happens in a top-level `:command_hooks:` block within your project configuration. One or more tools can be attached to a build step hook.
+Example Ceedling tools follow. When enabled, this plugin ensures any tools you define are executed by the corresponding build step hook they are organized beneath. The configurtion of enabled hooks and tools happens in a top-level `:command_hooks` block within your project configuration. One or more tools can be attached to a build step hook.
 
 ### Tool lists
 
@@ -35,6 +35,8 @@ See the commented examples below.
 Each Ceedling tool requires an `:executable` string and an optional `:arguments` list. See the [`:tools` configuration reference][tools-doc] to understand how to craft your argument list and other tool options.
 
 This plugin passes one or two runtime parameters for use in a hook’s tool argument list depending on the hook. These parameters are referenced with Ceedling tool argument expansion identifiers `${1}`, `${2}`, etc. Wherever you place `${1}` or `${2}` in your tool argument list, they expand in the command line Ceedling constructs with the parameters this plugin provides for that build step hook. The list of build step hooks below documents which parameters are available for each hook.
+
+A tool that fails, exiting with a nonzero code, stops the build with its output.
 
 Each tool may optionally include a `:name` — a simple nickname used in log and error messages. If omitted, the plugin forms a default name from the hook’s key (e.g. `pre_mock_generate`). For a hook configured with a list of tools, the default name additionally includes the tool’s position in the list (e.g. `post_link_execute_0`, `post_link_execute_1`). See the commented examples below.
 
@@ -80,8 +82,8 @@ When logging is enabled and logging conditions are appropriate, any output from 
         - ${1} # Replaced with the filepath to the linker’s binary artifact output
         - output.srec
         - --strip-all
-    - :executable: 
-      :arguments: tar.exe
+    - :executable: tar.exe
+      :arguments:
         - -acf
         - awesome_build.zip
         - ${1} # Replaced with the filepath to the linker’s binary artifact output

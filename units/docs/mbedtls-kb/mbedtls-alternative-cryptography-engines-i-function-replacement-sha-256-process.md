@@ -6,8 +6,8 @@ title: "Alternative cryptography engines implementation: Function replacement: S
 summary: "Add a file (conventionally sha256_alt.c) to your build:"
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/development/hw_acc_guidelines.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/development/hw_acc_guidelines.md#function-replacement-sha-256-process"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/development/hw_acc_guidelines.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/development/hw_acc_guidelines.md#function-replacement-sha-256-process"
 license: "Apache-2.0"
 mode: "V"
 ---

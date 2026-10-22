@@ -6,8 +6,8 @@ title: "Writing a proof-of-concept for a vulnerability: What is a proof-of-conce
 summary: "A PoC for a security issue is an artifact that demonstrates a vulnerability. It can take different forms, typically an input file, a small program, or a test case."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/attacks/poc-guidelines.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/attacks/poc-guidelines.md#what-is-a-proof-of-concept-poc"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/attacks/poc-guidelines.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/attacks/poc-guidelines.md#what-is-a-proof-of-concept-poc"
 license: "Apache-2.0"
 mode: "V"
 ---

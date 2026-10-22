@@ -6,8 +6,8 @@ title: "Bootloader: Boot swap types"
 summary: "When the device first boots under normal circumstances, there is an up-to-date firmware image in each primary slot, which MCUboot can validate and then chain-load. In this case, no image swaps are necessary."
 status: "draft"
 collection: "mcuboot"
-source: "mcu-tools/mcuboot@ba2099f:docs/design.md"
-doc_source: "https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/design.md#boot-swap-types"
+source: "mcu-tools/mcuboot@725d63c:docs/design.md"
+doc_source: "https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/design.md#boot-swap-types"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -75,7 +75,7 @@ option.  Note that an image trailer must also be added to the signed images (the
 "--pad" option of the `imgtool` script must be used). Otherwise, MCUboot will
 not recognize the image as valid and will attempt to revert it. For more
 information on this please read the [Image Trailer](#image-trailer) section and
-the [imgtool](https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/imgtool.md) documentation. Making the images permanent (marking
+the [imgtool](https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/imgtool.md) documentation. Making the images permanent (marking
 them as confirmed in advance) is also supported just like in swap mode. The
 individual steps of this "revert" mechanism are the following:
 

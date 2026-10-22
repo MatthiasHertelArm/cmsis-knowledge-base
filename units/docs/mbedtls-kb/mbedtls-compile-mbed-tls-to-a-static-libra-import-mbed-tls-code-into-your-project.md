@@ -6,8 +6,8 @@ title: "Compile Mbed TLS to a static library in Eclipse CDT: Import Mbed TLS cod
 summary: "In this step, you import the Mbed TLS code into the project and make it ready for compilation."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/compiling-and-building/compile-mbedtls-to-a-static-library-in-eclipse-cdt.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/compiling-and-building/compile-mbedtls-to-a-static-library-in-eclipse-cdt.md#import-mbed-tls-code-into-your-project"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/compiling-and-building/compile-mbedtls-to-a-static-library-in-eclipse-cdt.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/compiling-and-building/compile-mbedtls-to-a-static-library-in-eclipse-cdt.md#import-mbed-tls-code-into-your-project"
 license: "Apache-2.0"
 mode: "V"
 ---

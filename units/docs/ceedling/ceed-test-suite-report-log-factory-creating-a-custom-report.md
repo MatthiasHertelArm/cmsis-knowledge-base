@@ -6,7 +6,7 @@ title: "Test Suite Report Log Factory: Creating a Custom Report"
 summary: "Creating your own report requires three steps:"
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/report-tests-log-factory.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/plugins/report-tests-log-factory.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/report-tests-log-factory/#creating-a-custom-report"
 license: "MIT"
 mode: "V"
@@ -25,7 +25,7 @@ Configuration steps, (1) and (3) above, are documented by example below. Convent
 ```yaml
 :plugins:
   :load_paths:              # Paths can be relative or absolute
-    - scripts/              # Add <build root>/scripts to Ruby's load paths
+    - scripts/              # Add <build root>/scripts to Ruby’s load paths
   :enabled:
     - report_tests_log_factory
 
@@ -36,9 +36,9 @@ Configuration steps, (1) and (3) above, are documented by example below. Convent
 
 ### Custom `TestsReporter` code
 
-To create a custom report, here's what you gotta do:
+To create a custom report, here’s what you gotta do:
 
-1. Create a Ruby file in your configured additional load path named `<custom_report>_tests_reporter.rb`. `<custom_report>` should be in lower case and use underscores if you wish to seperate words (i.e. snakecase).
+1. Create a Ruby file in your configured additional load path named `<custom_report>_tests_reporter.rb`. `<custom_report>` should be in lower case and use underscores if you wish to separate words (i.e. snakecase).
 1. The Ruby code itself must subclass an existing plugin class, `TestsReporter`.
 1. Your new subclass must be named `<CustomReport>TestsReporter` where `<CustomReport>` is the camelcase version of your report name from (1).
 1. Fill out up to four methods in your custom `TestsReporter` subclass:
@@ -47,11 +47,15 @@ To create a custom report, here's what you gotta do:
     * `body()`
     * `footer()` (optional)
 
+    `header()`, `body()`, and `footer()` each receive the same four keyword
+    arguments — `stream:`, `name:`, `results:`, and `duration_s:` — whether
+    or not your own implementation needs all of them.
+
 Overriding the default filename of your custom report happens just as it does for the built-in reports. In fact, apart from the custom load path, the built-in reports documented above use the same mechanisms as a custom report. These Ruby files can and should be used as references.
 
 You may access `:report_tests_log_factory` configuration for your custom report using a handy utility method documented in a later section.
 
-#### Sample `TestReporter` custom subclass
+#### Sample `TestsReporter` custom subclass
 
 The following code creates a simple, dummy report of the _FancyShmancy_ variety (note the name correspondence to the example configuration YAML above).
 
@@ -63,7 +67,7 @@ require 'tests_reporter'
 #  1. Follow the naming convention <CustomReport>TestsReporter where 
 #     <CustomReport> corresponds to the <custom_report> entry in your 
 #     `:report_tests_log_factory` configuration.
-#  2. Sublcass `TestsReporter`.
+#  2. Subclass `TestsReporter`.
 class FancyShmancyTestsReporter < TestsReporter
 
   # Must include a method `setup()` that:
@@ -77,23 +81,26 @@ class FancyShmancyTestsReporter < TestsReporter
   
   # If your report includes a header section, fill out this method.
   # If no header in your report, this method is not needed in this file at all.
-  def header(results:, stream:)
+  def header(stream:, name:, results:, duration_s:)
     stream.puts( '<?xml version="1.0" encoding="utf-8" ?>' )
-    stream.puts( "<FancyShmancy TestCount=#{results[:counts][:total]}>" )
+    stream.puts( "<FancyShmancy Name=\"#{xml_escape( name )}\" TestCount=\"#{results[:counts][:total]}\">" )
   end
 
-  # Process test results into report records
-  def body(results:, stream:)
-    results.each do |result|
-      result[:collection].each do |item|
-        write_test( item, stream )
+  # Process test results into report records.
+  # Each outcome category lists test files, each with a collection of test cases.
+  def body(stream:, name:, results:, duration_s:)
+    [:successes, :failures, :ignores].each do |category|
+      results[category].each do |result|
+        result[:collection].each do |item|
+          write_test( item, stream )
+        end
       end
-    end    
+    end
   end
 
   # If your report includes a footer section, fill out this method.
-  # If no footer in your report, this method is not needed in this file at all.
-  def footer(results:, stream:)
+  # If you have no footer in your report, this method is not needed in this file at all.
+  def footer(stream:, name:, results:, duration_s:)
     stream.puts( "</FancyShmancy>" )
   end
 
@@ -104,9 +111,9 @@ class FancyShmancyTestsReporter < TestsReporter
   private
 
   # A simple helper method for a simple test report entry.
-  # This methid is not required by a custom `TestReporter` subclass.
+  # This method is not required by a custom `TestsReporter` subclass.
   def write_test(item, stream)
-    stream.puts( "  <Test><Name>#{item[:test]}</Name></Test>" )
+    stream.puts( "  <Test><Name>#{xml_escape( item[:test] )}</Name></Test>" )
   end
 
 end
@@ -116,7 +123,7 @@ end
 
 See [_PluginDevelopmentGuide_][custom-plugins] for documentation of the test results data structure (i.e. the `results` method arguments in above sample code).
 
-See this plugin's built-in `TestsReports` subclasses — `json_tests_reporter.rb`, `junit_tests_reporter.rb`, and `cppunit_tests_reporter.rb` — for examples of using test results.
+See this plugin’s built-in `TestsReporter` subclasses — `json_tests_reporter.rb`, `junit_tests_reporter.rb`, `cppunit_tests_reporter.rb`, and `html_tests_reporter.rb` — for examples of using test results.
 
 [custom-plugins]: ../development/plugins/index.md
 
@@ -124,9 +131,9 @@ See this plugin's built-in `TestsReports` subclasses — `json_tests_reporter.rb
 
 ##### Configuration access: `fetch_config_value(*keys)`
 
-You may call the private method `fetch_config_value(*keys)` of the parent class `TestReporters` from your custom subclass to retrieve configuration entries.
+You may call the private method `fetch_config_value(*keys)` of the parent class `TestsReporter` from your custom subclass to retrieve configuration entries.
 
-This method automatically indexes into `:report_tests_log_factory` configuration to extract any needed configuration values for your custom report. If the configuration keys do not exist, it simply returns `nil`. Otherwise, it returns the hash, list, string, boolean, or numeric value for the specified key walk into your report's configuration.
+This method automatically indexes into `:report_tests_log_factory` configuration to extract any needed configuration values for your custom report. If the configuration keys do not exist, it simply returns `nil`. Otherwise, it returns the hash, list, string, boolean, or numeric value for the specified key walk into your report’s configuration.
 
 `fetch_config_value(*keys)` expects a list of keys and only accesses configuration beneath `:report_tests_log_factory` ↳ `:<custom_report>`.
 
@@ -152,3 +159,9 @@ fetch_config_value( :standardize, :filters ) => ['/^Foo/', '/Bar$/']
 
 fetch_config_value( :does, :not, :exist ) => nil
 ```
+
+##### Markup escaping: `xml_escape(str)` and `html_escape(str)`
+
+Test names, messages, filepaths, and your project name can all contain characters that are significant in markup, such as `&`, `<`, and `"`. Pass each such value through the private method `xml_escape()` or `html_escape()` before writing it into an XML or HTML report. Without escaping, a single unusual test name produces a report that report processing tools reject.
+
+Both methods return a new string. Never modify the `results` structure in place. Every configured report receives the very same `results`.

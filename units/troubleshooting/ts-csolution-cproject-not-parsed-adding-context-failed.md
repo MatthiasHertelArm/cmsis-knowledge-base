@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["cproject not parsed, adding context failed"]
 symptom_regex: "^cproject not parsed, adding context failed$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:117"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:117"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

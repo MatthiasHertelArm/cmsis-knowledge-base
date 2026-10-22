@@ -6,8 +6,8 @@ title: "Using CMSIS-Core: Usage Examples"
 summary: "Also see using_TrustZone_pg that details CMSIS-Core support for Arm TrusZone operation on Cortex-M."
 status: "draft"
 collection: "cmsis-core"
-source: "ARM-software/CMSIS_6@26206e4:CMSIS/Documentation/Doxygen/Core/src/using.md"
-doc_source: "https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Core/src/using.md#usage-examples"
+source: "ARM-software/CMSIS_6@acf7392:CMSIS/Documentation/Doxygen/Core/src/using.md"
+doc_source: "https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Core/src/using.md#usage-examples"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -141,12 +141,12 @@ Test and example projects of many software components have a need for implementa
 
 The [Cortex_DFP pack](https://github.com/ARM-software/Cortex_DFP) provides generic device definitions for standard Arm Cortex-M cores and contains corresponding cmsis_device_files. These generic Arm devices can be used as a target for embedded programs, with execution, for example, on processor simulation models.
 
-Validation suits and example projects for such components as [CMSIS-DSP](https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Core/src/../DSP/index.html), [CMSIS-RTOS](https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Core/src/../RTOS2/index.html) and [CMSIS-Core](https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Core/src/index.html) itself use that approach already.
+Validation suits and example projects for such components as [CMSIS-DSP](https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Core/src/../DSP/index.html), [CMSIS-RTOS](https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Core/src/../RTOS2/index.html) and [CMSIS-Core](https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Core/src/index.html) itself use that approach already.
 
 ### Create generic libraries
 
 The CMSIS Processor and Core Peripheral files allow also to create generic libraries. 
-The [CMSIS-DSP libraries](https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Core/src/../DSP/index.html) are an example for such a generic library.
+The [CMSIS-DSP libraries](https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Core/src/../DSP/index.html) are an example for such a generic library.
 
 To build a generic Library set the define `__CMSIS_GENERIC` and include the relevant `core_<cpu>.h` CMSIS CPU & Core Access header file for the processor.
 

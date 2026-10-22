@@ -10,7 +10,7 @@ code: "M386"
 symptoms: ["M386", "Name not C compliant: '%NAME%' : Brackets [] found"]
 symptom_regex: "^Name not C compliant: '.+?' : Brackets \\[\\] found$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"

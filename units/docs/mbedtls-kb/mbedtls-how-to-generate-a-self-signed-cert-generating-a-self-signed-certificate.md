@@ -6,8 +6,8 @@ title: "How to generate a self-signed certificate: Generating a self-signed cert
 summary: "For generating and writing certificate files, Mbed TLS includes the cert_write application (located in programs/x509)."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/generate-a-self-signed-certificate.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/generate-a-self-signed-certificate.md#generating-a-self-signed-certificate"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/generate-a-self-signed-certificate.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/generate-a-self-signed-certificate.md#generating-a-self-signed-certificate"
 license: "Apache-2.0"
 mode: "V"
 ---

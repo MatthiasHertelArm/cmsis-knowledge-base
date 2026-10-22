@@ -6,13 +6,13 @@ title: "debug-adapter-registry: Validation"
 summary: "The CI worklow validates the debugger adapter registry and templates by running linter and schema checker. Such validation steps can be reproduced in the local environment according to the following instructions."
 status: "draft"
 collection: "debug-adapter-registry"
-source: "Open-CMSIS-Pack/debug-adapter-registry@d5ffe88:README.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/debug-adapter-registry/blob/d5ffe88/README.md#validation"
+source: "Open-CMSIS-Pack/debug-adapter-registry@2692b50:README.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/debug-adapter-registry/blob/2692b50/README.md#validation"
 license: "Apache-2.0"
 mode: "V"
 ---
 
-The [CI worklow](https://github.com/Open-CMSIS-Pack/debug-adapter-registry/blob/d5ffe88/.github/workflows/ci.yml) validates the debugger adapter registry and templates by running linter and
+The [CI worklow](https://github.com/Open-CMSIS-Pack/debug-adapter-registry/blob/2692b50/.github/workflows/ci.yml) validates the debugger adapter registry and templates by running linter and
 schema checker. Such validation steps can be reproduced in the local environment according to the following
 instructions.
 

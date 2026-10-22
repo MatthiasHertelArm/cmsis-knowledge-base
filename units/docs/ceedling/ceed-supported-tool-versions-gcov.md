@@ -6,7 +6,7 @@ title: "Supported tool versions: `gcov`"
 summary: "The Gcov plugin is known to work with gcov packaged with GNU Compiler Collection 12 through at least 15."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/gcov/tool-versions.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/plugins/gcov/tool-versions.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/gcov/tool-versions/#gcov"
 license: "MIT"
 mode: "V"
@@ -34,7 +34,9 @@ systems. This flag became available with `gcov` version 7. We do not recommend
 using `gcov` version 6 and earlier. And, in fact, because of the Gcov plugin's 
 dependence on the `gcov` `-x` flag, attempting to use it will fail.
 
-GNU Compiler Collection 14 introduced changes in how coverage is instrumented.
-The `gcov` plugin implemented a revised means of processing coverage that is
-forward compatible with GCC 14+ and backwards compatible to the earliest
-versions of the collection.
+GNU Compiler Collection 14 introduced support for Modified Condition/Decision
+Coverage (MC/DC). For this reason, the Gcov plugin's own `:mcdc` option (see
+[Setup](https://throwtheswitch.github.io/Ceedling/plugins/gcov/tool-versions/setup.md)) explicitly checks for GCC 14+. The plugin raises a clear 
+error if running against an older GCC with `:mcdc` enabled. This GCC-version 
+dependency is specific to `:mcdc`; it does not otherwise affect how the 
+plugin processes coverage.

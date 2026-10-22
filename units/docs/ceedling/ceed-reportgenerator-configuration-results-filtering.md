@@ -6,7 +6,7 @@ title: "ReportGenerator Configuration: Results filtering"
 summary: "This plugin filters coverage results for reportgenerator coverage reporting in two separate stages, each with its own defaults."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/gcov/reportgenerator.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/plugins/gcov/reportgenerator.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/gcov/reportgenerator/#results-filtering"
 license: "MIT"
 mode: "V"
@@ -24,17 +24,24 @@ nothing downstream can put it back into a report.
 
 By default this skips:
 
-- **Test files** — matched by `:test_file_prefix`.
-- **Mocks** — matched by `:mock_prefix`.
-- **Test runners** — any filename containing `_runner`.
-- **Vendored Unity and CMock sources** — `unity.gcno` and `cmock.gcno` by
-  name.
+- **Test files** — matched by `:test_file_prefix`, wherever the file appears.
+- **Mocks, test runners, and vendored Unity/CMock sources** — matched by
+  `:mock_prefix`, a filename containing `_runner`, or `unity.gcno`/
+  `cmock.gcno` by name, but only within your `:build_root` — the only place
+  Ceedling ever generates these.
 
-Given `:test_file_prefix` ⇒ `test_` and CMock's default `:mock_prefix` ⇒
-`Mock`, the equivalent filename-fragment patterns are:
+Given `:test_file_prefix` ⇒ `test_`, CMock's default `:mock_prefix` ⇒
+`Mock`, and `:build_root` ⇒ `build`, the equivalent patterns are:
+
+Matched anywhere:
 
 ```
 test_[^\/\\]*
+```
+
+Matched only under `build/`:
+
+```
 Mock[^\/\\]*
 [^\/\\]*_runner[^\/\\]*
 unity

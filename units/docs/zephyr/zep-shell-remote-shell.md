@@ -6,8 +6,8 @@ title: "Shell: Remote Shell"
 summary: "The shell module supports remote shell. Remote shell allows to execute commands on the remote core using the main core shell interface. User interface features like Tab autocompletion or history navigation are supported on the remote shell client."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/services/shell/index.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/services/shell/index.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/services/shell/index.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/services/shell/index.rst"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -36,6 +36,19 @@ This approach has two main benefits:
    modules that use string formatting (for example, logging).
 
 See shell-module for details on how to enable remote shell.
+
+
+### Security considerations
+
+
+The host and the remote client validate commands and message lengths received from each other.
+Print messages are not validated: the host formats the cbprintf package
+received from the remote client as is. The format string and string arguments in the package can
+point to any host address, and `%n` writes to host memory when
+`CONFIG_CBPRINTF_N_SPECIFIER` is enabled. With
+`CONFIG_SHELL_REMOTE_CLI_SKIP_RO_STRINGS` enabled, the host reads read-only
+strings directly from the remote core memory by design. Enable
+`CONFIG_SHELL_REMOTE` only if the host core trusts every remote client core.
 
 
 ### Configuration

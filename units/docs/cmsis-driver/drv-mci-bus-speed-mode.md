@@ -6,8 +6,8 @@ title: "MCI Bus Speed Mode"
 summary: "The function ARM_MCI_Control with control = ARM_MCI_BUS_SPEED configures the bus speed of the MCI to the requested bits/s specified with arg."
 status: "draft"
 collection: "cmsis-driver"
-source: "ARM-software/CMSIS_6@26206e4:CMSIS/Documentation/Doxygen/Driver/src/Driver_MCI.c"
-doc_source: "https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Driver/src/Driver_MCI.c"
+source: "ARM-software/CMSIS_6@acf7392:CMSIS/Documentation/Doxygen/Driver/src/Driver_MCI.c"
+doc_source: "https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Driver/src/Driver_MCI.c"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -22,8 +22,8 @@ as specified with **arg** listed bellow.
 
 The function ARM_MCI_GetCapabilities lists the supported bus speed modes. Initially, all SD cards use a 3.3 volt electrical interface. 
 Some SD cards can switch to 1.8 volt operation. For example, the use of ultra-high-speed (UHS) 
-SD cards requires 1.8 volt operation and a 4-bit bus data width. The data field **uhs_signaling** of the structure ARM_MCI_CAPABILITIES encodes 
-whether the driver supports 1.8 volt UHS signaling.
+SD cards requires 1.8 volt operation and a 4-bit bus data width. The data field **uhs_signaling** of the structure ARM_MCI_CAPABILITIES encodes
+whether the driver supports the UHS-I signal-voltage switch to 1.8V.
 
 \sa 
  - mci_driver_strength_ctrls

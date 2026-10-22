@@ -6,8 +6,8 @@ title: "Memory considerations: Memory usage for ML use-cases"
 summary: "The following numbers have been obtained from Vela for the Shared_Sram memory mode, along with the SRAM and flash memory requirements for the different use-cases of the evaluation kit."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/memory_considerations.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/memory_considerations.md#memory-usage-for-ml-use-cases"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/memory_considerations.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/memory_considerations.md#memory-usage-for-ml-use-cases"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -16,7 +16,7 @@ The following numbers have been obtained from Vela for the `Shared_Sram` memory 
 memory requirements for the different use-cases of the evaluation kit.
 
 > **Note:** The SRAM usage does not include memory used by the ML framework and must be topped up as explained
-> under [Total SRAM used](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./memory_considerations.md#total-sram-used).
+> under [Total SRAM used](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./memory_considerations.md#total-sram-used).
 
 - [Keyword spotting model](https://github.com/ARM-software/ML-zoo/tree/68b5fbc77ed28e67b2efc915997ea4477c1d9d5b//models/keyword_spotting/ds_cnn_large/tflite_clustered_int8)
   requires

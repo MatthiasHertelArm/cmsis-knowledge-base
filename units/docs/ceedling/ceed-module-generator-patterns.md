@@ -3,31 +3,42 @@ id: "ceed-module-generator-patterns"
 type: "concept"
 domain: "test"
 title: "Module Generator: Patterns"
-summary: "You can also create an entire pattern of files. To do that, just add a second argument to the pattern ID. Something like this:"
+summary: "A pattern creates a set of related modules at once. Name it after the module:"
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/module-generator.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/plugins/module-generator.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/module-generator/#patterns"
 license: "MIT"
 mode: "V"
 ---
 
-You can also create an entire pattern of files. To do that, just add a second argument
-to the pattern ID. Something like this:
+A pattern creates a set of related modules at once. Name it after the module:
 
 ```sh
-ceedling module:create[SecretLair,mch]
+ceedling "module:create[SecretLair,mch]"
 ```
 
-In this example, we'd create 9 files total: 3 headers, 3 source files, and 3 test files. These
-files would be named `SecretLairModel`, `SecretLairConductor`, and `SecretLairHardware`. Isn't
-that nice?
+This creates nine files: a source, header, and test file each for `SecretLair_Model`,
+`SecretLair_Conductor`, and `SecretLair_Hardware`. With `:naming` set to `:bumpy`, the
+same call creates `SecretLairModel`, `SecretLairConductor`, and `SecretLairHardware`.
+Each generated module includes the headers its role depends on, and each test includes
+the mocks of those headers.
 
 The module generator understands the following patterns:
 
-- `src` -- generate only a source file
-- `test` -- generate only a test file
-- `dh` -- generate 6 files for the driver-hardware pattern
-- `dih` -- generate 9 files for the driver-interrupt-hardware pattern
-- `mch` -- generate 9 files for the model-conductor-hardware pattern
-- `mvp` -- generate 9 files for the model-view-presenter pattern
+- `src` — a source, header, and test file (the default)
+- `test` — only a test file
+- `mch` — 9 files for the [model-conductor-hardware (pdf)][mch-paper] pattern ([html][mch-article])
+- `mvp` — 9 files for the [model-view-presenter][mvp-wikipedia] pattern
+- `dh` — 6 files for the driver-hardware pattern
+- `dih` — 9 files for the driver-interrupt-hardware pattern
+
+The `dh` and `dih` patterns are alternate namings and conceptual organizations of the
+model-conductor-hardware pattern.
+
+[mch-paper]: https://cdn.prod.website-files.com/628fcc1631ad0b25b32f223e/62e43a26764867e95fe5a138_ESC-413Paper_KarleskyWilliams.pdf
+[mch-article]: https://www.methodsandtools.com/archive/archive.php?id=59
+[mvp-wikipedia]: https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter
+
+A pattern applies to every module in the call, and a call takes one pattern. The first
+argument is always a module name, even one spelled like a pattern.

@@ -6,8 +6,8 @@ title: "Utilities: SDSIO-Server / Usage"
 summary: "The SDSIO-Server accepts directly on the console the following keyboard entries:"
 status: "draft"
 collection: "sds-framework"
-source: "ARM-software/SDS-Framework@4459441:documentation/utilities.md"
-doc_source: "https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/utilities.md#usage"
+source: "ARM-software/SDS-Framework@c18efee:documentation/utilities.md"
+doc_source: "https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/utilities.md#usage"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -113,8 +113,8 @@ python sdsio-server.py usb --workdir ./work_dir
 
 The socket server can operate in two modes:
 
-- **Listen mode** (default): SDSIO-Server binds to a local IP address and waits for the target device to connect. The listen mode is used with the [Layer: SDSIO-Network](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/sdsio.md#layer-sdsio_network). This mode requires network configuration.
-- **Connect mode** (`--connect`): SDSIO-Server actively connects to the specified IP address. The connect mode is used with the [Layer: SDSIO-RTT](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/sdsio.md#layer-sdsio_rtt), where the debug adapter (J-Link or pyOCD) exposes RTT data over a local TCP socket. No network configuration is required.
+- **Listen mode** (default): SDSIO-Server binds to a local IP address and waits for the target device to connect. The listen mode is used with the [Layer: SDSIO-Network](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/sdsio.md#layer-sdsio_network). This mode requires network configuration.
+- **Connect mode** (`--connect`): SDSIO-Server actively connects to the specified IP address. The connect mode is used with the [Layer: SDSIO-RTT](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/sdsio.md#layer-sdsio_rtt), where the debug adapter (J-Link or pyOCD) exposes RTT data over a local TCP socket. No network configuration is required.
 
 ```txt
 usage: sdsio-server.py socket [-h] [-V] [--ipaddr <IP> | --netif <Interface>] [--port <TCP Port>] [--connect [<message>]] [--connect-time <ms>] [general-opts]
