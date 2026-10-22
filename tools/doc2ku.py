@@ -579,7 +579,9 @@ def fetch(src, repo):
     cmd = ["git", "clone", "-q", "--depth", "1"] + (["--filter=blob:none", "--sparse"] if sparse else []) + [url, str(repo)]
     subprocess.run(cmd, check=True)
     if sparse:
-        subprocess.run(["git", "-C", str(repo), "sparse-checkout", "set"] + list(sparse), check=True)
+        # Pattern mode (--no-cone): a path may name a file as well as a folder; cone mode takes folders only
+        # and newer git exits on a file. Anchored, so `docs/source` means the one at the root.
+        subprocess.run(["git", "-C", str(repo), "sparse-checkout", "set", "--no-cone"] + [f"/{p.strip('/')}" for p in sparse], check=True)
 
 
 def main(cfg, docs, out, only=None, get=False):
@@ -605,7 +607,7 @@ def main(cfg, docs, out, only=None, get=False):
             fetch(src, repo)
         elif repo.exists() and get and src.get("sparse"):
             # A second source on the same sparse clone adds its paths.
-            subprocess.run(["git", "-C", str(repo), "sparse-checkout", "add"] + list(src["sparse"]), check=False)
+            subprocess.run(["git", "-C", str(repo), "sparse-checkout", "add"] + [f"/{p.strip('/')}" for p in src["sparse"]], check=False)
         if not repo.exists():
             print(f"{src['name']:28s} missing clone {repo}")
             continue
