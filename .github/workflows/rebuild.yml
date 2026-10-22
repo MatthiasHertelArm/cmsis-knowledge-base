@@ -1,0 +1,151 @@
+# A rebuild from live sources with the model-assisted stages, as a pull request to review.
+#
+# scripts/rebuild.sh fetches the pack index and the PDSC files, cmsis-skills, devtools and the documentation
+# sources, regenerates every unit folder, and, with the ANTHROPIC_KEY secret as ANTHROPIC_API_KEY, runs
+# tools/model_run.py for the items whose input changed: stage 2 of new or changed skills, the causes of new
+# tool messages, the digests of issue threads closed or updated since the last run, and their check. The
+# manifests next to the stage2/ folders say what was sent; nothing is sent twice for the same input.
+# Then the core index is built and gated as in ci.yml, and the changes go into a branch and a pull request.
+name: Rebuild from live sources
+
+on:
+  workflow_dispatch:
+    inputs:
+      model_limit:
+        description: "At most this many items per model stage (0 = all due items)"
+        default: "0"
+      model_args:
+        description: "Extra options for tools/model_run.py (--batch, --force, --effort low)"
+        default: ""
+      cda_repo:
+        description: "The CMSIS Developer Assistant checkout whose skills and routing become units"
+        default: "MatthiasHertelArm/CMSIS-Developer-Assistant"
+      cda_ref:
+        description: "Its branch or tag"
+        default: "main"
+      open_pr:
+        description: "Open a pull request with the result (false: only the summary and the artifact)"
+        type: boolean
+        default: true
+  schedule:
+    - cron: "17 4 1 * *"   # the first of every month, 04:17 UTC
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: rebuild
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    name: Rebuild, model stages, gates, pull request
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    env:
+      WORK: .work
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Check out the CMSIS Developer Assistant (its skills become units)
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: ${{ inputs.cda_repo || 'MatthiasHertelArm/CMSIS-Developer-Assistant' }}
+          ref: ${{ inputs.cda_ref || 'main' }}
+          path: .work/cda
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: |
+            requirements-build.txt
+            requirements-model.txt
+            requirements.txt
+
+      - name: Install the dependencies
+        run: python -m pip install -q -r requirements-build.txt -r requirements-model.txt "mcp>=2.2,<3"
+
+      # The PDSC files change slowly; the fetch skips the ones it has and refreshes only the index.
+      - name: Restore the PDSC files of the last run
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .work/pdsc
+          key: pdsc-${{ github.run_id }}
+          restore-keys: pdsc-
+
+      - name: Rebuild from live sources
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_KEY }}
+          GH_TOKEN: ${{ github.token }}
+          CDA: .work/cda
+          MODEL_LIMIT: ${{ inputs.model_limit != '0' && inputs.model_limit || '' }}
+          MODEL_ARGS: ${{ inputs.model_args }}
+          MODEL_RUN_LOG: build/model-run.log
+          NO_VEC: "1"
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          : > build/model-run.log
+          scripts/rebuild.sh "$WORK" 2>&1 | tee build/rebuild.log
+
+      - name: Build the core index (licence gate, index, tests)
+        run: PY=python scripts/build_core.sh build/knowledge.core.db 2>&1 | tee build/core.log
+
+      - name: Golden set through the prototype's search
+        run: python tests/eval_search.py build/knowledge.core.db --min-hit5=0.85 --min-mrr=0.65 | tee build/golden.log
+
+      - name: Summary
+        id: summary
+        run: |
+          {
+            echo "## Rebuild of $(date -u +%Y-%m-%d)"
+            echo
+            echo "Inputs: cmsis-skills $(git -C .work/cmsis-skills rev-parse --short HEAD), devtools $(git -C .work/devtools rev-parse --short HEAD), CDA $(git -C .work/cda rev-parse --short HEAD) (${{ inputs.cda_repo || 'MatthiasHertelArm/CMSIS-Developer-Assistant' }}@${{ inputs.cda_ref || 'main' }}), pack index of $(date -u +%Y-%m-%d)."
+            echo
+            echo "### Model stages"
+            echo
+            if [ -s build/model-run.log ]; then cat build/model-run.log; else echo "- nothing was due"; fi
+            echo
+            echo "### Core index"
+            echo
+            echo '```'
+            grep -E '^(units|nodes|edges|dropped|kb_commit)=' build/core.log || true
+            grep -E 'hit@' build/golden.log || true
+            echo '```'
+            echo
+            echo "### Changed files"
+            echo
+            echo '```'
+            git add -A units stage2 build/entities messages-to-review.csv issues-to-review.csv sources
+            git diff --cached --stat | tail -n 25
+            echo '```'
+          } > build/summary.md
+          cat build/summary.md >> "$GITHUB_STEP_SUMMARY"
+          if git diff --cached --quiet; then echo "changed=false" >> "$GITHUB_OUTPUT"; else echo "changed=true" >> "$GITHUB_OUTPUT"; fi
+
+      - name: Keep the logs and the index
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: rebuild-${{ github.run_id }}
+          path: |
+            build/*.log
+            build/summary.md
+            build/knowledge.core.db
+            build/SOURCES.md
+          retention-days: 14
+
+      - name: Pull request with the result
+        if: steps.summary.outputs.changed == 'true' && (inputs.open_pr || github.event_name == 'schedule')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          branch="rebuild/$(date -u +%Y-%m-%d)-${GITHUB_RUN_NUMBER}"
+          git checkout -b "$branch"
+          git commit -q -m "Rebuild from live sources, $(date -u +%Y-%m-%d)" -m "Run ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          git push -q origin "$branch"
+          gh pr create --base master --head "$branch" --title "Rebuild from live sources, $(date -u +%Y-%m-%d)" --body-file build/summary.md

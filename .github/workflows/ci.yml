@@ -1,0 +1,49 @@
+# The checks every push and pull request gets, offline: the licence gate, the core index built from the
+# committed units, tests/test_kb.py against it, and the golden set through the prototype's search.
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  core:
+    name: Core index, tests, golden set
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: |
+            requirements-build.txt
+            requirements.txt
+
+      - name: Install the build dependencies
+        run: python -m pip install -q -r requirements-build.txt "mcp>=2.2,<3"
+
+      - name: Build the core index (licence gate, index, tests)
+        run: PY=python scripts/build_core.sh build/knowledge.core.db
+
+      - name: Golden set through the prototype's search
+        run: python tests/eval_search.py build/knowledge.core.db --min-hit5=0.85 --min-mrr=0.65
+
+      - name: Messages still without a source analysis (informational)
+        run: python tools/model_run.py errcat --units units/troubleshooting --out stage2/errcat-out --dry-run
+
+      - name: Keep the index for a look
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: knowledge-core-db
+          path: |
+            build/knowledge.core.db
+            build/SOURCES.md
+          retention-days: 7

@@ -30,3 +30,5 @@ packs/
 stage2/books-scope-in-sa/
 stage2/books-scope-out-sa/
 stage2/books-scope-scratch-sa/
+# The summary lines tools/model_run.py appends during a rebuild (MODEL_RUN_LOG)
+build/model-run.log

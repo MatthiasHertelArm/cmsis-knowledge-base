@@ -3,16 +3,27 @@
 # Usage: scripts/rebuild.sh [work-dir]   (default .work)   Set NO_VEC=1 to skip embeddings.
 # Set CCBYSA=1 to include the CC BY-SA documentation (units/docs-ccbysa), which is open for legal review.
 # Set CDA=<checkout of CMSIS-Developer-Assistant> to regenerate the units of its own skills and the routing units.
+# With ANTHROPIC_API_KEY set, the model-assisted stages run through tools/model_run.py for the items whose input
+# changed (stage 2 of the skills, the message causes, new issue threads and their check); MODEL_LIMIT=<n> caps
+# the items per stage, MODEL_ARGS adds options (--batch, --force). New issue threads need GH_TOKEN as well.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 W="${1:-.work}"
+model() {
+  # The model-assisted stage named by the arguments, only with a key; a run without due items is a no-op.
+  if [ -n "${ANTHROPIC_API_KEY:-}" ]; then
+    python3 tools/model_run.py "$@" ${MODEL_LIMIT:+--limit "$MODEL_LIMIT"} ${MODEL_ARGS:-}
+  fi
+}
 python3 scripts/fetch_sources.py "$W"
 python3 tools/entities.py "$W/index.pidx" "$W/pdsc" build/entities
 rm -rf units/skills units/canonical units/extracted units/troubleshooting
 python3 tools/skill2ku.py "$W/cmsis-skills/generic-mcu-skills/skills" units/skills
+model decompose --units units/skills --out stage2/out_v2
 python3 tools/stage2_merge.py units/skills stage2/out_v2
 python3 tools/errcat.py "$W/devtools" units/troubleshooting
 # Cause and fix of the messages, read from the devtools source (stage2/errcat-out), then the review list.
+model errcat --units units/troubleshooting --out stage2/errcat-out --devtools "$W/devtools"
 python3 tools/errcat_merge.py units/troubleshooting stage2/errcat-out
 python3 tools/review_csv.py units/troubleshooting messages-to-review.csv
 # Documentation of open-licence repositories, one unit per section (sources/docs.yml).
@@ -20,7 +31,14 @@ python3 tools/doc2ku.py sources/docs.yml "$W/docs" units/docs --fetch
 # One unit per debug adapter of the CMSIS debug adapter registry (cloned by doc2ku as a docs source).
 python3 tools/adapters2ku.py "$W/docs/debug-adapter-registry" units/docs/debug-adapters
 DOC_UNITS=(--units units/docs)
-# Closed GitHub issues of the tools, digested in own words (stage2/issues_prompt.md, mode S).
+# Closed GitHub issues of the tools, digested in own words (stage2/issues_prompt.md, mode S). The threads since
+# the last run (the manifest's `since`) are fetched and digested when a key and a GitHub token are set; the
+# faithfulness check (stage2/issues_qa_prompt.md) follows for the digests that have no check yet.
+if [ -n "${ANTHROPIC_API_KEY:-}" ] && [ -n "${GH_TOKEN:-${GITHUB_TOKEN:-}}" ]; then
+  python3 tools/fetch_issues.py "$W/issues/threads" --manifest stage2/issues-out.manifest.json
+  model issues --threads "$W/issues/threads" --out stage2/issues-out
+  model issues-qa --threads "$W/issues/threads" --digests stage2/issues-out --out stage2/issues-qa
+fi
 python3 tools/issues2ku.py stage2/issues-out units/issues "$W/issues/batches"
 python3 tools/review_csv.py units/issues issues-to-review.csv
 DOC_UNITS+=(--units units/issues)
@@ -36,6 +54,7 @@ if [ -n "${CDA:-}" ]; then
 fi
 # Stage 2 of the extension's skills; also without CDA, since units/extracted was cleared above.
 if [ -d units/cda-skills ]; then
+  [ -n "${CDA:-}" ] && model decompose --units units/cda-skills --out stage2/out_cda
   python3 tools/stage2_merge.py units/cda-skills stage2/out_cda
 fi
 if [ -n "${CDA:-}" ]; then

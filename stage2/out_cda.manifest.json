@@ -1,0 +1,64 @@
+{
+ "stage": "decompose",
+ "model": "",
+ "prompt_sha": "6364de7bc3635126",
+ "since": "",
+ "items": {
+  "proc-add-board-layer": {
+   "sha": "e061f615dc9a250c",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-add-board-layer.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-cmsis-bootstrap": {
+   "sha": "ee1d4c365c5077e7",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-cmsis-bootstrap.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-cmsis-debug-live": {
+   "sha": "50cbe58779744831",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-cmsis-debug-live.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-cmsis-debugger-setup": {
+   "sha": "fc06df7b08755ddb",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-cmsis-debugger-setup.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-cmsis-pack-docs": {
+   "sha": "65f03b8a784ea581",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-cmsis-pack-docs.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-debugger-troubleshooting": {
+   "sha": "6f9d06735f5f971b",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-debugger-troubleshooting.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-fvp-debug-setup": {
+   "sha": "ed766a9811327f59",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-fvp-debug-setup.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  }
+ }
+}

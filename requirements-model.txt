@@ -1,0 +1,2 @@
+# What tools/model_run.py needs beyond requirements-build.txt: the Claude API client.
+anthropic>=1.13

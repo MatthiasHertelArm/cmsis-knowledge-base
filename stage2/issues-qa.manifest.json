@@ -1,0 +1,4672 @@
+{
+ "stage": "issues-qa",
+ "model": "",
+ "prompt_sha": "52ab65e6757b1faa",
+ "since": "",
+ "items": {
+  "https://github.com/ARM-software/CMSIS-RTX/issues/30": {
+   "sha": "94ab76f977f08fd0",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS-RTX/issues/33": {
+   "sha": "5578d7461bea97ad",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS-RTX/issues/34": {
+   "sha": "618b929bd9535346",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS-RTX/issues/43": {
+   "sha": "d377c47966fa19fe",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS-RTX/issues/54": {
+   "sha": "e3e4dbea87da13ac",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS-RTX/issues/75": {
+   "sha": "39d487a2b9f435e1",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS-View/issues/48": {
+   "sha": "f9f146f374063a49",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS_6/issues/118": {
+   "sha": "37c0d3f263e0f7c4",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS_6/issues/120": {
+   "sha": "ce9480edf0bf234d",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS_6/issues/129": {
+   "sha": "8afead31dbe58845",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS_6/issues/139": {
+   "sha": "16f11ec8808d0958",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS_6/issues/159": {
+   "sha": "fcbe27b65309571b",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS_6/issues/192": {
+   "sha": "8f4be6a6cb3e8283",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS_6/issues/195": {
+   "sha": "81639d6b13ff8d69",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS_6/issues/230": {
+   "sha": "241b0dc4deed1609",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS_6/issues/235": {
+   "sha": "83342d3a8ba6cdfe",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS_6/issues/236": {
+   "sha": "71acd583176a824f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS_6/issues/255": {
+   "sha": "313e8fd60730641f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS_6/issues/259": {
+   "sha": "c85413af269313c8",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS_6/issues/261": {
+   "sha": "34eb20dcbe50008d",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS_6/issues/269": {
+   "sha": "331984cb77e957bf",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS_6/issues/279": {
+   "sha": "5a7e93d43151abe4",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS_6/issues/287": {
+   "sha": "304f75d99b25c516",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/ARM-software/CMSIS_6/issues/312": {
+   "sha": "a64b8e9ffe248d99",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/118": {
+   "sha": "c0d3f4d4c10945e4",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/119": {
+   "sha": "9577b9bb7bbd4472",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/125": {
+   "sha": "b0bbe0cb93e1ca61",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/128": {
+   "sha": "3f878d60bfb9637d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/132": {
+   "sha": "72829021f5a19c3d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/141": {
+   "sha": "074bc5e8d2cbc782",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/152": {
+   "sha": "5d98436af402d538",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/158": {
+   "sha": "7d81b023d08b8c62",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/168": {
+   "sha": "11adffddcaf0ce5d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/188": {
+   "sha": "e94e75c05578791f",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/195": {
+   "sha": "b6420a8a287b85b9",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/217": {
+   "sha": "e29becd013708793",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/218": {
+   "sha": "fc9677869b034f8f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/245": {
+   "sha": "fb9184399b16fb50",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/269": {
+   "sha": "2080402f47b66407",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/294": {
+   "sha": "1b6cfc5aeba4a15f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/338": {
+   "sha": "712c640be9e3872c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/34": {
+   "sha": "94d7b41571fd1992",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/361": {
+   "sha": "8266ba9a3dba8ee5",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/374": {
+   "sha": "33cd1a2b2f712056",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/394": {
+   "sha": "c0fa6d10265519c9",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/399": {
+   "sha": "f8925ae02e85fefe",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/423": {
+   "sha": "037b831ffd4a9658",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/450": {
+   "sha": "ede4da352668337c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/455": {
+   "sha": "d136ed5f8e84b57d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/457": {
+   "sha": "f986e178d6016b97",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/458": {
+   "sha": "ee542fc932a42103",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/469": {
+   "sha": "9b9d5524f7672f95",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/538": {
+   "sha": "f1fbd0267e113091",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/559": {
+   "sha": "b46a2ff1d0465448",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/583": {
+   "sha": "82ffcf3ec960e654",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/584": {
+   "sha": "998063dd1b71ee20",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/619": {
+   "sha": "431ed4ea420f5b27",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/632": {
+   "sha": "579c79cb90acd122",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/69": {
+   "sha": "3d5765c75cdbe6b3",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/704": {
+   "sha": "b28960ec6456a3c2",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/86": {
+   "sha": "2b435b43cb584239",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/95": {
+   "sha": "b333fa9679d78156",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/98": {
+   "sha": "5a6f109556c18be0",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/99": {
+   "sha": "53511383924f9762",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/122": {
+   "sha": "4f91987ecca8f3b3",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/143": {
+   "sha": "f3cf9565e5a60b6a",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/158": {
+   "sha": "db2279d0022e5131",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/166": {
+   "sha": "a46fc5a29598d5c1",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/169": {
+   "sha": "a765217d8f7fd739",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/174": {
+   "sha": "7a9f35fd3ceafbe3",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/197": {
+   "sha": "d35efca1a6c8021f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/213": {
+   "sha": "1949a07eede11d2b",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/229": {
+   "sha": "67dddf602069a552",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/268": {
+   "sha": "11d3d80ce82b0154",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/272": {
+   "sha": "bd5da79607a7d9fb",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/283": {
+   "sha": "0ca8e05a94129102",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/290": {
+   "sha": "10298c83c046e78b",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/307": {
+   "sha": "a727314ad14c97ed",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/357": {
+   "sha": "ad4b4c22b9a916f6",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/36": {
+   "sha": "a28992db749b2f34",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/383": {
+   "sha": "6158a914630f4150",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/387": {
+   "sha": "ea611c0fdb7d9d2a",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/412": {
+   "sha": "1e1b768c4226db18",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/43": {
+   "sha": "5d4eb75d49f06354",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/499": {
+   "sha": "ae784118a86e2b59",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/511": {
+   "sha": "bafa4f4d74427e8d",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/552": {
+   "sha": "a486a63dbe3e1af8",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/56": {
+   "sha": "11ee5d3f1bc9cf41",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/57": {
+   "sha": "6f613b12ff217ddb",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/570": {
+   "sha": "976e04bbe84b8079",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/609": {
+   "sha": "8e55437910d2f9ae",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/68": {
+   "sha": "33bd9cffe82cfb7a",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/696": {
+   "sha": "fb4724187dc22348",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/776": {
+   "sha": "2cdb7480cdc97bf2",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/778": {
+   "sha": "c1b222cb4e90a91c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/80": {
+   "sha": "1707e49b3cdd9f63",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/835": {
+   "sha": "6a6958de57ff5bc7",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/90": {
+   "sha": "67f16702389577fa",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/cpackget/issues/98": {
+   "sha": "2b3ac1cc5f098163",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1026": {
+   "sha": "bf985ee6fcda079b",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1048": {
+   "sha": "cbb5ca7fa662a0e2",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1052": {
+   "sha": "4afc85edcc4ab042",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1082": {
+   "sha": "23af47be7c752d3e",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/110": {
+   "sha": "492982bd641f7939",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/111": {
+   "sha": "80aa3a109000dc46",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1124": {
+   "sha": "2fce003f11bdc3fa",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1146": {
+   "sha": "ff9af58aa7a692e3",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1147": {
+   "sha": "f4544f6ecb00493e",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1148": {
+   "sha": "861c2d9f7512c634",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1172": {
+   "sha": "fa1dea213d2996b4",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1242": {
+   "sha": "aa23b750401c8769",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1260": {
+   "sha": "49f9b7ba99decb4a",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1262": {
+   "sha": "dadb1dc0b6b11042",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1264": {
+   "sha": "3f79bd3ddfd13f8d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1308": {
+   "sha": "0227025891c9ec3c",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1356": {
+   "sha": "0b17987672b7c99d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1367": {
+   "sha": "65a0a5d72e889aba",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1397": {
+   "sha": "42f142ff4aec3c95",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1401": {
+   "sha": "c693c816c24e8806",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1402": {
+   "sha": "56d1159fe5b03245",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1420": {
+   "sha": "03391baa51d9c3bb",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1430": {
+   "sha": "9a5003d3f25529f4",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1451": {
+   "sha": "7156c7e5dd8c7c4f",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1460": {
+   "sha": "7a22b50cdd43b11e",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1468": {
+   "sha": "e3839c60e51b3b03",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1529": {
+   "sha": "1aef2f819def2014",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1553": {
+   "sha": "3de873ed67bb683c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1620": {
+   "sha": "a79c5094aa37a582",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1646": {
+   "sha": "fce111cb6ce0cd0b",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1649": {
+   "sha": "849d1859c3f8461e",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1650": {
+   "sha": "6de6aa15721b37e9",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1658": {
+   "sha": "bff16404447fa5ad",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1659": {
+   "sha": "cc2fbc6958805a28",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/166": {
+   "sha": "bf74a2201b3fc472",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1668": {
+   "sha": "f1abd8b219ad1034",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1671": {
+   "sha": "bf38e2442c849b0d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1674": {
+   "sha": "952542a04ca6b425",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1683": {
+   "sha": "e6385f7e58040d22",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1711": {
+   "sha": "bd482c5996fcb44a",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1715": {
+   "sha": "26b3ec94a8e0d24b",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1731": {
+   "sha": "5679428c0f8f69cb",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/174": {
+   "sha": "186acd5e220af7a9",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/175": {
+   "sha": "6028434b82e678b7",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/177": {
+   "sha": "c958ce65c2a91023",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1801": {
+   "sha": "f6335c715bca5c1b",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1809": {
+   "sha": "cc92aed0eb48cfb4",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1812": {
+   "sha": "89b22552f529be50",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1826": {
+   "sha": "17432ef00f4638b6",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1846": {
+   "sha": "865852db711a5331",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1889": {
+   "sha": "bf80c12ddfb9b2f0",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1900": {
+   "sha": "eeec7d6b0fb4ceb8",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1904": {
+   "sha": "9d2e4f365a39ad9f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1906": {
+   "sha": "504b0b240aad90f1",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/1952": {
+   "sha": "59954a58f7febb90",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2003": {
+   "sha": "434711cb3fee808e",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2015": {
+   "sha": "1f82d308089c4973",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2026": {
+   "sha": "f4a4c8d06a22a274",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2041": {
+   "sha": "e26b839d1f6357a2",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2093": {
+   "sha": "51f98c62f3a21203",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2099": {
+   "sha": "f324080e3adc1ea3",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/21": {
+   "sha": "12dc686c44b1a569",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2127": {
+   "sha": "ec3426d822d2646f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2139": {
+   "sha": "87c9f48a27de77e5",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2141": {
+   "sha": "1a43f94598fb4740",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2142": {
+   "sha": "1dff6fbc0f9dfc13",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/216": {
+   "sha": "ec8ae3442f0cb240",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/22": {
+   "sha": "f3663cd53ca27c3b",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2234": {
+   "sha": "e5192ade77f36f53",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2235": {
+   "sha": "a8cf3d23373b8517",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2286": {
+   "sha": "cc4b6c1d7a08325b",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2314": {
+   "sha": "7714a84e8a0a99ae",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2318": {
+   "sha": "2d47b50e59b6ce66",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2325": {
+   "sha": "0eeb43c9e792d05e",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2330": {
+   "sha": "e1686ad4e5599284",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2335": {
+   "sha": "e88ab0bf5d0bbcb3",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2339": {
+   "sha": "ef14783c3851c982",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2363": {
+   "sha": "faf895528363b284",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2433": {
+   "sha": "53bcb7037214aea0",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2447": {
+   "sha": "870478a29dfdc2bc",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2480": {
+   "sha": "eae141b3d0372310",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2491": {
+   "sha": "d139929adf2a3f4c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2510": {
+   "sha": "fcdf38c11a27b2b0",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2527": {
+   "sha": "628d809cd8afd73a",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2569": {
+   "sha": "d0f0c66e8d54231d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/260": {
+   "sha": "5a61baa1fb869a6c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2603": {
+   "sha": "836d152eb854965d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2611": {
+   "sha": "66de9f60b458629d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/263": {
+   "sha": "a434e1fe9bc8f4f4",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/30": {
+   "sha": "b52fae51804090b8",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/312": {
+   "sha": "7c4de0af075413f7",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/327": {
+   "sha": "bd16c404bc90eb7a",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/329": {
+   "sha": "1fac9afb5afd7945",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/330": {
+   "sha": "fb2cee9f4aed5a70",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/343": {
+   "sha": "7d4b69c8fc5995bd",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/347": {
+   "sha": "48d8379efcf64edb",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/353": {
+   "sha": "62e2a61fbea673d8",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/357": {
+   "sha": "cdf2b366bd8c5d72",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/374": {
+   "sha": "8b3ce4084e90ed6c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/397": {
+   "sha": "652604c0e64bc8cd",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/412": {
+   "sha": "4016feb681800c56",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/427": {
+   "sha": "5a07fdf272f5afa5",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/469": {
+   "sha": "30f6c03767a21e05",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/528": {
+   "sha": "0785939bbed39bfa",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/566": {
+   "sha": "b15ff9d2eb6a0655",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/600": {
+   "sha": "b80b66e949159430",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/613": {
+   "sha": "1afc39e948c97fed",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/614": {
+   "sha": "b3e207df7cd65c8c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/620": {
+   "sha": "6c98f0f1a704cb16",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/644": {
+   "sha": "7ebf30fa71d3d060",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/657": {
+   "sha": "f92607a833423ff1",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/667": {
+   "sha": "519a3a22cb8c3581",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/676": {
+   "sha": "5b594244017daca1",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/684": {
+   "sha": "6834b9e56e425f0f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/733": {
+   "sha": "68ec0765384fd247",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/735": {
+   "sha": "0bc28212198fcd60",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/740": {
+   "sha": "2634fdbded7d38ed",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/742": {
+   "sha": "86e8b6741f200faa",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/75": {
+   "sha": "f85b4d3a32e030c7",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/786": {
+   "sha": "0518f0780d91d0ee",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/791": {
+   "sha": "c18b54025e4d7dcf",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/799": {
+   "sha": "b1a7e62882c8bbec",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/800": {
+   "sha": "e6fd0367d9ae3db7",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/805": {
+   "sha": "3d00d36ac5ad0c51",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/815": {
+   "sha": "53964283bf1e0e22",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/816": {
+   "sha": "80fd4b509c388758",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/858": {
+   "sha": "acb2e22b5bfe0e59",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/870": {
+   "sha": "680ae19410a7e55d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/882": {
+   "sha": "df28ab3262e5f142",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/914": {
+   "sha": "ebad244c7daaf42d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/927": {
+   "sha": "313610cb91ada0a3",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/973": {
+   "sha": "7622e5b76b4ea94a",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/978": {
+   "sha": "e4437ed1e2d8cf97",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/100": {
+   "sha": "5ef1898e90f72253",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1001": {
+   "sha": "0487a7b83c4c8636",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1003": {
+   "sha": "5f280fa37d94ae29",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1009": {
+   "sha": "322e8144ed302c6f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1026": {
+   "sha": "709652a869b1e9bb",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/103": {
+   "sha": "426839989a5879e7",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1049": {
+   "sha": "90a31dac65b0922c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1054": {
+   "sha": "b613ba0997910b8a",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/108": {
+   "sha": "a60a9092fcacac68",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/109": {
+   "sha": "5116a19fb61686d9",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1123": {
+   "sha": "6a7822ca05bb6082",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/125": {
+   "sha": "19b3e7149f277c3f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/126": {
+   "sha": "e1aa1e8f239077e6",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/127": {
+   "sha": "7a9f275945525a7f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/128": {
+   "sha": "808a7599a19d990c",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/130": {
+   "sha": "da32b5a51a807867",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/131": {
+   "sha": "ed3480b89fe2925c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/132": {
+   "sha": "2edba6464c7929af",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/133": {
+   "sha": "363464c11c42bf96",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/160": {
+   "sha": "9b9cedffb5c32887",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/164": {
+   "sha": "a85a73c5a93c7001",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/165": {
+   "sha": "27455e8bb67a4f24",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/166": {
+   "sha": "e203c8a98c91686d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/241": {
+   "sha": "d45be10908bb5475",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/286": {
+   "sha": "03c808d9fcea1b7d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/289": {
+   "sha": "02ac12a2096ba6c6",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/326": {
+   "sha": "35d4716f94441055",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/327": {
+   "sha": "d77e62463abbb546",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/330": {
+   "sha": "90f7275d603ed0f4",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/343": {
+   "sha": "614a4a4097d004dc",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/345": {
+   "sha": "b11267fcc58645cc",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/370": {
+   "sha": "c81159db3b8c6f70",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/377": {
+   "sha": "37dfa1c55f9d8513",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/382": {
+   "sha": "0b7a879f0ddb0c1c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/386": {
+   "sha": "837c72a4880a324e",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/387": {
+   "sha": "370320d92198cbf0",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/419": {
+   "sha": "ebc8d9f48bbd1f36",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/428": {
+   "sha": "e1de3455c5c57091",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/435": {
+   "sha": "bff2cc50ef03d47b",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/461": {
+   "sha": "e7f0b3163fe02176",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/472": {
+   "sha": "2c70936f89d178c4",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/504": {
+   "sha": "9a772bad3fe66427",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/520": {
+   "sha": "a4ef023289f130b5",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/566": {
+   "sha": "ec76f0cb7d6ae87c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/567": {
+   "sha": "f90076b8bb84723b",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/591": {
+   "sha": "fb0860040a2b3bab",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/595": {
+   "sha": "9589efeb1859837d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/599": {
+   "sha": "539609ce9a693f24",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/606": {
+   "sha": "a4d574a3e638c4ea",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/618": {
+   "sha": "52f831fde7bdf209",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/625": {
+   "sha": "e2d1be7c0496306e",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/628": {
+   "sha": "e6cad129de5f5db9",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/645": {
+   "sha": "8ebb1e40fd82660d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/662": {
+   "sha": "e659b3707fc1734a",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/664": {
+   "sha": "b18fdb43c2e7e1c8",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/669": {
+   "sha": "b3035c8491fa8742",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/68": {
+   "sha": "23a91ca1526732b8",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/684": {
+   "sha": "a540e616aa100127",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/685": {
+   "sha": "6bf8d2f487720210",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/692": {
+   "sha": "9cb3b5ee0553efc4",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/693": {
+   "sha": "4a92d05ce4d49fd5",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/701": {
+   "sha": "a766e82b9a9ef29d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/741": {
+   "sha": "3960c9166334fbc3",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/754": {
+   "sha": "3de8bd2753ad3a9a",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/758": {
+   "sha": "d14ec2b4ce073297",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/799": {
+   "sha": "9080bf29daaa4d88",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/812": {
+   "sha": "9d9a7a0cb559284b",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/819": {
+   "sha": "44990b879ec00deb",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/82": {
+   "sha": "887dbf93bfff71fb",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/827": {
+   "sha": "efe9c7d6ed03e329",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/84": {
+   "sha": "fb97d9932251ca70",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/855": {
+   "sha": "e9e55ead10bb85a4",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/86": {
+   "sha": "4e7ede66154f76f3",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/882": {
+   "sha": "29d52e3e2a02ae6b",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/89": {
+   "sha": "a306bc7f03bc7b92",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/890": {
+   "sha": "9bf6725e03bc90b0",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/91": {
+   "sha": "a544179b0a9eacdf",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/92": {
+   "sha": "f28e88112f085f62",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/93": {
+   "sha": "195e7169ec81a18a",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/94": {
+   "sha": "914e973a68db453e",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/942": {
+   "sha": "e4a647013b54f96f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/966": {
+   "sha": "c2d77a7c7ade6446",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/971": {
+   "sha": "9228551b034e02db",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/972": {
+   "sha": "84975505d88ff530",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-1.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/110": {
+   "sha": "2460c0970d27fa68",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/131": {
+   "sha": "aef4871b7b55e38d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/186": {
+   "sha": "811ffb429eced5b0",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/188": {
+   "sha": "2dace73ffb2d4241",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/200": {
+   "sha": "fc3b55f26e8b47ae",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/22": {
+   "sha": "422f66945ba4747a",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/245": {
+   "sha": "b7a4e9ebf1af2450",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/255": {
+   "sha": "ee379f2d6486b2a9",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/265": {
+   "sha": "91ab43e8e9c029e0",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/27": {
+   "sha": "a72a7ebab8668e8c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/271": {
+   "sha": "b2c7d352e92ec3d0",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/273": {
+   "sha": "4a7acbb7f988c408",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/30": {
+   "sha": "02e7eceb221c68f2",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/302": {
+   "sha": "425eb21c9364632f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/310": {
+   "sha": "d18e7e517d8426b0",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/311": {
+   "sha": "2da2d9471a62d387",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/312": {
+   "sha": "ac725f1aeeba8ced",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/313": {
+   "sha": "3d1d41672710687b",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/322": {
+   "sha": "a438717ca0fdde58",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/323": {
+   "sha": "94237fde87629347",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/330": {
+   "sha": "c0354fedefa45cd9",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/332": {
+   "sha": "511901b0c11c121f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/336": {
+   "sha": "753d755da6e460ff",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/343": {
+   "sha": "9bd5293d80d1671f",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/352": {
+   "sha": "05a34aa50e703b73",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/360": {
+   "sha": "c2c7b66878e6de61",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/394": {
+   "sha": "4ddc5e423fe3056c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/404": {
+   "sha": "21e9d9feccda1965",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/406": {
+   "sha": "fea1e62cc86beb16",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/452": {
+   "sha": "623a9e22a019597a",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/46": {
+   "sha": "8436175bd293c314",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/517": {
+   "sha": "f561b32171bda0a6",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/526": {
+   "sha": "f0b0fb9b1fb62245",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/542": {
+   "sha": "aedceaa4dcf47596",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/550": {
+   "sha": "18e13f1b4ba07673",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-3.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/70": {
+   "sha": "0c5752dc7a5c4203",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-2.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/discussions/1073": {
+   "sha": "c8a4eb842d8d2445",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/discussions/1088": {
+   "sha": "8f5c928835f7a91f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/discussions/1113": {
+   "sha": "572a436788509d10",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/discussions/1125": {
+   "sha": "cbdd5b56c07c07ec",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/discussions/1161": {
+   "sha": "3a7dad78694100a5",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/discussions/1215": {
+   "sha": "19812d1ed79008fa",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/discussions/1367": {
+   "sha": "17d35ff395b14755",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/discussions/1380": {
+   "sha": "2863961c45954c0a",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/discussions/1416": {
+   "sha": "1d7ca700d2c5e03a",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/discussions/1510": {
+   "sha": "fb8b80eaea43bb91",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/discussions/1679": {
+   "sha": "0ba73dc43e74f814",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1000": {
+   "sha": "de405341ea886b57",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1004": {
+   "sha": "961da647a8138c14",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1023": {
+   "sha": "7776add09315c73b",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1026": {
+   "sha": "5acb5a7c8067019e",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1049": {
+   "sha": "f38839af65b1fc7c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1054": {
+   "sha": "e7a614b063bbdd41",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1075": {
+   "sha": "6eb98396f2eb8907",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1076": {
+   "sha": "00ae4dfc902ad912",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1089": {
+   "sha": "942f1c87286140eb",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1091": {
+   "sha": "c468713be1dfd01b",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1107": {
+   "sha": "076ca4bf43a95934",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1114": {
+   "sha": "707a0906eb119c0e",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1116": {
+   "sha": "1d28c4fa4e62844c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1121": {
+   "sha": "58d3fa0e738c4d52",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1126": {
+   "sha": "cd26818ece8e41e6",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1129": {
+   "sha": "6bb04a373e66b96e",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1136": {
+   "sha": "d88c5ec0834946f8",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1143": {
+   "sha": "c0b09d808484229e",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1147": {
+   "sha": "ef561b0382d26add",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1148": {
+   "sha": "f533c623f25358cc",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1150": {
+   "sha": "80c70b60a0482b60",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1159": {
+   "sha": "595ce122bd19d6d1",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1163": {
+   "sha": "d1941aeb1f8d11ff",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1164": {
+   "sha": "a11a88c43589de93",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1192": {
+   "sha": "c79fdb1f4796e79d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1202": {
+   "sha": "dfe3149821e1ac26",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1206": {
+   "sha": "318c2ea8449a6bc8",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1212": {
+   "sha": "268ac45c849a940c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1222": {
+   "sha": "a95759ec7b690263",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1223": {
+   "sha": "623a43ec68fb72ae",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1225": {
+   "sha": "8bf1827568fe6197",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1227": {
+   "sha": "4bbad1bd4ec33b3b",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1232": {
+   "sha": "ccd00046352cf0a0",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1247": {
+   "sha": "1a5bd703f8ec3f1f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1257": {
+   "sha": "4c6b1d6558a62d29",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1262": {
+   "sha": "d91acd54ff9d4a63",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1264": {
+   "sha": "c1d0b2c7a8bfdc5a",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1276": {
+   "sha": "aa5a0cdecdebceac",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1303": {
+   "sha": "f2bc4c052cb9e938",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1313": {
+   "sha": "17049da5cb22f9ac",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1322": {
+   "sha": "339c17a1756385e2",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1323": {
+   "sha": "3b995dc973c7d7eb",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1327": {
+   "sha": "1b0a0aa883024ea8",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1345": {
+   "sha": "2b4e8ff037b41231",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1363": {
+   "sha": "4fc4e58057944718",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1387": {
+   "sha": "24190523280e8077",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1395": {
+   "sha": "a38e1c6da398a202",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1396": {
+   "sha": "25106a3890252822",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1400": {
+   "sha": "04edb32d19d8f853",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1424": {
+   "sha": "a040c34050cf9823",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1437": {
+   "sha": "53d7a64e18e6911f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1450": {
+   "sha": "a03898444fd46fa3",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1460": {
+   "sha": "a9a837a41992ac83",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1472": {
+   "sha": "267aeb42eabb50f9",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1486": {
+   "sha": "a91f373d8f111f9e",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1491": {
+   "sha": "d085c272d9d1b163",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1493": {
+   "sha": "db787409518d8066",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1496": {
+   "sha": "fa0819fdb9f0c8c6",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1498": {
+   "sha": "c26552a2e052bdfe",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1499": {
+   "sha": "6b7fcb8ae37e729e",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1506": {
+   "sha": "1321bafc67702024",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1518": {
+   "sha": "f1bce14b6a5157bb",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1528": {
+   "sha": "f54be11915ba22f1",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1529": {
+   "sha": "1acfabad5d7b6927",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1532": {
+   "sha": "1dd1a359ea8e3ca5",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1537": {
+   "sha": "bc9fa0e80774cbd4",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1545": {
+   "sha": "563e64a43fae9be6",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1547": {
+   "sha": "386c23987eaa5a88",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1549": {
+   "sha": "3a2f3ed9522bcf7c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1553": {
+   "sha": "57a28a6c4d2b88a4",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1556": {
+   "sha": "8c707becf25859d6",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1572": {
+   "sha": "bd244096dce7e41c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1576": {
+   "sha": "bd9d7a6dc74dcc2e",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1580": {
+   "sha": "f35b256a073e4f8d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1585": {
+   "sha": "aa04d11060326393",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1587": {
+   "sha": "6d7ee5672e4bc16e",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1589": {
+   "sha": "1dc88c4c302c9b58",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1600": {
+   "sha": "85f7dc41168fade0",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/161": {
+   "sha": "315d0567dadb4e96",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1611": {
+   "sha": "f67ab87e0d3e0b05",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1629": {
+   "sha": "c287b1676413cd9a",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1637": {
+   "sha": "c3a85dac8cd1e3d9",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1646": {
+   "sha": "4a1d752edc243385",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1661": {
+   "sha": "fa6b658c67443831",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1682": {
+   "sha": "60978a30a44ad402",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1693": {
+   "sha": "68d6dafd3df9252f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1694": {
+   "sha": "064ebb97af15f503",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1695": {
+   "sha": "cc7a6cae49a53177",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1696": {
+   "sha": "9dc98209357cb710",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1700": {
+   "sha": "3e0d398882fe2518",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1729": {
+   "sha": "8ec676a90d853c89",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1754": {
+   "sha": "2835bf77ece13a9f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1766": {
+   "sha": "449b1722ff8425c5",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1800": {
+   "sha": "59ba26f090e0fff4",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1808": {
+   "sha": "c837aeec269f995b",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1810": {
+   "sha": "120727707f9f1cc0",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1817": {
+   "sha": "064cc179b824d843",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1825": {
+   "sha": "3a4a9fc292798a7d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1826": {
+   "sha": "9ed645249d3c9995",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1842": {
+   "sha": "cae25682b25a18cc",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1846": {
+   "sha": "d44b932290a4ecfe",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1847": {
+   "sha": "9bfd6e5c2f02ecaa",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1856": {
+   "sha": "965c34df3f301e51",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1862": {
+   "sha": "5f832cf438bfb5f9",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1871": {
+   "sha": "cce268457ada640d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/189": {
+   "sha": "2cafa81ef5ac82c5",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1904": {
+   "sha": "6a8ea1d2367ae635",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1915": {
+   "sha": "b8ce7eae1e6358ec",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1925": {
+   "sha": "f933aead870626bc",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1955": {
+   "sha": "80420299e7e10dff",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1958": {
+   "sha": "c545392cbe601b95",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1962": {
+   "sha": "2a99d63db5f07e68",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1970": {
+   "sha": "93e43f9693ec7c56",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1983": {
+   "sha": "0673306dcca5c20c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1992": {
+   "sha": "6075787bed088882",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/1995": {
+   "sha": "412773d195ef1e1f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/2000": {
+   "sha": "f4c8297dc2087e38",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/2009": {
+   "sha": "d0cb30c62926cd6f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/2019": {
+   "sha": "f301a73d16ef4a12",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/2023": {
+   "sha": "ef9cbe58c0f775d8",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/2031": {
+   "sha": "8969622225503ac8",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/212": {
+   "sha": "2f04d2ef44fc7eb5",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/226": {
+   "sha": "19ecda138e129984",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/227": {
+   "sha": "4394837e2121aac5",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/237": {
+   "sha": "a6a5de4cb76ba619",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/239": {
+   "sha": "edbc3f15d8008ab6",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/241": {
+   "sha": "a73fee05220c2e53",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/246": {
+   "sha": "cbdf65f46f3cc630",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/270": {
+   "sha": "b258ef7bce5d4c54",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/294": {
+   "sha": "8a9e829108ced0c7",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/306": {
+   "sha": "68c106244e67b32b",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/309": {
+   "sha": "df91fdece7587e84",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/313": {
+   "sha": "f3081a584813bd22",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/317": {
+   "sha": "15de350544fcf954",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/321": {
+   "sha": "91bc8b06bef0a27e",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/335": {
+   "sha": "8281d907d34f7a19",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/337": {
+   "sha": "719480be68e1117f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/346": {
+   "sha": "6fc6b1deb8fa4d8e",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/371": {
+   "sha": "f69b84127c030429",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/389": {
+   "sha": "fc676731426a2480",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/399": {
+   "sha": "8a7798ee702d7454",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/442": {
+   "sha": "d8b70ffe6b8730a9",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/444": {
+   "sha": "3bef9a9c4d0522c4",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/465": {
+   "sha": "badbe78c9b4b463a",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/467": {
+   "sha": "d0c114ce0900451e",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/487": {
+   "sha": "6b6867f4796d2d29",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/497": {
+   "sha": "7f8683dc8719ff35",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/505": {
+   "sha": "0270c27a67cc74a9",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/508": {
+   "sha": "dd8aff42f19c342c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/521": {
+   "sha": "102f1edc394e5cdf",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/527": {
+   "sha": "f72d0371c395b3b0",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/557": {
+   "sha": "7347d5e73b0d32db",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/570": {
+   "sha": "f7a3d9b89c045c42",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/575": {
+   "sha": "0d60902073de8e6b",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/584": {
+   "sha": "bd413b84347fd9e7",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/585": {
+   "sha": "1cc5d756faccc05f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/590": {
+   "sha": "4bad5219c9379847",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-6.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/612": {
+   "sha": "66b6ca149a1c283a",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/613": {
+   "sha": "29e2a5eeb9533e95",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/614": {
+   "sha": "be9b7a1d63fe2012",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/624": {
+   "sha": "9d54741d35c2d069",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/625": {
+   "sha": "0f8278c34a2c0c23",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/632": {
+   "sha": "42449fba0082e879",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/634": {
+   "sha": "18379bfd94896335",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/643": {
+   "sha": "1a87fbaaf6ded382",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/647": {
+   "sha": "5c0afcefca88186a",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/652": {
+   "sha": "5b19311fecb81477",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/654": {
+   "sha": "12ceabf36ad1e083",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/661": {
+   "sha": "0f3f15cde69edb06",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/665": {
+   "sha": "d37b174930153dcc",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/674": {
+   "sha": "1aadcc731be84229",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/675": {
+   "sha": "c09cbbe6bf7eb788",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/678": {
+   "sha": "4a9c532a64c4e7d4",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/680": {
+   "sha": "ed0168fbfe8904b2",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/696": {
+   "sha": "b4883256e348a97f",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/707": {
+   "sha": "dea9e93cb8236154",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/708": {
+   "sha": "49c77becacb8708c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/713": {
+   "sha": "015fae1cdea0b2c1",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/714": {
+   "sha": "36fca4f5e4f30f37",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/725": {
+   "sha": "465ef39ffa99357c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/727": {
+   "sha": "7c599fb19d325e03",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/743": {
+   "sha": "24ce87641fbb286a",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/755": {
+   "sha": "1b175137526c44bc",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/772": {
+   "sha": "2d6f22a4d25e503b",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/800": {
+   "sha": "5c79a85caa8b2ec6",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/801": {
+   "sha": "f689c67e02648e97",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/802": {
+   "sha": "a7b39e204b4aaa07",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/805": {
+   "sha": "ad180f3b6262c1ce",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/808": {
+   "sha": "0f64553cb6e0d040",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/809": {
+   "sha": "efaa1463120a837c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/811": {
+   "sha": "c4760d3882e6488c",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/812": {
+   "sha": "4fc4c6e49c06657e",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/813": {
+   "sha": "cbac644aa760db57",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/822": {
+   "sha": "7729616e5e5b3049",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/839": {
+   "sha": "0466ae9682df72f0",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/848": {
+   "sha": "8f8598cdcf9bd780",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/855": {
+   "sha": "b5f416c6fb3949a4",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/862": {
+   "sha": "28080438dc26f30e",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/863": {
+   "sha": "602718e37c018ae8",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/865": {
+   "sha": "b84f1d52dfaee9dc",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/874": {
+   "sha": "e29358ccb6702e71",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/877": {
+   "sha": "5e99d11ce3fe1690",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/881": {
+   "sha": "180481fa1049ea7c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/887": {
+   "sha": "31f7d5ee7ad07046",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/893": {
+   "sha": "0964ddddb3d725d5",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/896": {
+   "sha": "8b23b9f450a9912f",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/911": {
+   "sha": "9d86c70b57b7bd8a",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/917": {
+   "sha": "5ec091da71b8a54a",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/918": {
+   "sha": "193f1feddeff361a",
+   "at": "adopted",
+   "kept": true,
+   "file": "sample.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/921": {
+   "sha": "bbe7d0ead1740587",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/923": {
+   "sha": "2ef0c9446e76f53c",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/924": {
+   "sha": "58b53c768de3e58b",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/925": {
+   "sha": "255a9286457aac97",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/949": {
+   "sha": "51c6a81d83694b88",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-4.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/963": {
+   "sha": "4125fb5ee19a44ed",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/969": {
+   "sha": "8fce4b2a539f6223",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/973": {
+   "sha": "b732003414bd7941",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/986": {
+   "sha": "dc1ae5b1931ed28d",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/995": {
+   "sha": "7a70fb17c812d710",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/996": {
+   "sha": "12dc47ee487c9e55",
+   "at": "adopted",
+   "kept": true,
+   "file": "qa-5.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  }
+ }
+}

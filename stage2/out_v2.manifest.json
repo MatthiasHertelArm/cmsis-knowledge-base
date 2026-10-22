@@ -1,0 +1,200 @@
+{
+ "stage": "decompose",
+ "model": "",
+ "prompt_sha": "6364de7bc3635126",
+ "since": "",
+ "items": {
+  "proc-add-cmsis-target": {
+   "sha": "00f697cc68cc38cd",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-add-cmsis-target.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-apply-confirmed-pdsc-proposal": {
+   "sha": "93690444c3718253",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-apply-confirmed-pdsc-proposal.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-board-debug-knowledge": {
+   "sha": "16900269ee8e0cff",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-board-debug-knowledge.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-check-cmsis-environment": {
+   "sha": "6147a7853ffed0f9",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-check-cmsis-environment.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-check-pyocd-availability": {
+   "sha": "24e482f6d521a8cc",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-check-pyocd-availability.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-check-zephyr-environment": {
+   "sha": "e716e729962fcac2",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-check-zephyr-environment.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-cmsis-stream": {
+   "sha": "88313dbcf80b4573",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-cmsis-stream.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-create-csolution-github-action": {
+   "sha": "c7ff8a15af0ba6db",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-create-csolution-github-action.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-debug-access-knowledge": {
+   "sha": "b061f6d32232b078",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-debug-access-knowledge.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-debug-knowledge": {
+   "sha": "ad9a5c8459a96565",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-debug-knowledge.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-evaluate-ethos-u-variants": {
+   "sha": "89aa458736a83984",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-evaluate-ethos-u-variants.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-generate-debug-description": {
+   "sha": "101e856e6a38fa3f",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-generate-debug-description.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-generate-debug-sequences": {
+   "sha": "31955c8fa042c7e5",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-generate-debug-sequences.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-generate-trace-sequences": {
+   "sha": "4c9522774bba0dee",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-generate-trace-sequences.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-identify-cmsis-board-layer": {
+   "sha": "c5df584e600ce30a",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-identify-cmsis-board-layer.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-identify-cmsis-board-support": {
+   "sha": "4ae0943aaf094a6d",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-identify-cmsis-board-support.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-identify-zephyr-board": {
+   "sha": "53cdd926ea780935",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-identify-zephyr-board.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-manage-pdsc-debugvars": {
+   "sha": "1bdc3a1d8fe88996",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-manage-pdsc-debugvars.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-prepare-pdsc-sequence-change": {
+   "sha": "0b5b1b271fb0b09f",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-prepare-pdsc-sequence-change.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-pyocd-detect-debug-topology": {
+   "sha": "3266944dc5851b4f",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-pyocd-detect-debug-topology.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-resolve-official-device-documentation": {
+   "sha": "57e2ecb03e116d54",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-resolve-official-device-documentation.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-start-zephyr-project": {
+   "sha": "f3a90546b0512ab7",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-start-zephyr-project.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-trace-knowledge": {
+   "sha": "1d508df9f8bbf368",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-trace-knowledge.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "proc-validate-pdsc-sequence-xml": {
+   "sha": "744d06644b1ab4dc",
+   "at": "adopted",
+   "kept": true,
+   "file": "proc-validate-pdsc-sequence-xml.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  }
+ }
+}
