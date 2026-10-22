@@ -577,7 +577,11 @@ def fetch(src, repo):
     url = f"{src.get('host', 'https://github.com')}/{src['repo']}.git"
     sparse = src.get("sparse")
     cmd = ["git", "clone", "-q", "--depth", "1"] + (["--filter=blob:none", "--sparse"] if sparse else []) + [url, str(repo)]
-    subprocess.run(cmd, check=True)
+    if subprocess.run(cmd).returncode != 0:
+        # A repository the credentials at hand cannot see (an internal one on a public runner) or one that is
+        # gone: the source is skipped and its committed units stay, as for any missing clone.
+        print(f"{src['name']:28s} cannot clone {url}: skipped, the committed units stay")
+        return
     if sparse:
         # Pattern mode (--no-cone): a path may name a file as well as a folder; cone mode takes folders only
         # and newer git exits on a file. Anchored, so `docs/source` means the one at the root.
