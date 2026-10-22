@@ -476,6 +476,20 @@
       "expect": [
         "lfs-littlefs-design-directories"
       ]
+    },
+    {
+      "q": "build an ExecuTorch application for Ethos-U85 on Corstone-320",
+      "expect": [
+        "cet-executorch-on-ethos-u-quick-start",
+        "cet-executorch-on-ethos-u"
+      ]
+    },
+    {
+      "q": "export a PyTorch model for Ethos-U with ExecuTorch",
+      "expect": [
+        "cet-the-mlops-flow-2-create-ai-layer-py-turns-cbuild-mlops",
+        "cet-executorch-on-ethos-u-how-ml-model-generation-works"
+      ]
     }
   ]
 }

@@ -37,7 +37,8 @@ tflite-micro,documentation,tensorflow/tflite-micro,Apache-2.0,V,default,92,115,e
 devtools-docs,documentation,Open-CMSIS-Pack/devtools,Apache-2.0,V,default,83,206,pack,pack
 mcuboot,documentation,mcu-tools/mcuboot,Apache-2.0,V,default,81,152,boot-update,pack
 cmsis-dap,documentation,ARM-software/CMSIS-DAP,Apache-2.0,V,default,65,66,debug,pack
-executorch-arm,documentation,pytorch/executorch,BSD-3-Clause,V,default,63,101,edge-ai,pack
+executorch-arm,documentation,pytorch/executorch,BSD-3-Clause,V,default,35,66,edge-ai,pack
+cmsis-executorch,documentation,Arm-Examples/CMSIS-Executorch,Apache-2.0,V,default,21,39,edge-ai,pack
 avh,documentation,ARM-software/AVH,Apache-2.0,V,default,61,91,test,pack
 cmsis-driver-validation,documentation,ARM-software/CMSIS-Driver_Validation,Apache-2.0,V,default,55,55,drivers,pack
 sds-framework,documentation,ARM-software/SDS-Framework,Apache-2.0,V,default,54,124,test,pack

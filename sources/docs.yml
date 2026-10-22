@@ -1,5 +1,5 @@
 # Documentation sources converted by tools/doc2ku.py: mode V only (open licence, full text).
-# Order and modes follow docs/design/04_quellenliste.md. Each source is a git clone in .work/docs/<dir>.
+# Order and modes follow the source review in sources/sources-review.csv. Each source is a git clone in .work/docs/<dir>.
 #   include/exclude: globs relative to the repository root
 #   format: md (default) | doxmd (doxygen-flavoured Markdown) | doxtxt (doxygen comment files and doxygen Markdown)
 #   url: published page, {stem} = file name without extension, {page} = doxygen page id, {dir} = folder of the file
@@ -302,15 +302,32 @@ sources:
       - {paths: ["doc/develop/test/*"], domain: test}
       - {paths: ["doc/develop/debug/*", "doc/services/*"], domain: debug}
 
+  # The backend knowledge of upstream ExecuTorch that holds in any project: how a system with an Ethos-U works, the
+  # Cortex-M backend, custom operators, the model examples. The upstream build flow (setup.sh, run.sh, CMake, the
+  # executor_runner, the backend developers' README) stays out: in a CMSIS project the cmsis-executorch template
+  # below is the flow, and those pages would divert an agent to it.
   - name: executorch-arm
     prefix: etarm
     repo: pytorch/executorch
     sparse: [backends/arm/README.md, docs/source, examples/arm]
-    include: ["docs/source/embedded-arm-*.md", "docs/source/backends/arm-ethos-u/**/*.md", "docs/source/backends/arm-cortex-m/*.md",
-              "backends/arm/README.md", "examples/arm/README.md", "examples/arm/ethos-u-porting-guide.md", "examples/arm/custom_operators.md",
+    include: ["docs/source/backends/arm-cortex-m/*.md", "examples/arm/ethos-u-porting-guide.md", "examples/arm/custom_operators.md",
               "examples/arm/*_ethos_u/README.md", "examples/arm/*_cortex_m/README.md"]
+    exclude: ["examples/arm/smollm2_example_ethos_u/README.md"]
     license: BSD-3-Clause
     domain: edge-ai
+
+  # ExecuTorch the CMSIS way: the template with the PyTorch::ExecuTorch pack, the mlops node, cbuild setup,
+  # create_ai_layer.py, cbuild and the FVP; the MLOps flow; the pack's maintenance; the Corstone board layer.
+  - name: cmsis-executorch
+    prefix: cet
+    repo: Arm-Examples/CMSIS-Executorch
+    dir: ae-CMSIS-Executorch
+    include: ["README.md", "documentation/*.md", "board/*/README.md"]
+    license: Apache-2.0
+    domain: edge-ai
+    domains:
+      - {paths: ["documentation/executorch-pack-maintenance.md"], domain: pack}
+      - {paths: ["board/*"], domain: bring-up}
 
   - name: cmsis-dap
     prefix: dap

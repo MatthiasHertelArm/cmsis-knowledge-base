@@ -559,3 +559,11 @@ repositories:
   notice_file: null
   notice: null
   fetched: '2026-10-21'
+- repo: Arm-Examples/CMSIS-Executorch
+  host: https://github.com
+  spdx: Apache-2.0
+  license_file: LICENSE
+  copyright: []
+  notice_file: null
+  notice: null
+  fetched: '2026-10-22'
