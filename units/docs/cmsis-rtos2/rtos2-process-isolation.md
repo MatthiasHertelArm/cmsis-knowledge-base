@@ -6,8 +6,8 @@ title: "Process Isolation"
 summary: "CMSIS-RTOS2 API supports a concept of process isolation that allows developers to protect execution of critical software tasks against potential flaws in other parts of a program."
 status: "draft"
 collection: "cmsis-rtos2"
-source: "ARM-software/CMSIS_6@26206e4:CMSIS/Documentation/Doxygen/RTOS2/src/processIsolation.md"
-doc_source: "https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/RTOS2/src/processIsolation.md"
+source: "ARM-software/CMSIS_6@acf7392:CMSIS/Documentation/Doxygen/RTOS2/src/processIsolation.md"
+doc_source: "https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/RTOS2/src/processIsolation.md"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -39,7 +39,7 @@ Section fusa_process_isolation lists safety requirements for Process Isolation f
 <!-- =============================================================== !-->
 # MPU Protected Zones
 
-Memory Protection Unit (MPU) is available on many Cortex-M devices and allows to execute code with restricted access to memory regions and peripherals. Detailed information about the MPU can be found in [Cortex-M Reference Manuals](https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/RTOS2/src/../Core/index.html#ref_man_sec).
+Memory Protection Unit (MPU) is available on many Cortex-M devices and allows to execute code with restricted access to memory regions and peripherals. Detailed information about the MPU can be found in [Cortex-M Reference Manuals](https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/RTOS2/src/../Core/index.html#ref_man_sec).
 
 CMSIS-RTOS2 provides a concept of **MPU Protected Zones** as a simple and flexible mechanism for using MPUs with RTOS threads. MPU Protected Zones are defined by a user as a set of memory regions and peripherals with specified access rights, and each RTOS threads gets assigned to a specific MPU Protected Zone that it is allowed to use.
 

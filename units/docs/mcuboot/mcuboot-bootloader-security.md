@@ -6,8 +6,8 @@ title: "Bootloader: Security"
 summary: "As indicated above, the final step of the integrity check is signature verification. The bootloader can have one or more public keys embedded in it at build time."
 status: "draft"
 collection: "mcuboot"
-source: "mcu-tools/mcuboot@ba2099f:docs/design.md"
-doc_source: "https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/design.md#security"
+source: "mcu-tools/mcuboot@725d63c:docs/design.md"
+doc_source: "https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/design.md#security"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -19,10 +19,10 @@ image was signed with a private key that corresponds to the embedded KEYHASH
 TLV.
 
 For information on embedding public keys in the bootloader, as well as
-producing signed images, see: [signed_images](https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/signed_images.md).
+producing signed images, see: [signed_images](https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/signed_images.md).
 
 If you want to enable and use encrypted images, see:
-[encrypted_images](https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/encrypted_images.md).
+[encrypted_images](https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/encrypted_images.md).
 
 ---
 ***Note***
@@ -56,7 +56,7 @@ signature verification, MCUboot calculates the hash of the public key from the
 TLV area and compares it with the key-hash that was retrieved from the device.
 - `MCUBOOT_BUILTIN_KEY`: With this option the whole public key(s) used for
 signature verification must be provisioned to the target device and the used
-[cryptographic library](https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/PORTING.md) must support the usage of builtin keys based
+[cryptographic library](https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/PORTING.md) must support the usage of builtin keys based
 on key IDs. In this case, neither the code nor the image metadata needs to
 contain any public key data. During image validation only a key ID is passed to
 the verifier function. The key handling is entirely the responsibility of the

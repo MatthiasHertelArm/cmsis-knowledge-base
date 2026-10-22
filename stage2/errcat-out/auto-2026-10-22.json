@@ -1,0 +1,28 @@
+[
+ {
+  "id": "ts-csolution-a-single-context-must-be-specified",
+  "cause": "The csolution generator command (ExecuteGenerator) runs on exactly one selected context, but the number of selected contexts is not one. The selection comes from the command line; when no context or more than one context is given, the size check at line 5102 fails and the tool stops before processing any context.",
+  "fix": "Run the generator command with exactly one context, naming the project as a single context such as <project>+<target-type> (for example, a context in the form project.Debug+Target), and do not pass several contexts or omit the context argument.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:5102-5103",
+   "tools/projmgr/src/ProjMgrWorker.cpp:5106-5107"
+  ],
+  "confidence": "medium",
+  "note": "The exact accepted context syntax is inferred from the context-name usage in m_contexts; the source lines given do not show the command-line parsing that fills m_selectedContexts. The message is printed with no error code.",
+  "ref": "Open-CMSIS-Pack/devtools@5f04db72"
+ },
+ {
+  "id": "ts-csolution-access-sequence-pack-was-not-loaded-pack",
+  "cause": "A `$Pack(vendor::name)$` access sequence in a csolution YAML file (for example in a path or file reference) names a pack that matches none of the packs loaded for the context. ExpandPackDir scans the loaded packages for one whose vendor and name match the argument; if none matches, the replacement stays empty and the sequence is left unexpanded. The `<…>` in the message is the pack argument as written in the sequence, and the source line 3703 prints it back as `$Pack(<pack>)$`.",
+  "fix": "Check that the pack named inside `$Pack(...)$` is spelled as vendor::name and matches a pack that is installed and listed in the csolution's `packs:` section (or in the project's `packs:` entry), then rebuild. Example: `packs: - pack: Vendor::PackName` with the same vendor and name used in the access sequence.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:3684-3705",
+   "tools/projmgr/src/ProjMgrWorker.cpp:3692-3705",
+   "tools/projmgr/src/ProjMgrWorker.cpp:3702-3704",
+   "tools/projmgr/src/ProjMgrWorker.cpp:3727-3729"
+  ],
+  "confidence": "medium",
+  "note": "The message is a warning and ExpandPackDir returns without changing the item, so the build continues with the raw sequence text. The README has no entry for this message. The cause is inferred from the matching loop; the pack may be missing from the loaded set for reasons beyond the spelling, such as the pack not being installed.",
+  "ref": "Open-CMSIS-Pack/devtools@5f04db72"
+ }
+]

@@ -6,8 +6,8 @@ title: "Multi-domain logging using ARM Coresight STM: ARM Coresight Embedded Tra
 summary: "ETR is a circular RAM buffer to which tracing data is saved. Since it may contain data from various sources additional wrapping protocol is used to multiplex them. Coresight Trace Formatter is used for that."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/services/logging/cs_stm.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/services/logging/cs_stm.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/services/logging/cs_stm.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/services/logging/cs_stm.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

@@ -6,8 +6,8 @@ title: "Setting Kconfig configuration values: Configuring invisible Kconfig symb
 summary: "When making changes to the default configuration for a board, you might have to configure invisible symbols. This is done in boards/<VENDOR>/<BOARD>/Kconfig.defconfig, which is a regular Kconfig file."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/build/kconfig/setting.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/build/kconfig/setting.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/build/kconfig/setting.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/build/kconfig/setting.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

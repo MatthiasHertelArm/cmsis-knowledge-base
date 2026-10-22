@@ -10,7 +10,7 @@ code: "M506"
 symptoms: ["M506", "RTE Model reports: %MSG%"]
 symptom_regex: "^RTE Model reports: .+?$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"

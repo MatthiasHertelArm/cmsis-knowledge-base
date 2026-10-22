@@ -9,7 +9,7 @@ severity: "warning"
 symptoms: ["build-type '.<…>' does not exist in solution<…>, did you mean '+<…>'?<…>"]
 symptom_regex: "^build\\-type '\\..+?' does not exist in solution.+?, did you mean '\\+.+?'\\?.+?$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4095"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:4095"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["unknown load option: '<…>', it must be 'latest', 'all' or 'required'"]
 symptom_regex: "^unknown load option: '.+?', it must be 'latest', 'all' or 'required'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:478"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgr.cpp:478"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

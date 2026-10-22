@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["processor name '<…>' was not found"]
 symptom_regex: "^processor name '.+?' was not found$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1517"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:1517"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

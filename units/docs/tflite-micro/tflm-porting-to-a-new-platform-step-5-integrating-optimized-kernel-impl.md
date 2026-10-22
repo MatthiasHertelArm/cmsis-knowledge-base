@@ -6,8 +6,8 @@ title: "Porting to a new platform: Step 5: Integrating Optimized Kernel Implemen
 summary: "TFLM has optimized kernel implementations for a variety of targets that are in sub-folders of the kernels directory."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/new_platform_support.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/new_platform_support.md#step-5-integrating-optimized-kernel-implementations"
+source: "tensorflow/tflite-micro@bd621c2:tensorflow/lite/micro/docs/new_platform_support.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/bd621c2/tensorflow/lite/micro/docs/new_platform_support.md#step-5-integrating-optimized-kernel-implementations"
 license: "Apache-2.0"
 mode: "V"
 ---

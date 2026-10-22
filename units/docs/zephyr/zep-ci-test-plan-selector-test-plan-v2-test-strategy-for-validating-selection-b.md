@@ -6,8 +6,8 @@ title: "CI Test Plan Selector (test_plan_v2): Test strategy for validating selec
 summary: "The test suite lives in scripts/tests/ci/test_test_plan_v2.py and is run with pytest:"
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/develop/test/ci_test_plan.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/develop/test/ci_test_plan.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/develop/test/ci_test_plan.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/develop/test/ci_test_plan.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["invalid arguments: '-a' option cannot be used in combination with '-S'"]
 symptom_regex: "^invalid arguments: '\\-a' option cannot be used in combination with '\\-S'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5231"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:5231"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

@@ -6,8 +6,8 @@ title: "Arm Cortex-M Developer Guide: OS features / Memory map and MPU considera
 summary: "By default, when CONFIG_ARM_MPU is enabled a set of fixed MPU regions are programmed during system boot."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/hardware/arch/arm_cortex_m.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/hardware/arch/arm_cortex_m.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/hardware/arch/arm_cortex_m.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/hardware/arch/arm_cortex_m.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

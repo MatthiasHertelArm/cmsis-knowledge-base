@@ -141,8 +141,6 @@
 {"src": "board:ARM::V2M-MPS2", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_CMx_BSP", "qual": null}
 {"src": "board:ARM::V2M-MPS2 (DS)", "rel": "mounted_on", "dst": "device:DS_CM3", "qual": null}
 {"src": "board:ARM::V2M-MPS2 (DS)", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_DSx_BSP", "qual": null}
-{"src": "board:ARM::V2M-MPS2 (IoT)", "rel": "mounted_on", "dst": "device:IOTKit_ARMv8MML", "qual": null}
-{"src": "board:ARM::V2M-MPS2 (IoT)", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_IOTKit_BSP", "qual": null}
 {"src": "board:ARM::V2M-MPS2-SSE-200", "rel": "mounted_on", "dst": "device:SMM-SSE-200", "qual": null}
 {"src": "board:ARM::V2M-MPS2-SSE-200", "rel": "part_of", "dst": "pack:ARM::V2M-MPS2_SSE_200_BSP", "qual": null}
 {"src": "board:ARM::V2M-MPS3 (IoT)", "rel": "mounted_on", "dst": "device:IOTKit_CM33_MPS3", "qual": null}
@@ -263,6 +261,8 @@
 {"src": "board:Geehy::APM32F465MINI", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
 {"src": "board:Geehy::BMP561", "rel": "mounted_on", "dst": "device:BMP561", "qual": null}
 {"src": "board:Geehy::BMP561", "rel": "part_of", "dst": "pack:Geehy::BMP561_DFP", "qual": null}
+{"src": "board:Geehy::G32R430TINY", "rel": "mounted_on", "dst": "device:G32R430CB", "qual": null}
+{"src": "board:Geehy::G32R430TINY", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "board:Gheey::APM32F445EVAL", "rel": "mounted_on", "dst": "device:APM32F445UAxxxLLx", "qual": null}
 {"src": "board:Gheey::APM32F445EVAL", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
 {"src": "board:Gheey::APM32F446EVAL", "rel": "mounted_on", "dst": "device:APM32F446UAxxxLLx", "qual": null}
@@ -577,8 +577,6 @@
 {"src": "board:NXP::EVKB-IMXRT1050", "rel": "part_of", "dst": "pack:NXP::EVKB-IMXRT1050_BSP", "qual": null}
 {"src": "board:NXP::EVKB-IMXRT1050-OM13790HOST", "rel": "mounted_on", "dst": "device:MIMXRT1052DVL6B", "qual": null}
 {"src": "board:NXP::EVKB-IMXRT1050-OM13790HOST", "rel": "part_of", "dst": "pack:NXP::EVKB-IMXRT1050-OM13790HOST_USB_PD_Examples", "qual": null}
-{"src": "board:NXP::EVKB-IMXRT1050_MDK", "rel": "mounted_on", "dst": "device:MIMXRT1052DVL6B", "qual": null}
-{"src": "board:NXP::EVKB-IMXRT1050_MDK", "rel": "part_of", "dst": "pack:Keil::IMXRT1050-EVKB_BSP", "qual": null}
 {"src": "board:NXP::FRDM-IMXRT1152", "rel": "mounted_on", "dst": "device:MIMXRT1152XHM8B", "qual": null}
 {"src": "board:NXP::FRDM-IMXRT1152", "rel": "part_of", "dst": "pack:NXP::FRDM-IMXRT1152_BSP", "qual": null}
 {"src": "board:NXP::FRDM-IMXRT1186", "rel": "mounted_on", "dst": "device:MIMXRT1186CVJ8C", "qual": null}
@@ -2118,17 +2116,25 @@
 {"src": "component:AlifSemiconductor::Graphics:DAVE2D:Layer0Lib", "rel": "part_of", "dst": "pack:AlifSemiconductor::Dave2DDriver", "qual": null}
 {"src": "component:AlifSemiconductor::Graphics:DAVE2D:Layer1", "rel": "part_of", "dst": "pack:AlifSemiconductor::Dave2DDriver", "qual": null}
 {"src": "component:AlifSemiconductor::Graphics:DAVE2D:Layer2", "rel": "part_of", "dst": "pack:AlifSemiconductor::Dave2DDriver", "qual": null}
-{"src": "component:AlifSemiconductor::RTOS:FILEX:Core", "rel": "part_of", "dst": "pack:AlifSemiconductor::AzureRTOS", "qual": null}
-{"src": "component:AlifSemiconductor::RTOS:FILEX:SD Driver", "rel": "part_of", "dst": "pack:AlifSemiconductor::AzureRTOS", "qual": null}
-{"src": "component:AlifSemiconductor::RTOS:Kernel:ARMClang_Port", "rel": "part_of", "dst": "pack:AlifSemiconductor::AzureRTOS", "qual": null}
-{"src": "component:AlifSemiconductor::RTOS:Kernel:Core", "rel": "part_of", "dst": "pack:AlifSemiconductor::AzureRTOS", "qual": null}
-{"src": "component:AlifSemiconductor::RTOS:Kernel:GCC_Port", "rel": "part_of", "dst": "pack:AlifSemiconductor::AzureRTOS", "qual": null}
-{"src": "component:AlifSemiconductor::RTOS:Netx Duo:Core", "rel": "part_of", "dst": "pack:AlifSemiconductor::AzureRTOS", "qual": null}
-{"src": "component:AlifSemiconductor::RTOS:Netx Duo:Ethernet Driver", "rel": "part_of", "dst": "pack:AlifSemiconductor::AzureRTOS", "qual": null}
-{"src": "component:AlifSemiconductor::RTOS:Netx Duo:IoT", "rel": "part_of", "dst": "pack:AlifSemiconductor::AzureRTOS", "qual": null}
-{"src": "component:AlifSemiconductor::RTOS:USBX:CDC Device Class", "rel": "part_of", "dst": "pack:AlifSemiconductor::AzureRTOS", "qual": null}
-{"src": "component:AlifSemiconductor::RTOS:USBX:Core", "rel": "part_of", "dst": "pack:AlifSemiconductor::AzureRTOS", "qual": null}
-{"src": "component:AlifSemiconductor::RTOS:USBX:Device Class Driver", "rel": "part_of", "dst": "pack:AlifSemiconductor::AzureRTOS", "qual": null}
+{"src": "component:AlifSemiconductor::RTOS:FILEX:Core", "rel": "part_of", "dst": "pack:AlifSemiconductor::ThreadX", "qual": null}
+{"src": "component:AlifSemiconductor::RTOS:FILEX:SD Driver", "rel": "part_of", "dst": "pack:AlifSemiconductor::ThreadX", "qual": null}
+{"src": "component:AlifSemiconductor::RTOS:Kernel:ARMClang_Port", "rel": "part_of", "dst": "pack:AlifSemiconductor::ThreadX", "qual": null}
+{"src": "component:AlifSemiconductor::RTOS:Kernel:Core", "rel": "part_of", "dst": "pack:AlifSemiconductor::ThreadX", "qual": null}
+{"src": "component:AlifSemiconductor::RTOS:Kernel:GCC_Port", "rel": "part_of", "dst": "pack:AlifSemiconductor::ThreadX", "qual": null}
+{"src": "component:AlifSemiconductor::RTOS:Netx Duo:Core", "rel": "part_of", "dst": "pack:AlifSemiconductor::ThreadX", "qual": null}
+{"src": "component:AlifSemiconductor::RTOS:Netx Duo:Ethernet Driver", "rel": "part_of", "dst": "pack:AlifSemiconductor::ThreadX", "qual": null}
+{"src": "component:AlifSemiconductor::RTOS:Netx Duo:IoT", "rel": "part_of", "dst": "pack:AlifSemiconductor::ThreadX", "qual": null}
+{"src": "component:AlifSemiconductor::RTOS:USBX:CDC ACM Device Class", "rel": "part_of", "dst": "pack:AlifSemiconductor::ThreadX", "qual": null}
+{"src": "component:AlifSemiconductor::RTOS:USBX:CDC ACM Host Class", "rel": "part_of", "dst": "pack:AlifSemiconductor::ThreadX", "qual": null}
+{"src": "component:AlifSemiconductor::RTOS:USBX:CDC ECM Device Class", "rel": "part_of", "dst": "pack:AlifSemiconductor::ThreadX", "qual": null}
+{"src": "component:AlifSemiconductor::RTOS:USBX:CDC ECM Host Class", "rel": "part_of", "dst": "pack:AlifSemiconductor::ThreadX", "qual": null}
+{"src": "component:AlifSemiconductor::RTOS:USBX:Core", "rel": "part_of", "dst": "pack:AlifSemiconductor::ThreadX", "qual": null}
+{"src": "component:AlifSemiconductor::RTOS:USBX:MSC Device Class", "rel": "part_of", "dst": "pack:AlifSemiconductor::ThreadX", "qual": null}
+{"src": "component:AlifSemiconductor::RTOS:USBX:MSC Host Class", "rel": "part_of", "dst": "pack:AlifSemiconductor::ThreadX", "qual": null}
+{"src": "component:AlifSemiconductor::RTOS:USBX:USBX Device Controller", "rel": "part_of", "dst": "pack:AlifSemiconductor::ThreadX", "qual": null}
+{"src": "component:AlifSemiconductor::RTOS:USBX:USBX Network", "rel": "part_of", "dst": "pack:AlifSemiconductor::ThreadX", "qual": null}
+{"src": "component:AlifSemiconductor::RTOS:USBX:UVC Device Class", "rel": "part_of", "dst": "pack:AlifSemiconductor::ThreadX", "qual": null}
+{"src": "component:AlifSemiconductor::RTOS:USBX:UVC Host Class", "rel": "part_of", "dst": "pack:AlifSemiconductor::ThreadX", "qual": null}
 {"src": "component:AlifSemiconductor::Services:Retarget IO:STDERR", "rel": "part_of", "dst": "pack:AlifSemiconductor::Ensemble", "qual": null}
 {"src": "component:AlifSemiconductor::Services:Retarget IO:STDIN", "rel": "part_of", "dst": "pack:AlifSemiconductor::Ensemble", "qual": null}
 {"src": "component:AlifSemiconductor::Services:Retarget IO:STDOUT", "rel": "part_of", "dst": "pack:AlifSemiconductor::Ensemble", "qual": null}
@@ -2683,6 +2689,48 @@
 {"src": "component:Geehy::Device:BMP561 StdPeriph Drivers:VADC", "rel": "part_of", "dst": "pack:Geehy::BMP561_DFP", "qual": null}
 {"src": "component:Geehy::Device:BMP561 StdPeriph Drivers:WUPT", "rel": "part_of", "dst": "pack:Geehy::BMP561_DFP", "qual": null}
 {"src": "component:Geehy::Device:BMP561 StdPeriph Drivers:WWDT", "rel": "part_of", "dst": "pack:Geehy::BMP561_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:ADC", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:ADC", "rel": "part_of", "dst": "pack:Geehy::G32M3101_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:ATMR", "rel": "part_of", "dst": "pack:Geehy::G32M3101_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:BTMR", "rel": "part_of", "dst": "pack:Geehy::G32M3101_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:BZTMR", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:COMP", "rel": "part_of", "dst": "pack:Geehy::G32M3101_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:CRC", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:CRC", "rel": "part_of", "dst": "pack:Geehy::G32M3101_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:Common", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:Common", "rel": "part_of", "dst": "pack:Geehy::G32M3101_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:DAC", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:DIV", "rel": "part_of", "dst": "pack:Geehy::G32M3101_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:DMA", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:DMA", "rel": "part_of", "dst": "pack:Geehy::G32M3101_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:EINT", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:EINT", "rel": "part_of", "dst": "pack:Geehy::G32M3101_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:FDCAN", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:FLASH", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:FLASH", "rel": "part_of", "dst": "pack:Geehy::G32M3101_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:GPIO", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:GPIO", "rel": "part_of", "dst": "pack:Geehy::G32M3101_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:GTMR", "rel": "part_of", "dst": "pack:Geehy::G32M3101_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:I2C", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:I2C3", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:IWDT", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:IWDT", "rel": "part_of", "dst": "pack:Geehy::G32M3101_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:LCDC", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:LPTMR", "rel": "part_of", "dst": "pack:Geehy::G32M3101_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:PMU", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:QSPI", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:RCM", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:RTC", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:SCU", "rel": "part_of", "dst": "pack:Geehy::G32M3101_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:SPI", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:SPI", "rel": "part_of", "dst": "pack:Geehy::G32M3101_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:TMR", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:USART", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:USART", "rel": "part_of", "dst": "pack:Geehy::G32M3101_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:USB", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:UTILS", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:DDL Drivers:WWDT", "rel": "part_of", "dst": "pack:Geehy::G32M3101_DFP", "qual": null}
+{"src": "component:Geehy::Device:G32F031 Startup", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
 {"src": "component:Geehy::Device:Startup", "rel": "part_of", "dst": "pack:Geehy::APM32A10x_DFP", "qual": null}
 {"src": "component:Geehy::Device:Startup", "rel": "part_of", "dst": "pack:Geehy::APM32A4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:Startup", "rel": "part_of", "dst": "pack:Geehy::APM32E030_DFP", "qual": null}
@@ -2694,6 +2742,9 @@
 {"src": "component:Geehy::Device:Startup", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
 {"src": "component:Geehy::Device:Startup", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:Startup", "rel": "part_of", "dst": "pack:Geehy::BMP561_DFP", "qual": null}
+{"src": "component:Geehy::Device:Startup", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "component:Geehy::Device:Startup", "rel": "part_of", "dst": "pack:Geehy::G32M3101_DFP", "qual": null}
+{"src": "component:Geehy::Device:Startup", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:Startup", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:ADC", "rel": "part_of", "dst": "pack:Geehy::APM32A10x_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:ADC", "rel": "part_of", "dst": "pack:Geehy::APM32A4xx_DFP", "qual": null}
@@ -2701,12 +2752,18 @@
 {"src": "component:Geehy::Device:StdPeriph Drivers:ADC", "rel": "part_of", "dst": "pack:Geehy::APM32F1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:ADC", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:ADC", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:ADC", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:ADC", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:ADC12", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:ADC16", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:AS", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:ATMR", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:BAKPR", "rel": "part_of", "dst": "pack:Geehy::APM32A10x_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:BAKPR", "rel": "part_of", "dst": "pack:Geehy::APM32E1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:BAKPR", "rel": "part_of", "dst": "pack:Geehy::APM32F1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:BAKPR", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:BKP", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:BTMR", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:CAN", "rel": "part_of", "dst": "pack:Geehy::APM32A10x_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:CAN", "rel": "part_of", "dst": "pack:Geehy::APM32A4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:CAN", "rel": "part_of", "dst": "pack:Geehy::APM32E1xx_DFP", "qual": null}
@@ -2721,13 +2778,17 @@
 {"src": "component:Geehy::Device:StdPeriph Drivers:CLOCK", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:COMP", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:COMP", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:COMP", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:COMP", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:COMP0", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:COMP1", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:CRC", "rel": "part_of", "dst": "pack:Geehy::APM32A10x_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:CRC", "rel": "part_of", "dst": "pack:Geehy::APM32A4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:CRC", "rel": "part_of", "dst": "pack:Geehy::APM32E1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:CRC", "rel": "part_of", "dst": "pack:Geehy::APM32F1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:CRC", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:CRC", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:CRC", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:CRYP", "rel": "part_of", "dst": "pack:Geehy::APM32A4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:CRYP", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:CSEC", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
@@ -2736,22 +2797,27 @@
 {"src": "component:Geehy::Device:StdPeriph Drivers:DAC", "rel": "part_of", "dst": "pack:Geehy::APM32E1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:DAC", "rel": "part_of", "dst": "pack:Geehy::APM32F1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:DAC", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:DAC", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:DAC", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:DBGMCU", "rel": "part_of", "dst": "pack:Geehy::APM32A10x_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:DBGMCU", "rel": "part_of", "dst": "pack:Geehy::APM32A4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:DBGMCU", "rel": "part_of", "dst": "pack:Geehy::APM32E1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:DBGMCU", "rel": "part_of", "dst": "pack:Geehy::APM32F1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:DBGMCU", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:DBGMCU", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:DBGMCU", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:DCCOMP", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:DCI", "rel": "part_of", "dst": "pack:Geehy::APM32A4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:DCI", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:DIV", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:DMA", "rel": "part_of", "dst": "pack:Geehy::APM32A10x_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:DMA", "rel": "part_of", "dst": "pack:Geehy::APM32A4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:DMA", "rel": "part_of", "dst": "pack:Geehy::APM32E1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:DMA", "rel": "part_of", "dst": "pack:Geehy::APM32F1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:DMA", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:DMA", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:DMA", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:DMA", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:DMA", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:DMC", "rel": "part_of", "dst": "pack:Geehy::APM32A10x_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:DMC", "rel": "part_of", "dst": "pack:Geehy::APM32A4xx_DFP", "qual": null}
@@ -2764,11 +2830,15 @@
 {"src": "component:Geehy::Device:StdPeriph Drivers:EINT", "rel": "part_of", "dst": "pack:Geehy::APM32E1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:EINT", "rel": "part_of", "dst": "pack:Geehy::APM32F1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:EINT", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:EINT", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:EINT", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:EREP", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:ETH", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:EWDT", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:EXTI", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:FLASH", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:FLASH", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:FLASH", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:FMC", "rel": "part_of", "dst": "pack:Geehy::APM32A10x_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:FMC", "rel": "part_of", "dst": "pack:Geehy::APM32A4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:FMC", "rel": "part_of", "dst": "pack:Geehy::APM32E1xx_DFP", "qual": null}
@@ -2780,13 +2850,18 @@
 {"src": "component:Geehy::Device:StdPeriph Drivers:Framework", "rel": "part_of", "dst": "pack:Geehy::APM32F1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:Framework", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:Framework", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:Framework", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:Framework", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:Framework", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:GPIO", "rel": "part_of", "dst": "pack:Geehy::APM32A10x_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:GPIO", "rel": "part_of", "dst": "pack:Geehy::APM32A4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:GPIO", "rel": "part_of", "dst": "pack:Geehy::APM32E1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:GPIO", "rel": "part_of", "dst": "pack:Geehy::APM32F1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:GPIO", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:GPIO", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:GPIO", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:GPIO", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:GTMR", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:HASH", "rel": "part_of", "dst": "pack:Geehy::APM32A4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:HASH", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:HRCAP", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
@@ -2796,6 +2871,8 @@
 {"src": "component:Geehy::Device:StdPeriph Drivers:I2C", "rel": "part_of", "dst": "pack:Geehy::APM32E1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:I2C", "rel": "part_of", "dst": "pack:Geehy::APM32F1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:I2C", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:I2C", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:I2C", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:I2C", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:IPC", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:IWDT", "rel": "part_of", "dst": "pack:Geehy::APM32A10x_DFP", "qual": null}
@@ -2803,15 +2880,20 @@
 {"src": "component:Geehy::Device:StdPeriph Drivers:IWDT", "rel": "part_of", "dst": "pack:Geehy::APM32E1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:IWDT", "rel": "part_of", "dst": "pack:Geehy::APM32F1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:IWDT", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:IWDT", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:IWDT", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:LIN", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:LIN", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:LPI2C", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:LPITMR", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:LPSPI", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:LPTMR", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:LPTMR", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:LPTMR", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:LPUART", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:MPU", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:NVMC", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:OPA", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:PDU", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:PINS", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:PMBUS", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
@@ -2820,17 +2902,21 @@
 {"src": "component:Geehy::Device:StdPeriph Drivers:PMU", "rel": "part_of", "dst": "pack:Geehy::APM32E1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:PMU", "rel": "part_of", "dst": "pack:Geehy::APM32F1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:PMU", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:PMU", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:PMU", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:POWER", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:PWM", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:QEP", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:QSPI", "rel": "part_of", "dst": "pack:Geehy::APM32A10x_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:QSPI", "rel": "part_of", "dst": "pack:Geehy::APM32F1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:QSPI", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:RCC", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:RCM", "rel": "part_of", "dst": "pack:Geehy::APM32A10x_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:RCM", "rel": "part_of", "dst": "pack:Geehy::APM32A4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:RCM", "rel": "part_of", "dst": "pack:Geehy::APM32E1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:RCM", "rel": "part_of", "dst": "pack:Geehy::APM32F1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:RCM", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:RCM", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:RNG", "rel": "part_of", "dst": "pack:Geehy::APM32A4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:RNG", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:RTC", "rel": "part_of", "dst": "pack:Geehy::APM32A10x_DFP", "qual": null}
@@ -2839,9 +2925,11 @@
 {"src": "component:Geehy::Device:StdPeriph Drivers:RTC", "rel": "part_of", "dst": "pack:Geehy::APM32F1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:RTC", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:RTC", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:RTC", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:SCI2C", "rel": "part_of", "dst": "pack:Geehy::APM32A10x_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:SCI2C", "rel": "part_of", "dst": "pack:Geehy::APM32E1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:SCI2C", "rel": "part_of", "dst": "pack:Geehy::APM32F1xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:SCU", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:SDF", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:SDIO", "rel": "part_of", "dst": "pack:Geehy::APM32A10x_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:SDIO", "rel": "part_of", "dst": "pack:Geehy::APM32A4xx_DFP", "qual": null}
@@ -2858,6 +2946,8 @@
 {"src": "component:Geehy::Device:StdPeriph Drivers:SPI", "rel": "part_of", "dst": "pack:Geehy::APM32E1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:SPI", "rel": "part_of", "dst": "pack:Geehy::APM32F1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:SPI", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:SPI", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:SPI", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:SPI", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:SYSCFG", "rel": "part_of", "dst": "pack:Geehy::APM32A4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:SYSCFG", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
@@ -2868,23 +2958,30 @@
 {"src": "component:Geehy::Device:StdPeriph Drivers:TMR", "rel": "part_of", "dst": "pack:Geehy::APM32E1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:TMR", "rel": "part_of", "dst": "pack:Geehy::APM32F1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:TMR", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:TMR", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:TMR", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:TS", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:UART", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:USART", "rel": "part_of", "dst": "pack:Geehy::APM32A10x_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:USART", "rel": "part_of", "dst": "pack:Geehy::APM32A4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:USART", "rel": "part_of", "dst": "pack:Geehy::APM32E1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:USART", "rel": "part_of", "dst": "pack:Geehy::APM32F1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:USART", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:USART", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:USART", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:USB", "rel": "part_of", "dst": "pack:Geehy::APM32E1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:USB_D", "rel": "part_of", "dst": "pack:Geehy::APM32A4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:USB_H", "rel": "part_of", "dst": "pack:Geehy::APM32A4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:USB_OTG", "rel": "part_of", "dst": "pack:Geehy::APM32A4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:UTILS", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:WDT", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:WWDT", "rel": "part_of", "dst": "pack:Geehy::APM32A10x_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:WWDT", "rel": "part_of", "dst": "pack:Geehy::APM32A4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:WWDT", "rel": "part_of", "dst": "pack:Geehy::APM32E1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:WWDT", "rel": "part_of", "dst": "pack:Geehy::APM32F1xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:WWDT", "rel": "part_of", "dst": "pack:Geehy::APM32F4xx_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:WWDT", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
+{"src": "component:Geehy::Device:StdPeriph Drivers:WWDT", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "component:Geehy::Device:StdPeriph Drivers:XBAR", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
 {"src": "component:GigaDevice::Board Support:Buttons", "rel": "part_of", "dst": "pack:GigaDevice::GD32F1x0_DFP", "qual": null}
 {"src": "component:GigaDevice::Board Support:LED", "rel": "part_of", "dst": "pack:GigaDevice::GD32F1x0_DFP", "qual": null}
@@ -3653,7 +3750,6 @@
 {"src": "component:Keil::Board Support:Buttons", "rel": "part_of", "dst": "pack:Keil::STM32NUCLEO_BSP", "qual": null}
 {"src": "component:Keil::Board Support:Buttons", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_CMx_BSP", "qual": null}
 {"src": "component:Keil::Board Support:Buttons", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_DSx_BSP", "qual": null}
-{"src": "component:Keil::Board Support:Buttons", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_IOTKit_BSP", "qual": null}
 {"src": "component:Keil::Board Support:Buttons", "rel": "part_of", "dst": "pack:Keil::V2M-MPS3_IOTKit_BSP", "qual": null}
 {"src": "component:Keil::Board Support:Buttons", "rel": "part_of", "dst": "pack:Keil::VE_CAx_DFP", "qual": null}
 {"src": "component:Keil::Board Support:Components:CS42L51", "rel": "part_of", "dst": "pack:Keil::32L4R9IDISCOVERY_BSP", "qual": null}
@@ -3681,7 +3777,6 @@
 {"src": "component:Keil::Board Support:Graphic LCD", "rel": "part_of", "dst": "pack:Keil::STM32F1xx_DFP", "qual": null}
 {"src": "component:Keil::Board Support:Graphic LCD", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_CMx_BSP", "qual": null}
 {"src": "component:Keil::Board Support:Graphic LCD", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_DSx_BSP", "qual": null}
-{"src": "component:Keil::Board Support:Graphic LCD", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_IOTKit_BSP", "qual": null}
 {"src": "component:Keil::Board Support:Graphic LCD", "rel": "part_of", "dst": "pack:Keil::V2M-MPS3_IOTKit_BSP", "qual": null}
 {"src": "component:Keil::Board Support:HW INIT", "rel": "part_of", "dst": "pack:Keil::iMX6_DFP", "qual": null}
 {"src": "component:Keil::Board Support:HW INIT", "rel": "part_of", "dst": "pack:Keil::iMX7D_DFP", "qual": null}
@@ -3700,7 +3795,6 @@
 {"src": "component:Keil::Board Support:LED", "rel": "part_of", "dst": "pack:Keil::STM32NUCLEO_BSP", "qual": null}
 {"src": "component:Keil::Board Support:LED", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_CMx_BSP", "qual": null}
 {"src": "component:Keil::Board Support:LED", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_DSx_BSP", "qual": null}
-{"src": "component:Keil::Board Support:LED", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_IOTKit_BSP", "qual": null}
 {"src": "component:Keil::Board Support:LED", "rel": "part_of", "dst": "pack:Keil::V2M-MPS3_IOTKit_BSP", "qual": null}
 {"src": "component:Keil::Board Support:LED", "rel": "part_of", "dst": "pack:Keil::VE_CAx_DFP", "qual": null}
 {"src": "component:Keil::Board Support:LED", "rel": "part_of", "dst": "pack:Keil::iMX7D_DFP", "qual": null}
@@ -3710,7 +3804,6 @@
 {"src": "component:Keil::Board Support:Touchscreen", "rel": "part_of", "dst": "pack:Keil::STM32F1xx_DFP", "qual": null}
 {"src": "component:Keil::Board Support:Touchscreen", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_CMx_BSP", "qual": null}
 {"src": "component:Keil::Board Support:Touchscreen", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_DSx_BSP", "qual": null}
-{"src": "component:Keil::Board Support:Touchscreen", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_IOTKit_BSP", "qual": null}
 {"src": "component:Keil::Board Support:Touchscreen", "rel": "part_of", "dst": "pack:Keil::V2M-MPS3_IOTKit_BSP", "qual": null}
 {"src": "component:Keil::Board Support:Touchscreen:STMPE811", "rel": "implements", "dst": "api:Board Support:Touchscreen", "qual": null}
 {"src": "component:Keil::Board Support:Touchscreen:STMPE811", "rel": "part_of", "dst": "pack:Keil::MCB1500_BSP", "qual": null}
@@ -3800,7 +3893,6 @@
 {"src": "component:Keil::CMSIS Driver:USART", "rel": "part_of", "dst": "pack:Keil::STM32F1xx_DFP", "qual": null}
 {"src": "component:Keil::CMSIS Driver:USART", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_CMx_BSP", "qual": null}
 {"src": "component:Keil::CMSIS Driver:USART", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_DSx_BSP", "qual": null}
-{"src": "component:Keil::CMSIS Driver:USART", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_IOTKit_BSP", "qual": null}
 {"src": "component:Keil::CMSIS Driver:USART", "rel": "part_of", "dst": "pack:Keil::V2M-MPS3_IOTKit_BSP", "qual": null}
 {"src": "component:Keil::CMSIS Driver:USART", "rel": "part_of", "dst": "pack:Keil::iMX7D_DFP", "qual": null}
 {"src": "component:Keil::CMSIS Driver:USART:CDC", "rel": "implements", "dst": "api:CMSIS Driver:USART", "qual": null}
@@ -3825,7 +3917,6 @@
 {"src": "component:Keil::CMSIS Driver:VIO:Board", "rel": "part_of", "dst": "pack:Keil::B-L462E-CELL1_BSP", "qual": null}
 {"src": "component:Keil::CMSIS Driver:VIO:Board", "rel": "part_of", "dst": "pack:Keil::B-L475E-IOT01A_BSP", "qual": null}
 {"src": "component:Keil::CMSIS Driver:VIO:Board", "rel": "part_of", "dst": "pack:Keil::B-U585I-IOT02A_BSP", "qual": null}
-{"src": "component:Keil::CMSIS Driver:VIO:Board", "rel": "part_of", "dst": "pack:Keil::IMXRT1050-EVKB_BSP", "qual": null}
 {"src": "component:Keil::CMSIS Driver:VIO:Board", "rel": "part_of", "dst": "pack:Keil::LPCXpresso55S69_BSP", "qual": null}
 {"src": "component:Keil::CMSIS Driver:VIO:Board", "rel": "part_of", "dst": "pack:Keil::NUCLEO-F030R8_BSP", "qual": null}
 {"src": "component:Keil::CMSIS Driver:VIO:Board", "rel": "part_of", "dst": "pack:Keil::NUCLEO-F072RB_BSP", "qual": null}
@@ -3913,7 +4004,6 @@
 {"src": "component:Keil::Device:CubeMX", "rel": "part_of", "dst": "pack:Keil::STM32F7xx_DFP", "qual": null}
 {"src": "component:Keil::Device:CubeMX", "rel": "part_of", "dst": "pack:Keil::STM32G0xx_DFP", "qual": null}
 {"src": "component:Keil::Device:CubeMX", "rel": "part_of", "dst": "pack:Keil::STM32G4xx_DFP", "qual": null}
-{"src": "component:Keil::Device:CubeMX", "rel": "part_of", "dst": "pack:Keil::STM32H5xx_DFP", "qual": null}
 {"src": "component:Keil::Device:CubeMX", "rel": "part_of", "dst": "pack:Keil::STM32H7RSxx_DFP", "qual": null}
 {"src": "component:Keil::Device:CubeMX", "rel": "part_of", "dst": "pack:Keil::STM32H7xx_DFP", "qual": null}
 {"src": "component:Keil::Device:CubeMX", "rel": "part_of", "dst": "pack:Keil::STM32L0xx_DFP", "qual": null}
@@ -3950,7 +4040,6 @@
 {"src": "component:Keil::Device:Startup", "rel": "part_of", "dst": "pack:Keil::TM4C_DFP", "qual": null}
 {"src": "component:Keil::Device:Startup", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_CMx_BSP", "qual": null}
 {"src": "component:Keil::Device:Startup", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_DSx_BSP", "qual": null}
-{"src": "component:Keil::Device:Startup", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_IOTKit_BSP", "qual": null}
 {"src": "component:Keil::Device:Startup", "rel": "part_of", "dst": "pack:Keil::V2M-MPS3_IOTKit_BSP", "qual": null}
 {"src": "component:Keil::Device:Startup", "rel": "part_of", "dst": "pack:Keil::VE_CAx_DFP", "qual": null}
 {"src": "component:Keil::Device:Startup", "rel": "part_of", "dst": "pack:Keil::iMX6_DFP", "qual": null}
@@ -50230,9 +50319,6 @@
 {"src": "component:NXP::Device:SDK Utilities:serial_manager_ble_wu", "rel": "part_of", "dst": "pack:NXP::MCXE31B_DFP", "qual": null}
 {"src": "component:NXP::Device:SDK Utilities:serial_manager_ble_wu", "rel": "part_of", "dst": "pack:NXP::MCXE327_DFP", "qual": null}
 {"src": "component:NXP::Device:SDK Utilities:serial_manager_ble_wu", "rel": "part_of", "dst": "pack:NXP::MCXE32B_DFP", "qual": null}
-{"src": "component:NXP::Device:SDK Utilities:serial_manager_ble_wu", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
-{"src": "component:NXP::Device:SDK Utilities:serial_manager_ble_wu", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
-{"src": "component:NXP::Device:SDK Utilities:serial_manager_ble_wu", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
 {"src": "component:NXP::Device:SDK Utilities:serial_manager_ble_wu", "rel": "part_of", "dst": "pack:NXP::MCXL253_DFP", "qual": null}
 {"src": "component:NXP::Device:SDK Utilities:serial_manager_ble_wu", "rel": "part_of", "dst": "pack:NXP::MCXL254_DFP", "qual": null}
 {"src": "component:NXP::Device:SDK Utilities:serial_manager_ble_wu", "rel": "part_of", "dst": "pack:NXP::MCXL255_DFP", "qual": null}
@@ -52868,6 +52954,189 @@
 {"src": "component:NXP::els_pkc:els_pkc_trng_type_els", "rel": "part_of", "dst": "pack:NXP::NXP_ELE_PKC", "qual": null}
 {"src": "component:NXP::els_pkc:els_pkc_trng_type_rng4", "rel": "part_of", "dst": "pack:NXP::NXP_ELE_PKC", "qual": null}
 {"src": "component:NXP::els_pkc:static_lib_lpc", "rel": "part_of", "dst": "pack:NXP::NXP_ELE_PKC", "qual": null}
+{"src": "component:NXP::sgi_pkc:doc:sgi_pkc_ecc", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:doc:sgi_pkc_ecc", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:doc:sgi_pkc_ecc", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_aead", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_aead", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_aead", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_aead_modes", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_aead_modes", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_aead_modes", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_aes", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_aes", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_aes", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_buffer", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_buffer", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_buffer", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_cipher", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_cipher", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_cipher", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_cipher_modes", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_cipher_modes", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_cipher_modes", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_core", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_core", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_core", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_crc", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_crc", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_crc", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_data_integrity", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_data_integrity", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_data_integrity", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_dma", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_dma", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_dma", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_doc.mcxl", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_doc.mcxl", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_doc.mcxl", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_ecc_example", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_ecc_example", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_ecc_example", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_ecc_ffdh", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_ecc_ffdh", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_ecc_ffdh", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_aead", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_aead", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_aead", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_cipher", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_cipher", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_cipher", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_crc", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_crc", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_crc", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_ecc", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_ecc", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_ecc", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_ffdh", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_ffdh", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_ffdh", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_flow_protection", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_flow_protection", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_flow_protection", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_glikey", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_glikey", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_glikey", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_hash_modes", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_hash_modes", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_hash_modes", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_hmac", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_hmac", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_hmac", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_key", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_key", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_key", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_mac_modes", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_mac_modes", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_mac_modes", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_memory", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_memory", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_memory", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_random", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_random", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_random", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_random_modes", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_random_modes", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_random_modes", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_rsa", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_rsa", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_examples_rsa", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_flow_protection", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_flow_protection", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_flow_protection", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_glikey", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_glikey", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_glikey", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_hash", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_hash", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_hash", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_hashmodes", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_hashmodes", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_hashmodes", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_hmac", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_hmac", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_hmac", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_kdf_modes", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_kdf_modes", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_kdf_modes", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_key", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_key", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_key", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_mac", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_mac", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_mac", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_mac_modes", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_mac_modes", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_mac_modes", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_math", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_math", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_math", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_memory", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_memory", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_memory", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_padding", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_padding", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_padding", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_param_integrity", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_param_integrity", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_param_integrity", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_pkc", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_pkc", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_pkc", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_platform_mcxl", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_platform_mcxl", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_platform_mcxl", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_pre_processor", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_pre_processor", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_pre_processor", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_prng", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_prng", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_prng", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_random", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_random", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_random", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_random_modes", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_random_modes", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_random_modes", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_resource", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_resource", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_resource", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_rsa", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_rsa", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_rsa", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_secure_counter", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_secure_counter", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_secure_counter", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_session", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_session", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_session", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_sgi", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_sgi", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_sgi", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_sgi_pkc", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_sgi_pkc", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_sgi_pkc", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_signature", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_signature", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_signature", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_static_lib_mcxl", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_static_lib_mcxl", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_static_lib_mcxl", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_toolchain", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_toolchain", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_toolchain", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_trng", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_trng", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_trng", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_xof", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_xof", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_xof", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_xof_modes", "rel": "part_of", "dst": "pack:NXP::MCXL142_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_xof_modes", "rel": "part_of", "dst": "pack:NXP::MCXL143_DFP", "qual": null}
+{"src": "component:NXP::sgi_pkc:sgi_pkc_xof_modes", "rel": "part_of", "dst": "pack:NXP::MCXL144_DFP", "qual": null}
 {"src": "component:NordicSemiconductor::Board Support:bsp", "rel": "part_of", "dst": "pack:NordicSemiconductor::nRF_Examples", "qual": null}
 {"src": "component:NordicSemiconductor::Board Support:bsp_btn_ant", "rel": "part_of", "dst": "pack:NordicSemiconductor::nRF_Examples", "qual": null}
 {"src": "component:NordicSemiconductor::Board Support:bsp_btn_ble", "rel": "part_of", "dst": "pack:NordicSemiconductor::nRF_Examples", "qual": null}
@@ -53488,6 +53757,7 @@
 {"src": "component:Nuvoton::Device:StdDriver:I2S", "rel": "part_of", "dst": "pack:Nuvoton::NuMicroM55_DFP", "qual": null}
 {"src": "component:Nuvoton::Device:StdDriver:I2S", "rel": "part_of", "dst": "pack:Nuvoton::NuMicro_M460_BSP", "qual": null}
 {"src": "component:Nuvoton::Device:StdDriver:I3C", "rel": "part_of", "dst": "pack:Nuvoton::NuMicroCM33_DFP", "qual": null}
+{"src": "component:Nuvoton::Device:StdDriver:I3C", "rel": "part_of", "dst": "pack:Nuvoton::NuMicroM23_DFP", "qual": null}
 {"src": "component:Nuvoton::Device:StdDriver:I3C", "rel": "part_of", "dst": "pack:Nuvoton::NuMicroM33_DFP", "qual": null}
 {"src": "component:Nuvoton::Device:StdDriver:I3C", "rel": "part_of", "dst": "pack:Nuvoton::NuMicroM55_DFP", "qual": null}
 {"src": "component:Nuvoton::Device:StdDriver:I3CS", "rel": "part_of", "dst": "pack:Nuvoton::NuMicroM23_DFP", "qual": null}
@@ -54910,7 +55180,6 @@
 {"src": "component:Toshiba::Device:Startup", "rel": "part_of", "dst": "pack:Toshiba::TXZ4Aplus-M4G1_DFP", "qual": null}
 {"src": "component:Toshiba::Device:Startup", "rel": "part_of", "dst": "pack:Toshiba::TXZ4Aplus-M4K1_DFP", "qual": null}
 {"src": "component:Toshiba::Device:Startup", "rel": "part_of", "dst": "pack:Toshiba::TXZ4Aplus-M4N1_DFP", "qual": null}
-{"src": "component:Toshiba::Device:Startup", "rel": "part_of", "dst": "pack:Toshiba::TXZ4Eplus-M4L1_DFP", "qual": null}
 {"src": "component:Toshiba::Device:Startup", "rel": "part_of", "dst": "pack:Toshiba::TXZplus3A-M3H1_DFP", "qual": null}
 {"src": "component:Toshiba::Device:Startup", "rel": "part_of", "dst": "pack:Toshiba::TXZplus3A-M3H2_DFP", "qual": null}
 {"src": "component:Toshiba::Device:Startup", "rel": "part_of", "dst": "pack:Toshiba::TXZplus4A-M4K2_DFP", "qual": null}
@@ -56794,6 +57063,10 @@
 {"src": "device:CM2003CF2AE", "rel": "part_of", "dst": "subfamily:CM2003", "qual": null}
 {"src": "device:CM2003CF3AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
 {"src": "device:CM2003CF3AE", "rel": "part_of", "dst": "subfamily:CM2003", "qual": null}
+{"src": "device:CM2003DJ3AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
+{"src": "device:CM2003DJ3AE", "rel": "part_of", "dst": "subfamily:CM2003", "qual": null}
+{"src": "device:CM2003DL8AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
+{"src": "device:CM2003DL8AE", "rel": "part_of", "dst": "subfamily:CM2003", "qual": null}
 {"src": "device:CM2003EJ3AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
 {"src": "device:CM2003EJ3AE", "rel": "part_of", "dst": "subfamily:CM2003", "qual": null}
 {"src": "device:CM2003EL8AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
@@ -56826,6 +57099,14 @@
 {"src": "device:CM2U54GQ3AE", "rel": "part_of", "dst": "subfamily:CM2U51", "qual": null}
 {"src": "device:CM2U54GS8AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
 {"src": "device:CM2U54GS8AE", "rel": "part_of", "dst": "subfamily:CM2U51", "qual": null}
+{"src": "device:CM3033EJ3AE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
+{"src": "device:CM3033EJ3AE", "rel": "part_of", "dst": "subfamily:CM3031", "qual": null}
+{"src": "device:CM3033EL3AE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
+{"src": "device:CM3033EL3AE", "rel": "part_of", "dst": "subfamily:CM3031", "qual": null}
+{"src": "device:CM3033EL8AE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
+{"src": "device:CM3033EL8AE", "rel": "part_of", "dst": "subfamily:CM3031", "qual": null}
+{"src": "device:CM3033EN8AE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
+{"src": "device:CM3033EN8AE", "rel": "part_of", "dst": "subfamily:CM3031", "qual": null}
 {"src": "device:CM3033GJ3AE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
 {"src": "device:CM3033GJ3AE", "rel": "part_of", "dst": "subfamily:CM3031", "qual": null}
 {"src": "device:CM3033GL3AE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
@@ -56834,8 +57115,6 @@
 {"src": "device:CM3033GL8AE", "rel": "part_of", "dst": "subfamily:CM3031", "qual": null}
 {"src": "device:CM3033GN8AE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
 {"src": "device:CM3033GN8AE", "rel": "part_of", "dst": "subfamily:CM3031", "qual": null}
-{"src": "device:CM3033HJ3AE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:CM3033HJ3AE", "rel": "part_of", "dst": "subfamily:CM3031", "qual": null}
 {"src": "device:CM3033HL3AE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
 {"src": "device:CM3033HL3AE", "rel": "part_of", "dst": "subfamily:CM3031", "qual": null}
 {"src": "device:CM3033HL8AE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
@@ -56852,8 +57131,6 @@
 {"src": "device:CM3034GL8AE", "rel": "part_of", "dst": "subfamily:CM3031", "qual": null}
 {"src": "device:CM3034GN8AE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
 {"src": "device:CM3034GN8AE", "rel": "part_of", "dst": "subfamily:CM3031", "qual": null}
-{"src": "device:CM3034HJ3AE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:CM3034HJ3AE", "rel": "part_of", "dst": "subfamily:CM3031", "qual": null}
 {"src": "device:CM3034HL3AE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
 {"src": "device:CM3034HL3AE", "rel": "part_of", "dst": "subfamily:CM3031", "qual": null}
 {"src": "device:CM3034HL8AE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
@@ -59999,6 +60276,60 @@
 {"src": "device:CYT4DNJBZS", "rel": "has_core", "dst": "core:Cortex-M7", "qual": null}
 {"src": "device:CYT4DNJBZS", "rel": "part_of", "dst": "family:Infineon::CYT4DN", "qual": null}
 {"src": "device:CYT4DNJBZS", "rel": "part_of", "dst": "subfamily:CYT4DN", "qual": null}
+{"src": "device:CYT4ENDDAS", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:CYT4ENDDAS", "rel": "has_core", "dst": "core:Cortex-M7", "qual": null}
+{"src": "device:CYT4ENDDAS", "rel": "part_of", "dst": "family:Infineon::CYT4EN", "qual": null}
+{"src": "device:CYT4ENDDCS", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:CYT4ENDDCS", "rel": "has_core", "dst": "core:Cortex-M7", "qual": null}
+{"src": "device:CYT4ENDDCS", "rel": "part_of", "dst": "family:Infineon::CYT4EN", "qual": null}
+{"src": "device:CYT4ENDDES", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:CYT4ENDDES", "rel": "has_core", "dst": "core:Cortex-M7", "qual": null}
+{"src": "device:CYT4ENDDES", "rel": "part_of", "dst": "family:Infineon::CYT4EN", "qual": null}
+{"src": "device:CYT4ENDDGS", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:CYT4ENDDGS", "rel": "has_core", "dst": "core:Cortex-M7", "qual": null}
+{"src": "device:CYT4ENDDGS", "rel": "part_of", "dst": "family:Infineon::CYT4EN", "qual": null}
+{"src": "device:CYT4ENDDJS", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:CYT4ENDDJS", "rel": "has_core", "dst": "core:Cortex-M7", "qual": null}
+{"src": "device:CYT4ENDDJS", "rel": "part_of", "dst": "family:Infineon::CYT4EN", "qual": null}
+{"src": "device:CYT4ENDDLS", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:CYT4ENDDLS", "rel": "has_core", "dst": "core:Cortex-M7", "qual": null}
+{"src": "device:CYT4ENDDLS", "rel": "part_of", "dst": "family:Infineon::CYT4EN", "qual": null}
+{"src": "device:CYT4ENDDNS", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:CYT4ENDDNS", "rel": "has_core", "dst": "core:Cortex-M7", "qual": null}
+{"src": "device:CYT4ENDDNS", "rel": "part_of", "dst": "family:Infineon::CYT4EN", "qual": null}
+{"src": "device:CYT4ENDDQS", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:CYT4ENDDQS", "rel": "has_core", "dst": "core:Cortex-M7", "qual": null}
+{"src": "device:CYT4ENDDQS", "rel": "part_of", "dst": "family:Infineon::CYT4EN", "qual": null}
+{"src": "device:CYT4ENDDSS", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:CYT4ENDDSS", "rel": "has_core", "dst": "core:Cortex-M7", "qual": null}
+{"src": "device:CYT4ENDDSS", "rel": "part_of", "dst": "family:Infineon::CYT4EN", "qual": null}
+{"src": "device:CYT4ENDDVS", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:CYT4ENDDVS", "rel": "has_core", "dst": "core:Cortex-M7", "qual": null}
+{"src": "device:CYT4ENDDVS", "rel": "part_of", "dst": "family:Infineon::CYT4EN", "qual": null}
+{"src": "device:CYT4ENDDYS", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:CYT4ENDDYS", "rel": "has_core", "dst": "core:Cortex-M7", "qual": null}
+{"src": "device:CYT4ENDDYS", "rel": "part_of", "dst": "family:Infineon::CYT4EN", "qual": null}
+{"src": "device:CYT4ENDDZS", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:CYT4ENDDZS", "rel": "has_core", "dst": "core:Cortex-M7", "qual": null}
+{"src": "device:CYT4ENDDZS", "rel": "part_of", "dst": "family:Infineon::CYT4EN", "qual": null}
+{"src": "device:CYT6BJ8DDE", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:CYT6BJ8DDE", "rel": "has_core", "dst": "core:Cortex-M7", "qual": null}
+{"src": "device:CYT6BJ8DDE", "rel": "part_of", "dst": "family:Infineon::CYT6BJ", "qual": null}
+{"src": "device:CYT6BJ8DDS", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:CYT6BJ8DDS", "rel": "has_core", "dst": "core:Cortex-M7", "qual": null}
+{"src": "device:CYT6BJ8DDS", "rel": "part_of", "dst": "family:Infineon::CYT6BJ", "qual": null}
+{"src": "device:CYT6BJBDHE", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:CYT6BJBDHE", "rel": "has_core", "dst": "core:Cortex-M7", "qual": null}
+{"src": "device:CYT6BJBDHE", "rel": "part_of", "dst": "family:Infineon::CYT6BJ", "qual": null}
+{"src": "device:CYT6BJBDHS", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:CYT6BJBDHS", "rel": "has_core", "dst": "core:Cortex-M7", "qual": null}
+{"src": "device:CYT6BJBDHS", "rel": "part_of", "dst": "family:Infineon::CYT6BJ", "qual": null}
+{"src": "device:CYT6BJCDHE", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:CYT6BJCDHE", "rel": "has_core", "dst": "core:Cortex-M7", "qual": null}
+{"src": "device:CYT6BJCDHE", "rel": "part_of", "dst": "family:Infineon::CYT6BJ", "qual": null}
+{"src": "device:CYT6BJCDHS", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:CYT6BJCDHS", "rel": "has_core", "dst": "core:Cortex-M7", "qual": null}
+{"src": "device:CYT6BJCDHS", "rel": "part_of", "dst": "family:Infineon::CYT6BJ", "qual": null}
 {"src": "device:CYW20829B0000", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
 {"src": "device:CYW20829B0000", "rel": "part_of", "dst": "subfamily:CYW20829", "qual": null}
 {"src": "device:CYW20829B0010", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
@@ -62500,6 +62831,32 @@
 {"src": "device:FT32F407VDA2", "rel": "part_of", "dst": "subfamily:FT32F407", "qual": null}
 {"src": "device:FT32F407VEA2", "rel": "has_core", "dst": "core:Cortex-M4", "qual": null}
 {"src": "device:FT32F407VEA2", "rel": "part_of", "dst": "subfamily:FT32F407", "qual": null}
+{"src": "device:G32F031E8", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:G32F031E8", "rel": "part_of", "dst": "subfamily:G32F031", "qual": null}
+{"src": "device:G32F031G8", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:G32F031G8", "rel": "part_of", "dst": "subfamily:G32F031", "qual": null}
+{"src": "device:G32F031K8", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:G32F031K8", "rel": "part_of", "dst": "subfamily:G32F031", "qual": null}
+{"src": "device:G32F463CC", "rel": "has_core", "dst": "core:Cortex-M4", "qual": null}
+{"src": "device:G32F463CC", "rel": "part_of", "dst": "subfamily:G32F463", "qual": null}
+{"src": "device:G32F463KC", "rel": "has_core", "dst": "core:Cortex-M4", "qual": null}
+{"src": "device:G32F463KC", "rel": "part_of", "dst": "subfamily:G32F463", "qual": null}
+{"src": "device:G32F463RC", "rel": "has_core", "dst": "core:Cortex-M4", "qual": null}
+{"src": "device:G32F463RC", "rel": "part_of", "dst": "subfamily:G32F463", "qual": null}
+{"src": "device:G32M3101E8", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:G32M3101E8", "rel": "part_of", "dst": "subfamily:G32M3101", "qual": null}
+{"src": "device:G32M3101G8", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:G32M3101G8", "rel": "part_of", "dst": "subfamily:G32M3101", "qual": null}
+{"src": "device:G32M3101K8", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
+{"src": "device:G32M3101K8", "rel": "part_of", "dst": "subfamily:G32M3101", "qual": null}
+{"src": "device:G32R430CB", "rel": "has_core", "dst": "core:Cortex-M52", "qual": null}
+{"src": "device:G32R430CB", "rel": "part_of", "dst": "subfamily:G32R430", "qual": null}
+{"src": "device:G32R430KB", "rel": "has_core", "dst": "core:Cortex-M52", "qual": null}
+{"src": "device:G32R430KB", "rel": "part_of", "dst": "subfamily:G32R430", "qual": null}
+{"src": "device:G32R430RB", "rel": "has_core", "dst": "core:Cortex-M52", "qual": null}
+{"src": "device:G32R430RB", "rel": "part_of", "dst": "subfamily:G32R430", "qual": null}
+{"src": "device:G32R430UB", "rel": "has_core", "dst": "core:Cortex-M52", "qual": null}
+{"src": "device:G32R430UB", "rel": "part_of", "dst": "subfamily:G32R430", "qual": null}
 {"src": "device:G32R501DMY", "rel": "has_core", "dst": "core:Cortex-M52", "qual": null}
 {"src": "device:G32R501DMY", "rel": "part_of", "dst": "subfamily:G32R501", "qual": null}
 {"src": "device:G32R501DNY", "rel": "has_core", "dst": "core:Cortex-M52", "qual": null}
@@ -64618,26 +64975,10 @@
 {"src": "device:IMC300A_0128", "rel": "part_of", "dst": "subfamily:IMC300 Series", "qual": null}
 {"src": "device:IMM100A_0128", "rel": "has_core", "dst": "core:Cortex-M0", "qual": null}
 {"src": "device:IMM100A_0128", "rel": "part_of", "dst": "subfamily:IMM100 Series", "qual": null}
-{"src": "device:IOTKit_ARMv8MBL", "rel": "has_core", "dst": "core:ARMV8MBL", "qual": null}
-{"src": "device:IOTKit_ARMv8MBL", "rel": "part_of", "dst": "family:ARM::ARMv8-M Baseline", "qual": null}
-{"src": "device:IOTKit_ARMv8MML", "rel": "has_core", "dst": "core:ARMV8MML", "qual": null}
-{"src": "device:IOTKit_ARMv8MML", "rel": "part_of", "dst": "family:ARM::ARMv8-M Mainline", "qual": null}
-{"src": "device:IOTKit_CM23", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
-{"src": "device:IOTKit_CM23", "rel": "part_of", "dst": "family:ARM::ARM Cortex M23", "qual": null}
-{"src": "device:IOTKit_CM23_VHT", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
-{"src": "device:IOTKit_CM23_VHT", "rel": "part_of", "dst": "family:ARM::ARM Cortex M23", "qual": null}
-{"src": "device:IOTKit_CM33", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:IOTKit_CM33", "rel": "part_of", "dst": "family:ARM::ARM Cortex M33", "qual": null}
-{"src": "device:IOTKit_CM33_FP", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:IOTKit_CM33_FP", "rel": "part_of", "dst": "family:ARM::ARM Cortex M33", "qual": null}
 {"src": "device:IOTKit_CM33_FP_MPS3", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
 {"src": "device:IOTKit_CM33_FP_MPS3", "rel": "part_of", "dst": "family:ARM::ARM Cortex M33 (MPS3)", "qual": null}
-{"src": "device:IOTKit_CM33_FP_VHT", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:IOTKit_CM33_FP_VHT", "rel": "part_of", "dst": "family:ARM::ARM Cortex M33", "qual": null}
 {"src": "device:IOTKit_CM33_MPS3", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
 {"src": "device:IOTKit_CM33_MPS3", "rel": "part_of", "dst": "family:ARM::ARM Cortex M33 (MPS3)", "qual": null}
-{"src": "device:IOTKit_CM33_VHT", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:IOTKit_CM33_VHT", "rel": "part_of", "dst": "family:ARM::ARM Cortex M33", "qual": null}
 {"src": "device:K32L2A31VLH1A", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
 {"src": "device:K32L2A31VLH1A", "rel": "part_of", "dst": "device:K32L2A31xxxxA", "qual": null}
 {"src": "device:K32L2A31VLL1A", "rel": "has_core", "dst": "core:Cortex-M0+", "qual": null}
@@ -65724,6 +66065,10 @@
 {"src": "device:M0A23OC1ACU", "rel": "part_of", "dst": "subfamily:M0A21", "qual": null}
 {"src": "device:M0A86SD2AE", "rel": "has_core", "dst": "core:Cortex-M0", "qual": null}
 {"src": "device:M0A86SD2AE", "rel": "part_of", "dst": "subfamily:M0A86", "qual": null}
+{"src": "device:M2003A1I7AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
+{"src": "device:M2003A1I7AE", "rel": "part_of", "dst": "subfamily:M2003", "qual": null}
+{"src": "device:M2003A1J7AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
+{"src": "device:M2003A1J7AE", "rel": "part_of", "dst": "subfamily:M2003", "qual": null}
 {"src": "device:M2003ED4AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
 {"src": "device:M2003ED4AE", "rel": "part_of", "dst": "subfamily:M2003", "qual": null}
 {"src": "device:M2003FC1AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
@@ -65734,18 +66079,16 @@
 {"src": "device:M2003LE4AE", "rel": "part_of", "dst": "subfamily:M2003", "qual": null}
 {"src": "device:M2003LG6AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
 {"src": "device:M2003LG6AE", "rel": "part_of", "dst": "subfamily:M2003", "qual": null}
-{"src": "device:M2003LI7AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
-{"src": "device:M2003LI7AE", "rel": "part_of", "dst": "subfamily:M2003", "qual": null}
 {"src": "device:M2003R1G6AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
 {"src": "device:M2003R1G6AE", "rel": "part_of", "dst": "subfamily:M2003", "qual": null}
 {"src": "device:M2003RG6AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
 {"src": "device:M2003RG6AE", "rel": "part_of", "dst": "subfamily:M2003", "qual": null}
+{"src": "device:M2003RI7AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
+{"src": "device:M2003RI7AE", "rel": "part_of", "dst": "subfamily:M2003", "qual": null}
+{"src": "device:M2003RJ7AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
+{"src": "device:M2003RJ7AE", "rel": "part_of", "dst": "subfamily:M2003", "qual": null}
 {"src": "device:M2003SG6AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
 {"src": "device:M2003SG6AE", "rel": "part_of", "dst": "subfamily:M2003", "qual": null}
-{"src": "device:M2003SI7AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
-{"src": "device:M2003SI7AE", "rel": "part_of", "dst": "subfamily:M2003", "qual": null}
-{"src": "device:M2003SJ7AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
-{"src": "device:M2003SJ7AE", "rel": "part_of", "dst": "subfamily:M2003", "qual": null}
 {"src": "device:M2003TD4AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
 {"src": "device:M2003TD4AE", "rel": "part_of", "dst": "subfamily:M2003", "qual": null}
 {"src": "device:M2003TE4AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
@@ -66104,10 +66447,14 @@
 {"src": "device:M3351KICAE", "rel": "part_of", "dst": "subfamily:M3351", "qual": null}
 {"src": "device:M3351KJCAE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
 {"src": "device:M3351KJCAE", "rel": "part_of", "dst": "subfamily:M3351", "qual": null}
+{"src": "device:M3351LG7AE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
+{"src": "device:M3351LG7AE", "rel": "part_of", "dst": "subfamily:M3351", "qual": null}
 {"src": "device:M3351LICAE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
 {"src": "device:M3351LICAE", "rel": "part_of", "dst": "subfamily:M3351", "qual": null}
 {"src": "device:M3351LJCAE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
 {"src": "device:M3351LJCAE", "rel": "part_of", "dst": "subfamily:M3351", "qual": null}
+{"src": "device:M3351SG7AE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
+{"src": "device:M3351SG7AE", "rel": "part_of", "dst": "subfamily:M3351", "qual": null}
 {"src": "device:M3351SICAE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
 {"src": "device:M3351SICAE", "rel": "part_of", "dst": "subfamily:M3351", "qual": null}
 {"src": "device:M3351SJCAE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
@@ -66116,10 +66463,14 @@
 {"src": "device:M3351VICAE", "rel": "part_of", "dst": "subfamily:M3351", "qual": null}
 {"src": "device:M3351VJCAE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
 {"src": "device:M3351VJCAE", "rel": "part_of", "dst": "subfamily:M3351", "qual": null}
+{"src": "device:M3351YG7AE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
+{"src": "device:M3351YG7AE", "rel": "part_of", "dst": "subfamily:M3351", "qual": null}
 {"src": "device:M3351YICAE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
 {"src": "device:M3351YICAE", "rel": "part_of", "dst": "subfamily:M3351", "qual": null}
 {"src": "device:M3351YJCAE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
 {"src": "device:M3351YJCAE", "rel": "part_of", "dst": "subfamily:M3351", "qual": null}
+{"src": "device:M3351ZG7AE", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
+{"src": "device:M3351ZG7AE", "rel": "part_of", "dst": "subfamily:M3351", "qual": null}
 {"src": "device:M433LE8AE", "rel": "has_core", "dst": "core:Cortex-M4", "qual": null}
 {"src": "device:M433LE8AE", "rel": "part_of", "dst": "subfamily:M433", "qual": null}
 {"src": "device:M433SE8AE", "rel": "has_core", "dst": "core:Cortex-M4", "qual": null}
@@ -70172,15 +70523,15 @@
 {"src": "device:N32G455TBQ7", "rel": "has_core", "dst": "core:Cortex-M4", "qual": null}
 {"src": "device:N32G455TBQ7", "rel": "part_of", "dst": "subfamily:N32G455", "qual": null}
 {"src": "device:N32G457MCL7", "rel": "has_core", "dst": "core:Cortex-M4", "qual": null}
-{"src": "device:N32G457MCL7", "rel": "part_of", "dst": "subfamily:N32G457", "qual": null}
+{"src": "device:N32G457MCL7", "rel": "part_of", "dst": "subfamily:N32G455", "qual": null}
 {"src": "device:N32G457MEL7", "rel": "has_core", "dst": "core:Cortex-M4", "qual": null}
-{"src": "device:N32G457MEL7", "rel": "part_of", "dst": "subfamily:N32G457", "qual": null}
+{"src": "device:N32G457MEL7", "rel": "part_of", "dst": "subfamily:N32G455", "qual": null}
 {"src": "device:N32G457QEL7", "rel": "has_core", "dst": "core:Cortex-M4", "qual": null}
-{"src": "device:N32G457QEL7", "rel": "part_of", "dst": "subfamily:N32G457", "qual": null}
+{"src": "device:N32G457QEL7", "rel": "part_of", "dst": "subfamily:N32G455", "qual": null}
 {"src": "device:N32G457VCL7", "rel": "has_core", "dst": "core:Cortex-M4", "qual": null}
-{"src": "device:N32G457VCL7", "rel": "part_of", "dst": "subfamily:N32G457", "qual": null}
+{"src": "device:N32G457VCL7", "rel": "part_of", "dst": "subfamily:N32G455", "qual": null}
 {"src": "device:N32G457VEL7", "rel": "has_core", "dst": "core:Cortex-M4", "qual": null}
-{"src": "device:N32G457VEL7", "rel": "part_of", "dst": "subfamily:N32G457", "qual": null}
+{"src": "device:N32G457VEL7", "rel": "part_of", "dst": "subfamily:N32G455", "qual": null}
 {"src": "device:N32G4FRHCQ7", "rel": "has_core", "dst": "core:Cortex-M4", "qual": null}
 {"src": "device:N32G4FRHCQ7", "rel": "part_of", "dst": "subfamily:N32G4FR", "qual": null}
 {"src": "device:N32G4FRHEQ7", "rel": "has_core", "dst": "core:Cortex-M4", "qual": null}
@@ -70225,6 +70576,7 @@
 {"src": "device:N32H474QC", "rel": "part_of", "dst": "subfamily:N32H474", "qual": null}
 {"src": "device:N32H474QE", "rel": "has_core", "dst": "core:Cortex-M4", "qual": null}
 {"src": "device:N32H474QE", "rel": "part_of", "dst": "subfamily:N32H474", "qual": null}
+{"src": "device:N32H474QE", "rel": "part_of", "dst": "subfamily:N32H487", "qual": null}
 {"src": "device:N32H474RC", "rel": "has_core", "dst": "core:Cortex-M4", "qual": null}
 {"src": "device:N32H474RC", "rel": "part_of", "dst": "subfamily:N32H474", "qual": null}
 {"src": "device:N32H474RE", "rel": "has_core", "dst": "core:Cortex-M4", "qual": null}
@@ -70245,8 +70597,6 @@
 {"src": "device:N32H482VE", "rel": "part_of", "dst": "subfamily:N32H482", "qual": null}
 {"src": "device:N32H482ZE", "rel": "has_core", "dst": "core:Cortex-M4", "qual": null}
 {"src": "device:N32H482ZE", "rel": "part_of", "dst": "subfamily:N32H482", "qual": null}
-{"src": "device:N32H484QE", "rel": "has_core", "dst": "core:Cortex-M4", "qual": null}
-{"src": "device:N32H484QE", "rel": "part_of", "dst": "subfamily:N32H487", "qual": null}
 {"src": "device:N32H487VE", "rel": "has_core", "dst": "core:Cortex-M4", "qual": null}
 {"src": "device:N32H487VE", "rel": "part_of", "dst": "subfamily:N32H487", "qual": null}
 {"src": "device:N32H487ZE", "rel": "has_core", "dst": "core:Cortex-M4", "qual": null}
@@ -70541,6 +70891,8 @@
 {"src": "device:NDA102TD2", "rel": "part_of", "dst": "subfamily:NDA102xD_xE", "qual": null}
 {"src": "device:NDA102UD2", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
 {"src": "device:NDA102UD2", "rel": "part_of", "dst": "subfamily:NDA102xD_xE", "qual": null}
+{"src": "device:NDR5ZD2AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
+{"src": "device:NDR5ZD2AE", "rel": "part_of", "dst": "subfamily:NUC1264", "qual": null}
 {"src": "device:NM1100FBAE", "rel": "has_core", "dst": "core:Cortex-M0", "qual": null}
 {"src": "device:NM1100FBAE", "rel": "part_of", "dst": "subfamily:NM1200", "qual": null}
 {"src": "device:NM1100XBAE", "rel": "has_core", "dst": "core:Cortex-M0", "qual": null}
@@ -70879,6 +71231,8 @@
 {"src": "device:NUC1263ZD4AE", "rel": "part_of", "dst": "subfamily:NUC1263", "qual": null}
 {"src": "device:NUC1263ZD4CE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
 {"src": "device:NUC1263ZD4CE", "rel": "part_of", "dst": "subfamily:NUC1263", "qual": null}
+{"src": "device:NUC1264ZD2AE", "rel": "has_core", "dst": "core:Cortex-M23", "qual": null}
+{"src": "device:NUC1264ZD2AE", "rel": "part_of", "dst": "subfamily:NUC1264", "qual": null}
 {"src": "device:NUC126LE4AE", "rel": "has_core", "dst": "core:Cortex-M0", "qual": null}
 {"src": "device:NUC126LE4AE", "rel": "part_of", "dst": "subfamily:NUC126", "qual": null}
 {"src": "device:NUC126LG4AE", "rel": "has_core", "dst": "core:Cortex-M0", "qual": null}
@@ -76520,308 +76874,6 @@
 {"src": "device:STM32G4A1REYx", "rel": "part_of", "dst": "subfamily:STM32G4A1", "qual": null}
 {"src": "device:STM32G4A1VETx", "rel": "has_core", "dst": "core:Cortex-M4", "qual": null}
 {"src": "device:STM32G4A1VETx", "rel": "part_of", "dst": "subfamily:STM32G4A1", "qual": null}
-{"src": "device:STM32H503CBTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H503CBTx", "rel": "part_of", "dst": "subfamily:STM32H503", "qual": null}
-{"src": "device:STM32H503CBUx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H503CBUx", "rel": "part_of", "dst": "subfamily:STM32H503", "qual": null}
-{"src": "device:STM32H503EBYx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H503EBYx", "rel": "part_of", "dst": "subfamily:STM32H503", "qual": null}
-{"src": "device:STM32H503KBUx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H503KBUx", "rel": "part_of", "dst": "subfamily:STM32H503", "qual": null}
-{"src": "device:STM32H503RBTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H503RBTx", "rel": "part_of", "dst": "subfamily:STM32H503", "qual": null}
-{"src": "device:STM32H523CCTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H523CCTx", "rel": "part_of", "dst": "subfamily:STM32H523", "qual": null}
-{"src": "device:STM32H523CCUx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H523CCUx", "rel": "part_of", "dst": "subfamily:STM32H523", "qual": null}
-{"src": "device:STM32H523CETx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H523CETx", "rel": "part_of", "dst": "subfamily:STM32H523", "qual": null}
-{"src": "device:STM32H523CEUx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H523CEUx", "rel": "part_of", "dst": "subfamily:STM32H523", "qual": null}
-{"src": "device:STM32H523HEYx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H523HEYx", "rel": "part_of", "dst": "subfamily:STM32H523", "qual": null}
-{"src": "device:STM32H523RCTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H523RCTx", "rel": "part_of", "dst": "subfamily:STM32H523", "qual": null}
-{"src": "device:STM32H523RETx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H523RETx", "rel": "part_of", "dst": "subfamily:STM32H523", "qual": null}
-{"src": "device:STM32H523VCIx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H523VCIx", "rel": "part_of", "dst": "subfamily:STM32H523", "qual": null}
-{"src": "device:STM32H523VCTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H523VCTx", "rel": "part_of", "dst": "subfamily:STM32H523", "qual": null}
-{"src": "device:STM32H523VEIx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H523VEIx", "rel": "part_of", "dst": "subfamily:STM32H523", "qual": null}
-{"src": "device:STM32H523VETx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H523VETx", "rel": "part_of", "dst": "subfamily:STM32H523", "qual": null}
-{"src": "device:STM32H523ZCJx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H523ZCJx", "rel": "part_of", "dst": "subfamily:STM32H523", "qual": null}
-{"src": "device:STM32H523ZCTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H523ZCTx", "rel": "part_of", "dst": "subfamily:STM32H523", "qual": null}
-{"src": "device:STM32H523ZEJx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H523ZEJx", "rel": "part_of", "dst": "subfamily:STM32H523", "qual": null}
-{"src": "device:STM32H523ZETx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H523ZETx", "rel": "part_of", "dst": "subfamily:STM32H523", "qual": null}
-{"src": "device:STM32H533CETx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H533CETx", "rel": "part_of", "dst": "subfamily:STM32H533", "qual": null}
-{"src": "device:STM32H533CEUx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H533CEUx", "rel": "part_of", "dst": "subfamily:STM32H533", "qual": null}
-{"src": "device:STM32H533HEYx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H533HEYx", "rel": "part_of", "dst": "subfamily:STM32H533", "qual": null}
-{"src": "device:STM32H533RETx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H533RETx", "rel": "part_of", "dst": "subfamily:STM32H533", "qual": null}
-{"src": "device:STM32H533VEIx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H533VEIx", "rel": "part_of", "dst": "subfamily:STM32H533", "qual": null}
-{"src": "device:STM32H533VETx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H533VETx", "rel": "part_of", "dst": "subfamily:STM32H533", "qual": null}
-{"src": "device:STM32H533ZEJx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H533ZEJx", "rel": "part_of", "dst": "subfamily:STM32H533", "qual": null}
-{"src": "device:STM32H533ZETx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H533ZETx", "rel": "part_of", "dst": "subfamily:STM32H533", "qual": null}
-{"src": "device:STM32H543CETx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H543CETx", "rel": "part_of", "dst": "subfamily:STM32H543", "qual": null}
-{"src": "device:STM32H543CEUx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H543CEUx", "rel": "part_of", "dst": "subfamily:STM32H543", "qual": null}
-{"src": "device:STM32H543CGTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H543CGTx", "rel": "part_of", "dst": "subfamily:STM32H543", "qual": null}
-{"src": "device:STM32H543CGUx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H543CGUx", "rel": "part_of", "dst": "subfamily:STM32H543", "qual": null}
-{"src": "device:STM32H543RETx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H543RETx", "rel": "part_of", "dst": "subfamily:STM32H543", "qual": null}
-{"src": "device:STM32H543RGTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H543RGTx", "rel": "part_of", "dst": "subfamily:STM32H543", "qual": null}
-{"src": "device:STM32H543UGYx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H543UGYx", "rel": "part_of", "dst": "subfamily:STM32H543", "qual": null}
-{"src": "device:STM32H543VEIx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H543VEIx", "rel": "part_of", "dst": "subfamily:STM32H543", "qual": null}
-{"src": "device:STM32H543VETx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H543VETx", "rel": "part_of", "dst": "subfamily:STM32H543", "qual": null}
-{"src": "device:STM32H543VEZx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H543VEZx", "rel": "part_of", "dst": "subfamily:STM32H543", "qual": null}
-{"src": "device:STM32H543VGIx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H543VGIx", "rel": "part_of", "dst": "subfamily:STM32H543", "qual": null}
-{"src": "device:STM32H543VGTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H543VGTx", "rel": "part_of", "dst": "subfamily:STM32H543", "qual": null}
-{"src": "device:STM32H543VGZx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H543VGZx", "rel": "part_of", "dst": "subfamily:STM32H543", "qual": null}
-{"src": "device:STM32H543ZEJx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H543ZEJx", "rel": "part_of", "dst": "subfamily:STM32H543", "qual": null}
-{"src": "device:STM32H543ZETx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H543ZETx", "rel": "part_of", "dst": "subfamily:STM32H543", "qual": null}
-{"src": "device:STM32H543ZEZx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H543ZEZx", "rel": "part_of", "dst": "subfamily:STM32H543", "qual": null}
-{"src": "device:STM32H543ZGJx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H543ZGJx", "rel": "part_of", "dst": "subfamily:STM32H543", "qual": null}
-{"src": "device:STM32H543ZGTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H543ZGTx", "rel": "part_of", "dst": "subfamily:STM32H543", "qual": null}
-{"src": "device:STM32H543ZGZx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H543ZGZx", "rel": "part_of", "dst": "subfamily:STM32H543", "qual": null}
-{"src": "device:STM32H553CGTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H553CGTx", "rel": "part_of", "dst": "subfamily:STM32H553", "qual": null}
-{"src": "device:STM32H553CGUx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H553CGUx", "rel": "part_of", "dst": "subfamily:STM32H553", "qual": null}
-{"src": "device:STM32H553RGTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H553RGTx", "rel": "part_of", "dst": "subfamily:STM32H553", "qual": null}
-{"src": "device:STM32H553UGYx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H553UGYx", "rel": "part_of", "dst": "subfamily:STM32H553", "qual": null}
-{"src": "device:STM32H553VGIx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H553VGIx", "rel": "part_of", "dst": "subfamily:STM32H553", "qual": null}
-{"src": "device:STM32H553VGTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H553VGTx", "rel": "part_of", "dst": "subfamily:STM32H553", "qual": null}
-{"src": "device:STM32H553VGZx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H553VGZx", "rel": "part_of", "dst": "subfamily:STM32H553", "qual": null}
-{"src": "device:STM32H553ZGJx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H553ZGJx", "rel": "part_of", "dst": "subfamily:STM32H553", "qual": null}
-{"src": "device:STM32H553ZGTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H553ZGTx", "rel": "part_of", "dst": "subfamily:STM32H553", "qual": null}
-{"src": "device:STM32H553ZGZx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H553ZGZx", "rel": "part_of", "dst": "subfamily:STM32H553", "qual": null}
-{"src": "device:STM32H562AGIx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H562AGIx", "rel": "part_of", "dst": "subfamily:STM32H562", "qual": null}
-{"src": "device:STM32H562AIIx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H562AIIx", "rel": "part_of", "dst": "subfamily:STM32H562", "qual": null}
-{"src": "device:STM32H562IGKx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H562IGKx", "rel": "part_of", "dst": "subfamily:STM32H562", "qual": null}
-{"src": "device:STM32H562IGTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H562IGTx", "rel": "part_of", "dst": "subfamily:STM32H562", "qual": null}
-{"src": "device:STM32H562IIKx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H562IIKx", "rel": "part_of", "dst": "subfamily:STM32H562", "qual": null}
-{"src": "device:STM32H562IITx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H562IITx", "rel": "part_of", "dst": "subfamily:STM32H562", "qual": null}
-{"src": "device:STM32H562RGTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H562RGTx", "rel": "part_of", "dst": "subfamily:STM32H562", "qual": null}
-{"src": "device:STM32H562RGVx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H562RGVx", "rel": "part_of", "dst": "subfamily:STM32H562", "qual": null}
-{"src": "device:STM32H562RITx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H562RITx", "rel": "part_of", "dst": "subfamily:STM32H562", "qual": null}
-{"src": "device:STM32H562RIVx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H562RIVx", "rel": "part_of", "dst": "subfamily:STM32H562", "qual": null}
-{"src": "device:STM32H562VGTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H562VGTx", "rel": "part_of", "dst": "subfamily:STM32H562", "qual": null}
-{"src": "device:STM32H562VITx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H562VITx", "rel": "part_of", "dst": "subfamily:STM32H562", "qual": null}
-{"src": "device:STM32H562ZGTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H562ZGTx", "rel": "part_of", "dst": "subfamily:STM32H562", "qual": null}
-{"src": "device:STM32H562ZITx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H562ZITx", "rel": "part_of", "dst": "subfamily:STM32H562", "qual": null}
-{"src": "device:STM32H563AGIx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H563AGIx", "rel": "part_of", "dst": "subfamily:STM32H563", "qual": null}
-{"src": "device:STM32H563AIIx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H563AIIx", "rel": "part_of", "dst": "subfamily:STM32H563", "qual": null}
-{"src": "device:STM32H563AIIxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H563AIIxQ", "rel": "part_of", "dst": "subfamily:STM32H563", "qual": null}
-{"src": "device:STM32H563IGKx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H563IGKx", "rel": "part_of", "dst": "subfamily:STM32H563", "qual": null}
-{"src": "device:STM32H563IGTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H563IGTx", "rel": "part_of", "dst": "subfamily:STM32H563", "qual": null}
-{"src": "device:STM32H563IIKx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H563IIKx", "rel": "part_of", "dst": "subfamily:STM32H563", "qual": null}
-{"src": "device:STM32H563IIKxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H563IIKxQ", "rel": "part_of", "dst": "subfamily:STM32H563", "qual": null}
-{"src": "device:STM32H563IITx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H563IITx", "rel": "part_of", "dst": "subfamily:STM32H563", "qual": null}
-{"src": "device:STM32H563IITxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H563IITxQ", "rel": "part_of", "dst": "subfamily:STM32H563", "qual": null}
-{"src": "device:STM32H563LIHxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H563LIHxQ", "rel": "part_of", "dst": "subfamily:STM32H563", "qual": null}
-{"src": "device:STM32H563MIYxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H563MIYxQ", "rel": "part_of", "dst": "subfamily:STM32H563", "qual": null}
-{"src": "device:STM32H563RGTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H563RGTx", "rel": "part_of", "dst": "subfamily:STM32H563", "qual": null}
-{"src": "device:STM32H563RGVx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H563RGVx", "rel": "part_of", "dst": "subfamily:STM32H563", "qual": null}
-{"src": "device:STM32H563RITx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H563RITx", "rel": "part_of", "dst": "subfamily:STM32H563", "qual": null}
-{"src": "device:STM32H563RIVx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H563RIVx", "rel": "part_of", "dst": "subfamily:STM32H563", "qual": null}
-{"src": "device:STM32H563VGTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H563VGTx", "rel": "part_of", "dst": "subfamily:STM32H563", "qual": null}
-{"src": "device:STM32H563VITx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H563VITx", "rel": "part_of", "dst": "subfamily:STM32H563", "qual": null}
-{"src": "device:STM32H563VITxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H563VITxQ", "rel": "part_of", "dst": "subfamily:STM32H563", "qual": null}
-{"src": "device:STM32H563ZGTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H563ZGTx", "rel": "part_of", "dst": "subfamily:STM32H563", "qual": null}
-{"src": "device:STM32H563ZITx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H563ZITx", "rel": "part_of", "dst": "subfamily:STM32H563", "qual": null}
-{"src": "device:STM32H563ZITxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H563ZITxQ", "rel": "part_of", "dst": "subfamily:STM32H563", "qual": null}
-{"src": "device:STM32H573AIIx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H573AIIx", "rel": "part_of", "dst": "subfamily:STM32H573", "qual": null}
-{"src": "device:STM32H573AIIxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H573AIIxQ", "rel": "part_of", "dst": "subfamily:STM32H573", "qual": null}
-{"src": "device:STM32H573IIKx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H573IIKx", "rel": "part_of", "dst": "subfamily:STM32H573", "qual": null}
-{"src": "device:STM32H573IIKxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H573IIKxQ", "rel": "part_of", "dst": "subfamily:STM32H573", "qual": null}
-{"src": "device:STM32H573IITx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H573IITx", "rel": "part_of", "dst": "subfamily:STM32H573", "qual": null}
-{"src": "device:STM32H573IITxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H573IITxQ", "rel": "part_of", "dst": "subfamily:STM32H573", "qual": null}
-{"src": "device:STM32H573LIHxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H573LIHxQ", "rel": "part_of", "dst": "subfamily:STM32H573", "qual": null}
-{"src": "device:STM32H573MIYxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H573MIYxQ", "rel": "part_of", "dst": "subfamily:STM32H573", "qual": null}
-{"src": "device:STM32H573RITx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H573RITx", "rel": "part_of", "dst": "subfamily:STM32H573", "qual": null}
-{"src": "device:STM32H573RIVx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H573RIVx", "rel": "part_of", "dst": "subfamily:STM32H573", "qual": null}
-{"src": "device:STM32H573VITx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H573VITx", "rel": "part_of", "dst": "subfamily:STM32H573", "qual": null}
-{"src": "device:STM32H573VITxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H573VITxQ", "rel": "part_of", "dst": "subfamily:STM32H573", "qual": null}
-{"src": "device:STM32H573ZITx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H573ZITx", "rel": "part_of", "dst": "subfamily:STM32H573", "qual": null}
-{"src": "device:STM32H573ZITxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H573ZITxQ", "rel": "part_of", "dst": "subfamily:STM32H573", "qual": null}
-{"src": "device:STM32H5E4AJIx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E4AJIx", "rel": "part_of", "dst": "subfamily:STM32H5E4", "qual": null}
-{"src": "device:STM32H5E4AJIxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E4AJIxQ", "rel": "part_of", "dst": "subfamily:STM32H5E4", "qual": null}
-{"src": "device:STM32H5E4AKIx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E4AKIx", "rel": "part_of", "dst": "subfamily:STM32H5E4", "qual": null}
-{"src": "device:STM32H5E4IJKx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E4IJKx", "rel": "part_of", "dst": "subfamily:STM32H5E4", "qual": null}
-{"src": "device:STM32H5E4IJKxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E4IJKxQ", "rel": "part_of", "dst": "subfamily:STM32H5E4", "qual": null}
-{"src": "device:STM32H5E4IJTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E4IJTx", "rel": "part_of", "dst": "subfamily:STM32H5E4", "qual": null}
-{"src": "device:STM32H5E4IJTxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E4IJTxQ", "rel": "part_of", "dst": "subfamily:STM32H5E4", "qual": null}
-{"src": "device:STM32H5E4IKKx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E4IKKx", "rel": "part_of", "dst": "subfamily:STM32H5E4", "qual": null}
-{"src": "device:STM32H5E4IKTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E4IKTx", "rel": "part_of", "dst": "subfamily:STM32H5E4", "qual": null}
-{"src": "device:STM32H5E4VJTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E4VJTx", "rel": "part_of", "dst": "subfamily:STM32H5E4", "qual": null}
-{"src": "device:STM32H5E4VJTxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E4VJTxQ", "rel": "part_of", "dst": "subfamily:STM32H5E4", "qual": null}
-{"src": "device:STM32H5E4VKTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E4VKTx", "rel": "part_of", "dst": "subfamily:STM32H5E4", "qual": null}
-{"src": "device:STM32H5E4ZJJx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E4ZJJx", "rel": "part_of", "dst": "subfamily:STM32H5E4", "qual": null}
-{"src": "device:STM32H5E4ZJJxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E4ZJJxQ", "rel": "part_of", "dst": "subfamily:STM32H5E4", "qual": null}
-{"src": "device:STM32H5E4ZJTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E4ZJTx", "rel": "part_of", "dst": "subfamily:STM32H5E4", "qual": null}
-{"src": "device:STM32H5E4ZJTxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E4ZJTxQ", "rel": "part_of", "dst": "subfamily:STM32H5E4", "qual": null}
-{"src": "device:STM32H5E4ZKJx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E4ZKJx", "rel": "part_of", "dst": "subfamily:STM32H5E4", "qual": null}
-{"src": "device:STM32H5E4ZKTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E4ZKTx", "rel": "part_of", "dst": "subfamily:STM32H5E4", "qual": null}
-{"src": "device:STM32H5E5IJKxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E5IJKxQ", "rel": "part_of", "dst": "subfamily:STM32H5E5", "qual": null}
-{"src": "device:STM32H5E5IJTxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E5IJTxQ", "rel": "part_of", "dst": "subfamily:STM32H5E5", "qual": null}
-{"src": "device:STM32H5E5IKKxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E5IKKxQ", "rel": "part_of", "dst": "subfamily:STM32H5E5", "qual": null}
-{"src": "device:STM32H5E5IKTxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E5IKTxQ", "rel": "part_of", "dst": "subfamily:STM32H5E5", "qual": null}
-{"src": "device:STM32H5E5LJHxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E5LJHxQ", "rel": "part_of", "dst": "subfamily:STM32H5E5", "qual": null}
-{"src": "device:STM32H5E5LKHxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E5LKHxQ", "rel": "part_of", "dst": "subfamily:STM32H5E5", "qual": null}
-{"src": "device:STM32H5E5VJYxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E5VJYxQ", "rel": "part_of", "dst": "subfamily:STM32H5E5", "qual": null}
-{"src": "device:STM32H5E5VKYxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E5VKYxQ", "rel": "part_of", "dst": "subfamily:STM32H5E5", "qual": null}
-{"src": "device:STM32H5E5ZJTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E5ZJTx", "rel": "part_of", "dst": "subfamily:STM32H5E5", "qual": null}
-{"src": "device:STM32H5E5ZKTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5E5ZKTx", "rel": "part_of", "dst": "subfamily:STM32H5E5", "qual": null}
-{"src": "device:STM32H5F4AJIx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5F4AJIx", "rel": "part_of", "dst": "subfamily:STM32H5F4", "qual": null}
-{"src": "device:STM32H5F4AJIxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5F4AJIxQ", "rel": "part_of", "dst": "subfamily:STM32H5F4", "qual": null}
-{"src": "device:STM32H5F4IJKx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5F4IJKx", "rel": "part_of", "dst": "subfamily:STM32H5F4", "qual": null}
-{"src": "device:STM32H5F4IJKxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5F4IJKxQ", "rel": "part_of", "dst": "subfamily:STM32H5F4", "qual": null}
-{"src": "device:STM32H5F4IJTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5F4IJTx", "rel": "part_of", "dst": "subfamily:STM32H5F4", "qual": null}
-{"src": "device:STM32H5F4IJTxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5F4IJTxQ", "rel": "part_of", "dst": "subfamily:STM32H5F4", "qual": null}
-{"src": "device:STM32H5F4VJTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5F4VJTx", "rel": "part_of", "dst": "subfamily:STM32H5F4", "qual": null}
-{"src": "device:STM32H5F4VJTxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5F4VJTxQ", "rel": "part_of", "dst": "subfamily:STM32H5F4", "qual": null}
-{"src": "device:STM32H5F4ZJJx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5F4ZJJx", "rel": "part_of", "dst": "subfamily:STM32H5F4", "qual": null}
-{"src": "device:STM32H5F4ZJJxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5F4ZJJxQ", "rel": "part_of", "dst": "subfamily:STM32H5F4", "qual": null}
-{"src": "device:STM32H5F4ZJTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5F4ZJTx", "rel": "part_of", "dst": "subfamily:STM32H5F4", "qual": null}
-{"src": "device:STM32H5F4ZJTxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5F4ZJTxQ", "rel": "part_of", "dst": "subfamily:STM32H5F4", "qual": null}
-{"src": "device:STM32H5F5IJKxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5F5IJKxQ", "rel": "part_of", "dst": "subfamily:STM32H5F5", "qual": null}
-{"src": "device:STM32H5F5IJTxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5F5IJTxQ", "rel": "part_of", "dst": "subfamily:STM32H5F5", "qual": null}
-{"src": "device:STM32H5F5LJHxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5F5LJHxQ", "rel": "part_of", "dst": "subfamily:STM32H5F5", "qual": null}
-{"src": "device:STM32H5F5VJYxQ", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5F5VJYxQ", "rel": "part_of", "dst": "subfamily:STM32H5F5", "qual": null}
-{"src": "device:STM32H5F5ZJTx", "rel": "has_core", "dst": "core:Cortex-M33", "qual": null}
-{"src": "device:STM32H5F5ZJTx", "rel": "part_of", "dst": "subfamily:STM32H5F5", "qual": null}
 {"src": "device:STM32H723VEHx", "rel": "has_core", "dst": "core:Cortex-M7", "qual": null}
 {"src": "device:STM32H723VEHx", "rel": "part_of", "dst": "subfamily:STM32H723", "qual": null}
 {"src": "device:STM32H723VETx", "rel": "has_core", "dst": "core:Cortex-M7", "qual": null}
@@ -81052,7 +81104,6 @@
 {"src": "doc:0685ab3dbd15", "rel": "documents", "dst": "subfamily:EFR32BG13P733", "qual": null}
 {"src": "doc:068b14211f5e", "rel": "documents", "dst": "family:Microchip::SAML11", "qual": null}
 {"src": "doc:06a86bd585a2", "rel": "documents", "dst": "device:PIC32CZ8110CA90100", "qual": null}
-{"src": "doc:06bc4bf0d0a7", "rel": "documents", "dst": "subfamily:STM32H503", "qual": null}
 {"src": "doc:06e42ee08b08", "rel": "documents", "dst": "family:Microchip::SAML10", "qual": null}
 {"src": "doc:06fa31b7708e", "rel": "documents", "dst": "family:Microchip::SAML10", "qual": null}
 {"src": "doc:0717f73d41d8", "rel": "documents", "dst": "family:Silicon Labs::EFR32MG1V Series", "qual": null}
@@ -81486,7 +81537,6 @@
 {"src": "doc:1944ed5a420c", "rel": "documents", "dst": "board:STMicroelectronics::NUCLEO-G0B1RE", "qual": null}
 {"src": "doc:195196be09d8", "rel": "documents", "dst": "device:PIC32CX1025SG60128", "qual": null}
 {"src": "doc:195297da3687", "rel": "documents", "dst": "device:STM32F328C8", "qual": null}
-{"src": "doc:1954be27f561", "rel": "documents", "dst": "board:ARM::V2M-MPS2 (IoT)", "qual": null}
 {"src": "doc:195df0e34609", "rel": "documents", "dst": "subfamily:STM32L475", "qual": null}
 {"src": "doc:197a91cd5c9c", "rel": "documents", "dst": "device:ATSAMV70N19B", "qual": null}
 {"src": "doc:198c627a0990", "rel": "documents", "dst": "device:ATSAMD20E14B", "qual": null}
@@ -82247,7 +82297,6 @@
 {"src": "doc:3a3ea4d3b84c", "rel": "documents", "dst": "device:PIC32CX1025MTSH128S1", "qual": null}
 {"src": "doc:3a6b4ca1334f", "rel": "documents", "dst": "device:PIC32CX1025SG61100", "qual": null}
 {"src": "doc:3aadb750d7b7", "rel": "documents", "dst": "board:GigaDevice::GD32150C-START", "qual": null}
-{"src": "doc:3ac2c9ddc321", "rel": "documents", "dst": "board:NXP::EVKB-IMXRT1050_MDK", "qual": null}
 {"src": "doc:3ad4b2d74a98", "rel": "documents", "dst": "subfamily:i.MX 7Dual", "qual": null}
 {"src": "doc:3ad615b0ef09", "rel": "documents", "dst": "device:PIC32CZ8110CA90100", "qual": null}
 {"src": "doc:3afc28e80d1b", "rel": "documents", "dst": "board:STMicroelectronics::NUCLEO-F746ZG", "qual": null}
@@ -82365,7 +82414,6 @@
 {"src": "doc:3f2ca76a1acc", "rel": "documents", "dst": "device:PIC32CM6408JH00048", "qual": null}
 {"src": "doc:3f2ca76a1acc", "rel": "documents", "dst": "device:PIC32CM6408JH00064", "qual": null}
 {"src": "doc:3f4f6a68c12f", "rel": "documents", "dst": "family:Silicon Labs::EFM32PG26 Series", "qual": null}
-{"src": "doc:3f5c18cfd830", "rel": "documents", "dst": "board:NXP::EVKB-IMXRT1050_MDK", "qual": null}
 {"src": "doc:3f6cb4d7718f", "rel": "documents", "dst": "device:ADuCM320i", "qual": null}
 {"src": "doc:3f9c11c94068", "rel": "documents", "dst": "family:Texas Instruments::MSPM0G511X_G518X Series", "qual": null}
 {"src": "doc:3f9d73af893a", "rel": "documents", "dst": "device:PIC32CM6408JH00048", "qual": null}
@@ -82407,7 +82455,6 @@
 {"src": "doc:4196ffdf6cdf", "rel": "documents", "dst": "subfamily:STM32H7S7", "qual": null}
 {"src": "doc:41c90f6dacd3", "rel": "documents", "dst": "subfamily:CYT3BB", "qual": null}
 {"src": "doc:41c90f6dacd3", "rel": "documents", "dst": "subfamily:CYT4BB", "qual": null}
-{"src": "doc:41cc9c1fdff7", "rel": "documents", "dst": "family:STMicroelectronics::STM32H5 Series", "qual": null}
 {"src": "doc:41e2680dfeb0", "rel": "documents", "dst": "board:Infineon::XMC1400 Arduino Kit", "qual": null}
 {"src": "doc:41fe3a7cf895", "rel": "documents", "dst": "board:ABOV::STK-A31G213-CL2N-A", "qual": null}
 {"src": "doc:420e9cdfc561", "rel": "documents", "dst": "device:PIC32CM6408MC00048", "qual": null}
@@ -82556,7 +82603,6 @@
 {"src": "doc:4b47ae5d17b7", "rel": "documents", "dst": "device:PIC32CZ2051CA70144", "qual": null}
 {"src": "doc:4b5189a1a3f7", "rel": "documents", "dst": "subfamily:STM32L4P5", "qual": null}
 {"src": "doc:4b862d8d97b8", "rel": "documents", "dst": "device:PIC32CM5164LS00100", "qual": null}
-{"src": "doc:4b8b6d27f9c8", "rel": "documents", "dst": "board:NXP::EVKB-IMXRT1050_MDK", "qual": null}
 {"src": "doc:4baceb012604", "rel": "documents", "dst": "device:PIC32CX1025MTG64", "qual": null}
 {"src": "doc:4bd4b2b78457", "rel": "documents", "dst": "subfamily:ADuCM360_1", "qual": null}
 {"src": "doc:4be71a2bd711", "rel": "documents", "dst": "device:PIC32CM1216MC00032", "qual": null}
@@ -82716,8 +82762,6 @@
 {"src": "doc:537b0a8fa41a", "rel": "documents", "dst": "device:PIC32CK0512SG01064", "qual": null}
 {"src": "doc:53acb7ba8738", "rel": "documents", "dst": "board:STMicroelectronics::NUCLEO-L152RE", "qual": null}
 {"src": "doc:53b36515a172", "rel": "documents", "dst": "subfamily:EFR32FG14V132", "qual": null}
-{"src": "doc:53b3f62a1c8c", "rel": "documents", "dst": "subfamily:STM32H562", "qual": null}
-{"src": "doc:53b3f62a1c8c", "rel": "documents", "dst": "subfamily:STM32H563", "qual": null}
 {"src": "doc:53ce02b61854", "rel": "documents", "dst": "subfamily:STM32L051", "qual": null}
 {"src": "doc:53fb87f247a9", "rel": "documents", "dst": "board:STMicroelectronics::STM32L073Z-EVAL", "qual": null}
 {"src": "doc:5409c133b00b", "rel": "documents", "dst": "device:PIC32CX1025MTC128S1", "qual": null}
@@ -82754,6 +82798,7 @@
 {"src": "doc:55d888d84cb4", "rel": "documents", "dst": "board:STMicroelectronics::NUCLEO-H743ZI2", "qual": null}
 {"src": "doc:55d93d2e7306", "rel": "documents", "dst": "family:Microchip::SAMD09", "qual": null}
 {"src": "doc:55fbe53cd882", "rel": "documents", "dst": "device:PIC32CZ1038CA70144", "qual": null}
+{"src": "doc:5603d62ac153", "rel": "documents", "dst": "subfamily:G32F463", "qual": null}
 {"src": "doc:5626962a0af3", "rel": "documents", "dst": "device:ADuCM320", "qual": null}
 {"src": "doc:5626962a0af3", "rel": "documents", "dst": "device:ADuCM322", "qual": null}
 {"src": "doc:5626962a0af3", "rel": "documents", "dst": "device:ADuCM322i", "qual": null}
@@ -83655,7 +83700,6 @@
 {"src": "doc:76821f97c4fd", "rel": "documents", "dst": "device:TLE9879QXA40", "qual": null}
 {"src": "doc:769ef1ac40b4", "rel": "documents", "dst": "device:PIC32CZ4010CA80208", "qual": null}
 {"src": "doc:76a3c86e6aa4", "rel": "documents", "dst": "device:ATSAMDA1G14B", "qual": null}
-{"src": "doc:76c8ce8ad97b", "rel": "documents", "dst": "subfamily:STM32H573", "qual": null}
 {"src": "doc:76cc36cb4f19", "rel": "documents", "dst": "device:APM32F030C6", "qual": null}
 {"src": "doc:76cc36cb4f19", "rel": "documents", "dst": "device:APM32F030C8", "qual": null}
 {"src": "doc:76cc36cb4f19", "rel": "documents", "dst": "device:APM32F030CC", "qual": null}
@@ -84139,11 +84183,6 @@
 {"src": "doc:8cafd9df7b3d", "rel": "documents", "dst": "board:ARM::Versatile Express V2M-P1", "qual": null}
 {"src": "doc:8cb91dca0a1e", "rel": "documents", "dst": "family:ARM::ARM Cortex M85", "qual": null}
 {"src": "doc:8cd5c73ce83d", "rel": "documents", "dst": "board:STMicroelectronics::STM32L496G-DISCO", "qual": null}
-{"src": "doc:8cfa28267e77", "rel": "documents", "dst": "subfamily:STM32H523", "qual": null}
-{"src": "doc:8cfa28267e77", "rel": "documents", "dst": "subfamily:STM32H533", "qual": null}
-{"src": "doc:8cfa28267e77", "rel": "documents", "dst": "subfamily:STM32H562", "qual": null}
-{"src": "doc:8cfa28267e77", "rel": "documents", "dst": "subfamily:STM32H563", "qual": null}
-{"src": "doc:8cfa28267e77", "rel": "documents", "dst": "subfamily:STM32H573", "qual": null}
 {"src": "doc:8d4a8d103e94", "rel": "documents", "dst": "device:PIC32CM1602GV00032", "qual": null}
 {"src": "doc:8d639d32c1bb", "rel": "documents", "dst": "subfamily:STM32L052", "qual": null}
 {"src": "doc:8d639d32c1bb", "rel": "documents", "dst": "subfamily:STM32L062", "qual": null}
@@ -84300,6 +84339,8 @@
 {"src": "doc:9322091800b5", "rel": "documents", "dst": "family:Infineon::CYT4BB", "qual": null}
 {"src": "doc:9322091800b5", "rel": "documents", "dst": "family:Infineon::CYT4BF", "qual": null}
 {"src": "doc:9322091800b5", "rel": "documents", "dst": "family:Infineon::CYT4DN", "qual": null}
+{"src": "doc:9322091800b5", "rel": "documents", "dst": "family:Infineon::CYT4EN", "qual": null}
+{"src": "doc:9322091800b5", "rel": "documents", "dst": "family:Infineon::CYT6BJ", "qual": null}
 {"src": "doc:9322091800b5", "rel": "documents", "dst": "family:Infineon::XMC7100", "qual": null}
 {"src": "doc:9322091800b5", "rel": "documents", "dst": "family:Infineon::XMC7100D", "qual": null}
 {"src": "doc:9322091800b5", "rel": "documents", "dst": "family:Infineon::XMC7200", "qual": null}
@@ -84417,6 +84458,8 @@
 {"src": "doc:9a6d104b0bc7", "rel": "documents", "dst": "family:Infineon::CYT4BB", "qual": null}
 {"src": "doc:9a6d104b0bc7", "rel": "documents", "dst": "family:Infineon::CYT4BF", "qual": null}
 {"src": "doc:9a6d104b0bc7", "rel": "documents", "dst": "family:Infineon::CYT4DN", "qual": null}
+{"src": "doc:9a6d104b0bc7", "rel": "documents", "dst": "family:Infineon::CYT4EN", "qual": null}
+{"src": "doc:9a6d104b0bc7", "rel": "documents", "dst": "family:Infineon::CYT6BJ", "qual": null}
 {"src": "doc:9a6d104b0bc7", "rel": "documents", "dst": "family:Infineon::XMC7100", "qual": null}
 {"src": "doc:9a6d104b0bc7", "rel": "documents", "dst": "family:Infineon::XMC7100D", "qual": null}
 {"src": "doc:9a6d104b0bc7", "rel": "documents", "dst": "family:Infineon::XMC7200", "qual": null}
@@ -84601,7 +84644,6 @@
 {"src": "doc:a3e222a4815d", "rel": "documents", "dst": "board:STMicroelectronics::NUCLEO-F746ZG", "qual": null}
 {"src": "doc:a3ef983ff0bc", "rel": "documents", "dst": "device:PIC32CX2051MTC128S1", "qual": null}
 {"src": "doc:a40029a2bcaa", "rel": "documents", "dst": "subfamily:EFM32PG22C200", "qual": null}
-{"src": "doc:a42a8b3fd480", "rel": "documents", "dst": "subfamily:STM32H533", "qual": null}
 {"src": "doc:a44b1a86d816", "rel": "documents", "dst": "family:Silicon Labs::EFM32JG1B Series", "qual": null}
 {"src": "doc:a46fedd691a7", "rel": "documents", "dst": "family:Silicon Labs::EFR32ZG13P Series", "qual": null}
 {"src": "doc:a4720432aabb", "rel": "documents", "dst": "device:ATSAML10E15A", "qual": null}
@@ -84824,8 +84866,6 @@
 {"src": "doc:ab891cb32852", "rel": "documents", "dst": "subfamily:EFR32FG1V132", "qual": null}
 {"src": "doc:ab891cb32852", "rel": "documents", "dst": "subfamily:EFR32FG1V232", "qual": null}
 {"src": "doc:ab8ecf2c9915", "rel": "documents", "dst": "device:ATSAME51J18A", "qual": null}
-{"src": "doc:ab99dfe0f867", "rel": "documents", "dst": "family:ARM::ARM Cortex M23", "qual": null}
-{"src": "doc:ab99dfe0f867", "rel": "documents", "dst": "family:ARM::ARMv8-M Baseline", "qual": null}
 {"src": "doc:ac287e6c9d0c", "rel": "documents", "dst": "family:Silicon Labs::EFM32PG23 Series", "qual": null}
 {"src": "doc:ac29b7546241", "rel": "documents", "dst": "device:ATSAML10D14A", "qual": null}
 {"src": "doc:ac6bb1e813dd", "rel": "documents", "dst": "subfamily:ZGM230S", "qual": null}
@@ -84940,9 +84980,7 @@
 {"src": "doc:b1e954dda431", "rel": "documents", "dst": "device:ATSAMG55J19", "qual": null}
 {"src": "doc:b1f0288a6f0a", "rel": "documents", "dst": "family:Texas Instruments::Tiva C Series", "qual": null}
 {"src": "doc:b1f45b5ba85f", "rel": "documents", "dst": "family:Infineon::PSoC-HVMS", "qual": null}
-{"src": "doc:b20b6e1e59c0", "rel": "documents", "dst": "board:NXP::EVKB-IMXRT1050_MDK", "qual": null}
 {"src": "doc:b214c04650ea", "rel": "documents", "dst": "board:Microchip::PIC32CM6408PL10048-CNANO", "qual": null}
-{"src": "doc:b22e2431e98a", "rel": "documents", "dst": "board:NXP::EVKB-IMXRT1050_MDK", "qual": null}
 {"src": "doc:b24f57c7436e", "rel": "documents", "dst": "board:Analog Devices::EVAL-ADuCM362QSPZ", "qual": null}
 {"src": "doc:b26040bad087", "rel": "documents", "dst": "board:STMicroelectronics::STM32L0538-DISCO", "qual": null}
 {"src": "doc:b27db7abb8e8", "rel": "documents", "dst": "device:IMC300A_0128", "qual": null}
@@ -85339,7 +85377,6 @@
 {"src": "doc:bf48ad372164", "rel": "documents", "dst": "device:ATSAMC21E16A", "qual": null}
 {"src": "doc:bf4b458bec3a", "rel": "documents", "dst": "subfamily:E7", "qual": null}
 {"src": "doc:bf53a4e52bb5", "rel": "documents", "dst": "device:ATSAMD20J18", "qual": null}
-{"src": "doc:bf5499c8d29f", "rel": "documents", "dst": "subfamily:STM32H523", "qual": null}
 {"src": "doc:bf5b5d1a196b", "rel": "documents", "dst": "subfamily:STM32L083", "qual": null}
 {"src": "doc:bf69a7b0c835", "rel": "documents", "dst": "device:PIC32CK0512GC01100", "qual": null}
 {"src": "doc:bf6c550c1a37", "rel": "documents", "dst": "device:PIC32CM3204JH00064", "qual": null}
@@ -85402,8 +85439,6 @@
 {"src": "doc:c2b6a9850c8e", "rel": "documents", "dst": "device:AE512F80F55D5LS", "qual": null}
 {"src": "doc:c2e2461b57b2", "rel": "documents", "dst": "device:PIC32CM6408MC00048", "qual": null}
 {"src": "doc:c2e4b9e9d492", "rel": "documents", "dst": "family:Microchip::SAMD09", "qual": null}
-{"src": "doc:c2fda898e569", "rel": "documents", "dst": "family:ARM::ARM Cortex M33", "qual": null}
-{"src": "doc:c2fda898e569", "rel": "documents", "dst": "family:ARM::ARMv8-M Mainline", "qual": null}
 {"src": "doc:c30d3a49f4de", "rel": "documents", "dst": "family:Microchip::SAMD09", "qual": null}
 {"src": "doc:c32433ccad96", "rel": "documents", "dst": "device:A9139M0", "qual": null}
 {"src": "doc:c3359511312b", "rel": "documents", "dst": "subfamily:STM32L100", "qual": null}
@@ -85537,6 +85572,7 @@
 {"src": "doc:c62d9e52b4d1", "rel": "documents", "dst": "family:Microchip::SAML11", "qual": null}
 {"src": "doc:c64365e3c99e", "rel": "documents", "dst": "device:PIC32CX5109BZ31048_SL3", "qual": null}
 {"src": "doc:c643f7427860", "rel": "documents", "dst": "device:ATSAMD11D14AU", "qual": null}
+{"src": "doc:c64e955845da", "rel": "documents", "dst": "family:Geehy::G32F4 Series", "qual": null}
 {"src": "doc:c66acf064514", "rel": "documents", "dst": "board:STMicroelectronics::NUCLEO-F401RE", "qual": null}
 {"src": "doc:c67fc201fb4e", "rel": "documents", "dst": "device:PIC32CX1025SG61100", "qual": null}
 {"src": "doc:c67fc201fb4e", "rel": "documents", "dst": "device:PIC32CX1025SG61128", "qual": null}
@@ -85792,7 +85828,6 @@
 {"src": "doc:d1294f333f96", "rel": "documents", "dst": "device:PIC32CX2051BZ62132", "qual": null}
 {"src": "doc:d1294f333f96", "rel": "documents", "dst": "device:PIC32CX2051BZ66048", "qual": null}
 {"src": "doc:d12b18b0e40b", "rel": "documents", "dst": "device:PIC32CK1025SG00100", "qual": null}
-{"src": "doc:d13235d7f714", "rel": "documents", "dst": "board:NXP::EVKB-IMXRT1050_MDK", "qual": null}
 {"src": "doc:d149d69a0c7c", "rel": "documents", "dst": "family:Silicon Labs::EFR32FG14V Series", "qual": null}
 {"src": "doc:d159c4b1a16b", "rel": "documents", "dst": "device:ATSAML22N18A", "qual": null}
 {"src": "doc:d17aee17f378", "rel": "documents", "dst": "board:Infineon::XMC1100 Boot Kit", "qual": null}
@@ -86153,7 +86188,6 @@
 {"src": "doc:e1217a0601f8", "rel": "documents", "dst": "board:STMicroelectronics::STM32F3348-DISCO", "qual": null}
 {"src": "doc:e12588a97860", "rel": "documents", "dst": "family:Microchip::SAML10", "qual": null}
 {"src": "doc:e12bedf24d81", "rel": "documents", "dst": "device:ATSAMC21G16A", "qual": null}
-{"src": "doc:e15847e75063", "rel": "documents", "dst": "board:ARM::V2M-MPS2 (IoT)", "qual": null}
 {"src": "doc:e16c9fa229e5", "rel": "documents", "dst": "device:PIC32CM6408MC00032", "qual": null}
 {"src": "doc:e16c9fa229e5", "rel": "documents", "dst": "device:PIC32CM6408MC00048", "qual": null}
 {"src": "doc:e18933ff27ef", "rel": "documents", "dst": "subfamily:A31G12x Series", "qual": null}
@@ -86235,6 +86269,7 @@
 {"src": "doc:e758ef28d797", "rel": "documents", "dst": "device:ATSAMD21E16CU", "qual": null}
 {"src": "doc:e7994bd4d01e", "rel": "documents", "dst": "device:ATSAMG55G19", "qual": null}
 {"src": "doc:e7a9f3b09c13", "rel": "documents", "dst": "family:Silicon Labs::EFR32BG1P Series", "qual": null}
+{"src": "doc:e7b572a0c2ee", "rel": "documents", "dst": "subfamily:G32R430", "qual": null}
 {"src": "doc:e7b6929a8a37", "rel": "documents", "dst": "device:PIC32CM1216JH01032", "qual": null}
 {"src": "doc:e7b6929a8a37", "rel": "documents", "dst": "device:PIC32CM1216JH01048", "qual": null}
 {"src": "doc:e7b6929a8a37", "rel": "documents", "dst": "device:PIC32CM2532JH00032", "qual": null}
@@ -86547,7 +86582,6 @@
 {"src": "doc:f701fd578b1a", "rel": "documents", "dst": "device:PIC32CM5164LS60064", "qual": null}
 {"src": "doc:f701fd578b1a", "rel": "documents", "dst": "device:PIC32CM5164LS60100", "qual": null}
 {"src": "doc:f71a618acf4d", "rel": "documents", "dst": "family:Microchip::SAML11", "qual": null}
-{"src": "doc:f73a55800f89", "rel": "documents", "dst": "subfamily:STM32H503", "qual": null}
 {"src": "doc:f73dd82941c0", "rel": "documents", "dst": "device:ATSAMC21E18A", "qual": null}
 {"src": "doc:f749def8ba0d", "rel": "documents", "dst": "family:Silicon Labs::EFR32FG13P Series", "qual": null}
 {"src": "doc:f7690597b67d", "rel": "documents", "dst": "subfamily:EFR32MR21A020", "qual": null}
@@ -86752,13 +86786,11 @@
 {"src": "family:ARM::ARM Cortex M0 plus", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_CMx_BSP", "qual": null}
 {"src": "family:ARM::ARM Cortex M1", "rel": "part_of", "dst": "pack:ARM::Cortex_DFP", "qual": null}
 {"src": "family:ARM::ARM Cortex M23", "rel": "part_of", "dst": "pack:ARM::Cortex_DFP", "qual": null}
-{"src": "family:ARM::ARM Cortex M23", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_IOTKit_BSP", "qual": null}
 {"src": "family:ARM::ARM Cortex M3", "rel": "part_of", "dst": "pack:ARM::Cortex_DFP", "qual": null}
 {"src": "family:ARM::ARM Cortex M3", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_CMx_BSP", "qual": null}
 {"src": "family:ARM::ARM Cortex M3", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_DSx_BSP", "qual": null}
 {"src": "family:ARM::ARM Cortex M33", "rel": "part_of", "dst": "pack:ARM::Cortex_DFP", "qual": null}
 {"src": "family:ARM::ARM Cortex M33", "rel": "part_of", "dst": "pack:ARM::V2M-MPS2_SSE_200_BSP", "qual": null}
-{"src": "family:ARM::ARM Cortex M33", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_IOTKit_BSP", "qual": null}
 {"src": "family:ARM::ARM Cortex M33 (MPS3)", "rel": "part_of", "dst": "pack:ARM::V2M-MPS3_SSE_200_BSP", "qual": null}
 {"src": "family:ARM::ARM Cortex M33 (MPS3)", "rel": "part_of", "dst": "pack:Keil::V2M-MPS3_IOTKit_BSP", "qual": null}
 {"src": "family:ARM::ARM Cortex M35P", "rel": "part_of", "dst": "pack:ARM::Cortex_DFP", "qual": null}
@@ -86780,9 +86812,7 @@
 {"src": "family:ARM::ARM SC000", "rel": "part_of", "dst": "pack:ARM::Cortex_DFP", "qual": null}
 {"src": "family:ARM::ARM SC300", "rel": "part_of", "dst": "pack:ARM::Cortex_DFP", "qual": null}
 {"src": "family:ARM::ARMv8-M Baseline", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_CMx_BSP", "qual": null}
-{"src": "family:ARM::ARMv8-M Baseline", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_IOTKit_BSP", "qual": null}
 {"src": "family:ARM::ARMv8-M Mainline", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_CMx_BSP", "qual": null}
-{"src": "family:ARM::ARMv8-M Mainline", "rel": "part_of", "dst": "pack:Keil::V2M-MPS2_IOTKit_BSP", "qual": null}
 {"src": "family:Active-Semi::PAC52XX Series", "rel": "part_of", "dst": "pack:Active-Semi::PAC52XX", "qual": null}
 {"src": "family:Active-Semi::PAC55XX Series", "rel": "part_of", "dst": "pack:Active-Semi::PAC55XX", "qual": null}
 {"src": "family:Alif Semiconductor::Ensemble", "rel": "part_of", "dst": "pack:AlifSemiconductor::Ensemble", "qual": null}
@@ -86862,6 +86892,10 @@
 {"src": "family:Geehy::APM32F445_446 Series", "rel": "part_of", "dst": "pack:Geehy::APM32F445_446_DFP", "qual": null}
 {"src": "family:Geehy::APM32M35XX Series", "rel": "part_of", "dst": "pack:Geehy::APM32M35XX_DFP", "qual": null}
 {"src": "family:Geehy::BMP Series", "rel": "part_of", "dst": "pack:Geehy::BMP561_DFP", "qual": null}
+{"src": "family:Geehy::G32F0 Series", "rel": "part_of", "dst": "pack:Geehy::G32F031_DFP", "qual": null}
+{"src": "family:Geehy::G32F4 Series", "rel": "part_of", "dst": "pack:Geehy::G32F463_DFP", "qual": null}
+{"src": "family:Geehy::G32M31 Series", "rel": "part_of", "dst": "pack:Geehy::G32M3101_DFP", "qual": null}
+{"src": "family:Geehy::G32R4 Series", "rel": "part_of", "dst": "pack:Geehy::G32R4xx_DFP", "qual": null}
 {"src": "family:Geehy::G32R5xx Series", "rel": "part_of", "dst": "pack:Geehy::G32R5xx_DFP", "qual": null}
 {"src": "family:GigaDevice::GD32C10x Series", "rel": "part_of", "dst": "pack:GigaDevice::GD32C10x_DFP", "qual": null}
 {"src": "family:GigaDevice::GD32E10x Series", "rel": "part_of", "dst": "pack:GigaDevice::GD32E10x_DFP", "qual": null}
@@ -86994,6 +87028,8 @@
 {"src": "family:Infineon::CYT4BB", "rel": "part_of", "dst": "pack:Infineon::CAT1C_DFP", "qual": null}
 {"src": "family:Infineon::CYT4BF", "rel": "part_of", "dst": "pack:Infineon::CAT1C_DFP", "qual": null}
 {"src": "family:Infineon::CYT4DN", "rel": "part_of", "dst": "pack:Infineon::CAT1C_DFP", "qual": null}
+{"src": "family:Infineon::CYT4EN", "rel": "part_of", "dst": "pack:Infineon::CAT1C_DFP", "qual": null}
+{"src": "family:Infineon::CYT6BJ", "rel": "part_of", "dst": "pack:Infineon::CAT1C_DFP", "qual": null}
 {"src": "family:Infineon::CYWxx829", "rel": "part_of", "dst": "pack:Infineon::AIROC_DFP", "qual": null}
 {"src": "family:Infineon::PMG1-B1", "rel": "part_of", "dst": "pack:Infineon::CAT2_DFP", "qual": null}
 {"src": "family:Infineon::PMG1-B2", "rel": "part_of", "dst": "pack:Infineon::CAT2_DFP", "qual": null}
@@ -87142,7 +87178,7 @@
 {"src": "family:NSING::N32G45x Series", "rel": "part_of", "dst": "pack:NSING::N32G45x_DFP", "qual": null}
 {"src": "family:NSING::N32G4FR Series", "rel": "part_of", "dst": "pack:NSING::N32G4FR_DFP", "qual": null}
 {"src": "family:NSING::N32H47x Series", "rel": "part_of", "dst": "pack:NSING::N32H47x_DFP", "qual": null}
-{"src": "family:NSING::N32H48x Series", "rel": "part_of", "dst": "pack:NSING::N32H48x_DFP", "qual": null}
+{"src": "family:NSING::N32H47x Series", "rel": "part_of", "dst": "pack:NSING::N32H48x_DFP", "qual": null}
 {"src": "family:NSING::N32L40x Series", "rel": "part_of", "dst": "pack:NSING::N32L40x_DFP", "qual": null}
 {"src": "family:NSING::N32L43x Series", "rel": "part_of", "dst": "pack:NSING::N32L43x_DFP", "qual": null}
 {"src": "family:NXP::K32L2A31A", "rel": "part_of", "dst": "pack:NXP::K32L2A31A_DFP", "qual": null}
@@ -87535,7 +87571,6 @@
 {"src": "family:STMicroelectronics::STM32F7 Series", "rel": "part_of", "dst": "pack:Keil::STM32F7xx_DFP", "qual": null}
 {"src": "family:STMicroelectronics::STM32G0 Series", "rel": "part_of", "dst": "pack:Keil::STM32G0xx_DFP", "qual": null}
 {"src": "family:STMicroelectronics::STM32G4 Series", "rel": "part_of", "dst": "pack:Keil::STM32G4xx_DFP", "qual": null}
-{"src": "family:STMicroelectronics::STM32H5 Series", "rel": "part_of", "dst": "pack:Keil::STM32H5xx_DFP", "qual": null}
 {"src": "family:STMicroelectronics::STM32H7 Series", "rel": "part_of", "dst": "pack:Keil::STM32H7xx_DFP", "qual": null}
 {"src": "family:STMicroelectronics::STM32H7RS Series", "rel": "part_of", "dst": "pack:Keil::STM32H7RSxx_DFP", "qual": null}
 {"src": "family:STMicroelectronics::STM32L0 Series", "rel": "part_of", "dst": "pack:Keil::STM32L0xx_DFP", "qual": null}
@@ -87679,7 +87714,6 @@
 {"src": "family:Toshiba::TXZ4A+ Series", "rel": "part_of", "dst": "pack:Toshiba::TXZ4Aplus-M4G1_DFP", "qual": null}
 {"src": "family:Toshiba::TXZ4A+ Series", "rel": "part_of", "dst": "pack:Toshiba::TXZ4Aplus-M4K1_DFP", "qual": null}
 {"src": "family:Toshiba::TXZ4A+ Series", "rel": "part_of", "dst": "pack:Toshiba::TXZ4Aplus-M4N1_DFP", "qual": null}
-{"src": "family:Toshiba::TXZ4E+ Series", "rel": "part_of", "dst": "pack:Toshiba::TXZ4Eplus-M4L1_DFP", "qual": null}
 {"src": "family:YTMicro::YTM32Bx", "rel": "part_of", "dst": "pack:YTMicro::YTM32B1HA0_DFP", "qual": null}
 {"src": "family:YTMicro::YTM32Bx", "rel": "part_of", "dst": "pack:YTMicro::YTM32B1LD0_DFP", "qual": null}
 {"src": "family:YTMicro::YTM32Bx", "rel": "part_of", "dst": "pack:YTMicro::YTM32B1LE0_DFP", "qual": null}
@@ -87697,6 +87731,7 @@
 {"src": "family:Zilog::ZNEO32!-M0 Series", "rel": "part_of", "dst": "pack:Zilog::ZNEO32_DFP", "qual": null}
 {"src": "family:Zilog::ZNEO32!-M3 Series", "rel": "part_of", "dst": "pack:Zilog::ZNEO32_DFP", "qual": null}
 {"src": "pack:APEXMIC::APM32F1xx_DFP", "rel": "superseded_by", "dst": "pack:Geehy::APM32F1xx_DFP", "qual": null}
+{"src": "pack:AlifSemiconductor::AzureRTOS", "rel": "superseded_by", "dst": "pack:AlifSemiconductor::ThreadX", "qual": null}
 {"src": "pack:Cypress::PMG1_DFP", "rel": "superseded_by", "dst": "pack:Infineon::CAT2_DFP", "qual": null}
 {"src": "pack:Cypress::PSoC4_DFP", "rel": "superseded_by", "dst": "pack:Infineon::CAT2_DFP", "qual": null}
 {"src": "pack:Cypress::PSoC6_DFP", "rel": "superseded_by", "dst": "pack:Infineon::CAT1A_DFP", "qual": null}
@@ -88478,6 +88513,10 @@
 {"src": "subfamily:FT32F113", "rel": "part_of", "dst": "family:FMD::FT32F1 Series", "qual": null}
 {"src": "subfamily:FT32F405", "rel": "part_of", "dst": "family:FMD::FT32F4 Series", "qual": null}
 {"src": "subfamily:FT32F407", "rel": "part_of", "dst": "family:FMD::FT32F4 Series", "qual": null}
+{"src": "subfamily:G32F031", "rel": "part_of", "dst": "family:Geehy::G32F0 Series", "qual": null}
+{"src": "subfamily:G32F463", "rel": "part_of", "dst": "family:Geehy::G32F4 Series", "qual": null}
+{"src": "subfamily:G32M3101", "rel": "part_of", "dst": "family:Geehy::G32M31 Series", "qual": null}
+{"src": "subfamily:G32R430", "rel": "part_of", "dst": "family:Geehy::G32R4 Series", "qual": null}
 {"src": "subfamily:G32R501", "rel": "part_of", "dst": "family:Geehy::G32R5xx Series", "qual": null}
 {"src": "subfamily:G32R502", "rel": "part_of", "dst": "family:Geehy::G32R5xx Series", "qual": null}
 {"src": "subfamily:GD32C103", "rel": "part_of", "dst": "family:GigaDevice::GD32C10x Series", "qual": null}
@@ -88720,7 +88759,6 @@
 {"src": "subfamily:M4K(2)", "rel": "part_of", "dst": "family:Toshiba::TXZ4 Series", "qual": null}
 {"src": "subfamily:M4L(1)", "rel": "part_of", "dst": "family:Toshiba::TXZ+4E Series", "qual": null}
 {"src": "subfamily:M4L(1)", "rel": "part_of", "dst": "family:Toshiba::TXZ4 Series", "qual": null}
-{"src": "subfamily:M4L(1)", "rel": "part_of", "dst": "family:Toshiba::TXZ4E+ Series", "qual": null}
 {"src": "subfamily:M4M(1)", "rel": "part_of", "dst": "family:Toshiba::TXZ+4A Series", "qual": null}
 {"src": "subfamily:M4N(1)", "rel": "part_of", "dst": "family:Toshiba::TXZ4A+ Series", "qual": null}
 {"src": "subfamily:M5531", "rel": "part_of", "dst": "family:Nuvoton::NuMicro M55 Family", "qual": null}
@@ -88850,14 +88888,13 @@
 {"src": "subfamily:N32G451", "rel": "part_of", "dst": "family:NSING::N32G45x Series", "qual": null}
 {"src": "subfamily:N32G452", "rel": "part_of", "dst": "family:NSING::N32G45x Series", "qual": null}
 {"src": "subfamily:N32G455", "rel": "part_of", "dst": "family:NSING::N32G45x Series", "qual": null}
-{"src": "subfamily:N32G457", "rel": "part_of", "dst": "family:NSING::N32G45x Series", "qual": null}
 {"src": "subfamily:N32G4FR", "rel": "part_of", "dst": "family:NSING::N32G4FR Series", "qual": null}
 {"src": "subfamily:N32H473", "rel": "part_of", "dst": "family:NSING::N32H47x Series", "qual": null}
 {"src": "subfamily:N32H474", "rel": "part_of", "dst": "family:NSING::N32H47x Series", "qual": null}
 {"src": "subfamily:N32H475", "rel": "part_of", "dst": "family:NSING::N32H47x Series", "qual": null}
-{"src": "subfamily:N32H481", "rel": "part_of", "dst": "family:NSING::N32H48x Series", "qual": null}
-{"src": "subfamily:N32H482", "rel": "part_of", "dst": "family:NSING::N32H48x Series", "qual": null}
-{"src": "subfamily:N32H487", "rel": "part_of", "dst": "family:NSING::N32H48x Series", "qual": null}
+{"src": "subfamily:N32H481", "rel": "part_of", "dst": "family:NSING::N32H47x Series", "qual": null}
+{"src": "subfamily:N32H482", "rel": "part_of", "dst": "family:NSING::N32H47x Series", "qual": null}
+{"src": "subfamily:N32H487", "rel": "part_of", "dst": "family:NSING::N32H47x Series", "qual": null}
 {"src": "subfamily:N32L401", "rel": "part_of", "dst": "family:NSING::N32L40x Series", "qual": null}
 {"src": "subfamily:N32L402", "rel": "part_of", "dst": "family:NSING::N32L40x Series", "qual": null}
 {"src": "subfamily:N32L403", "rel": "part_of", "dst": "family:NSING::N32L40x Series", "qual": null}
@@ -88903,6 +88940,7 @@
 {"src": "subfamily:NUC1261", "rel": "part_of", "dst": "family:Nuvoton::NuMicro M0 Family", "qual": null}
 {"src": "subfamily:NUC1262", "rel": "part_of", "dst": "family:Nuvoton::NuMicro M23 Family", "qual": null}
 {"src": "subfamily:NUC1263", "rel": "part_of", "dst": "family:Nuvoton::NuMicro M23 Family", "qual": null}
+{"src": "subfamily:NUC1264", "rel": "part_of", "dst": "family:Nuvoton::NuMicro M23 Family", "qual": null}
 {"src": "subfamily:NUC131", "rel": "part_of", "dst": "family:Nuvoton::NuMicro M0 Family", "qual": null}
 {"src": "subfamily:NUC1311", "rel": "part_of", "dst": "family:Nuvoton::NuMicro M0 Family", "qual": null}
 {"src": "subfamily:NUC200", "rel": "part_of", "dst": "family:Nuvoton::NuMicro M0 Family", "qual": null}
@@ -89279,18 +89317,6 @@
 {"src": "subfamily:STM32G484", "rel": "part_of", "dst": "family:STMicroelectronics::STM32G4 Series", "qual": null}
 {"src": "subfamily:STM32G491", "rel": "part_of", "dst": "family:STMicroelectronics::STM32G4 Series", "qual": null}
 {"src": "subfamily:STM32G4A1", "rel": "part_of", "dst": "family:STMicroelectronics::STM32G4 Series", "qual": null}
-{"src": "subfamily:STM32H503", "rel": "part_of", "dst": "family:STMicroelectronics::STM32H5 Series", "qual": null}
-{"src": "subfamily:STM32H523", "rel": "part_of", "dst": "family:STMicroelectronics::STM32H5 Series", "qual": null}
-{"src": "subfamily:STM32H533", "rel": "part_of", "dst": "family:STMicroelectronics::STM32H5 Series", "qual": null}
-{"src": "subfamily:STM32H543", "rel": "part_of", "dst": "family:STMicroelectronics::STM32H5 Series", "qual": null}
-{"src": "subfamily:STM32H553", "rel": "part_of", "dst": "family:STMicroelectronics::STM32H5 Series", "qual": null}
-{"src": "subfamily:STM32H562", "rel": "part_of", "dst": "family:STMicroelectronics::STM32H5 Series", "qual": null}
-{"src": "subfamily:STM32H563", "rel": "part_of", "dst": "family:STMicroelectronics::STM32H5 Series", "qual": null}
-{"src": "subfamily:STM32H573", "rel": "part_of", "dst": "family:STMicroelectronics::STM32H5 Series", "qual": null}
-{"src": "subfamily:STM32H5E4", "rel": "part_of", "dst": "family:STMicroelectronics::STM32H5 Series", "qual": null}
-{"src": "subfamily:STM32H5E5", "rel": "part_of", "dst": "family:STMicroelectronics::STM32H5 Series", "qual": null}
-{"src": "subfamily:STM32H5F4", "rel": "part_of", "dst": "family:STMicroelectronics::STM32H5 Series", "qual": null}
-{"src": "subfamily:STM32H5F5", "rel": "part_of", "dst": "family:STMicroelectronics::STM32H5 Series", "qual": null}
 {"src": "subfamily:STM32H723", "rel": "part_of", "dst": "family:STMicroelectronics::STM32H7 Series", "qual": null}
 {"src": "subfamily:STM32H725", "rel": "part_of", "dst": "family:STMicroelectronics::STM32H7 Series", "qual": null}
 {"src": "subfamily:STM32H730", "rel": "part_of", "dst": "family:STMicroelectronics::STM32H7 Series", "qual": null}

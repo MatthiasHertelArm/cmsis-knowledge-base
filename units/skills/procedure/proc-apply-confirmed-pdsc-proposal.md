@@ -14,7 +14,7 @@ id: "proc-apply-confirmed-pdsc-proposal"
 requires: ["proc-validate-pdsc-sequence-xml"]
 description: "Apply a complete, explicitly confirmed CMSIS-Pack PDSC sequence or `debugvars` proposal provided through the active conversation and run its required validation. Use after a debug or trace proposal has been reviewed and the user has authorized edits to the named PDSC files; do not create agent-artifact records, infer missing technical behavior, or apply changes before confirmation."
 triggers: ["debug or trace proposal has been reviewed", "user has authorized edits to the named PDSC files"]
-verification: ["Run `proc-validate-pdsc-sequence-xml` (`knowledge_get`), then the calling skill's domain-specific checks.", "Resolve validation failures before completion.", "Run `proc-validate-pdsc-sequence-xml` (`knowledge_get`) for common syntax and block checks, then the current domain contract for debug or trace semantic checks."]
+verification: ["Run `$validate-pdsc-sequence-xml`, then the calling skill's domain-specific checks.", "Resolve validation failures before completion.", "Run `$validate-pdsc-sequence-xml` for common syntax and block checks, then the current domain contract for debug or trace semantic checks."]
 stop_conditions: ["Report meaningful drift and obtain a refreshed proposal rather than applying stale XML.", "edit `.dbgconf` only when that file is explicitly confirmed.", "Stop when the proposal, target, confirmation, or validation plan is incomplete; also stop on meaningful file drift or validation failure."]
 unmapped: ["CMSIS Device Family Pack PDSC", "debugvars", ".dbgconf"]
 stage2: "proc-apply-confirmed-pdsc-proposal.json"

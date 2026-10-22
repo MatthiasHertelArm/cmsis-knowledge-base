@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["processing contexts list failed"]
 symptom_regex: "^processing contexts list failed$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:910"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgr.cpp:910"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

@@ -10,8 +10,8 @@ code: "M326"
 symptoms: ["M326", "Path is not conformant: '%PATH%':   Absolute Paths or Drive references are not allowed, use Paths relative to PDSC file."]
 symptom_regex: "^Path is not conformant: '.+?':   Absolute Paths or Drive references are not allowed, use Paths relative to PDSC file\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"

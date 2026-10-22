@@ -10,8 +10,8 @@ code: "M335"
 symptoms: ["M335", "Component 'Cclass=%CCLASS%, Cgroup=%CGROUP%, Cversion=%CVER%' is member of the Cclass='%CCLASS%' which shall contain device specific components.   No condition id set to specify a rule filtering for a device or set of devices."]
 symptom_regex: "^Component 'Cclass=.+?, Cgroup=.+?, Cversion=.+?' is member of the Cclass='.+?' which shall contain device specific components\\.   No condition id set to specify a rule filtering for a device or set of devices\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"

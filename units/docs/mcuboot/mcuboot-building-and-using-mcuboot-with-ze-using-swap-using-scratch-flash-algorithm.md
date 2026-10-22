@@ -6,8 +6,8 @@ title: "Building and using MCUboot with Zephyr: Using swap-using-scratch flash a
 summary: "Note: This mode is not recommended for use and swap-using-offset or swap-using-move are recommended instead."
 status: "draft"
 collection: "mcuboot"
-source: "mcu-tools/mcuboot@ba2099f:docs/readme-zephyr.md"
-doc_source: "https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/readme-zephyr.md#using-swap-using-scratch-flash-algorithm"
+source: "mcu-tools/mcuboot@725d63c:docs/readme-zephyr.md"
+doc_source: "https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/readme-zephyr.md#using-swap-using-scratch-flash-algorithm"
 license: "Apache-2.0"
 mode: "V"
 ---

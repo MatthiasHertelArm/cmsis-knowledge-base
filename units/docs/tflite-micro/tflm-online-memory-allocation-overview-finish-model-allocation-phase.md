@@ -6,8 +6,8 @@ title: "Online Memory Allocation Overview in TensorFlow Lite Micro: Finish Model
 summary: "The last phase of online memory planning is handled in MicroAllocator::FinishModelAllocation(). This function performs the following tasks"
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/online_memory_allocation_overview.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/online_memory_allocation_overview.md#finish-model-allocation-phase"
+source: "tensorflow/tflite-micro@bd621c2:tensorflow/lite/micro/docs/online_memory_allocation_overview.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/bd621c2/tensorflow/lite/micro/docs/online_memory_allocation_overview.md#finish-model-allocation-phase"
 license: "Apache-2.0"
 mode: "V"
 ---

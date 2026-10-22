@@ -9,7 +9,7 @@ severity: "warning"
 symptoms: ["key '<…>' was not recognized"]
 symptom_regex: "^key '.+?' was not recognized$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:1738"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrYamlParser.cpp:1738"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["component '<…>' does not accept more than <…> instance(s)"]
 symptom_regex: "^component '.+?' does not accept more than .+? instance\\(s\\)$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2042"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:2042"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

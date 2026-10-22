@@ -6,8 +6,8 @@ title: "Porting Reference Ops from Lite to Micro: 3. Extract Lite's code for par
 summary: "Now we begin changing, testing, and submitting code. This step will result in the first pull request, PR1."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/porting_reference_ops.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/porting_reference_ops.md#3-extract-lite-s-code-for-parsing-op-parameters-to-a-function-pr1"
+source: "tensorflow/tflite-micro@bd621c2:tensorflow/lite/micro/docs/porting_reference_ops.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/bd621c2/tensorflow/lite/micro/docs/porting_reference_ops.md#3-extract-lite-s-code-for-parsing-op-parameters-to-a-function-pr1"
 license: "Apache-2.0"
 mode: "V"
 ---

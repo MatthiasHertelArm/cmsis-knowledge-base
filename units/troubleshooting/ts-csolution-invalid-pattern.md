@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["invalid pattern '<…>': <…>"]
 symptom_regex: "^invalid pattern '.+?': .+?$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:719"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrYamlParser.cpp:719"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

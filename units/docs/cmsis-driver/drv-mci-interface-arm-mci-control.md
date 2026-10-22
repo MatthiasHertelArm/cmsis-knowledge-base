@@ -6,8 +6,8 @@ title: "MCI Interface: ARM_MCI_Control"
 summary: "Th function ARM_MCI_Control controls the MCI interface and executes various operations."
 status: "draft"
 collection: "cmsis-driver"
-source: "ARM-software/CMSIS_6@26206e4:CMSIS/Documentation/Doxygen/Driver/src/Driver_MCI.c"
-doc_source: "https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Driver/src/Driver_MCI.c"
+source: "ARM-software/CMSIS_6@acf7392:CMSIS/Documentation/Doxygen/Driver/src/Driver_MCI.c"
+doc_source: "https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Driver/src/Driver_MCI.c"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -37,14 +37,15 @@ ARM_MCI_BUS_DATA_WIDTH           | Set data bus width. Predefined values for **a
 ARM_MCI_DRIVER_STRENGTH          | Set driver strength. Predefined values for **arg** are listed in the table **Driver Type**
 ARM_MCI_CONTROL_RESET            | Control optional RST_n Pin (eMMC). The parameter **arg** can have the values `[0:inactive(default); 1:active]`
 ARM_MCI_CONTROL_CLOCK_IDLE       | Control clock generation on CLK Pin when idle. The parameter **arg**  can have the values `[0:disabled; 1:enabled]`
-ARM_MCI_UHS_TUNING_OPERATION     | Sampling clock Tuning operation (SD UHS-I). The parameter **arg**  can have the values  `[0:reset; 1:execute]`
-ARM_MCI_UHS_TUNING_RESULT        | Sampling clock Tuning result (SD UHS-I). Returns `[0:done; 1:in progress; -1:error]`
+ARM_MCI_UHS_TUNING_OPERATION     | Start, restart, or abort host-controller sampling-clock tuning. The parameter **arg** is one of ARM_MCI_UHS_TUNING_ABORT, ARM_MCI_UHS_TUNING_START, or ARM_MCI_UHS_RETUNING_START.
+ARM_MCI_UHS_TUNING_RESULT        | Return ARM_MCI_UHS_TUNING_DONE, ARM_MCI_UHS_TUNING_CONTINUE, or ARM_MCI_UHS_TUNING_ERROR after a protocol tuning-block command.
 ARM_MCI_DATA_TIMEOUT             | Set Data timeout;  The parameter **arg** sets the timeout in bus cycles.
 ARM_MCI_CSS_TIMEOUT              | Set Command Completion Signal (CCS) timeout. The parameter **arg** sets timeout in bus cycles.
 ARM_MCI_MONITOR_SDIO_INTERRUPT   | Monitor SD I/O interrupt. The parameter **arg**  can have the values `[0:disabled(default); 1:enabled]`. Monitoring is automatically disabled when an interrupt is recognized.
 ARM_MCI_CONTROL_READ_WAIT        | Control Read/Wait states for SD I/O. The parameter **arg**  can have the values `[0:disabled(default); 1:enabled]`.
 ARM_MCI_SUSPEND_TRANSFER         | Suspend Data transfer (SD I/O). Returns the number of remaining bytes to transfer.
 ARM_MCI_RESUME_TRANSFER          | Resume Data transfer (SD I/O).
+ARM_MCI_UHS_VOLTAGE_SWITCH       | Perform a host-controller phase of the UHS-I signal-voltage switch. The parameter **arg** is an mci_uhs_voltage_switch_ctrls value.
  
  
 **Bus Speed Mode**
@@ -52,7 +53,7 @@ ARM_MCI_RESUME_TRANSFER          | Resume Data transfer (SD I/O).
 The function ARM_MCI_GetCapabilities lists the supported bus speed modes. Initially, all SD cards use a 3.3 volt electrical interface. 
 Some SD cards can switch to 1.8 volt operation. For example, the use of ultra-high-speed (UHS) 
 SD cards requires 1.8 volt operation and a 4-bit bus data width. The bit field ARM_MCI_CAPABILITIES.uhs_signaling encodes 
-whether the driver supports 1.8 volt UHS signaling.
+whether the driver supports the UHS-I signal-voltage switch and the mandatory SDR12 and SDR25 baseline.
 
 The **control** operation **ARM_MCI_BUS_SPEED_MODE**  sets the bus speed mode using the parameter **arg.**
 
@@ -108,6 +109,46 @@ ARM_MCI_DRIVER_TYPE_B  (default)                         | Set the interface to 
 ARM_MCI_DRIVER_TYPE_C                                    | Set the interface to SD UHS-I Driver Type C
 ARM_MCI_DRIVER_TYPE_D                                    | Set the interface to SD UHS-I Driver Type D
 
+
+**UHS-I Tuning Operation** 
+ 
+Specifies the UHS-I tuning operation.
+
+The **control** operation **ARM_MCI_UHS_TUNING_OPERATION** triggers a phase in the sampling-clock tuning procedure using the parameter **arg.**
+
+Parameter **arg**                                             | UHS-I Tuning Operation
+:-------------------------------------------------------------|:------------------------------------------
+ARM_MCI_UHS_TUNING_ABORT                                 | Abort the UHS-I tuning procedure
+ARM_MCI_UHS_TUNING_START                                 | Start the UHS-I tuning procedure
+ARM_MCI_UHS_RETUNING_START                               | Start the UHS-I re-tuning procedure
+
+**UHS-I Tuning Result**
+
+Specifies the UHS-I tuning procedure result retrieval.
+
+The **control** operation **ARM_MCI_UHS_TUNING_RESULT** returns the result of the UHS-I tuning procedure.
+
+Return value                                                  | UHS-I Tuning Result
+:-------------------------------------------------------------|:------------------------------------------
+ARM_MCI_UHS_TUNING_DONE                                  | UHS-I tuning procedure completed successfully
+ARM_MCI_UHS_TUNING_ERROR                                 | UHS-I tuning procedure failed
+ARM_MCI_UHS_TUNING_CONTINUE                              | UHS-I tuning procedure should continue
+
+**UHS-I Signaling Voltage Switch**
+
+Specifies the UHS-I signaling voltage switch operation.
+
+The **control** operation **ARM_MCI_UHS_VOLTAGE_SWITCH** triggers a phase in the UHS-I signaling voltage switch procedure using the parameter **arg.**
+
+Parameter **arg**                                             | UHS-I Signaling Voltage Switch Phase
+:-------------------------------------------------------------|:------------------------------------------
+ARM_MCI_VOLTAGE_SWITCH_PREPARE                           | Prepare the host-controller for signaling voltage switch
+ARM_MCI_VOLTAGE_SWITCH_APPLY                             | Change the voltage selection from 3.3V to 1.8V
+ARM_MCI_VOLTAGE_SWITCH_CLOCK_ON                          | Start or confirm the bus clock after the signaling voltage has stabilized
+ARM_MCI_VOLTAGE_SWITCH_VERIFY                            | Verify the voltage switch after memory card releases data lines
+ARM_MCI_VOLTAGE_SWITCH_ABORT                             | Abort an incomplete switch and leave the host interface safe
+ARM_MCI_VOLTAGE_SWITCH_RESET                             | Restore host signaling state for memory card power-up at 3.3 V
+
 **Examples:**
 ```
 // Set Bus Speed to 25MHz
@@ -137,17 +178,10 @@ MCIdrv->Control(ARM_MCI_CONTROL_CLOCK_IDLE, 1);
 // Disable Clock generation on CLK when Idle
 MCIdrv->Control(ARM_MCI_CONTROL_CLOCK_IDLE, 0);
  
-// UHS Tuning
-MCIdrv->Control(ARM_MCI_UHS_TUNING_OPERATION, 1);  // start tuning
-do {
-  status = MCIdrv->Control(ARM_MCI_UHS_TUNING_RESULT, 0/*argument not used*/);
-  if (status == -1) { break; /* tuning failed */ }
-} while (status == 1);
- 
 // Set Data Timeout to 12500000 bus cycles (0.5s @25MHz Bus Speed)
 // Default value is hardware specific (typically 2^32-1)
 MCIdrv->Control(ARM_MCI_DATA_TIMEOUT, 12500000);
-  
+ 
 // Set CSS Timeout to 1000000 bus cycles
 // Default value is hardware specific
 MCIdrv->Control(ARM_MCI_CSS_TIMEOUT, 1000000);

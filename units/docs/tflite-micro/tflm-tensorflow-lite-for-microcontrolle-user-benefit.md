@@ -6,8 +6,8 @@ title: "TensorFlow Lite for Microcontrollers Port of 16x8 Quantized Operators: U
 summary: "The headline would be \"16x8 kernels improve accuracy for quantized models on microcontrollers without increasing model size\"."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/rfc/002_16x8_quantization_port.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/rfc/002_16x8_quantization_port.md#user-benefit"
+source: "tensorflow/tflite-micro@bd621c2:tensorflow/lite/micro/docs/rfc/002_16x8_quantization_port.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/bd621c2/tensorflow/lite/micro/docs/rfc/002_16x8_quantization_port.md#user-benefit"
 license: "Apache-2.0"
 mode: "V"
 ---

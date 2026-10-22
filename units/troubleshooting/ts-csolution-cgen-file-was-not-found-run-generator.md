@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["cgen file was not found, run generator '<…>' for context '<…>'"]
 symptom_regex: "^cgen file was not found, run generator '.+?' for context '.+?'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrExtGenerator.cpp:80"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrExtGenerator.cpp:80"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

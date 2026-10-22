@@ -9,7 +9,7 @@ severity: "warning"
 symptoms: ["pname '<…>' does not match any device pname"]
 symptom_regex: "^pname '.+?' does not match any device pname$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrRunDebug.cpp:496"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrRunDebug.cpp:496"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

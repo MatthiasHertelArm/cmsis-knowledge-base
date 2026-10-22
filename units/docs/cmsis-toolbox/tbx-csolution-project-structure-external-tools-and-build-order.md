@@ -6,7 +6,7 @@ title: "CSolution Project Structure: Project Examples / External Tools and Build
 summary: "The executes: node integrates CMake scripts and external tools. The input: and output: lists typically refer to files and therefore define the build order of projects:"
 status: "draft"
 collection: "cmsis-toolbox"
-source: "Open-CMSIS-Pack/cmsis-toolbox@6c04673:docs/build-overview.md"
+source: "Open-CMSIS-Pack/cmsis-toolbox@3ce8307:docs/build-overview.md"
 doc_source: "https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview/#external-tools-and-build-order"
 license: "Apache-2.0"
 mode: "V"

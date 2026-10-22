@@ -6,8 +6,8 @@ title: "\\elemhead{component_viewer/typedefs/typedef/member}: \\elemhead{compone
 summary: "Defines an enumeration name that is displayed as text instead of a value. A symbolic enumerator name represents a constant value that can be referenced using the syntax typedef_name:member_name:enum_name."
 status: "draft"
 collection: "cmsis-view"
-source: "ARM-software/CMSIS-View@fef5aca:Documentation/Doxygen/src/ref_scvd.txt"
-doc_source: "https://github.com/ARM-software/CMSIS-View/blob/fef5aca/Documentation/Doxygen/src/ref_scvd.txt"
+source: "ARM-software/CMSIS-View@285e935:Documentation/Doxygen/src/ref_scvd.txt"
+doc_source: "https://github.com/ARM-software/CMSIS-View/blob/285e935/Documentation/Doxygen/src/ref_scvd.txt"
 license: "Apache-2.0"
 mode: "V"
 ---

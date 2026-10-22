@@ -6,8 +6,8 @@ title: "Development Workflow"
 summary: "Using Arm FVP models enables a flexible approach that combines desktop and cloud-native development tools thus simplifying and accelerating the development of embedded software."
 status: "draft"
 collection: "avh"
-source: "ARM-software/AVH@bb8431b:DoxyGen/overview/src/workflow.md"
-doc_source: "https://github.com/ARM-software/AVH/blob/bb8431b/DoxyGen/overview/src/workflow.md"
+source: "ARM-software/AVH@60f78be:DoxyGen/overview/src/workflow.md"
+doc_source: "https://github.com/ARM-software/AVH/blob/60f78be/DoxyGen/overview/src/workflow.md"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -24,13 +24,13 @@ integration flow. Figure below illustrates the concept.
 (figure: Continuous Integration (CI) workflow) workflow")
 
 1. **Local development** is done by engineers on local machines using common embedded tools such as Keil MDK with Arm
-   FVP models used for simulation. See [FVPs on Desktop](https://github.com/ARM-software/AVH/blob/bb8431b/DoxyGen/overview/src/../../infrastructure/html/avh_desktop.html) for details. The
+   FVP models used for simulation. See [FVPs on Desktop](https://github.com/ARM-software/AVH/blob/60f78be/DoxyGen/overview/src/../../infrastructure/html/avh_desktop.html) for details. The
    software can also be already prepared for real hardware as explained in Physical_Hardware.
 2. A **code repository** is used as a source code management system for synchronization, storage and version control.
 3. **CI pipeline** implements the continuous integration flow (for example GitHub Actions) that gets triggered on every
    code update in the target repository.
 4. **CI execution** includes automated program build and testing and is performed in the cloud with results being
-   reported back to the repository and user. See [Infrastructure](https://github.com/ARM-software/AVH/blob/bb8431b/DoxyGen/overview/src/../../infrastructure/html/index.html) for details.
+   reported back to the repository and user. See [Infrastructure](https://github.com/ARM-software/AVH/blob/60f78be/DoxyGen/overview/src/../../infrastructure/html/index.html) for details.
 5. **Failure analysis and local debug**: developers can observe the CI test results and in case of any failures also
    use a local setup to reproduce and debug the issues.
 

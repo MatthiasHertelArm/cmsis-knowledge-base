@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["missing RTE target"]
 symptom_regex: "^missing RTE target$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1978"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:1978"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

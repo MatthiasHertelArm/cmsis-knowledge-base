@@ -10,11 +10,11 @@ id: "concept-debug-knowledge-contract"
 
 # Device debug behavior knowledge evidence contract
 
-Use the current [Open-CMSIS-Pack *Debug Description* specification](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/debug_description.html) as the grammar authority. Collect device-debug behavior evidence only; do not edit PDSC debug descriptions or sequences. Reuse the current `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` record from `proc-debug-access-knowledge` (`knowledge_get`) for processor association, connection topology, DP/AP paths, protocols, and dormant-state decisions.
+Use the current [Open-CMSIS-Pack *Debug Description* specification](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/debug_description.html) as the grammar authority. Collect device-debug behavior evidence only; do not edit PDSC debug descriptions or sequences. Reuse the current `.agent-artifacts/<pdsc-stem>.debug-access-knowledge.md` record from `$debug-access-knowledge` for processor association, connection topology, DP/AP paths, protocols, and dormant-state decisions.
 
 ## Debug behavior inventory and evidence
 
-The Pack scope is device-level: device/SoC documentation establishes supported options, while board documentation can support an explicitly requested board-specific debug configuration but must not remove or limit device-level options. Use `proc-board-debug-knowledge` (`knowledge_get`) to establish board alternatives before copying an evidenced candidate into this record.
+The Pack scope is device-level: device/SoC documentation establishes supported options, while board documentation can support an explicitly requested board-specific debug configuration but must not remove or limit device-level options. Use `$board-debug-knowledge` to establish board alternatives before copying an evidenced candidate into this record.
 
 Map the selected PDSC device subtree and affected processors from the access record. For the requested debug work, establish documented reset behavior and any required debug unlock, authentication, boot, flash, processor-control, and low-power behavior. Record reset source and type, reset scope, effects on the processor and debug connection, availability during reset, required recovery or reconnect action, and any required sequencing. Record an authoritative `not applicable` decision for a requested behavior that the device does not support.
 
@@ -24,11 +24,11 @@ Search linked and local documentation first:
 - Debug scripts and relevant source code.
 - A named board's manual or design guide, connector pin maps, and jumper settings only for an explicitly requested board-specific debug configuration.
 
-When a cited vendor documentation URL is unreachable, run `proc-resolve-official-device-documentation` (`knowledge_get`) before recording the source as unavailable. Copy its failed URL, retrieval result, search terms, and replacement official URL or precise unavailable reason into this record.
+When a cited vendor documentation URL is unreachable, run `$resolve-official-device-documentation` before recording the source as unavailable. Copy its failed URL, retrieval result, search terms, and replacement official URL or precise unavailable reason into this record.
 
 For each item, cite the document edition/revision and section/page when known; for source, cite repository/version, path, and symbol or line. Do not infer device-debug behavior from a part name or similar device.
 
-If documentation does not establish a device-debug behavior, keep that behavior unresolved. Return a missing processor, connection, DP/AP, protocol, or dormant-state fact to `proc-debug-access-knowledge` (`knowledge_get`). Do not treat runtime detection as evidence of reset, unlock, authentication, boot, flash, processor-control, or low-power behavior.
+If documentation does not establish a device-debug behavior, keep that behavior unresolved. Return a missing processor, connection, DP/AP, protocol, or dormant-state fact to `$debug-access-knowledge`. Do not treat runtime detection as evidence of reset, unlock, authentication, boot, flash, processor-control, or low-power behavior.
 
 ## Required review record
 

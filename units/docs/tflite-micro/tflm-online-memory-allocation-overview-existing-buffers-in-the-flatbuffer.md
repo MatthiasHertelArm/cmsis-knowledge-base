@@ -6,8 +6,8 @@ title: "Online Memory Allocation Overview in TensorFlow Lite Micro: Existing buf
 summary: "The TFLite flatbuffer model contains a variety of information required to run a model in TFLite or TFLM."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/online_memory_allocation_overview.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/online_memory_allocation_overview.md#existing-buffers-in-the-flatbuffer"
+source: "tensorflow/tflite-micro@bd621c2:tensorflow/lite/micro/docs/online_memory_allocation_overview.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/bd621c2/tensorflow/lite/micro/docs/online_memory_allocation_overview.md#existing-buffers-in-the-flatbuffer"
 license: "Apache-2.0"
 mode: "V"
 ---

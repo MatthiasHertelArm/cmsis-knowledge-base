@@ -10,7 +10,7 @@ code: "M387"
 symptoms: ["M387", "CPU: <sauNumRegions> set to 0 but regions are configured."]
 symptom_regex: "^CPU: <sauNumRegions> set to 0 but regions are configured\\.$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"

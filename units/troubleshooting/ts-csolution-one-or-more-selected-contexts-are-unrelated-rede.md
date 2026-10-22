@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["one or more selected contexts are unrelated, redefine the '--context arg [...]' option"]
 symptom_regex: "^one or more selected contexts are unrelated, redefine the '\\-\\-context arg \\[\\.\\.\\.\\]' option$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5870"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:5870"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

@@ -6,8 +6,8 @@ title: "cmock README"
 summary: "CMock is a mock and stub generator and runtime for unit testing C. It's been designed to work smoothly with Unity Test, another of the embedded-software testing tools developed by ThrowTheSwitch.org."
 status: "draft"
 collection: "cmock"
-source: "ThrowTheSwitch/CMock@f2a70b4:README.md"
-doc_source: "https://github.com/ThrowTheSwitch/CMock/blob/f2a70b4/README.md"
+source: "ThrowTheSwitch/CMock@34c26e5:README.md"
+doc_source: "https://github.com/ThrowTheSwitch/CMock/blob/34c26e5/README.md"
 license: "MIT"
 mode: "V"
 ---
@@ -23,8 +23,8 @@ useful and usable mock interfaces for unit testing. Give it a try!
 If you don't care to manage unit testing builds yourself, consider checking out Ceedling, 
 a test-centered build manager for unit testing C code.
 
- - [Known Issues](https://github.com/ThrowTheSwitch/CMock/blob/f2a70b4/docs/CMockKnownIssues.md)
- - [Change Log](https://github.com/ThrowTheSwitch/CMock/blob/f2a70b4/docs/CMockChangeLog.md)
+ - [Known Issues](https://github.com/ThrowTheSwitch/CMock/blob/34c26e5/docs/CMockKnownIssues.md)
+ - [Change Log](https://github.com/ThrowTheSwitch/CMock/blob/34c26e5/docs/CMockChangeLog.md)
 
 Getting Started
 ===============
@@ -54,16 +54,16 @@ then run its self-tests:
     > rake             # Run all CMock self tests
 
 Before working on this project, you're going to want to read our guidelines on 
-[contributing](https://github.com/ThrowTheSwitch/CMock/blob/f2a70b4/docs/CONTRIBUTING.md). 
+[contributing](https://github.com/ThrowTheSwitch/CMock/blob/34c26e5/docs/CONTRIBUTING.md). 
 
 API Documentation
 =================
 
 * Not sure what you're doing?
-	* [View docs/CMock_Summary.md](https://github.com/ThrowTheSwitch/CMock/blob/f2a70b4/docs/CMock_Summary.md)
+	* [View docs/CMock_Summary.md](https://github.com/ThrowTheSwitch/CMock/blob/34c26e5/docs/CMock_Summary.md)
 * Interested in our MIT license?
-	* [View docs/license.txt](https://github.com/ThrowTheSwitch/CMock/blob/f2a70b4/LICENSE.txt)
+	* [View docs/license.txt](https://github.com/ThrowTheSwitch/CMock/blob/34c26e5/LICENSE.txt)
 * Are there examples?
-	* They are all in [/examples](https://github.com/ThrowTheSwitch/CMock/blob/f2a70b4/examples/)
+	* They are all in [/examples](https://github.com/ThrowTheSwitch/CMock/blob/34c26e5/examples/)
 * Any other resources to check out?
 	* Definitely! Check out our developer portal on [ThrowTheSwitch.org](http://throwtheswitch.org)

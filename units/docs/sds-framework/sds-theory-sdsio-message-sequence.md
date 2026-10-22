@@ -6,13 +6,13 @@ title: "theory: SDSIO Message Sequence"
 summary: "This section describes the states and the message sequence of the SDS framework when using the SDSIO-Server. It contains the following threads that execute on the target."
 status: "draft"
 collection: "sds-framework"
-source: "ARM-software/SDS-Framework@4459441:documentation/theory.md"
-doc_source: "https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/theory.md#sdsio-message-sequence"
+source: "ARM-software/SDS-Framework@c18efee:documentation/theory.md"
+doc_source: "https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/theory.md#sdsio-message-sequence"
 license: "Apache-2.0"
 mode: "V"
 ---
 
-This section describes the states and the message sequence of the SDS framework when using the [SDSIO-Server](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/utilities.md#sdsio-server).
+This section describes the states and the message sequence of the SDS framework when using the [SDSIO-Server](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/utilities.md#sdsio-server).
 It contains the following threads that execute on the target.
 
 - **sdsControlThread**: Control thread that organizes the overall execution.

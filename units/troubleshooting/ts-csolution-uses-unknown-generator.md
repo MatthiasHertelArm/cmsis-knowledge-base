@@ -9,7 +9,7 @@ severity: "warning"
 symptoms: ["<…>Component <…> uses unknown generator <…>"]
 symptom_regex: "^.+?Component .+? uses unknown generator .+?$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrCbuild.cpp:179"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrCbuild.cpp:179"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

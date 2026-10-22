@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["target-types not found"]
 symptom_regex: "^target\\-types not found$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:95"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrYamlParser.cpp:95"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

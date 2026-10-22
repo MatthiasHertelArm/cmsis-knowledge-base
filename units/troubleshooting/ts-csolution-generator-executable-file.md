@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["generator executable file '<…>' does not exist"]
 symptom_regex: "^generator executable file '.+?' does not exist$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5151"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:5151"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

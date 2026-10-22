@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["initializing RTE Model failed"]
 symptom_regex: "^initializing RTE Model failed$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:511"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:511"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

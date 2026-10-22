@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["no context was found with filter '<…>'"]
 symptom_regex: "^no context was found with filter '.+?'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4843"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:4843"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

@@ -6,7 +6,7 @@ title: "Experimental Features: DWT Feature Variants / Recommended Documentation 
 summary: "Experimental Features: DWT Feature Variants / Recommended Documentation and Schema Changes"
 status: "draft"
 collection: "cmsis-toolbox"
-source: "Open-CMSIS-Pack/cmsis-toolbox@6c04673:docs/Experimental-Features.md"
+source: "Open-CMSIS-Pack/cmsis-toolbox@3ce8307:docs/Experimental-Features.md"
 doc_source: "https://open-cmsis-pack.github.io/cmsis-toolbox/Experimental-Features/#recommended-documentation-and-schema-changes"
 license: "Apache-2.0"
 mode: "V"

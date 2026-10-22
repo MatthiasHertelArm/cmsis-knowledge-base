@@ -6,8 +6,8 @@ title: "Unity Assertions Reference: Advanced Asserting: Details On Tricky Assert
 summary: "This section helps you understand how to deal with some of the trickier assertion situations you may run into. It will give you a glimpse into some of the under-the-hood details of Unity’s assertion mechanisms."
 status: "draft"
 collection: "unity"
-source: "ThrowTheSwitch/Unity@2b80d1a:docs/UnityAssertionsReference.md"
-doc_source: "https://github.com/ThrowTheSwitch/Unity/blob/2b80d1a/docs/UnityAssertionsReference.md#advanced-asserting-details-on-tricky-assertions"
+source: "ThrowTheSwitch/Unity@7f1a686:docs/UnityAssertionsReference.md"
+doc_source: "https://github.com/ThrowTheSwitch/Unity/blob/7f1a686/docs/UnityAssertionsReference.md#advanced-asserting-details-on-tricky-assertions"
 license: "MIT"
 mode: "V"
 ---

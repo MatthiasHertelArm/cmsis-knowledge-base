@@ -6,7 +6,7 @@ title: "Experimental Features: Configure Trace Generation"
 summary: "The file .cmsis/<solution-set>.ctrace.yml is the user-facing configuration file for the trace generation. The CMSIS-Debugger implements a graphical user interface that is shown below. Each processor has a separate configuration section."
 status: "draft"
 collection: "cmsis-toolbox"
-source: "Open-CMSIS-Pack/cmsis-toolbox@6c04673:docs/Experimental-Features.md"
+source: "Open-CMSIS-Pack/cmsis-toolbox@3ce8307:docs/Experimental-Features.md"
 doc_source: "https://open-cmsis-pack.github.io/cmsis-toolbox/Experimental-Features/#configure-trace-generation"
 license: "Apache-2.0"
 mode: "V"
@@ -25,7 +25,7 @@ Exceptions             | -  | -        | yes             | yes      | yes
 Event Counters         | -  | -        | yes             | yes      | yes
 PMU Event              | -  | -        | no              | yes      | yes
 Instrumentation Trace  | -  | -        | yes             | yes      | yes
-DWT Data Trace         | -  | -        | 4 comparators   | 8 comparators | 8 comparators
+DWT Data Trace         | -  | -        | 4 comparators   | 8 comparators | 4 comparators
 Instruction Trace      | -  | with TB  | with TB         | with TB  | with TB
 Start, Stop, Halt      | -  | 2 comparators | 4 comparators | 8 comparators | 8 comparators
 PC Sampling            | -  | -        | yes             | yes      | yes

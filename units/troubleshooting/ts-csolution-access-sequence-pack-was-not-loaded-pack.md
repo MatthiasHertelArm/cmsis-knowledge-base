@@ -9,14 +9,14 @@ severity: "warning"
 symptoms: ["access sequence pack was not loaded: '$Pack(<…>)$'"]
 symptom_regex: "^access sequence pack was not loaded: '\\$Pack\\(.+?\\)\\$'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3703"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:3703"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A `$Pack(Vendor::Name)$` access sequence refers to a pack that is not among the packs loaded for the context: it is not listed under packs: of the csolution.yml/cproject.yml/clayer.yml (when packs are listed, only those are loaded) or it is not installed."
+summary: "A `$Pack(vendor::name)$` access sequence in a csolution YAML file (for example in a path or file reference) names a pack that matches none of the packs loaded for the context."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3684-3707", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:539-575", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:2666-2691", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestAccessSequences/pack-access-sequences.csolution.yml:12"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3684-3705", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3692-3705", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3702-3704", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3727-3729"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-A `$Pack(Vendor::Name)$` access sequence refers to a pack that is not among the packs loaded for the context: it is not listed under packs: of the csolution.yml/cproject.yml/clayer.yml (when packs are listed, only those are loaded) or it is not installed. The `<…>` is the pack as written; the sequence stays unexpanded, so the resulting path is wrong.
+A `$Pack(vendor::name)$` access sequence in a csolution YAML file (for example in a path or file reference) names a pack that matches none of the packs loaded for the context. ExpandPackDir scans the loaded packages for one whose vendor and name match the argument; if none matches, the replacement stays empty and the sequence is left unexpanded. The `<…>` in the message is the pack argument as written in the sequence, and the source line 3703 prints it back as `$Pack(<pack>)$`.
 
 ## Fix
 
-Add the pack to packs:, e.g. `- pack: ARM::CMSIS`, and install it with `cpackget add Vendor::Name`; or correct the vendor/name spelling in the `$Pack(...)$` sequence.
+Check that the pack named inside `$Pack(...)$` is spelled as vendor::name and matches a pack that is installed and listed in the csolution's `packs:` section (or in the project's `packs:` entry), then rebuild. Example: `packs: - pack: Vendor::PackName` with the same vendor and name used in the access sequence.
 
 ## Trigger in the source
 
@@ -37,11 +37,15 @@ Add the pack to packs:, e.g. `- pack: ARM::CMSIS`, and install it with `cpackget
 if (replacement.empty()) {
 ```
 
+## Note
+
+The message is a warning and ExpandPackDir returns without changing the item, so the build continues with the raw sequence text. The README has no entry for this message. The cause is inferred from the matching loop; the pack may be missing from the loaded set for reasons beyond the spelling, such as the pack not being installed.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrWorker.cpp:3684-3707`
-- `tools/projmgr/src/ProjMgrWorker.cpp:539-575`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:2666-2691`
-- `tools/projmgr/test/data/TestAccessSequences/pack-access-sequences.csolution.yml:12`
+- `tools/projmgr/src/ProjMgrWorker.cpp:3684-3705`
+- `tools/projmgr/src/ProjMgrWorker.cpp:3692-3705`
+- `tools/projmgr/src/ProjMgrWorker.cpp:3702-3704`
+- `tools/projmgr/src/ProjMgrWorker.cpp:3727-3729`

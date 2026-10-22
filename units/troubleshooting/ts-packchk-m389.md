@@ -10,7 +10,7 @@ code: "M389"
 symptoms: ["M389", "The component '%NAME%' (Line %LINE%) has dependency '%EXPR%' : '%NAME2%' that is resolved by the component itself."]
 symptom_regex: "^The component '.+?' \\(Line .+?\\) has dependency '.+?' : '.+?' that is resolved by the component itself\\.$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"

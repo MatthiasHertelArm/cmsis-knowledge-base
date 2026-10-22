@@ -10,7 +10,7 @@ code: "M387"
 symptoms: ["M387", "Description in '%TAG%' is exceeding the recommended 128 (US ASCII) characters."]
 symptom_regex: "^Description in '.+?' is exceeding the recommended 128 \\(US ASCII\\) characters\\.$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"

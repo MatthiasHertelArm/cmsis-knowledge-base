@@ -11,8 +11,8 @@ refines: ["rule-no-fabrication"]
 delta_of: "rule-no-fabrication"
 ---
 
-Do not invent topology facts, addresses, protocols, patches, values, or applicability. Return missing or contradictory hardware facts to `proc-debug-access-knowledge` (`knowledge_get`).
+Do not invent topology facts, addresses, protocols, patches, values, or applicability. Return missing or contradictory hardware facts to `$debug-access-knowledge`.
 
 ## Delta zu rule-no-fabrication
 
-topology facts, addresses, protocols, patches, values, or applicability. Return missing or contradictory hardware facts to `proc-debug-access-knowledge` (`knowledge_get`).
+topology facts, addresses, protocols, patches, values, or applicability. Return missing or contradictory hardware facts to `$debug-access-knowledge`.

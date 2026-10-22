@@ -6,8 +6,8 @@ title: "Arm(R) IP support in Tensorflow Lite for Microcontrollers (TFLM): Arm(R)
 summary: "Arm's Cortex-M processor support is fully integrated to TFLM. To build a TFLM library for any Cortex-M processor, check out the Cortex-M generic readme. Additionally, CMSIS-NN provides optimal performance executing machine learning workloads on Cortex-M. See the sub chapter CMSIS-NN."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/arm.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/arm.md#arm-r-cortex-r-m-processor-family"
+source: "tensorflow/tflite-micro@bd621c2:tensorflow/lite/micro/docs/arm.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/bd621c2/tensorflow/lite/micro/docs/arm.md#arm-r-cortex-r-m-processor-family"
 license: "Apache-2.0"
 mode: "V"
 ---

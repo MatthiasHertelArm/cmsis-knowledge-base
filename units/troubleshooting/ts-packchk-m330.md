@@ -10,8 +10,8 @@ code: "M330"
 symptoms: ["M330", "Condition redefined: '%COND%', already defined in Line %LINE%"]
 symptom_regex: "^Condition redefined: '.+?', already defined in Line .+?$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"

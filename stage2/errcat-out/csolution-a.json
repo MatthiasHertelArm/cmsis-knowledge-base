@@ -152,17 +152,6 @@
   "confidence": "medium"
  },
  {
-  "id": "ts-csolution-a-single-context-must-be-specified",
-  "cause": "`csolution run -g <generator>` for a generator defined in a pack (not a globally registered one) ran with more than one selected context, e.g. no `-c` option in a solution with several build or target types. The pack generator runs for exactly one context.",
-  "fix": "Select one context with `-c`, e.g. `csolution run <name>.csolution.yml -g <generator-id> -c <project>.Debug+<target>`; `csolution list contexts <name>.csolution.yml` shows the names.",
-  "evidence": [
-   "tools/projmgr/src/ProjMgrWorker.cpp:5101-5105",
-   "tools/projmgr/src/ProjMgr.cpp:1042-1066",
-   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:3545-3565"
-  ],
-  "confidence": "high"
- },
- {
   "id": "ts-csolution-is-not-portable-use-relative-path-instead",
   "cause": "A path value in a csolution.yml, cproject.yml or clayer.yml (projects:, layers:, files:, add-path:, linker:, packs: path:, output-dirs:, generators: and similar path nodes) is absolute, e.g. `/home/user/...` or `C:/...`. The `<…>` is that path; the message carries file, line and column.",
   "fix": "Write the path relative to the YAML file that contains it (e.g. `../common/inc`), or use an access sequence such as `$SolutionDir()$/common/inc`, so the project works on other machines.",
@@ -187,18 +176,6 @@
   ],
   "confidence": "high",
   "note": "The message prints the given sequence without its closing '$'."
- },
- {
-  "id": "ts-csolution-access-sequence-pack-was-not-loaded-pack",
-  "cause": "A `$Pack(Vendor::Name)$` access sequence refers to a pack that is not among the packs loaded for the context: it is not listed under packs: of the csolution.yml/cproject.yml/clayer.yml (when packs are listed, only those are loaded) or it is not installed. The `<…>` is the pack as written; the sequence stays unexpanded, so the resulting path is wrong.",
-  "fix": "Add the pack to packs:, e.g. `- pack: ARM::CMSIS`, and install it with `cpackget add Vendor::Name`; or correct the vendor/name spelling in the `$Pack(...)$` sequence.",
-  "evidence": [
-   "tools/projmgr/src/ProjMgrWorker.cpp:3684-3707",
-   "tools/projmgr/src/ProjMgrWorker.cpp:539-575",
-   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:2666-2691",
-   "tools/projmgr/test/data/TestAccessSequences/pack-access-sequences.csolution.yml:12"
-  ],
-  "confidence": "high"
  },
  {
   "id": "ts-csolution-was-not-found",
