@@ -6,8 +6,8 @@ title: "Command reference"
 summary: "PyOCD has a simple command processor that is accessible from the console via the commander subcommand, or from gdb as remote monitor commands."
 status: "draft"
 collection: "pyocd"
-source: "pyocd/pyOCD@d1974ff:docs/command_reference.md"
-doc_source: "https://github.com/pyocd/pyOCD/blob/d1974ff/docs/command_reference.md"
+source: "pyocd/pyOCD@a743211:docs/command_reference.md"
+doc_source: "https://github.com/pyocd/pyOCD/blob/a743211/docs/command_reference.md"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -108,6 +108,8 @@ All commands
 | [`status`](#status), [`st`](#status) |  | Show the target's current state. |
 | **Threads** |  |  |
 | [`threads`](#threads) | {flush,enable,disable,status} | Control thread awareness. |
+| **Trace** |  |  |
+| [`ctrace`](#ctrace) | reload | Reload and immediately apply the ctrace-run configuration. |
 | **Utility** |  |  |
 | [`sleep`](#sleep) | MILLISECONDS | Sleep for a number of milliseconds before continuing. |
 | **Values** |  |  |

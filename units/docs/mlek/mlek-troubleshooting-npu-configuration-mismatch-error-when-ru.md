@@ -6,8 +6,8 @@ title: "Troubleshooting: NPU configuration mismatch error when running inference
 summary: "If you see the following error message when an inference is executed:"
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/troubleshooting.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/troubleshooting.md#npu-configuration-mismatch-error-when-running-inference"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/troubleshooting.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/troubleshooting.md#npu-configuration-mismatch-error-when-running-inference"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -33,7 +33,7 @@ For example, if the `accelerator-config` from the Vela command was `ethos-u55-12
 `ethos-u55-256`, the FVP must be executed with additional command line parameter to instruct it to emulate the
 256 MACs configuration instead.
 
-The [deploying on an FVP](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./deployment.md#deploying-on-an-fvp) page provides guidance
+The [deploying on an FVP](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./deployment.md#deploying-on-an-fvp) page provides guidance
 on how to instruct the FVP to change the number of MACs units.
 
 Note that when the FVP is launched and the application starts executing, various parameters about the system are

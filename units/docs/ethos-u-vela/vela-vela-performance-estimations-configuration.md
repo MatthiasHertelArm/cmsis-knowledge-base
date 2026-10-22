@@ -6,8 +6,8 @@ title: "Vela Performance Estimations: Configuration"
 summary: "The first section of the summary shows the configuration used for optimizing the network."
 status: "draft"
 collection: "ethos-u-vela"
-source: "artificial-intelligence/ethos-u/ethos-u-vela@eb9cf0d:PERFORMANCE.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/eb9cf0d/PERFORMANCE.md#configuration"
+source: "artificial-intelligence/ethos-u/ethos-u-vela@4bd6685:PERFORMANCE.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/4bd6685/PERFORMANCE.md#configuration"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -31,7 +31,7 @@ NPU that the compiler is targeting.
 __NOTE: It is crucial to select the correct device, otherwise a run-time check
 in the driver will fail.__  
 To select a different accelerator configuration use the CLI option
-`--accelerator-config`, see [OPTIONS.md](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/eb9cf0d/OPTIONS.md#Accelerator-Configuration).
+`--accelerator-config`, see [OPTIONS.md](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/4bd6685/OPTIONS.md#Accelerator-Configuration).
 
 ### System configuration
 
@@ -43,7 +43,7 @@ This is because the compiler makes some of its optimization decisions based upon
 this information.  Failing to select the correct configuration could result in
 run-time errors, bit-inexact operation, or suboptimal operation of the Embedded
 NPU.  To select a different system configuration use the CLI option
-`--system-config`, see [OPTIONS.md](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/eb9cf0d/OPTIONS.md#System-Config).
+`--system-config`, see [OPTIONS.md](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/4bd6685/OPTIONS.md#System-Config).
 
 ### Memory mode
 
@@ -52,7 +52,7 @@ __NOTE: It is very important to select a memory mode that correctly describes
 the target embedded system.__  
 This is because the compiler makes some of its optimization decisions based upon
 this information.  To select a different memory mode use the CLI option
-`--memory-mode`, see [OPTIONS.md](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/eb9cf0d/OPTIONS.md#Memory-Mode).
+`--memory-mode`, see [OPTIONS.md](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/4bd6685/OPTIONS.md#Memory-Mode).
 
 ### Accelerator clock
 
@@ -62,5 +62,5 @@ The accelerator clock for the given the system configuration.
 
 The design peak memory bandwidth for the given system configuration.
 It gives the theoretical maximum bandwidth of the memory based upon the
-[System Configuration](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/eb9cf0d/OPTIONS.md#Configuration-File) parameters specified
+[System Configuration](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/4bd6685/OPTIONS.md#Configuration-File) parameters specified
 and the AXI port width of the Ethos-U NPU.

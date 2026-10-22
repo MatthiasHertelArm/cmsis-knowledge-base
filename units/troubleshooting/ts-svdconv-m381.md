@@ -10,15 +10,15 @@ code: "M381"
 symptoms: ["M381", "Interrupt '%NAME%' Number '%NUM%' greater or equal <deviceNumInterrupts>: '%NUM2%'."]
 symptom_regex: "^Interrupt '.+?' Number '.+?' greater or equal <deviceNumInterrupts>: '.+?'\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "An <interrupt> <value> is greater than or equal to <cpu><deviceNumInterrupts>."
+summary: "svdconv found an SVD interrupt whose number is greater than or equal to the device's declared interrupt count (deviceNumInterrupts)."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdInterrupt.cpp:113-158", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/unittests/src/SvdInterruptTest.cpp:117-123", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/unittests/src/SvdInterruptTest.cpp:159-168", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:202"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -28,17 +28,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdInte
 
 ## Cause
 
-An <interrupt> <value> is greater than or equal to <cpu><deviceNumInterrupts>. Valid numbers run from 0 to deviceNumInterrupts-1, so the interrupt is dropped.
+svdconv found an SVD interrupt whose number is greater than or equal to the device's declared interrupt count (deviceNumInterrupts). The %NAME% is the peripheral interrupt name, %NUM% its number, and %NUM2% the device-wide limit it exceeds. The mismatch is between the interrupt numbers in the SVD and the device-level interrupt count given in the description.
 
 ## Fix
 
-Correct the interrupt's <value>, or raise <deviceNumInterrupts> to the highest interrupt number plus one.
+Check the SVD: the interrupt value for the named interrupt should be below the device's interrupt count. Either correct the interrupt number in the peripheral entry or raise the device interrupt count (deviceNumInterrupts) so it covers that number, then rerun svdconv.
+
+## Note
+
+Written from the message text alone, since the clone was not available to read the trigger; the cause and fix are inferred from the message wording and should be checked against the source.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdInterrupt.cpp:113-158`
-- `tools/svdconv/test/unittests/src/SvdInterruptTest.cpp:117-123`
-- `tools/svdconv/test/unittests/src/SvdInterruptTest.cpp:159-168`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:202`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

@@ -6,7 +6,7 @@ title: "Secure boot: Signing the images manually / Signing the secure image manu
 summary: "TITLE: Versatile Express Images Configuration File [IMAGES] TOTALIMAGES: 3 ;Number of Images (Max: 32) IMAGE0ADDRESS: 0x00000000 IMAGE0FILE: \\Software\\bl2.axf ; BL2 bootloader IMAGE1ADDRESS: 0x10080000 IMAGE1FILE: \\Software\\tfm_sig1.bin ; TF-M default test binary blob IMAGE2ADDRESS: 0x10180000 IMAGE2FILE: \\Software\\tfm_sig2.bin ; TF-M regression …"
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/booting/tfm_secure_boot.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/booting/tfm_secure_boot.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/booting/tfm_secure_boot.html#signing-the-secure-image-manually-in-case-of-multiple-image-boot"
 license: "BSD-3-Clause"
 mode: "V"

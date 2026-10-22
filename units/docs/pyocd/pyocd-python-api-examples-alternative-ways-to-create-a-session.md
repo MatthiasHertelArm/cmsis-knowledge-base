@@ -6,8 +6,8 @@ title: "Python API examples: Alternative ways to create a session"
 summary: "It's important to understand that the ConnectHelper.session_with_chosen_probe() method doesn't itself open the session for you. Instead, it's using the session object as a context manager that does this."
 status: "draft"
 collection: "pyocd"
-source: "pyocd/pyOCD@d1974ff:docs/api_examples.md"
-doc_source: "https://github.com/pyocd/pyOCD/blob/d1974ff/docs/api_examples.md#alternative-ways-to-create-a-session"
+source: "pyocd/pyOCD@a743211:docs/api_examples.md"
+doc_source: "https://github.com/pyocd/pyOCD/blob/a743211/docs/api_examples.md#alternative-ways-to-create-a-session"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -73,4 +73,4 @@ with session:
     # ...
 ```
 
-More options can be found [here](https://github.com/pyocd/pyOCD/blob/d1974ff/docs/options.md).
+More options can be found [here](https://github.com/pyocd/pyOCD/blob/a743211/docs/options.md).

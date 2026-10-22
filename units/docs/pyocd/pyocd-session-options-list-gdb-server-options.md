@@ -6,8 +6,8 @@ title: "Session options list: GDB server options"
 summary: "These session options are currently only applied when running the GDB server."
 status: "draft"
 collection: "pyocd"
-source: "pyocd/pyOCD@d1974ff:docs/options.md"
-doc_source: "https://github.com/pyocd/pyOCD/blob/d1974ff/docs/options.md#gdb-server-options"
+source: "pyocd/pyOCD@a743211:docs/options.md"
+doc_source: "https://github.com/pyocd/pyOCD/blob/a743211/docs/options.md#gdb-server-options"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -21,6 +21,7 @@ These session options are currently only applied when running the GDB server.
 | enable_semihosting | bool | False | Set to True to handle semihosting requests. Also see the `semihost_console_type` option. |
 | enable_swv | bool | False | Whether to enable SWV printf output over the semihosting console. Requires the `swv_system_clock` option to be set. The SWO baud rate can be controlled with the `swv_clock` option. |
 | debug.status_fault_retry_timeout | float | 1 | Duration in seconds that a failed target status check will be retried before an error is raised. Only applies while the target is running after a resume operation in the debugger and pyOCD is waiting for it to halt again. |
+| live.status_fault_retry_timeout | float | No default | Timeout in seconds for retrying target status reads that fail with a transfer error while a server monitors a core. A successful read clears the retry period. If the timeout expires, the server instance for that core exits. If the option is omitted, retries continue indefinitely. |
 | gdbserver_port | int | 3333 | Base TCP port for the gdbserver. The core number, which is 0 for the primary core, will be added to this value. |
 | persist | bool | False | If True, the GDB server will not exit after GDB disconnects. |
 | report_core_number | bool | False | Whether gdb server should report core number as part of the per-thread information. |

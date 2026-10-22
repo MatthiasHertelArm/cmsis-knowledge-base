@@ -3,25 +3,33 @@ id: "ceed-ide-test-suite-console-report-plugin-overview"
 type: "concept"
 domain: "test"
 title: "IDE Test Suite Console Report: Plugin Overview"
-summary: "This plugin is intended to be used in place of the more commonly used \"pretty\" test report plugin."
+summary: "This plugin replaces the more commonly used \"pretty\" test report plugin that defaults for command line use. Like its sibling, it collects raw test results from the test executables of your test suite and prints them in summary form."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/report-tests-ide-stdout.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/plugins/report-tests-ide-stdout.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/report-tests-ide-stdout/#plugin-overview"
 license: "MIT"
 mode: "V"
 ---
 
-This plugin is intended to be used in place of the more commonly used "pretty" 
-test report plugin. Like its sibling, this plugin ollects raw test results from
-the individual test executables of your test suite and presents them in a more 
-readable summary form.
+This plugin replaces the more commonly used "pretty" test report plugin that defaults
+for command line use. Like its sibling, it collects raw test results from the test 
+executables of your test suite and prints them in summary form.
 
-The format of test results produced by this plugin is identical to its prettier
-sibling with one key difference — test failures are listed in such a way that 
-filepaths, line numbers, and test case function names can be easily parsed by 
-a typical IDE. The formatting of test failure messages uses a simple, defacto 
-standard of a sort recognized almost universally.
+The difference is how it lists failed and ignored tests. By default, each one
+prints in the shape of a GCC diagnostic. An IDE that reads GCC output turns each
+line into a problem that links to the test.
 
-The end result is that test failures in your IDE's build window can become 
-links that jump directly to failing test cases.
+Example:
+
+```
+test/TestModel.c:21:1: error: testInitShouldCallSchedulerAndTemperatureFilterInit: Function TaskScheduler_Init() called more times than expected.
+```
+
+A failed test is an `error`. An ignored test is a `warning`. The line names the
+test file, the test’s line, the test case, and Unity’s message.
+
+Unity reports a line but no column, so the column is always `1`.
+
+Eclipse CDT, VS Code, and CLion all read this shape. So do many other IDEs and
+tools that understand GCC output, including ones not covered here.

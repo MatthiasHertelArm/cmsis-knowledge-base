@@ -6,8 +6,8 @@ title: "tool versions lts distributions: Open-source tools in popular long-term 
 summary: "Mbed TLS' minimum tool version requirements are usually set based on the versions shipped in long-term support releases of major operating systems. The table below lists versions of relevant software in distributions that are in support."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/development/tool-versions-lts-distributions.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/development/tool-versions-lts-distributions.md#open-source-tools-in-popular-long-term-support-distributions"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/development/tool-versions-lts-distributions.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/development/tool-versions-lts-distributions.md#open-source-tools-in-popular-long-term-support-distributions"
 license: "Apache-2.0"
 mode: "V"
 ---

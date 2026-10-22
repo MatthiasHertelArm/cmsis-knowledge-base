@@ -6,8 +6,8 @@ title: "Use with Keil µVision: Project Configuration"
 summary: "Two important configuration areas need special attention in µVision projects for Arm FVPs:"
 status: "draft"
 collection: "avh"
-source: "ARM-software/AVH@bb8431b:DoxyGen/infrastructure/src/avh_mdk_uv4.md"
-doc_source: "https://github.com/ARM-software/AVH/blob/bb8431b/DoxyGen/infrastructure/src/avh_mdk_uv4.md#project-configuration"
+source: "ARM-software/AVH@60f78be:DoxyGen/infrastructure/src/avh_mdk_uv4.md"
+doc_source: "https://github.com/ARM-software/AVH/blob/60f78be/DoxyGen/infrastructure/src/avh_mdk_uv4.md#project-configuration"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -22,7 +22,7 @@ Two important configuration areas need special attention in µVision projects fo
 ### Target selection
 
 Device support for Arm FVP targets is implemented with the same CMSIS principles as used for real hardware devices.
-[CMSIS-based projects for Arm FVPs](https://github.com/ARM-software/AVH/blob/bb8431b/DoxyGen/infrastructure/src/../../simulation/html/avh_fvp_cmsis.html) lists the device family packs and BSP
+[CMSIS-based projects for Arm FVPs](https://github.com/ARM-software/AVH/blob/60f78be/DoxyGen/infrastructure/src/../../simulation/html/avh_fvp_cmsis.html) lists the device family packs and BSP
 packs required for use with Arm FVPs.
 
 When opening an existing project, you will be asked if any missing packs required by the project shall be installed. If
@@ -37,7 +37,7 @@ When creating a new project or when changing the target in an existing project y
     - In *Devices* tab expand *ARM* section and select the target Cortex-M core.
     - In the [*Packs*](https://developer.arm.com/documentation/101407/latest/Creating-Applications/Software-Components/Pack-Installer/Packs-Dialog)
       tab under *Device Specific* category select the target CMSIS-Pack that implements the required device according
-      to the table in [CMSIS-based projects for Arm FVPs](https://github.com/ARM-software/AVH/blob/bb8431b/DoxyGen/infrastructure/src/../../simulation/html/avh_fvp_cmsis.html).
+      to the table in [CMSIS-based projects for Arm FVPs](https://github.com/ARM-software/AVH/blob/60f78be/DoxyGen/infrastructure/src/../../simulation/html/avh_fvp_cmsis.html).
     - Press *Install* or *Update* button in the Action field to get the latest version installed. For example for Arm
       Cortex-M4:
 
@@ -48,7 +48,7 @@ When creating a new project or when changing the target in an existing project y
     - In the list of device vendors expand *ARM* group.
     - Expand the group of your target Cortex-M core.
     - In the list select the target device according to the table in
-      [CMSIS-based projects for Arm FVPs](https://github.com/ARM-software/AVH/blob/bb8431b/DoxyGen/infrastructure/src/../../simulation/html/avh_fvp_cmsis.html) and press *OK*. For example for Arm
+      [CMSIS-based projects for Arm FVPs](https://github.com/ARM-software/AVH/blob/60f78be/DoxyGen/infrastructure/src/../../simulation/html/avh_fvp_cmsis.html) and press *OK*. For example for Arm
       Cortex-M4:
 
       (figure: Select Arm FVP device as the target)

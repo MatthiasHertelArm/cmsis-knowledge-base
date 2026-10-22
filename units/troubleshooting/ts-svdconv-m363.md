@@ -10,15 +10,15 @@ code: "M363"
 symptoms: ["M363", "CPU: <sauNumRegions> not set."]
 symptom_regex: "^CPU: <sauNumRegions> not set\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "<cpu> contains <sauRegionsConfig> but no <sauNumRegions>."
+summary: "The SVD file describes a Cortex-M CPU block (the CPU element) but does not give a value for the sauNumRegions element, which is the number of regions in the Security Attribution Unit. svdconv prints M363 with that element name …"
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCpu.cpp:196", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCpu.cpp:336", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCpu.cpp:338", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/unittests/src/SvdCpuModelTest.cpp:331", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:182"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp (trigger not available in clone; message text only)"]
 ---
 
 ## Symptom
@@ -28,18 +28,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCpu.
 
 ## Cause
 
-<cpu> contains <sauRegionsConfig> but no <sauNumRegions>. The SAU region configuration is dropped.
+The SVD file describes a Cortex-M CPU block (the CPU element) but does not give a value for the sauNumRegions element, which is the number of regions in the Security Attribution Unit. svdconv prints M363 with that element name when it needs the value and the SVD omits it.
 
 ## Fix
 
-Add <sauNumRegions> to <cpu> with the number of SAU regions the device implements (1 to 255; 0 together with configured regions gives M387).
+Open the SVD file and add a <sauNumRegions> element inside the <cpu> block, with the number of SAU regions the device has (0 if the device has no SAU), then run svdconv again. The exact value must come from the device reference manual or the vendor SVD.
+
+## Note
+
+Reasoned from the message text and the element name only, because the clone was not available; the trigger condition itself was not read. The README documents the message as well, but its text was not supplied here to compare against.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdCpu.cpp:196`
-- `tools/svdconv/SVDModel/src/SvdCpu.cpp:336`
-- `tools/svdconv/SVDModel/src/SvdCpu.cpp:338`
-- `tools/svdconv/test/unittests/src/SvdCpuModelTest.cpp:331`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:182`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp (trigger not available in clone; message text only)`

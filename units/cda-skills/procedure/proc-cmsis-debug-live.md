@@ -103,7 +103,7 @@ never throws.
 | `initializing` | Wait, ask again. Do **not** issue a second start. |
 | `stopped` | Inspect freely. |
 | `running` | Reads and steps will be rejected. `pause_execution`, or set a breakpoint (the tool pauses the target briefly to apply it) and `wait_for_stop`. |
-| `unresponsive` | `check_target_connection`, then `restart_debugging`. More reads will only time out. |
+| `unresponsive` | `check_target_connection`; refusals are `PROBE_WEDGED` with the way to reconnect (below). `restart_debugging` re-flashes and resets: last. More reads will only time out. |
 
 `running` rejects `step_over`, `step_into`, `step_out`, `continue_execution`,
 `read_memory`, `read_core_registers`, `read_peripheral_register`,
@@ -287,8 +287,9 @@ immediately.
 
 `serial_open` takes the port directly; `serial_read` drains a buffered ring. If
 the user has the MS Serial Monitor open on the same device, the OS will not give
-you the tty — use `serial_subscribe_monitor` instead, which taps the extension
-rather than the kernel.
+you the tty (`PORT_HELD`): ask the user to stop monitoring it there. The Serial
+Monitor's API does not pass on what it receives, so `serial_subscribe_monitor`
+cannot read that session.
 
 - To see what the board prints, prefer `serial_capture`: one call opens the
   port, reads until your `until` regex matches or `durationMs` ends, and closes it.
@@ -313,7 +314,7 @@ When no rule decides — two windows debugging at once, or several idle ones —
 refuses to guess and asks you to choose: reading the wrong board's memory looks
 exactly like a firmware bug. `list_debug_windows` shows the candidates and the
 default target; `select_debug_window` pins one for the rest of the session. Or
-ask the user to pick one: a click on "CDA" in the VS Code status bar opens
+ask the user to pick one: a click on the CDA robot icon in the VS Code status bar opens
 Select Target Window.
 
 `WORKER_TIMEOUT` means the target window is alive but the call did not finish

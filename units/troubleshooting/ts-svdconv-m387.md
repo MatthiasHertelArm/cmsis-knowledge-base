@@ -10,14 +10,14 @@ code: "M387"
 symptoms: ["M387", "CPU: <sauNumRegions> set to 0 but regions are configured."]
 symptom_regex: "^CPU: <sauNumRegions> set to 0 but regions are configured\\.$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "<cpu> contains a <sauRegionsConfig> but <sauNumRegions> is 0. svdconv ignores the SAU region configuration."
+summary: "The SVD describes the Cortex-M security attribution unit (SAU) with sauNumRegions set to 0, yet the device also lists SAU regions in the CPU section."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCpu.cpp:337-346", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/unittests/src/SvdCpuModelTest.cpp:343-353", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:208"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp (message text only; source lines not available in this session)"]
 ---
 
 ## Symptom
@@ -27,16 +27,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCpu.
 
 ## Cause
 
-<cpu> contains a <sauRegionsConfig> but <sauNumRegions> is 0. svdconv ignores the SAU region configuration.
+The SVD describes the Cortex-M security attribution unit (SAU) with sauNumRegions set to 0, yet the device also lists SAU regions in the CPU section. The SVD CPU element is internally inconsistent: a zero region count contradicts the configured regions, so svdconv reports M387 instead of generating the SAU setup.
 
 ## Fix
 
-Set <sauNumRegions> to the number of SAU regions the device implements (at least the number of <region> entries), or remove <sauRegionsConfig> if the device has no SAU.
+Open the SVD file and check the CPU element. Either set sauNumRegions to the number of SAU regions the device actually has (greater than 0) when regions are described, or remove the SAU region definitions if the core has no SAU. Then rerun svdconv on the corrected file.
+
+## Note
+
+Source lines were not available, so the trigger condition and the exact wording of the SVD fields are inferred from the message text alone. Verify the condition against SVDConv_Msgs.cpp before relying on the fix.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdCpu.cpp:337-346`
-- `tools/svdconv/test/unittests/src/SvdCpuModelTest.cpp:343-353`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:208`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp (message text only; source lines not available in this session)`

@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["unknown access sequence: '<…>'"]
 symptom_regex: "^unknown access sequence: '.+?'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3783"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:3783"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A value contains `$<name>$` or `$<name>(<arg>)$` that is neither a defined variable nor a known access sequence; `<…>` is the text between the `$` signs."
+summary: "The text between the dollar-sign delimiters (the '<…>' in the message) is an access sequence that matches neither the pack-directory form nor the accessSequencesRegEx form, so the tool cannot expand it."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3783", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:21", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:238", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3112", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/ExternalGenerator/wrong-gendir.generator.yml:5", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/MLOps/failure_image_only_hw.csolution.yml:18", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:5834"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3727-3730", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3781-3784"]
 ---
 
 ## Symptom
@@ -25,20 +25,19 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-A value contains `$<name>$` or `$<name>(<arg>)$` that is neither a defined variable nor a known access sequence; `<…>` is the text between the `$` signs. Known ones include `$Dname$`, `$Pname$`, `$Bname$`, `$Compiler$`, `$Solution$`, `$Project$`, `$BuildType$`, `$TargetType$`, `$TargetSet$`, `$Dpack$`, `$Bpack$`, `$SolutionDir()$`, `$ProjectDir(<context>)$`, `$OutDir(<context>)$`, `$elf()$`, `$bin()$`, `$hex()$`, `$lib()$`, `$map()$`, `$cmse()$` and `$Pack(<pack>)$`, plus variables from `variables:`. Example: `path: $UnknownAccessSequence()$` in a generator file.
+The text between the dollar-sign delimiters (the '<…>' in the message) is an access sequence that matches neither the pack-directory form nor the accessSequencesRegEx form, so the tool cannot expand it. The sequence was found in a path-like value of the csolution or its layers, and the failed match at this line is the only place the error is printed. The exact accepted spellings are defined by the regexes, which are not among the lines given.
 
 ## Fix
 
-Correct the spelling or case of the access sequence, or define the variable under `variables:` of the target type or build type in the csolution.yml.
+Find the quoted sequence in the csolution YAML or layer file and correct its spelling so it matches a supported access sequence form, including the optional context argument. Check the README or the access sequence documentation for the supported names. If the sequence was meant as literal text, remove or escape the dollar signs.
+
+## Note
+
+The supported sequence names and the regex definitions were not in the lines provided, so the fix stays general. The message is printed only in the else branch after both regex checks fail, so it is reachable for any sequence that does not match either form.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrWorker.cpp:3783`
-- `tools/projmgr/src/ProjMgrWorker.cpp:21`
-- `tools/projmgr/src/ProjMgrWorker.cpp:238`
-- `tools/projmgr/src/ProjMgrWorker.cpp:3112`
-- `tools/projmgr/test/data/ExternalGenerator/wrong-gendir.generator.yml:5`
-- `tools/projmgr/test/data/MLOps/failure_image_only_hw.csolution.yml:18`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:5834`
+- `tools/projmgr/src/ProjMgrWorker.cpp:3727-3730`
+- `tools/projmgr/src/ProjMgrWorker.cpp:3781-3784`

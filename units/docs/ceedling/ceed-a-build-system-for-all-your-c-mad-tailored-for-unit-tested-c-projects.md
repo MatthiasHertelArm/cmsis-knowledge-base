@@ -6,7 +6,7 @@ title: "A Build System for All Your C Mad Scientisting Needs: “Tailored for un
 summary: "Well, we like to write unit tests for our C code to make it lean and mean — that whole [Test-Driven Development][tdd] thing."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/overview/build-system.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/overview/build-system.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/overview/build-system/#tailored-for-unit-tested-c-projects"
 license: "MIT"
 mode: "V"

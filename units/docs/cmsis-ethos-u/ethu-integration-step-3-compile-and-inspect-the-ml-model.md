@@ -6,8 +6,8 @@ title: "Integration: Tutorial: Create an Ethos-U application / Step 3: Compile a
 summary: "Part of: Tutorial: Create an Ethos-U application"
 status: "draft"
 collection: "cmsis-ethos-u"
-source: "ARM-software/CMSIS-Ethos-U@b2b641e:documentation/doxygen/integration/src/main.md"
-doc_source: "https://github.com/ARM-software/CMSIS-Ethos-U/blob/b2b641e/documentation/doxygen/integration/src/main.md#step-3-compile-and-inspect-the-ml-model"
+source: "ARM-software/CMSIS-Ethos-U@cf13d8d:documentation/doxygen/integration/src/main.md"
+doc_source: "https://github.com/ARM-software/CMSIS-Ethos-U/blob/cf13d8d/documentation/doxygen/integration/src/main.md#step-3-compile-and-inspect-the-ml-model"
 license: "Apache-2.0"
 mode: "V"
 ---

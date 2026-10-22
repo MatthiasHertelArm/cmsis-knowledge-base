@@ -10,16 +10,16 @@ code: "M365"
 symptoms: ["M365", "Redefined %DEVTYPE% '%MCU%' found, see Line %LINE%"]
 symptom_regex: "^Redefined .+? '.+?' found, see Line .+?$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Remove duplicate device/variant entries. Refer to [/package/devices/family/../device](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_device)."
-summary: "Two device leaves of the same kind (two <device> elements without variants, or two <variant> elements) have the same name in the PDSC."
+summary: "packchk found a second definition of the same device or variant name (%MCU%) in the PDSC while scanning the devices section, and it reports the line of the earlier definition in %LINE%."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:184", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:1892-1952", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:1277-1300", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:76-108", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:204"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp (message M365 text: Redefined %DEVTYPE% '%MCU%' found, see Line %LINE%)"]
 ---
 
 ## Symptom
@@ -29,22 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-Two device leaves of the same kind (two <device> elements without variants, or two <variant> elements) have the same name in the PDSC.
+packchk found a second definition of the same device or variant name (%MCU%) in the PDSC while scanning the devices section, and it reports the line of the earlier definition in %LINE%. The duplicate entry is typically a device or variant listed twice under the same family, or the same name repeated across the pack's device entries.
 
 ## Fix
 
-Rename or remove one of them so that every Dname and Dvariant is unique.
+Open the PDSC file, search for the device or variant name reported in the message, and remove or rename the duplicate <device> or <variant> element so each name appears once. Then rerun packchk on the pack.
 
 ## Note
 
-At 30f5e81 the function that raises M365 (ValidateSyntax::CheckDevices) is never called from Check(); the same duplication is reported as M392.
+The source lines were not available, so the trigger condition is inferred from the message text and the README cause only; the exact check and which line number %LINE% refers to could not be confirmed.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:184`
-- `tools/packchk/src/ValidateSyntax.cpp:1892-1952`
-- `tools/packchk/src/ValidateSyntax.cpp:1277-1300`
-- `tools/packchk/src/ValidateSyntax.cpp:76-108`
-- `tools/packchk/README.md:204`
+- `tools/packchk/src/PackChk_Msgs.cpp (message M365 text: Redefined %DEVTYPE% '%MCU%' found, see Line %LINE%)`

@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["csolution file not specified"]
 symptom_regex: "^csolution file not specified$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:537"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgr.cpp:537"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "The command needs a solution, but none was given: no `--solution`/`-s` option and no positional argument whose name ends in `.csolution.yml` or `.csolution.yaml`."
+summary: "PopulateContexts only parses a csolution when m_csolutionFile is non-empty."
 cause_origin: "source-analysis"
 confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:257-266", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:536-539", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:5170-5178"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:487-491", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:536-538"]
 ---
 
 ## Symptom
@@ -25,16 +25,19 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:257-
 
 ## Cause
 
-The command needs a solution, but none was given: no `--solution`/`-s` option and no positional argument whose name ends in `.csolution.yml` or `.csolution.yaml`. A file with another name is not recognized as the solution.
+PopulateContexts only parses a csolution when m_csolutionFile is non-empty. When it is empty, the tool logs this error and stops. The csolution file path was not set on the command line, so the tool has no solution file to load.
 
 ## Fix
 
-Pass the solution file, e.g. `csolution convert my.csolution.yml` or `csolution list configs -s my.csolution.yml`; rename the file to `<name>.csolution.yml` if needed.
+Run csolution again and pass the path to your .csolution.yml file as the input. Check that the path is spelled correctly and that the file exists. The source lines shown do not name the exact command-line option, so confirm the syntax with the csolution help output.
+
+## Note
+
+The message has no file name or variable part. The check is on the path the tool stores, so it fires when no csolution file was given, not when the file is missing from disk. A missing file is reported by the parser instead.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgr.cpp:257-266`
-- `tools/projmgr/src/ProjMgr.cpp:536-539`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:5170-5178`
+- `tools/projmgr/src/ProjMgr.cpp:487-491`
+- `tools/projmgr/src/ProjMgr.cpp:536-538`

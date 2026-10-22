@@ -6,8 +6,8 @@ title: "SmolLM2 -> Ethos-U Quickstart: 6. Optional: evaluate Wikitext perplexity
 summary: "The KV-cache generation artifact can also be used for step-wise perplexity scoring over the same 64-token context."
 status: "draft"
 collection: "executorch-arm"
-source: "pytorch/executorch@658390c:examples/arm/smollm2_example_ethos_u/README.md"
-doc_source: "https://github.com/pytorch/executorch/blob/658390c/examples/arm/smollm2_example_ethos_u/README.md#6-optional-evaluate-wikitext-perplexity"
+source: "pytorch/executorch@6368414:examples/arm/smollm2_example_ethos_u/README.md"
+doc_source: "https://github.com/pytorch/executorch/blob/6368414/examples/arm/smollm2_example_ethos_u/README.md#6-optional-evaluate-wikitext-perplexity"
 license: "BSD-3-Clause"
 mode: "V"
 ---

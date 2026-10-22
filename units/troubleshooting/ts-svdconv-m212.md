@@ -10,16 +10,16 @@ code: "M212"
 symptoms: ["M212", "Address Block <usage> parse error: '%NAME%'"]
 symptom_regex: "^Address Block <usage> parse error: '.+?'$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Correct address block."
-summary: "An <addressBlock> <usage> is not one of registers, buffer or reserved. svdconv also reports M202 for that line and leaves the usage unset."
+summary: "svdconv prints this when it cannot parse an <addressBlock> element of the SVD file: the address block has a missing or malformed child such as offset, size or usage, or a value that does not parse as a number."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdUtils.cpp:722-757", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdAddressBlock.cpp:77-81", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/unittests/src/SvdModelValidationTest.cpp:133-145", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:79"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -29,21 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdUtil
 
 ## Cause
 
-An <addressBlock> <usage> is not one of registers, buffer or reserved. svdconv also reports M202 for that line and leaves the usage unset.
+svdconv prints this when it cannot parse an <addressBlock> element of the SVD file: the address block has a missing or malformed child such as offset, size or usage, or a value that does not parse as a number. The quoted name is the register or peripheral context in which the address block was found.
 
 ## Fix
 
-Use <usage>registers</usage>, <usage>buffer</usage> or <usage>reserved</usage> in each <addressBlock>.
+Open the SVD file at the peripheral named in the message and check its <addressBlock> element. Make sure it contains <offset>, <size> and <usage> with valid values (numeric offset and size, usage set to one of the allowed keywords such as registers, buffer or reserved), then run svdconv again.
 
 ## Note
 
-M212 carries no line number; the M202 that follows does.
+The source lines were not available, so the cause is inferred from the message text and the README; the README cause 'Correct address block.' is terse and was not verified against the trigger. The exact validity rules for usage values are not confirmed here.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdUtils.cpp:722-757`
-- `tools/svdconv/SVDModel/src/SvdAddressBlock.cpp:77-81`
-- `tools/svdconv/test/unittests/src/SvdModelValidationTest.cpp:133-145`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:79`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

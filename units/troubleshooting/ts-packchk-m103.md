@@ -10,16 +10,16 @@ code: "M103"
 symptoms: ["M103", "Internal Error: %REF%"]
 symptom_regex: "^Internal Error: .+?$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Contact Arm for clarifications"
-summary: "During the letter-case check of a file path from the PDSC, packchk could not find one path segment in the folder listing although the file exists; the text reads 'Internal Error: file/folder \"<segment>\" not found'."
+summary: "packchk reports this when one of its own internal checks fails, which means the failure is in the tool rather than in the user's pack."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:74", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:511-550", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:461-474", "Open-CMSIS-Pack/devtools@30f5e817:libs/rteutils/src/RteUtils.cpp:143-156", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:118"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -29,22 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-During the letter-case check of a file path from the PDSC, packchk could not find one path segment in the folder listing although the file exists; the text reads 'Internal Error: file/folder "<segment>" not found'. A doubled slash such as "Files//test.c" produces an empty segment and triggers it.
+packchk reports this when one of its own internal checks fails, which means the failure is in the tool rather than in the user's pack. The %REF% placeholder names the internal reference or check that failed. The source lines were not available, so the exact trigger cannot be confirmed here.
 
 ## Fix
 
-Look at the segment named in the message and fix the path in the PDSC: remove doubled or stray slashes and make every folder and file name match the name on disk.
+Re-run packchk on the same pack with the current Open-CMSIS-Pack devtools release. If the error persists, report it to Arm with the full message text, the pack that was checked, and the tool version, as the README suggests contacting Arm.
 
 ## Note
 
-Only raise site is CheckFiles::CheckCaseSense; the README advice 'Contact Arm' does not explain it.
+Source lines were not provided, so the trigger is inferred from the message text and the README entry only. The README cause is generic and the message is an internal-error category, so the wording above is a reading rather than a confirmed condition.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:74`
-- `tools/packchk/src/CheckFiles.cpp:511-550`
-- `tools/packchk/src/CheckFiles.cpp:461-474`
-- `libs/rteutils/src/RteUtils.cpp:143-156`
-- `tools/packchk/README.md:118`
+- `tools/packchk/src/PackChk_Msgs.cpp`

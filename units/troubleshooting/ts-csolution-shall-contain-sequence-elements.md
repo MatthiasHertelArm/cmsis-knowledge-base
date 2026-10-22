@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["node '<…>' shall contain sequence elements"]
 symptom_regex: "^node '.+?' shall contain sequence elements$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:1745"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrYamlParser.cpp:1745"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A node that must be a list is written as a scalar, a mapping or left empty in a csolution, cproject, clayer, cbuild-pack or cbuild-set YAML file; `<…>` is the node, with file, line and column."
+summary: "The csolution YAML parser found a key that the tool knows must hold a YAML sequence (a list), but the value in the user's file is a scalar or a mapping instead."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:1745", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:1621", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestSolution/PackLocking/cbuild_pack_with_disallowed_field.cbuild-pack.yml:1", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:1643"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:1740-1747", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:1744-1745"]
 ---
 
 ## Symptom
@@ -25,11 +25,15 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParse
 
 ## Cause
 
-A node that must be a list is written as a scalar, a mapping or left empty in a csolution, cproject, clayer, cbuild-pack or cbuild-set YAML file; `<…>` is the node, with file, line and column. The nodes checked are `projects:`, `target-types:`, `build-types:`, `misc:`, `packs:`, `resolved-packs:`, `components:`, `connections:`, `layers:`, `groups:`, `files:`, `setups:`, `linker:`, `executes:` and `input:`. Example: `misc: 1`.
+The csolution YAML parser found a key that the tool knows must hold a YAML sequence (a list), but the value in the user's file is a scalar or a mapping instead. ValidateKeys checks each key of a node: when the value is not a sequence and the key is listed in the sequences table (and not in the mappings table), it reports this error with the key name in place of the placeholder. The placeholder is the offending key in the csolution YAML file, at the line and column where that key appears.
 
 ## Fix
 
-Write the node as a list whose entries start with `- `, e.g. `packs:` followed by `  - pack: ARM::CMSIS`, or remove the empty node.
+Open the csolution YAML file at the reported line and rewrite the value of that key as a list, with each entry prefixed by a dash, for example:
+  <key>:
+    - item1
+    - item2
+A single value written inline (key: value) or a nested mapping under that key must be turned into a list. The expected keys for each section are defined by the tool's sequences table, so check the schema for the key you are editing.
 
 ## Trigger in the source
 
@@ -37,11 +41,13 @@ Write the node as a list whose entries start with `- `, e.g. `packs:` followed b
 } else if ((sequences.find(key) != sequences.end()) && (mappings.find(key) == mappings.end())) {
 ```
 
+## Note
+
+The message is printed by ValidateKeys, which is also used for mapping checks; the sibling message 'shall contain mapping elements' is the reverse case. The README does not document this message, so the cause is read from the source logic only. The fix text is a general instruction; the list of keys that must be sequences is in a table not included in the lines given.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrYamlParser.cpp:1745`
-- `tools/projmgr/src/ProjMgrYamlParser.cpp:1621`
-- `tools/projmgr/test/data/TestSolution/PackLocking/cbuild_pack_with_disallowed_field.cbuild-pack.yml:1`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:1643`
+- `tools/projmgr/src/ProjMgrYamlParser.cpp:1740-1747`
+- `tools/projmgr/src/ProjMgrYamlParser.cpp:1744-1745`

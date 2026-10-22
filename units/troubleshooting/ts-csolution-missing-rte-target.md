@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["missing RTE target"]
 symptom_regex: "^missing RTE target$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1978"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:1978"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "csolution reached component or configuration-file processing for a context that has no RTE target; the target is created when packs are loaded for the context."
+summary: "ProcessComponents() needs the RTE active target of the build context to resolve the components a project requires."
 cause_origin: "source-analysis"
-confidence: "low"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1974", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:737", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:597"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1977-1980", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1983"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-csolution reached component or configuration-file processing for a context that has no RTE target; the target is created when packs are loaded for the context. It is an internal guard that normal project input does not reach, and no test exercises it.
+ProcessComponents() needs the RTE active target of the build context to resolve the components a project requires. When rteActiveTarget is null, it logs 'missing RTE target' and returns failure before any component is matched. The given lines do not show where rteActiveTarget is assigned, so the reason it stays unset is not established here. It most likely means the target for this context could not be set up, for example because the device, target type or required packs were not resolved.
 
 ## Fix
 
-Fix the errors reported before this message (pack loading, device or board selection). If it is the only error, report it to the CMSIS-Toolbox maintainers with the solution that produces it.
+The source lines do not show a direct user-side fix. Check the log above this message for earlier errors about the device, board, target type or packs of this project, and resolve those first. Then confirm that the packs the project uses are installed and that the csolution project refers to a valid device or target, and run the build again.
 
 ## Trigger in the source
 
@@ -37,10 +37,13 @@ Fix the errors reported before this message (pack loading, device or board selec
 if (!context.rteActiveTarget) {
 ```
 
+## Note
+
+The message has no code and the README does not document it. The assignment of rteActiveTarget lies outside the given lines, so the upstream cause is inferred and not confirmed. The message is logged without the context name, so it does not say which project or target failed.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence low, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrWorker.cpp:1974`
-- `tools/projmgr/src/ProjMgrWorker.cpp:737`
-- `tools/projmgr/src/ProjMgrWorker.cpp:597`
+- `tools/projmgr/src/ProjMgrWorker.cpp:1977-1980`
+- `tools/projmgr/src/ProjMgrWorker.cpp:1983`

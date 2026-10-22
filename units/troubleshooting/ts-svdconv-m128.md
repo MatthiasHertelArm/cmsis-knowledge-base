@@ -10,16 +10,16 @@ code: "M128"
 symptoms: ["M128", "SfrCC2 reports warnings!"]
 symptom_regex: "^SfrCC2 reports warnings!$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Check SVD file."
-summary: "With --generate=sfr, SfrCC2.exe compiled the generated .sfd file and exited with code 1, i.e. it reported warnings."
+summary: "svdconv prints this warning after the SfrCC2 checker has finished the SVD file and found warnings in it."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/SfrccInterface.cpp:99-117", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:55", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:58"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -29,16 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/Sfr
 
 ## Cause
 
-With --generate=sfr, SfrCC2.exe compiled the generated .sfd file and exited with code 1, i.e. it reported warnings. Its own output is printed just before, in the M125 'SfrCC2 report' block.
+svdconv prints this warning after the SfrCC2 checker has finished the SVD file and found warnings in it. The message itself names no specific register or field; the detail is in the warnings printed before it. The SVD input contains values or structure that the checker flags.
 
 ## Fix
 
-Read the SfrCC2 report (M125) printed before this message and correct the SVD elements it points to; the .sfr file is still produced.
+Read the warning lines printed just before M128 and correct the SVD file at the register or field they name, then run svdconv again. If the warnings do not explain the problem, check the SVD against the CMSIS-SVD schema.
+
+## Note
+
+Source lines were not available, so the trigger and the exact condition could not be verified. The cause is inferred from the message text and the README entry 'Check SVD file.' The message body is a generic summary, so the actionable detail sits in the preceding warnings.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDGenerator/src/SfrccInterface.cpp:99-117`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:55`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:58`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

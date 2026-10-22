@@ -10,15 +10,15 @@ code: "M379"
 symptoms: ["M379", "XBin Number '%NAME%' too large, skipping evaluation."]
 symptom_regex: "^XBin Number '.+?' too large, skipping evaluation\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "An <enumeratedValue> <value> uses binary don't-care notation (0b... or #... with x digits) with more than 8 'x' characters. svdconv expands every x into all combinations and refuses more than 8 (256 values), so the value is rejected with …"
+summary: "svdconv found a binary-, hex- or octal-style number literal in the SVD (for example a field or register value written with an X/B/H prefix) whose value is too large to evaluate, so it could not be converted to an integer."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdUtils.cpp:533-548", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdEnum.cpp:133-139", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/unittests/src/SvdUtilsConversionTest.cpp:144-158", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:200", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:256"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -28,22 +28,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdUtil
 
 ## Cause
 
-An <enumeratedValue> <value> uses binary don't-care notation (0b... or #... with x digits) with more than 8 'x' characters. svdconv expands every x into all combinations and refuses more than 8 (256 values), so the value is rejected with M202 and the enumeratedValue is dropped.
+svdconv found a binary-, hex- or octal-style number literal in the SVD (for example a field or register value written with an X/B/H prefix) whose value is too large to evaluate, so it could not be converted to an integer. The %NAME% in the message is the offending expression as it appears in the SVD input.
 
 ## Fix
 
-Use at most 8 x digits in one <value>: split it into several <enumeratedValue>s, or cover the remaining values with one <enumeratedValue> that has <isDefault>true</isDefault> instead of a <value>.
+Find the element named in the message in the SVD file and check that its numeric literal is valid and fits the register width; rewrite it as a plain decimal or a correctly sized hex value (for example 0xFFFFFFFF rather than a longer literal), then rerun svdconv. If the value is intentional, the warning is only skipping the evaluation of that expression.
 
 ## Note
 
-Logged without a line number; the M202 for <value> that follows carries it. Error under --strict.
+Trigger and handling were not checked against the source because the clone was not available; the cause and fix are inferred from the message text and the README entry. The message is a warning, so conversion continues without that value.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdUtils.cpp:533-548`
-- `tools/svdconv/SVDModel/src/SvdEnum.cpp:133-139`
-- `tools/svdconv/test/unittests/src/SvdUtilsConversionTest.cpp:144-158`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:200`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:256`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

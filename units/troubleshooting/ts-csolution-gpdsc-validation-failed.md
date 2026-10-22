@@ -9,14 +9,14 @@ severity: "warning"
 symptoms: ["context '<…>' generator '<…>' from component '<…>': gpdsc validation failed"]
 symptom_regex: "^context '.+?' generator '.+?' from component '.+?': gpdsc validation failed$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2901"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:2901"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "The gpdsc file that a pack generator wrote for a component (its path prefixes the message) loads, but fails pack validation without a specific error, e.g. a component in it references a condition that does not exist. csolution still …"
+summary: "The generator's gpdsc file was read successfully, but ProjMgrUtils::ReadGpdscFile reported it as not valid (validGpdsc is false)."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2891-2905", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrUtils.cpp:108-132", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUtilsUnitTests.cpp:49-59", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestGenerator/RTE/Device/RteTestGen_ARMCM0/RteTest_Warning.gpdsc:28"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2891-2892", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2900-2902", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2894-2898"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-The gpdsc file that a pack generator wrote for a component (its path prefixes the message) loads, but fails pack validation without a specific error, e.g. a component in it references a condition that does not exist. csolution still uses the file. The `<…>` are the context, the generator id and the component that started the generator.
+The generator's gpdsc file was read successfully, but ProjMgrUtils::ReadGpdscFile reported it as not valid (validGpdsc is false). The message names the context, the generator and the component that declared the gpdsc. The source lines shown do not include ReadGpdscFile, so the kind of validation failure is not visible here. Processing continues after this warning, unlike the 'reading gpdsc failed' error, which returns false.
 
 ## Fix
 
-Re-run the generator so it writes a fresh gpdsc: `csolution run <name>.csolution.yml -g <generator-id> -c <context>`. If the warning stays, the generator or its pack produces an inconsistent gpdsc; update them or report it to their vendor.
+Find the validation details that csolution printed for this gpdsc file, which come from ReadGpdscFile and are not shown in the lines given. Correct the reported problems in the gpdsc file, for example by regenerating it with the generator named in the message, then rebuild. If the gpdsc is not fixed, the components it provides are still added to the context, so check that the generated output is what you expect.
 
 ## Trigger in the source
 
@@ -37,11 +37,14 @@ Re-run the generator so it writes a fresh gpdsc: `csolution run <name>.csolution
 if (!validGpdsc) {
 ```
 
+## Note
+
+The README does not document this message. The validation error details are produced inside ProjMgrUtils::ReadGpdscFile, which is outside the lines given, so the specific failure is unknown. The warning does not stop processing, and the gpdsc pack is still attached at line 2904.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrWorker.cpp:2891-2905`
-- `tools/projmgr/src/ProjMgrUtils.cpp:108-132`
-- `tools/projmgr/test/src/ProjMgrUtilsUnitTests.cpp:49-59`
-- `tools/projmgr/test/data/TestGenerator/RTE/Device/RteTestGen_ARMCM0/RteTest_Warning.gpdsc:28`
+- `tools/projmgr/src/ProjMgrWorker.cpp:2891-2892`
+- `tools/projmgr/src/ProjMgrWorker.cpp:2900-2902`
+- `tools/projmgr/src/ProjMgrWorker.cpp:2894-2898`

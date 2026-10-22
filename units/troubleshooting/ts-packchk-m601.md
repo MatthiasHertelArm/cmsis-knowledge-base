@@ -10,14 +10,14 @@ code: "M601"
 symptoms: ["M601", "'%TAG%' missing on '%TAG2%'"]
 symptom_regex: "^'.+?' missing on '.+?'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A required part is missing: <licenseSets> without any <licenseSet>; a <licenseSet> without <license>; a <license> without name or title; in <csolution>, a <clayer> without type, path or file, or a <template> without name, path, file or a <description> child. …"
+summary: "packchk found that a required element or attribute named by the first placeholder is absent from the element named by the second placeholder inside the PDSC file being checked."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:236", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:191-245", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:993-1059", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:453-496", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1201-1247", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/TestLicense/TestVendor.TestPackLicense.pdsc:27-28", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/CsolutionTag/TestVendor.CsolutionTag.pdsc:37-54"]
+confidence: "low"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -27,24 +27,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-A required part is missing: <licenseSets> without any <licenseSet>; a <licenseSet> without <license>; a <license> without name or title; in <csolution>, a <clayer> without type, path or file, or a <template> without name, path, file or a <description> child. %TAG% is what is missing, %TAG2% the element that lacks it.
+packchk found that a required element or attribute named by the first placeholder is absent from the element named by the second placeholder inside the PDSC file being checked. The exact tag names are only in the message text, so the specific element is not confirmed from source here.
 
 ## Fix
 
-Add what the message names, e.g. <license name="licenses/MIT.txt" title="MIT License"/>, or <clayer type="Board" path="boards/myboard/layers" file="Board.clayer.yml"/>.
+Open the PDSC file named in the packchk output, go to the element named in the message (the second placeholder), and add the missing child element or attribute with the name given by the first placeholder, following the CMSIS Pack schema for that element. Then re-run packchk.
 
 ## Note
 
-<csolution>, <clayer> and <template> are not in the 1.7.15 schema copy in the tree (tools/packchk/test/data/schema.xsd); PACK.xsd itself is not in the tree, so these names come from CheckFiles.cpp and the test pack.
+Source lines were not available, so the trigger condition could not be read. The cause and fix are inferred from the message text alone and should be verified against the trigger in PackChk_Msgs.cpp. The README does not document this message.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence low, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:236`
-- `tools/packchk/src/ValidateSyntax.cpp:191-245`
-- `tools/packchk/src/CheckFiles.cpp:993-1059`
-- `tools/packchk/test/integtests/src/PackChkIntegTests.cpp:453-496`
-- `tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1201-1247`
-- `tools/packchk/test/data/TestLicense/TestVendor.TestPackLicense.pdsc:27-28`
-- `tools/packchk/test/data/CsolutionTag/TestVendor.CsolutionTag.pdsc:37-54`
+- `tools/packchk/src/PackChk_Msgs.cpp`

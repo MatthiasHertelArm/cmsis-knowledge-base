@@ -10,15 +10,15 @@ code: "M324"
 symptoms: ["M324", "Field '%NAME%' %BITRANGE% does not fit into Register '%NAME2%:%NUM%' %LINE%"]
 symptom_regex: "^Field '.+?' .+? does not fit into Register '.+?:.+?' .+?$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A field's bit range does not fit into its register: the field is wider than the register's effective <size>, or bit offset + width goes beyond it; LINE is the register's line."
+summary: "svdconv found a field in the SVD register description whose bit range extends beyond the width of its enclosing register, so the field cannot be placed inside the register."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:498", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:510", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:511", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdRegister.cpp:624", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdRegister.cpp:634", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:143"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -28,19 +28,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdFiel
 
 ## Cause
 
-A field's bit range does not fit into its register: the field is wider than the register's effective <size>, or bit offset + width goes beyond it; LINE is the register's line. The field is dropped. M345 reports the same condition from the register's own check, and M324 appears for fields that check did not reach.
+svdconv found a field in the SVD register description whose bit range extends beyond the width of its enclosing register, so the field cannot be placed inside the register. The %NAME% is the field name, %BITRANGE% the offending bit range, %NAME2%:%NUM% the register name and its size, and %LINE% the location in the SVD file. The cause is inferred from the message text alone because the source lines were not available.
 
 ## Fix
 
-Correct the field's bit position (<bitRange>, <lsb>/<msb> or <bitOffset>/<bitWidth>) or the register's <size>, which may be inherited from the peripheral or device, so that every field lies within bits 0 to size-1.
+Open the SVD file at the line reported and correct the field's bitOffset and bitWidth (or lsb and msb) so that the field lies within the register's size (for example 32 bits for a 32-bit register), or correct the register's size element if it was set too small. Then rerun svdconv.
+
+## Note
+
+Source lines were not provided, so the trigger condition is inferred from the message wording and the README was not consulted for its text; the cause and fix should be checked against the source before relying on them.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdField.cpp:498`
-- `tools/svdconv/SVDModel/src/SvdField.cpp:510`
-- `tools/svdconv/SVDModel/src/SvdField.cpp:511`
-- `tools/svdconv/SVDModel/src/SvdRegister.cpp:624`
-- `tools/svdconv/SVDModel/src/SvdRegister.cpp:634`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:143`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

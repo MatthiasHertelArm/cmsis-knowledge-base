@@ -10,16 +10,16 @@ code: "M222"
 symptoms: ["M222", "Input filename has no extension: '%NAME%"]
 symptom_regex: "^Input filename has no extension: '.+?$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Correct input filename extension."
-summary: "Meant for an input file name without extension."
+summary: "svdconv was given an input file whose name has no extension, so it cannot tell which input format it is reading."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:927-937", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv.cpp:154-160", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:89"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -29,20 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevi
 
 ## Cause
 
-Meant for an input file name without extension. In svdconv 30f5e81 it cannot appear: with no '.' anywhere in the absolute path svdconv aborts with a critical M104 exception, and with a '.' in a directory name it reports M221 instead.
+svdconv was given an input file whose name has no extension, so it cannot tell which input format it is reading. The variable part of the message is the file name as passed on the command line.
 
 ## Fix
 
-Rename the input file to <device name>.svd.
+Rename the input file so it carries the expected extension (for example .svd for a CMSIS-SVD device description) and run svdconv again with the renamed file.
 
 ## Note
 
-Bug: inputFileName.substr(pos) with pos == npos (SvdDevice.cpp:929) throws std::out_of_range before the M222 test runs.
+Source lines were not available; the cause and fix rely on the message text and the README's one-line cause. The exact extension svdconv expects is not confirmed from source.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:927-937`
-- `tools/svdconv/SVDConv/src/SVDConv.cpp:154-160`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:89`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

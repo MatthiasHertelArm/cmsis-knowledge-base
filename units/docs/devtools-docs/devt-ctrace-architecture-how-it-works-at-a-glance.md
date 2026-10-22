@@ -6,14 +6,14 @@ title: "ctrace Architecture: How it works at a glance"
 summary: "ctrace processes one solution set at a time and runs a separate file job for each supported raw input in that set. The README describes how configuration, raw inputs, and generated outputs are grouped by solution-set and channel names."
 status: "draft"
 collection: "devtools-docs"
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/ctrace/docs/architecture.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/architecture.md#how-it-works-at-a-glance"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/ctrace/docs/architecture.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/5f04db7/tools/ctrace/docs/architecture.md#how-it-works-at-a-glance"
 license: "Apache-2.0"
 mode: "V"
 ---
 
 `ctrace` processes one solution set at a time and runs a separate file job for each supported raw input in that set.
-The [README](https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/../README.md#trace-directory) describes how configuration, raw inputs, and generated outputs are grouped
+The [README](https://github.com/Open-CMSIS-Pack/devtools/blob/5f04db7/tools/ctrace/docs/../README.md#trace-directory) describes how configuration, raw inputs, and generated outputs are grouped
 by solution-set and channel names. The following path runs once per input, with fresh decoder and output state.
 
 The main in-memory path is:

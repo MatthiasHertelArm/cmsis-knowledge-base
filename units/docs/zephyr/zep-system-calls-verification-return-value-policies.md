@@ -6,8 +6,8 @@ title: "System Calls: Verification Function / Verification Return Value Policies
 summary: "When verifying system calls, it's important to note which kinds of verification failures should propagate a return value to the caller, and which should simply invoke K_OOPS() which kills the calling thread. The current conventions are as follows:"
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/kernel/usermode/syscalls.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/kernel/usermode/syscalls.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/kernel/usermode/syscalls.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/kernel/usermode/syscalls.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

@@ -6,7 +6,7 @@ title: "Corstone SSE-320 with Ethos-U85 Example Subsystem for Ecosystem FVP: Bui
 summary: "Corstone SSE-320 with Ethos-U85 Example Subsystem for Ecosystem FVP: Building TF-M"
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/platform/arm/mps4/corstone320/README.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/platform/arm/mps4/corstone320/README.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/platform/arm/mps4/corstone320/.html#building-tf-m"
 license: "BSD-3-Clause"
 mode: "V"

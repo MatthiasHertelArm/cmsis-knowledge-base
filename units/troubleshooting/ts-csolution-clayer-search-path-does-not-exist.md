@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["clayer search path does not exist"]
 symptom_regex: "^clayer search path does not exist$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:862"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:862"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "The folder given with `--clayer-path`/`-L` to `csolution list layers` does not exist."
+summary: "CollectLayersFromSearchPath is called with a non-empty clayer search path (the search path given for generic clayer discovery) and, after canonicalising it, the directory does not exist on disk."
 cause_origin: "source-analysis"
 confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:857-864", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:301-303", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:2459-2467"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:857-864", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:921-922"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-The folder given with `--clayer-path`/`-L` to `csolution list layers` does not exist. A relative path is resolved against the current working directory, not against the csolution.yml; the message is prefixed with the resolved path.
+CollectLayersFromSearchPath is called with a non-empty clayer search path (the search path given for generic clayer discovery) and, after canonicalising it, the directory does not exist on disk. The message is printed with the absolute, canonical path as its last argument, which is the path that was checked, so the user's search path value is missing or misspelled, or relative to a different working directory than expected.
 
 ## Fix
 
-Pass an existing folder, e.g. `csolution list layers <name>.csolution.yml -L ./layers` from the folder that contains it, or an absolute path.
+Check the clayer search path value that csolution was given (the search path used for generic clayer discovery) and correct it so it names an existing directory, using a path relative to the directory where csolution runs or an absolute path. Create the directory or fix the spelling, then run csolution again.
 
 ## Trigger in the source
 
@@ -37,10 +37,13 @@ Pass an existing folder, e.g. `csolution list layers <name>.csolution.yml -L ./l
 if (!RteFsUtils::Exists(absSearchPath)) {
 ```
 
+## Note
+
+The message is printed with the canonical path as its third argument, so the log shows where the tool looked. The source does not show how the search path reaches this function, so the exact option name is not confirmed here.
+
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
 
 - `tools/projmgr/src/ProjMgrWorker.cpp:857-864`
-- `tools/projmgr/src/ProjMgr.cpp:301-303`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:2459-2467`
+- `tools/projmgr/src/ProjMgrWorker.cpp:921-922`

@@ -10,16 +10,16 @@ code: "M241"
 symptoms: ["M241", "Parse Error: '%VALUE%' invalid for Array generation"]
 symptom_regex: "^Parse Error: '.+?' invalid for Array generation$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Correct SVD."
-summary: "Meant for a dim element whose <name>, <displayName> or <description> has [%s] somewhere other than at the end."
+summary: "svdconv prints this warning when it cannot parse a value given for array generation (the dim/dimIncrement or related array settings it expands into multiple registers) in the input SVD."
 cause_origin: "source-analysis"
-confidence: "low"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDimension.cpp:350-358", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdUtils.cpp:136-143", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:108", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:231"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp (trigger not available in the clone; message text only)"]
 ---
 
 ## Symptom
@@ -29,21 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDime
 
 ## Cause
 
-Meant for a dim element whose <name>, <displayName> or <description> has [%s] somewhere other than at the end. In svdconv 30f5e81 the expression parser never returns that result, so such a name surfaces as M239 instead.
+svdconv prints this warning when it cannot parse a value given for array generation (the dim/dimIncrement or related array settings it expands into multiple registers) in the input SVD. The %VALUE% placeholder is the offending text that could not be read as the expected array value. The README only says the SVD is incorrect, and the source lines were not available, so the exact field involved is not confirmed.
 
 ## Fix
 
-Put [%s] at the very end of the name (REG[%s]), or use %s for a list.
+Open the SVD file, find the peripheral or register declaration that uses array notation (dim, dimIncrement, dimIndex) and correct the value shown in the message so it is a valid number or index list as the SVD schema requires, then run svdconv again.
 
 ## Note
 
-Unreachable at 30f5e81: ARRAYINVALID is commented out in SvdUtils::ParseExpression (SvdUtils.cpp:140).
+Source lines were not provided, so the trigger condition and the exact array field are inferred from the message text and the README; the cause is not verified against the code. The README cause 'Correct SVD.' is terse and does not name the field.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence low, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdDimension.cpp:350-358`
-- `tools/svdconv/SVDModel/src/SvdUtils.cpp:136-143`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:108`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:231`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp (trigger not available in the clone; message text only)`

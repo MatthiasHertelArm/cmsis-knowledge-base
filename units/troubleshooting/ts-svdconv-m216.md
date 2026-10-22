@@ -10,16 +10,16 @@ code: "M216"
 symptoms: ["M216", "Unsupported character found in '%NAME%' : %HEX%."]
 symptom_regex: "^Unsupported character found in '.+?' : .+?\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Correct name."
-summary: "A <name>, <description>, register <displayName> or enumerated-value name contains a character svdconv does not support: a byte outside printable ASCII 0x20..0x7E (UTF-8 letters such as ä or µ, ©, typographic quotes or dashes, non-breaking spaces; each byte is reported) …"
+summary: "svdconv found a character in a name field (the %NAME% placeholder, such as a register or field name in the SVD file) that is not allowed in the identifiers it generates."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdUtils.cpp:1155-1215", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdItem.cpp:217-235", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:83"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp (trigger not available in the given lines; message text only)"]
 ---
 
 ## Symptom
@@ -29,20 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdUtil
 
 ## Cause
 
-A <name>, <description>, register <displayName> or enumerated-value name contains a character svdconv does not support: a byte outside printable ASCII 0x20..0x7E (UTF-8 letters such as ä or µ, ©, typographic quotes or dashes, non-breaking spaces; each byte is reported) or a double quote. HEX shows the byte; line breaks and tabs are accepted.
+svdconv found a character in a name field (the %NAME% placeholder, such as a register or field name in the SVD file) that is not allowed in the identifiers it generates. The %HEX% placeholder gives the byte value of that character. The README only says 'Correct name', and the source is not available to confirm which characters are rejected.
 
 ## Fix
 
-Replace the character with plain ASCII (e.g. 'u' for µ, ' instead of typographic quotes, - instead of an en dash) and remove double quotes from the text.
+Open the SVD file, find the element whose name contains the reported character (search for the name in the message), and replace that character with a plain letter, digit or underscore, then rerun svdconv.
 
 ## Note
 
-The text is kept unchanged in the model; only the SFD generator later drops such bytes (M516).
+Cause and fix are inferred from the message text and the README's 'Correct name' only, since the clone was not available. The exact set of allowed characters is unverified.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdUtils.cpp:1155-1215`
-- `tools/svdconv/SVDModel/src/SvdItem.cpp:217-235`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:83`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp (trigger not available in the given lines; message text only)`

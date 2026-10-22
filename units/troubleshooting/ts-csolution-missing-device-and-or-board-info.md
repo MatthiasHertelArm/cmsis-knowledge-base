@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["missing device and/or board info"]
 symptom_regex: "^missing device and/or board info$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1351"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:1351"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "The context has neither a `board:` nor a device name in `device:` at any level (target-types in the csolution.yml, the cproject.yml or a clayer.yml)."
+summary: "ProcessDevice runs for a build context whose csolution input names neither a board nor a device."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1347", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:774", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3065", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:3098"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1347-1353", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1349-1351"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-The context has neither a `board:` nor a device name in `device:` at any level (target-types in the csolution.yml, the cproject.yml or a clayer.yml). A `device:` with only a processor name, such as `device: :cm0_core0`, does not count.
+ProcessDevice runs for a build context whose csolution input names neither a board nor a device. GetDeviceItem fills deviceItem from context.device, and the check fails when context.board is empty and deviceItem.name is empty. The project or target therefore has no device and no board to resolve against, so the tool stops with this error for that context. The context name is passed as the second argument, so the log line identifies which context is affected.
 
 ## Fix
 
-Add a board or a device to the target type in the csolution.yml, e.g. `target-types:` - `type: CM0` with `device: ARMCM0` or `board: <vendor>::<board name>`.
+Give the project or target a device or a board in its csolution YAML, for example a device: entry naming the part number, or a board: entry naming a board that the installed packs provide. Make sure the device or board name is spelled as the pack declares it, since an unresolved device name leaves deviceItem.name empty as well. Then rerun csolution.
 
 ## Trigger in the source
 
@@ -37,11 +37,13 @@ Add a board or a device to the target type in the csolution.yml, e.g. `target-ty
 if (context.board.empty() && deviceItem.name.empty()) {
 ```
 
+## Note
+
+The README does not document this message. The cause is inferred from the trigger condition only; the exact YAML key that feeds context.device and context.board is not shown in the lines given, so the fix names the keys by their usual meaning and should be checked against the schema.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrWorker.cpp:1347`
-- `tools/projmgr/src/ProjMgrWorker.cpp:774`
-- `tools/projmgr/src/ProjMgrWorker.cpp:3065`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:3098`
+- `tools/projmgr/src/ProjMgrWorker.cpp:1347-1353`
+- `tools/projmgr/src/ProjMgrWorker.cpp:1349-1351`

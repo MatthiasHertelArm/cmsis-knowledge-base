@@ -1,1080 +1,1080 @@
 {
  "stage": "errcat",
- "model": "",
+ "model": "claude-haiku-5-5",
  "prompt_sha": "0ad06ee224a9f3f9",
  "since": "",
  "items": {
   "ts-csolution-a-single-context-must-be-specified": {
-   "sha": "98ede9bb5163279f",
-   "at": "adopted",
+   "sha": "65f9805db398fd10",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-access-sequence-pack-was-not-loaded-pack": {
-   "sha": "e1a340ee22f99bee",
-   "at": "adopted",
+   "sha": "f6d99f84557d810c",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-base-not-found-base-version-unknown": {
-   "sha": "612711e18a87f227",
-   "at": "adopted",
+   "sha": "f6b3ccd9473e8644",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-board-mounted-device": {
-   "sha": "370ade12019feffa",
-   "at": "adopted",
+   "sha": "e60259b589bbf817",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-cannot-be-executed-check-permissions": {
-   "sha": "0d6fc5a1d8135c1e",
-   "at": "adopted",
+   "sha": "6eafb72f220454ca",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-cgen-file-was-not-found-run-generator": {
-   "sha": "336be2af01707675",
-   "at": "adopted",
+   "sha": "99f65d4a10bfacf2",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-check-args-was-not-found": {
-   "sha": "6fb5d939c02cd370",
-   "at": "adopted",
+   "sha": "fce4c7baea207edb",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-check-args-was-not-specified": {
-   "sha": "42363c79c31b5c56",
-   "at": "adopted",
+   "sha": "f1f7621515a3b361",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-clayer-search-path-does-not-exist": {
-   "sha": "5bc94bb853824d83",
-   "at": "adopted",
+   "sha": "e8a49680eb300711",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-command-line-options-quiet-and-verbose-are-mutua": {
-   "sha": "db2050a5a61fb4a8",
-   "at": "adopted",
+   "sha": "5ad63312d667bb3e",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-command-was-not-found": {
-   "sha": "92083b2639cab01f",
-   "at": "adopted",
+   "sha": "028c64e669784a26",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-compiler-setting-in-cdefault-yml-will-be-depreca": {
-   "sha": "46142df5702d68be",
-   "at": "adopted",
+   "sha": "36d1aaae933b5119",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-conflict-automatic-linker-script-generation-over": {
-   "sha": "f75197053cb50d0b",
-   "at": "adopted",
+   "sha": "787933d0ca865afe",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-contains-more-than-one": {
-   "sha": "082269810c20ea90",
-   "at": "adopted",
+   "sha": "0071705ebec3e423",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-contains-non-portable-backslash-use-forward-slas": {
-   "sha": "2c81e58dfcd44936",
-   "at": "adopted",
+   "sha": "ea42827ed50ef635",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-cproject-file-was-not-found": {
-   "sha": "40ecedccc1bbd7ac",
-   "at": "adopted",
+   "sha": "131f4040b8fe86bb",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-cproject-not-parsed-adding-context-failed": {
-   "sha": "f23bbb95cf4515bb",
-   "at": "adopted",
+   "sha": "af57dc7454636f0f",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-cproject-yml-filenames-must-be-unique": {
-   "sha": "ac1d75c95d336ed1",
-   "at": "adopted",
+   "sha": "fb25bef9eeccdd71",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-cproject-yml-files-should-be-placed-in-separate-": {
-   "sha": "576e60c1451025d3",
-   "at": "adopted",
+   "sha": "4d1d951693d28b29",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-csolution-file-not-specified": {
-   "sha": "94ed53acae2a787d",
-   "at": "adopted",
+   "sha": "793b2bd9a6f26613",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-csolution-file-was-not-found": {
-   "sha": "926ae0641ce9428c",
-   "at": "adopted",
+   "sha": "42697964e4bf430a",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-customization-of-intermediate-directory-intdir-i": {
-   "sha": "fb3b9e2c32c4ac43",
-   "at": "adopted",
+   "sha": "cbd4df88f20bc554",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-debug-adapters-yml-file-not-found": {
-   "sha": "2994fb15a7e2b9a0",
-   "at": "adopted",
+   "sha": "2e46a1ec2a904ac6",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-destination-directory-cannot-be-created": {
-   "sha": "fab29cbf7aafddb6",
-   "at": "adopted",
+   "sha": "d3b3e706e503397c",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-does-not-accept-more-than": {
-   "sha": "c12d275e0de01e8d",
-   "at": "adopted",
+   "sha": "eeb25812099eb023",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-does-not-exist": {
-   "sha": "7534da1c9eaf5e30",
-   "at": "adopted",
+   "sha": "9268fa647e45675f",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-does-not-exist-in-solution": {
-   "sha": "f30215ffc7d7b41f",
-   "at": "adopted",
+   "sha": "60a5458c0e5e8c32",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-does-not-exist-in-solution-2": {
-   "sha": "428619735f96ca36",
-   "at": "adopted",
+   "sha": "dd43e7bfea7921a4",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-does-not-exist-or-is-not-selected": {
-   "sha": "d450dd53c691eba2",
-   "at": "adopted",
+   "sha": "e0465d74763b10ad",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-does-not-match-any-device-pname": {
-   "sha": "abe46d6a35d59f83",
-   "at": "adopted",
+   "sha": "f01f4dcccaf15190",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-does-not-match-specified-metadata": {
-   "sha": "6261f2ba72d17a6a",
-   "at": "adopted",
+   "sha": "85b5dc6a8ff00e82",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-does-not-support": {
-   "sha": "f479980182f053c9",
-   "at": "adopted",
+   "sha": "155fb561fbb540e3",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-duplicate-cmake-image-type": {
-   "sha": "b3f440841456aef1",
-   "at": "adopted",
+   "sha": "c17e4c1ce773995c",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-executing-generator": {
-   "sha": "c7dcf80acd4da463",
-   "at": "adopted",
+   "sha": "af6b89f23874ff69",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-export-file-cannot-be-written": {
-   "sha": "077fc4b9ef37bae9",
-   "at": "adopted",
+   "sha": "b65b07650fd8b785",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-failed-to-load-and-insert-packs": {
-   "sha": "63a7859496062915",
-   "at": "adopted",
+   "sha": "9964d1851e0fd5e7",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-failed-to-read-latest-pack-information-from-pack": {
-   "sha": "901792d8a0924fa0",
-   "at": "adopted",
+   "sha": "de695dd127f4ad54",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-file-cannot-be-written": {
-   "sha": "ec001f10546f4498",
-   "at": "adopted",
+   "sha": "e78f6ca314c5afa8",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-file-doesn-t-exist": {
-   "sha": "04f49ae530c936ac",
-   "at": "adopted",
+   "sha": "b9ba27ad00e967dd",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-file-is-missing-and-required-due-to-use-of-froze": {
-   "sha": "efd28decee1d245a",
-   "at": "adopted",
+   "sha": "7eea67bdac591a96",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-file-not-allowed-to-be-updated": {
-   "sha": "8247fda564fec9bd",
-   "at": "adopted",
+   "sha": "2a8c4098346d2ebd",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-found-multiple-device-variants": {
-   "sha": "b2f07f8001308a81",
-   "at": "adopted",
+   "sha": "b25d4e673d037e14",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-found-no-mounted-device": {
-   "sha": "3ccac58c783c093a",
-   "at": "adopted",
+   "sha": "b939b482073821b8",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-generator-executable": {
-   "sha": "aa08f7c3aa3b5372",
-   "at": "adopted",
+   "sha": "cf1d65a3e85f12f9",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-generator-executable-file": {
-   "sha": "302a727cb3e197dc",
-   "at": "adopted",
+   "sha": "4e73d8a43e44ebe5",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-generator-identifier-was-not-specified": {
-   "sha": "b0ffaca820630688",
-   "at": "adopted",
+   "sha": "f7c8ffcb4eca307e",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-generator-output-directory-was-not-set": {
-   "sha": "dc93f2b10982c82d",
-   "at": "adopted",
+   "sha": "0b91dc6b7def1b79",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-gpdsc-validation-failed": {
-   "sha": "3fad17d998f7eb28",
-   "at": "adopted",
+   "sha": "9e06b083cb15d796",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-has-case-inconsistency-use": {
-   "sha": "2cecd27412e81f1a",
-   "at": "adopted",
+   "sha": "acfab9e813326f72",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-ignoring-conflict-component": {
-   "sha": "e4ac255fe1d3e2d5",
-   "at": "adopted",
+   "sha": "efb19391f95f376b",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-improper-quotes": {
-   "sha": "379b4ac1fc56b5f9",
-   "at": "adopted",
+   "sha": "4407d00eca2454b9",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-initializing-rte-kernel-failed": {
-   "sha": "426aef6c39b25f1f",
-   "at": "adopted",
+   "sha": "2388b01957980a1f",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-initializing-rte-model-failed": {
-   "sha": "eaa513aa9d390c59",
-   "at": "adopted",
+   "sha": "d39b5c39e0d2cdba",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-input-csolution-yml-was-not-specified": {
-   "sha": "2247d1da882fb7d6",
-   "at": "adopted",
+   "sha": "e18c89033f854a98",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-invalid-arguments-a-option-cannot-be-used-in-com": {
-   "sha": "90ebf9aff3e49445",
-   "at": "adopted",
+   "sha": "b1a3aa5a6f00edee",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-invalid-pattern": {
-   "sha": "a79f83bee9d5c873",
-   "at": "adopted",
+   "sha": "6820502d9f52b75c",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-is-declared-multiple-times": {
-   "sha": "768155ac5f3f6362",
-   "at": "adopted",
+   "sha": "16241ccacdb6ab28",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-is-declared-multiple-times-2": {
-   "sha": "522bb1efc8dde74c",
-   "at": "adopted",
+   "sha": "534d45453c3ec86e",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-is-deprecated-at-this-level-and-accepted-in-csol": {
-   "sha": "cea8258f837e0589",
-   "at": "adopted",
+   "sha": "ef800843d83c4257",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-is-listed-multiple-times": {
-   "sha": "18c175ea3e6b4094",
-   "at": "adopted",
+   "sha": "841ba328cad49b71",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-is-not-a-valid-command-see-csolution-help": {
-   "sha": "4f23199c6fb9e1d5",
-   "at": "adopted",
+   "sha": "554946a4fc21e05d",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-is-not-among-board-mounted-devices": {
-   "sha": "2db418c5e44d453e",
-   "at": "adopted",
+   "sha": "05de7f8879ab3e65",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-is-not-dry-run-capable": {
-   "sha": "8ab8f9feadaffd4d",
-   "at": "adopted",
+   "sha": "1d039f64faadc827",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-is-not-portable-use-relative-path-instead": {
-   "sha": "0dd32d23b57a1761",
-   "at": "adopted",
+   "sha": "6c37cd31c597e424",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-is-not-selectable-as-active-target-set": {
-   "sha": "e946e8d435235540",
-   "at": "adopted",
+   "sha": "a369088ee9c2a840",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-is-not-supported": {
-   "sha": "5cb87643c779ce83",
-   "at": "adopted",
+   "sha": "e1dba80d2a963a10",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-it-must-be-latest-all-or-required": {
-   "sha": "e6bd5c6047a709bc",
-   "at": "adopted",
+   "sha": "d0708ada06a21a4c",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-it-must-start-with-or-for-normal-strings-and-wit": {
-   "sha": "bdc5a871106a4419",
-   "at": "adopted",
+   "sha": "90c97019a125215c",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-linker-script-template-for-compiler": {
-   "sha": "31016b21a5451326",
-   "at": "adopted",
+   "sha": "e400e7c105655cd8",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-list-args-was-not-found": {
-   "sha": "b64707f85a692efb",
-   "at": "adopted",
+   "sha": "1faaee6de8273543",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-list-args-was-not-specified": {
-   "sha": "e990b18499b1ab53",
-   "at": "adopted",
+   "sha": "b9c43137a0894018",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-malformed-access-sequence": {
-   "sha": "6a58763a019c7474",
-   "at": "adopted",
+   "sha": "200624e23c36d0ef",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-manifest-file-does-not-exist": {
-   "sha": "0ae16de47d28c9d0",
-   "at": "adopted",
+   "sha": "559e8abcd2b65e8e",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-missing-device-and-or-board-info": {
-   "sha": "503344e415c8cc04",
-   "at": "adopted",
+   "sha": "e73c2912260a7d55",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-missing-rte-target": {
-   "sha": "bf51e3c1730903e9",
-   "at": "adopted",
+   "sha": "ba90198919691314",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-mlops-no-image-or-project-context-specified-for-": {
-   "sha": "16a8416d54897c06",
-   "at": "adopted",
+   "sha": "02805d0f66261602",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-mlops-npu-macs-value-does-not-match-dfp-device-i": {
-   "sha": "ae1a095050a16f15",
-   "at": "adopted",
+   "sha": "0809397058bd0361",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-mlops-npu-type-value-does-not-match-dfp-device-i": {
-   "sha": "7750c9b7312810f1",
-   "at": "adopted",
+   "sha": "67334acf3fada371",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-mlops-target-type": {
-   "sha": "e1f99c7d07e78a71",
-   "at": "adopted",
+   "sha": "e903a15602b1bfc3",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-more-than-one-valid-serialwire-element-found": {
-   "sha": "03b5daf73bc7ce48",
-   "at": "adopted",
+   "sha": "ba19f952e5b0056a",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-multiple-cdefault-files-were-found": {
-   "sha": "e9b339f5d1fc4f95",
-   "at": "adopted",
+   "sha": "487c05b9d4f8c336",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-multiple-linker-scripts-defined": {
-   "sha": "c72f9d0997472d73",
-   "at": "adopted",
+   "sha": "09bbc5f380d66674",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-must-have-the-format-pack-vendor-name": {
-   "sha": "e769b44a87134e62",
-   "at": "adopted",
+   "sha": "e9651f8e34fcda84",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-no-board-was-found-with-filter": {
-   "sha": "1f68bfc424e2bfe6",
-   "at": "adopted",
+   "sha": "88ab02ebbfae19be",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-no-compatible-software-layer-found-review-requir": {
-   "sha": "a361987f1bcc778b",
-   "at": "adopted",
+   "sha": "6f7872c6effe2def",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-no-component-was-found-for-device": {
-   "sha": "17401c90b8134aba",
-   "at": "adopted",
+   "sha": "a1915b82606944da",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-no-component-was-found-with-filter": {
-   "sha": "db5e6393c627388c",
-   "at": "adopted",
+   "sha": "be55433fecc6d729",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-no-context-was-found-with-filter": {
-   "sha": "555a637d616d68ad",
-   "at": "adopted",
+   "sha": "e72b9f0531f0238a",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-no-default-rwx-memory-nor-algorithm-with-ramstar": {
-   "sha": "4e10bd483d0fb52b",
-   "at": "adopted",
+   "sha": "6ac2cdcfac42c0f7",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-no-default-unnamed-target-set-for": {
-   "sha": "2e2f1f433497b0b2",
-   "at": "adopted",
+   "sha": "05e71630f6fbbff8",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-no-device-was-found-with-filter": {
-   "sha": "631317348abe305b",
-   "at": "adopted",
+   "sha": "3150758fd0ed759b",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-no-installed-board-was-found": {
-   "sha": "ec6393c80e3e69b7",
-   "at": "adopted",
+   "sha": "6a69286bafe0af03",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-no-installed-component-was-found": {
-   "sha": "7c75818a8f0a441d",
-   "at": "adopted",
+   "sha": "59502b7d6bfa3991",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-no-installed-device-was-found": {
-   "sha": "6ad084a08170ea5a",
-   "at": "adopted",
+   "sha": "4d07b638ab46acf4",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-no-installed-npu-was-found": {
-   "sha": "c4738368aa1e2303",
-   "at": "adopted",
+   "sha": "c74a1f4ac44f5758",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-no-npu-was-found-with-filter": {
-   "sha": "8dca1ff3cb99ea3a",
-   "at": "adopted",
+   "sha": "9a081b1aa4847b7c",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-no-pack-was-found-with-filter": {
-   "sha": "42d8c870dd06581c",
-   "at": "adopted",
+   "sha": "79be34bf227c81d0",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-no-packs-were-found-for-version-check": {
-   "sha": "f14b5d25fae939d2",
-   "at": "adopted",
+   "sha": "bbba822b94333d61",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-no-packs-were-found-for-version-check-with-filte": {
-   "sha": "d73d0267896fd289",
-   "at": "adopted",
+   "sha": "341dfb19e927342f",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-no-target-set-was-found-with-filter": {
-   "sha": "535199cccb4f55cc",
-   "at": "adopted",
+   "sha": "88c2353f63c14b12",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-no-unresolved-dependency-was-found-with-filter": {
-   "sha": "6169d41b6dadadfa",
-   "at": "adopted",
+   "sha": "e9dd15cc62a4301d",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-not-found-in-included-packs": {
-   "sha": "73f7ba5df542789a",
-   "at": "adopted",
+   "sha": "27f9eb8e48b3b170",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-number-must-be-integer-or-hexadecimal-prefixed-b": {
-   "sha": "474a565b00292b8e",
-   "at": "adopted",
+   "sha": "ee2a41b248f39b06",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-one-or-more-selected-contexts-are-unrelated-rede": {
-   "sha": "f385dbfa19d615e4",
-   "at": "adopted",
+   "sha": "264e69cc4531016b",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-output-lib-is-incompatible-with-other-output-typ": {
-   "sha": "54dbb62e78581287",
-   "at": "adopted",
+   "sha": "ec4d3d94cde08bf3",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-parsing-installed-packs-failed": {
-   "sha": "2c8429b5e1e7c97c",
-   "at": "adopted",
+   "sha": "fc688790c080e9dd",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-pdsc-file-was-not-found-in": {
-   "sha": "7deb91cc6982ac14",
-   "at": "adopted",
+   "sha": "ea0643d1c246ee0c",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-processing-context": {
-   "sha": "b130ad74b024e0bf",
-   "at": "adopted",
+   "sha": "61b84eb8f9bfa488",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-processing-contexts-list-failed": {
-   "sha": "4f5d8b02e6c309f3",
-   "at": "adopted",
+   "sha": "734f1c69295d055a",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-processing-target-sets-list-failed": {
-   "sha": "0d8867e2e1ba371f",
-   "at": "adopted",
+   "sha": "0536e8e9c1327187",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-processor-name": {
-   "sha": "6d3a2c17ac457b75",
-   "at": "adopted",
+   "sha": "f6c320b40c39863d",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-project-descriptors-project-west-and-cmake-are-m": {
-   "sha": "a786c8e2a317ab3b",
-   "at": "adopted",
+   "sha": "9b8b11c01f530211",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-projects-not-found": {
-   "sha": "8759850c658e4187",
-   "at": "adopted",
+   "sha": "1a2e1f9bf3625709",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-reading-gpdsc-failed": {
-   "sha": "65e4ef68ab4c714d",
-   "at": "adopted",
+   "sha": "b51c81c874e33761",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-redefined-from": {
-   "sha": "2bbde2a85be4d0e2",
-   "at": "adopted",
+   "sha": "636b0cc761c6c773",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-redefinition-from": {
-   "sha": "09f83002a1b72b85",
-   "at": "adopted",
+   "sha": "c73d3605cbf83707",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-redefinition-from-2": {
-   "sha": "30a2b43c00d5d503",
-   "at": "adopted",
+   "sha": "3ba5e6b13656041c",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-referenced-by-access-sequence": {
-   "sha": "3996b7ade52529e6",
-   "at": "adopted",
+   "sha": "4e343dd2e6f6ade5",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-regions-header-file-generation-failed": {
-   "sha": "0d5c34cf979c8b07",
-   "at": "adopted",
+   "sha": "0dd97a3a8f67f50d",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-required-packs-must-be-specified": {
-   "sha": "46f2d08f56de060d",
-   "at": "adopted",
+   "sha": "05e96f379d2e5f1a",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-shall-contain-mapping-elements": {
-   "sha": "6108ce1449f66bfe",
-   "at": "adopted",
+   "sha": "f8f7b12e49f7f62a",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-shall-contain-sequence-elements": {
-   "sha": "a843b5234bd4e883",
-   "at": "adopted",
+   "sha": "a3249839a36aedf2",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-solution-created-for-unknown-tool": {
-   "sha": "215474ede86e34d2",
-   "at": "adopted",
+   "sha": "83440a001be012d1",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-target-types-not-found": {
-   "sha": "75a9e8763311fb28",
-   "at": "adopted",
+   "sha": "01d78c6e866015f1",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-telnet-pname-is-required-multicore-device": {
-   "sha": "20d3302857263f7c",
-   "at": "adopted",
+   "sha": "b5c6a48c44642eac",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-too-many-command-line-arguments": {
-   "sha": "14f70bc65623861a",
-   "at": "adopted",
+   "sha": "80ee7a2538db35eb",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-unknown-access-sequence": {
-   "sha": "c26b749e74b6384c",
-   "at": "adopted",
+   "sha": "86ce31399706d2ef",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-uses-unknown-generator": {
-   "sha": "6ac57634a6b1d3e0",
-   "at": "adopted",
+   "sha": "e4b02ffefe18a380",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-valid-tracebuffer-elements-must-be-named-when-mo": {
-   "sha": "71b852ae3bdec765",
-   "at": "adopted",
+   "sha": "d7d892c739119ade",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-was-not-found": {
-   "sha": "19b954f0a9308136",
-   "at": "adopted",
+   "sha": "d30815957c521027",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-was-not-found-2": {
-   "sha": "19a33520bc2f9d52",
-   "at": "adopted",
+   "sha": "f56eefa094b953f4",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-was-not-found-in-global-register": {
-   "sha": "30c4904461160904",
-   "at": "adopted",
+   "sha": "11f19e2be613baae",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-was-not-recognized": {
-   "sha": "143670274bf7a2d1",
-   "at": "adopted",
+   "sha": "8ea879df655165e3",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-csolution-yaml-schemas-were-not-found-file-cannot-be-valid": {
-   "sha": "f94d58c774d726b3",
-   "at": "adopted",
+   "sha": "d9fa320c8e12ff5a",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "csolution-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m101": {
    "sha": "d2b36d1fb1d96ad7",
@@ -1085,12 +1085,12 @@
    "prompt_sha": ""
   },
   "ts-packchk-m103": {
-   "sha": "b32f7971d3ec84d4",
-   "at": "adopted",
+   "sha": "af1ed14a1cd9e60a",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m104": {
    "sha": "08685034fc726438",
@@ -1101,20 +1101,20 @@
    "prompt_sha": ""
   },
   "ts-packchk-m105": {
-   "sha": "c0cd888b777139cc",
-   "at": "adopted",
+   "sha": "171eb779f8b7f4d0",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m108": {
-   "sha": "621da5d955244f54",
-   "at": "adopted",
+   "sha": "89d54f8ffb70c94c",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m109": {
    "sha": "af3288d555dbdd68",
@@ -1125,12 +1125,12 @@
    "prompt_sha": ""
   },
   "ts-packchk-m110": {
-   "sha": "fad44555e0c7324b",
-   "at": "adopted",
+   "sha": "cd3d9ffbd56412ec",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m201": {
    "sha": "6f262110def34736",
@@ -1141,908 +1141,908 @@
    "prompt_sha": ""
   },
   "ts-packchk-m202": {
-   "sha": "b6cbfe622b80eeb9",
-   "at": "adopted",
+   "sha": "497839ed85482072",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m203": {
-   "sha": "7d223c8fa01a7db4",
-   "at": "adopted",
+   "sha": "cee60e139da4e409",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m204": {
-   "sha": "307b22efdde885ed",
-   "at": "adopted",
+   "sha": "1f1a48c4994465a5",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m205": {
-   "sha": "18e0b679df0f23ed",
-   "at": "adopted",
+   "sha": "f7c1031c48467e47",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m206": {
-   "sha": "355b88bb1b34a30f",
-   "at": "adopted",
+   "sha": "f4e9fdb89cceac9d",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m207": {
-   "sha": "f10686830dc9c7bd",
-   "at": "adopted",
+   "sha": "e8d6ac79a4ab3c19",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m210": {
-   "sha": "c66e083cead65059",
-   "at": "adopted",
+   "sha": "9518f3aa1eab8ccc",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m213": {
-   "sha": "b94d730db3eee808",
-   "at": "adopted",
+   "sha": "1bc0a6a2e641becb",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m214": {
-   "sha": "23696fb79d522112",
-   "at": "adopted",
+   "sha": "cd63c4f642db670a",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m216": {
-   "sha": "893a6d73a186d577",
-   "at": "adopted",
+   "sha": "bcbd9499ab89dda9",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m218": {
-   "sha": "72ce02efeaa8ccf6",
-   "at": "adopted",
+   "sha": "c09b637d476d39c2",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m219": {
-   "sha": "445eababe243ae71",
-   "at": "adopted",
+   "sha": "a7b36cc5678e3424",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m300": {
-   "sha": "0367b7c6de05c6d7",
-   "at": "adopted",
+   "sha": "5abdbcef892eb513",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m301": {
-   "sha": "09437d60b38fed91",
-   "at": "adopted",
+   "sha": "ae26a4110ae9f781",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m302": {
-   "sha": "7083e6f53b590003",
-   "at": "adopted",
+   "sha": "bd976a44fe7900f6",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m303": {
-   "sha": "b01e15d5f0ee61b3",
-   "at": "adopted",
+   "sha": "71672e7ecb27c9a9",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m304": {
-   "sha": "7d328c92b87ba8ee",
-   "at": "adopted",
+   "sha": "09855d2045d38892",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m305": {
-   "sha": "d9b316ffa251c53a",
-   "at": "adopted",
+   "sha": "1a7ac8cd03e448fe",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m306": {
-   "sha": "fa7657f08fe52ab9",
-   "at": "adopted",
+   "sha": "906d63a69d503e0d",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m307": {
-   "sha": "8939ee7cb25de003",
-   "at": "adopted",
+   "sha": "072b1dc6f89b2b30",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m308": {
-   "sha": "71ff78d7aad09af5",
-   "at": "adopted",
+   "sha": "98e3a02b4f288ae6",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m309": {
-   "sha": "f528d04a0af6083a",
-   "at": "adopted",
+   "sha": "ef48406598947da8",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m310": {
-   "sha": "0c7c78da88263930",
-   "at": "adopted",
+   "sha": "669b1b8b7e6a248a",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m311": {
-   "sha": "4384c998e0dcad11",
-   "at": "adopted",
+   "sha": "b2e26c35cedd9f8d",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m313": {
-   "sha": "a7fd821e76f18ceb",
-   "at": "adopted",
+   "sha": "d50e5463a037eb83",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m314": {
-   "sha": "c3f8b6ce611c20dc",
-   "at": "adopted",
+   "sha": "10d9bd72d4ad045c",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m315": {
-   "sha": "7c7fc0072693c752",
-   "at": "adopted",
+   "sha": "cedc2d361be87b89",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m316": {
-   "sha": "cdb2a4eb2dfc7d13",
-   "at": "adopted",
+   "sha": "fc0a47cce52bb61e",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m317": {
-   "sha": "81992aeeffcf029e",
-   "at": "adopted",
+   "sha": "17a50f76bdf9080f",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m318": {
-   "sha": "d3cc66c47afe86bd",
-   "at": "adopted",
+   "sha": "d350aad54a9727e4",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m319": {
-   "sha": "34b779bb5456b13d",
-   "at": "adopted",
+   "sha": "41d6cb40115a0ef2",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m321": {
-   "sha": "33ffed25fc78b408",
-   "at": "adopted",
+   "sha": "06d3f06099353bad",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m322": {
-   "sha": "c12b291fb63445f4",
-   "at": "adopted",
+   "sha": "7f0a78c0f8b39565",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m323": {
-   "sha": "692c9177d3df63fc",
-   "at": "adopted",
+   "sha": "d6af51d02b12e6d6",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m324": {
-   "sha": "b223cd4e0bda3d09",
-   "at": "adopted",
+   "sha": "45af5a02a91c6e4b",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m325": {
-   "sha": "1bfbd4b9d4e74d1c",
-   "at": "adopted",
+   "sha": "45273ccc1f4fa6e2",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m326": {
-   "sha": "b21e86f3611a9758",
-   "at": "adopted",
+   "sha": "d8e4dd532d2b6569",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m327": {
-   "sha": "ccdc9ba37a0d4dae",
-   "at": "adopted",
+   "sha": "824fab34cbf7f1b0",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m328": {
-   "sha": "77f25f2373a7bc55",
-   "at": "adopted",
+   "sha": "a6da3a70ab865c47",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m329": {
-   "sha": "e9d061ce68488ceb",
-   "at": "adopted",
+   "sha": "633ffa4e375054b3",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m330": {
-   "sha": "8f2c1b432f1cd206",
-   "at": "adopted",
+   "sha": "ade721f17ade7dec",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m331": {
-   "sha": "d98ce34efdb2d4a1",
-   "at": "adopted",
+   "sha": "adddb7326c316751",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m332": {
-   "sha": "05b27e83910767f2",
-   "at": "adopted",
+   "sha": "8d189a11bfca46e5",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m333": {
-   "sha": "05764a326f0faf33",
-   "at": "adopted",
+   "sha": "85ffb9b7d7249623",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m334": {
-   "sha": "9b09e2eabad63724",
-   "at": "adopted",
+   "sha": "04c7c18bcda7ff43",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m335": {
-   "sha": "8c0f0b2b2c710ac2",
-   "at": "adopted",
+   "sha": "7575238e561e5af6",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m336": {
-   "sha": "b39b9452eb3e3423",
-   "at": "adopted",
+   "sha": "93d5d69a09c8371b",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m337": {
-   "sha": "3df4fa90886ff3b3",
-   "at": "adopted",
+   "sha": "e65c22b8c24061bc",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m338": {
-   "sha": "88e96c595def4c36",
-   "at": "adopted",
+   "sha": "78a8d374ec31b9fb",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m339": {
-   "sha": "9c0cc0766d4df1d9",
-   "at": "adopted",
+   "sha": "4940fc25f0e1abfb",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m340": {
-   "sha": "92aad70861c9c2da",
-   "at": "adopted",
+   "sha": "904c87d35bf10a52",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m341": {
-   "sha": "a5a3d339d89d294a",
-   "at": "adopted",
+   "sha": "11513341cee32d12",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m342": {
-   "sha": "8276a435c9627708",
-   "at": "adopted",
+   "sha": "11a3104f66e7d73b",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m343": {
-   "sha": "190b0b3b2a7330a0",
-   "at": "adopted",
+   "sha": "abce4cdc85be9445",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m344": {
-   "sha": "b6395dd4d5affe08",
-   "at": "adopted",
+   "sha": "e1bd61d4ca43f356",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m345": {
-   "sha": "2286a9682a667b52",
-   "at": "adopted",
+   "sha": "92baa41745fa80b6",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m346": {
-   "sha": "2f429099a637035b",
-   "at": "adopted",
+   "sha": "5d0d9ad7b950943f",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m347": {
-   "sha": "e303990eca2cc8f4",
-   "at": "adopted",
+   "sha": "2a5cd762ce0ea08e",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m348": {
-   "sha": "c372086c281fab35",
-   "at": "adopted",
+   "sha": "3a393caaa64c30e2",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m349": {
-   "sha": "8037a7f7ea3fc2ee",
-   "at": "adopted",
+   "sha": "326ef789d724ead5",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m350": {
-   "sha": "daa86614a4532b2d",
-   "at": "adopted",
+   "sha": "1a66f1dc13875525",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m356": {
-   "sha": "9f78b434dc9c8dfa",
-   "at": "adopted",
+   "sha": "baa59fc20a885f79",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m357": {
-   "sha": "76e54f0c347314fe",
-   "at": "adopted",
+   "sha": "7bfe8725f58464ee",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m359": {
-   "sha": "8224135680a08091",
-   "at": "adopted",
+   "sha": "612120bf138bd305",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m360": {
-   "sha": "1090a983143a4a42",
-   "at": "adopted",
+   "sha": "ae1b12bcbece5073",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m361": {
-   "sha": "ddad454892f4855f",
-   "at": "adopted",
+   "sha": "547c100d1b54918f",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m362": {
-   "sha": "07569c797d8625ad",
-   "at": "adopted",
+   "sha": "696c365e0152a5bb",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m363": {
-   "sha": "52d392a131df656a",
-   "at": "adopted",
+   "sha": "b64d04f40ceb182c",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m364": {
-   "sha": "a353be04f4574eb4",
-   "at": "adopted",
+   "sha": "a2be1d736f5953ba",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m365": {
-   "sha": "ae88116abd38825b",
-   "at": "adopted",
+   "sha": "b2d2032c57004064",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m366": {
-   "sha": "ff655b3f955e8843",
-   "at": "adopted",
+   "sha": "f27eb8ce4ed9f4af",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m367": {
-   "sha": "ad6201d06da94c86",
-   "at": "adopted",
+   "sha": "1dccaace4e3b737d",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m368": {
-   "sha": "b139a073429a29d6",
-   "at": "adopted",
+   "sha": "525a16aa44d77cca",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m370": {
-   "sha": "84cef03c0fd4b7a4",
-   "at": "adopted",
+   "sha": "dd2cf4de251407f9",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m371": {
-   "sha": "c7076275d7cca387",
-   "at": "adopted",
+   "sha": "aeee12721a69084b",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m372": {
-   "sha": "78ddbcfad5bbabe9",
-   "at": "adopted",
+   "sha": "33b15f92776f40b0",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m373": {
-   "sha": "3a1331244e53d9ec",
-   "at": "adopted",
+   "sha": "c4b6c45bb6add68e",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m374": {
-   "sha": "2bf75d1fbe40357d",
-   "at": "adopted",
+   "sha": "498e92c8ff8e17d6",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m375": {
-   "sha": "b3a4d06ae1f0758f",
-   "at": "adopted",
+   "sha": "044a01e4755e4add",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m376": {
-   "sha": "f1ad14abe86b84ad",
-   "at": "adopted",
+   "sha": "4a6e100e2f02b7ec",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m377": {
-   "sha": "5ab638b587367791",
-   "at": "adopted",
+   "sha": "b0350d7576202b04",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m378": {
-   "sha": "8ede39e39a9dd241",
-   "at": "adopted",
+   "sha": "782f90d90a11ab29",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m379": {
-   "sha": "b07039f5bb1c6747",
-   "at": "adopted",
+   "sha": "bdaf32b6c0f122ea",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m380": {
-   "sha": "0ca1a97749277a82",
-   "at": "adopted",
+   "sha": "3d9fa30b1968537a",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m381": {
-   "sha": "140f593a7c193b6c",
-   "at": "adopted",
+   "sha": "a48d244c2a98d569",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m382": {
-   "sha": "8d276f8e5447219f",
-   "at": "adopted",
+   "sha": "8b7779e536937a36",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m383": {
-   "sha": "72635368f20faa5e",
-   "at": "adopted",
+   "sha": "183409169097e18a",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m384": {
-   "sha": "6a346935fdbcba20",
-   "at": "adopted",
+   "sha": "827d08797901252b",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m386": {
-   "sha": "1ae1262435e59093",
-   "at": "adopted",
+   "sha": "67715e8b92eaab4c",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m387": {
-   "sha": "440ce22560f44cf5",
-   "at": "adopted",
+   "sha": "2826aeab8d3dd7cc",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m388": {
-   "sha": "336a133f867c190c",
-   "at": "adopted",
+   "sha": "489cb7c2b2a5469f",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m389": {
-   "sha": "17aff253a978f7db",
-   "at": "adopted",
+   "sha": "25ad77b0fb7cea15",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m390": {
-   "sha": "5e9aad399487369a",
-   "at": "adopted",
+   "sha": "8dc331471299fb49",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m392": {
-   "sha": "352d867d3e39f003",
-   "at": "adopted",
+   "sha": "c865fd9992e4dc24",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m394": {
-   "sha": "702e9419e124ff75",
-   "at": "adopted",
+   "sha": "db1027c847c15352",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m396": {
-   "sha": "dff95c451c8b431c",
-   "at": "adopted",
+   "sha": "56e77aeca951ca18",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m397": {
-   "sha": "02130eff0cb9bc7f",
-   "at": "adopted",
+   "sha": "9cb92cf9c16943eb",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m398": {
-   "sha": "ee3f461d5d84f98e",
-   "at": "adopted",
+   "sha": "f3fdee7dfce60c56",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m505": {
-   "sha": "87427ed203f9e63e",
-   "at": "adopted",
+   "sha": "2606135df97fbf5b",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m506": {
-   "sha": "64022b21fac99ce2",
-   "at": "adopted",
+   "sha": "6fef0c4494948c18",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m510": {
-   "sha": "a8503a7f22aba542",
-   "at": "adopted",
+   "sha": "c7916adedd5c52fe",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m511": {
-   "sha": "2ca07cffa89d35cf",
-   "at": "adopted",
+   "sha": "153cd82c25c6e513",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m600": {
-   "sha": "1e114ad411c4e5d8",
-   "at": "adopted",
+   "sha": "3ed15ae44a72a6c3",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m601": {
-   "sha": "76130ee30f828896",
-   "at": "adopted",
+   "sha": "a0ef7c50d255e780",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m602": {
-   "sha": "ec984a785d4afacf",
-   "at": "adopted",
+   "sha": "2681b54f18ad6486",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m603": {
-   "sha": "448d74372f3f6c89",
-   "at": "adopted",
+   "sha": "688978529bd19162",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m604": {
-   "sha": "3afa48738e690eb1",
-   "at": "adopted",
+   "sha": "5f6396712eaa4ef3",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m605": {
-   "sha": "79b75555285eb0e5",
-   "at": "adopted",
+   "sha": "45762e2e6c20f4ad",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m607": {
-   "sha": "0fb142170ecc660e",
-   "at": "adopted",
+   "sha": "1fe16d66735a97fc",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m608": {
-   "sha": "11334b424869f6b8",
-   "at": "adopted",
+   "sha": "584ffe47fb18f285",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m609": {
-   "sha": "7845f21b1b4331b9",
-   "at": "adopted",
+   "sha": "b2449585ff44c6ee",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m610": {
-   "sha": "a8fa61a6d4913487",
-   "at": "adopted",
+   "sha": "d4d02c3667d8ae33",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-packchk-m611": {
-   "sha": "7ec3acff0ed7a093",
-   "at": "adopted",
+   "sha": "56dc46ad3ec07977",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "packchk.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m101": {
    "sha": "7c1e389652a62a4b",
@@ -2061,20 +2061,20 @@
    "prompt_sha": ""
   },
   "ts-svdconv-m103": {
-   "sha": "dc3516d17181f9ec",
-   "at": "adopted",
+   "sha": "b4912c22b383ad82",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m105": {
-   "sha": "e4bb9050623c528b",
-   "at": "adopted",
+   "sha": "3882fbc26685e7d0",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m106": {
    "sha": "cda669d14c046aef",
@@ -2101,76 +2101,76 @@
    "prompt_sha": ""
   },
   "ts-svdconv-m109": {
-   "sha": "704888d7f7e012ed",
-   "at": "adopted",
+   "sha": "7208aa0fee5ea746",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m120": {
-   "sha": "1ffe79abb4590e63",
-   "at": "adopted",
+   "sha": "0d13a2dae55f7b3c",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m122": {
-   "sha": "ee886716e41b5b04",
-   "at": "adopted",
+   "sha": "c2224ef0b773f2ff",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m123": {
-   "sha": "eebfed6478ec0b93",
-   "at": "adopted",
+   "sha": "802da3d964a16486",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m124": {
-   "sha": "ba797647775316fb",
-   "at": "adopted",
+   "sha": "22e25ac4fac6e4d6",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m127": {
-   "sha": "16d37050ccd3c48a",
-   "at": "adopted",
+   "sha": "fa3d4ea28069208f",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m128": {
-   "sha": "12560c6c669320a4",
-   "at": "adopted",
+   "sha": "f6d0b7830208fcdd",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m129": {
-   "sha": "9e5b294d59e4079e",
-   "at": "adopted",
+   "sha": "f599d2512468e08f",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m130": {
-   "sha": "64eaeed8a2280a41",
-   "at": "adopted",
+   "sha": "5d685a0128c6de90",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m132": {
    "sha": "0f200d5197e5b0aa",
@@ -2181,204 +2181,204 @@
    "prompt_sha": ""
   },
   "ts-svdconv-m133": {
-   "sha": "c0725e5f9566cb41",
-   "at": "adopted",
+   "sha": "70ea0a11d0d7196f",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m201": {
-   "sha": "fe56a061ee84a56a",
-   "at": "adopted",
+   "sha": "6511fd5afb1303d5",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m202": {
-   "sha": "09c0d223efafb412",
-   "at": "adopted",
+   "sha": "e78a56e8d6cc8988",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m203": {
-   "sha": "767a84dfc34887db",
-   "at": "adopted",
+   "sha": "5967c818fa6dd92f",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m204": {
-   "sha": "d5a3d0e0297ced44",
-   "at": "adopted",
+   "sha": "512512e601a39a84",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m205": {
-   "sha": "cae792f74c5f1faf",
-   "at": "adopted",
+   "sha": "a42fb6377b324733",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m206": {
-   "sha": "c20d7f50c26236bd",
-   "at": "adopted",
+   "sha": "863b778d0b47a65e",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m207": {
-   "sha": "011621ccf02bb3ef",
-   "at": "adopted",
+   "sha": "6899642623541771",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m208": {
-   "sha": "da28ec2cb7377e9b",
-   "at": "adopted",
+   "sha": "f18ac8fbd9924c00",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m209": {
-   "sha": "a0a6bde1f6fc9ebc",
-   "at": "adopted",
+   "sha": "430a4199550ab252",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m210": {
-   "sha": "0b509052caa7b046",
-   "at": "adopted",
+   "sha": "9460d3683827275d",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m212": {
-   "sha": "3bcfa712212df2a0",
-   "at": "adopted",
+   "sha": "6fbfef5868da12ff",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m213": {
-   "sha": "2bcc7dad00055392",
-   "at": "adopted",
+   "sha": "8fe5ce5b96a7ff99",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m214": {
-   "sha": "018d15d80570987c",
-   "at": "adopted",
+   "sha": "e2365aa205871bbd",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m215": {
-   "sha": "6b1567773437a21c",
-   "at": "adopted",
+   "sha": "ed7c91c7bf2433aa",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m216": {
-   "sha": "9d329dd0ebe1acb5",
-   "at": "adopted",
+   "sha": "94370181f2d33b5f",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m217": {
-   "sha": "fc1bcfefa56950c5",
-   "at": "adopted",
+   "sha": "58c182b99a8d46f6",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m218": {
-   "sha": "c06488ff78dbb930",
-   "at": "adopted",
+   "sha": "d303fb31f9559c94",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m219": {
-   "sha": "08701ed449b8f668",
-   "at": "adopted",
+   "sha": "9b052a987ca205ad",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m220": {
-   "sha": "a26983f91f5bea86",
-   "at": "adopted",
+   "sha": "a899cdfdcf4bb6b7",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m221": {
-   "sha": "92f6f7254f37912b",
-   "at": "adopted",
+   "sha": "888371595142a366",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m222": {
-   "sha": "2969a4d4a3541574",
-   "at": "adopted",
+   "sha": "d450bf410bbc5e66",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m223": {
-   "sha": "d673d493ea10d76c",
-   "at": "adopted",
+   "sha": "14dc91cd2996ee55",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m224": {
-   "sha": "74566784dfe2a681",
-   "at": "adopted",
+   "sha": "7340a57e522be91d",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m225": {
-   "sha": "d9d653512538b593",
-   "at": "adopted",
+   "sha": "8dc7d4da9df503ec",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m226": {
    "sha": "483ae3ef7e46552c",
@@ -2389,92 +2389,92 @@
    "prompt_sha": ""
   },
   "ts-svdconv-m227": {
-   "sha": "069af5a4444d7f55",
-   "at": "adopted",
+   "sha": "d854979921e0e38c",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m228": {
-   "sha": "81230d695043f7af",
-   "at": "adopted",
+   "sha": "77894820e31d3774",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m229": {
-   "sha": "70f4b046004e2849",
-   "at": "adopted",
+   "sha": "ab574c4486d47bd7",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m230": {
-   "sha": "25f375935cf20529",
-   "at": "adopted",
+   "sha": "449f5f9d8b1507ea",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m231": {
-   "sha": "1523733cb2e83c16",
-   "at": "adopted",
+   "sha": "9a5774f779fca281",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m232": {
-   "sha": "066fdcf3ec5dd4d2",
-   "at": "adopted",
+   "sha": "df954e948a1b191c",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m233": {
-   "sha": "fd8c4daa08877dee",
-   "at": "adopted",
+   "sha": "cafbae0347e92923",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m234": {
-   "sha": "68289cc05356940a",
-   "at": "adopted",
+   "sha": "5fd48c4833b10037",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m235": {
-   "sha": "729fc9902ff0d70d",
-   "at": "adopted",
+   "sha": "c02d328e3ab58694",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m236": {
-   "sha": "a75e838660225f9d",
-   "at": "adopted",
+   "sha": "07e04b28c3f285b7",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m237": {
-   "sha": "22623c17937698bb",
-   "at": "adopted",
+   "sha": "9bfe5a9ca0d71a90",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m238": {
    "sha": "bb18077de99124c2",
@@ -2485,52 +2485,52 @@
    "prompt_sha": ""
   },
   "ts-svdconv-m239": {
-   "sha": "1d40a305b983e97c",
-   "at": "adopted",
+   "sha": "764ed8393c97762d",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m240": {
-   "sha": "52606c02b7a5a19a",
-   "at": "adopted",
+   "sha": "fabf2d2e05daf227",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m241": {
-   "sha": "ed68559790bf47fc",
-   "at": "adopted",
+   "sha": "acb8f4749a168831",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m242": {
-   "sha": "a6bdb0dcc1b43309",
-   "at": "adopted",
+   "sha": "455f5c451b11e83d",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m243": {
-   "sha": "a9e1f5dd3a1b4d7e",
-   "at": "adopted",
+   "sha": "76b21c5aed70f919",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m244": {
-   "sha": "9a7e70495787b398",
-   "at": "adopted",
+   "sha": "7bd269267981cb08",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m245": {
    "sha": "6bad59e5d40e7cfe",
@@ -2541,356 +2541,372 @@
    "prompt_sha": ""
   },
   "ts-svdconv-m246": {
-   "sha": "68caf894fa60a8af",
-   "at": "adopted",
+   "sha": "40471bb4d45bae02",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m247": {
-   "sha": "9dd8df9282e2fc3a",
-   "at": "adopted",
+   "sha": "cf7b442ebd378502",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m248": {
-   "sha": "149c337aa8ce37bf",
-   "at": "adopted",
+   "sha": "93ab3096e8c954e4",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
+  },
+  "ts-svdconv-m249": {
+   "sha": "ac610ed597f729da",
+   "at": "2026-10-22T19:49:14+00:00",
+   "kept": true,
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
+  },
+  "ts-svdconv-m250": {
+   "sha": "c902a9be61aec2b3",
+   "at": "2026-10-22T19:49:14+00:00",
+   "kept": true,
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m301": {
-   "sha": "a8f36417fd068915",
-   "at": "adopted",
+   "sha": "656e28e73473e552",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m302": {
-   "sha": "dbfc5b1c7d542f6a",
-   "at": "adopted",
+   "sha": "53c7bfc72ca90620",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m305": {
-   "sha": "67e4ee5aee954876",
-   "at": "adopted",
+   "sha": "b3c08e3c717e280d",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m306": {
-   "sha": "13d0c8c952182590",
-   "at": "adopted",
+   "sha": "e222d8f4f58a23f5",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m308": {
-   "sha": "cdd6539f98f5dff1",
-   "at": "adopted",
+   "sha": "0c4a21bbcd3ccd3e",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m309": {
-   "sha": "63903b5eb169ff17",
-   "at": "adopted",
+   "sha": "9be79492d623acb5",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m310": {
-   "sha": "b775e522857ad65c",
-   "at": "adopted",
+   "sha": "dc0886435fbefbfa",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m311": {
-   "sha": "519e7ca2fbfd7a62",
-   "at": "adopted",
+   "sha": "ccdcebf45195b2f4",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m312": {
-   "sha": "78cae335185f2b41",
-   "at": "adopted",
+   "sha": "587815831de07f02",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m313": {
-   "sha": "67dd96baf9bc187c",
-   "at": "adopted",
+   "sha": "ca0ae07bbe9bb537",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m314": {
-   "sha": "0e33ba11fc0b69cf",
-   "at": "adopted",
+   "sha": "2e4fa0398c0115a4",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m315": {
-   "sha": "ee379e649b2d9c63",
-   "at": "adopted",
+   "sha": "d5d0af4621ed309e",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m316": {
-   "sha": "dc2be221be117bec",
-   "at": "adopted",
+   "sha": "1b4c5f39748bae32",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m322": {
-   "sha": "54cac4b90324ceca",
-   "at": "adopted",
+   "sha": "398f2a240c7229cc",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m324": {
-   "sha": "c38c69d4726662de",
-   "at": "adopted",
+   "sha": "13e8f8b035f3708f",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m325": {
-   "sha": "fd3a661578b4e859",
-   "at": "adopted",
+   "sha": "bc783f986a329c27",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m326": {
-   "sha": "f0ef8f341a431f2a",
-   "at": "adopted",
+   "sha": "e3bde7be7f06569d",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m327": {
-   "sha": "9a3a914b2e848a5b",
-   "at": "adopted",
+   "sha": "d9df7b588578af9c",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m328": {
-   "sha": "266febb7cda931c7",
-   "at": "adopted",
+   "sha": "1508617bf86b01e1",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m329": {
-   "sha": "54bc63ce00f17add",
-   "at": "adopted",
+   "sha": "d340324f051586b8",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m330": {
-   "sha": "60a7bd2f1c3f3379",
-   "at": "adopted",
+   "sha": "9db425039c193685",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m331": {
-   "sha": "52717e6f6960a44f",
-   "at": "adopted",
+   "sha": "9065ece906f63a5b",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m333": {
-   "sha": "dd6b632bc1938ff3",
-   "at": "adopted",
+   "sha": "5ddb2f3c4fd4c90c",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m335": {
-   "sha": "3b00334cf75c5d64",
-   "at": "adopted",
+   "sha": "97ee8a5234646efd",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m336": {
-   "sha": "71f204874bac7abe",
-   "at": "adopted",
+   "sha": "7191aeea89d6c124",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m337": {
-   "sha": "b93b17730c6364c4",
-   "at": "adopted",
+   "sha": "3de26dfc784e3b14",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m338": {
-   "sha": "e520a402c60ad0c6",
-   "at": "adopted",
+   "sha": "3fd3952f96c07ed5",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m339": {
-   "sha": "a3e84b176c069ce7",
-   "at": "adopted",
+   "sha": "ae27fc0c29242006",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m340": {
-   "sha": "afe9c03d4fb3fdf6",
-   "at": "adopted",
+   "sha": "97be77a475d19c6c",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m341": {
-   "sha": "394155d945071d3d",
-   "at": "adopted",
+   "sha": "422e2c87fb43a9b9",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m342": {
-   "sha": "8bf0f409da4ca0cd",
-   "at": "adopted",
+   "sha": "f27de30dcc34772c",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m343": {
-   "sha": "6fe41aa13573e1b8",
-   "at": "adopted",
+   "sha": "671a56b130df62cd",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m344": {
-   "sha": "f66e9c1e000b7da7",
-   "at": "adopted",
+   "sha": "07fbbaaeada02a94",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m345": {
-   "sha": "7cd88393dabaa990",
-   "at": "adopted",
+   "sha": "ad3ea07896693304",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m348": {
-   "sha": "72e16eb7fe478172",
-   "at": "adopted",
+   "sha": "036fc707809b043a",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m349": {
-   "sha": "a2afe022b08c04f2",
-   "at": "adopted",
+   "sha": "a51d25cd9b0889a8",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m350": {
-   "sha": "5a48351875f349ab",
-   "at": "adopted",
+   "sha": "3127d9f1a385e2e1",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m352": {
-   "sha": "8f932bc814704746",
-   "at": "adopted",
+   "sha": "e0cb53de4c55baf6",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m353": {
-   "sha": "0a02400ad1da5d07",
-   "at": "adopted",
+   "sha": "6477d15bc8e99c8f",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m354": {
-   "sha": "77a4910b9da282bf",
-   "at": "adopted",
+   "sha": "b104faa59a052b95",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m355": {
-   "sha": "e956e903469ca9bd",
-   "at": "adopted",
+   "sha": "d150f5a49f1e415a",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m357": {
    "sha": "ae904e674a79456f",
@@ -2901,284 +2917,284 @@
    "prompt_sha": ""
   },
   "ts-svdconv-m358": {
-   "sha": "9e88fa61865f1698",
-   "at": "adopted",
+   "sha": "e938f6e749e6d670",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m359": {
-   "sha": "689598bdcc2a5ca1",
-   "at": "adopted",
+   "sha": "165663b2d4217d23",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m360": {
-   "sha": "3944fa5606a49adb",
-   "at": "adopted",
+   "sha": "c3caee0ebf083b55",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m361": {
-   "sha": "0649469b48f04ffb",
-   "at": "adopted",
+   "sha": "df52ca26d741d994",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m362": {
-   "sha": "c0eacaeaca1b58c5",
-   "at": "adopted",
+   "sha": "9464f70ded8a09bc",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m363": {
-   "sha": "60948e9482c9b32f",
-   "at": "adopted",
+   "sha": "1d7d771e1cab0753",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m364": {
-   "sha": "b289816004d106f2",
-   "at": "adopted",
+   "sha": "e203f0ef37a60f9c",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m365": {
-   "sha": "196e68904a484277",
-   "at": "adopted",
+   "sha": "d1b8687317c1b659",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m366": {
-   "sha": "9d7204ac30de857a",
-   "at": "adopted",
+   "sha": "723187ac87a4ef18",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m367": {
-   "sha": "b73d873d00ba2b2e",
-   "at": "adopted",
+   "sha": "84164b2ab2b9f59f",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m368": {
-   "sha": "5849b0843c31089e",
-   "at": "adopted",
+   "sha": "30bd60dd2afa3086",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m369": {
-   "sha": "188f6473eb9507c6",
-   "at": "adopted",
+   "sha": "0f7f24c5f6017f87",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m370": {
-   "sha": "20dd659eb3cf5e40",
-   "at": "adopted",
+   "sha": "b6dbbda07a2cb8f5",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m371": {
-   "sha": "217666e17308bb36",
-   "at": "adopted",
+   "sha": "75748485cf6924d1",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m372": {
-   "sha": "192fec4206f8a38b",
-   "at": "adopted",
+   "sha": "d3f6558f6dba8455",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-a.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m373": {
-   "sha": "af18db872f41b927",
-   "at": "adopted",
+   "sha": "72250eebdf68cd46",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m375": {
-   "sha": "edd86817c6b9e509",
-   "at": "adopted",
+   "sha": "4c97aaa139e80208",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m376": {
-   "sha": "6a0fbfc68b9073e5",
-   "at": "adopted",
+   "sha": "fd5d8ec618064137",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m377": {
-   "sha": "19c987f9a043124e",
-   "at": "adopted",
+   "sha": "e1a5cb123b939b4a",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m378": {
-   "sha": "7c97b76bf417b1ca",
-   "at": "adopted",
+   "sha": "3a8859978f930d7b",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m379": {
-   "sha": "994d357e264ca6bd",
-   "at": "adopted",
+   "sha": "1472fdb14bb103c2",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m380": {
-   "sha": "c22f89f3765d4804",
-   "at": "adopted",
+   "sha": "3c102dc865715481",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m381": {
-   "sha": "ff6b1b4e7571bbcb",
-   "at": "adopted",
+   "sha": "306e976073c9ad4d",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m382": {
-   "sha": "c4b1f74e2ea2158c",
-   "at": "adopted",
+   "sha": "954591a1493f8ffe",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m383": {
-   "sha": "6bc3b9d7cc538136",
-   "at": "adopted",
+   "sha": "622fdcbd87852d1f",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m384": {
-   "sha": "046794029378f29e",
-   "at": "adopted",
+   "sha": "07c88ba6bed7ffc6",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m385": {
-   "sha": "bbafc8ac32e9ae14",
-   "at": "adopted",
+   "sha": "a7e597d5b5dd8f5a",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m386": {
-   "sha": "4ae1bc1cce278bf8",
-   "at": "adopted",
+   "sha": "972c2da0f0867a04",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m387": {
-   "sha": "e0217cd76b83f997",
-   "at": "adopted",
+   "sha": "11028694cd8637c0",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m388": {
-   "sha": "460aa04e67029c1d",
-   "at": "adopted",
+   "sha": "7575cb107e05a135",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m389": {
-   "sha": "d30a17e9e1a4f051",
-   "at": "adopted",
+   "sha": "bccbcb87eb1a64a0",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m391": {
-   "sha": "eda4172bfef0ea49",
-   "at": "adopted",
+   "sha": "dca28f479b1ca2e2",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m516": {
-   "sha": "bbb06e91b0a60103",
-   "at": "adopted",
+   "sha": "0d0e863e3f06b77d",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m517": {
-   "sha": "b78dcb46891fcf76",
-   "at": "adopted",
+   "sha": "06f83d9907d07268",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   },
   "ts-svdconv-m518": {
-   "sha": "9e8f0ebd46823662",
-   "at": "adopted",
+   "sha": "10623ce09c33ca47",
+   "at": "2026-10-22T19:49:14+00:00",
    "kept": true,
-   "file": "svdconv-b.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "0ad06ee224a9f3f9"
   }
  }
 }

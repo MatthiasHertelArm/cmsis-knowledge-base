@@ -10,16 +10,16 @@ code: "M221"
 symptoms: ["M221", "Input filename must end with .svd: '%NAME%"]
 symptom_regex: "^Input filename must end with \\.svd: '.+?$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Correct input filename extension."
-summary: "The input file's extension is not .svd (case is ignored), e.g. .xml. svdconv takes the text after the last '.' of the full path, so an extensionless file inside a directory with a '.' in its name is reported …"
+summary: "svdconv was given an input file whose name does not end in .svd."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:927-937", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SvdOptions.cpp:285-286", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv.cpp:243", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:88"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -29,17 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevi
 
 ## Cause
 
-The input file's extension is not .svd (case is ignored), e.g. .xml. svdconv takes the text after the last '.' of the full path, so an extensionless file inside a directory with a '.' in its name is reported here too.
+svdconv was given an input file whose name does not end in .svd. The %NAME% in the message is the offending file name as passed on the command line. The README gives the same cause in one line, but the source lines were not available to confirm the exact check.
 
 ## Fix
 
-Rename the input file to <device name>.svd, matching <device><name>.
+Rename the input file so that it ends with .svd (for example, rename a file named device.xml to device.svd) and run svdconv again with the renamed file.
+
+## Note
+
+Trigger was inferred from the message text and README only; the source lines were not available, so the exact check is unverified.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:927-937`
-- `tools/svdconv/SVDConv/src/SvdOptions.cpp:285-286`
-- `tools/svdconv/SVDConv/src/SVDConv.cpp:243`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:88`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

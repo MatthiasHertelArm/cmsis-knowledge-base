@@ -10,15 +10,16 @@ code: "M327"
 symptoms: ["M327", "Path is not conformant: '%PATH%':   Backslashes are not recommended, use forward slashes."]
 symptom_regex: "^Path is not conformant: '.+?':   Backslashes are not recommended, use forward slashes\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "Paths to files should adhere to the POSIX standard using forward slashes (/)."
+doc_cause: "Paths to files should adhere to the POSIX standard using forward slashes (/)."
+summary: "packchk found a path in the PDSC (for example a file or directory attribute) that contains a backslash, which the tool regards as non-conformant because pack paths are expected to use POSIX forward slashes."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:143", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/RteModelReader.cpp:57-63", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:163-169", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:453-496", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/TestLicense/TestVendor.TestPackLicense.pdsc:8", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:168"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp (trigger not inspected; clone not available)"]
 ---
 
 ## Symptom
@@ -28,19 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-Paths to files should adhere to the POSIX standard using forward slashes (/).
+packchk found a path in the PDSC (for example a file or directory attribute) that contains a backslash, which the tool regards as non-conformant because pack paths are expected to use POSIX forward slashes. The %PATH% in the message is the offending path as written in the pack description.
 
 ## Fix
 
-Replace the backslashes with forward slashes, e.g. Device/Include/device.h.
+Open the PDSC file, find the path named in the message, and replace every backslash with a forward slash, for example change Source\Device\file.c to Source/Device/file.c, then rerun packchk.
+
+## Note
+
+Answered from the message text and the README cause only, since the source lines were not available; the exact trigger condition in PackChk_Msgs.cpp was not verified.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:143`
-- `tools/packchk/src/RteModelReader.cpp:57-63`
-- `tools/packchk/src/ValidateSyntax.cpp:163-169`
-- `tools/packchk/test/integtests/src/PackChkIntegTests.cpp:453-496`
-- `tools/packchk/test/data/TestLicense/TestVendor.TestPackLicense.pdsc:8`
-- `tools/packchk/README.md:168`
+- `tools/packchk/src/PackChk_Msgs.cpp (trigger not inspected; clone not available)`

@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["file doesn't exist: '<…>'"]
 symptom_regex: "^file doesn't exist: '.+?'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:22"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:22"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "The YAML schema check was asked to validate a file that does not exist at the given path (`<…>`)."
+summary: "csolution calls ProjMgrYamlSchemaChecker::Validate with the path of a YAML input file before it runs schema validation."
 cause_origin: "source-analysis"
-confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:18-24", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:69-74", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrRpcServer.cpp:322-350", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrSchemaCheckerUnitTests.cpp:62-64"]
+confidence: "high"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:21-22", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:23"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlSchem
 
 ## Cause
 
-The YAML schema check was asked to validate a file that does not exist at the given path (`<…>`). On the command line csolution checks its input files before, so this mostly appears when a client such as an IDE extension, using `csolution rpc`, loads a *.csolution.yml path that does not exist.
+csolution calls ProjMgrYamlSchemaChecker::Validate with the path of a YAML input file before it runs schema validation. The check at line 21 uses RteFsUtils::Exists on that path, and when no file exists there the tool logs this error with the path as given, in the placeholder, and returns false. The path is whatever was passed to the tool, so the missing file is the one named in the message.
 
 ## Fix
 
-Check the solution path the command or the client passes to csolution and point it to an existing `<name>.csolution.yml`.
+Check the file name and path in the message for typos or a wrong extension, and confirm that the file exists at that location. If the path is relative, run csolution from the directory that contains it, or pass the absolute path. Then run the command again.
 
 ## Trigger in the source
 
@@ -39,13 +39,11 @@ if (!RteFsUtils::Exists(file)) {
 
 ## Note
 
-All command-line callers check existence before parsing; RPC LoadSolution does not, which is the only plain path to this message found.
+The source lines do not show which callers pass which file, so the exact file that is missing is known only from the placeholder in the message. The message is not documented in the README.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:18-24`
-- `tools/projmgr/src/ProjMgrYamlParser.cpp:69-74`
-- `tools/projmgr/src/ProjMgrRpcServer.cpp:322-350`
-- `tools/projmgr/test/src/ProjMgrSchemaCheckerUnitTests.cpp:62-64`
+- `tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:21-22`
+- `tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:23`

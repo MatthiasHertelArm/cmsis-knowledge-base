@@ -6,8 +6,8 @@ title: "Noise Reduction Code Sample: Post-processing"
 summary: "After each inference the output of the model is passed to post-processing code which uses the gain values the model produced to generate audio with the noise removed from it."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/use_cases/noise_reduction.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/noise_reduction.md#post-processing"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/use_cases/noise_reduction.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/noise_reduction.md#post-processing"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -15,11 +15,11 @@ mode: "V"
 After each inference the output of the model is passed to post-processing code which uses the gain values the model
 produced to generate audio with the noise removed from it.
 
-For you to verify the outputs of the model after post-processing, you will have manually use an [offline script](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../../scripts/py/rnnoise_dump_extractor.py)
+For you to verify the outputs of the model after post-processing, you will have manually use an [offline script](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../../scripts/py/rnnoise_dump_extractor.py)
 to convert the post-processed outputs into a wav file.
 This offline script takes a dump file as the input and saves the denoised WAV file to disk. The following is an example
 of how to call the script from the command line after running the use-case and
-[selecting to dump memory contents](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/./noise_reduction.md#dumping-post_processed-results-for-all-inferences).
+[selecting to dump memory contents](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/./noise_reduction.md#dumping-post_processed-results-for-all-inferences).
 
 ```commandline
 python scripts/py/rnnoise_dump_extractor.py --dump_file <path_to_dump_file.bin> --output_dir <path_to_output_folder>

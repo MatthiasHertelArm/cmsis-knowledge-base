@@ -6,8 +6,8 @@ title: "System Power Management: Introduction"
 summary: "The kernel enters the idle state when it has nothing to schedule. Enabling CONFIG_PM allows the kernel to call upon the power management subsystem to put an idle system into one of the supported power states."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/services/pm/system.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/services/pm/system.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/services/pm/system.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/services/pm/system.rst"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -30,11 +30,16 @@ The following diagram describes system power management:
 The idle thread locks interrupts before calling `pm_system_suspend`
 and keeps ownership of the original architecture interrupt key. If the PM
 subsystem enters a low-power state, PM resume bookkeeping runs with interrupts
-still locked after any system-managed devices have been resumed, including
-`pm_state_exit_post_ops`, PM exit notifications, and system clock
-idle-exit accounting. After that bookkeeping is complete and
+still locked. By default, system-managed devices are resumed first, followed
+by `pm_state_exit_post_ops`, PM exit notifications, and system clock
+idle-exit accounting. A device resume callback cannot rely on a timer-based
+`k_busy_wait` if the low-power state stopped that timer.
+After that bookkeeping is complete and
 `pm_system_suspend` returns, the idle thread restores the original
 interrupt key.
+
+
+**Note:** The default-off experimental option resume, then PM exit notifications. This can make a timer-based platform-specific validation. SoC post-ops must not depend on resumed devices, and timer idle-exit must not depend on still-suspended devices. Timer idle-exit may also invoke `k_timer` expiry functions before devices are resumed.
 
 Architectures and SoCs that do not select `CONFIG_PM_STATE_SET_IRQ_UNLOCKED`
 use the architecture hooks immediately around the low-power instruction so that

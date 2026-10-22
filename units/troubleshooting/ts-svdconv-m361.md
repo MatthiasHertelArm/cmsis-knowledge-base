@@ -10,15 +10,15 @@ code: "M361"
 symptoms: ["M361", "%LEVEL% %ITEM% '%NAME%': 'RESERVED' items must not be defined."]
 symptom_regex: "^.+? .+? '.+?': 'RESERVED' items must not be defined\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "An element's <name>, or a register's <displayName>, is 'reserved' (in any case)."
+summary: "The SVD input defines an item whose name is RESERVED, so svdconv flags it as a warning."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdItem.cpp:1210", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdItem.cpp:1211", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdItem.cpp:1240", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdItem.cpp:1241", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/HeaderData_Cluster.cpp:94", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:180", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:253"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -28,20 +28,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdItem
 
 ## Cause
 
-An element's <name>, or a register's <displayName>, is 'reserved' (in any case). Reserved space must not be described as an element, so svdconv drops it. Warning by default, error with --strict.
+The SVD input defines an item whose name is RESERVED, so svdconv flags it as a warning. The message wording suggests the tool treats a RESERVED-named element or register as a reserved placeholder that should not appear in the device description. The %LEVEL%, %ITEM% and %NAME% placeholders are the level (for example peripheral or register), the item kind and the offending name taken from the SVD.
 
 ## Fix
 
-Delete the element. Unused addresses and bits need no description; the header generator fills gaps with reserved members on its own.
+Open the SVD file, find the element whose name is RESERVED (the message gives its level and name), and remove it or rename it to a real register or peripheral name. Then rerun svdconv on the corrected file.
+
+## Note
+
+Source lines were not available, so the trigger condition is inferred from the message text alone; the exact check and the README wording were not verified against the code.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdItem.cpp:1210`
-- `tools/svdconv/SVDModel/src/SvdItem.cpp:1211`
-- `tools/svdconv/SVDModel/src/SvdItem.cpp:1240`
-- `tools/svdconv/SVDModel/src/SvdItem.cpp:1241`
-- `tools/svdconv/SVDGenerator/src/HeaderData_Cluster.cpp:94`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:180`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:253`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

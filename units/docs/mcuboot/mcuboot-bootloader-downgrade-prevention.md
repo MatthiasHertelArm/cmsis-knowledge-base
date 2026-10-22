@@ -6,8 +6,8 @@ title: "Bootloader: Downgrade prevention"
 summary: "Downgrade prevention is a feature which enforces that the new image must have a higher version/security counter number than the image it is replacing, thus preventing the malicious downgrading of the device to an older and possibly vulnerable …"
 status: "draft"
 collection: "mcuboot"
-source: "mcu-tools/mcuboot@ba2099f:docs/design.md"
-doc_source: "https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/design.md#downgrade-prevention"
+source: "mcu-tools/mcuboot@725d63c:docs/design.md"
+doc_source: "https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/design.md#downgrade-prevention"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -28,7 +28,7 @@ is set).
 ### [Hardware-based downgrade prevention](#hw-downgrade-prevention)
 
 Each signed image can contain a security counter in its protected TLV area, which
-can be added to the image using the `-s` option of the [imgtool](https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/imgtool.md) script.
+can be added to the image using the `-s` option of the [imgtool](https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/imgtool.md) script.
 During the hardware based downgrade prevention (alias rollback protection) the
 new image's security counter will be compared with the currently active security
 counter value which must be stored in a non-volatile and trusted component of

@@ -3,10 +3,10 @@ id: "ceed-valgrind-plugin-overview"
 type: "concept"
 domain: "test"
 title: "Valgrind: Plugin overview"
-summary: "The Valgrind plugin integrates [Valgrind] dynamic analysis into Ceedling, building and then running test executables under Valgrind’s Memcheck tool."
+summary: "Enabling this plugin on a platform without Valgrind does not affect your other builds. ceedling test:all and every non-valgrind: task run normally. Only a valgrind: task requires the executable, and it reports the platform constraint when it cannot find one."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/valgrind.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/plugins/valgrind.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/valgrind/#plugin-overview"
 license: "MIT"
 mode: "V"
@@ -15,6 +15,11 @@ mode: "V"
 !!! note "Linux only"
     Valgrind runs on Linux and other Unix-like systems. It is not available
     on Windows or macOS (ARM).
+
+    Enabling this plugin on a platform without Valgrind does not affect your
+    other builds. `ceedling test:all` and every non-`valgrind:` task run
+    normally. Only a `valgrind:` task requires the executable, and it reports
+    the platform constraint when it cannot find one.
 
 The Valgrind plugin integrates [Valgrind] dynamic analysis into Ceedling,
 building and then running test executables under Valgrind’s Memcheck tool.

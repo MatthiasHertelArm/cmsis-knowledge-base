@@ -10,15 +10,15 @@ code: "M301"
 symptoms: ["M301", "Interrupt number '%NUM% : %NAME%' already defined: %NAME2% %LINE%"]
 symptom_regex: "^Interrupt number '.+? : .+?' already defined: .+? .+?$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "Two <interrupt> elements have the same <value> (interrupt number) but different <name>s; interrupt numbers are unique across the whole device."
+summary: "svdconv found two peripheral interrupt entries in the SVD that use the same interrupt number, so the number %NUM% is assigned to both %NAME% and %NAME2%."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:186", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:207", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:213", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:216", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:120"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -28,18 +28,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevi
 
 ## Cause
 
-Two <interrupt> elements have the same <value> (interrupt number) but different <name>s; interrupt numbers are unique across the whole device. The first definition (at LINE) is kept and the second is not used.
+svdconv found two peripheral interrupt entries in the SVD that use the same interrupt number, so the number %NUM% is assigned to both %NAME% and %NAME2%. An SVD file must give each interrupt a unique number, and the duplicate is usually a copy-paste or generation mistake in the device description. The source lines were not available, so this reading is based on the message text and the README note only.
 
 ## Fix
 
-Give each interrupt its correct <value>. If two peripherals really share one interrupt line, use the same <name> and <value> in both, which svdconv accepts (it only notes this with the low-level warning M304).
+Open the SVD file at the location referenced by the message (the line %LINE% shows where the second definition occurs) and change the <value> of one of the two <interrupt> entries so that each interrupt number is used once. Then rerun svdconv.
+
+## Note
+
+Trigger and handling were not checked against the source; the cause and fix rely on the message text and the README. The clone was unavailable, so the exact trigger condition is unverified.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:186`
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:207`
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:213`
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:216`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:120`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

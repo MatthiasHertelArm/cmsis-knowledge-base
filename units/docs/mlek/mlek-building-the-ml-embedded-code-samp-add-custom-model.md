@@ -6,8 +6,8 @@ title: "Building the ML embedded code sample applications from sources: Add cust
 summary: "The application performs inference using the model pointed to by the CMake parameter MODEL_PATH."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/building.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/building.md#add-custom-model"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/building.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/building.md#add-custom-model"
 license: "Apache-2.0"
 mode: "V"
 ---

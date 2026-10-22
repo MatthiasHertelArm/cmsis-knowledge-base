@@ -9,14 +9,14 @@ severity: "warning"
 symptoms: ["linker script template for compiler '<…>' was not found"]
 symptom_regex: "^linker script template for compiler '.+?' was not found$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2462"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:2462"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "The project has no linker script of its own (no `linker:` - `script:` in cproject.yml or clayer.yml and none from a component), or uses `linker:` - `auto:`, so csolution looks for the template `<compiler>_linker_script.*` of the selected compiler; `<…>` …"
+summary: "csolution looks for a default linker script template when the context has no linker script set and it is not a dry run."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2449", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2462", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2355", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrUtils.cpp:199", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/templates/gcc_linker_script.ld.src:1", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrWorkerUnitTests.cpp:1549"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2449-2451", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2454-2460", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2461-2464"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-The project has no linker script of its own (no `linker:` - `script:` in cproject.yml or clayer.yml and none from a component), or uses `linker:` - `auto:`, so csolution looks for the template `<compiler>_linker_script.*` of the selected compiler; `<…>` is that compiler. It searches the compiler root (environment variable CMSIS_COMPILER_ROOT, otherwise the `etc` folder of the CMSIS-Toolbox installation) and found no template there. Templates exist for AC6, GCC, IAR, CLANG, CLANG_TI and XC. The context then has no linker script.
+csolution looks for a default linker script template when the context has no linker script set and it is not a dry run. It walks the compiler root directory recursively and matches a file whose double-stem equals '<toolchain name>_linker_script' (case-insensitive). The message is printed when no such file exists under the compiler root, so the toolchain named in the context (the '<...>' part of the message) has no bundled linker script template. In that case csolution does not set a linker script and returns without copying anything.
 
 ## Fix
 
-Check that CMSIS_COMPILER_ROOT points to the toolbox's `etc` folder, or that the CMSIS-Toolbox installation is complete, and that `compiler:` names a supported toolchain. Alternatively give the project its own script: `linker:` - `script: path/to/file.sct` in the cproject.yml.
+Set the linker script explicitly in the csolution project (linker script entry of the build-type or project YAML) so csolution does not need a default template. Alternatively, check that the selected toolchain is installed in the expected compiler root, since a missing template in that root is what triggers the warning.
 
 ## Trigger in the source
 
@@ -37,13 +37,14 @@ Check that CMSIS_COMPILER_ROOT points to the toolbox's `etc` folder, or that the
 if (linkerScript.empty()) {
 ```
 
+## Note
+
+The message is a warning and processing continues without a linker script; the user-facing cause is my reading of the directory scan. The README does not document this message.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrWorker.cpp:2449`
-- `tools/projmgr/src/ProjMgrWorker.cpp:2462`
-- `tools/projmgr/src/ProjMgrWorker.cpp:2355`
-- `tools/projmgr/src/ProjMgrUtils.cpp:199`
-- `tools/projmgr/templates/gcc_linker_script.ld.src:1`
-- `tools/projmgr/test/src/ProjMgrWorkerUnitTests.cpp:1549`
+- `tools/projmgr/src/ProjMgrWorker.cpp:2449-2451`
+- `tools/projmgr/src/ProjMgrWorker.cpp:2454-2460`
+- `tools/projmgr/src/ProjMgrWorker.cpp:2461-2464`

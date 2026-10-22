@@ -6,8 +6,8 @@ title: "SmolLM2 -> Ethos-U Quickstart: 7. Experimental static quantized KV cache
 summary: "Ethos-U does not support the dynamic per-token quantization used by model.quantize_kv_cache=True. The static path instead calibrates fixed per-channel K/V scales from Wikitext before export, stores the cache as int8, and uses standard tensor cache updates."
 status: "draft"
 collection: "executorch-arm"
-source: "pytorch/executorch@658390c:examples/arm/smollm2_example_ethos_u/README.md"
-doc_source: "https://github.com/pytorch/executorch/blob/658390c/examples/arm/smollm2_example_ethos_u/README.md#7-experimental-static-quantized-kv-cache"
+source: "pytorch/executorch@6368414:examples/arm/smollm2_example_ethos_u/README.md"
+doc_source: "https://github.com/pytorch/executorch/blob/6368414/examples/arm/smollm2_example_ethos_u/README.md#7-experimental-static-quantized-kv-cache"
 license: "BSD-3-Clause"
 mode: "V"
 ---

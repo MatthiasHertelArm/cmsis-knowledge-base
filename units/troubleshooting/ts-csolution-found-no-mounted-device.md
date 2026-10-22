@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["found no mounted device"]
 symptom_regex: "^found no mounted device$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1440"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:1440"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "The `board:` refers to a board whose pack description lists no mounted device (only compatible devices)."
+summary: "The csolution matched a board, but the board's pack entry lists no mounted devices, so GetMountedDevices returns an empty list."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1430-1442", "Open-CMSIS-Pack/devtools@30f5e817:test/packs/ARM/RteTest_DFP/0.2.0/ARM.RteTest_DFP.pdsc:542-547", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:3412-3427", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestSolution/TestProject4/test_board_no_mounted_device.cproject.yml"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1431", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1439-1441", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1425-1428"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-The `board:` refers to a board whose pack description lists no mounted device (only compatible devices). The check fails even when `device:` is also set.
+The csolution matched a board, but the board's pack entry lists no mounted devices, so GetMountedDevices returns an empty list. The code at line 1439 treats an empty list as an error no matter whether the user also named a device, so the message appears whenever the selected board declares no mounted device.
 
 ## Fix
 
-Use a board (or board support pack version) that declares its mounted device, or select the target with `device:` only and drop `board:`.
+Check the board entry in the installed board pack for a mounted device declaration. If it has none, select a board that declares mounted devices, or correct the board pack. Then rerun the csolution command. Do not rely on adding a device name alone to clear this error, because the zero-device check does not depend on the device setting.
 
 ## Trigger in the source
 
@@ -37,11 +37,14 @@ Use a board (or board support pack version) that declares its mounted device, or
 } else if (mountedDevices.size() == 0) {
 ```
 
+## Note
+
+The enclosing block condition is not in the lines given, so the exact entry path is inferred. The trigger is the zero-size branch, and it is reached regardless of deviceItem.name, which the other branch at line 1432 checks. The README does not document this message.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrWorker.cpp:1430-1442`
-- `test/packs/ARM/RteTest_DFP/0.2.0/ARM.RteTest_DFP.pdsc:542-547`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:3412-3427`
-- `tools/projmgr/test/data/TestSolution/TestProject4/test_board_no_mounted_device.cproject.yml`
+- `tools/projmgr/src/ProjMgrWorker.cpp:1431`
+- `tools/projmgr/src/ProjMgrWorker.cpp:1439-1441`
+- `tools/projmgr/src/ProjMgrWorker.cpp:1425-1428`

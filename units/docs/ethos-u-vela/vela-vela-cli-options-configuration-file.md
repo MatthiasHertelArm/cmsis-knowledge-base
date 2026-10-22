@@ -6,8 +6,8 @@ title: "Vela CLI Options: Configuration File"
 summary: "This is used to describe various properties of the Ethos-U embedded system. The configuration file is selected using the --config CLI option along with a file that describes the properties."
 status: "draft"
 collection: "ethos-u-vela"
-source: "artificial-intelligence/ethos-u/ethos-u-vela@eb9cf0d:OPTIONS.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/eb9cf0d/OPTIONS.md#configuration-file"
+source: "artificial-intelligence/ethos-u/ethos-u-vela@4bd6685:OPTIONS.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/4bd6685/OPTIONS.md#configuration-file"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -52,7 +52,7 @@ vela network.tflite --accelerator-config ethos-u55-256 --config Arm/vela.ini --s
 Hardware vendors and/or users may wish to contribute their own configuration
 files for various SoC platforms by adding a .ini file in an appropriate
 directory under the ethosu/config_files directory.  This can be done by
-following the process outlined in [CONTRIBUTING.md](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/eb9cf0d/CONTRIBUTING.md).  These can
+following the process outlined in [CONTRIBUTING.md](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/4bd6685/CONTRIBUTING.md).  These can
 then be accessed with `--config <DirectoryName>/config.ini` as in the example
 above.
 

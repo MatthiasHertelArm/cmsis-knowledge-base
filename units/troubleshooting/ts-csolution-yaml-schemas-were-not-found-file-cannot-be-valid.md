@@ -9,14 +9,14 @@ severity: "warning"
 symptoms: ["yaml schemas were not found, file cannot be validated"]
 symptom_regex: "^yaml schemas were not found, file cannot be validated$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:28"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:28"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "csolution looks for `<type>.schema.json` (e.g."
+summary: "Validate() calls FindSchema(), which builds a schema file name from the YAML file's base name, appends \".schema.json\", and searches for it with RteFsUtils::FindFileInEtc relative to the csolution executable's path."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:26", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:41", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtefsutils/src/RteFsUtils.cpp:869", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrSchemaCheckerUnitTests.cpp:66"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:26-30", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:41-56"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlSchem
 
 ## Cause
 
-csolution looks for `<type>.schema.json` (e.g. `cproject.schema.json`) next to its executable, in `../etc/` or in `../../etc/`, and did not find the schema for the file named with the message. The file is processed without schema validation. This points to an incomplete CMSIS-Toolbox installation or a csolution binary moved away from its `etc` folder.
+Validate() calls FindSchema(), which builds a schema file name from the YAML file's base name, appends ".schema.json", and searches for it with RteFsUtils::FindFileInEtc relative to the csolution executable's path. When no matching schema is found, the tool logs this warning with the YAML file as its location and returns success without validating the file. The warning therefore means the schema lookup failed, not that the YAML file itself is wrong.
 
 ## Fix
 
-Use csolution from a complete CMSIS-Toolbox installation whose `etc` folder contains the *.schema.json files, or reinstall the toolbox. `-n` suppresses the schema check and this warning.
+Check that the csolution installation is complete and that it contains the schema JSON files in an etc directory next to its executable, with a name matching the YAML file (for example cdefault.schema.json for cdefault.yml). If the installation is intact, run csolution from its installed location rather than from a copy of the binary that lacks the etc directory. The source does not show any other way to supply the schema, so if the lookup still fails, the file cannot be validated by this tool version.
 
 ## Trigger in the source
 
@@ -37,11 +37,13 @@ Use csolution from a complete CMSIS-Toolbox installation whose `etc` folder cont
 if(schemaFile.empty()) {
 ```
 
+## Note
+
+The message is a warning and Validate() returns true, so processing continues and the YAML file is not checked against any schema. The message carries no variable text; the file name appears only in the logger's location field. The lookup logic for names with a prefix (the ExtractFileExtension branch) is only partly clear from these lines, so the exact schema name for such files is not confirmed.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:26`
-- `tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:41`
-- `libs/rtefsutils/src/RteFsUtils.cpp:869`
-- `tools/projmgr/test/src/ProjMgrSchemaCheckerUnitTests.cpp:66`
+- `tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:26-30`
+- `tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:41-56`

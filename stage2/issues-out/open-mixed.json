@@ -64,29 +64,6 @@
   "confidence": "medium"
  },
  {
-  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/704",
-  "tool": "cbuild",
-  "title": "cbuild --rebuild --active removes secure outputs needed by the non-secure target",
-  "symptoms": [
-   "ninja: error: '.../out/CM33_s/AVH/Debug/CM33_s_CMSE_Lib.o', needed by '.../out/CM33_ns/AVH-NS-only/Debug/CM33_ns.elf', missing and no known rule to make it"
-  ],
-  "cause": "Two separate effects. In the reported project the target-set of the non-secure-only target pointed at the Release project context while the Debug set was selected, so the wrong context was built. In addition, --rebuild with --active cleans every context of the solution, not only those of the selected target-set, which deletes prebuilt secure artifacts that the non-secure image consumes.",
-  "fix": "Make each target-set reference the project contexts of its own build type (CM33_ns.Debug in the Debug set). When using --rebuild, build the secure image again afterwards (or build the non-secure context directly with --context), because the clean step also removes images owned by the other target type.",
-  "applies_to": {
-   "tool": [
-    "cbuild"
-   ],
-   "toolchain": [
-    "AC6",
-    "GCC"
-   ]
-  },
-  "versions": "Seen with CMSIS-Toolbox 2.14.x.",
-  "resolution": "user-error",
-  "open": true,
-  "confidence": "medium"
- },
- {
   "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/423",
   "tool": "csolution",
   "title": "cdefault.yml compiler option overrides the same option set in csolution or cproject",
@@ -266,24 +243,6 @@
   "resolution": "workaround",
   "open": true,
   "confidence": "medium"
- },
- {
-  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/550",
-  "tool": "cmsis-solution",
-  "title": "Opening the CubeMX generator does nothing with CMSIS Solution 1.72 on macOS and Linux",
-  "symptoms": [],
-  "cause": "A regression in version 1.72: the generator is started in a pseudo terminal, and on Linux and macOS that terminal ends when cbridge detaches, before the generator has loaded.",
-  "fix": "Copy the launch command from the CMSIS Solution output channel (csolution run <solution>.csolution.yml -g CubeMX -a <target>) and run it in a normal VS Code terminal; or go back to version 1.70. The fix was included in the nightly build of 2 October 2026.",
-  "applies_to": {
-   "tool": [
-    "cmsis-solution",
-    "csolution"
-   ]
-  },
-  "versions": "Broken in 1.72, working in 1.70, fixed in nightly 2026-10-02",
-  "resolution": "workaround",
-  "open": true,
-  "confidence": "high"
  },
  {
   "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/352",

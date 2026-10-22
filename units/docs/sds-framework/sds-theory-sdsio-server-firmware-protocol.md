@@ -6,13 +6,13 @@ title: "theory: SDSIO-Server Firmware Protocol"
 summary: "The SDSIO-Server uses a simple protocol for data exchange between a host computer and the embedded target that integrates an SDSIO Interface."
 status: "draft"
 collection: "sds-framework"
-source: "ARM-software/SDS-Framework@4459441:documentation/theory.md"
-doc_source: "https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/theory.md#sdsio-server-firmware-protocol"
+source: "ARM-software/SDS-Framework@c18efee:documentation/theory.md"
+doc_source: "https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/theory.md#sdsio-server-firmware-protocol"
 license: "Apache-2.0"
 mode: "V"
 ---
 
-The [SDSIO-Server](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/utilities.md#sdsio-server) uses a simple protocol for data exchange between a host computer and the embedded target that integrates an [SDSIO Interface](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/sdsio.md). The protocol assumes that communication to the SDSIO-Server is ensured by the underlying transport technology (TCP/IP or USB); therefore, no additional checks are implemented.
+The [SDSIO-Server](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/utilities.md#sdsio-server) uses a simple protocol for data exchange between a host computer and the embedded target that integrates an [SDSIO Interface](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/sdsio.md). The protocol assumes that communication to the SDSIO-Server is ensured by the underlying transport technology (TCP/IP or USB); therefore, no additional checks are implemented.
 
 The following conventions describe the **command semantics** used in the following documentation:
 

@@ -10,15 +10,15 @@ code: "M373"
 symptoms: ["M373", "%LEVEL% <%TAG%> '%NAME%' already defined %LINE%"]
 symptom_regex: "^.+? <.+?> '.+?' already defined .+?$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "Two registers or clusters at the same level of a peripheral or cluster end up with the same display name. svdconv compares each register's <displayName> and, where a register has none (and for clusters, which have no <displayName>), its …"
+summary: "svdconv found an SVD element whose name (the NAME placeholder) was already declared earlier under the same tag (TAG), so the duplicate definition at the reported line overrides or conflicts with the earlier one."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdPeripheral.cpp:843-866", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdPeripheral.cpp:800-827", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1028-1030", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1049-1051", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1157-1158", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdItem.cpp:404-423", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdItem.cpp:514-518", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:192", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:255"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -28,26 +28,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdPeri
 
 ## Cause
 
-Two registers or clusters at the same level of a peripheral or cluster end up with the same display name. svdconv compares each register's <displayName> and, where a register has none (and for clusters, which have no <displayName>), its <name>; so registers that share a <name> in different <alternateGroup>s collide here even though the name check accepts them.
+svdconv found an SVD element whose name (the NAME placeholder) was already declared earlier under the same tag (TAG), so the duplicate definition at the reported line overrides or conflicts with the earlier one. The message text names the tag and the first definition's line, so the input SVD has two elements with the same name at the same scope.
 
 ## Fix
 
-Give each register at that level a unique <displayName>, or drop a copied <displayName> so the distinct <name> is used. For registers with the same <name> in different <alternateGroup>s, add a distinct <displayName> to each, e.g. <displayName>CTRL_ALT</displayName>. The line in the message points to the first definition.
+Open the SVD file at the line reported in the message and at the earlier definition it refers to, then rename or remove one of the duplicate elements so each name is unique within its parent (for example, peripheral or register names). Re-run svdconv on the corrected file.
 
 ## Note
 
-Error under --strict. The name check appends <alternateGroup> to the name (SvdPeripheral.cpp:806-809) but the displayName check does not, so equal names in different alternate groups without explicit <displayName> look like a false positive.
+Source lines were not available, so the trigger is inferred from the message text only; the exact scope of the uniqueness check (peripheral, register, or other) is not verified. The README is said to document this message, but its text was not provided to confirm it.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdPeripheral.cpp:843-866`
-- `tools/svdconv/SVDModel/src/SvdPeripheral.cpp:800-827`
-- `tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1028-1030`
-- `tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1049-1051`
-- `tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1157-1158`
-- `tools/svdconv/SVDModel/src/SvdItem.cpp:404-423`
-- `tools/svdconv/SVDModel/src/SvdItem.cpp:514-518`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:192`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:255`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

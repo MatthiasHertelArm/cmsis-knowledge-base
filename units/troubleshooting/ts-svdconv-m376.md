@@ -10,15 +10,15 @@ code: "M376"
 symptoms: ["M376", "%LEVEL% '%NAME%' (<enumeratedValues> '%NAME2%'): '%USAGE%' container already defined in %LINE%."]
 symptom_regex: "^.+? '.+?' \\(<enumeratedValues> '.+?'\\): '.+?' container already defined in .+?\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A <field> has two <enumeratedValues> containers with the same usage."
+summary: "svdconv found a second enumeratedValues container with the same usage (read, write or read-write) inside one register or field, which the SVD format does not allow."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:554-566", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdEnum.cpp:74-82", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:193-197"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -28,16 +28,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdFiel
 
 ## Cause
 
-A <field> has two <enumeratedValues> containers with the same usage. A container without <usage> counts as read-write, so two containers that both omit <usage>, or both say read (or both write), collide; the second one is ignored.
+svdconv found a second enumeratedValues container with the same usage (read, write or read-write) inside one register or field, which the SVD format does not allow. The %NAME% and %NAME2% placeholders are the register or field and the enumeratedValues name, %USAGE% is the duplicated usage, and %LINE% is the line of the earlier definition.
 
 ## Fix
 
-Merge the two containers into one, or set <usage>read</usage> on one and <usage>write</usage> on the other.
+Open the SVD file at the reported location and remove or merge the duplicate enumeratedValues block so that each usage appears at most once per register or field. Then rerun svdconv.
+
+## Note
+
+Source lines were not available, so the cause is inferred from the message text and the trigger description only. The README cause and fix were not provided to me in detail.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdField.cpp:554-566`
-- `tools/svdconv/SVDModel/src/SvdEnum.cpp:74-82`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:193-197`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

@@ -9,14 +9,14 @@ severity: "warning"
 symptoms: ["access sequence '$Pack(<…>)' must have the format '$Pack(vendor::name)$'"]
 symptom_regex: "^access sequence '\\$Pack\\(.+?\\)' must have the format '\\$Pack\\(vendor::name\\)\\$'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3688"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:3688"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A `$Pack(...)$` access sequence in a YAML path or option has an argument without both vendor and pack name separated by `::`, e.g."
+summary: "The $Pack(...)$ access sequence used in a csolution file does not contain a valid vendor::name pair."
 cause_origin: "source-analysis"
 confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3684-3690", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3727-3729", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:2667-2691", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestAccessSequences/pack-access-sequences.csolution.yml:13"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3684-3690", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3686-3688"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-A `$Pack(...)$` access sequence in a YAML path or option has an argument without both vendor and pack name separated by `::`, e.g. `$Pack(Wrong.Format)$`. The `<…>` is the argument; the sequence is left unexpanded.
+The $Pack(...)$ access sequence used in a csolution file does not contain a valid vendor::name pair. ExpandPackDir parses the text between the parentheses with ConvertToPackInfo, and the vendor or the name comes out empty, so the sequence cannot identify a pack. The <…> in the message is the text the user wrote between $Pack( and ).
 
 ## Fix
 
-Write the pack as `$Pack(Vendor::Name)$`, e.g. `$Pack(ARM::CMSIS)$/CMSIS/Include`.
+Rewrite the access sequence so the argument has the form vendor::name, for example $Pack(ARM::CMSIS)$ instead of a bare name without the vendor part. Then run the build again.
 
 ## Trigger in the source
 
@@ -39,13 +39,11 @@ if (packInfo.vendor.empty() || packInfo.name.empty()) {
 
 ## Note
 
-The message prints the given sequence without its closing '$'.
+The warning is raised before the pack is looked up, so it is about the syntax of the argument only. When the syntax is valid but no loaded pack matches, the tool prints a different message ('access sequence pack was not loaded').
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
 
 - `tools/projmgr/src/ProjMgrWorker.cpp:3684-3690`
-- `tools/projmgr/src/ProjMgrWorker.cpp:3727-3729`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:2667-2691`
-- `tools/projmgr/test/data/TestAccessSequences/pack-access-sequences.csolution.yml:13`
+- `tools/projmgr/src/ProjMgrWorker.cpp:3686-3688`

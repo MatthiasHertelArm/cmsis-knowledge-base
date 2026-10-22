@@ -10,14 +10,14 @@ code: "M313"
 symptoms: ["M313", "Associated File/Path is outside PACK root: '%PATH%'"]
 symptom_regex: "^Associated File/Path is outside PACK root: '.+?'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A file or folder referenced in the PDSC resolves to a location outside the folder that contains the PDSC (the pack root), typically through '../' segments in its path."
+summary: "packchk found a file or path referenced from the PDSC (for example a file element or an associated file) that resolves to a location outside the pack root directory."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:129", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:483-502", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:343-348", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:622-647", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/TestPackRoot/Pack/TestVendor.TestPackRoot.pdsc:31"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp (trigger not available in this session; message text only)"]
 ---
 
 ## Symptom
@@ -27,18 +27,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-A file or folder referenced in the PDSC resolves to a location outside the folder that contains the PDSC (the pack root), typically through '../' segments in its path.
+packchk found a file or path referenced from the PDSC (for example a file element or an associated file) that resolves to a location outside the pack root directory. The '%PATH%' in the message is the offending path as written or resolved. Packs must keep all their content under the pack root, so such a reference cannot be packaged.
 
 ## Fix
 
-Move the file into the pack folder tree and reference it with a path relative to the PDSC that stays inside it, e.g. name="Source/test2.c" instead of name="../ExtFiles/test2.c".
+Edit the PDSC so the referenced path is relative to the pack root and points to a file inside it (for example move the file into the pack directory and reference it with a relative path that does not climb above the root with '..'). Then rerun packchk.
+
+## Note
+
+Source lines were not available, so the trigger condition and the exact path resolution are inferred from the message text only; the fix is the general remedy and should be checked against the source.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:129`
-- `tools/packchk/src/CheckFiles.cpp:483-502`
-- `tools/packchk/src/CheckFiles.cpp:343-348`
-- `tools/packchk/test/integtests/src/PackChkIntegTests.cpp:622-647`
-- `tools/packchk/test/data/TestPackRoot/Pack/TestVendor.TestPackRoot.pdsc:31`
+- `tools/packchk/src/PackChk_Msgs.cpp (trigger not available in this session; message text only)`

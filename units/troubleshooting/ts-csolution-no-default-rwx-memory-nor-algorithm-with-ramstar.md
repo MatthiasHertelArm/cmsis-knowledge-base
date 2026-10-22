@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["no default rwx memory nor algorithm with ramstart/size was found"]
 symptom_regex: "^no default rwx memory nor algorithm with ramstart/size was found$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrRunDebug.cpp:391"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrRunDebug.cpp:391"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "While writing the run and debug information (cbuild-run.yml), csolution needs a RAM area to run a flash programming algorithm that has no RAM address of its own: a default DFP/BSP algorithm without RAMstart/RAMsize, or a `memory:` entry of the …"
+summary: "CheckDefaultRam is called with a default RAM descriptor whose size is zero, meaning the tool found no RAM region for the debug target."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrRunDebug.cpp:387", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrRunDebug.cpp:137", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrRunDebug.cpp:240", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/schemas/common.schema.json:2134", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrWorkerUnitTests.cpp:178"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrRunDebug.cpp:387-393"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrRunDebug.
 
 ## Cause
 
-While writing the run and debug information (cbuild-run.yml), csolution needs a RAM area to run a flash programming algorithm that has no RAM address of its own: a default DFP/BSP algorithm without RAMstart/RAMsize, or a `memory:` entry of the target type with `algorithm:` but without `ram-start:`/`ram-size:`. It falls back to the first default memory with `rwx` access or the first algorithm with RAMstart/RAMsize in the DFP or BSP, and found neither.
+CheckDefaultRam is called with a default RAM descriptor whose size is zero, meaning the tool found no RAM region for the debug target. The message names the two places it looks: a memory with rwx access in the device description, or a flash programming algorithm that defines ramstart and size. The source lines given do not show how defaultRam is filled, so the exact input that leaves it empty is inferred from the trigger, not confirmed.
 
 ## Fix
 
-For your own algorithm add the RAM to the `memory:` entry under `target-types:` in the csolution.yml, e.g. `ram-start: 0x20000000` and `ram-size: 0x10000`. If the algorithm comes from the DFP or BSP, report the missing RAM information to the pack vendor.
+Check the device or board pack that the csolution project uses. Confirm that its PDSC describes a memory with rwx access, or a flash algorithm with ramstart and ramsize, that covers the RAM the debugger should use. If the pack has none, the device data is incomplete and needs a pack that defines it, or a corrected device selection in the csolution project. The source lines given do not show a further setting to change.
 
 ## Trigger in the source
 
@@ -37,12 +37,12 @@ For your own algorithm add the RAM to the `memory:` entry under `target-types:` 
 if (defaultRam.size != 0) {
 ```
 
+## Note
+
+The README does not document this message. The trigger and the error text are clear in the source, but the path from PDSC or SVD input to the RamType size is outside the lines given, so the cause of the zero size is inferred.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrRunDebug.cpp:387`
-- `tools/projmgr/src/ProjMgrRunDebug.cpp:137`
-- `tools/projmgr/src/ProjMgrRunDebug.cpp:240`
-- `tools/projmgr/schemas/common.schema.json:2134`
-- `tools/projmgr/test/src/ProjMgrWorkerUnitTests.cpp:178`
+- `tools/projmgr/src/ProjMgrRunDebug.cpp:387-393`

@@ -10,15 +10,16 @@ code: "M349"
 symptoms: ["M349", "Examples found, but no board description(s) found"]
 symptom_regex: "^Examples found, but no board description\\(s\\) found$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "Example projects have been found for a board that was not defined."
+doc_cause: "Example projects have been found for a board that was not defined. Correct the entry for the examples ([/package/examples/example/board](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_examples_pg.html#element_example_board)) or define the board ([/package/boards/board](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_boards_pg.html#element_board))."
+summary: "The PDSC contains example entries that reference a board through the example board attribute, but no board is described in the PDSC under the boards element. packchk reports this when examples are found and the board list is empty."
 cause_origin: "source-analysis"
-confidence: "low"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:167", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:190"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -28,19 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-Example projects have been found for a board that was not defined. Correct the entry for the examples ([/package/examples/example/board](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_examples_pg.html#element_example_board)) or define the board ([/package/boards/board](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_boards_pg.html#element_board)).
+The PDSC contains example entries that reference a board through the example board attribute, but no board is described in the PDSC under the boards element. packchk reports this when examples are found and the board list is empty.
 
 ## Fix
 
-Define the boards that the examples reference with <boards><board name="..." vendor="..."> in this pack, or pass the BSP that defines them with -i; otherwise correct the example's <board> reference.
+Either add a boards/board entry in the PDSC for each board the examples target, or correct the example entries so their board attribute names a board that is defined. Check the spelling of the board name in the example against the board element name.
 
 ## Note
 
-No raise site for M349 at 30f5e81; fix inferred from the message and README. Missing boards for examples are reported per example as M324.
+Source lines were not available; the cause and fix rely on the message text and the README. The README points to the example board element and the board element of the PDSC spec as the two places to correct.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence low, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:167`
-- `tools/packchk/README.md:190`
+- `tools/packchk/src/PackChk_Msgs.cpp`

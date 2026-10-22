@@ -10,14 +10,14 @@ code: "M314"
 symptoms: ["M314", "Filename '%NAME%' contains whitespaces, this is not recommended"]
 symptom_regex: "^Filename '.+?' contains whitespaces, this is not recommended$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A file path referenced in the PDSC (file, book, algorithm, image, svd, example doc, environment load, csolution layer or template) contains a space character."
+summary: "packchk prints M314 when a file name referenced by the pack, such as a source, header or documentation file listed in the PDSC, contains whitespace characters."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:130", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:578-591", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:343-345", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:370-372", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:765-791", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/FileNameHasSpace/TestVendor.FileNameHasSpacePack.pdsc:73"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -27,19 +27,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-A file path referenced in the PDSC (file, book, algorithm, image, svd, example doc, environment load, csolution layer or template) contains a space character.
+packchk prints M314 when a file name referenced by the pack, such as a source, header or documentation file listed in the PDSC, contains whitespace characters. The %NAME% in the message is the offending file name as written in the pack description. Whitespace in file names is flagged as not recommended, and the warning is emitted from the file-name check in packchk rather than from a build failure.
 
 ## Fix
 
-Rename the file or folder without spaces (use '_' or '-') and update the reference in the PDSC.
+Rename the file so its name has no spaces or other whitespace, for example replace spaces with underscores or hyphens, and update every reference to it in the PDSC (the url, name or path attributes that point to it). Then run packchk again to confirm the warning is gone.
+
+## Note
+
+Only the message text and the source file name were available; the trigger condition and the exact attribute checked were not read from the lines, so the cause is inferred from the message wording. The README does not document this message.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:130`
-- `tools/packchk/src/CheckFiles.cpp:578-591`
-- `tools/packchk/src/CheckFiles.cpp:343-345`
-- `tools/packchk/src/CheckFiles.cpp:370-372`
-- `tools/packchk/test/integtests/src/PackChkIntegTests.cpp:765-791`
-- `tools/packchk/test/data/FileNameHasSpace/TestVendor.FileNameHasSpacePack.pdsc:73`
+- `tools/packchk/src/PackChk_Msgs.cpp`

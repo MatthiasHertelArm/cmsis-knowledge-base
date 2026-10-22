@@ -6,8 +6,8 @@ title: "Setting Kconfig configuration values: Setting symbols in configuration f
 summary: "Visible symbols can be configured by setting them in configuration files. The initial configuration is produced by merging a defconfig file for the board with application settings, usually from prj.conf. See initial-conf below for more details."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/build/kconfig/setting.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/build/kconfig/setting.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/build/kconfig/setting.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/build/kconfig/setting.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

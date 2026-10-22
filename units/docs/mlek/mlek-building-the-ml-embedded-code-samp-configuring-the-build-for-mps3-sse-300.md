@@ -6,8 +6,8 @@ title: "Building the ML embedded code sample applications from sources: Build pr
 summary: "On Linux, if using Arm GNU Toolchain, execute the following command to build the application to run on the Arm® Ethos™-U NPU when providing only the mandatory arguments for CMake configuration:"
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/building.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/building.md#configuring-the-build-for-mps3-sse-300"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/building.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/building.md#configuring-the-build-for-mps3-sse-300"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -66,7 +66,7 @@ cmake ../ -DCMAKE_TOOLCHAIN_FILE=scripts/cmake/toolchains/bare-metal-llvm.cmake
 Default CMake configuration behaviour looks for input samples for each use case in the default directory. All these
 inputs are baked-in into the application. If the number of files baked in is greater than one the resulting application
 will cycle through all the samples before finishing.
-[Deploying on an FVP emulating MPS3](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./deployment.md#deploying-on-an-fvp).
+[Deploying on an FVP emulating MPS3](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./deployment.md#deploying-on-an-fvp).
 
 To configure the project to use single input for each use case, CMake option `USE_SINGLE_INPUT` can be set to `ON`.
 

@@ -6,8 +6,8 @@ title: "Building the ML embedded code sample applications from sources: Build pr
 summary: "Certain third-party sources are required to be present on the development machine to allow the example sources in this repository to link against."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/building.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/building.md#preparing-build-environment"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/building.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/building.md#preparing-build-environment"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -29,7 +29,7 @@ repository to link against.
 8. [CMSIS-DFP](https://github.com/ARM-software/Cortex_DFP.git)
 
 > **Note:** If you are using non git project sources, run `python3 ./scripts/py/download_dependencies.py` and ignore further git
-> instructions. Proceed to [Fetching resource files](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./building.md#fetching-resource-files) section.
+> instructions. Proceed to [Fetching resource files](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./building.md#fetching-resource-files) section.
 
 To pull the submodules:
 
@@ -70,7 +70,7 @@ for the default 128 MACs configuration of the Arm® *Ethos™-U55* NPU, the defa
 Arm® *Ethos™-U65* NPU and the 256 MACs configuration of the Arm® *Ethos™-U85* NPU.
 
 > **Note:** This script requires Python 3.10 to 3.12 inclusive. Please make sure all
-> [build prerequisites](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./building.md#build-prerequisites) are satisfied. If your
+> [build prerequisites](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./building.md#build-prerequisites) are satisfied. If your
 > environment points to a different system-installed Python3 version, choose a supported
 > version explicitly after installing it:
 > ```sh
@@ -98,12 +98,12 @@ Additional command line arguments supported by this script are:
   The default value is:
   - the internal SRAM size for Corstone-300 implementation on MPS3 specified by AN552,
   when optimizing for the default 128 MACs configuration of the Arm® *Ethos™-U55* NPU.
-  - the default value specified in the Vela configuration file [default_vela.ini](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../scripts/vela/default_vela.ini),
+  - the default value specified in the Vela configuration file [default_vela.ini](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../scripts/vela/default_vela.ini),
   when optimizing for the default 256 MACs configuration of the Arm® *Ethos™-U65* NPU
   or the default 256 MACs configuration of the Arm® *Ethos™-U85* NPU.
 
 - `--use-case-resources-file`: Path to a JSON file pointing to resources to be downloaded. See the default
-  [use_case_resources.json](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../resources/use_case_resources.json) as an example.
+  [use_case_resources.json](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../resources/use_case_resources.json) as an example.
 
 - `--downloads-dir`: Root directory where the resources are downloaded.
 
@@ -117,10 +117,10 @@ Additional command line arguments supported by this script are:
 - `--requirements-file`: Provide the path to a requirements.txt file that will be installed into the Python environment.
 
 - `--use-case-resources-file`: Provide paths to additional files of the same structure as
-  [use_case_resources.json](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../resources/use_case_resources.json) for downloading and optimising additional models.
+  [use_case_resources.json](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../resources/use_case_resources.json) for downloading and optimising additional models.
 
 - `--http-header`: When downloading models from other locations, e.g. services that require authorisation,
   this argument can be used to set additional HTTP headers that are needed for the download to succeed.
 
 > **NOTE**: If you provide a different location by providing `downloads-dir` option, ensure `RESOURCES_PATH` is set
-> correctly for the associated CMake configuration. See [build options](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/building.md#build-options) for details.
+> correctly for the associated CMake configuration. See [build options](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/building.md#build-options) for details.

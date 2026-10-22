@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["no NPU was found with filter '<…>'"]
 symptom_regex: "^no NPU was found with filter '.+?'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4436"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:4436"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "`csolution list npus -f <words>` found NPUs, but no entry matched all filter words; `<…>` is the filter."
+summary: "The NPU listing collected at least one installed NPU, but none of them matched the filter string the user passed, so the result list is empty."
 cause_origin: "source-analysis"
-confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4407", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4436"]
+confidence: "high"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4400-4434", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4435-4437"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-`csolution list npus -f <words>` found NPUs, but no entry matched all filter words; `<…>` is the filter. A word matches either the NPU line (type and MACs) or one of its device lines (vendor, device, processor, core); matching is case-insensitive.
+The NPU listing collected at least one installed NPU, but none of them matched the filter string the user passed, so the result list is empty. A filter word counts as matched if it appears in the NPU description line. Otherwise it must match one of that NPU's device lines, and the NPU is dropped if no device line matches. The '<…>' in the message is the filter text as given by the user.
 
 ## Fix
 
-Loosen the filter, e.g. `-f U55` or a device name part, or run without `-f`.
+Check the filter words for typos or for names that do not appear in the NPU or device descriptions, then retry with a broader filter. To see every installed NPU, run the same listing command without the filter argument.
 
 ## Trigger in the source
 
@@ -37,9 +37,13 @@ Loosen the filter, e.g. `-f U55` or a device name part, or run without `-f`.
 if (npusVec.empty()) {
 ```
 
+## Note
+
+This message is only reached when a non-empty filter was given, because without a filter every collected NPU is added. The separate message 'no installed NPU was found' at line 4386 covers the case where no NPU is installed at all. The README does not document this message.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrWorker.cpp:4407`
-- `tools/projmgr/src/ProjMgrWorker.cpp:4436`
+- `tools/projmgr/src/ProjMgrWorker.cpp:4400-4434`
+- `tools/projmgr/src/ProjMgrWorker.cpp:4435-4437`

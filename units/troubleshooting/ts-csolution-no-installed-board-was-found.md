@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["no installed board was found"]
 symptom_regex: "^no installed board was found$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4293"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:4293"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "`csolution list boards` found no board in the packs it loaded: the CMSIS pack root has no pack that describes boards, or the csolution.yml given restricts loading to `packs:` that contain no boards."
+summary: "ListBoards loads the packs for each selected context, then collects every board in that context's filtered RTE model."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4277", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4292", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:561"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4276-4293", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4283-4284", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4292-4293"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-`csolution list boards` found no board in the packs it loaded: the CMSIS pack root has no pack that describes boards, or the csolution.yml given restricts loading to `packs:` that contain no boards.
+ListBoards loads the packs for each selected context, then collects every board in that context's filtered RTE model. The message is printed when that collection is empty across all selected contexts, so no board from the installed packs matched the selected contexts. The check runs after LoadPacks has succeeded, so the packs were read but none supplied a board.
 
 ## Fix
 
-Install a board support pack, e.g. `cpackget add <Vendor>::<Board>_BSP`, and check that CMSIS_PACK_ROOT points to the pack root in use. With a csolution.yml, add the BSP under `packs:`.
+Install a pack that provides boards (for example a Device or BSP pack with board definitions) into the CMSIS pack root, then run the board listing again. Check that the contexts selected for the command are the ones whose packs supply boards. If a pack is already installed, confirm that its PDSC lists boards and that the project's pack selection does not exclude it.
 
 ## Trigger in the source
 
@@ -37,10 +37,14 @@ Install a board support pack, e.g. `cpackget add <Vendor>::<Board>_BSP`, and che
 if (boardsSet.empty()) {
 ```
 
+## Note
+
+The message says 'installed' but the check is on the filtered model of the selected contexts, not on the pack root, so a board can be missing because of context selection or filtering rather than a missing installation. The README does not document this message. The fix is my reading of the code path, not a documented procedure.
+
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrWorker.cpp:4277`
-- `tools/projmgr/src/ProjMgrWorker.cpp:4292`
-- `tools/projmgr/src/ProjMgrWorker.cpp:561`
+- `tools/projmgr/src/ProjMgrWorker.cpp:4276-4293`
+- `tools/projmgr/src/ProjMgrWorker.cpp:4283-4284`
+- `tools/projmgr/src/ProjMgrWorker.cpp:4292-4293`

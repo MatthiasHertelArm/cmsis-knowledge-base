@@ -6,7 +6,7 @@ title: "GCovr Configuration: GCovr options"
 summary: "A Gcovr config file replaces Ceedling's own automatically generated exclusion patterns (see Results filtering below) entirely — it is the only way to override or remove one of those defaults, since the project-configuration :report_exclude option can only add …"
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/gcov/gcovr.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/plugins/gcov/gcovr.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/gcov/gcovr/#gcovr-options"
 license: "MIT"
 mode: "V"
@@ -25,11 +25,12 @@ GCovr can be configured in two ways:
 ### Gcovr configuration file
 
 !!! warning "Using a gcovr configuration file"
-    When `:config_file` is set, Ceedling passes only `--root` (`:report_root`) 
-    and `--config` (`:config_file`) to `gcovr` at the command line from your
-    plugin configuration. This prevents overriding config file settings with 
-    CLI arguments. You must provide any settings that would have been provided 
-    by the Gcov plugin.
+    When `:config_file` is set, Ceedling passes only `--root` (`:report_root`), 
+    `--config` (`:config_file`), and any `:custom_args:` to `gcovr` at the command 
+    line from your plugin configuration. This prevents overriding config file 
+    settings with other CLI arguments derived from plugin configuration. You must 
+    provide any settings that would have been provided by the Gcov plugin, either 
+    in the config file itself or via `:custom_args:`.
 
 A Gcovr config file replaces Ceedling's own automatically generated exclusion
 patterns (see [Results filtering](#results-filtering) below) entirely — it is

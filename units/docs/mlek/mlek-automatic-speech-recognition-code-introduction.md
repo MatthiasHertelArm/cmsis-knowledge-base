@@ -6,8 +6,8 @@ title: "Automatic Speech Recognition Code Sample: Introduction"
 summary: "This document describes the process of setting up and running the Arm® Ethos™-U NPU Automatic Speech Recognition example."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/use_cases/asr.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/asr.md#introduction"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/use_cases/asr.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/asr.md#introduction"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -15,7 +15,7 @@ mode: "V"
 This document describes the process of setting up and running the Arm® *Ethos™-U* NPU Automatic Speech Recognition
 example.
 
-Use-case code could be found in the following directory: [source/app/use_case/asr](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../../source/app/use_case/asr).
+Use-case code could be found in the following directory: [source/app/use_case/asr](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../../source/app/use_case/asr).
 
 ### Preprocessing and feature extraction
 
@@ -141,4 +141,4 @@ as the decoded text.
 
 ### Prerequisites
 
-See [Prerequisites](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../documentation.md#prerequisites)
+See [Prerequisites](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../documentation.md#prerequisites)

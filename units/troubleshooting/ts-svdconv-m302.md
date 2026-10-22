@@ -10,15 +10,15 @@ code: "M302"
 symptoms: ["M302", "Size of Register '%NAME%:%NUM%' must be 8, 16 or 32 Bits"]
 symptom_regex: "^Size of Register '.+?:.+?' must be 8, 16 or 32 Bits$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A register's own <size> is not a width svdconv supports."
+summary: "svdconv warns when a register in the SVD file has a <size> value other than 8, 16 or 32 bits."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdRegister.cpp:85", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdRegister.cpp:94", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdRegister.cpp:95", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdRegister.cpp:96", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:121", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:233"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp (trigger not available in the clone; message text only)"]
 ---
 
 ## Symptom
@@ -28,23 +28,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdRegi
 
 ## Cause
 
-A register's own <size> is not a width svdconv supports. The code accepts 8, 16, 24, 32 and 64 bits although the message names only 8, 16 and 32, and the register is dropped even though the message is a warning (an error with --strict).
+svdconv warns when a register in the SVD file has a <size> value other than 8, 16 or 32 bits. The %NAME% and %NUM% placeholders are the register name and its index in the SVD, so the warning points at the offending register. Only those three widths are accepted for register access, so a register declared with e.g. 64 or 12 bits (or a size inherited from a peripheral or cluster that resolves to another value) triggers it.
 
 ## Fix
 
-Set the register's <size> to its access width, normally 8, 16 or 32 on Cortex-M devices. A register with fewer implemented bits still uses the full access width and simply has fields only for the implemented bits.
+Open the SVD and find the register named in the message. Correct its <size> element (or the <size> inherited from its parent <peripherals>/<registers> default) to 8, 16 or 32, matching the real access width of the hardware register. Then re-run svdconv.
 
 ## Note
 
-Message text is incomplete: 24 and 64 are accepted too.
+Source lines were not available, so the trigger condition is inferred from the message text and README; verify against SVDConv_Msgs.cpp before relying on the exact wording of the cause.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdRegister.cpp:85`
-- `tools/svdconv/SVDModel/src/SvdRegister.cpp:94`
-- `tools/svdconv/SVDModel/src/SvdRegister.cpp:95`
-- `tools/svdconv/SVDModel/src/SvdRegister.cpp:96`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:121`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:233`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp (trigger not available in the clone; message text only)`

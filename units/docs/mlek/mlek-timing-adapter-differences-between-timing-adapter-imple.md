@@ -6,8 +6,8 @@ title: "Timing adapter: Differences between timing adapter implementations in Ar
 summary: "Corstone-300 FVP and FPGA implements timing adapters that are tied to AXI buses M0 and M1 on the Ethos-U NPU."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/timing_adapters.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/timing_adapters.md#differences-between-timing-adapter-implementations-in-arm-corstone-300-and-arm-c"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/timing_adapters.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/timing_adapters.md#differences-between-timing-adapter-implementations-in-arm-corstone-300-and-arm-c"
 license: "Apache-2.0"
 mode: "V"
 ---

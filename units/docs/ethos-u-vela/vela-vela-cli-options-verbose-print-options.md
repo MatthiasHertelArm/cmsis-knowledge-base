@@ -6,8 +6,8 @@ title: "Vela CLI Options: Verbose Print Options"
 summary: "All of the options below are disabled by default and enabling them will add prints to standard out without any functional changes."
 status: "draft"
 collection: "ethos-u-vela"
-source: "artificial-intelligence/ethos-u/ethos-u-vela@eb9cf0d:OPTIONS.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/eb9cf0d/OPTIONS.md#verbose-print-options"
+source: "artificial-intelligence/ethos-u/ethos-u-vela@4bd6685:OPTIONS.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/4bd6685/OPTIONS.md#verbose-print-options"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -108,7 +108,7 @@ vela network.tflite --verbose-packing
 ### Verbose Performance
 
 Verbose per-layer Performance. Please see
-[Vela Performance Estimation Summary](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/eb9cf0d/PERFORMANCE.md)
+[Vela Performance Estimation Summary](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/4bd6685/PERFORMANCE.md)
 for a detailed explanation.  
 
 ```bash
@@ -235,7 +235,7 @@ the generator.  Each command details all of its attributes.
 register command stream).  More information about the commands listed in the
 register command stream can be found in the Arm Ethos-U NPU Technical Reference
 Manuals that are available from the Arm Developer website (see
-[README - Resources](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/eb9cf0d/README.md#resources)).
+[README - Resources](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/4bd6685/README.md#resources)).
 
 ```bash
 vela network.tflite --verbose-register-command-stream

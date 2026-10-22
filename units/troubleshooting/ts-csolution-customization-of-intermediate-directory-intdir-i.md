@@ -9,14 +9,14 @@ severity: "warning"
 symptoms: ["customization of intermediate directory 'intdir' is ignored by the cbuild2cmake backend"]
 symptom_regex: "^customization of intermediate directory 'intdir' is ignored by the cbuild2cmake backend$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:204"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:204"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "The csolution.yml sets `output-dirs: intdir:`, which only the legacy `--cbuildgen` flow uses; the default cbuild2cmake backend ignores it."
+summary: "The csolution YAML sets an intermediate directory (`directories: intdir:`) at the solution level, but the build is running with the cbuild2cmake backend (m_cbuild2cmake is set)."
 cause_origin: "source-analysis"
-confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:193-209", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/schemas/common.schema.json:356-370"]
+confidence: "high"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:194-195", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:202-204", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:205-207"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-The csolution.yml sets `output-dirs: intdir:`, which only the legacy `--cbuildgen` flow uses; the default cbuild2cmake backend ignores it.
+The csolution YAML sets an intermediate directory (`directories: intdir:`) at the solution level, but the build is running with the cbuild2cmake backend (m_cbuild2cmake is set). In AddContext the cbuild2cmake path keeps the default intdir of 'tmp' and only emits this warning instead of applying the user's 'intdir' value, so the customization has no effect on the generated context.
 
 ## Fix
 
-Remove `intdir:` from output-dirs:; to move intermediate files, set `output-dirs: tmpdir: <path>` instead.
+Remove the `intdir` entry from the `directories` section of the csolution file if the default intermediate directory is acceptable, or build without the cbuild2cmake backend if the custom 'intdir' must be honoured. The source only shows that the value is ignored; it does not show another supported way to set it under cbuild2cmake.
 
 ## Trigger in the source
 
@@ -37,9 +37,14 @@ Remove `intdir:` from output-dirs:; to move intermediate files, set `output-dirs
 if (m_cbuild2cmake) {
 ```
 
+## Note
+
+The README does not document this message. The warning fires once per context created while the csolution intdir is non-empty, so it can repeat for each build-type and target-type combination in the log.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrWorker.cpp:193-209`
-- `tools/projmgr/schemas/common.schema.json:356-370`
+- `tools/projmgr/src/ProjMgrWorker.cpp:194-195`
+- `tools/projmgr/src/ProjMgrWorker.cpp:202-204`
+- `tools/projmgr/src/ProjMgrWorker.cpp:205-207`

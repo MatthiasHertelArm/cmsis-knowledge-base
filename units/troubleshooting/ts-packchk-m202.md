@@ -10,16 +10,16 @@ code: "M202"
 symptoms: ["M202", "No PDSC input file specified"]
 symptom_regex: "^No PDSC input file specified$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Correct the command line. **packchk** expects a *.pdsc file name as input."
-summary: "packchk got no PDSC file to check: no file argument was given, or the argument names a folder instead of a *.pdsc file."
+summary: "packchk was started without a PDSC file name on its command line, so there is no pack description to check."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:86", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CreateModel.cpp:94-110", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackOptions.cpp:171-176", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ParseOptions.cpp:208", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:131"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp (source lines not available; message id M202 and its trigger taken from the message text and README only)"]
 ---
 
 ## Symptom
@@ -29,18 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-packchk got no PDSC file to check: no file argument was given, or the argument names a folder instead of a *.pdsc file.
+packchk was started without a PDSC file name on its command line, so there is no pack description to check. The README states that packchk expects a *.pdsc file as its input.
 
 ## Fix
 
-Pass the path of the pack's .pdsc file as the positional argument, not the pack folder, e.g. packchk ./MyVendor.MyPack.pdsc.
+Run packchk again with the path to the pack's .pdsc file as the input argument, for example: packchk <path-to-pack>/<PackName>.pdsc
+
+## Note
+
+The source clone was not available, so the trigger condition was not read from code; the cause rests on the message text and the README. Exact packchk option syntax was not verified.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:86`
-- `tools/packchk/src/CreateModel.cpp:94-110`
-- `tools/packchk/src/PackOptions.cpp:171-176`
-- `tools/packchk/src/ParseOptions.cpp:208`
-- `tools/packchk/README.md:131`
+- `tools/packchk/src/PackChk_Msgs.cpp (source lines not available; message id M202 and its trigger taken from the message text and README only)`

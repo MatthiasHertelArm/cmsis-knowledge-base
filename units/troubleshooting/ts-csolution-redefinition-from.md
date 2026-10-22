@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["redefinition from '<…>' into '<…>' is not allowed"]
 symptom_regex: "^redefinition from '.+?' into '.+?' is not allowed$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:797"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:797"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A setting that takes a single value is given two different values for the same context at different places (csolution.yml, a target-type or build-type, cproject.yml, a setup or a clayer.yml); the first `<…>` is the value found first, the …"
+summary: "GetPrecedentValue keeps the first non-empty value it receives in outValue and rejects a later, different non-empty value."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:794", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2991", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3040", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3164", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestSolution/toolchain-redefinition.csolution.yml:5", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:4787", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:4701", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrWorkerUnitTests.cpp:1504"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:794-803", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:796-797"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-A setting that takes a single value is given two different values for the same context at different places (csolution.yml, a target-type or build-type, cproject.yml, a setup or a clayer.yml); the first `<…>` is the value found first, the second the conflicting one. It applies to the parts of `board:` and `device:` (vendor, name, revision or processor), `compiler:` (different names or versions that do not overlap), `optimize:`, `debug:`, `warnings:`, `language-C:`, `language-CPP:`, the `processor:` options, the `linker:` script and regions file, and `output:` - `base-name:`.
+GetPrecedentValue keeps the first non-empty value it receives in outValue and rejects a later, different non-empty value. The message prints the earlier value as '<…>' (from) and the new conflicting value as '<…>' (into). So the same setting, such as a device, board or other project-level item, is given two different values by different sources that feed the same outValue. The callers are not in the lines given, so the exact sources cannot be confirmed from this excerpt.
 
 ## Fix
 
-Set the value in one place only, or make the values agree; restrict a differing setting with `for-context:` so that only one applies to each context. For the compiler, a version range such as `AC6@>=6.18` combines with `AC6`; `AC6` and `GCC` do not.
+Find the two places that set the value named in the message, using the 'from' and 'into' strings as the two values, and make them agree or remove one of them. Check the csolution project YAML and any build-type or target overrides for that value. Then rerun csolution.
 
 ## Trigger in the source
 
@@ -37,15 +37,13 @@ Set the value in one place only, or make the values agree; restrict a differing 
 if (!outValue.empty() && (outValue != element)) {
 ```
 
+## Note
+
+The message names no setting, so which item is conflicting is not visible from the source lines given; the callers of GetPrecedentValue would confirm which setting it is. The README has no entry for this message.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrWorker.cpp:794`
-- `tools/projmgr/src/ProjMgrWorker.cpp:2991`
-- `tools/projmgr/src/ProjMgrWorker.cpp:3040`
-- `tools/projmgr/src/ProjMgrWorker.cpp:3164`
-- `tools/projmgr/test/data/TestSolution/toolchain-redefinition.csolution.yml:5`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:4787`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:4701`
-- `tools/projmgr/test/src/ProjMgrWorkerUnitTests.cpp:1504`
+- `tools/projmgr/src/ProjMgrWorker.cpp:794-803`
+- `tools/projmgr/src/ProjMgrWorker.cpp:796-797`

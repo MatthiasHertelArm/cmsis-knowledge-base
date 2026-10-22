@@ -6,8 +6,8 @@ title: "CMock ArgumentValidation: Related Options: :treat_as_array and :treat_as
 summary: "Two narrower variants of :treat_as handle specific edge cases:"
 status: "draft"
 collection: "cmock"
-source: "ThrowTheSwitch/CMock@f2a70b4:docs/CMock_ArgumentValidation.md"
-doc_source: "https://github.com/ThrowTheSwitch/CMock/blob/f2a70b4/docs/CMock_ArgumentValidation.md#related-options-treat-as-array-and-treat-as-void"
+source: "ThrowTheSwitch/CMock@34c26e5:docs/CMock_ArgumentValidation.md"
+doc_source: "https://github.com/ThrowTheSwitch/CMock/blob/34c26e5/docs/CMock_ArgumentValidation.md#related-options-treat-as-array-and-treat-as-void"
 license: "MIT"
 mode: "V"
 ---

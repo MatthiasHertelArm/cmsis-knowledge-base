@@ -10,15 +10,15 @@ code: "M355"
 symptoms: ["M355", "No Interrupts found on pos. 0..15. External (Vendor-)Interrupts possibly defined on position 16+. External Interrupts must start on position 0"]
 symptom_regex: "^No Interrupts found on pos\\. 0\\.\\.15\\. External \\(Vendor\\-\\)Interrupts possibly defined on position 16\\+\\. External Interrupts must start on position 0$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "No <interrupt> in the device has a <value> below 16. svdconv takes this as a sign that interrupts were numbered by exception number (first device interrupt = 16) instead of from 0."
+summary: "The SVD describes peripheral interrupts only at positions 16 and above, so no interrupts are found at positions 0 to 15. svdconv treats vendor (external) interrupts as starting at position 0, so the SVD's interrupt numbering does not match …"
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:658", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:667", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:679", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:680", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:174"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -28,18 +28,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevi
 
 ## Cause
 
-No <interrupt> in the device has a <value> below 16. svdconv takes this as a sign that interrupts were numbered by exception number (first device interrupt = 16) instead of from 0.
+The SVD describes peripheral interrupts only at positions 16 and above, so no interrupts are found at positions 0 to 15. svdconv treats vendor (external) interrupts as starting at position 0, so the SVD's interrupt numbering does not match what the tool expects. Only the message text and the README are available here, not the trigger source lines, so this reading of the trigger is an inference.
 
 ## Fix
 
-Number device interrupts from 0, i.e. subtract 16 from exception numbers. If the device really has no interrupt numbered below 16, the message can be ignored.
+Renumber the interrupt values in the SVD so that external (vendor) interrupts start at position 0, matching the device's interrupt vector numbering, then rerun svdconv. Check the SVD <interrupt> value elements against the device reference manual or vector table.
+
+## Note
+
+Trigger source lines were not provided; the cause is inferred from the message text (no interrupts on positions 0..15, external interrupts expected from position 0). The README's documented cause and fix were not supplied for comparison.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:658`
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:667`
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:679`
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:680`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:174`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

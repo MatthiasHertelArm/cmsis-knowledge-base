@@ -10,15 +10,15 @@ code: "M362"
 symptoms: ["M362", "Not all Component Dependencies for 'Cclass=%CCLASS%, Cgroup=%CGROUP%, Csub=%CSUB%, Cversion=%CVER%, Capiversion=%APIVER%' can be resolved.%MSG%"]
 symptom_regex: "^Not all Component Dependencies for 'Cclass=.+?, Cgroup=.+?, Csub=.+?, Cversion=.+?, Capiversion=.+?' can be resolved\\..+?$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "Some of the component dependencies could not be resolved."
+doc_cause: "Some of the component dependencies could not be resolved. The message might contain additional information. Verify and correct component definition and dependency information. Refer to [/package/components/.../component](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_components_pg.html#element_component) attribute _condition_."
+summary: "packchk prints M362 when, for the component named in the message (Cclass, Cgroup, Csub, Cversion, Capiversion), at least one of its dependencies in the PDSC cannot be matched to a component or bundle available in the pack set being checked."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:181", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSemantic.cpp:877-973", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSemantic.cpp:154-190", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackOptions.cpp:422-426", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:198-229", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:201"]
 ---
 
 ## Symptom
@@ -28,23 +28,12 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-Some of the component dependencies could not be resolved. The message might contain additional information. Verify and correct component definition and dependency information. Refer to [/package/components/.../component](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_components_pg.html#element_component) attribute _condition_.
+packchk prints M362 when, for the component named in the message (Cclass, Cgroup, Csub, Cversion, Capiversion), at least one of its dependencies in the PDSC cannot be matched to a component or bundle available in the pack set being checked. The %MSG% suffix may carry the specific dependency that failed. The source was not available, so this reading comes from the message text and the README only.
 
 ## Fix
 
-Read the M502/M504 lines that follow; they name the dependency that fails. Provide the required component or API in this pack, pass the providing pack's PDSC with -i (e.g. ARM.CMSIS.pdsc for CMSIS:CORE), or correct Cclass/Cgroup/Csub/Capiversion in the condition. -x M362 also suppresses M502 and M504.
+Open the PDSC entry for the named component and check its dependencies against the components that exist in the pack. Correct the Cclass, Cgroup, Csub or Cversion values in the dependency, or add the missing component or condition definition, then rerun packchk. Read the additional detail after the message text to find the dependency that failed.
 
 ## Note
 
-Bug at 30f5e81: bOk in TestComponentDependencies is set before the component loop and never reset (ValidateSemantic.cpp:890, 950), so after the first failing component every later component is also reported with M362.
-
-## Evidence
-
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
-
-- `tools/packchk/src/PackChk_Msgs.cpp:181`
-- `tools/packchk/src/ValidateSemantic.cpp:877-973`
-- `tools/packchk/src/ValidateSemantic.cpp:154-190`
-- `tools/packchk/src/PackOptions.cpp:422-426`
-- `tools/packchk/test/integtests/src/PackChkIntegTests.cpp:198-229`
-- `tools/packchk/README.md:201`
+Source lines were not available; the cause and fix rely on the message text and README. The README links to the component condition attribute, which is about component conditions and may not describe the dependency resolution directly.

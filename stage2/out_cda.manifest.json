@@ -1,6 +1,6 @@
 {
  "stage": "decompose",
- "model": "",
+ "model": "claude-haiku-5-5",
  "prompt_sha": "6364de7bc3635126",
  "since": "",
  "items": {
@@ -59,6 +59,14 @@
    "file": "proc-fvp-debug-setup.json",
    "model": "reader agents",
    "prompt_sha": ""
+  },
+  "proc-start-cmsis-project": {
+   "sha": "5e1d16530522b982",
+   "at": "2026-10-22T19:55:32+00:00",
+   "kept": true,
+   "file": "<id>.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "6364de7bc3635126"
   }
  }
 }

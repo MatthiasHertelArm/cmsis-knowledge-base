@@ -10,15 +10,15 @@ code: "M325"
 symptoms: ["M325", "CPU Revision is not set"]
 symptom_regex: "^CPU Revision is not set$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "The <cpu> section has no <revision>, or its value is not of the form rNpM (for example r0p1, both numbers 0 to 255); a malformed value is also reported as M204."
+summary: "svdconv prints this error when the SVD file's device description has no <cpu> element with a <revision> value, so the CPU revision cannot be determined."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCpu.cpp:58", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCpu.cpp:65", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCpu.cpp:98", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCpu.cpp:318", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdUtils.cpp:246", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/unittests/src/SvdCpuModelTest.cpp:102", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/unittests/src/SvdCpuModelTest.cpp:112", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:144"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -28,21 +28,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCpu.
 
 ## Cause
 
-The <cpu> section has no <revision>, or its value is not of the form rNpM (for example r0p1, both numbers 0 to 255); a malformed value is also reported as M204.
+svdconv prints this error when the SVD file's device description has no <cpu> element with a <revision> value, so the CPU revision cannot be determined. The trigger is inferred from the message text only, since the source lines were not available.
 
 ## Fix
 
-Add the core revision to <cpu>, for example <revision>r0p1</revision>.
+Open the SVD file and add or complete the <cpu> block under <device>, including a <revision> entry (for example rXpY), then rerun svdconv. Check the vendor's SVD against the device reference manual if the revision is unknown.
+
+## Note
+
+Written from the message and the file name only; the trigger line was not checked. The README is documented as covering this message, but its text was not provided to confirm the cause and fix.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdCpu.cpp:58`
-- `tools/svdconv/SVDModel/src/SvdCpu.cpp:65`
-- `tools/svdconv/SVDModel/src/SvdCpu.cpp:98`
-- `tools/svdconv/SVDModel/src/SvdCpu.cpp:318`
-- `tools/svdconv/SVDModel/src/SvdUtils.cpp:246`
-- `tools/svdconv/test/unittests/src/SvdCpuModelTest.cpp:102`
-- `tools/svdconv/test/unittests/src/SvdCpuModelTest.cpp:112`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:144`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

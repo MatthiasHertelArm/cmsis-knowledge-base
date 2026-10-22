@@ -10,16 +10,16 @@ code: "M232"
 symptoms: ["M232", "Tag <%TAG%> name '%NAME%' must not have specifier '%CHAR%'. Ignoring entry."]
 symptom_regex: "^Tag <.+?> name '.+?' must not have specifier '.+?'\\. Ignoring entry\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Correct SVD."
-summary: "A <peripheral> or <cluster> has a <headerStructName> that contains '%' (e.g. copied from a %s or [%s] name). svdconv ignores the headerStructName."
+summary: "svdconv found a name in an SVD element that contains a character the tool does not allow for that tag, so it discards the entry."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1512-1521", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCluster.cpp:575-580", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:99"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -29,16 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdPeri
 
 ## Cause
 
-A <peripheral> or <cluster> has a <headerStructName> that contains '%' (e.g. copied from a %s or [%s] name). svdconv ignores the headerStructName.
+svdconv found a name in an SVD element that contains a character the tool does not allow for that tag, so it discards the entry. The %TAG% and %NAME% parts identify the element and its name, and %CHAR% is the offending character. The README only states that the SVD is incorrect, and the source lines were not available to confirm the exact check.
 
 ## Fix
 
-Use a plain C identifier in <headerStructName>, e.g. <headerStructName>TIMER</headerStructName>, without %s or [%s].
+Open the SVD file at the element named in the message and remove the forbidden character from that name, then rerun svdconv. Check the SVD against the CMSIS-SVD schema if unsure which characters are allowed.
+
+## Note
+
+Trigger and handling were not verified against source lines; the cause is inferred from the message text and the README's brief cause. The message text says 'Ignoring entry', so the tool continues but drops that entry.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1512-1521`
-- `tools/svdconv/SVDModel/src/SvdCluster.cpp:575-580`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:99`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

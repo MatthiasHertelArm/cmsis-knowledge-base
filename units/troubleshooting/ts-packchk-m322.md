@@ -10,14 +10,14 @@ code: "M322"
 symptoms: ["M322", "Associated File/Path not found: '%PATH%'"]
 symptom_regex: "^Associated File/Path not found: '.+?'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "An <example> has an <environment name=\"DS5\"> whose load points to a '.project' file, but the matching '.cproject' file next to it is missing from the pack; %PATH% is the full path packchk looked for."
+summary: "packchk checks that every file or path referenced by the PDSC is present in the pack directory."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:138", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:350-362", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:424-444"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -27,16 +27,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-An <example> has an <environment name="DS5"> whose load points to a '.project' file, but the matching '.cproject' file next to it is missing from the pack; %PATH% is the full path packchk looked for.
+packchk checks that every file or path referenced by the PDSC is present in the pack directory. The message is printed when a path referenced in the PDSC, such as a file entry or an associated file, does not exist at the location the PDSC names relative to the pack root. The '%PATH%' placeholder is the referenced path as written in the PDSC.
 
 ## Fix
 
-Add the Eclipse .cproject file beside the .project file in the example folder, or correct the load path.
+Open the PDSC, find the entry whose path matches the value printed in the message, and either add the missing file at that location in the pack or correct the path in the PDSC so it points to the existing file. Then rerun packchk.
+
+## Note
+
+Written from the message text and the id alone, since the clone was not available; the trigger condition was not read from source. Check the exact check in PackChk_Msgs.cpp before relying on the wording of the cause.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:138`
-- `tools/packchk/src/CheckFiles.cpp:350-362`
-- `tools/packchk/src/CheckFiles.cpp:424-444`
+- `tools/packchk/src/PackChk_Msgs.cpp`

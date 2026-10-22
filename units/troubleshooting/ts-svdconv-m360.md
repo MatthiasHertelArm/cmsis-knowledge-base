@@ -10,15 +10,14 @@ code: "M360"
 symptoms: ["M360", "Address Block: found <%TAG%> (%HEXNUM%) > %HEXNUM2%."]
 symptom_regex: "^Address Block: found <.+?> \\(.+?\\) > .+?\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "An <addressBlock>'s <offset> or <size> (TAG) is larger than 0x1000000 (16 MiB). svdconv treats such a number as probably miscalculated but keeps it."
+summary: "svdconv found an address block whose size or offset value (shown as the hexadecimal number in the message) is larger than the second hexadecimal value shown after the '>' sign, so the address block may extend beyond the range …"
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdAddressBlock.cpp:14", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdAddressBlock.cpp:49", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdAddressBlock.cpp:65", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/unittests/src/SvdModelValidationTest.cpp:147", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:179", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:252"]
+confidence: "medium"
 ---
 
 ## Symptom
@@ -28,19 +27,12 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdAddr
 
 ## Cause
 
-An <addressBlock>'s <offset> or <size> (TAG) is larger than 0x1000000 (16 MiB). svdconv treats such a number as probably miscalculated but keeps it. Warning by default, error with --strict.
+svdconv found an address block whose size or offset value (shown as the hexadecimal number in the message) is larger than the second hexadecimal value shown after the '>' sign, so the address block may extend beyond the range it is expected to occupy. The %TAG% in the message names the XML element concerned, and the two hex numbers are the value found and the limit it exceeds. The exact check could not be confirmed from source because the clone was not available.
 
 ## Fix
 
-Check the value: <offset> is relative to the peripheral's <baseAddress>, not an absolute address, and <size> is the block length in bytes.
+Open the SVD file at the element named in the message and compare the address block offset and size with the peripheral or register range it belongs to; correct the offset or size so that it fits within the expected range, then rerun svdconv.
 
-## Evidence
+## Note
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
-
-- `tools/svdconv/SVDModel/src/SvdAddressBlock.cpp:14`
-- `tools/svdconv/SVDModel/src/SvdAddressBlock.cpp:49`
-- `tools/svdconv/SVDModel/src/SvdAddressBlock.cpp:65`
-- `tools/svdconv/test/unittests/src/SvdModelValidationTest.cpp:147`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:179`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:252`
+The source lines were not available, so the trigger condition is inferred from the message text only. Verify the comparison direction and the meaning of each hexadecimal value in SVDConv_Msgs.cpp before relying on this entry.

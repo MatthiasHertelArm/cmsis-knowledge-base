@@ -10,14 +10,13 @@ code: "M608"
 symptoms: ["M608", "Memory '%NAME%' with '%ATTR%'='%VALUE%' must have '%ATTR2%'='%VALUE2%'"]
 symptom_regex: "^Memory '.+?' with '.+?'='.+?' must have '.+?'='.+?'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A <memory> has startup=\"1\" but its access attribute does not contain 'x' (execute); a startup memory without access is reported too."
+summary: "The packchk check found a memory entry in a PDSC device definition whose attribute %ATTR% is set to %VALUE%, but the check requires the same entry to also carry %ATTR2% set to %VALUE2%."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:243", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSemantic.cpp:280-288", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1133-1172", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/MemoryAttributes/TestVendor.MemoryAttributes.pdsc:74", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/MemoryAttributes/TestVendor.MemoryAttributes.pdsc:90"]
+confidence: "low"
 ---
 
 ## Symptom
@@ -27,18 +26,12 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-A <memory> has startup="1" but its access attribute does not contain 'x' (execute); a startup memory without access is reported too. Memories with id IROM*/IRAM* are exempt.
+The packchk check found a memory entry in a PDSC device definition whose attribute %ATTR% is set to %VALUE%, but the check requires the same entry to also carry %ATTR2% set to %VALUE2%. The memory is named %NAME%. This is inferred from the message text only, because the source lines around the trigger were not available.
 
 ## Fix
 
-Add x to the access of the startup memory or move startup="1" to the executable region, e.g. <memory name="Flash" access="rx" start="0x08000000" size="0x00080000" startup="1"/>.
+Open the PDSC device or memory definition that declares memory %NAME% and add or correct the attribute %ATTR2%=%VALUE2% on that entry, or change %ATTR%=%VALUE% if it was set in error. Then rerun packchk on the pack.
 
-## Evidence
+## Note
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
-
-- `tools/packchk/src/PackChk_Msgs.cpp:243`
-- `tools/packchk/src/ValidateSemantic.cpp:280-288`
-- `tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1133-1172`
-- `tools/packchk/test/data/MemoryAttributes/TestVendor.MemoryAttributes.pdsc:74`
-- `tools/packchk/test/data/MemoryAttributes/TestVendor.MemoryAttributes.pdsc:90`
+The clone was not available, so tools/packchk/src/PackChk_Msgs.cpp was not read and no line numbers are cited. The trigger condition and the exact pairing of attributes were not verified. The README does not document this message.

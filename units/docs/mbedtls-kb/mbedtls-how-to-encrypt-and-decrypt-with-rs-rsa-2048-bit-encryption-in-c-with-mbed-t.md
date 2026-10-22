@@ -6,8 +6,8 @@ title: "How to encrypt and decrypt with RSA: RSA 2048-bit encryption in C with M
 summary: "Start by initializing the public key context and reading in the public key:"
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/encrypt-and-decrypt-with-rsa.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/encrypt-and-decrypt-with-rsa.md#rsa-2048-bit-encryption-in-c-with-mbed-tls"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/encrypt-and-decrypt-with-rsa.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/encrypt-and-decrypt-with-rsa.md#rsa-2048-bit-encryption-in-c-with-mbed-tls"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -28,7 +28,7 @@ Start by initializing the public key context and reading in the public key:
         goto exit;
     }
 ```
-**Note:** There is a [maximum amount of data you can encrypt with RSA](https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/../cryptography/rsa-encryption-maximum-data-size.md). For a 2048 bit RSA key, the maximum you can encrypt is 245 bytes (or 1960 bits).
+**Note:** There is a [maximum amount of data you can encrypt with RSA](https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/../cryptography/rsa-encryption-maximum-data-size.md). For a 2048 bit RSA key, the maximum you can encrypt is 245 bytes (or 1960 bits).
 
 Store the data to be encrypted and its length in variables. This tutorial uses `to_encrypt` for the data, and its length in `to_encrypt_len`:
 ```

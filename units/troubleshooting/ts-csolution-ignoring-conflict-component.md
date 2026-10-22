@@ -9,14 +9,14 @@ severity: "warning"
 symptoms: ["ignoring conflict: component '<…>' is listed multiple times"]
 symptom_regex: "^ignoring conflict: component '.+?' is listed multiple times$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3906"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:3906"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A component that is already listed for the context (in the cproject.yml or an earlier processed clayer.yml) is listed again in a clayer.yml. csolution keeps the first entry and drops the layer's duplicate, including any settings on it (define:, …"
+summary: "AddComponent found a component already in the destination list for the same context, with the same component identifier as the new entry."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3900-3914", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3621-3633", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:7887-7891", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestSolution/DuplicateComponents/Clayer/duplicateComponents.clayer.yml"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3900-3901", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3904-3907", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3909-3910"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-A component that is already listed for the context (in the cproject.yml or an earlier processed clayer.yml) is listed again in a clayer.yml. csolution keeps the first entry and drops the layer's duplicate, including any settings on it (define:, misc:, instances: and so on).
+AddComponent found a component already in the destination list for the same context, with the same component identifier as the new entry. The caller passed ignoreDuplicates as true, so the tool keeps the earlier entry, skips the new one and prints the warning. The '<…>' is the component identifier string (the component's Cclass::Cgroup form) that is listed more than once. The source does not show which caller sets ignoreDuplicates or which input file produced the second listing.
 
 ## Fix
 
-Remove the duplicate from either the project or the layer, keeping the entry whose settings should apply.
+Open the csolution or project file that lists the component and remove the duplicate entry so that each component appears once in the components list for that context. Then rerun the csolution command and check that the warning is gone. If the same component is required through several layers or dependencies, check that only one of them adds it explicitly.
 
 ## Trigger in the source
 
@@ -37,11 +37,14 @@ Remove the duplicate from either the project or the layer, keeping the entry who
 if (ignoreDuplicates) {
 ```
 
+## Note
+
+The same duplicate condition without ignoreDuplicates prints the error 'conflict: component ... is listed multiple times' and fails. The warning is therefore the lenient variant, and the build continues with the first entry. The message has no code. The README does not document this message. The callers that pass ignoreDuplicates were not in the given lines, so which context or input triggers it is not confirmed.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrWorker.cpp:3900-3914`
-- `tools/projmgr/src/ProjMgrWorker.cpp:3621-3633`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:7887-7891`
-- `tools/projmgr/test/data/TestSolution/DuplicateComponents/Clayer/duplicateComponents.clayer.yml`
+- `tools/projmgr/src/ProjMgrWorker.cpp:3900-3901`
+- `tools/projmgr/src/ProjMgrWorker.cpp:3904-3907`
+- `tools/projmgr/src/ProjMgrWorker.cpp:3909-3910`

@@ -6,8 +6,8 @@ title: "Building with CMake Presets: Using presets with Visual Studio Code (VS C
 summary: "CMake Presets are well supported by most IDEs and serve as a developer-convenience tool. This section would demonstrate the use of CMake Presets in VS Code."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/cmake_presets.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/cmake_presets.md#using-presets-with-visual-studio-code-vs-code"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/cmake_presets.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/cmake_presets.md#using-presets-with-visual-studio-code-vs-code"
 license: "Apache-2.0"
 mode: "V"
 ---

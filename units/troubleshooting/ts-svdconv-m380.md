@@ -10,15 +10,15 @@ code: "M380"
 symptoms: ["M380", "AddressBlock of Peripheral '%NAME%' (@%ADDR%) %TEXT% does not fit into 32Bit Address Space."]
 symptom_regex: "^AddressBlock of Peripheral '.+?' \\(@.+?\\) .+? does not fit into 32Bit Address Space\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "An <addressBlock> of a peripheral ends beyond 0xFFFFFFFF: the peripheral <baseAddress> plus the block's <offset> and <size> - 1 does not fit into 32 bits. svdconv ignores that address block."
+summary: "The SVD file declares a peripheral whose address block (base address plus the block's offset and size) extends beyond the 32-bit address space, so the end of the block would wrap past 0xFFFFFFFF."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1205-1225", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:201", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:257"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -28,20 +28,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdPeri
 
 ## Cause
 
-An <addressBlock> of a peripheral ends beyond 0xFFFFFFFF: the peripheral <baseAddress> plus the block's <offset> and <size> - 1 does not fit into 32 bits. svdconv ignores that address block.
+The SVD file declares a peripheral whose address block (base address plus the block's offset and size) extends beyond the 32-bit address space, so the end of the block would wrap past 0xFFFFFFFF. The %NAME% and %ADDR% placeholders are the peripheral name and its base address from the SVD, and %TEXT% describes the offending address block. The source lines were not available, so this is inferred from the message text alone.
 
 ## Fix
 
-Correct the peripheral's <baseAddress> or the address block's <offset> and <size> so the block ends at or below 0xFFFFFFFF; <size> is the length of the block, not its end address.
+Open the SVD file, find the peripheral named in the message and check its baseAddress together with the addressBlock offset and size of its address block; correct the values so the block ends at or below 0xFFFFFFFF, then run svdconv again.
 
 ## Note
 
-Error under --strict. TEXT prints the range as [end ... start]; ADDR is cast to 32 bits.
+Source lines were unavailable; the cause is inferred from the message wording. The fix assumes the peripheral base address or the address block values are wrong in the SVD.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdPeripheral.cpp:1205-1225`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:201`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:257`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["executing generator '<…>' for context '<…>' failed"]
 symptom_regex: "^executing generator '.+?' for context '.+?' failed$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5177"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:5177"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "`csolution run -g <id>` started the command of a generator defined in a pack (from its `<exe>` element) for the context, and the command ended with a non-zero exit code."
+summary: "csolution runs the generator's command line (built at line 5163) through CrossPlatformUtils::ExecCommand from the generator's working directory."
 cause_origin: "source-analysis"
-confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5163-5180", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrLogger.cpp:72-80"]
+confidence: "high"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5163", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5170-5172", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5174", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5176-5178"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-`csolution run -g <id>` started the command of a generator defined in a pack (from its `<exe>` element) for the context, and the command ended with a non-zero exit code. The generator's own output is printed only with `--verbose`, as 'generator ... reported:'. The `<…>` are the generator id and the context.
+csolution runs the generator's command line (built at line 5163) through CrossPlatformUtils::ExecCommand from the generator's working directory. The message is printed when that process returns a non-zero exit status, so the generator itself reported a failure. The generator's own output was logged just before at Info level as "generator '<id>' for context '<context>' reported:", and that output holds the actual error. The placeholders are the generator ID and the selected context name.
 
 ## Fix
 
-Run the same command again with `--verbose` to see what the generator reported, and fix that problem (for example a missing tool installation or invalid input); then run the generator again.
+Read the output printed by the preceding "reported:" Info line and fix the problem it describes, such as missing inputs or a bad generator configuration. To reproduce, run the generator's expanded command line by hand from the generator's working directory (the directory csolution changes into before running it) and check its exit code. After fixing the cause, rerun the csolution command.
 
 ## Trigger in the source
 
@@ -37,9 +37,15 @@ Run the same command again with `--verbose` to see what the generator reported, 
 if (result.second) {
 ```
 
+## Note
+
+The message carries no detail of its own; the useful information is the generator output logged at line 5174. The README does not document this message.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrWorker.cpp:5163-5180`
-- `tools/projmgr/src/ProjMgrLogger.cpp:72-80`
+- `tools/projmgr/src/ProjMgrWorker.cpp:5163`
+- `tools/projmgr/src/ProjMgrWorker.cpp:5170-5172`
+- `tools/projmgr/src/ProjMgrWorker.cpp:5174`
+- `tools/projmgr/src/ProjMgrWorker.cpp:5176-5178`

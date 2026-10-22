@@ -6,8 +6,8 @@ title: "Examples for Arm backends Ethos-U, VGF and Cortex-M: Python package setu
 summary: "For Ethos-U examples, install the current checkout and the dependencies needed for ahead-of-time (AOT) export in a clean Python environment:"
 status: "draft"
 collection: "executorch-arm"
-source: "pytorch/executorch@658390c:examples/arm/README.md"
-doc_source: "https://github.com/pytorch/executorch/blob/658390c/examples/arm/README.md#python-package-setup"
+source: "pytorch/executorch@6368414:examples/arm/README.md"
+doc_source: "https://github.com/pytorch/executorch/blob/6368414/examples/arm/README.md#python-package-setup"
 license: "BSD-3-Clause"
 mode: "V"
 ---

@@ -10,14 +10,14 @@ code: "M214"
 symptoms: ["M214", "Invalid argument: %OPT%"]
 symptom_regex: "^Invalid argument: .+?$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A packchk command-line argument was not accepted; %OPT% names it."
+summary: "packchk was started with a command-line argument it does not recognise."
 cause_origin: "source-analysis"
-confidence: "low"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:100", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ParseOptions.cpp:200-227", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ParseOptions.cpp:334-337", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:24-45"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp (source not available; trigger inferred from message text only)"]
 ---
 
 ## Symptom
@@ -27,21 +27,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-A packchk command-line argument was not accepted; %OPT% names it.
+packchk was started with a command-line argument it does not recognise. The %OPT% placeholder is the offending option text as the user typed it on the command line.
 
 ## Fix
 
-Check the named option against packchk -h and correct its spelling or value; for example -w takes 0, 1, 2, 3 or all.
+Run packchk with its help option to list the valid arguments, then correct or remove the option named in the message and run it again.
 
 ## Note
 
-No raise site for M214 in packchk at 30f5e81 (the code M214 is only raised by svdconv); invalid options are reported by cxxopts as '<program> error: <text>'. Cause inferred from the message text.
+Derived from the message wording and the absence of source lines, not from the code; the exact trigger condition in PackChk_Msgs.cpp was not checked. Not documented in the README.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence low, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:100`
-- `tools/packchk/src/ParseOptions.cpp:200-227`
-- `tools/packchk/src/ParseOptions.cpp:334-337`
-- `tools/packchk/README.md:24-45`
+- `tools/packchk/src/PackChk_Msgs.cpp (source not available; trigger inferred from message text only)`

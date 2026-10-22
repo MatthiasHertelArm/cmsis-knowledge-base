@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["generator executable '<…>' was not found"]
 symptom_regex: "^generator executable '.+?' was not found$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5147"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:5147"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "The pack generator selected with `-g` has no command for this host: its `<exe>` element lists no `<command>` for the host OS (host attribute win, linux or mac), or the command is a web URL."
+summary: "The generator with id generatorId was found in the context's generators, but GetExecutable(context.rteActiveTarget) returned an empty path for the active target."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5144-5149", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteGenerator.cpp:103-145", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteItem.cpp:599-604"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5145-5149", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5112-5114"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-The pack generator selected with `-g` has no command for this host: its `<exe>` element lists no `<command>` for the host OS (host attribute win, linux or mac), or the command is a web URL. The `<…>` is the generator id.
+The generator with id generatorId was found in the context's generators, but GetExecutable(context.rteActiveTarget) returned an empty path for the active target. This means the generator's package definition (PDSC) does not give an executable for the selected target, so there is nothing to check for existence or permissions. The '<…>' in the message is the generator id the user asked to run.
 
 ## Fix
 
-Run the generator on a host its pack supports, or update the pack; the pack's documentation tells how to start the tool otherwise.
+Check that the generator entry in the PDSC of the pack that provides it declares an executable for the target in use, and that the pack providing the generator is installed and selected for the context. Then rerun the generator command. The source lines give no further fix beyond this.
 
 ## Trigger in the source
 
@@ -37,10 +37,13 @@ Run the generator on a host its pack supports, or update the pack; the pack's do
 if (generatorExe.empty()) {
 ```
 
+## Note
+
+The message text is the same as the one in the code path only when the executable is empty; the message does not name the executable or the target. The condition is read from the lines given; the README entry does not document this message.
+
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrWorker.cpp:5144-5149`
-- `libs/rtemodel/src/RteGenerator.cpp:103-145`
-- `libs/rtemodel/src/RteItem.cpp:599-604`
+- `tools/projmgr/src/ProjMgrWorker.cpp:5145-5149`
+- `tools/projmgr/src/ProjMgrWorker.cpp:5112-5114`

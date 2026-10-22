@@ -6,8 +6,8 @@ title: "FVP Audio: Operation"
 summary: "The application initializes both audio input and output streams and then continuously captures audio samples from the input stream and copies them directly to the output stream."
 status: "draft"
 collection: "avh"
-source: "ARM-software/AVH@bb8431b:example/FVP_Audio/README.md"
-doc_source: "https://github.com/ARM-software/AVH/blob/bb8431b/example/FVP_Audio/README.md#operation"
+source: "ARM-software/AVH@60f78be:example/FVP_Audio/README.md"
+doc_source: "https://github.com/ARM-software/AVH/blob/60f78be/example/FVP_Audio/README.md#operation"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -23,7 +23,7 @@ The example uses CMSIS-RTOS2 for thread management and event-driven processing.
 
 ### Configuration
 
-Default configuration ([app_config.h](https://github.com/ARM-software/AVH/blob/bb8431b/example/FVP_Audio/project/app_config.h)) expects the following input
+Default configuration ([app_config.h](https://github.com/ARM-software/AVH/blob/60f78be/example/FVP_Audio/project/app_config.h)) expects the following input
 and output stream format:
 
 - 16kHz, 16-bit, 2-channels (stereo)

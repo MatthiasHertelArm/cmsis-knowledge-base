@@ -10,16 +10,16 @@ code: "M203"
 symptoms: ["M203", "Value already set: <%TAG%> = '%VALUE%'"]
 symptom_regex: "^Value already set: <.+?> = '.+?'$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Check tag/value."
-summary: "In this svdconv version it is raised only for the derivedFrom attribute: an element receives a derivedFrom reference while it already has one."
+summary: "svdconv reports M203 when it tries to set a tag in the SVD/PDSC handling and that tag already holds a value, so the second assignment is refused."
 cause_origin: "source-analysis"
-confidence: "low"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdItem.cpp:267-285", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdItem.cpp:178-182", "Open-CMSIS-Pack/devtools@30f5e817:libs/xmltree/include/XmlItem.h:119", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:70"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -29,21 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdItem
 
 ## Cause
 
-In this svdconv version it is raised only for the derivedFrom attribute: an element receives a derivedFrom reference while it already has one. An XML element cannot carry the attribute twice, so a well-formed SVD file should not produce it.
+svdconv reports M203 when it tries to set a tag in the SVD/PDSC handling and that tag already holds a value, so the second assignment is refused. The <%TAG%> names the element that was already set and '%VALUE%' is the value it already has. The README only says to check the tag and value, and the source lines were not available to confirm which input produces the duplicate.
 
 ## Fix
 
-Keep a single derivedFrom attribute on the element at the reported line; if the message persists, report it with the SVD file to Open-CMSIS-Pack/devtools.
+Search the SVD input for a second occurrence of the named element (the one shown in the message) under the same parent and remove or merge the duplicate so each element is given one value. If the duplicate came from an include or a generated file, fix it at the source of that element.
 
 ## Note
 
-Attributes are stored in a std::map and processed once per element, so the condition looks unreachable from a file.
+Source lines were unavailable, so the trigger condition is inferred from the message text and README only; the 'duplicate element' reading is not verified against the code.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence low, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdItem.cpp:267-285`
-- `tools/svdconv/SVDModel/src/SvdItem.cpp:178-182`
-- `libs/xmltree/include/XmlItem.h:119`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:70`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

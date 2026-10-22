@@ -9,14 +9,14 @@ severity: "warning"
 symptoms: ["'compiler' setting in cdefault.yml will be deprecated in CMSIS-Toolbox 3.0.0"]
 symptom_regex: "^'compiler' setting in cdefault\\.yml will be deprecated in CMSIS\\-Toolbox 3\\.0\\.0$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:45"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrYamlParser.cpp:45"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "The cdefault.yml used by the solution (enabled with `cdefault:` in the csolution.yml) sets `compiler:` under `default:`."
+summary: "The cdefault.yml file sets a top-level default 'compiler' key."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:42-46", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:497-501", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/schemas/common.schema.json:1193-1199", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/schemas/common.schema.json:1216", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestDefault/cdefault.yml:5"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:43-46", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:47"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParse
 
 ## Cause
 
-The cdefault.yml used by the solution (enabled with `cdefault:` in the csolution.yml) sets `compiler:` under `default:`. The setting still works but is announced to be dropped in CMSIS-Toolbox 3.0.0.
+The cdefault.yml file sets a top-level default 'compiler' key. ParseCdefault reads that value and, when it is non-empty, prints this warning. The message says the setting is deprecated and will be removed in CMSIS-Toolbox 3.0.0; the build still uses the value for this run.
 
 ## Fix
 
-Move the compiler selection into the csolution.yml, e.g. `solution: compiler: GCC` (or per build-type/target-type `compiler:`), and delete `compiler:` from cdefault.yml. `select-compiler:` in cdefault.yml carries the same deprecation note in the schema, so move it to the csolution.yml as well.
+Remove the 'compiler' entry from the default section of cdefault.yml and use the selectable compiler settings that ParseSelectableCompilers reads from the same node instead. The source shown does not spell out the exact replacement YAML keys, so check the cdefault.yml schema of your CMSIS-Toolbox version before editing.
 
 ## Trigger in the source
 
@@ -37,12 +37,13 @@ Move the compiler selection into the csolution.yml, e.g. `solution: compiler: GC
 if (!cdefault.compiler.empty()) {
 ```
 
+## Note
+
+The README does not document this message. The warning is printed at parse time, so it appears whenever a cdefault.yml sets 'compiler'. The replacement mechanism is inferred from the line that follows the warning and is not confirmed by the lines given.
+
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrYamlParser.cpp:42-46`
-- `tools/projmgr/src/ProjMgr.cpp:497-501`
-- `tools/projmgr/schemas/common.schema.json:1193-1199`
-- `tools/projmgr/schemas/common.schema.json:1216`
-- `tools/projmgr/test/data/TestDefault/cdefault.yml:5`
+- `tools/projmgr/src/ProjMgrYamlParser.cpp:43-46`
+- `tools/projmgr/src/ProjMgrYamlParser.cpp:47`

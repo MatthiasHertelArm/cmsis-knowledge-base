@@ -6,8 +6,8 @@ title: "Porting Reference Ops from Lite to Micro: How do I fix optimized kernel 
 summary: "Kernel unit tests for all optimized kernels should pass. It should be noted that optimized kernels may not handle all tensor types or operator parameters. In this case, the optimized kernel should fallback on calling the reference kernel methods."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/porting_reference_ops.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/porting_reference_ops.md#how-do-i-fix-optimized-kernel-unit-test-failures"
+source: "tensorflow/tflite-micro@bd621c2:tensorflow/lite/micro/docs/porting_reference_ops.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/bd621c2/tensorflow/lite/micro/docs/porting_reference_ops.md#how-do-i-fix-optimized-kernel-unit-test-failures"
 license: "Apache-2.0"
 mode: "V"
 ---

@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["destination directory cannot be created"]
 symptom_regex: "^destination directory cannot be created$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlEmitter.cpp:61"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrYamlEmitter.cpp:61"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "csolution cannot create the folder for a YAML file it writes (cbuild-idx.yml, cbuild.yml, cbuild-pack.yml, cbuild-run.yml, cbuild-gen.yml and similar), e.g. because a plain file exists where a folder of the path is needed or the location is not writable."
+summary: "csolution is about to write a generated YAML file (for example a generated .cbuild or .cprj style output) to the given path and the file content differs from what is on disk, so updating is allowed."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlEmitter.cpp:55-63", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrGeneratorUnitTests.cpp:106-125"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlEmitter.cpp:60-63", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlEmitter.cpp:55-58"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlEmitt
 
 ## Cause
 
-csolution cannot create the folder for a YAML file it writes (cbuild-idx.yml, cbuild.yml, cbuild-pack.yml, cbuild-run.yml, cbuild-gen.yml and similar), e.g. because a plain file exists where a folder of the path is needed or the location is not writable. The message is prefixed with the file path.
+csolution is about to write a generated YAML file (for example a generated .cbuild or .cprj style output) to the given path and the file content differs from what is on disk, so updating is allowed. Before writing, it calls RteFsUtils::MakeSureFilePath on the target path to create its parent directories, and that call failed. The path in the message is the generated file whose parent directory could not be created, typically because a path component exists as a regular file, or the location is not writable.
 
 ## Fix
 
-Remove or rename the file that blocks the path (e.g. a file named `tmp` or `out` in the solution folder), make the location writable, or choose another output folder with `--output`/`-o` or output-dirs:.
+Check the output location shown in the message: make sure no file exists where one of its parent directories should be, and that the parent directory is writable by the user running csolution. Remove or rename the conflicting file or fix the permissions, then rerun the build. The source gives no further workaround.
 
 ## Trigger in the source
 
@@ -37,9 +37,13 @@ Remove or rename the file that blocks the path (e.g. a file named `tmp` or `out`
 if (!RteFsUtils::MakeSureFilePath(filename)) {
 ```
 
+## Note
+
+Not documented in the README. The cause for the failure of MakeSureFilePath is inferred from its name and call site; the body of RteFsUtils::MakeSureFilePath was not among the lines provided.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrYamlEmitter.cpp:55-63`
-- `tools/projmgr/test/src/ProjMgrGeneratorUnitTests.cpp:106-125`
+- `tools/projmgr/src/ProjMgrYamlEmitter.cpp:60-63`
+- `tools/projmgr/src/ProjMgrYamlEmitter.cpp:55-58`

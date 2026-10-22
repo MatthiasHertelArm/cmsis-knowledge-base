@@ -10,14 +10,14 @@ code: "M219"
 symptoms: ["M219", "Unable to find specified schema file '%PATH%'"]
 symptom_regex: "^Unable to find specified schema file '.+?'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "The schema file given with --xsd does not exist (a relative path is resolved against the current working directory)."
+summary: "packchk could not locate the XML schema file it needs to validate a PDSC file, so the path shown in the message does not exist or is not readable from the tool's schema lookup location."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:105", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackOptions.cpp:272-287", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CreateModel.cpp:151-162", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:697-727", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:730-762", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:54-57"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp (trigger, source lines not available in this session)"]
 ---
 
 ## Symptom
@@ -27,19 +27,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-The schema file given with --xsd does not exist (a relative path is resolved against the current working directory). The same message appears when the stored schema path no longer exists when the check starts.
+packchk could not locate the XML schema file it needs to validate a PDSC file, so the path shown in the message does not exist or is not readable from the tool's schema lookup location. The message is printed when the schema file named by %PATH% cannot be found, which typically means the tool installation or the schema directory it searches is incomplete or was moved.
 
 ## Fix
 
-Point --xsd at an existing PACK.xsd, preferably with an absolute path; or omit --xsd so packchk uses the PACK.xsd of its installation (./, ../etc/ or ../../etc/ next to the executable); or use --disable-validation to skip the schema check.
+Check that the schema file named in the message exists at the printed path and is readable. If it is missing, reinstall or update the CMSIS tools that provide packchk so the schema files are restored, then rerun the pack check.
+
+## Note
+
+Answered from the message text alone because the clone was not available; the trigger condition and the exact schema lookup logic were not verified against the source, so the cause is an inference from the message wording.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:105`
-- `tools/packchk/src/PackOptions.cpp:272-287`
-- `tools/packchk/src/CreateModel.cpp:151-162`
-- `tools/packchk/test/integtests/src/PackChkIntegTests.cpp:697-727`
-- `tools/packchk/test/integtests/src/PackChkIntegTests.cpp:730-762`
-- `tools/packchk/README.md:54-57`
+- `tools/packchk/src/PackChk_Msgs.cpp (trigger, source lines not available in this session)`

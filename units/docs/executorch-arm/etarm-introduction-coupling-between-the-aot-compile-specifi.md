@@ -6,8 +6,8 @@ title: "Introduction: Coupling between the AoT compile specification memory mode
 summary: "It is important to note that when you specify a memory mode in the Python script to generate the pte file, in the runtime, the user is expected to place the scratch buffer and NN in the correct memory location."
 status: "draft"
 collection: "executorch-arm"
-source: "pytorch/executorch@658390c:examples/arm/ethos-u-porting-guide.md"
-doc_source: "https://github.com/pytorch/executorch/blob/658390c/examples/arm/ethos-u-porting-guide.md#coupling-between-the-aot-compile-specification-memory-mode-linker-script-and-the"
+source: "pytorch/executorch@6368414:examples/arm/ethos-u-porting-guide.md"
+doc_source: "https://github.com/pytorch/executorch/blob/6368414/examples/arm/ethos-u-porting-guide.md#coupling-between-the-aot-compile-specification-memory-mode-linker-script-and-the"
 license: "BSD-3-Clause"
 mode: "V"
 ---

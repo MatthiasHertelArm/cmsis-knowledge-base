@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["file not allowed to be updated"]
 symptom_regex: "^file not allowed to be updated$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlEmitter.cpp:57"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrYamlEmitter.cpp:57"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "`--frozen-packs` was given, and the packs csolution resolves for the solution differ from those locked in `<name>.cbuild-pack.yml` (e.g. a pack was added to or removed from packs:, or a version requirement changed), so the lock file would have to change."
+summary: "WriteFile generated the YAML content for a file that already exists and differs from it, so CompareFile returned false."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlEmitter.cpp:55-58", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrCbuildPack.cpp:139-149", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:1265-1305"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlEmitter.cpp:55-58", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlEmitter.cpp:39", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlEmitter.cpp:90-99"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlEmitt
 
 ## Cause
 
-`--frozen-packs` was given, and the packs csolution resolves for the solution differ from those locked in `<name>.cbuild-pack.yml` (e.g. a pack was added to or removed from packs:, or a version requirement changed), so the lock file would have to change. The message is prefixed with the cbuild-pack.yml path.
+WriteFile generated the YAML content for a file that already exists and differs from it, so CompareFile returned false. The caller passed allowUpdate as false, which forbids overwriting an existing file, so the write is refused. The message names the file (%NAME% is the filename argument) and the context of the operation.
 
 ## Fix
 
-Run once without `--frozen-packs` to update the cbuild-pack.yml and commit it, or change packs: back so that it matches the locked list.
+Check whether the listed file is a generated file that csolution should be allowed to rewrite. If it is a generated file you no longer need, remove it and run the command again so it is created fresh. If you edited it by hand, move your changes into the source input or revert the file, then run the command again. The lines shown do not identify which caller passes allowUpdate as false, so the exact option that enables the update is not established here.
 
 ## Trigger in the source
 
@@ -37,10 +37,14 @@ Run once without `--frozen-packs` to update the cbuild-pack.yml and commit it, o
 if (!allowUpdate) {
 ```
 
+## Note
+
+The README does not document this message. The lines given do not show the callers that pass allowUpdate, so the option that sets it and the exact reason a caller forbids the update remain unverified. The cause is a reading of the trigger condition.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
 - `tools/projmgr/src/ProjMgrYamlEmitter.cpp:55-58`
-- `tools/projmgr/src/ProjMgrCbuildPack.cpp:139-149`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:1265-1305`
+- `tools/projmgr/src/ProjMgrYamlEmitter.cpp:39`
+- `tools/projmgr/src/ProjMgrYamlEmitter.cpp:90-99`

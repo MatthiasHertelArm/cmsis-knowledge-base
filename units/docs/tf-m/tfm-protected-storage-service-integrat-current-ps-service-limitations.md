@@ -6,7 +6,7 @@ title: "Protected Storage Service Integration Guide: Current PS Service Limitati
 summary: "Protected Storage Service Integration Guide: Current PS Service Limitations"
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/integration_guide/services/tfm_ps_integration_guide.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/integration_guide/services/tfm_ps_integration_guide.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/integration_guide/services/tfm_ps_integration_guide.html#current-ps-service-limitations"
 license: "BSD-3-Clause"
 mode: "V"

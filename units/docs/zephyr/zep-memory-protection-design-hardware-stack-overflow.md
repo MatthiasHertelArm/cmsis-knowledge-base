@@ -3,11 +3,11 @@ id: "zep-memory-protection-design-hardware-stack-overflow"
 type: "concept"
 domain: "rtos"
 title: "Memory Protection Design: Hardware Stack Overflow"
-summary: "CONFIG_HW_STACK_PROTECTION is an optional feature which detects stack buffer overflows when the system is running in supervisor mode. This catches issues when the entire stack buffer has overflowed, and not individual stack frames, use compiler-assisted CONFIG_STACK_CANARIES for that."
+summary: "CONFIG_HW_STACK_PROTECTION is an optional feature which detects stack buffer overflows when the system is running in supervisor mode. This catches issues when the entire stack buffer has overflowed, and not individual stack frames."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/kernel/usermode/memory_domain.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/kernel/usermode/memory_domain.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/kernel/usermode/memory_domain.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/kernel/usermode/memory_domain.rst"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -15,8 +15,8 @@ mode: "V"
 `CONFIG_HW_STACK_PROTECTION` is an optional feature which detects stack
 buffer overflows when the system is running in supervisor mode. This
 catches issues when the entire stack buffer has overflowed, and not
-individual stack frames, use compiler-assisted `CONFIG_STACK_CANARIES`
-for that.
+individual stack frames. Use compiler-assisted `CONFIG_STACK_CANARIES`
+to detect overflow for individual frames.
 
 Like any crash in supervisor mode, no guarantees can be made about the overall
 health of the system after a supervisor mode stack overflow, and any instances

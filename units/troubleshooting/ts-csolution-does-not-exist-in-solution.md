@@ -9,14 +9,14 @@ severity: "warning"
 symptoms: ["build-type '.<…>' does not exist in solution<…>, did you mean '+<…>'?<…>"]
 symptom_regex: "^build\\-type '\\..+?' does not exist in solution.+?, did you mean '\\+.+?'\\?.+?$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4095"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:4095"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A `for-context:` or `not-for-context:` entry in a csolution.yml, cproject.yml or clayer.yml uses `.Name`, but Name is not a build type defined under build-types: (nor in a context-map:)."
+summary: "The csolution run was given a type filter entry with a leading '.' (build-type) whose name matches no build type defined in the solution."
 cause_origin: "source-analysis"
 confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4012-4105", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:5508-5531", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestSolution/typefilters.cproject.yml", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestSolution/typefilters.csolution.yml"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4076-4087", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4093-4096", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4050-4062"]
 ---
 
 ## Symptom
@@ -25,17 +25,20 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-A `for-context:` or `not-for-context:` entry in a csolution.yml, cproject.yml or clayer.yml uses `.Name`, but Name is not a build type defined under build-types: (nor in a context-map:). When Name is a target type, the warning asks whether `+Name` was meant, since `.` marks build types and `+` target types. The same check prints `target-type '+Name' does not exist in solution` for unknown target types.
+The csolution run was given a type filter entry with a leading '.' (build-type) whose name matches no build type defined in the solution. The name is collected from the solution's build-types and from their context maps, and CheckTypeFilterSpelling records it as missing from that set. The <…> in the message is the filter's name without the '.' prefix. If the same name exists as a target type, the message adds the hint that the user probably meant the '+' prefix, which selects target types.
 
 ## Fix
 
-Correct the filter, e.g. `for-context: .Debug` for a build type or `for-context: +CM3` for a target type, or add the missing type under build-types:/target-types: in the csolution.yml. Names are case-sensitive.
+Find the filter entry that uses the named type with a '.' prefix and correct it. Use '.<name>' only when <name> is a build type defined in the solution's build-types section. If <name> is a target type, write it as '+<name>' instead, as the hint says. The warning is printed once per missing name in the include and exclude filters.
+
+## Note
+
+The message has no code and the README does not document it. The '.' and '+' hint is a string check on the name, so a name that exists as both a build type and a target type is never flagged as misspelled. The warning text is built in PrintMissingFilters, which is outside the lines given, but it is read in full from 4095-4096.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrWorker.cpp:4012-4105`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:5508-5531`
-- `tools/projmgr/test/data/TestSolution/typefilters.cproject.yml`
-- `tools/projmgr/test/data/TestSolution/typefilters.csolution.yml`
+- `tools/projmgr/src/ProjMgrWorker.cpp:4076-4087`
+- `tools/projmgr/src/ProjMgrWorker.cpp:4093-4096`
+- `tools/projmgr/src/ProjMgrWorker.cpp:4050-4062`

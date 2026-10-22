@@ -6,8 +6,8 @@ title: "Tips for debugging Mbed TLS: Sanitizers"
 summary: "Valgrind mostly duplicates Asan+Msan, but very occasionally finds something that they don't."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/development/debugging_tips.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/development/debugging_tips.md#sanitizers"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/development/debugging_tips.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/development/debugging_tips.md#sanitizers"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -94,4 +94,4 @@ See [SanitizerCommonFlags](https://github.com/google/sanitizers/wiki/SanitizerCo
 
 ### Sanitizers for constant-time testing
 
-See “[Mbed TLS test guidelines — Constant-flow testing](https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/development/../development/test_suites.md#constant-flow-testing)”.
+See “[Mbed TLS test guidelines — Constant-flow testing](https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/development/../development/test_suites.md#constant-flow-testing)”.

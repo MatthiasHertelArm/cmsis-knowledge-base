@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["list <args> was not specified"]
 symptom_regex: "^list <args> was not specified$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:416"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgr.cpp:416"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "`csolution list` was run without saying what to list."
+summary: "The user ran `csolution list` without the sub-command argument that says what to list."
 cause_origin: "source-analysis"
-confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:414", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:420", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:26"]
+confidence: "high"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:413-418", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:420-438", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:441"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:414"
 
 ## Cause
 
-`csolution list` was run without saying what to list.
+The user ran `csolution list` without the sub-command argument that says what to list. ProcessListCommand() checks m_args before doing anything else and, when it is empty, prints this error and returns ERROR. The <args> placeholder stands for the missing item; valid values are the keys of the handler map in the same function (packs, boards, devices, npus, components, configs, dependencies, examples, templates, contexts, targets, target-sets, debuggers, generators, layers, toolchains, environment).
 
 ## Fix
 
-Add the subject after `list`, e.g. `csolution list packs`, `csolution list devices`, `csolution list components my.csolution.yml` or `csolution list contexts my.csolution.yml`; `csolution --help` lists the choices.
+Run the list command with one of the supported arguments, for example `csolution list packs` or `csolution list devices`. Choose the name that matches the information you need; the source lists the accepted names in the handler map of ProcessListCommand().
 
 ## Trigger in the source
 
@@ -37,10 +37,14 @@ Add the subject after `list`, e.g. `csolution list packs`, `csolution list devic
 if (m_args.empty()) {
 ```
 
+## Note
+
+The sibling message for an unknown argument is 'list <args> was not found' (ProjMgr.cpp:441). The README does not document this message, so the cause and fix come from the source alone.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgr.cpp:414`
-- `tools/projmgr/src/ProjMgr.cpp:420`
-- `tools/projmgr/src/ProjMgr.cpp:26`
+- `tools/projmgr/src/ProjMgr.cpp:413-418`
+- `tools/projmgr/src/ProjMgr.cpp:420-438`
+- `tools/projmgr/src/ProjMgr.cpp:441`

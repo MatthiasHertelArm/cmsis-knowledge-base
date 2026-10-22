@@ -10,15 +10,14 @@ code: "M311"
 symptoms: ["M311", "Field '%NAME%': Calculation: MSB or LSB == -1"]
 symptom_regex: "^Field '.+?': Calculation: MSB or LSB == \\-1$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A field has no complete bit position: none of <bitRange>, the pair <lsb>+<msb> or the pair <bitOffset>+<bitWidth> is given in full (for example only <lsb>, or <bitOffset> without <bitWidth>)."
+summary: "svdconv prints M311 when a field's bit-range calculation produces an MSB or LSB value of -1 for the field named in the message."
 cause_origin: "source-analysis"
-confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:84", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:98", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:114", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:173", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:473", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:474", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:130"]
+confidence: "low"
 ---
 
 ## Symptom
@@ -28,24 +27,12 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdFiel
 
 ## Cause
 
-A field has no complete bit position: none of <bitRange>, the pair <lsb>+<msb> or the pair <bitOffset>+<bitWidth> is given in full (for example only <lsb>, or <bitOffset> without <bitWidth>). The text speaks of MSB or LSB == -1 whichever style is used. The field is dropped.
+svdconv prints M311 when a field's bit-range calculation produces an MSB or LSB value of -1 for the field named in the message. This points to a field whose bit offset or width in the SVD (bitOffset/bitWidth, or lsb/msb) is inconsistent so that the computed most or least significant bit falls outside the valid range, typically from a mismatched or negative offset or width in the input description. The exact input condition could not be confirmed from source here, since the clone was not available.
 
 ## Fix
 
-Give the field one complete bit position, for example <bitRange>[7:4]</bitRange>, or <lsb>4</lsb><msb>7</msb>, or <bitOffset>4</bitOffset><bitWidth>4</bitWidth>. svdconv needs <bitWidth> together with <bitOffset> although the schema marks it optional.
+Open the SVD and locate the field named in the message; check its bitOffset and bitWidth (or lsb and msb) for negative values, a zero or missing width, or a combination that yields an out-of-range bit position, then correct them and re-run svdconv.
 
 ## Note
 
-Misleading text: it is raised whenever offset or width is missing, not only for <lsb>/<msb>.
-
-## Evidence
-
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
-
-- `tools/svdconv/SVDModel/src/SvdField.cpp:84`
-- `tools/svdconv/SVDModel/src/SvdField.cpp:98`
-- `tools/svdconv/SVDModel/src/SvdField.cpp:114`
-- `tools/svdconv/SVDModel/src/SvdField.cpp:173`
-- `tools/svdconv/SVDModel/src/SvdField.cpp:473`
-- `tools/svdconv/SVDModel/src/SvdField.cpp:474`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:130`
+Source lines were not provided, so the trigger condition and the exact input pattern are unverified; the cause is inferred from the message text only. The README states it is documented, but its cause and fix text was not supplied for comparison.

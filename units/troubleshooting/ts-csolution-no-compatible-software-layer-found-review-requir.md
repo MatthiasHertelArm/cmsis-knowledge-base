@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["no compatible software layer found. Review required connections of the project"]
 symptom_regex: "^no compatible software layer found\\. Review required connections of the project$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1016"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgr.cpp:1016"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "`csolution list layers` could not complete layer discovery for the context named with the message."
+summary: "This message is printed by the list-layers command path (RunListLayers) when m_worker.ListLayers fails to detect a compatible software layer for at least one context."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1012", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4938", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:2334", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:2466", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:2543"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1013-1018", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1001-1009"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1012
 
 ## Cause
 
-`csolution list layers` could not complete layer discovery for the context named with the message. Mostly no combination of clayer.yml files (from the loaded packs or from `-L`/`--clayer-path`) provides the `connections:` that the project and its layers consume; the lines before it list the connection checks. Earlier failures for the context (pack loading, a `-L` path that does not exist, undefined layer variables) end with the same message.
+This message is printed by the list-layers command path (RunListLayers) when m_worker.ListLayers fails to detect a compatible software layer for at least one context. It is emitted once per failed context, so the context name is attached as the second argument. The text itself does not name the layer or the connection; it only says the project's required connections need review, which points at the project's component selections or layer requirements not matching any available layer.
 
 ## Fix
 
-Read the connection report printed before the message (add `-v` or `-d` for detail). Install the board or device pack that ships a matching layer, point `-L` to a folder with compatible clayer.yml files, or adjust the `connections:` the project consumes; fix any earlier error first.
+Run the layer listing again on the csolution.yml and check the connections of each failed context: confirm that the components and layers required by the project are provided by the packs that are installed and referenced, and that the selected target/context matches what the layers were built for. Then rerun the command. The source gives no further automatic remedy, so review of the project's connections is the step to take.
 
 ## Trigger in the source
 
@@ -37,12 +37,13 @@ Read the connection report printed before the message (add `-v` or `-d` for deta
 if (!m_worker.ListLayers(layers, m_clayerSearchPath, m_failedContext)) {
 ```
 
+## Note
+
+The README does not document this message. The source only shows the trigger and the per-context reporting; the specific reasons ListLayers fails are not in the given lines, so the cause is an interpretation of the message text.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgr.cpp:1012`
-- `tools/projmgr/src/ProjMgrWorker.cpp:4938`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:2334`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:2466`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:2543`
+- `tools/projmgr/src/ProjMgr.cpp:1013-1018`
+- `tools/projmgr/src/ProjMgr.cpp:1001-1009`

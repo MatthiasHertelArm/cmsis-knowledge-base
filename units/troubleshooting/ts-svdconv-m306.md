@@ -10,15 +10,15 @@ code: "M306"
 symptoms: ["M306", "Schema Version not set for <device>."]
 symptom_regex: "^Schema Version not set for <device>\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "The root <device> element has no schemaVersion attribute, which the SVD schema requires to tell which SVD version the file follows."
+summary: "svdconv prints this warning when the input SVD file does not declare a schema version for the device, so the tool cannot tell which CMSIS-SVD schema revision the description follows."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:50", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:152", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:922", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:924", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:125", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:234"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -28,19 +28,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevi
 
 ## Cause
 
-The root <device> element has no schemaVersion attribute, which the SVD schema requires to tell which SVD version the file follows. Warning by default, error with --strict.
+svdconv prints this warning when the input SVD file does not declare a schema version for the device, so the tool cannot tell which CMSIS-SVD schema revision the description follows. The <device> placeholder is the device name taken from the SVD. The exact trigger condition could not be checked because the source lines were not available.
 
 ## Fix
 
-Add the attribute to the root element, for example <device schemaVersion="1.3">.
+Add a schema version to the device element in the SVD file, for example by setting the schemaVersion attribute on <device>, so the description states which SVD schema it follows. Then rerun svdconv on the corrected file.
+
+## Note
+
+Source lines were unavailable; the cause and fix are inferred from the message text and the README statement that the message is documented, not confirmed against the trigger code. The exact attribute name should be checked against the SVD schema before use.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:50`
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:152`
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:922`
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:924`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:125`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:234`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

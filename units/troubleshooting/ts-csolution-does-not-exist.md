@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["pack path: <…> does not exist"]
 symptom_regex: "^pack path: .+? does not exist$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1800"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:1800"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A `packs:` entry has a `path:` to a local pack folder that does not exist; `<…>` is the resolved path."
+summary: "A pack entry in the csolution project files has a `path` that points to a local pack folder, and that path does not exist once it is resolved against the csolution file's directory."
 cause_origin: "source-analysis"
 confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1800", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1746", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestSolution/test_local_pack_path_not_found.csolution.yml:73", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:3900"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1794-1802", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1796-1800", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1804-1809"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-A `packs:` entry has a `path:` to a local pack folder that does not exist; `<…>` is the resolved path. The path is relative to the YAML file that holds the entry (csolution.yml, cproject.yml or clayer.yml).
+A pack entry in the csolution project files has a `path` that points to a local pack folder, and that path does not exist once it is resolved against the csolution file's directory. The message prints the path exactly as written in the project file (`packageEntry.path`), so `<…>` is that raw value. The check runs on the normalized copy, so a relative path is judged from the csolution directory, not from the current working directory.
 
 ## Fix
 
-Correct `path:` so that it points to the folder that contains the pack's pdsc file, e.g. `- pack: ARM::RteTest_DFP` with `path: ./packs/RteTest_DFP`, or remove `path:` to use the installed pack.
+Open the csolution or project file that lists the pack and find the `path` value named in the message. Make it relative to that file's directory, or use an absolute path, so that it points to the folder that contains the pack's .pdsc file. Confirm the folder exists on disk, then run the build again. The folder must also contain `<vendor>.<name>.pdsc`, or the tool stops with a different error about a missing pdsc file.
 
 ## Trigger in the source
 
@@ -37,11 +37,14 @@ Correct `path:` so that it points to the folder that contains the pack's pdsc fi
 if (!RteFsUtils::Exists(package.path)) {
 ```
 
+## Note
+
+The message is not documented in the README. The printed path is the unresolved value from the project file, not the resolved absolute path that was tested, so the user has to resolve it relative to the csolution directory to see what the tool checked. The code field is empty in the catalog entry.
+
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrWorker.cpp:1800`
-- `tools/projmgr/src/ProjMgrWorker.cpp:1746`
-- `tools/projmgr/test/data/TestSolution/test_local_pack_path_not_found.csolution.yml:73`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:3900`
+- `tools/projmgr/src/ProjMgrWorker.cpp:1794-1802`
+- `tools/projmgr/src/ProjMgrWorker.cpp:1796-1800`
+- `tools/projmgr/src/ProjMgrWorker.cpp:1804-1809`

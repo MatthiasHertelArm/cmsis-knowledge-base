@@ -1,0 +1,317 @@
+[
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2623",
+  "verdict": "partly",
+  "problems": [
+   "The fix 'Install the missing pack with the pack manager' is not stated in the thread; the reporter only expects the build to succeed without the pack.",
+   "'Select the target set that uses the layer' is only observed behaviour (the pack installs once the target is selected), not a fix the thread offers.",
+   "The cause is stated more mechanically than the thread's 'packs required by a context not part of the active target set are not loaded' note supports, though the core is right."
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The missing-pack check only looks at the active target set. Packs required by an mlops target set that is not active are not loaded, so csolution convert fails when such a pack is not installed, even though the build does not use it. Selecting that target set makes the pack install immediately.",
+  "fix_fixed": "Defining the pack (ARM::SSE_320_BSP@1.1.0) in the top-level sds.csolution.yml works as a workaround. Listing missing packs with csolution list packs -m without an active target set does not yet cover mlops target sets.",
+  "versions_fixed": "csolution v1.68.0",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/716",
+  "verdict": "unsupported",
+  "problems": [
+   "The cause sentence only restates the error message; the thread gives no mechanism, and the digest itself admits the internal cause is not in the thread.",
+   "The fix adds a per-project launch step, and the thread's 'Comment 1' only says the generators can be launched per project in the nightly; the digest's wording is close, but the 'reporter' attribution is not in the thread.",
+   "The versions line says 'Fixed in nightly build 2026-10-09 ... earlier releases affected'; the thread names only the nightly build and never names affected releases.",
+   "The resolution 'fixed-in-release' is not supported: the thread shows a nightly validation and a closed issue, not a release fix."
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "",
+  "fix_fixed": "",
+  "versions_fixed": "nightly build 2026-10-09",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2648",
+  "verdict": "partly",
+  "problems": [
+   "States as fact that the overlap warning goes away after the split; the thread has only the user's 'Yes, thank you!' and never confirms the warning cleared.",
+   "The cause's claim that one contiguous block cannot describe the peripheral without overlapping is an inference; the thread only says the assumption of continuous ranges is the problem."
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The SVD describes one peripheral with a single address block whose size spans a range that includes another peripheral's address (POK). The peripheral has two separate register banks with a gap between them, so one contiguous block spans the other peripheral's range.",
+  "fix_fixed": "Split the peripheral into two SVD peripherals, one per register bank, each with its own baseAddress and a small addressBlock covering only its own range (for example ASG-low at 0x50097000 and ASG-high at 0x58010000, both with groupName ASG, each with a 0x1000 size block). The thread offers this split as a suggestion; it does not confirm the warning is gone.",
+  "versions_fixed": "",
+  "resolution_fixed": "configuration"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/devtools/issues/2298",
+  "verdict": "unsupported",
+  "problems": [
+   "Calls the absolute-path edit a workaround, but the thread only has the reporter's proposal, which maintainers did not accept; nobody reports it tested or working.",
+   "Says the J-Link server resolves SVD paths against the current working directory; the thread only says the current directory varies, and the J-Link mechanism is not confirmed.",
+   "Describes PR 815 as resolving SVD paths before building the J-Link command line; the thread only says comment 6 believes PR 815 already addresses the issue, pending review, and gives no mechanism.",
+   "Resolution 'workaround' is not supported: the issue is open and the thread has no confirmed resolution.",
+   "Core Cortex-M55 is in the body, so that part is fine."
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The cbuild-run file lists SVD files with paths relative to the cbuild-run file itself. pyOCD resolves them that way, but the J-Link server can depend on the current working directory, so the SVD file may not be found when the tool runs from elsewhere.",
+  "fix_fixed": "Not confirmed in the thread. The reporter proposed writing absolute SVD paths into cbuild-run for local packs; maintainers argued for resolving SVD paths in vscode-cmsis-debugger when building the J-Link server command line instead. A later comment says vscode-cmsis-debugger PR 815 already addresses this and asks for review; no confirmation is given.",
+  "versions_fixed": "",
+  "resolution_fixed": "unresolved"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1228",
+  "verdict": "partly",
+  "problems": [
+   "Cause says GDB 14.2 through 17.2 are affected; the thread names only GDB 14.2, 15.2, 16.3, 17.1 and 17.2 and gives no range.",
+   "Cause states as fact that pyOCD cannot match the selector and that Continue leaves the target stopped; the thread says the behaviour 'appears to' prevent identification.",
+   "Fix says to update to a pyOCD release containing PR 2052; the thread names only the pull request and no release.",
+   "Fix describes the PR's mechanism (mapping the negative selector back to the positive ID) as what the PR does; the thread only suggests this handling and does not describe the PR's code.",
+   "Fix offers GDB 18.1 as an alternative fix; the thread only notes that GDB 18.1 changes the encoding and never offers it as a fix.",
+   "Resolution 'fixed-in-release' is unsupported: the thread shows a PR tested by the reporter on the IMXRT1050-EVK, not a released version."
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "GDB 14.2, 15.2, 16.3, 17.1 and 17.2 print thread IDs above 0x7fffffff as signed 32-bit integers and send them back in negative hexadecimal form. pyOCD then appears unable to match the selector to the RTOS thread, leaving the target stopped at the breakpoint. This occurs when RTOS RAM is at or above 0x80000000.",
+  "fix_fixed": "Use a pyOCD build that includes pull request 2052; the reporter tested this change on the IMXRT1050-EVK and confirmed that Continue resumed. The thread suggests handling the negative selector by recovering the original positive 32-bit ID, keeping special selectors 0 and -1.",
+  "versions_fixed": "Affected: GDB 14.2, 15.2, 16.3, 17.1, 17.2. Not affected: GDB 18.1. No pyOCD release is named; the fix is pyOCD PR 2052.",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/704",
+  "verdict": "partly",
+  "problems": [
+   "Fix text says PR 684 restricts cleaning to the active target's selected contexts; the thread names the PR as the fix but does not describe its mechanism.",
+   "Claims --rebuild --active AVH-NS-only@Debug keeps the secure HEX and CMSE import library; the nightly validation only shows a normal --active build, not a --rebuild.",
+   "Workaround (build the dependent context without --rebuild, or rebuild the producing target explicitly) does not appear in the thread.",
+   "Resolution 'fixed-in-release' overstates the evidence: the thread shows a merged PR referenced in a comment and a nightly validation, but no release."
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "With --rebuild, cbuild cleaned every context of the project rather than only the contexts selected by the active target set. Output directories of another target type that the active target consumes as external inputs were therefore deleted, so the build failed. A separate misconfiguration in the example project (a target-set pointing at the wrong project-context) caused a related wrong selection in the original CI run.",
+  "fix_fixed": "Upgrade to a cbuild build that includes the fix from PR 684, which the thread gives as the fix for this issue. Nightly build 2026-10-09 was validated with a normal --active AVH-NS-only@Debug build; the thread does not confirm the --rebuild case. Also check that each target-set references the project-context matching its set name.",
+  "versions_fixed": "Reported with CMSIS-Toolbox cbuild 2.14.x; fix validated on nightly build 2026-10-09 (PR 684).",
+  "resolution_fixed": "unresolved"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/383",
+  "verdict": "partly",
+  "problems": [
+   "The thread names no pyOCD release. Comment 4 only says 'pyOCD now behaves similar as uVision', so 'update to a pyOCD release' and 'fixed-in-release' go beyond the thread.",
+   "The cause is only implied. The thread shows that uVision moves the PC past the BKPT and that the pyOCD behaviour is to be fixed in pyocd, but it does not give the mechanism as stated."
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "A BKPT instruction written into the source halts the core, and pyOCD did not advance the program counter past it, so resuming re-triggered the same breakpoint and Step left the PC unchanged. uVision advances the PC to the next instruction.",
+  "fix_fixed": "pyOCD was changed so that Step steps over the BKPT instruction and Continue runs past it, behaving similarly to uVision.",
+  "versions_fixed": "",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1273",
+  "verdict": "partly",
+  "problems": [
+   "Fix claims header and data rows share the same minimum width; the thread gives no mechanism or code change.",
+   "Calls the fix a release ('fixed-in-release', 'includes the fix'); the thread only has a comment validating build 1.9.1-9-gda28d9a, which reads as a development build past 1.9.1 rather than a named release.",
+   "Says the data rows did not stretch to the viewport as the cause; the thread states this as expected behavior, not as a confirmed cause."
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The last (Notes) column used different minimum-width behavior for the header and the data rows. Shrinking it made the data cells keep narrowing while the header stopped, so their right edges no longer lined up. The data rows also did not extend to the viewport edge when the combined column widths were smaller than the available space.",
+  "fix_fixed": "The thread reports validation on CMSIS Debugger build 1.9.1-9-gda28d9a and closes the issue; it describes no code change, so use that build and do not assume a specific patch.",
+  "versions_fixed": "1.9.1-9-gda28d9a",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/999",
+  "verdict": "partly",
+  "problems": [
+   "The mechanism that the next launch finds the core in a state where the PC cannot be read is not in the thread.",
+   "The cause is stated as settled fact, but the thread only says the timing issue is suspected ('strongly suggests') and that the pyOCD stage at which termination happens is still to be investigated.",
+   "The thread shows the failure reproduced by lowering the timeout to 100-500 ms, not that the default is confirmed too short for this machine."
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The pyOCD GDB server appears to be forcefully terminated during disconnect before it finishes. The thread suspects the CDT GDB Adapter's server disconnect timeout is too short on slower machines, and that some disconnect problem specific to this board may also be involved. The thread does not explain why the next launch fails with 'PC register is not available'.",
+  "fix_fixed": "Increase serverDisconnectTimeout in the launch configuration's target section, for example to 3000 ms. This is the initial workaround; a managed-launch-configuration change to set a higher timeout is in progress (#1293). Using the manual RESET button or power-cycling the board restores debugging in the meantime.",
+  "versions_fixed": "Debugger extension 1.6.1",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/347",
+  "verdict": "partly",
+  "problems": [
+   "Cause stated as fact: the thread only shows the tool message 'maybe an unsupported version of FreeRTOS'; the layout-mismatch mechanism and the claim that the 11.3.0 layout is not recognised are not given in the thread.",
+   "Workaround presented as verified: the thread only quotes the tool's suggestion to try --elf; no comment confirms it works, so 'workaround' as resolution is not supported.",
+   "Resolution 'workaround' is not supported; the issue is open with no confirmed fix.",
+   "Confidence and planning wording goes beyond the thread: comment 3 only says FreeRTOS support is expected to be addressed soon after the 1.2.0 release."
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The tool reports that the pxReadyTasksLists size is unexpected and may be an unsupported FreeRTOS version, so kernel/thread awareness does not show the running threads.",
+  "fix_fixed": "The tool output suggests trying the --elf option; the thread does not confirm that this works. FreeRTOS kernel awareness support is expected soon after the 1.2.0 release.",
+  "versions_fixed": "CMSIS-FreeRTOS 11.3.0 (ARM::CMSIS-FreeRTOS@11.3.0)",
+  "resolution_fixed": "unresolved"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1170",
+  "verdict": "partly",
+  "problems": [
+   "Digest says the fix is 'fixed in pyocd 0.45.2.dev39+ga3e58b2b5', but the thread only shows that build was tested and works in a CMSIS Debugger nightly. It does not say that build is the first release containing the fix.",
+   "'Update to a pyOCD build that includes the fix' is an inferred instruction; the thread does not state it.",
+   "'Fixed-in-release' overstates the evidence: the thread shows a code change tested in a nightly build, not a released version.",
+   "'Stop producing packets without disconnecting' is inferred from the reporter's 'works as expected' rather than stated as a result."
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "Trace setup is generated only for features that are enabled, so a feature switched off in the session emits no register write that could clear its enable bit. pyOCD then programs registers by read-modify-write from the enabled features only, so the previously set bits stay on in the target.",
+  "fix_fixed": "The trace specification was extended so that cleared or reset register states for disabled features are also sent to pyOCD, which applies them. pyTS and pyOCD were updated to support this. Tested with pyocd 0.45.2.dev39+ga3e58b2b5 in CMSIS Debugger Nightly 1.8.1-78-g8c7d39f, where disabled trace features such as exception trace were reported to work as expected.",
+  "versions_fixed": "Tested with pyocd 0.45.2.dev39+ga3e58b2b5 in CMSIS Debugger Nightly 1.8.1-78-g8c7d39f",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1291",
+  "verdict": "partly",
+  "problems": [
+   "Fix says the popups can be ignored; the thread says they 'can usually be ignored', so 'usually' was dropped.",
+   "Versions field says fix targeted for 1.12.0 'not yet released'; the thread only says the item was rescheduled to 1.12.0 and is OPEN, and gives no release status.",
+   "Resolution 'workaround' is not supported; the thread names no workaround, only that the popups can be ignored, and the issue is open with no fix.",
+   "Digest omits the link to the related known race condition #862, which the thread names."
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "VS Code asks the debug adapter to evaluate Watch and hover expressions before any stack frame exists. The CDT GDB Adapter requires a frame ID for evaluation, so it rejects these early requests. This is a timing race inside the GDB adapter, not a firmware or CMSIS Debugger fault.",
+  "fix_fixed": "The popups can usually be ignored; the debugger still stops correctly in main(). The race is a known issue in the CDT GDB Adapter (related to #862) and was rescheduled to CMSIS Debugger 1.12.0. The thread is still open and no fix has landed.",
+  "versions_fixed": "Seen in CMSIS Debugger 1.9.0; rescheduled target 1.12.0",
+  "resolution_fixed": "unresolved"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1083",
+  "verdict": "unsupported",
+  "problems": [
+   "Cause stated as fact, but the reporter only suspects the PDSC reset behaviour (line 300); no one confirmed it",
+   "Workaround 'start the program manually after flashing' does not appear in the thread",
+   "Resolution 'workaround' is not supported; the thread gives no workaround and no resolution",
+   "Pyocd 1.10.0 is described as 'planned', while the thread says provisions should come with 1.10.0 and full verification may only happen after release",
+   "Version 'Affected' is inferred from the version the reporter cited",
+   "Claim that the current debug description spec 'does not cover this case' is a loose paraphrase of 'requires update to debug description spec'"
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The reporter suspects that the reset after flashing in the PIC32CM-PL pack PDSC (around line 300) forces a CPU halt, so the program does not start after Load and Run. This is unconfirmed; the debug description spec requires an update to address it.",
+  "fix_fixed": "No fix is confirmed. The thread expects a debug description spec change and pyOCD provisions in 1.10.0, followed by a matching DFP update, to resolve the problem; full verification may only happen after release.",
+  "versions_fixed": "Reported against Microchip::PIC32CM-PL_DFP 1.5.437; pyOCD 1.10.0 is expected to carry the needed provisions.",
+  "resolution_fixed": "unresolved"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1106",
+  "verdict": "partly",
+  "problems": [
+   "Cause states as fact that the spec 'has no way' to tell the reset sequence whether to halt; the thread only says an update 'may' be needed to pass more context.",
+   "Fix claims the pack's debug sequences can then be updated; the thread does not state this step.",
+   "Resolution 'workaround' is stated while the issue is still open and no fix is released; the thread only shows sysresetreq working in the example projects."
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "Debug sequences currently always halt the device after a reset, even when the user only wants the application to run. For some boards, a manual pyOCD run with the default or other reset methods can stop at an unexpected address, while reset_type=sysresetreq avoids the problem. A debug sequences specification update allowing the reset to be told whether the CPU should halt or keep running may be needed.",
+  "fix_fixed": "For affected boards, run pyOCD with -O reset_type=sysresetreq as a workaround. The proper fix needs a debug description spec update (Open-CMSIS-Pack-Spec PR 419) and pyOCD support expected in 1.10.0; the thread notes this only helps after release.",
+  "versions_fixed": "pyOCD 1.10.0 (expected; not yet released at the time of the thread)",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/550",
+  "verdict": "partly",
+  "problems": [
+   "The fix is described as the generator no longer running in a pseudo terminal that closes early. The thread only states the assumption that the generator launch must not use a PTY; it does not confirm this as the mechanism of the fix.",
+   "'And later' extends the fix to every nightly from 2026-10-05 onward. The thread only validates the single nightly 1.72.1-3-20261005.",
+   "'fixed-in-release' is not supported. The thread shows a fix validated in a nightly build, not in a released version.",
+   "The cause is described as a regression 'from an earlier change' without naming it. The thread names #450 as the regression source, which is consistent with the digest."
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The extension started the CubeMX generator launch inside a pseudo terminal on Linux and macOS. The cbridge detach terminated that pseudo terminal before the generator had finished loading, so CubeMX did not come up. The regression was introduced by #450.",
+  "fix_fixed": "Until a fix is released, copy the csolution run command printed in the CMSIS Solution Output channel and run it in a regular VS Code terminal; the reporter confirmed this works. A fix was validated on macOS in nightly build 1.72.1-3-20261005, which the thread does not show as part of a released version.",
+  "versions_fixed": "Regression in CMSIS Solution extension v1.72; v1.70 works. Validated fix in nightly 1.72.1-3-20261005.",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/566",
+  "verdict": "partly",
+  "problems": [
+   "Cause mechanism (sync kept running while typing, moving scroll and cursor on each pause) is an inference from the reproduction steps and the maintainer's expectation, not a stated root cause.",
+   "Fix says the fix is in the nightly of 2026-10-11, but the thread only shows that nightly was validated and that no jumps were seen. It does not show a merged PR or a code change.",
+   "'Affected before nightly 2026-10-11' is inferred; the thread names no affected version.",
+   "Resolution 'fixed-in-release' is not supported: the thread shows only nightly builds, not a release.",
+   "Workaround and the sync-ends-on-cursor-move behaviour are supported only as the maintainer's stated expectation, not as confirmed behaviour."
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "When a node in the Configuration Wizard graphical view is selected, the source editor is synced to that node's annotation location. This sync keeps running while the user edits in source mode, so pauses in typing or saving move the scroll position and cursor back to the selected node's annotation.",
+  "fix_fixed": "Workaround: close the graphical view until the edits in the source view are done. The maintainer's expectation is that the cursor sync from the graphical view ends once the user moves the cursor or clicks into the source editor. Nightly build 2026-10-11 was validated as no longer showing the jumps, and nightly 1.72.1-24-20261012 was confirmed.",
+  "versions_fixed": "nightly build 2026-10-11; nightly 1.72.1-24-20261012",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/2025",
+  "verdict": "partly",
+  "problems": [
+   "Says a pyOCD release includes the fix; the thread only names PR #2032 (a comment says it was fixed by that PR) and gives no release.",
+   "resolution 'fixed-in-release' is not supported; the thread shows a PR fix and a local workaround, not a release.",
+   "Versions line says 0.44.1 and 0.45.1 as reported; the thread reports 0.44.1 and only says 0.45.1 was inspected and the logic appears unchanged."
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "When the FLM sector range covers the whole parent memory region, pyOCD creates no subregions and never copies the FLM valEmpty value to the parent flash region's erased_byte_value. The region keeps the default 0xFF, so the flash builder pads sparse image holes with 0xFF even though the device erases to 0x00.",
+  "fix_fixed": "The thread points to PR #2032, which propagates FlashDevice.valEmpty to the parent FlashRegion.erased_byte_value; the thread does not name a release containing it. Until a release includes the fix, a project-local pyocd_user.py hook can set erased_byte_value to 0x00 on the flash region.",
+  "versions_fixed": "",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/581",
+  "verdict": "partly",
+  "problems": [
+   "Cause mechanism is inferred: the thread says device info in target-type makes processor names available, but not that the extension 'could not list the cores' as the digest states.",
+   "Resolution 'fixed-in-release' is not shown: the thread is closed and comment 5 says the fix was made, but it names no release, version or PR.",
+   "Fix wording presents the target-type device entry as the fix; comment 2 only reports it makes start-pname selectable, and the thread's real change is reading processor names from generated *.cbuild.yml files."
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "The start processor of a multi-core device is chosen from the order of the project entries. Processor names are known only when the device is given in the target-type of the csolution file; when the device is set only in the cproject file, start-pname could not be picked in Manage Solution.",
+  "fix_fixed": "Add the device to the target-type in the csolution file, for example under the target-type's device key, so the processor names are known and start-pname can be selected. As a workaround, add start-pname under the debugger node by hand. The extension now fetches device and processor names from the generated *.cbuild.yml files, so the same selection works when only the board is given in the target-type.",
+  "versions_fixed": "",
+  "resolution_fixed": "fixed-in-release"
+ },
+ {
+  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/319",
+  "verdict": "unsupported",
+  "problems": [
+   "Fix gives repair steps (restore a missing closing tag, or remove the pack) that the thread never proposes; the thread only shows a malformed PDSC being reproduced.",
+   "Resolution is set to 'workaround', but the thread is OPEN and offers no workaround; the only proposed change is a code change to RteKernel::LoadAndInsertPacks.",
+   "Cause is stated as fact, but the reporter only guesses that csolution loading all installed packs is the cause.",
+   "The closing sentence about the kernel skipping failed packs and affecting every solution is an inference, not thread content.",
+   "The digest says a maintainer noted failures could be ignored; the thread shows that only as a feasibility comment, not an agreed fix."
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "csolution loads installed packs rather than only those selected by the active solution. The RTE kernel's LoadAndInsertPacks returns immediately when loading one pack fails, so a malformed installed PDSC produces an error even for solutions that do not need that pack. The reporter guesses this is the cause.",
+  "fix_fixed": "",
+  "versions_fixed": "",
+  "resolution_fixed": "unresolved"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/1794",
+  "verdict": "partly",
+  "problems": [
+   "Workarounds (do not rely on the return code, grep the output for 'No connected debug probe', or check probe enumeration before running commander) are not in the thread.",
+   "The thread gives no interim workaround; the only fix mentioned is the maintainer's note that it should be fixed with #2037.",
+   "'Not yet fixed' is an inference from the open issue, not a stated status."
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "When pyocd commander cannot find the probe given by unique ID, it prints the error but exits with status 0 instead of a non-zero code, so scripts that check the return code see success.",
+  "fix_fixed": "A maintainer says the problem should be fixed with PR #2037; the issue is still open and the thread gives no interim workaround.",
+  "versions_fixed": "",
+  "resolution_fixed": "unresolved"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/2060",
+  "verdict": "partly",
+  "problems": [
+   "Attributes the proposal to 'the maintainer'; the thread (Comment 1) does not identify the commenter as a maintainer.",
+   "States the PR as 'proposed' while the thread says #2061 implements the workaround; the thread does not say whether it is merged or confirmed."
+  ],
+  "symptoms_ok": true,
+  "cause_fixed": "When a CMSIS-DAP reply is exactly the packet size (512 bytes), the probe ends the bulk IN transfer with a zero-length packet. pyOCD reads one USB packet per command, so it takes that empty packet as the reply to the next command. The real reply is then left unread in the probe, and every later command times out.",
+  "fix_fixed": "In the PyUSBv2 receive task, read again whenever a read returns zero bytes, and only pass non-empty data on to the reply queue, since no valid CMSIS-DAP reply is empty. Pull request #2061 implements this workaround; the thread says the probe should not send the zero-length packet, so the probe-side behaviour is the underlying defect.",
+  "versions_fixed": "pyOCD 0.45.1 on Windows 10 with a Microchip PICkit Basic running CMSIS-DAP v2 firmware; the fix is in PR #2061 and the thread does not show a release.",
+  "resolution_fixed": "workaround"
+ },
+ {
+  "issue": "https://github.com/pyocd/pyOCD/issues/2042",
+  "verdict": "supported",
+  "problems": [],
+  "symptoms_ok": true
+ }
+]

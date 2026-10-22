@@ -6,8 +6,8 @@ title: "Arm® ML embedded evaluation kit: Models and resources"
 summary: "The TensorFlow Lite models used in the use-cases implemented in this project can be downloaded from:"
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/documentation.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/documentation.md#models-and-resources"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/documentation.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/documentation.md#models-and-resources"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -52,4 +52,4 @@ The optimized model contains custom operators for sub-graphs of the model that t
 remaining layers that cannot be accelerated, are left unchanged, and are run on the CPU using optimized, `CMSIS-NN`, or
 reference kernels provided by the inference engine.
 
-For detailed information, see: [Optimize model with Vela compiler](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/./sections/building.md#Optimize-custom-model-with-Vela-compiler).
+For detailed information, see: [Optimize model with Vela compiler](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/./sections/building.md#Optimize-custom-model-with-Vela-compiler).

@@ -6,8 +6,8 @@ title: "Switching to the new code style: How to migrate"
 summary: "Please have the following tools and files available:"
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/rewrite-branch-for-coding-style.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/rewrite-branch-for-coding-style.md#how-to-migrate"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/rewrite-branch-for-coding-style.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/rewrite-branch-for-coding-style.md#how-to-migrate"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -17,7 +17,7 @@ mode: "V"
 Please have the following tools and files available:
 
 * Git 2.17.0 or newer.
-* [Uncrustify](https://github.com/uncrustify/uncrustify) 0.75.1. Please note that older or newer versions are not suitable because they give different results. See the [“Installing uncrustify”](https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/uncrustify.md#installing-uncrustify) article for some tips.
+* [Uncrustify](https://github.com/uncrustify/uncrustify) 0.75.1. Please note that older or newer versions are not suitable because they give different results. See the [“Installing uncrustify”](https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/uncrustify.md#installing-uncrustify) article for some tips.
 * Python 3.6 or newer.
 * A Git worktree containing the branch of Mbed TLS you want to migrate.
 * A local copy of [the branch rewriting script `mbedtls-rewrite-branch-style`](https://github.com/Mbed-TLS/mbedtls-docs/raw/main/tools/bin/mbedtls-rewrite-branch-style). Preferably use the most recent version, since it may have received bug fixes. You can check out the [`mbedtls-docs` repository](https://github.com/Mbed-TLS/mbedtls-docs).

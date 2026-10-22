@@ -6,8 +6,8 @@ title: "Building the ML embedded code sample applications from sources: Build pr
 summary: "On Linux, execute the following command to build the application for target platform mps4 and subsystem sse-315, using the default toolchain file for the target as bare-metal-gcc. This is equivalent to running:"
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/building.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/building.md#configuring-the-build-for-mps4-sse-315"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/building.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/building.md#configuring-the-build-for-mps4-sse-315"
 license: "Apache-2.0"
 mode: "V"
 ---

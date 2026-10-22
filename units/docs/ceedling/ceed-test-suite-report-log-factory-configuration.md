@@ -3,16 +3,16 @@ id: "ceed-test-suite-report-log-factory-configuration"
 type: "concept"
 domain: "test"
 title: "Test Suite Report Log Factory: Configuration"
-summary: "Enable the reports you wish to generate — json, junit, and/or cppunit — within the :report_tests_log_factory ↳ :reports configuration list."
+summary: "Enable the reports you wish to generate — json, junit, cppunit, and/or html — within the :report_tests_log_factory ↳ :reports configuration list."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/report-tests-log-factory.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/plugins/report-tests-log-factory.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/report-tests-log-factory/#configuration"
 license: "MIT"
 mode: "V"
 ---
 
-Enable the reports you wish to generate — `json`, `junit`, and/or `cppunit` — within the `:report_tests_log_factory` ↳ `:reports` configuration list.
+Enable the reports you wish to generate — `json`, `junit`, `cppunit`, and/or `html` — within the `:report_tests_log_factory` ↳ `:reports` configuration list.
 
 ```yaml
 :report_tests_log_factory:

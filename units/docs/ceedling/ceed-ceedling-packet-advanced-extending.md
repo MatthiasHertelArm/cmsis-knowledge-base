@@ -6,7 +6,7 @@ title: "Ceedling Packet: Advanced & Extending"
 summary: "Code macros to accomplish build goals when Ceedling's conventions aren't quite enough."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/index.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/index.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/#advanced-extending"
 license: "MIT"
 mode: "V"
@@ -36,6 +36,7 @@ mode: "V"
 
 
 [quick-start]:                 getting-started/quick-start.md
+[delta-builds]:                getting-started/builds.md
 [build-system]:                overview/build-system.md
 [tools-and-frameworks]:        overview/tools-and-frameworks.md
 [testing-abilities]:           overview/testing-abilities.md

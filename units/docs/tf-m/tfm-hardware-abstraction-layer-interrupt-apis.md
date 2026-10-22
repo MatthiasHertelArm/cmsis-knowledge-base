@@ -6,7 +6,7 @@ title: "Hardware Abstraction Layer: API Definition for TF-M SPM / Interrupt APIs
 summary: "The SPM HAL interrupt APIs are intended for operations on Interrupt Controllers of platforms."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/software/hardware_abstraction_layer.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/software/hardware_abstraction_layer.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/software/hardware_abstraction_layer.html#interrupt-apis"
 license: "BSD-3-Clause"
 mode: "V"

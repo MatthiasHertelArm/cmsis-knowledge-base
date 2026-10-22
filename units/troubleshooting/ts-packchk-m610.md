@@ -10,14 +10,14 @@ code: "M610"
 symptoms: ["M610", "File category '%CAT%': '%NAME%' redefined in component '%NAME2%', see Line %LINE%"]
 symptom_regex: "^File category '.+?': '.+?' redefined in component '.+?', see Line .+?$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "The same source, library or object file (category library, object, source, sourceC, sourceCpp, sourceAsm or genSource) is listed in two components with the same file condition, component condition, Cvariant and Cbundle, so selecting both would add the file twice. …"
+summary: "packchk found the same file category and name defined more than once across the component definitions of the pack, so a later component redefines an entry already given by an earlier one."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:245", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckComponents.cpp:35-77", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1174-1199", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/ConcurrentComponentFiles/ARM.ConcurrentComponentFiles.pdsc:65-78"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp (trigger not available; message text only)"]
 ---
 
 ## Symptom
@@ -27,17 +27,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-The same source, library or object file (category library, object, source, sourceC, sourceCpp, sourceAsm or genSource) is listed in two components with the same file condition, component condition, Cvariant and Cbundle, so selecting both would add the file twice. %NAME% shows packchk's internal key (file name and those values joined by ':').
+packchk found the same file category and name defined more than once across the component definitions of the pack, so a later component redefines an entry already given by an earlier one. The %CAT% and %NAME% fields show the file category and file name, %NAME2% the component that redefines it, and %LINE% the line of the earlier definition. The source lines were not available, so this reading is inferred from the message text alone.
 
 ## Fix
 
-List the file in one component only; if several components need it, move it into a common component that the others require.
+Open the PDSC file at the line given in the message and check whether the file is listed twice for the same component or in two components that should not share it. Remove or rename the duplicate entry so each file category and name is defined once per component.
+
+## Note
+
+Source lines were not provided, so the trigger condition and the exact duplicate scope (same component versus whole pack) are unverified. The README does not document this message.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:245`
-- `tools/packchk/src/CheckComponents.cpp:35-77`
-- `tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1174-1199`
-- `tools/packchk/test/data/ConcurrentComponentFiles/ARM.ConcurrentComponentFiles.pdsc:65-78`
+- `tools/packchk/src/PackChk_Msgs.cpp (trigger not available; message text only)`

@@ -6,8 +6,8 @@ title: "Pack Checking Tool: Quick Start"
 summary: "This tutorial aims to get you up and running with packchk using CMake. We recommend this tutorial as a starting point. In order to build packchk and run related tests. Please employ the sequence of steps mentioned here."
 status: "draft"
 collection: "devtools-docs"
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/packchk/README.md#quick-start"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/README.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/5f04db7/tools/packchk/README.md#quick-start"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -15,7 +15,7 @@ mode: "V"
 This tutorial aims to get you up and running with `packchk` using **CMake**. We
 recommend this tutorial as a starting point. In order to build `packchk` and
 run related tests. Please employ the sequence of steps mentioned
-[here](https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/packchk/../../README.md).
+[here](https://github.com/Open-CMSIS-Pack/devtools/blob/5f04db7/tools/packchk/../../README.md).
 
 > [!NOTE]
 > For the schema check, `packchk` searches for a `PACK.xsd` file in

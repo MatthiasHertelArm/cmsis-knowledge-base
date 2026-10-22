@@ -6,8 +6,8 @@ title: "Utilities: SDS-Convert"
 summary: "The Python utility SDS-Convert converts SDS files into the selected output format based on the descriptions provided in the metadata (YAML) files."
 status: "draft"
 collection: "sds-framework"
-source: "ARM-software/SDS-Framework@4459441:documentation/utilities.md"
-doc_source: "https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/utilities.md#sds-convert"
+source: "ARM-software/SDS-Framework@c18efee:documentation/utilities.md"
+doc_source: "https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/utilities.md#sds-convert"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -290,4 +290,4 @@ python sds-convert.py video -i Camera.0.sds -o Camera.mp4 -y Camera.sds.yml
 ```
 
 !!! Note
-    - [Theory of Operation - Image Metadata Format](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/theory.md#image-data-stream) contains more information about the supported video formats.
+    - [Theory of Operation - Image Metadata Format](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/theory.md#image-data-stream) contains more information about the supported video formats.

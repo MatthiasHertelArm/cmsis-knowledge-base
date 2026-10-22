@@ -6,8 +6,8 @@ title: "TLS PRF key derivation: Example of tls-prf key derivation - EAP-TLS use 
 summary: "Following is an example of the process described before, deriving the eap-tls key material, as described in RFC 5216 section 2.3."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/tls_prf.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/tls_prf.md#example-of-tls-prf-key-derivation-eap-tls-use-case"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/tls_prf.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/tls_prf.md#example-of-tls-prf-key-derivation-eap-tls-use-case"
 license: "Apache-2.0"
 mode: "V"
 ---

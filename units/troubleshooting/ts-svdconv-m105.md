@@ -10,15 +10,15 @@ code: "M105"
 symptoms: ["M105", "Cannot add Register to group sorter: '%NAME%'"]
 symptom_regex: "^Cannot add Register to group sorter: '.+?'$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "While generating the CMSIS device header, svdconv puts all registers and clusters of a peripheral or cluster that start in the same 32-bit word (address with the two low bits cleared) into one union, and that union holds at …"
+summary: "svdconv could not add a register named in the message to its internal register group, which happens while it processes the SVD peripheral and register definitions."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/HeaderData_RegStructure.cpp:29", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/HeaderData_RegStructure.cpp:42", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/HeaderData_RegStructure.cpp:43", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/HeaderData_RegStructure.cpp:61", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/HeaderData_RegStructure.cpp:62", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/include/HeaderData.h:31", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/HeaderData_Register.cpp:49", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/HeaderData_Register.cpp:130", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:42"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -28,26 +28,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/Hea
 
 ## Cause
 
-While generating the CMSIS device header, svdconv puts all registers and clusters of a peripheral or cluster that start in the same 32-bit word (address with the two low bits cleared) into one union, and that union holds at most 32 members per access size. NAME is the register that did not fit (for 32-bit registers the message already appears from the 31st member on), so far too many registers share one word address, usually through wrong <addressOffset> values or many alternate registers at one address.
+svdconv could not add a register named in the message to its internal register group, which happens while it processes the SVD peripheral and register definitions. The source lines were not available, so the exact trigger condition is not confirmed; the variable part %NAME% is the register name the tool was handling when the insertion failed.
 
 ## Fix
 
-Give each register its correct <addressOffset> so that only intended aliases share an address, and keep intentional aliases (<alternateRegister>, <alternateGroup>) at one word address well below 30. The overlap messages M339/M365 name the registers that collide.
+Check the SVD file for the register named in the message: make sure its name is unique within its peripheral and that its address offset and size are valid and not duplicated or overlapping with another register in the same group. Correct the SVD entry and re-run svdconv.
 
 ## Note
 
-Only raised with --generate=header. The guard 'regItems > MAX_REGS' lets a 33rd entry be written into a 32-entry array (off by one).
+Source lines were unavailable, so the cause and fix are inferred from the message text alone and should be verified against the source before relying on them. The README is documented as having a cause and fix for this message, but its text was not provided to confirm.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDGenerator/src/HeaderData_RegStructure.cpp:29`
-- `tools/svdconv/SVDGenerator/src/HeaderData_RegStructure.cpp:42`
-- `tools/svdconv/SVDGenerator/src/HeaderData_RegStructure.cpp:43`
-- `tools/svdconv/SVDGenerator/src/HeaderData_RegStructure.cpp:61`
-- `tools/svdconv/SVDGenerator/src/HeaderData_RegStructure.cpp:62`
-- `tools/svdconv/SVDGenerator/include/HeaderData.h:31`
-- `tools/svdconv/SVDGenerator/src/HeaderData_Register.cpp:49`
-- `tools/svdconv/SVDGenerator/src/HeaderData_Register.cpp:130`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:42`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

@@ -10,16 +10,16 @@ code: "M204"
 symptoms: ["M204", "Parse Error: '%VALUE%'"]
 symptom_regex: "^Parse Error: '.+?'$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Check value."
-summary: "<cpu><revision> is not of the form rNpM with N and M from 0 to 255 (e.g. r0p1). svdconv also reports M325 because no valid revision is set."
+summary: "svdconv prints this message when it fails to parse a value in the SVD input; the value that could not be parsed is shown in place of %VALUE%."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCpu.cpp:58-67", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdUtils.cpp:246-287", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/unittests/src/SvdCpuModelTest.cpp:102-110", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/unittests/src/SvdUtilsConversionTest.cpp:192-200", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:71"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -29,22 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCpu.
 
 ## Cause
 
-<cpu><revision> is not of the form rNpM with N and M from 0 to 255 (e.g. r0p1). svdconv also reports M325 because no valid revision is set.
+svdconv prints this message when it fails to parse a value in the SVD input; the value that could not be parsed is shown in place of %VALUE%. The README only says to check the value, and without the source lines the exact field that holds the value cannot be confirmed.
 
 ## Fix
 
-Write the core revision as rNpM (N = major, M = minor revision), for example <revision>r1p0</revision>.
+Find the quoted value in the SVD file and correct it to the form the SVD schema expects for that element (for example a plain decimal or 0x-prefixed hexadecimal number where a numeric field is required), then rerun svdconv.
 
 ## Note
 
-SvdDimension.cpp:360-363, 393-395 and 425-427 also log M204 for an invalid name/displayName/description expression, but the parser never returns that result at this commit.
+Source lines were not available, so the trigger condition and the exact set of accepted formats are not verified; the fix is inferred from the message text and the README.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdCpu.cpp:58-67`
-- `tools/svdconv/SVDModel/src/SvdUtils.cpp:246-287`
-- `tools/svdconv/test/unittests/src/SvdCpuModelTest.cpp:102-110`
-- `tools/svdconv/test/unittests/src/SvdUtilsConversionTest.cpp:192-200`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:71`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

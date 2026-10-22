@@ -6,7 +6,7 @@ title: "`:project`: Global project settings: `:use_backtrace`"
 summary: "When a test executable encounters a ☠️ Segmentation Fault or other crash condition, the executable immediately terminates and no further details for test suite reporting are collected."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/configuration/reference/project.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/configuration/reference/project.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/configuration/reference/project/#use-backtrace"
 license: "MIT"
 mode: "V"
@@ -110,6 +110,18 @@ provided in the crash summary. The log filepath will comprise the containing
 test executable as a subdirectory and the name of the crashing test case 
 function as the filename.
 
+!!! warning "macOS: a working `gdb` can stop attaching to processes"
+    macOS restricts which debuggers may attach to a process. A Homebrew `gdb`
+    needs to be codesigned to attach at all, and that trust is fragile — a
+    `brew upgrade`, a macOS system update, or a Gatekeeper/`taskgated` cache
+    reset can silently revoke it, even for a `gdb` that worked yesterday.
+
+    Ceedling checks for this at build startup. If `:use_backtrace:` is `:gdb`
+    but `gdb` cannot actually attach to a process, Ceedling logs a warning and
+    automatically falls back to `:simple` for that run rather than failing the
+    build. To restore `:gdb` backtraces, re-codesign `gdb` following the
+    [Homebrew `gdb` instructions][gdb-homebrew] and see `taskgated(8)`.
+
 Sample Ceedling run output with backtrace `:gdb`:
 
 ```
@@ -149,5 +161,6 @@ IGNORED: 0
    or any sort of simulator-based test fixture.
 
 [gdb]: https://www.sourceware.org/gdb/
+[gdb-homebrew]: https://sourceware.org/gdb/wiki/PermissionsDarwin
 
 **Default**: `:simple`

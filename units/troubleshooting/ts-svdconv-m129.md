@@ -10,16 +10,16 @@ code: "M129"
 symptoms: ["M129", "Option unknown: %OPT%'"]
 symptom_regex: "^Option unknown: .+?'$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Check given option 'OPT'."
-summary: "An option on the svdconv command line is not known."
+summary: "svdconv was given a command-line option it does not recognise."
 cause_origin: "source-analysis"
-confidence: "low"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/ParseOptions.cpp:403-430", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/ParseOptions.cpp:125-150", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/ParseOptions.cpp:549-552", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:59"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp (message M129, source lines not available in this review)"]
 ---
 
 ## Symptom
@@ -29,21 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/ParseOpt
 
 ## Cause
 
-An option on the svdconv command line is not known.
+svdconv was given a command-line option it does not recognise. The variable part of the message, %OPT%, is the option name as the user typed it. The README cause is only 'Check given option', so the exact trigger could not be confirmed from source here.
 
 ## Fix
 
-Check the option against svdconv -h and correct its spelling.
+Run svdconv with --help to list the valid options, then correct or remove the option named in the message and run the command again.
 
 ## Note
 
-Not raised anywhere in svdconv at 30f5e81: the code appears only in the message table (SVDConv_Msgs.cpp:59) and the README (README.md:238). Unknown options make cxxopts print '<program> error: ...' (exit 1); unknown values of --generate, --fields and --debug are silently ignored.
+Source lines were not available, so the trigger and the --help suggestion are inferred from the message text and the README rather than confirmed in code. The message text ends with a stray single quote after the variable; the README cause names the option as 'OPT'. The fix assumes --help lists the options, which was not checked.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence low, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDConv/src/ParseOptions.cpp:403-430`
-- `tools/svdconv/SVDConv/src/ParseOptions.cpp:125-150`
-- `tools/svdconv/SVDConv/src/ParseOptions.cpp:549-552`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:59`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp (message M129, source lines not available in this review)`

@@ -6,8 +6,8 @@ title: "ctrace: Build and test"
 summary: "Initialize all dependencies and configure the repository from its root:"
 status: "draft"
 collection: "devtools-docs"
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/ctrace/README.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/README.md#build-and-test"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/ctrace/README.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/5f04db7/tools/ctrace/README.md#build-and-test"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -35,7 +35,7 @@ ctest --test-dir build -C Debug --no-tests=error -L '^linux-consumer$'
 
 CI installs the pinned consumer and treats a missing labelled test as a
 failure. The separate versioned Trace Compass acceptance record is documented
-with the [integration tests](https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/test/integration/README.md).
+with the [integration tests](https://github.com/Open-CMSIS-Pack/devtools/blob/5f04db7/tools/ctrace/test/integration/README.md).
 
 Editors using `clangd` should open the devtools repository root and configure into `build`. The tool-local
 `.clangd` file points clangd at that compilation database.

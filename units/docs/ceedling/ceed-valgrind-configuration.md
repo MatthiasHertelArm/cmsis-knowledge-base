@@ -6,7 +6,7 @@ title: "Valgrind: Configuration"
 summary: "The plugin ships with sensible defaults that enable full leak checking. By default the build runs all test binaries to completion and is marked as failed if any memory errors are found."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/valgrind.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/plugins/valgrind.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/valgrind/#configuration"
 license: "MIT"
 mode: "V"
@@ -60,8 +60,45 @@ not marked as failed.
   :fail_build: false
 ```
 
-!!! note "Detection uses log parsing, not Valgrind’s exit code"
+!!! note "Detection uses report parsing, not Valgrind’s exit code"
     Valgrind’s `--error-exitcode` flag is not used because its exit code would
     overlap with Unity’s own exit code, which equals the number of failing test
-    cases. Instead, the plugin parses the `ERROR SUMMARY: N errors` line written
-    to the Valgrind log file.
+    cases. Instead, the plugin counts errors from the report it wrote.
+
+    With [`:xml_report:`](#xml_report) disabled, it sums every
+    `ERROR SUMMARY: N errors` line in the text log. Valgrind writes one such
+    line per traced process, so a test that forks reports more than one.
+
+    With `:xml_report:` enabled, it counts `<error>` elements in the XML
+    instead. Valgrind writes no error summary to the text log once XML output
+    is active.
+
+### `:suppressions:`
+
+A list of Valgrind suppression files. Each becomes one `--suppressions=`
+argument, placed ahead of your own `:arguments:` entries.
+
+```yaml
+:valgrind:
+  :suppressions:
+    - suppressions/third_party.supp
+```
+
+**Default:** `[]`
+
+!!! warning "A malformed suppression file aborts the run"
+    Valgrind refuses to start when it cannot parse a suppression file, which
+    surfaces as a test executable that produced no output. Each suppression
+    needs at least one location line that is not `...`.
+
+### `:xml_report:`
+
+When `true`, writes a machine-readable XML report per test binary alongside the
+text log. Useful for CI systems that consume Valgrind output directly.
+
+```yaml
+:valgrind:
+  :xml_report: true
+```
+
+**Default:** `false`

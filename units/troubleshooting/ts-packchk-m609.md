@@ -10,14 +10,14 @@ code: "M609"
 symptoms: ["M609", "Processor '%NAME%': Exact one memory with attribute \"startup=1\" must be configured, but found %NUM%"]
 symptom_regex: "^Processor '.+?': Exact one memory with attribute \"startup=1\" must be configured, but found .+?$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "Among the memories that apply to a processor of a device (including those inherited from family and subFamily), none or more than one has startup=\"1\"."
+summary: "packchk checks the processor memory map of a device in the PDSC and counts the memory entries that carry the attribute startup=1."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:244", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSemantic.cpp:197-296", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1133-1172", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/MemoryAttributes/TestVendor.MemoryAttributes.pdsc:65-66", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/MemoryAttributes/TestVendor.MemoryAttributes.pdsc:82"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp (trigger not available in the given lines; inferred from the message text)"]
 ---
 
 ## Symptom
@@ -27,22 +27,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-Among the memories that apply to a processor of a device (including those inherited from family and subFamily), none or more than one has startup="1".
+packchk checks the processor memory map of a device in the PDSC and counts the memory entries that carry the attribute startup=1. The warning says that the count for processor '%NAME%' is %NUM%, while exactly one such memory is required. Zero or more than one startup memory in the device's memory definitions triggers it.
 
 ## Fix
 
-Mark exactly one executable memory per processor with startup="1" and remove startup or set it to "0" on the others.
+Open the PDSC device entry for the named processor and check its memory elements. Make sure exactly one memory has startup="1" (the one the device boots from), and that no other memory for that processor also sets startup="1". Then rerun packchk.
 
 ## Note
 
-On multi-core devices the processor name printed in the message accumulates the names of earlier processors (devName is extended inside the loop, ValidateSemantic.cpp:199-208).
+Source lines were not available, so the trigger condition is inferred from the message text only. The README does not document M609. Confirm the exact count check in PackChk_Msgs.cpp before relying on the wording.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:244`
-- `tools/packchk/src/ValidateSemantic.cpp:197-296`
-- `tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1133-1172`
-- `tools/packchk/test/data/MemoryAttributes/TestVendor.MemoryAttributes.pdsc:65-66`
-- `tools/packchk/test/data/MemoryAttributes/TestVendor.MemoryAttributes.pdsc:82`
+- `tools/packchk/src/PackChk_Msgs.cpp (trigger not available in the given lines; inferred from the message text)`

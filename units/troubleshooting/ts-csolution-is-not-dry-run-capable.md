@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["generator '<…>' is not dry-run capable"]
 symptom_regex: "^generator '.+?' is not dry\\-run capable$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5160"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:5160"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "`csolution run --dry-run` was used with a pack generator whose `<exe>` in the pack declares no `<argument mode=\"dry-run\">`, so it cannot run without writing files."
+summary: "The csolution command was run with the dry-run option, and the selected generator's IsDryRunCapable check returned false for its executable."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5159-5162", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteGenerator.cpp:307-319", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrGeneratorUnitTests.cpp:151-166", "Open-CMSIS-Pack/devtools@30f5e817:test/packs/ARM/RteTestGenerator/0.1.0/ARM.RteTestGenerator.pdsc:110-130"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5159-5162", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5101-5108"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-`csolution run --dry-run` was used with a pack generator whose `<exe>` in the pack declares no `<argument mode="dry-run">`, so it cannot run without writing files. The `<…>` is the generator id.
+The csolution command was run with the dry-run option, and the selected generator's IsDryRunCapable check returned false for its executable. The generator is identified by the <…> id in the message, and the check only passes when the generator declares dry-run support, so a generator without that support cannot be run in dry-run mode.
 
 ## Fix
 
-Run the generator without `--dry-run`, or use a generator/pack version that supports dry-run.
+Run the generator without the dry-run option so it executes normally, or use a generator that declares dry-run capability. The source does not show how a generator declares that capability, so check the generator's own documentation or its package definition for dry-run support.
 
 ## Trigger in the source
 
@@ -39,13 +39,11 @@ if (m_dryRun && !generator->IsDryRunCapable(generatorExe)) {
 
 ## Note
 
-ExecuteGenerator passes the executable path as the host type to IsDryRunCapable, so a dry-run argument restricted with a host attribute is never recognized.
+The message is printed only when m_dryRun is set and the generator reports it is not dry-run capable. The README does not document this message. The cause is inferred from the trigger; how IsDryRunCapable decides is not in the lines given.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
 - `tools/projmgr/src/ProjMgrWorker.cpp:5159-5162`
-- `libs/rtemodel/src/RteGenerator.cpp:307-319`
-- `tools/projmgr/test/src/ProjMgrGeneratorUnitTests.cpp:151-166`
-- `test/packs/ARM/RteTestGenerator/0.1.0/ARM.RteTestGenerator.pdsc:110-130`
+- `tools/projmgr/src/ProjMgrWorker.cpp:5101-5108`

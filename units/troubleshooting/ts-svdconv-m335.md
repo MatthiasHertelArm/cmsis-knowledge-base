@@ -10,15 +10,15 @@ code: "M335"
 symptoms: ["M335", "Value '%NAME%:%NUM%' does not fit into field '%NAME2%' %BITRANGE%."]
 symptom_regex: "^Value '.+?:.+?' does not fit into field '.+?' .+?\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "An <enumeratedValue>'s <value> is larger than the largest number the field can hold (2^width - 1)."
+summary: "svdconv found a register field value in the SVD file that is wider than the bit range the field declares."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:525", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:622", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:623", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:154", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:242"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp (trigger not available in this clone; message text only)"]
 ---
 
 ## Symptom
@@ -28,18 +28,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdFiel
 
 ## Cause
 
-An <enumeratedValue>'s <value> is larger than the largest number the field can hold (2^width - 1). The enumerated value is dropped. Warning by default, error with --strict.
+svdconv found a register field value in the SVD file that is wider than the bit range the field declares. The message names the offending value (%NAME%:%NUM%), the field (%NAME2%) and its bit range (%BITRANGE%). The SVD description is inconsistent: the value written for the field, typically an enumerated value or a reset value, needs more bits than the field's bitWidth or bit offset allows.
 
 ## Fix
 
-Correct the <value> or the field's width. The value is the raw content of the field, not shifted to the field's bit position in the register.
+Open the SVD file at the named peripheral, register and field, and compare the value with the field's bitOffset and bitWidth. Either correct the value so it fits the bit range, or widen the field's bitWidth if the hardware really uses more bits. Then rerun svdconv.
+
+## Note
+
+Cause and fix are inferred from the message text and the README entry; the source lines around the trigger were not available, so the exact check could not be confirmed.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdField.cpp:525`
-- `tools/svdconv/SVDModel/src/SvdField.cpp:622`
-- `tools/svdconv/SVDModel/src/SvdField.cpp:623`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:154`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:242`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp (trigger not available in this clone; message text only)`

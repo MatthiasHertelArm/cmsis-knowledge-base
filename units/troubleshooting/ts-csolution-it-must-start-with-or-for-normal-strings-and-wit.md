@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["type '<…>': it must start with '.' or '+' for normal strings and with '^' or '\\' for regex patterns"]
 symptom_regex: "^type '.+?': it must start with '\\.' or '\\+' for normal strings and with '\\^' or '\\\\' for regex patterns$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:712"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrYamlParser.cpp:712"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A `for-context:` or `not-for-context:` entry does not begin with `.` (build type), `+` (target type), `^` or `\\` (regular expression); `<…>` is the entry, e.g."
+summary: "GetTypes parses one entry of a forContext or notForContext list (ParseTypeFilter, ParseTypePair)."
 cause_origin: "source-analysis"
-confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:707", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:684", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/schemas/common.schema.json:14"]
+confidence: "high"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:707-713", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:699", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:686-687"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParse
 
 ## Cause
 
-A `for-context:` or `not-for-context:` entry does not begin with `.` (build type), `+` (target type), `^` or `\` (regular expression); `<…>` is the entry, e.g. `Debug` or `CM0+Debug`. The schema rejects such values too, so this message appears mainly with `-n`.
+GetTypes parses one entry of a forContext or notForContext list (ParseTypeFilter, ParseTypePair). It finds the first '.', the first '+' and the first '^' or '\' in the entry, and rejects the entry when none of the three sits at position 0. An entry such as 'Debug' with no prefix, or one where the delimiter is not the first character, matches this case. The '<…>' in the message is that entry as written in the project YAML.
 
 ## Fix
 
-Start the entry with the right prefix: `.Debug`, `+CM0`, `.Debug+CM0`, or a regex such as `^\.Debug\+.*`.
+Edit the entry so it starts with the marker for its kind: '.' followed by the build type (for example '.Debug'), '+' followed by the target type (for example '+CM4'), or '^' or '\' followed by a regex pattern. Apply this to each item in the forContext or notForContext list that the message names. Example: forContext: [".Debug", "+CM4"]
 
 ## Trigger in the source
 
@@ -37,10 +37,14 @@ Start the entry with the right prefix: `.Debug`, `+CM0`, `.Debug+CM0`, or a rege
 if (((buildDelimiter > 0) && (targetDelimiter > 0) && (regexDelimiter > 0))) {
 ```
 
+## Note
+
+The condition tests '> 0' on the find results, so std::string::npos (not found) also passes it. An entry that contains no marker at all therefore fails, which is the usual way to hit this message. The message says 'for normal strings' and the README does not document it, so the wording is only a hint. Parsing of a normal string starting with '.' or '+' continues at lines 725-738, which is not shown here.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrYamlParser.cpp:707`
-- `tools/projmgr/src/ProjMgrYamlParser.cpp:684`
-- `tools/projmgr/schemas/common.schema.json:14`
+- `tools/projmgr/src/ProjMgrYamlParser.cpp:707-713`
+- `tools/projmgr/src/ProjMgrYamlParser.cpp:699`
+- `tools/projmgr/src/ProjMgrYamlParser.cpp:686-687`

@@ -6,8 +6,8 @@ title: "Building and using MCUboot with Zephyr"
 summary: "MCUboot began its life as the bootloader for Mynewt. It has since acquired the ability to be used as a bootloader for Zephyr as well."
 status: "draft"
 collection: "mcuboot"
-source: "mcu-tools/mcuboot@ba2099f:docs/readme-zephyr.md"
-doc_source: "https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/readme-zephyr.md"
+source: "mcu-tools/mcuboot@725d63c:docs/readme-zephyr.md"
+doc_source: "https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/readme-zephyr.md"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -17,7 +17,7 @@ acquired the ability to be used as a bootloader for Zephyr as well.
 There are some pretty significant differences in how apps are built
 for Zephyr, and these are documented here.
 
-Please see the [design document](https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/design.md) for documentation on the design
+Please see the [design document](https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/design.md) for documentation on the design
 and operation of the bootloader itself. This functionality should be the same
 on all supported RTOSs.
 

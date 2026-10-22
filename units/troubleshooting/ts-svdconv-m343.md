@@ -10,15 +10,15 @@ code: "M343"
 symptoms: ["M343", "%LEVEL% '%NAME%' (@%ADDR%) has same address as '%NAME2%' %LINE%"]
 symptom_regex: "^.+? '.+?' \\(@.+?\\) has same address as '.+?' .+?$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "Two peripherals have the same base address, and the later one has no <alternatePeripheral> naming a peripheral already at that address."
+summary: "svdconv found two register or cluster entries in the input SVD that resolve to the same address, so one would overwrite the other in the generated output."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:541", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:558", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:579", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:582", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:619", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:162"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp (message definition for M343; exact line not available)"]
 ---
 
 ## Symptom
@@ -28,19 +28,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevi
 
 ## Cause
 
-Two peripherals have the same base address, and the later one has no <alternatePeripheral> naming a peripheral already at that address. If it has an <alternatePeripheral> that names none of them, M348 is printed first.
+svdconv found two register or cluster entries in the input SVD that resolve to the same address, so one would overwrite the other in the generated output. The %LEVEL%, %NAME% and %NAME2% placeholders name the two conflicting elements, %ADDR% is the shared address, and %LINE% gives the source location in the SVD file. The README cause text was not checked against source because the clone is not available.
 
 ## Fix
 
-Correct the later peripheral's <baseAddress>. If it really is another view of the same hardware, add <alternatePeripheral>NAME2</alternatePeripheral> to it, naming the peripheral given in the message.
+Open the SVD file at the line reported in the message and correct the offset or addressOffset of one of the two named elements (or of their parent cluster or peripheral base address) so each register has a distinct address. If the overlap is intentional, for example a union of registers, model it with a cluster or an alternate register rather than two independent registers at the same offset.
+
+## Note
+
+Answered from the message text and the README entry only; the source clone was not available, so the trigger condition and the exact cause wording are inferred from the message and not confirmed in the code. The fix assumes the duplicate is an input error rather than an intended overlay.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:541`
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:558`
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:579`
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:582`
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:619`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:162`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp (message definition for M343; exact line not available)`

@@ -6,8 +6,8 @@ title: "Introduction to Devicetree Bindings: Other ways nodes are matched to bin
 summary: "If a node has more than one string in its compatible property, the build system looks for compatible bindings in the listed order and uses the first match."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/build/dts/bindings-intro.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/build/dts/bindings-intro.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/build/dts/bindings-intro.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/build/dts/bindings-intro.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

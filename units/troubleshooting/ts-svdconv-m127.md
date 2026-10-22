@@ -10,16 +10,16 @@ code: "M127"
 symptoms: ["M127", "SfrCC2 reports errors!"]
 symptom_regex: "^SfrCC2 reports errors!$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Check SVD file."
-summary: "With --generate=sfr, SfrCC2.exe compiled the generated .sfd file and exited with code 2 or higher, i.e. it found errors."
+summary: "svdconv prints this message when its SFR checking component (SfrCC2) reports errors while validating the SVD input."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/SfrccInterface.cpp:99-116", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:55", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:57"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -29,16 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/Sfr
 
 ## Cause
 
-With --generate=sfr, SfrCC2.exe compiled the generated .sfd file and exited with code 2 or higher, i.e. it found errors. Its own output is printed just before, in the M125 'SfrCC2 report' block.
+svdconv prints this message when its SFR checking component (SfrCC2) reports errors while validating the SVD input. The message itself does not name the offending register or field, so the specific problem must be located from the SVD file and the preceding messages in the log. The README only says to check the SVD file.
 
 ## Fix
 
-Read the SfrCC2 report (M125) printed before this message, correct the SVD element that produced the reported .sfd line, and regenerate.
+Read the messages printed just before M127 in the build log, they identify the register or field that failed the check. Correct the corresponding entries in the SVD file (for example, inconsistent or out-of-range register, field or bit-width values) and run svdconv again.
+
+## Note
+
+Source lines were not available, so the trigger and handling could not be checked; the cause is inferred from the message text and the README entry. The README's cause ('Check SVD file.') is generic.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDGenerator/src/SfrccInterface.cpp:99-116`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:55`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:57`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

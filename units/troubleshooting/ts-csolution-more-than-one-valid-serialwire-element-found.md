@@ -9,14 +9,14 @@ severity: "warning"
 symptoms: ["more than one valid <serialwire> element found"]
 symptom_regex: "^more than one valid <serialwire> element found$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrRunDebug.cpp:605"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrRunDebug.cpp:605"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "The device description in the DFP has more than one `<serialwire>` element in its `<trace>` sections that apply to the whole device (trace elements with a Pname attribute are ignored). csolution writes only one serial-wire trace sink into the cbuild-run.yml."
+summary: "The device's effective trace properties contain more than one <serialwire> sink element without a Pname attribute."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrRunDebug.cpp:575", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrRunDebug.cpp:604", "Open-CMSIS-Pack/devtools@30f5e817:test/packs/ARM/RteTest_DFP/0.2.0/ARM.RteTest_DFP.pdsc:229", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:7165"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrRunDebug.cpp:580-589", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrRunDebug.cpp:604-606"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrRunDebug.
 
 ## Cause
 
-The device description in the DFP has more than one `<serialwire>` element in its `<trace>` sections that apply to the whole device (trace elements with a Pname attribute are ignored). csolution writes only one serial-wire trace sink into the cbuild-run.yml. It is a flaw of the pack, not of the project.
+The device's effective trace properties contain more than one <serialwire> sink element without a Pname attribute. The loop at lines 580-603 counts every such sink, and when the count is greater than one the tool warns, since only the first serial-wire sink is kept in the debug topology. The warning is about the device/pack description (PDSC device trace elements) rather than the csolution project file itself.
 
 ## Fix
 
-Nothing to change in the project; the run and debug files are still written. Report the duplicate `<serialwire>` to the DFP vendor or update to a DFP version that fixes it.
+Check the device or board PDSC trace definitions for the device, and keep a single <serialwire> element per processor (without a Pname attribute, since Pname-tagged traces are ignored). If several are declared for different processors, give them a Pname attribute so they are skipped here. If the pack is not yours, report the duplicate to the pack vendor.
 
 ## Trigger in the source
 
@@ -37,11 +37,13 @@ Nothing to change in the project; the run and debug files are still written. Rep
 if (serialWireCount > 1) {
 ```
 
+## Note
+
+The README does not document this message. The message is a warning, not an error, and the tool continues. The cause is inferred from the counting logic; which PDSC element produces the duplicate is not visible in the lines given.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrRunDebug.cpp:575`
-- `tools/projmgr/src/ProjMgrRunDebug.cpp:604`
-- `test/packs/ARM/RteTest_DFP/0.2.0/ARM.RteTest_DFP.pdsc:229`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:7165`
+- `tools/projmgr/src/ProjMgrRunDebug.cpp:580-589`
+- `tools/projmgr/src/ProjMgrRunDebug.cpp:604-606`

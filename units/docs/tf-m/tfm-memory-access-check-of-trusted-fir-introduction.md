@@ -6,7 +6,7 @@ title: "Memory Access Check of Trusted Firmware-M in Multi-Core Topology: Introd
 summary: "On Armv8-M platforms with TrustZone, the platform's TF-M isolation HAL implementation usually relies on the Armv8-M Security Extension (CMSE) intrinsic cmse_check_address_range() to check memory access permissions."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/multi-cpu/tfm_multi_core_access_check.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/multi-cpu/tfm_multi_core_access_check.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/multi-cpu/tfm_multi_core_access_check.html#introduction"
 license: "BSD-3-Clause"
 mode: "V"

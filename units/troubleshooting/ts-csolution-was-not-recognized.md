@@ -9,14 +9,14 @@ severity: "warning"
 symptoms: ["key '<…>' was not recognized"]
 symptom_regex: "^key '.+?' was not recognized$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:1738"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrYamlParser.cpp:1738"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A YAML file csolution reads (csolution.yml, cproject.yml, clayer.yml, cdefault.yml, cbuild-pack.yml or cbuild-set.yml) contains a key that is not valid at that place; `<…>` is the key and the message carries its file, line and column."
+summary: "The csolution YAML parser checks every key in a mapping against the set of keys allowed for that node (the root or a sequence/mapping entry it validates recursively)."
 cause_origin: "source-analysis"
 confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:1733", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:1663", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:71", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestSolution/PackLocking/cbuild_pack_with_disallowed_field.cbuild-pack.yml:1", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:1638"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:1735-1739", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:1760-1771", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:1773-1782"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParse
 
 ## Cause
 
-A YAML file csolution reads (csolution.yml, cproject.yml, clayer.yml, cdefault.yml, cbuild-pack.yml or cbuild-set.yml) contains a key that is not valid at that place; `<…>` is the key and the message carries its file, line and column. It is usually a typo or a key placed under the wrong parent. With the schema check on, the schema normally reports the key first; this warning is what remains with `-n`/`--no-check-schema` or when the schemas are not installed.
+The csolution YAML parser checks every key in a mapping against the set of keys allowed for that node (the root or a sequence/mapping entry it validates recursively). The key named in the message is not in the allowed set for the node where it appears, which usually means a typo, a key placed at the wrong nesting level, or a key that the installed tool version does not know. The message is a warning, so parsing continues with the unrecognized key ignored.
 
 ## Fix
 
-Fix the spelling or move the key to the node where the YAML schema allows it (schemas/*.schema.json), or remove it. Run without `-n` to get the schema's report on the same line.
+Find the key named in the message in your csolution YAML (project, layer or cbuild-pack file) and check its spelling and indentation against the schema of the node it sits under. Remove the key or move it to the node where it belongs. If the key is valid for your tool version but still flagged, update csolution to a version that knows it.
 
 ## Trigger in the source
 
@@ -37,12 +37,14 @@ Fix the spelling or move the key to the node where the YAML schema allows it (sc
 if (keys.find(item.first.as<string>()) == keys.end()) {
 ```
 
+## Note
+
+The message text is '<key> was not recognized' with the key quoted; the id is the same family as the message. Nested nodes are validated through ValidateSequence and ValidateMapping, so the reported key can belong to any level of the file.
+
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrYamlParser.cpp:1733`
-- `tools/projmgr/src/ProjMgrYamlParser.cpp:1663`
-- `tools/projmgr/src/ProjMgrYamlParser.cpp:71`
-- `tools/projmgr/test/data/TestSolution/PackLocking/cbuild_pack_with_disallowed_field.cbuild-pack.yml:1`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:1638`
+- `tools/projmgr/src/ProjMgrYamlParser.cpp:1735-1739`
+- `tools/projmgr/src/ProjMgrYamlParser.cpp:1760-1771`
+- `tools/projmgr/src/ProjMgrYamlParser.cpp:1773-1782`

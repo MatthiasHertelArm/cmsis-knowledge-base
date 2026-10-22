@@ -10,16 +10,16 @@ code: "M338"
 symptoms: ["M338", "No releases found!"]
 symptom_regex: "^No releases found!$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "The PDSC file is missing release information. Add `<release>` information to the file. Refer to [/package/releases element](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/element_releases.html)."
-summary: "The PDSC has no <releases> element at all. packchk then also skips the package description and PDSC file name checks."
+summary: "packchk prints this warning when the PDSC file has no release information, so the package does not declare any version history."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:156", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:291-296", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:179"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp (message M338 text; trigger lines not provided)"]
 ---
 
 ## Symptom
@@ -29,16 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-The PDSC has no <releases> element at all. packchk then also skips the package description and PDSC file name checks.
+packchk prints this warning when the PDSC file has no release information, so the package does not declare any version history. The README attributes it to a missing <release> entry under the package's <releases> element. The source lines were not available, so this is taken from the message text and the README, not from the code.
 
 ## Fix
 
-Add <releases> under <package> with at least one release, newest first: <releases><release version="1.0.0" date="2026-01-31">Initial release</release></releases>.
+Add a <releases> element to the PDSC file with at least one <release version="x.y.z" date="YYYY-MM-DD"/> entry describing the current package version, then rerun packchk. See the /package/releases element in the CMSIS Pack specification.
+
+## Note
+
+Source lines were unavailable; the trigger condition is inferred from the message text and README only. The README cause and fix were not checked against code.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:156`
-- `tools/packchk/src/ValidateSyntax.cpp:291-296`
-- `tools/packchk/README.md:179`
+- `tools/packchk/src/PackChk_Msgs.cpp (message M338 text; trigger lines not provided)`

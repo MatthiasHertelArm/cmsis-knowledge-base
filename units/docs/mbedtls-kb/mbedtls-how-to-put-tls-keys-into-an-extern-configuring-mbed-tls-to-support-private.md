@@ -6,8 +6,8 @@ title: "How to put TLS keys into an external cryptoprocessor: Configuring Mbed T
 summary: "This feature is only available for server-side asymmetric cryptography. In Mbed TLS version 2.11, it is not available for clients or Pre-shared Keys."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/ssl_async.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/ssl_async.md#configuring-mbed-tls-to-support-private-key-operation-callbacks"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/ssl_async.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/ssl_async.md#configuring-mbed-tls-to-support-private-key-operation-callbacks"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -20,7 +20,7 @@ Support for private key operation callbacks in TLS is turned off by default. To 
 ```
 scripts/config.py set MBEDTLS_SSL_ASYNC_PRIVATE
 ```
-Alternatively, ensure that the [configuration file](https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/../compiling-and-building/how-do-i-configure-mbedtls.md) contains the following line (a commented-out version of this line is in the default configuration):
+Alternatively, ensure that the [configuration file](https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/../compiling-and-building/how-do-i-configure-mbedtls.md) contains the following line (a commented-out version of this line is in the default configuration):
 ```
 #define MBEDTLS_SSL_ASYNC_PRIVATE
 ```

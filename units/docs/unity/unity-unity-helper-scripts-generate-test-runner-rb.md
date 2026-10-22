@@ -6,8 +6,8 @@ title: "Unity Helper Scripts: With a Little Help From Our Friends / `generate_te
 summary: "Part of: With a Little Help From Our Friends"
 status: "draft"
 collection: "unity"
-source: "ThrowTheSwitch/Unity@2b80d1a:docs/UnityHelperScriptsGuide.md"
-doc_source: "https://github.com/ThrowTheSwitch/Unity/blob/2b80d1a/docs/UnityHelperScriptsGuide.md#generate-test-runner-rb"
+source: "ThrowTheSwitch/Unity@7f1a686:docs/UnityHelperScriptsGuide.md"
+doc_source: "https://github.com/ThrowTheSwitch/Unity/blob/7f1a686/docs/UnityHelperScriptsGuide.md#generate-test-runner-rb"
 license: "MIT"
 mode: "V"
 ---
@@ -160,6 +160,15 @@ This option can also be specified at the command prompt as `--externc`
 
 Unity automatically generates calls to Init, Verify and Destroy for every file included in the main test file that starts with the given mock prefix and ends with the given mock suffix, file extension not included.
 By default, Unity assumes a `Mock` prefix and no suffix.
+
+##### `:mock_name_include_folder`
+
+This option names each mock's Init, Verify and Destroy calls by the folder a mock is included from as well as its filename.
+A mock included as `uart/MockConfig.h` gets a call to `uart_MockConfig_Init()` rather than `MockConfig_Init()`.
+This keeps two mocks of the same filename in different folders distinct within one test.
+CMock offers an option of the same name that names its generated functions the same way, and the two must agree.
+If you provide the same YAML to the generator as used in CMock's configuration, you've already configured the generator properly.
+By default, Unity names mocks by filename alone.
 
 ##### `:plugins`
 

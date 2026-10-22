@@ -10,14 +10,12 @@ code: "M602"
 symptoms: ["M602", "Attribute '%ATTR%' already set, see Line %LINE%"]
 symptom_regex: "^Attribute '.+?' already set, see Line .+?$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "More than one <licenseSet> in <licenseSets> is marked default; only one license set can be the default."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:237", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:219-226", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:453-496", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/TestLicense/TestVendor.TestPackLicense.pdsc:17-24", "Open-CMSIS-Pack/devtools@30f5e817:libs/errlog/src/ErrLog.cpp:24-37"]
+confidence: "unknown"
 ---
 
 ## Symptom
@@ -27,18 +25,12 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-More than one <licenseSet> in <licenseSets> is marked default; only one license set can be the default. The message is logged without a line number, so its 'see Line' part is not filled in.
+_open: to be written in the review_
 
 ## Fix
 
-Keep default="true" on exactly one <licenseSet> and remove it from the others.
+_open: to be written in the review_
 
-## Evidence
+## Note
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
-
-- `tools/packchk/src/PackChk_Msgs.cpp:237`
-- `tools/packchk/src/ValidateSyntax.cpp:219-226`
-- `tools/packchk/test/integtests/src/PackChkIntegTests.cpp:453-496`
-- `tools/packchk/test/data/TestLicense/TestVendor.TestPackLicense.pdsc:17-24`
-- `libs/errlog/src/ErrLog.cpp:24-37`
+The source clone was not available and no trigger lines were given, so only the message text can be read: an attribute named by %ATTR% was already set earlier on the same element, at the line given by %LINE%. A likely reading is a duplicate XML attribute in a pack description file, but the source does not confirm the element type or the trigger condition. Verify the trigger in tools/packchk/src/PackChk_Msgs.cpp before writing a cause and fix. The README does not document this message.

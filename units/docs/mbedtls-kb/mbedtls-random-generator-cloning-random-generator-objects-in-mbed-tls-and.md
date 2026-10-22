@@ -6,8 +6,8 @@ title: "random generator cloning: Random generator objects in Mbed TLS and TF-PS
 summary: "Since TF-PSA-Crypto 1.0.0 and Mbed TLS 4.0.0, all random generation uses the random generator provided by the PSA subsystem. In previous versions, by default, the PSA subsystem is only used for PSA API calls and parts of TLS 1.3."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/random_generator_cloning.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/random_generator_cloning.md#random-generator-objects-in-mbed-tls-and-tf-psa-crypto"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/random_generator_cloning.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/random_generator_cloning.md#random-generator-objects-in-mbed-tls-and-tf-psa-crypto"
 license: "Apache-2.0"
 mode: "V"
 ---

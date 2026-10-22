@@ -10,14 +10,14 @@ code: "M506"
 symptoms: ["M506", "RTE Model reports: %MSG%"]
 symptom_regex: "^RTE Model reports: .+?$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "Validation of the RTE model reported a warning: #500 the same pack (vendor, name, version) is loaded twice, for example because the PDSC under test is also passed with -i; #520 the pack defines a component with the same …"
+summary: "packchk forwards a message produced by the RTE Model (the component/configuration model used by the CMSIS-Pack tooling) and substitutes its text for %MSG%."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:229", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/RteModelReader.cpp:31-37", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteModel.cpp:420-434", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteComponent.cpp:55-62", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RtePackage.cpp:691-716"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -27,18 +27,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-Validation of the RTE model reported a warning: #500 the same pack (vendor, name, version) is loaded twice, for example because the PDSC under test is also passed with -i; #520 the pack defines a component with the same component ID twice; #521 a condition id is defined more than once (the duplicate is ignored).
+packchk forwards a message produced by the RTE Model (the component/configuration model used by the CMSIS-Pack tooling) and substitutes its text for %MSG%. The underlying problem is whatever the RTE Model reported about the pack's component or configuration definitions, so the exact cause is only visible in the forwarded text itself.
 
 ## Fix
 
-Do not pass the checked PDSC, or a second copy of a pack, with -i; make every component definition unique (e.g. a different Cvariant); remove or rename duplicate condition ids.
+Read the text after 'RTE Model reports:' and locate the component, condition, or file it names in the pack's PDSC file. Correct that definition so it is consistent (for example, a condition or component reference that matches an existing definition), then rerun packchk on the pack.
+
+## Note
+
+Only the message text and the trigger name were available; the clone was not provided, so the trigger condition and the handling around it could not be read. The fix is a general direction derived from the message wording, not a verified repair path. Message is documented as not present in the README.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:229`
-- `tools/packchk/src/RteModelReader.cpp:31-37`
-- `libs/rtemodel/src/RteModel.cpp:420-434`
-- `libs/rtemodel/src/RteComponent.cpp:55-62`
-- `libs/rtemodel/src/RtePackage.cpp:691-716`
+- `tools/packchk/src/PackChk_Msgs.cpp`

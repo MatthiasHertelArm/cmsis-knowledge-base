@@ -6,8 +6,8 @@ title: "CMSIS Developer Assistant tool contract: Shell commands and the tools th
 summary: "CMSIS Developer Assistant tool contract: Shell commands and the tools that replace them"
 status: "draft"
 collection: "cda-guides"
-source: "Open-CMSIS-Pack/CMSIS-Developer-Assistant@7db44ba:docs/agent-resources/tool-contract.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/CMSIS-Developer-Assistant/blob/7db44ba/docs/agent-resources/tool-contract.md#shell-commands-and-the-tools-that-replace-them"
+source: "Open-CMSIS-Pack/CMSIS-Developer-Assistant@29d444c:docs/agent-resources/tool-contract.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/CMSIS-Developer-Assistant/blob/29d444c/docs/agent-resources/tool-contract.md#shell-commands-and-the-tools-that-replace-them"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -16,7 +16,7 @@ mode: "V"
 |---|---|
 | `pyocd load`, `pyocd flash` | `flash`, or `cmsis_action load` |
 | `pyocd reset`, `monitor reset` | `reset`, which verifies that the target did reset |
-| `pyocd gdbserver`, `JLinkGDBServer`, `openocd`, `arm-none-eabi-gdb` | `cmsis_action load_and_debug`, or `cmsis_action attach` for firmware started with `cmsis_action load_and_run` |
+| `pyocd gdbserver`, `JLinkGDBServer`, `openocd`, `arm-none-eabi-gdb` | `cmsis_action load_and_debug`; or `cmsis_action run` (the GDB server without programming) followed by `cmsis_action attach` |
 | `pyocd commander`, `gdb -ex "x/…"` | `read_memory`, `read_core_registers`, `evaluate_expression` |
 | `pyocd list`, `JLinkExe` to check the probe | `check_target_connection`, `get_session_status` |
 | `pip install pyocd` | nothing to install: `flash` uses the pyOCD bundled with the CMSIS Debugger, then the one `.cmsis/tools-environment.yml` names, then PATH |

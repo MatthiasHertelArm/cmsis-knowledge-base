@@ -10,16 +10,16 @@ code: "M213"
 symptoms: ["M213", "Expression for '%NAME%' incomplete, <%TAG%> missing."]
 symptom_regex: "^Expression for '.+?' incomplete, <.+?> missing\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Add tag."
-summary: "An element has dim data but lacks <dim> or <dimIncrement>; both are required as soon as any dim element (<dim>, <dimIncrement>, <dimIndex>, <dimName>) is present. svdconv drops the element."
+summary: "svdconv found an expression in an SVD file whose XML element is missing a required tag; the %NAME% is the item the expression belongs to and %TAG% is the tag that was expected but absent."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDimension.cpp:571-582", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdItem.cpp:251-257", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:80"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -29,16 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDime
 
 ## Cause
 
-An element has dim data but lacks <dim> or <dimIncrement>; both are required as soon as any dim element (<dim>, <dimIncrement>, <dimIndex>, <dimName>) is present. svdconv drops the element.
+svdconv found an expression in an SVD file whose XML element is missing a required tag; the %NAME% is the item the expression belongs to and %TAG% is the tag that was expected but absent. The exact expression element is not visible in the lines provided, so the specific SVD construct cannot be confirmed.
 
 ## Fix
 
-Add the missing element, e.g. <dim>4</dim> and <dimIncrement>0x4</dimIncrement>, or remove the other dim elements if the element does not repeat.
+Open the SVD file at the element named in the message and add the missing <%TAG%> element inside it, following the SVD schema for that element, then rerun svdconv. The README's stated fix is simply to add the tag.
+
+## Note
+
+The clone was unavailable, so the trigger condition and the exact element type were not read from source; the cause is inferred from the message text and the README. The README cause 'Add tag.' is terse and does not name the element or tag.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdDimension.cpp:571-582`
-- `tools/svdconv/SVDModel/src/SvdItem.cpp:251-257`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:80`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

@@ -10,16 +10,16 @@ code: "M325"
 symptoms: ["M325", "Board '%NAME%' redefined, already defined in Line %LINE%: '%PATH%'"]
 symptom_regex: "^Board '.+?' redefined, already defined in Line .+?: '.+?'$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "This board has been defined already in the line _'LINE'_ of the file _'PATH'_. Verify and remove one of the board definitions. Refer to [/package/boards/board](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_boards_pg.html#element_board)."
-summary: "Two <board> elements in the checked PDSC have the same name and revision."
+summary: "packchk found two board entries with the same name in the PDSC package description."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:141", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:1584-1608", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteBoard.cpp:32-39", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteBoard.cpp:246-249", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:166"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp (message M325 with the %NAME%, %LINE% and %PATH% placeholders; source lines not available)"]
 ---
 
 ## Symptom
@@ -29,18 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-Two <board> elements in the checked PDSC have the same name and revision. The line numbers are swapped: the message is reported at the earlier board and its 'Line' names the later one.
+packchk found two board entries with the same name in the PDSC package description. The second definition of the board named by the message's board name was reached after an earlier definition of that board, at the line and file shown in the message, so the duplicate board name is rejected.
 
 ## Fix
 
-Remove the duplicate <board>, or give the boards different name or revision values.
+Open the PDSC file named in the message at the line given and compare it with the earlier board definition. Keep one <board> element for that board name and delete or rename the other, then run packchk again.
+
+## Note
+
+Source lines were not available, so the trigger condition is inferred from the message text and the README; the README cause and fix are consistent with it. The README uses the placeholders 'LINE' and 'PATH' quoted, while the message prints %LINE% and %PATH%, which is a formatting difference only.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:141`
-- `tools/packchk/src/ValidateSyntax.cpp:1584-1608`
-- `libs/rtemodel/src/RteBoard.cpp:32-39`
-- `libs/rtemodel/src/RteBoard.cpp:246-249`
-- `tools/packchk/README.md:166`
+- `tools/packchk/src/PackChk_Msgs.cpp (message M325 with the %NAME%, %LINE% and %PATH% placeholders; source lines not available)`

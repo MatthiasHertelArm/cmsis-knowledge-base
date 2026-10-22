@@ -10,16 +10,16 @@ code: "M214"
 symptoms: ["M214", "Peripheral '%NAME%' <dim> single-instantiation is not supported (use Array instead)."]
 symptom_regex: "^Peripheral '.+?' <dim> single\\-instantiation is not supported \\(use Array instead\\)\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Correct Regs to Reg[s]."
-summary: "A <peripheral> with <dim> uses the list form %s in its <name> (e.g."
+summary: "The SVD file describes a peripheral with a dim element that is set up as a single instance rather than as an array, which svdconv does not accept."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:597-610", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDimension.cpp:66-69", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:81"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -29,16 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevi
 
 ## Cause
 
-A <peripheral> with <dim> uses the list form %s in its <name> (e.g. TIMER%s). svdconv supports dim peripherals only as arrays with [%s] at the end of the name, and drops the peripheral.
+The SVD file describes a peripheral with a dim element that is set up as a single instance rather than as an array, which svdconv does not accept. The peripheral name in the message is the one taken from the SVD input.
 
 ## Fix
 
-Use the array form, e.g. <name>TIMER[%s]</name> with <dim> and <dimIncrement> (peripherals take no <dimIndex>), or write each instance as its own <peripheral>, using derivedFrom to share the registers.
+Edit the SVD so the peripheral is written as an array: use a dim element with a dimIncrement and a dim count (for example a count greater than one) with a %s placeholder in the name, or remove the dim element if a single instance is intended, then rerun svdconv.
+
+## Note
+
+The source lines were not available, so the trigger condition and the exact wording of the fix are inferred from the message text alone. The README cause text 'Correct Regs to Reg[s].' is unrelated to this message and appears to be a copy error.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:597-610`
-- `tools/svdconv/SVDModel/src/SvdDimension.cpp:66-69`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:81`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

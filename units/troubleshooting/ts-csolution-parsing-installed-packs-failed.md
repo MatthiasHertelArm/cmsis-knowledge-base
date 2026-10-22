@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["parsing installed packs failed"]
 symptom_regex: "^parsing installed packs failed$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:570"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:570"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "csolution wanted to load the installed packs (no pack is required by the YAML, or `-l all`/`-l latest` is set) but has no pack root: CMSIS_PACK_ROOT is not set and no default location could be derived from the user environment."
+summary: "csolution reaches this error when it loads the installed packs for the selected contexts and the RTE kernel fails to return the effective PDSC file list (GetEffectivePdscFiles returns false)."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:566", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteKernel.cpp:415", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:486", "Open-CMSIS-Pack/devtools@30f5e817:libs/crossplatform/src/CrossPlatformUtils.cpp:37"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:514", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:566-573"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-csolution wanted to load the installed packs (no pack is required by the YAML, or `-l all`/`-l latest` is set) but has no pack root: CMSIS_PACK_ROOT is not set and no default location could be derived from the user environment.
+csolution reaches this error when it loads the installed packs for the selected contexts and the RTE kernel fails to return the effective PDSC file list (GetEffectivePdscFiles returns false). The check runs only when the solution has no explicit pack requirements, or the load-packs policy is ALL or LATEST (or DEFAULT, which maps to latest). The kernel is pointed at the CMSIS pack root set at line 514, so the failure concerns the installed pack store that root points to. The source lines shown do not include GetEffectivePdscFiles, so the specific reason for its failure is not visible here.
 
 ## Fix
 
-Set CMSIS_PACK_ROOT to the pack folder, e.g. `export CMSIS_PACK_ROOT=$HOME/.cache/arm/packs`, and initialise it with `cpackget init` if it does not exist yet.
+Read the error and warning lines printed just before this one, since the kernel usually logs the underlying problem (for example an unreadable or malformed installed pack description) before returning false. Check that the CMSIS pack root the build uses holds a valid pack installation, and repair or reinstall any packs the earlier messages name. If the solution does not need installed packs, declare the required packs explicitly in the csolution YAML so this path is skipped.
 
 ## Trigger in the source
 
@@ -37,11 +37,13 @@ Set CMSIS_PACK_ROOT to the pack folder, e.g. `export CMSIS_PACK_ROOT=$HOME/.cach
 if (!m_kernel->GetEffectivePdscFiles(pdscFiles, latest)) {
 ```
 
+## Note
+
+The message has no code and is not documented in the README. The underlying kernel failure reason is not in the lines given, so the cause is inferred from the trigger and its condition.
+
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrWorker.cpp:566`
-- `libs/rtemodel/src/RteKernel.cpp:415`
-- `tools/projmgr/src/ProjMgrWorker.cpp:486`
-- `libs/crossplatform/src/CrossPlatformUtils.cpp:37`
+- `tools/projmgr/src/ProjMgrWorker.cpp:514`
+- `tools/projmgr/src/ProjMgrWorker.cpp:566-573`

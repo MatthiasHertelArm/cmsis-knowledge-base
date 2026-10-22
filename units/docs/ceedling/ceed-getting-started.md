@@ -6,7 +6,7 @@ title: "Getting Started"
 summary: "Steps from installation through running your first build tasks — get up and running fast."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/getting-started/index.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/getting-started/index.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/getting-started/"
 license: "MIT"
 mode: "V"
@@ -32,6 +32,14 @@ mode: "V"
 
     Application commands (project creation, help, config inspection) and
     build & plugin tasks (test runs, release builds, clean, and more).
+
+-   :material-playlist-check: **[Builds](https://throwtheswitch.github.io/Ceedling/getting-started/builds.md)**
+
+    ---
+
+    Ceedling’s delta builds only regenerate, compile, link, or run an
+    element of the build pipeline if a change in the dependency tree
+    requires it.
 
 -   :material-file-code: **[Commented Sample Test File](https://throwtheswitch.github.io/Ceedling/getting-started/../testing-guide/test-sample.md)**
 

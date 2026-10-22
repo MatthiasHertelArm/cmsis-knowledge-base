@@ -6,8 +6,8 @@ title: "Porting Reference Ops from Lite to Micro: When can I change the shape of
 summary: "Tensor shape values can be modified any time after the tflite::micro::CreateWritableTensorDimsWithCopy method has been called. This means that tensor shape values can be modified within the scope of your operator's Prepare or Invoke methods."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/porting_reference_ops.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/porting_reference_ops.md#when-can-i-change-the-shape-of-tensors-in-my-operator-code"
+source: "tensorflow/tflite-micro@bd621c2:tensorflow/lite/micro/docs/porting_reference_ops.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/bd621c2/tensorflow/lite/micro/docs/porting_reference_ops.md#when-can-i-change-the-shape-of-tensors-in-my-operator-code"
 license: "Apache-2.0"
 mode: "V"
 ---

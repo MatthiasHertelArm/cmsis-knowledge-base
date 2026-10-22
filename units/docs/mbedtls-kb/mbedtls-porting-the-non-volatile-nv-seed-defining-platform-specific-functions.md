@@ -6,8 +6,8 @@ title: "Porting the non-volatile (NV) seed: Defining platform specific functions
 summary: "This option should be used if your platform's file system functions do not share the same prototypes as mbedtls_nv_seed_write() and mbedtls_nv_seed_read() and you need to write wrapper functions to call your platform's file functions."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/how_to_integrate_nv_seed.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/how_to_integrate_nv_seed.md#defining-platform-specific-functions"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/how_to_integrate_nv_seed.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/how_to_integrate_nv_seed.md#defining-platform-specific-functions"
 license: "Apache-2.0"
 mode: "V"
 ---

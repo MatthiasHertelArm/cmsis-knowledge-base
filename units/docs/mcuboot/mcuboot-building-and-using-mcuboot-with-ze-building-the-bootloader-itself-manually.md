@@ -6,8 +6,8 @@ title: "Building and using MCUboot with Zephyr: Building the bootloader itself (
 summary: "The bootloader is an ordinary Zephyr application, at least from Zephyr's point of view. There is a bit of configuration that needs to be made before building it."
 status: "draft"
 collection: "mcuboot"
-source: "mcu-tools/mcuboot@ba2099f:docs/readme-zephyr.md"
-doc_source: "https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/readme-zephyr.md#building-the-bootloader-itself-manually"
+source: "mcu-tools/mcuboot@725d63c:docs/readme-zephyr.md"
+doc_source: "https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/readme-zephyr.md#building-the-bootloader-itself-manually"
 license: "Apache-2.0"
 mode: "V"
 ---

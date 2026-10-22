@@ -6,8 +6,8 @@ title: "How to put TLS keys into an external cryptoprocessor: Protecting a serve
 summary: "Protect your server's long-term private key: if the key is leaked, attackers can impersonate the server."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/ssl_async.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/ssl_async.md#protecting-a-server-s-private-key"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/ssl_async.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/ssl_async.md#protecting-a-server-s-private-key"
 license: "Apache-2.0"
 mode: "V"
 ---

@@ -10,16 +10,16 @@ code: "M122"
 symptoms: ["M122", "Name of command file should follow '@'"]
 symptom_regex: "^Name of command file should follow '@'$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Check specified command."
-summary: "An '@', which introduces a command file of options, was given on the svdconv command line without a file name after it."
+summary: "svdconv was given an '@' argument for a command file but no file name follows the '@' on the command line, so the tool cannot read the command file it was asked to load."
 cause_origin: "source-analysis"
-confidence: "low"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/ParseOptions.cpp:403-430", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:52"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -29,19 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/ParseOpt
 
 ## Cause
 
-An '@', which introduces a command file of options, was given on the svdconv command line without a file name after it.
+svdconv was given an '@' argument for a command file but no file name follows the '@' on the command line, so the tool cannot read the command file it was asked to load. The README only says to check the specified command, which matches this reading, but the source lines were not available to confirm the exact parsing.
 
 ## Fix
 
-Put the command file name after '@' (e.g. @options.txt) or pass the options directly on the command line.
+Check the svdconv command line and make sure the '@' is immediately followed by the path of the command file, for example '@commands.txt' rather than a bare '@' or '@' separated from its file name by a space. Then run svdconv again.
 
 ## Note
 
-Not raised anywhere in svdconv at 30f5e81: the code appears only in the message table (SVDConv_Msgs.cpp:52) and the README (README.md:231). The cxxopts parser in this version has no '@' command-file handling.
+Source lines were not available, so the trigger and the handling are inferred from the message text and the README only; the exact condition in the code is unverified.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence low, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDConv/src/ParseOptions.cpp:403-430`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:52`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

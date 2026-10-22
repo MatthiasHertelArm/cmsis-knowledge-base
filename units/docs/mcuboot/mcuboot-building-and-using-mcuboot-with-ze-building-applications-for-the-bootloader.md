@@ -6,8 +6,8 @@ title: "Building and using MCUboot with Zephyr: Building applications for the bo
 summary: "In addition to flash partitions in DTS, some additional configuration is required to build applications for MCUboot."
 status: "draft"
 collection: "mcuboot"
-source: "mcu-tools/mcuboot@ba2099f:docs/readme-zephyr.md"
-doc_source: "https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/readme-zephyr.md#building-applications-for-the-bootloader-manually"
+source: "mcu-tools/mcuboot@725d63c:docs/readme-zephyr.md"
+doc_source: "https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/readme-zephyr.md#building-applications-for-the-bootloader-manually"
 license: "Apache-2.0"
 mode: "V"
 ---

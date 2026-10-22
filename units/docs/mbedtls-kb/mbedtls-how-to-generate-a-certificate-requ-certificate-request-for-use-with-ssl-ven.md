@@ -6,8 +6,8 @@ title: "How to generate a Certificate Request (CSR): Certificate Request for use
 summary: "Whenever you request a certificate from one of the SSL vendors, you are asked to enter a CSR. CSR is short for Certificate Signing Request and is often in the PEM format."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/generate-a-certificate-request-csr.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/generate-a-certificate-request-csr.md#certificate-request-for-use-with-ssl-vendors"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/generate-a-certificate-request-csr.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/generate-a-certificate-request-csr.md#certificate-request-for-use-with-ssl-vendors"
 license: "Apache-2.0"
 mode: "V"
 ---

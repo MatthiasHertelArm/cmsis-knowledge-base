@@ -6,8 +6,8 @@ title: "Alternative cryptography engines implementation: Full module replacement
 summary: "Add a file (conventionally aes_alt.c) to your build:"
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/development/hw_acc_guidelines.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/development/hw_acc_guidelines.md#full-module-replacement-example-aes"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/development/hw_acc_guidelines.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/development/hw_acc_guidelines.md#full-module-replacement-example-aes"
 license: "Apache-2.0"
 mode: "V"
 ---

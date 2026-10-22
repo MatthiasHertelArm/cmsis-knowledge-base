@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["no packs were found for version check with filter '<…>'"]
 symptom_regex: "^no packs were found for version check with filter '.+?'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:6209"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:6209"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "`csolution check pack-updates` with `-f <words>` found packs, but no result line (`Vendor::Pack@version -> newer` or `(up-to-date)`) contains all the filter words; `<…>` is the filter."
+summary: "The version check ran and produced one or more pack result lines, but the filter given on the command line matched none of them."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:6209", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1089"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:6205-6211", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:6170-6182", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:6199"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-`csolution check pack-updates` with `-f <words>` found packs, but no result line (`Vendor::Pack@version -> newer` or `(up-to-date)`) contains all the filter words; `<…>` is the filter.
+The version check ran and produced one or more pack result lines, but the filter given on the command line matched none of them. The filter is split into a set of terms and applied to each result line (packId@version, with the up-to-date or outdated status), and the '<…>' in the message is the filter string the user passed.
 
 ## Fix
 
-Loosen the filter, e.g. the pack name only, or run the check without `-f`.
+Check the filter text against the pack result lines the check prints without a filter. Use a term that appears in those lines, such as a vendor::pack name or part of a version string, or drop the filter to see every result.
 
 ## Trigger in the source
 
@@ -37,9 +37,14 @@ Loosen the filter, e.g. the pack name only, or run the check without `-f`.
 if (matchedPacks.empty()) {
 ```
 
+## Note
+
+The README does not document this message. The reading of the filter term format is inferred from the ApplyFilter and SplitStringToSet calls; the exact matching rules are in RteUtils and were not in the lines given.
+
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrWorker.cpp:6209`
-- `tools/projmgr/src/ProjMgr.cpp:1089`
+- `tools/projmgr/src/ProjMgrWorker.cpp:6205-6211`
+- `tools/projmgr/src/ProjMgrWorker.cpp:6170-6182`
+- `tools/projmgr/src/ProjMgrWorker.cpp:6199`

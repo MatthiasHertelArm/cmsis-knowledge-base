@@ -6,8 +6,8 @@ title: "How to define error codes for new modules: User-friendly error strings f
 summary: "Add the respective error codes to your module's header file with a description, like this:"
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/development/how-are-error-codes-defined.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/development/how-are-error-codes-defined.md#user-friendly-error-strings-for-mbedtls-strerror"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/development/how-are-error-codes-defined.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/development/how-are-error-codes-defined.md#user-friendly-error-strings-for-mbedtls-strerror"
 license: "Apache-2.0"
 mode: "V"
 ---

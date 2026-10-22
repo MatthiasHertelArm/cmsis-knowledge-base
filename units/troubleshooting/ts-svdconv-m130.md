@@ -10,16 +10,15 @@ code: "M130"
 symptoms: ["M130", "Cannot create file '%NAME%'"]
 symptom_regex: "^Cannot create file '.+?'$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Check user rights."
-summary: "svdconv could not open an output file (header, partition, SFD or listing) for writing."
+summary: "svdconv could not create the output file named in the message."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/FileIo.cpp:44-56", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/SvdGenerator.cpp:69-73", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/SvdGenerator.cpp:103-108", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:60"]
 ---
 
 ## Symptom
@@ -29,17 +28,12 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/Fil
 
 ## Cause
 
-svdconv could not open an output file (header, partition, SFD or listing) for writing. The file name is built from the output directory and <device><name>; the directory is not writable, an existing file is read-only or locked, or the name is not a valid file name.
+svdconv could not create the output file named in the message. The README attributes this to missing user rights, which is the usual reason a file cannot be written. The source lines were not available, so the exact trigger is not confirmed here.
 
 ## Fix
 
-Choose a writable output directory with -o, close programs that hold the file open, remove a read-only attribute, and check that <device><name> contains only characters valid in file names.
+Check that the user running svdconv has write permission on the output directory and on the target file name, and that the file is not locked or open in another program. Then run the command again, optionally with the output written to a directory the user owns.
 
-## Evidence
+## Note
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
-
-- `tools/svdconv/SVDGenerator/src/FileIo.cpp:44-56`
-- `tools/svdconv/SVDGenerator/src/SvdGenerator.cpp:69-73`
-- `tools/svdconv/SVDGenerator/src/SvdGenerator.cpp:103-108`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:60`
+Source lines were not available; cause and fix come from the message text and the README only, so confidence is capped at medium. The README cause is only a permission check; a missing output directory or an invalid file name could also produce this message, which was not verified from source.

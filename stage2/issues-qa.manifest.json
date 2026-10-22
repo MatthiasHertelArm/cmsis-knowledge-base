@@ -1,6 +1,6 @@
 {
  "stage": "issues-qa",
- "model": "",
+ "model": "claude-haiku-5-5",
  "prompt_sha": "52ab65e6757b1faa",
  "since": "",
  "items": {
@@ -477,12 +477,20 @@
    "prompt_sha": ""
   },
   "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/704": {
-   "sha": "b28960ec6456a3c2",
-   "at": "adopted",
+   "sha": "5dec2da91ea071ac",
+   "at": "2026-10-22T19:54:58+00:00",
    "kept": true,
-   "file": "qa-3.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "52ab65e6757b1faa"
+  },
+  "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/716": {
+   "sha": "44f05ef903216246",
+   "at": "2026-10-22T19:54:58+00:00",
+   "kept": true,
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "52ab65e6757b1faa"
   },
   "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/86": {
    "sha": "2b435b43cb584239",
@@ -1364,6 +1372,14 @@
    "model": "reader agents",
    "prompt_sha": ""
   },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2298": {
+   "sha": "444787960824efab",
+   "at": "2026-10-22T19:54:58+00:00",
+   "kept": true,
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "52ab65e6757b1faa"
+  },
   "https://github.com/Open-CMSIS-Pack/devtools/issues/2314": {
    "sha": "7714a84e8a0a99ae",
    "at": "adopted",
@@ -1500,6 +1516,14 @@
    "model": "reader agents",
    "prompt_sha": ""
   },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2623": {
+   "sha": "acfee18c1eee0c51",
+   "at": "2026-10-22T19:54:58+00:00",
+   "kept": true,
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "52ab65e6757b1faa"
+  },
   "https://github.com/Open-CMSIS-Pack/devtools/issues/263": {
    "sha": "a434e1fe9bc8f4f4",
    "at": "adopted",
@@ -1507,6 +1531,14 @@
    "file": "sample.json",
    "model": "reader agents",
    "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/devtools/issues/2648": {
+   "sha": "93f466aaf5d42bc2",
+   "at": "2026-10-22T19:54:58+00:00",
+   "kept": true,
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "52ab65e6757b1faa"
   },
   "https://github.com/Open-CMSIS-Pack/devtools/issues/30": {
    "sha": "b52fae51804090b8",
@@ -1932,6 +1964,14 @@
    "model": "reader agents",
    "prompt_sha": ""
   },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1083": {
+   "sha": "1cb9a41bd143f551",
+   "at": "2026-10-22T19:54:58+00:00",
+   "kept": true,
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "52ab65e6757b1faa"
+  },
   "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/109": {
    "sha": "5116a19fb61686d9",
    "at": "adopted",
@@ -1940,6 +1980,14 @@
    "model": "reader agents",
    "prompt_sha": ""
   },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1106": {
+   "sha": "60b4ccd2ff83367b",
+   "at": "2026-10-22T19:54:58+00:00",
+   "kept": true,
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "52ab65e6757b1faa"
+  },
   "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1123": {
    "sha": "6a7822ca05bb6082",
    "at": "adopted",
@@ -1947,6 +1995,22 @@
    "file": "qa-1.json",
    "model": "reader agents",
    "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1170": {
+   "sha": "379bb9bea8206fdc",
+   "at": "2026-10-22T19:54:58+00:00",
+   "kept": true,
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "52ab65e6757b1faa"
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1228": {
+   "sha": "b51fb2d4bbc326fa",
+   "at": "2026-10-22T19:54:58+00:00",
+   "kept": true,
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "52ab65e6757b1faa"
   },
   "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/125": {
    "sha": "19b3e7149f277c3f",
@@ -1972,6 +2036,14 @@
    "model": "reader agents",
    "prompt_sha": ""
   },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1273": {
+   "sha": "bd2646d8f35ae592",
+   "at": "2026-10-22T19:54:58+00:00",
+   "kept": true,
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "52ab65e6757b1faa"
+  },
   "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/128": {
    "sha": "808a7599a19d990c",
    "at": "adopted",
@@ -1979,6 +2051,14 @@
    "file": "sample.json",
    "model": "reader agents",
    "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/1291": {
+   "sha": "804b71f2746d2352",
+   "at": "2026-10-22T19:54:58+00:00",
+   "kept": true,
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "52ab65e6757b1faa"
   },
   "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/130": {
    "sha": "da32b5a51a807867",
@@ -2108,6 +2188,14 @@
    "model": "reader agents",
    "prompt_sha": ""
   },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/347": {
+   "sha": "309bf4f1092ee70b",
+   "at": "2026-10-22T19:54:58+00:00",
+   "kept": true,
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "52ab65e6757b1faa"
+  },
   "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/370": {
    "sha": "c81159db3b8c6f70",
    "at": "adopted",
@@ -2131,6 +2219,14 @@
    "file": "qa-1.json",
    "model": "reader agents",
    "prompt_sha": ""
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/383": {
+   "sha": "6f27c2cf3d363547",
+   "at": "2026-10-22T19:54:58+00:00",
+   "kept": true,
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "52ab65e6757b1faa"
   },
   "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/386": {
    "sha": "837c72a4880a324e",
@@ -2532,6 +2628,14 @@
    "model": "reader agents",
    "prompt_sha": ""
   },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/999": {
+   "sha": "ae933e34b6618a0d",
+   "at": "2026-10-22T19:54:58+00:00",
+   "kept": true,
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "52ab65e6757b1faa"
+  },
   "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/110": {
    "sha": "2460c0970d27fa68",
    "at": "adopted",
@@ -2676,6 +2780,14 @@
    "model": "reader agents",
    "prompt_sha": ""
   },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/319": {
+   "sha": "6a3dbb1b72059c06",
+   "at": "2026-10-22T19:54:58+00:00",
+   "kept": true,
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "52ab65e6757b1faa"
+  },
   "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/322": {
    "sha": "a438717ca0fdde58",
    "at": "adopted",
@@ -2805,12 +2917,28 @@
    "prompt_sha": ""
   },
   "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/550": {
-   "sha": "18e13f1b4ba07673",
-   "at": "adopted",
+   "sha": "60d1102c90d4bce4",
+   "at": "2026-10-22T19:54:58+00:00",
    "kept": true,
-   "file": "qa-3.json",
-   "model": "reader agents",
-   "prompt_sha": ""
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "52ab65e6757b1faa"
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/566": {
+   "sha": "84051604a44797d6",
+   "at": "2026-10-22T19:54:58+00:00",
+   "kept": true,
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "52ab65e6757b1faa"
+  },
+  "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/581": {
+   "sha": "8d9b63e4fba940de",
+   "at": "2026-10-22T19:54:58+00:00",
+   "kept": true,
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "52ab65e6757b1faa"
   },
   "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/70": {
    "sha": "0c5752dc7a5c4203",
@@ -3652,6 +3780,14 @@
    "model": "reader agents",
    "prompt_sha": ""
   },
+  "https://github.com/pyocd/pyOCD/issues/1794": {
+   "sha": "c08df32966b6f1ab",
+   "at": "2026-10-22T19:54:58+00:00",
+   "kept": true,
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "52ab65e6757b1faa"
+  },
   "https://github.com/pyocd/pyOCD/issues/1800": {
    "sha": "59ba26f090e0fff4",
    "at": "adopted",
@@ -3868,6 +4004,14 @@
    "model": "reader agents",
    "prompt_sha": ""
   },
+  "https://github.com/pyocd/pyOCD/issues/2025": {
+   "sha": "238874d11ec3431f",
+   "at": "2026-10-22T19:54:58+00:00",
+   "kept": true,
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "52ab65e6757b1faa"
+  },
   "https://github.com/pyocd/pyOCD/issues/2031": {
    "sha": "8969622225503ac8",
    "at": "adopted",
@@ -3875,6 +4019,22 @@
    "file": "qa-4.json",
    "model": "reader agents",
    "prompt_sha": ""
+  },
+  "https://github.com/pyocd/pyOCD/issues/2042": {
+   "sha": "56291f673f77b3e0",
+   "at": "2026-10-22T19:54:58+00:00",
+   "kept": true,
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "52ab65e6757b1faa"
+  },
+  "https://github.com/pyocd/pyOCD/issues/2060": {
+   "sha": "ad8098556e96f02e",
+   "at": "2026-10-22T19:54:58+00:00",
+   "kept": true,
+   "file": "auto-2026-10-22.json",
+   "model": "claude-haiku-5-5",
+   "prompt_sha": "52ab65e6757b1faa"
   },
   "https://github.com/pyocd/pyOCD/issues/212": {
    "sha": "2f04d2ef44fc7eb5",

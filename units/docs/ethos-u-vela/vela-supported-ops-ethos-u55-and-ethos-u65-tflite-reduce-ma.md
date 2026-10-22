@@ -6,8 +6,8 @@ title: "Supported Ops: Ethos-U55 and Ethos-U65 Specific Operator constraints / E
 summary: "Part of: Ethos-U55 and Ethos-U65 Specific Operator constraints"
 status: "draft"
 collection: "ethos-u-vela"
-source: "artificial-intelligence/ethos-u/ethos-u-vela@eb9cf0d:SUPPORTED_OPS.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/eb9cf0d/SUPPORTED_OPS.md#ethos-u55-and-ethos-u65-tflite-reduce-max-constraints"
+source: "artificial-intelligence/ethos-u/ethos-u-vela@4bd6685:SUPPORTED_OPS.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/4bd6685/SUPPORTED_OPS.md#ethos-u55-and-ethos-u65-tflite-reduce-max-constraints"
 license: "Apache-2.0"
 mode: "V"
 ---

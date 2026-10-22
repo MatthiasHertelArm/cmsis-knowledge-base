@@ -10,15 +10,14 @@ code: "M330"
 symptoms: ["M330", "Interrupt '%NAME%' Number not set."]
 symptom_regex: "^Interrupt '.+?' Number not set\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "An <interrupt> has no <value> (its interrupt number)."
+summary: "svdconv prints this error when an interrupt entry in the SVD file has a name but no interrupt number."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdInterrupt.cpp:113", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdInterrupt.cpp:142", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/unittests/src/SvdInterruptTest.cpp:172", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:149"]
+confidence: "medium"
 ---
 
 ## Symptom
@@ -28,17 +27,12 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdInte
 
 ## Cause
 
-An <interrupt> has no <value> (its interrupt number). The interrupt is dropped.
+svdconv prints this error when an interrupt entry in the SVD file has a name but no interrupt number. The interrupt name is substituted for %NAME%. The number is required, so the device description is incomplete for that interrupt.
 
 ## Fix
 
-Add the interrupt number, counted from 0 for the first device-specific interrupt, for example <interrupt><name>UART0</name><value>5</value></interrupt>.
+Open the SVD file and find the <interrupt> element named %NAME%. Add a <value> child with the numeric IRQ number, for example <interrupt><name>NAME</name><value>10</value></interrupt>, then rerun svdconv.
 
-## Evidence
+## Note
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
-
-- `tools/svdconv/SVDModel/src/SvdInterrupt.cpp:113`
-- `tools/svdconv/SVDModel/src/SvdInterrupt.cpp:142`
-- `tools/svdconv/test/unittests/src/SvdInterruptTest.cpp:172`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:149`
+Source lines were not available in this session, so the trigger and the cause are inferred from the message text and the README entry only. The exact XML element and the README wording were not checked against the source.

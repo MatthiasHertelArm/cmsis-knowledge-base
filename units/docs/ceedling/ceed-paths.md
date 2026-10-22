@@ -6,7 +6,7 @@ title: "`:paths`"
 summary: "Ceedling relies on various path and file collections to do its work. File collections are automagically assembled from paths, matching globs / wildcards, and file extensions. See project configuration :extension."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/configuration/reference/paths.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/configuration/reference/paths.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/configuration/reference/paths/"
 license: "MIT"
 mode: "V"
@@ -22,7 +22,12 @@ Entries in `:paths` help create directory-based bulk file collections. The
 `:files` configuration section is available for filepath-oriented tailoring of
 these bulk file collections.
 
-Entries in `:paths` ↳ `:include` also specify search paths for header files.
+Entries in `:paths` ↳ `:include` also specify compilation search paths for 
+header files.
+
+!!! tip
+    Ceedling [distinguishes files of the same name by their path with various interfaces and conventions to expose this](https://throwtheswitch.github.io/Ceedling/configuration/reference/paths/../../testing-guide/conventions.md#distinguishing-same-named-files).
+    This ability is particularly of interest in test suite builds.
 
 All of the configuration subsections that follow default to empty lists. In
 YAML, list items can be comma separated within brackets or organized per line

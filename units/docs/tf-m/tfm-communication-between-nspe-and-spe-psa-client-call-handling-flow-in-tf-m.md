@@ -6,7 +6,7 @@ title: "Communication Between NSPE And SPE In Dual Core System: PSA client call 
 summary: "This section describes how TF-M processes PSA client call requests:"
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/multi-cpu/communication_between_nspe_and_spe_in_dual_core_systems.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/multi-cpu/communication_between_nspe_and_spe_in_dual_core_systems.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/multi-cpu/communication_between_nspe_and_spe_in_dual_core_systems.html#psa-client-call-handling-flow-in-tf-m"
 license: "BSD-3-Clause"
 mode: "V"

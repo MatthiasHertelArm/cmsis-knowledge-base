@@ -6,7 +6,7 @@ title: "Ceedling Plugins: Directory"
 summary: "The default plugin for printing test results to the console. Produces a well-formatted list of summary statistics, ignored and failed tests, and any extraneous output collected from test fixtures."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/index.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/plugins/index.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/#directory"
 license: "MIT"
 mode: "V"
@@ -29,16 +29,16 @@ mode: "V"
 
     ---
 
-    Formats test results for the console such that an IDE executing Ceedling
-    tasks can recognize file paths and line numbers in test failures and link
-    them for direct file navigation.
+    Lists failed and ignored tests in the shape of GCC diagnostics, which
+    Eclipse CDT, VS Code, CLion, and other IDEs read as problems that link to
+    each test.
 
 -   :material-monitor-screenshot: **[`report_tests_gtestlike_stdout`](https://throwtheswitch.github.io/Ceedling/plugins/report-tests-gtestlike-stdout.md)**
 
     ---
 
     Prints test results to the console in a format that mimics
-    [Google Test's output][gtest-sample-output] — both human readable and
+    [Google Test’s output][gtest-sample-output] — both human readable and 
     recognized by a variety of reporting tools, IDEs, and CI servers.
 
 -   :material-monitor-screenshot: **[`report_tests_teamcity_stdout`](https://throwtheswitch.github.io/Ceedling/plugins/report-tests-teamcity-stdout.md)**
@@ -75,8 +75,8 @@ mode: "V"
 
     ---
 
-    Scans the output of build tools for console warning notices and produces
-    a simple text file that collects all such warning messages.
+    Scans the output of build tools for console warning notices and collects
+    them in a simple text file and optional SARIF and JSON reports.
 
 
 
@@ -108,6 +108,15 @@ mode: "V"
     detection. Valgrind catches memory leaks, invalid accesses, and use-after-free
     bugs. The plugin produces per-test log files in the build artifacts directory.
 
+-   :material-shield-bug: **[`sanitize`](https://throwtheswitch.github.io/Ceedling/plugins/sanitize.md)**
+
+    ---
+
+    Adds Ceedling tasks to build and run test executables with the compiler’s
+    sanitizers. ASan, UBSan, and LeakSanitizer find memory errors, undefined
+    behavior, and leaks as tests run. Findings fail the build and can be written
+    as text, JSON, and SARIF reports.
+
 
 
 ### Code Coverage
@@ -124,13 +133,16 @@ mode: "V"
     and .Net-based [ReportGenerator] to produce coverage reports in a
     variety of formats.
 
--   :material-percent: **[`bullseye`](https://throwtheswitch.github.io/Ceedling/plugins/bullseye.md)**
+-   :material-percent: **[`bullseye`](https://throwtheswitch.github.io/Ceedling/plugins/bullseye/index.md)**
 
     ---
 
     Adds Ceedling tasks to execute tests with code coverage instrumentation
     provided by the commercial [Bullseye] tool, which provides visualization
     and report generation from the coverage results.
+
+    Note: Bullseye requires a commercial license. It was disabled as of 1.0.0
+    and is enabled again as of 1.2.0.
 
 
 
@@ -162,9 +174,9 @@ mode: "V"
 
     ---
 
-    Connects Ceedling's build events to tool entries you define in your
-    project configuration. Easily attach your own scripts or command line
-    utilities to build steps without writing a full custom plugin.
+    Connects Ceedling’s build events to tool entries you define. Easily 
+    attach your own scripts or command line utilities to build steps 
+    without writing a full custom plugin.
 
 -   :material-database: **[`compile_commands_json_db`](https://throwtheswitch.github.io/Ceedling/plugins/compile-commands-json-db.md)**
 
@@ -193,18 +205,17 @@ mode: "V"
 
     ---
 
-    Saves time in Test-Driven Development by generating a templated triplet
+    Save time in Test-Driven Development by generating a templated triplet
     of source file, header file, and test file — scaffolded such that they
-    refer to one another — with convenient command line tasks.
+    refer to one another — with a variety of options through command line tasks.
 
 -   :material-package-variant-closed: **[`dependencies`](https://throwtheswitch.github.io/Ceedling/plugins/dependencies.md)**
 
     ---
 
-    Manages release build dependencies (e.g. static libraries) including 
-    fetching those dependencies and calling a given dependency‘s build 
-    process to generate the components needed by your Ceedling release 
-    build target.
+    Manages release build dependencies (e.g. static libraries or built tools)
+    including fetching dependencies, calling a dependency’s build process, 
+    and deploying resulting executables and dynamic libraries.
 
 
 

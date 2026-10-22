@@ -6,7 +6,7 @@ title: "FF-M Isolation: Reference Implementation / Example Region Numbers under 
 summary: "The following table lists the required regions to comply with the rules for implementing isolation level 3. The level 1 and level 2 can be exported by simplifying the items in level 3 table."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/ff_isolation.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/ff_isolation.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/ff_isolation.html#example-region-numbers-under-isolation-level-3"
 license: "BSD-3-Clause"
 mode: "V"

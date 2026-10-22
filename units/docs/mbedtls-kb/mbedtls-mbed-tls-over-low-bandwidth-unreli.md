@@ -6,8 +6,8 @@ title: "Mbed TLS over low-bandwidth, unreliable datagram networks"
 summary: "This article reviews the following topics:"
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/controlling_package_size.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/controlling_package_size.md"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/controlling_package_size.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/controlling_package_size.md"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -21,4 +21,4 @@ This article reviews the following topics:
 1. [Configuring Mbed TLS in networks with high loss rates](#configuring-mbed-tls-in-lossy-networks): using `MBEDTLS_SSL_DTLS_MAX_BUFFERING` and `mbedtls_ssl_set_datagram_packing()` to control two features improving DTLS
    handshake reliability.
 
-**Note:** This article is _not_ meant as an introduction to Mbed TLS; you can find that in the separate [Mbed TLS tutorial](https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/mbedtls-tutorial.md). Also, this article is about _DTLS only_ (the MFL extension exists in TLS, too, but currently Mbed TLS does not comprehensively support it), and it assumes that you are familiar with what DTLS is, why you would want to use it, and how to configure Mbed TLS to implement it. If you are looking for answers to those questions, please see the [DTLS tutorial](https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/dtls-tutorial.md).
+**Note:** This article is _not_ meant as an introduction to Mbed TLS; you can find that in the separate [Mbed TLS tutorial](https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/mbedtls-tutorial.md). Also, this article is about _DTLS only_ (the MFL extension exists in TLS, too, but currently Mbed TLS does not comprehensively support it), and it assumes that you are familiar with what DTLS is, why you would want to use it, and how to configure Mbed TLS to implement it. If you are looking for answers to those questions, please see the [DTLS tutorial](https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/dtls-tutorial.md).

@@ -6,7 +6,7 @@ title: "Trusted Firmware-M Profile Small Design: Implementation / Implementation
 summary: "This section discusses the details of Profile Small implementation."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/configuration/profiles/tfm_profile_small.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/configuration/profiles/tfm_profile_small.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/configuration/profiles/tfm_profile_small.html#implementation-details"
 license: "BSD-3-Clause"
 mode: "V"

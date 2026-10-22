@@ -6,8 +6,8 @@ title: "Arm® ML embedded evaluation kit: Repository structure"
 summary: "The repository has the following structure:"
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/documentation.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/documentation.md#repository-structure"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/documentation.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/documentation.md#repository-structure"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -102,7 +102,7 @@ What these folders contain:
       This allows use case application logic to work with either framework with no changes.
 
       This library contains implementations of the abstraction layer for TensorFlow Lite Micro and ExecuTorch,
-      and one of these implementations will be used at build time depending on the ML framework selected (see [available build options](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/./sections/building.md#build-options) for details).
+      and one of these implementations will be used at build time depending on the ML framework selected (see [available build options](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/./sections/building.md#build-options) for details).
 
     - `mlek/log`: Common to all code logging macros managing log levels.
 

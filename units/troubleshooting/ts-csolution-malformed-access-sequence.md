@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["malformed access sequence: '<…>"]
 symptom_regex: "^malformed access sequence: '.+?$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3722"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:3722"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A path or value in the YAML (for example under `add-path:`, `define:`, `misc:`, `output-dirs:`, `linker:`, a debugger or image file, or a generator path) contains a `$` that opens an access sequence but has no closing `$`."
+summary: "The csolution tool scans the item string for access sequences delimited by '$' (for example $Pack(vendor::name)$ or $OutDir(context)$)."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3720", "Open-CMSIS-Pack/devtools@30f5e817:libs/rteutils/src/RteUtils.cpp:600"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3716", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3721-3722"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-A path or value in the YAML (for example under `add-path:`, `define:`, `misc:`, `output-dirs:`, `linker:`, a debugger or image file, or a generator path) contains a `$` that opens an access sequence but has no closing `$`. `<…>` is the whole value after variables were expanded.
+The csolution tool scans the item string for access sequences delimited by '$' (for example $Pack(vendor::name)$ or $OutDir(context)$). When RteUtils::GetAccessSequence cannot find a complete sequence while it walks the string, it prints this error and aborts processing of that item. The text after the quote is the whole item as it was passed in (the variable-expanded value when the item is not solution-level), so the unpaired or unterminated '$' is somewhere in that value.
 
 ## Fix
 
-Close the access sequence, e.g. `$OutDir(project)$` or `$SolutionDir()$`, or remove the stray `$`.
+Find the value shown after the quote in the csolution YAML or the PDSC/project setting that produced it. Check that every access sequence opens and closes with '$' and has balanced parentheses, for example $Pack(Vendor::Name)$, and remove or escape any stray '$' that is not meant as a sequence delimiter. Then rerun the csolution command.
 
 ## Trigger in the source
 
@@ -39,11 +39,11 @@ if (!RteUtils::GetAccessSequence(offset, input, sequence, '$', '$')) {
 
 ## Note
 
-No test produces this message; the MLOps test commented as 'malformed access sequence' (ProjMgrUnitTests.cpp:8025) uses `$BadVar$`, which is closed and leads to 'unknown access sequence' instead.
+The message has no closing quote, so the printed value is the full item and may be long. The exact delimiter rules live in RteUtils::GetAccessSequence, which is not among the lines given, so the cause is inferred from the call site. The message has no code and the README does not document it.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrWorker.cpp:3720`
-- `libs/rteutils/src/RteUtils.cpp:600`
+- `tools/projmgr/src/ProjMgrWorker.cpp:3716`
+- `tools/projmgr/src/ProjMgrWorker.cpp:3721-3722`

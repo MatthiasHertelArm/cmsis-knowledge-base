@@ -9,14 +9,14 @@ severity: "warning"
 symptoms: ["'<…>' contains non-portable backslash, use forward slash instead"]
 symptom_regex: "^'.+?' contains non\\-portable backslash, use forward slash instead$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:335"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrYamlParser.cpp:335"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A path value in a csolution.yml, cproject.yml or clayer.yml contains a backslash, for example under projects: project:, layers: layer:, files: file:, add-path:, linker: script:/regions:, packs: path:, output-dirs: or generators:."
+summary: "The csolution parser checks every path-valued YAML entry (parsed through ParsePortablePath or ParsePortablePaths) for a backslash character."
 cause_origin: "source-analysis"
 confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:332-336", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:355-367", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:785", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:800", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:845", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:893", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:987", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:1026", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:1083", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:5411-5441", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestSolution/Portability/portability.csolution.yml"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:334-335", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:355-358", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:361-367"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParse
 
 ## Cause
 
-A path value in a csolution.yml, cproject.yml or clayer.yml contains a backslash, for example under projects: project:, layers: layer:, files: file:, add-path:, linker: script:/regions:, packs: path:, output-dirs: or generators:. The `<…>` is the path as written; the message is prefixed with the YAML file, line and column.
+The csolution parser checks every path-valued YAML entry (parsed through ParsePortablePath or ParsePortablePaths) for a backslash character. The warning fires when the value of a path key in the csolution YAML files, such as a file, include or directory entry, contains a Windows-style backslash separator. The placeholder in the message is that offending value, copied verbatim from the YAML.
 
 ## Fix
 
-Write the path with forward slashes, e.g. `- file: ../src/main.c` instead of `..\src\main.c`; forward slashes work on Windows, Linux and macOS.
+Edit the YAML entry that the warning points to (file and line are given in the log) and replace each backslash with a forward slash, for example write src/main.c instead of src\main.c. Forward slashes work on all host systems, so the project stays portable between Windows and Linux.
 
 ## Trigger in the source
 
@@ -37,18 +37,14 @@ Write the path with forward slashes, e.g. `- file: ../src/main.c` instead of `..
 if (value.find('\\') != string::npos) {
 ```
 
+## Note
+
+The message is a warning, not an error, so the build continues. The code is empty in the message, so the id carries no code. The README does not document this message.
+
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrYamlParser.cpp:332-336`
-- `tools/projmgr/src/ProjMgrYamlParser.cpp:355-367`
-- `tools/projmgr/src/ProjMgrYamlParser.cpp:785`
-- `tools/projmgr/src/ProjMgrYamlParser.cpp:800`
-- `tools/projmgr/src/ProjMgrYamlParser.cpp:845`
-- `tools/projmgr/src/ProjMgrYamlParser.cpp:893`
-- `tools/projmgr/src/ProjMgrYamlParser.cpp:987`
-- `tools/projmgr/src/ProjMgrYamlParser.cpp:1026`
-- `tools/projmgr/src/ProjMgrYamlParser.cpp:1083`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:5411-5441`
-- `tools/projmgr/test/data/TestSolution/Portability/portability.csolution.yml`
+- `tools/projmgr/src/ProjMgrYamlParser.cpp:334-335`
+- `tools/projmgr/src/ProjMgrYamlParser.cpp:355-358`
+- `tools/projmgr/src/ProjMgrYamlParser.cpp:361-367`

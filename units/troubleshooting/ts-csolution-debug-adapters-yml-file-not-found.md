@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["debug-adapters.yml file not found"]
 symptom_regex: "^debug\\-adapters\\.yml file not found$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:939"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgr.cpp:939"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "`csolution list debuggers` reads etc/debug-adapters.yml of the CMSIS-Toolbox installation (the etc folder next to the bin folder that contains csolution), and that file is missing, e.g. a csolution binary copied out of its installation or an incomplete installation."
+summary: "RunListDebuggers gets the debug-adapters file path from GetDebugAdaptersFile() and stops with this error when that path is empty."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:935-941", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1276-1284", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:7738-7743"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:937-941"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:935-
 
 ## Cause
 
-`csolution list debuggers` reads etc/debug-adapters.yml of the CMSIS-Toolbox installation (the etc folder next to the bin folder that contains csolution), and that file is missing, e.g. a csolution binary copied out of its installation or an incomplete installation.
+RunListDebuggers gets the debug-adapters file path from GetDebugAdaptersFile() and stops with this error when that path is empty. The lines given do not show how GetDebugAdaptersFile() searches for the file, so the reason it comes back empty (no file in the expected location, or a missing installation component) is not visible here.
 
 ## Fix
 
-Run csolution from a complete CMSIS-Toolbox installation with bin/ and etc/ side by side, or reinstall CMSIS-Toolbox.
+The lines given do not show where the tool looks for debug-adapters.yml. Check that the CMSIS toolbox installation the csolution command comes from includes this file, and that it is not missing or moved. Then run the listing command again. Beyond that, the lines given offer no further fix.
 
 ## Trigger in the source
 
@@ -37,10 +37,12 @@ Run csolution from a complete CMSIS-Toolbox installation with bin/ and etc/ side
 if (debugAdapters.empty()) {
 ```
 
+## Note
+
+The message has no code and the README does not document it. The trigger is a plain empty-path check, but GetDebugAdaptersFile() is not among the lines provided, so the search location and the user-facing cause are inferred.
+
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgr.cpp:935-941`
-- `tools/projmgr/src/ProjMgr.cpp:1276-1284`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:7738-7743`
+- `tools/projmgr/src/ProjMgr.cpp:937-941`

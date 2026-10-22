@@ -6,7 +6,7 @@ title: "Global Collections"
 summary: "Collections are Ruby arrays and Rake FileLists (that act like arrays). Ceedling did work to populate and assemble these by processing the project file, using internal knowledge, expanding path globs, etc. at startup."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/configuration/global-collections.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/configuration/global-collections.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/configuration/global-collections/"
 license: "MIT"
 mode: "V"
@@ -34,11 +34,6 @@ handy for crafting custom functionality.
     Once upon a time, nearly all Ceedling actions happened in 
     bulk and with the same collections used for all tasks. This 
     is no longer true.
-
-* `COLLECTION_PROJECT_OPTIONS`:
-
-    All project option files with path found in the configured 
-    options paths having the configured YAML file extension.
 
 * `COLLECTION_ALL_TESTS`:
 

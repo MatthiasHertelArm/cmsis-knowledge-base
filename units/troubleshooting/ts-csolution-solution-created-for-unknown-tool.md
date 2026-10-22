@@ -9,14 +9,14 @@ severity: "warning"
 symptoms: ["solution created for unknown tool: <…>"]
 symptom_regex: "^solution created for unknown tool: .+?$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1204"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgr.cpp:1204"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "`created-for:` in the csolution.yml does not have the form `CMSIS-Toolbox@<major>.<minor>.<patch>`; `<…>` is the value."
+summary: "The csolution file sets a `created-for` value (the `createdFor` argument) whose tool name is not `cmsis-toolbox` or does not match the `<name>@<major>.<minor>.<patch>` form."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1172", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1204", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/schemas/common.schema.json:1920", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:6521"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1175-1177", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1182", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1204"]
 ---
 
 ## Symptom
@@ -25,17 +25,20 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1172
 
 ## Cause
 
-`created-for:` in the csolution.yml does not have the form `CMSIS-Toolbox@<major>.<minor>.<patch>`; `<…>` is the value. Another tool name, or a version with a pre-release or build suffix such as `CMSIS-Toolbox@2.6.0-rc1`, is not recognised, and the minimum-version check is skipped.
+The csolution file sets a `created-for` value (the `createdFor` argument) whose tool name is not `cmsis-toolbox` or does not match the `<name>@<major>.<minor>.<patch>` form. ValidateCreatedFor only checks the toolbox version for `cmsis-toolbox`; any other value falls through to this warning, which prints the raw `created-for` string after the colon.
 
 ## Fix
 
-Write `created-for: CMSIS-Toolbox@2.6.0` with the plain three-part version of the toolbox the solution needs, or remove the node.
+Set `created-for` in the csolution YAML to the form `CMSIS-Toolbox@<major>.<minor>.<patch>`, for example `created-for: CMSIS-Toolbox@2.0.0`, using the version of the toolbox that created the solution. The warning is not fatal: the function still returns true and processing continues.
+
+## Note
+
+The message is reached both when the regex does not match and when the tool name is something other than cmsis-toolbox; the source does not show which of these produced a given value, so the cause is inferred from the code path. The README does not document this message. The example version in the fix is illustrative, not taken from the source.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgr.cpp:1172`
+- `tools/projmgr/src/ProjMgr.cpp:1175-1177`
+- `tools/projmgr/src/ProjMgr.cpp:1182`
 - `tools/projmgr/src/ProjMgr.cpp:1204`
-- `tools/projmgr/schemas/common.schema.json:1920`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:6521`

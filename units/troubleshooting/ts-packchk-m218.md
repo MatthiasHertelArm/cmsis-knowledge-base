@@ -10,16 +10,16 @@ code: "M218"
 symptoms: ["M218", "Unable to find PACK.xsd schema file. Searched in '%MSG%' relative to '%PATH%'.   Alternatively use --xsd to specify the location of the schema file."]
 symptom_regex: "^Unable to find PACK\\.xsd schema file\\. Searched in '.+?' relative to '.+?'\\.   Alternatively use \\-\\-xsd to specify the location of the schema file\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "CHeck whether the file exists."
-summary: "No --xsd option was given and packchk found no PACK.xsd in ./, ../etc/ or ../../etc/ relative to the folder of its executable (%PATH%), so it cannot run the schema check."
+summary: "packchk could not locate the PACK.xsd schema file that it uses to validate the PDSC."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:104", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackOptions.cpp:228-265", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ParseOptions.cpp:316-332", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:54-57", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:138"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -29,18 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-No --xsd option was given and packchk found no PACK.xsd in ./, ../etc/ or ../../etc/ relative to the folder of its executable (%PATH%), so it cannot run the schema check. The README row for M218 describes the --xsd case, which is M219.
+packchk could not locate the PACK.xsd schema file that it uses to validate the PDSC. It searched the paths named in the message (%MSG% is the searched location, %PATH% the base it was resolved against) and found no file there. This typically happens when the tool installation is incomplete or the schema is not where packchk expects it relative to its own location.
 
 ## Fix
 
-Pass the schema with --xsd <path>/PACK.xsd, or run packchk from a CMSIS-Toolbox installation where etc/PACK.xsd sits next to bin/, or skip the schema check with --disable-validation.
+Pass the schema location explicitly with --xsd pointing to an existing PACK.xsd, for example: packchk my.pdsc --xsd path/to/PACK.xsd. Alternatively, check that the PACK.xsd file exists at the searched location and reinstall or repair the tool so the schema is present.
+
+## Note
+
+Source lines were not available; cause and fix are derived from the message text and the README's brief note only. The README cause 'Check whether the file exists' is consistent with this reading. Exact search logic was not verified.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:104`
-- `tools/packchk/src/PackOptions.cpp:228-265`
-- `tools/packchk/src/ParseOptions.cpp:316-332`
-- `tools/packchk/README.md:54-57`
-- `tools/packchk/README.md:138`
+- `tools/packchk/src/PackChk_Msgs.cpp`

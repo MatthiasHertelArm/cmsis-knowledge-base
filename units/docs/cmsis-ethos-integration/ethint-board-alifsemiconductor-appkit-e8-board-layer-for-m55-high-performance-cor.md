@@ -6,8 +6,8 @@ title: "Board: AlifSemiconductor AppKit-E8-AIML: Board Layer for M55 High Perfor
 summary: "This setup is configured using Conductor Tool, an interactive tool provided by Alif Semiconductor for device configuration. Refer to \"Alif Conductor Tool Manual\" for additional information."
 status: "draft"
 collection: "cmsis-ethos-integration"
-source: "Arm-Examples/CMSIS-Ethos-Integration@529e966:Board/AppKit-E8_M55_HP/README.md"
-doc_source: "https://github.com/Arm-Examples/CMSIS-Ethos-Integration/blob/529e966/Board/AppKit-E8_M55_HP/README.md#board-layer-for-m55-high-performance-core"
+source: "Arm-Examples/CMSIS-Ethos-Integration@9b906f5:Board/AppKit-E8_M55_HP/README.md"
+doc_source: "https://github.com/Arm-Examples/CMSIS-Ethos-Integration/blob/9b906f5/Board/AppKit-E8_M55_HP/README.md#board-layer-for-m55-high-performance-core"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -60,6 +60,5 @@ Refer to ["Alif Conductor Tool Manual"](https://conductor.alifsemi.com/Alif_HTML
 
 | Driver                 | Stream Format Description
 |:-----------------------|:----------------------------------------------------
-| Driver_vStreamAudioIn  | 16-bit PCM audio,      16000 samples/second
-| Driver_vStreamVideoIn  | RAW8 Bayer GBRG video, resolution 1280 x 720 (W x H)
-| Driver_vStreamVideoOut | RGB888 video,          resolution  480 x 800 (W x H)
+| Driver_vStreamVideoIn  | RAW10 Bayer GRBG video, resolution 1280 x 720 (W x H)
+| Driver_vStreamVideoOut | RGB888 video,           resolution  480 x 800 (W x H)

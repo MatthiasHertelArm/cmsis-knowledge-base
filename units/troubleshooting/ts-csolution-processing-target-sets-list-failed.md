@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["processing target-sets list failed"]
 symptom_regex: "^processing target\\-sets list failed$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:926"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgr.cpp:926"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "`csolution list target-sets` (or `list targets`) failed because the `-f` filter matched no target set; the line before reports `no target-set was found with filter`."
+summary: "Raised by RunListTargetSets when the csolution list target-sets command fails in ListTargetSets."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:925", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:4856", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:7471"]
+confidence: "low"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:925-928", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:919-924"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:925"
 
 ## Cause
 
-`csolution list target-sets` (or `list targets`) failed because the `-f` filter matched no target set; the line before reports `no target-set was found with filter`.
+Raised by RunListTargetSets when the csolution list target-sets command fails in ListTargetSets. The message itself is emitted only after PopulateContexts succeeded, so the failure comes from the target-set listing step, not from parsing the input files. The source lines shown do not reveal which inner condition makes ListTargetSets return false.
 
 ## Fix
 
-Loosen or drop `-f` so that it matches a `<target-type>[@<set>]` defined in the csolution.yml.
+The source lines given do not show a specific user-side remedy. Check the csolution output printed just before this message for the underlying error, and check that the --filter value, if used, matches a target-set name. Re-run the command after correcting the input the earlier errors point to.
 
 ## Trigger in the source
 
@@ -37,10 +37,13 @@ Loosen or drop `-f` so that it matches a `<target-type>[@<set>]` defined in the 
 if (!m_worker.ListTargetSets(targetSets, m_filter)) {
 ```
 
+## Note
+
+The README does not document this message. The trigger is clear, but the failing condition inside ProjMgrWorker::ListTargetSets was not among the lines provided, so the cause is inferred from the call site. The same pattern of message is used for the contexts list (line 910) and the examples and templates lists (via RunListCommand).
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence low, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgr.cpp:925`
-- `tools/projmgr/src/ProjMgrWorker.cpp:4856`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:7471`
+- `tools/projmgr/src/ProjMgr.cpp:925-928`
+- `tools/projmgr/src/ProjMgr.cpp:919-924`

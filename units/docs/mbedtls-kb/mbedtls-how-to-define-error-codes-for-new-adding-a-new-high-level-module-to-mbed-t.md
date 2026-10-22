@@ -6,8 +6,8 @@ title: "How to define error codes for new modules: Adding a new high-level modul
 summary: "Find some module space in the error.h file to fit the number of error codes you need. As all the high-level module numbers are filled, we are now also starting to use the same numbers from the top."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/development/how-are-error-codes-defined.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/development/how-are-error-codes-defined.md#adding-a-new-high-level-module-to-mbed-tls"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/development/how-are-error-codes-defined.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/development/how-are-error-codes-defined.md#adding-a-new-high-level-module-to-mbed-tls"
 license: "Apache-2.0"
 mode: "V"
 ---

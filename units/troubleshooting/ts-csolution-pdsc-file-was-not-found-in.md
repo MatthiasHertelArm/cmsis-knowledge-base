@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["pdsc file was not found in: <…>"]
 symptom_regex: "^pdsc file was not found in: .+?$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1807"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:1807"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A `packs:` entry with `path:` points to a folder that exists but does not contain `<Vendor>.<Name>.pdsc` for the pack named in `pack:`; `<…>` is the path."
+summary: "A project-local pack entry (a pack item with a path, in the csolution pack list) points to a directory that exists, but the expected PDSC file is not in it."
 cause_origin: "source-analysis"
 confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1807", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestSolution/test_local_pack_file_not_found.csolution.yml:73", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:3919"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1798-1809"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-A `packs:` entry with `path:` points to a folder that exists but does not contain `<Vendor>.<Name>.pdsc` for the pack named in `pack:`; `<…>` is the path. The file name is built from the `pack:` value, so a vendor or name that differs from the pdsc file name also triggers it.
+A project-local pack entry (a pack item with a path, in the csolution pack list) points to a directory that exists, but the expected PDSC file is not in it. The tool builds the name as <vendor>.<name>.pdsc from the pack's vendor and name and looks for it inside the path. The message prints the configured path (<…>) of that pack entry.
 
 ## Fix
 
-Point `path:` to the folder that holds the pdsc file, and make `pack: <Vendor>::<Name>` match the file `<Vendor>.<Name>.pdsc` there.
+Check the pack entry's path and the pack identity it is given. The directory named by the path must contain a file named <vendor>.<name>.pdsc, where vendor and name match the pack entry (for example Keil.STM32F4xx_DFP.pdsc for vendor Keil and name STM32F4xx_DFP). Rename the PDSC file or correct the vendor/name in the pack entry so they agree, or correct the path to the directory that holds the PDSC.
 
 ## Trigger in the source
 
@@ -37,10 +37,12 @@ Point `path:` to the folder that holds the pdsc file, and make `pack: <Vendor>::
 if (!RteFsUtils::Exists(pdscFile)) {
 ```
 
+## Note
+
+The check uses the vendor and name from the pack entry, so a mismatch in those fields produces the same message even when a PDSC file exists in the directory under another name. The message prints packageEntry.path, not the full resolved path, so the user has to match it to the entry in the project file.
+
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrWorker.cpp:1807`
-- `tools/projmgr/test/data/TestSolution/test_local_pack_file_not_found.csolution.yml:73`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:3919`
+- `tools/projmgr/src/ProjMgrWorker.cpp:1798-1809`

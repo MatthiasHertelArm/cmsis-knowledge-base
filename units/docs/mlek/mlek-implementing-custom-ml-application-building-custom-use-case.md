@@ -6,8 +6,8 @@ title: "Implementing custom ML application: Building custom use-case"
 summary: "There is one last thing to do before building and running a use-case application. You must create a usecase.cmake file in the root of your use-case. However, the name of the file is not important."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/customizing.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/customizing.md#building-custom-use-case"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/customizing.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/customizing.md#building-custom-use-case"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -90,9 +90,9 @@ generate_model_code(
 
 This ensures that the model path pointed to by `${use_case}_MODEL_PATH` is converted to a C++ array and is picked
 up by the build system. More information on auto-generations is available under section:
-[Automatic file generation](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./building.md#automatic-file-generation).
+[Automatic file generation](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./building.md#automatic-file-generation).
 
-To build you application, follow the general instructions from [Add Custom inputs](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./building.md#add-custom-inputs) and
+To build you application, follow the general instructions from [Add Custom inputs](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./building.md#add-custom-inputs) and
 then specify the name of the use-case in the build command, like so:
 
 **TensorFlow Lite Micro**
@@ -121,4 +121,4 @@ cmake .. \
 As a result, the file `mlek_hello_world.axf` is created. The MPS3 build also produces the `sectors/hello_world`
 directory with binaries and the file `sectors/images.txt` to be copied to the MicroSD card on the board.
 
-The next section of the documentation covers: [Testing and benchmarking](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/testing_benchmarking.md).
+The next section of the documentation covers: [Testing and benchmarking](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/testing_benchmarking.md).

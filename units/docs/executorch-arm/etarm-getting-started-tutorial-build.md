@@ -6,15 +6,15 @@ title: "Getting Started Tutorial: Build"
 summary: "The ExecuTorch Ahead-of-Time (AOT) pipeline takes a PyTorch Model (a torch.nn.Module) and produces a .pte binary file, which is then consumed by the ExecuTorch Runtime."
 status: "draft"
 collection: "executorch-arm"
-source: "pytorch/executorch@658390c:docs/source/backends/arm-ethos-u/tutorials/ethos-u-getting-started.md"
-doc_source: "https://github.com/pytorch/executorch/blob/658390c/docs/source/backends/arm-ethos-u/tutorials/ethos-u-getting-started.md#build"
+source: "pytorch/executorch@6368414:docs/source/backends/arm-ethos-u/tutorials/ethos-u-getting-started.md"
+doc_source: "https://github.com/pytorch/executorch/blob/6368414/docs/source/backends/arm-ethos-u/tutorials/ethos-u-getting-started.md#build"
 license: "BSD-3-Clause"
 mode: "V"
 ---
 
 ### Ahead-of-Time (AOT) components
 
-The ExecuTorch Ahead-of-Time (AOT) pipeline takes a PyTorch Model (a `torch.nn.Module`) and produces a `.pte` binary file, which is then consumed by the ExecuTorch Runtime. This [document](https://github.com/pytorch/executorch/blob/658390c/docs/source/backends/arm-ethos-u/tutorials/getting-started-architecture.md) goes in much more depth about the ExecuTorch software stack for both AoT as well as Runtime.
+The ExecuTorch Ahead-of-Time (AOT) pipeline takes a PyTorch Model (a `torch.nn.Module`) and produces a `.pte` binary file, which is then consumed by the ExecuTorch Runtime. This [document](https://github.com/pytorch/executorch/blob/6368414/docs/source/backends/arm-ethos-u/tutorials/getting-started-architecture.md) goes in much more depth about the ExecuTorch software stack for both AoT as well as Runtime.
 
 The example below shows how to quantize a model consisting of a single addition, and export it it through the AOT flow using the EthosU backend. For more details, see `examples/arm/ethos_u_minimal_example.ipynb`.
 ```python
@@ -115,8 +115,10 @@ cmake -S examples/arm/executor_runner/standalone \
       -DETHOSU_TARGET_NPU_CONFIG=ethos-u55-128 \
       -DMEMORY_MODE=Shared_Sram \
       -DSYSTEM_CONFIG=Ethos_U55_High_End_Embedded
-cmake --build ethos_u_minimal_example -j$(nproc) -- arm_executor_runner
+cmake --build ethos_u_minimal_example -- arm_executor_runner
 ```
+
+Adding `-j<N>` to `cmake --build` runs `<N>` jobs in parallel and tends to speed up the build significantly.
 
 ```{tip}
 For a quick start, you can use the script `backends/arm/scripts/build_executor_runner.sh` to configure and build the standalone runner.

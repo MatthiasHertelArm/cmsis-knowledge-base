@@ -10,16 +10,16 @@ code: "M225"
 symptoms: ["M225", "Upper/lower case mismatch: '%NAME%', should be '%NAME2%'"]
 symptom_regex: "^Upper/lower case mismatch: '.+?', should be '.+?'$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Update SVD file."
-summary: "A token value has the right letters but the wrong case, e.g."
+summary: "The SVD file uses an identifier whose letter case differs from the spelling svdconv expects, for example a register or field name written in a different case than the canonical form. svdconv reports the name it found (%NAME%) and …"
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdUtils.cpp:290-380", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdUtils.cpp:677-720", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdUtils.cpp:722-790", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdUtils.cpp:818-858", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdUtils.cpp:906-1030", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdSauRegion.cpp:116-118", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/unittests/src/SvdUtilsConversionTest.cpp:220-245", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/unittests/src/SvdUtilsConversionTest.cpp:301-336", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:92", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:224"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -29,27 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdUtil
 
 ## Cause
 
-A token value has the right letters but the wrong case, e.g. <access>Read-Write</access>, <usage>Registers</usage>, <endian>Little</endian>, <modifiedWriteValues>OneToClear</modifiedWriteValues> or <protection>S</protection>. svdconv accepts the value with a warning, except for <protection> and SAU values, which it also rejects with M202.
+The SVD file uses an identifier whose letter case differs from the spelling svdconv expects, for example a register or field name written in a different case than the canonical form. svdconv reports the name it found (%NAME%) and the name it expects (%NAME2%). The README gives only 'Update SVD file' as the cause, and the source lines were not available to confirm the exact check.
 
 ## Fix
 
-Use the exact spelling shown as NAME2, which is the CMSIS-SVD.xsd token, e.g. read-write, registers, little, oneToClear, s/n/p.
+Open the SVD file at the element named in the message and change the spelling of %NAME% to %NAME2%, then run svdconv again. Re-run the build to confirm the warning is gone.
 
 ## Note
 
-Error under --strict.
+Source lines were not available, so the trigger condition is inferred from the message text and the README rather than read from the code. Only the warning text and the README cause and fix were used.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdUtils.cpp:290-380`
-- `tools/svdconv/SVDModel/src/SvdUtils.cpp:677-720`
-- `tools/svdconv/SVDModel/src/SvdUtils.cpp:722-790`
-- `tools/svdconv/SVDModel/src/SvdUtils.cpp:818-858`
-- `tools/svdconv/SVDModel/src/SvdUtils.cpp:906-1030`
-- `tools/svdconv/SVDModel/src/SvdSauRegion.cpp:116-118`
-- `tools/svdconv/test/unittests/src/SvdUtilsConversionTest.cpp:220-245`
-- `tools/svdconv/test/unittests/src/SvdUtilsConversionTest.cpp:301-336`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:92`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:224`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

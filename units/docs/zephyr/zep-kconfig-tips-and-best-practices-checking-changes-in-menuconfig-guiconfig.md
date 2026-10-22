@@ -6,8 +6,8 @@ title: "Kconfig - Tips and Best Practices: Checking changes in menuconfig/guicon
 summary: "When adding new symbols or making other changes to Kconfig files, it is a good idea to look up the symbols in menuconfig or guiconfig afterwards. To get to a symbol quickly, use the jump-to feature (press /)."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/build/kconfig/tips.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/build/kconfig/tips.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/build/kconfig/tips.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/build/kconfig/tips.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

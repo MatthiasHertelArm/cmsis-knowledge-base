@@ -10,14 +10,14 @@ code: "M386"
 symptoms: ["M386", "Name not C compliant: '%NAME%' : Brackets [] found"]
 symptom_regex: "^Name not C compliant: '.+?' : Brackets \\[\\] found$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A <name> contains square brackets other than a trailing [%s] on a dim element, e.g."
+summary: "svdconv prints this when a name taken from the SVD input (a peripheral, register, field or similar identifier) contains square brackets, which are not allowed in a C identifier."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdUtils.cpp:1119-1131", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdItem.cpp:1180-1184", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdItem.cpp:378-386", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/integtests/src/SvdConvIntegTests.cpp:74-93", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/data/nameHasBrackets/SVDTiny.svd:36-52"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -27,18 +27,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdUtil
 
 ## Cause
 
-A <name> contains square brackets other than a trailing [%s] on a dim element, e.g. <name>Data[0]</name> on a register without <dim>. Brackets are not valid in a C identifier, so svdconv drops the element.
+svdconv prints this when a name taken from the SVD input (a peripheral, register, field or similar identifier) contains square brackets, which are not allowed in a C identifier. The %NAME% placeholder is the offending SVD name, typically an array-style name such as one with '[' and ']' characters left in it, so the generated C header would not compile.
 
 ## Fix
 
-Remove the brackets (<name>Data0</name>), or describe the element as an array: <name>Data[%s]</name> with <dim> and <dimIncrement>.
+Find the element named in the message in the SVD file and rename it so it contains only letters, digits and underscores, for example replacing '[' and ']' with '_'. Then rerun svdconv on the corrected SVD file.
+
+## Note
+
+Only the message text was available; the trigger condition was not checked against the source lines, so the cause is inferred from the message wording and should be verified.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdUtils.cpp:1119-1131`
-- `tools/svdconv/SVDModel/src/SvdItem.cpp:1180-1184`
-- `tools/svdconv/SVDModel/src/SvdItem.cpp:378-386`
-- `tools/svdconv/test/integtests/src/SvdConvIntegTests.cpp:74-93`
-- `tools/svdconv/test/data/nameHasBrackets/SVDTiny.svd:36-52`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

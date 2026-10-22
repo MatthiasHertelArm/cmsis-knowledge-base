@@ -10,14 +10,14 @@ code: "M385"
 symptoms: ["M385", "PMU not supported for CPU '%NAME%'"]
 symptom_regex: "^PMU not supported for CPU '.+?'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "<cpu> sets <pmuPresent>true</pmuPresent> but the core named in <cpu><name> has no PMU in svdconv's CPU table; only CM52, CM55, CM85, ARMV81MML, SMC2 and SMC3 have one. svdconv drops the PMU setting."
+summary: "svdconv reports that the PMU (Performance Monitoring Unit) is not supported for the CPU named in the message."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCpu.cpp:360-367", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdTypes.cpp:104-135", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/unittests/src/SvdCpuModelTest.cpp:232-244", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:206"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -27,21 +27,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCpu.
 
 ## Cause
 
-<cpu> sets <pmuPresent>true</pmuPresent> but the core named in <cpu><name> has no PMU in svdconv's CPU table; only CM52, CM55, CM85, ARMV81MML, SMC2 and SMC3 have one. svdconv drops the PMU setting.
+svdconv reports that the PMU (Performance Monitoring Unit) is not supported for the CPU named in the message. The %NAME% placeholder is the CPU name from the SVD device's CPU section, which svdconv does not have a PMU mapping for. This is inferred from the message text only; the source lines were not available.
 
 ## Fix
 
-Remove <pmuPresent> and <pmuNumEventCnt> for this core, or correct <cpu><name> if the device really uses a core with a PMU (e.g. CM55 or CM85).
+Check the <cpu> element of the input SVD file and confirm the CPU name is one svdconv recognises. If the PMU is not needed for your output, remove or leave out the PMU-related setting for that CPU and rerun svdconv. Verify the exact accepted CPU names in the svdconv source or documentation before changing the name.
 
 ## Note
 
-No line number in the message. pmuPresent and pmuNumEventCnt are parsed by svdconv but are not in the CMSIS-SVD.xsd 1.3.9 of CMSIS 5.9.0.
+Trigger and handling were not checked against the source lines, which were unavailable. The cause and fix are inferred from the message wording and should be verified before relying on them.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdCpu.cpp:360-367`
-- `tools/svdconv/SVDModel/src/SvdTypes.cpp:104-135`
-- `tools/svdconv/test/unittests/src/SvdCpuModelTest.cpp:232-244`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:206`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

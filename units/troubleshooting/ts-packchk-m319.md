@@ -10,14 +10,14 @@ code: "M319"
 symptoms: ["M319", "'%TAG%': '%NAME%' already defined for '%TAG2%': '%NAME2%', see Line %LINE%"]
 symptom_regex: "^'.+?': '.+?' already defined for '.+?': '.+?', see Line .+?$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "Two <mountedDevice> elements of the same <board> have the same deviceIndex value, which includes two mountedDevice elements that both omit deviceIndex. %NAME2% is the Dname of the earlier one and %LINE% its line."
+summary: "packchk found the same identifier defined twice for one element type inside the pack description, so one definition collides with an earlier one."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:135", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:1700-1711", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:989-1036", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/CheckBoardMountedCompatibleDevices/BulbBoard_BSP/Keil.BulbBoard_BSP.pdsc:39-43"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -27,17 +27,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-Two <mountedDevice> elements of the same <board> have the same deviceIndex value, which includes two mountedDevice elements that both omit deviceIndex. %NAME2% is the Dname of the earlier one and %LINE% its line.
+packchk found the same identifier defined twice for one element type inside the pack description, so one definition collides with an earlier one. The %TAG% and %NAME% fields name the element kind and its name that was already defined, %TAG2% and %NAME2% name the element that clashes with it, and %LINE% gives the line of the earlier definition. The source lines were not available, so this reading comes from the message text alone.
 
 ## Fix
 
-Give every <mountedDevice> of a board its own deviceIndex, e.g. deviceIndex="0" and deviceIndex="1".
+Open the PDSC file at the line given in the message and find the second element with the same name. Rename it or remove the duplicate so that each name is defined once for its element type, then run packchk again.
+
+## Note
+
+Trigger and handling were not checked against source lines because the clone is not available; cause and fix are inferred from the message text alone.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:135`
-- `tools/packchk/src/ValidateSyntax.cpp:1700-1711`
-- `tools/packchk/test/integtests/src/PackChkIntegTests.cpp:989-1036`
-- `tools/packchk/test/data/CheckBoardMountedCompatibleDevices/BulbBoard_BSP/Keil.BulbBoard_BSP.pdsc:39-43`
+- `tools/packchk/src/PackChk_Msgs.cpp`

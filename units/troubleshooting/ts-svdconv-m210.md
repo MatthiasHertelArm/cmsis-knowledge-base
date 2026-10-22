@@ -10,16 +10,16 @@ code: "M210"
 symptoms: ["M210", "Use new Format CMSIS-SVD >= V1.1 and add <CPU> Section."]
 symptom_regex: "^Use new Format CMSIS\\-SVD >= V1\\.1 and add <CPU> Section\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Update schema and add CPU section."
-summary: "The <device> has schemaVersion=\"1.0\" and no <cpu> element; CMSIS-SVD 1.0 had no <cpu> section."
+summary: "svdconv found an SVD file whose root element does not use the CMSIS-SVD schema version 1.1 or later, or that lacks the <cpu> section that the newer format expects."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:983-994", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:77"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -29,15 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevi
 
 ## Cause
 
-The <device> has schemaVersion="1.0" and no <cpu> element; CMSIS-SVD 1.0 had no <cpu> section.
+svdconv found an SVD file whose root element does not use the CMSIS-SVD schema version 1.1 or later, or that lacks the <cpu> section that the newer format expects. The README attributes the warning to an outdated schema version plus a missing CPU section in the input SVD.
 
 ## Fix
 
-Set schemaVersion on <device> to 1.1 or later (e.g. schemaVersion="1.3") and add a <cpu> element for the core, e.g. <cpu><name>CM4</name><revision>r0p1</revision><endian>little</endian><mpuPresent>true</mpuPresent><fpuPresent>true</fpuPresent><nvicPrioBits>4</nvicPrioBits><vendorSystickConfig>false</vendorSystickConfig></cpu>.
+Open the input SVD file, update the root <device> element to the current CMSIS-SVD schema (version 1.1 or later, using the schema namespace and schemaVersion attribute shown in the current CMSIS-SVD examples), and add a <cpu> section inside <device> describing the processor. Then rerun svdconv on the updated file.
+
+## Note
+
+The source lines were not available, so the trigger condition and the exact attribute checked are not verified; the cause and fix come from the message text and the README. The message is a warning, so conversion may still complete.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:983-994`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:77`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

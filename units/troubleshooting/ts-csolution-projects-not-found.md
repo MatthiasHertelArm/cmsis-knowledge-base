@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["projects not found"]
 symptom_regex: "^projects not found$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:505"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgr.cpp:505"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "The csolution.yml lists no project: `projects:` is missing or empty and there is no `west:` or `cmake:` entry."
+summary: "The csolution file given to csolution has no projects: its `projects` list is empty and it also defines no `west-apps` and no `cmake-apps`."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:505", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1286", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestSolution/missing_projects.csolution.yml:3", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:5198"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:503-507", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:489-491"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:505"
 
 ## Cause
 
-The csolution.yml lists no project: `projects:` is missing or empty and there is no `west:` or `cmake:` entry. Only a solution whose target sets contain `images:` without any `project-context:` (an image-only solution) may do without projects.
+The csolution file given to csolution has no projects: its `projects` list is empty and it also defines no `west-apps` and no `cmake-apps`. The check runs when the solution is not an image-only build. The message is followed by the csolution file path, which is the file that lacks the project entries.
 
 ## Fix
 
-Add the projects under `projects:` in the csolution.yml, e.g. `projects:` followed by `  - project: ./blinky/blinky.cproject.yml`.
+Open the csolution.yml file named in the message and add at least one cproject entry under `projects:` (for example `- project: <path-to-project>/<name>.cproject.yml`, where the path is relative to the csolution file), or define a west or CMake application if that is the build style in use. Then run the command again.
 
 ## Trigger in the source
 
@@ -37,11 +37,13 @@ Add the projects under `projects:` in the csolution.yml, e.g. `projects:` follow
 if (!IsSolutionImageOnly() && cprojects.empty() && m_parser.GetCsolution().westApps.empty() && m_parser.GetCsolution().cmakeApps.empty()) {
 ```
 
+## Note
+
+The README does not document this message. The fix text describes the csolution YAML structure from the code's list names (cprojects, westApps, cmakeApps); the exact YAML key spelling was not verified against the parser in the lines given.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgr.cpp:505`
-- `tools/projmgr/src/ProjMgr.cpp:1286`
-- `tools/projmgr/test/data/TestSolution/missing_projects.csolution.yml:3`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:5198`
+- `tools/projmgr/src/ProjMgr.cpp:503-507`
+- `tools/projmgr/src/ProjMgr.cpp:489-491`

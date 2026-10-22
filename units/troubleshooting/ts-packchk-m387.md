@@ -10,14 +10,14 @@ code: "M387"
 symptoms: ["M387", "Description in '%TAG%' is exceeding the recommended 128 (US ASCII) characters."]
 symptom_regex: "^Description in '.+?' is exceeding the recommended 128 \\(US ASCII\\) characters\\.$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "The text of a <description> element (of the package, a component, device, example and so on) is longer than 128 characters."
+summary: "packchk checks the length of a description text in the PDSC file (the element named by the variable part %TAG%) and warns when it exceeds the recommended 128 US ASCII characters."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:206", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:214-239", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:915-950", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/TestTextExceedsLength/TestVendor.TestTextExceedsLength.pdsc:7"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -27,17 +27,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-The text of a <description> element (of the package, a component, device, example and so on) is longer than 128 characters.
+packchk checks the length of a description text in the PDSC file (the element named by the variable part %TAG%) and warns when it exceeds the recommended 128 US ASCII characters. The text is too long for the recommended limit, and it is a warning only, not a hard error.
 
 ## Fix
 
-Shorten the description to at most 128 characters and put longer text into the pack documentation; the message is a recommendation and can be suppressed with -x M387.
+Shorten the description text of the element named in the message so that it is at most 128 US ASCII characters, moving detail into documentation elsewhere if needed. Remove non-ASCII characters from that text if they count toward the limit.
+
+## Note
+
+Source lines were not available, so the trigger and the handling are inferred from the message text alone; the exact check and which element %TAG% names could not be verified. README does not document this message.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:206`
-- `tools/packchk/src/CheckFiles.cpp:214-239`
-- `tools/packchk/test/integtests/src/PackChkIntegTests.cpp:915-950`
-- `tools/packchk/test/data/TestTextExceedsLength/TestVendor.TestTextExceedsLength.pdsc:7`
+- `tools/packchk/src/PackChk_Msgs.cpp`

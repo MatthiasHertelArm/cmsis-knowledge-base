@@ -10,15 +10,14 @@ code: "M354"
 symptoms: ["M354", "Interrupt '%NUM%:%NAME%' specifies a Core Interrupt. Core Interrupts must not be defined, they are set through <cpu><name>."]
 symptom_regex: "^Interrupt '.+?:.+?' specifies a Core Interrupt\\. Core Interrupts must not be defined, they are set through <cpu><name>\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "An <interrupt> has the name of a Cortex-M core exception (for example NonMaskableInt, HardFault, MemoryManagement, BusFault, UsageFault, SecureFault, SVCall, DebugMonitor, PendSV, SysTick), as provided for the core in <cpu><name>."
+summary: "The SVD file defines an interrupt entry whose number falls in the range of ARM Cortex-M core (system) exceptions, i.e. a negative IRQ number such as SysTick or other core interrupts. svdconv reports these because core interrupts are not …"
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:648", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:671", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevice.cpp:674", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCpu.cpp:280", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdTypes.cpp:83", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:173"]
 ---
 
 ## Symptom
@@ -28,19 +27,12 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdDevi
 
 ## Cause
 
-An <interrupt> has the name of a Cortex-M core exception (for example NonMaskableInt, HardFault, MemoryManagement, BusFault, UsageFault, SecureFault, SVCall, DebugMonitor, PendSV, SysTick), as provided for the core in <cpu><name>. Core exceptions come from the CPU type and must not be listed; the interrupt is dropped.
+The SVD file defines an interrupt entry whose number falls in the range of ARM Cortex-M core (system) exceptions, i.e. a negative IRQ number such as SysTick or other core interrupts. svdconv reports these because core interrupts are not device peripheral interrupts and must not appear in the <peripheral><interrupt> list; they are configured through the <cpu><name> element instead. The %NUM% and %NAME% in the message are the offending interrupt's value and name from the SVD.
 
 ## Fix
 
-Delete <interrupt> entries for core exceptions and list only the device-specific interrupts, numbered from 0.
+Remove the <interrupt> element for the core interrupt (the one named in the message) from the peripheral in the SVD file. Keep the device's core type in the <cpu><name> element, which sets the core interrupts. Then rerun svdconv.
 
-## Evidence
+## Note
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
-
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:648`
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:671`
-- `tools/svdconv/SVDModel/src/SvdDevice.cpp:674`
-- `tools/svdconv/SVDModel/src/SvdCpu.cpp:280`
-- `tools/svdconv/SVDModel/src/SvdTypes.cpp:83`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:173`
+Written from the message text alone; the clone was not available, so the trigger condition in the source was not checked. The README was documented as covering this message but its text was not provided to me.

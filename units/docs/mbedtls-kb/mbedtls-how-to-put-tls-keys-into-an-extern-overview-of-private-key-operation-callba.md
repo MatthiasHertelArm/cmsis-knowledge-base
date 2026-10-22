@@ -6,8 +6,8 @@ title: "How to put TLS keys into an external cryptoprocessor: Overview of privat
 summary: "Private key operation callbacks allow you to offload operations on a server's private key to an external cryptoprocessor."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/ssl_async.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/ssl_async.md#overview-of-private-key-operation-callbacks-in-tls"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/ssl_async.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/ssl_async.md#overview-of-private-key-operation-callbacks-in-tls"
 license: "Apache-2.0"
 mode: "V"
 ---

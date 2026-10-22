@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["failed to load and insert packs"]
 symptom_regex: "^failed to load and insert packs$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:575"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:575"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A pack description file (*.pdsc) that csolution has to load cannot be read or parsed: an installed pack under CMSIS_PACK_ROOT or a local pack referenced with `packs: - pack: ... path:`."
+summary: "This message is a wrapper printed when the pack kernel fails to load the collected PDSC files."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:539-577", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteKernel.cpp:465-488", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteKernel.cpp:293-320", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteKernel.cpp:36"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:574-577", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:569-572", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:610-613"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-A pack description file (*.pdsc) that csolution has to load cannot be read or parsed: an installed pack under CMSIS_PACK_ROOT or a local pack referenced with `packs: - pack: ... path:`. 'Error parsing XML file' messages naming the file follow.
+This message is a wrapper printed when the pack kernel fails to load the collected PDSC files. LoadAllRelevantPacks gathers the PDSC files from the selected contexts and from installed packs (via GetEffectivePdscFiles), then calls LoadAndInsertPacks. The kernel's own error for the specific pack or PDSC that failed, such as a malformed or unreadable PDSC or a pack that cannot be parsed, is logged before this line and is not repeated here. Because LoadPacks defers the return on this failure, the build still continues to the context checks before exiting.
 
 ## Fix
 
-Look at the errors that follow to find the failing *.pdsc; reinstall that pack with cpackget (e.g. remove its damaged folder and run `cpackget add Vendor::Name`), or repair the pdsc of the local pack referenced by `path:`.
+Read the error lines printed just before this one, which name the PDSC file or pack that failed to load, and fix that pack. Typically this means repairing or reinstalling the named pack so its .pdsc file is well-formed, and checking that the pack is installed in the pack root the build uses. Then rerun the csolution command.
 
 ## Trigger in the source
 
@@ -37,11 +37,14 @@ Look at the errors that follow to find the failing *.pdsc; reinstall that pack w
 if (!m_kernel->LoadAndInsertPacks(m_loadedPacks, pdscFiles)) {
 ```
 
+## Note
+
+The message carries no variable part, so it cannot identify the failing pack by itself; the specific cause is only in the kernel's earlier output. CheckRteErrors() decides the return value, so the build may not stop at this line. The README does not document this message.
+
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrWorker.cpp:539-577`
-- `libs/rtemodel/src/RteKernel.cpp:465-488`
-- `libs/rtemodel/src/RteKernel.cpp:293-320`
-- `libs/rtemodel/src/RteKernel.cpp:36`
+- `tools/projmgr/src/ProjMgrWorker.cpp:574-577`
+- `tools/projmgr/src/ProjMgrWorker.cpp:569-572`
+- `tools/projmgr/src/ProjMgrWorker.cpp:610-613`

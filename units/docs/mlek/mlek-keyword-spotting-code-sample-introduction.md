@@ -6,15 +6,15 @@ title: "Keyword Spotting Code Sample: Introduction"
 summary: "This document describes the process of setting up and running the Arm® Ethos™-U NPU Keyword Spotting example."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/use_cases/kws.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/kws.md#introduction"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/use_cases/kws.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/kws.md#introduction"
 license: "Apache-2.0"
 mode: "V"
 ---
 
 This document describes the process of setting up and running the Arm® *Ethos™-U* NPU Keyword Spotting example.
 
-Use-case code could be found in the following directory: [source/app/use_case/kws](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../../source/app/use_case/kws).
+Use-case code could be found in the following directory: [source/app/use_case/kws](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../../source/app/use_case/kws).
 
 > **NOTE**: This use case only supports `TensorFlow Lite Micro`.
 
@@ -65,4 +65,4 @@ If multiple inferences are performed for an audio clip, then multiple results ar
 
 ### Prerequisites
 
-See [Prerequisites](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../documentation.md#prerequisites)
+See [Prerequisites](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../documentation.md#prerequisites)

@@ -10,14 +10,13 @@ code: "M390"
 symptoms: ["M390", "Condition '%NAME%': Direct or indirect recursion detected. %MSG%"]
 symptom_regex: "^Condition '.+?': Direct or indirect recursion detected\\. .+?$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "Evaluating a <condition> failed because it refers to itself, directly or through a chain of condition=\"...\" references in its <require>, <accept> or <deny> expressions."
+summary: "The packchk condition check found a cycle while resolving the condition named in the message."
 cause_origin: "source-analysis"
-confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:209", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckConditions.cpp:42-55", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteCondition.cpp:501-506", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteCondition.cpp:889-904", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteCondition.cpp:955-956"]
+confidence: "low"
 ---
 
 ## Symptom
@@ -27,18 +26,12 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-Evaluating a <condition> failed because it refers to itself, directly or through a chain of condition="..." references in its <require>, <accept> or <deny> expressions. The same evaluation error, and so the same message, occurs when such a condition attribute names a condition id that is not defined. packchk skips the condition in later checks.
+The packchk condition check found a cycle while resolving the condition named in the message. The condition '%NAME%' references itself, either directly or through a chain of other conditions, so its evaluation would never finish. The %MSG% part is the checker's detail text and may name the conditions involved in the loop. The source trigger was not available, so this reading comes from the message text alone.
 
 ## Fix
 
-Follow the condition="..." references from the named condition, break the loop, and make sure every referenced condition id is defined in <conditions>.
+Open the PDSC file and find the condition with the id given in the message. Follow the condition references it makes, such as those in its require, accept or deny children, through the other conditions they point to. Remove or redirect the reference that closes the loop so that no condition depends on itself, directly or indirectly, then re-run packchk.
 
-## Evidence
+## Note
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
-
-- `tools/packchk/src/PackChk_Msgs.cpp:209`
-- `tools/packchk/src/CheckConditions.cpp:42-55`
-- `libs/rtemodel/src/RteCondition.cpp:501-506`
-- `libs/rtemodel/src/RteCondition.cpp:889-904`
-- `libs/rtemodel/src/RteCondition.cpp:955-956`
+The clone was not available, so no source lines were checked and the trigger condition is not confirmed. The README does not document M390. The cause and fix describe the usual reading of a condition cycle and should be checked against tools/packchk/src/PackChk_Msgs.cpp before relying on them.

@@ -10,15 +10,15 @@ code: "M344"
 symptoms: ["M344", "Register '%NAME%' (@%ADDRSIZE%) is outside or does not fit any <addressBlock> specified for Peripheral '%NAME2%' %TEXT%"]
 symptom_regex: "^Register '.+?' \\(@.+?\\) is outside or does not fit any <addressBlock> specified for Peripheral '.+?' .+?$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A register's byte range (its offset in the peripheral, cluster offsets included, plus <size>/8) does not lie completely inside any of the peripheral's <addressBlock>s with <usage>registers</usage>; blocks with usage buffer or reserved do not count."
+summary: "svdconv checks each register of a peripheral against the address blocks declared for that peripheral in the SVD file."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdPeripheral.cpp:868", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdPeripheral.cpp:874", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdPeripheral.cpp:928", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdPeripheral.cpp:972", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:163", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:247"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -28,19 +28,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdPeri
 
 ## Cause
 
-A register's byte range (its offset in the peripheral, cluster offsets included, plus <size>/8) does not lie completely inside any of the peripheral's <addressBlock>s with <usage>registers</usage>; blocks with usage buffer or reserved do not count. TEXT lists the register's range and every address block. Warning by default, error with --strict.
+svdconv checks each register of a peripheral against the address blocks declared for that peripheral in the SVD file. The warning means a register's address offset places it outside every <addressBlock> of the named peripheral, or the register extends past the end of the block that contains its start. The %NAME% and %ADDRSIZE% values identify the register and its address; %NAME2% names the peripheral. The source was not available, so this is inferred from the message text alone.
 
 ## Fix
 
-Extend an address block, or add one with <usage>registers</usage>, so that it covers the register; or correct the register's <addressOffset> or <size> if the register is misplaced.
+Open the SVD file, find the peripheral named in the message, and compare the <offset> and <size> of the register with the <offset> and <size> of its <addressBlock>. Either enlarge the address block so it covers the register, or correct the register's <addressOffset> if it was mistyped. Then rerun svdconv.
+
+## Note
+
+Source lines were not available for this entry, so the trigger condition and the handling are inferred from the message wording and not confirmed in code. Treat the cause as a reading of the message text. The README is documented as covering this message, but its text was not provided for comparison.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdPeripheral.cpp:868`
-- `tools/svdconv/SVDModel/src/SvdPeripheral.cpp:874`
-- `tools/svdconv/SVDModel/src/SvdPeripheral.cpp:928`
-- `tools/svdconv/SVDModel/src/SvdPeripheral.cpp:972`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:163`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:247`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["invalid define: <…>, improper quotes"]
 symptom_regex: "^invalid define: .+?, improper quotes$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:450"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrYamlParser.cpp:450"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "An entry under `define:`, `define-asm:`, `west-defs:` or `linker:` - `define:` has a value with misplaced double quotes; `<…>` is that value. csolution accepts a value with no `\"` at all, or one quoted completely: exactly two quotes, either as …"
+summary: "A define value in a csolution YAML file (the defines list of a project, component or similar node) contains double-quote characters that do not form a single correctly quoted pair."
 cause_origin: "source-analysis"
 confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:420", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:449", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:1073", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/TestSolution/test_invalid_defines.csolution.yml:19", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:7407"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:420-454", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:427-451"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParse
 
 ## Cause
 
-An entry under `define:`, `define-asm:`, `west-defs:` or `linker:` - `define:` has a value with misplaced double quotes; `<…>` is that value. csolution accepts a value with no `"` at all, or one quoted completely: exactly two quotes, either as `"..."` at both ends or as escaped `\"...\"` at both ends. A quote in the middle, a missing closing quote or a mix of `"` and `\"` is rejected. Quotes that are YAML syntax (`- KEY: "value"`) are removed by YAML and do not count.
+A define value in a csolution YAML file (the defines list of a project, component or similar node) contains double-quote characters that do not form a single correctly quoted pair. The validator counts the quotes in the value; if the count is not zero and not exactly two, or if the two quotes do not sit at both ends (either as a plain " ... " wrapper or as an escaped \" ... \" wrapper), the value is rejected. The <…> in the message is the define value as written in the YAML.
 
 ## Fix
 
-Quote the whole value or not at all. To pass a C string literal write the escaped form, e.g. `- KEY3: \"valid\"` or `- \"Test 3\"`; for a plain token write `- KEY: value`.
+Find the define named in the message and correct its quoting so that it has either no double quotes or exactly one pair wrapping the whole value, for example: defines: [ MY_STRING: "hello" ] (or a plain value without quotes). Remove stray or embedded quotes, or escape them so the value starts and ends with the quote pair. Then run the csolution command again.
 
 ## Trigger in the source
 
@@ -37,12 +37,13 @@ Quote the whole value or not at all. To pass a C string literal write the escape
 if (!isValid) {
 ```
 
+## Note
+
+The message prints the whole define value; for map-style defines the value checked is the map value only, not the key. The check runs per define item and the function returns false, so the error is printed once per invalid value.
+
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrYamlParser.cpp:420`
-- `tools/projmgr/src/ProjMgrYamlParser.cpp:449`
-- `tools/projmgr/src/ProjMgrYamlParser.cpp:1073`
-- `tools/projmgr/test/data/TestSolution/test_invalid_defines.csolution.yml:19`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:7407`
+- `tools/projmgr/src/ProjMgrYamlParser.cpp:420-454`
+- `tools/projmgr/src/ProjMgrYamlParser.cpp:427-451`

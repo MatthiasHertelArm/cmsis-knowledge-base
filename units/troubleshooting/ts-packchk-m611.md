@@ -10,14 +10,13 @@ code: "M611"
 symptoms: ["M611", "Multiple devices or variants defined by '[%VENDOR%] %MCU%'"]
 symptom_regex: "^Multiple devices or variants defined by '\\[.+?\\] .+?'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A <mountedDevice> of a <board> names a device that has <variant> children, so the board does not identify a single device."
+summary: "The message text indicates that the PDSC defines the same device or variant name for the given vendor and MCU more than once, so packchk cannot tell which definition applies."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:246", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:1741-1749", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1038-1076", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/RteTestBoard/ARM.RteTestBoard.pdsc:42", "Open-CMSIS-Pack/devtools@30f5e817:test/packs/ARM/RteTest_DFP/0.2.0/ARM.RteTest_DFP.pdsc:243-256"]
+confidence: "low"
 ---
 
 ## Symptom
@@ -27,18 +26,12 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-A <mountedDevice> of a <board> names a device that has <variant> children, so the board does not identify a single device.
+The message text indicates that the PDSC defines the same device or variant name for the given vendor and MCU more than once, so packchk cannot tell which definition applies. The variable parts are the vendor (%VENDOR%) and the device name (%MCU%). This is inferred from the message wording only, because the source lines for the trigger were not available.
 
 ## Fix
 
-Set Dname to the variant that is actually mounted, e.g. Dname="RteTest_ARMCM4_FP" instead of the parent device "RteTest_ARMCM4".
+Search the pack's PDSC file for every device or variant entry with the reported name and vendor, then remove or rename the duplicates so each device or variant name is defined once.
 
-## Evidence
+## Note
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
-
-- `tools/packchk/src/PackChk_Msgs.cpp:246`
-- `tools/packchk/src/ValidateSyntax.cpp:1741-1749`
-- `tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1038-1076`
-- `tools/packchk/test/data/RteTestBoard/ARM.RteTestBoard.pdsc:42`
-- `test/packs/ARM/RteTest_DFP/0.2.0/ARM.RteTest_DFP.pdsc:243-256`
+The source clone was unavailable, so the trigger condition and the handling were not read from tools/packchk/src/PackChk_Msgs.cpp. Cause and fix come from the message text and should be checked against the source. The README does not document this message.

@@ -6,15 +6,15 @@ title: "Delivery in CMSIS-Packs"
 summary: "In simple individual cases the cmsis_core_files can be delivered to developers as part of example projects and SDKs."
 status: "draft"
 collection: "cmsis-core"
-source: "ARM-software/CMSIS_6@26206e4:CMSIS/Documentation/Doxygen/Core/src/core_files_in_packs.md"
-doc_source: "https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Core/src/core_files_in_packs.md"
+source: "ARM-software/CMSIS_6@acf7392:CMSIS/Documentation/Doxygen/Core/src/core_files_in_packs.md"
+doc_source: "https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Core/src/core_files_in_packs.md"
 license: "Apache-2.0"
 mode: "V"
 ---
 
 In simple individual cases the cmsis_core_files can be delivered to developers as part of example projects and SDKs. But the most scalable approach with improved usability is to provide them packaged in [Open-CMSIS-Pack format](https://www.open-cmsis-pack.org), and this page explains how to do this.
 
-The cmsis_standard_files are provided as part of [CMSIS Software pack](https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Core/src/../General/cmsis_pack.html) under **CMSIS** class of components and compose there the **CORE** group.
+The cmsis_standard_files are provided as part of [CMSIS Software pack](https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Core/src/../General/cmsis_pack.html) under **CMSIS** class of components and compose there the **CORE** group.
 
 The cmsis_device_files are delivered in [CMSIS Device Family Packs (DFPs)](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/cp_PackTutorial.html#createPack_DFP) that provide necessary mechanisms for device support in embedded software. The DFPs are typically maintained by device vendors.
 

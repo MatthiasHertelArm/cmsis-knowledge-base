@@ -10,15 +10,16 @@ code: "M309"
 symptoms: ["M309", "Attribute '%TAG%' missing on '%TAG2%' (when '%TAG3%' is specified)"]
 symptom_regex: "^Attribute '.+?' missing on '.+?' \\(when '.+?' is specified\\)$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "Add missing attribute _'TAG'_ or remove the attribute _'TAG3'_ in the element _'TAG2'_."
+doc_cause: "Add missing attribute _'TAG'_ or remove the attribute _'TAG3'_ in the element _'TAG2'_."
+summary: "packchk reports this when an element of a PDSC file carries an attribute that requires a companion attribute which is absent."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:123", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSemantic.cpp:248-257", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1133-1172", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/MemoryAttributes/TestVendor.MemoryAttributes.pdsc:90", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:158"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -28,18 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-Add missing attribute _'TAG'_ or remove the attribute _'TAG3'_ in the element _'TAG2'_.
+packchk reports this when an element of a PDSC file carries an attribute that requires a companion attribute which is absent. The message names the missing attribute (%TAG%), the element that lacks it (%TAG2%) and the attribute whose presence triggers the requirement (%TAG3%). The source lines were not available, so this is based on the message text and the README only.
 
 ## Fix
 
-Give the <memory> both name and access, e.g. name="SRAM" access="rwx", or use the legacy id form instead.
+Open the PDSC element named in the message and either add the missing attribute named in the message with a valid value, or remove the attribute that triggered the requirement, then re-run packchk.
+
+## Note
+
+Trigger not verified in source; the clone was unavailable, so the cause and fix rest on the message text and the README wording. The README's 'TAG' and 'TAG3' placeholders match the message variables, so the mapping is consistent.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:123`
-- `tools/packchk/src/ValidateSemantic.cpp:248-257`
-- `tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1133-1172`
-- `tools/packchk/test/data/MemoryAttributes/TestVendor.MemoryAttributes.pdsc:90`
-- `tools/packchk/README.md:158`
+- `tools/packchk/src/PackChk_Msgs.cpp`

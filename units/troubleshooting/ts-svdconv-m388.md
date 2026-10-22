@@ -10,14 +10,14 @@ code: "M388"
 symptoms: ["M388", "MVE Floating-Point support is set but MVE is not set"]
 symptom_regex: "^MVE Floating\\-Point support is set but MVE is not set$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "<cpu> sets <mveFP> to true while <mvePresent> is missing or false; MVE floating point requires MVE."
+summary: "The SVD device or peripheral description sets MVE floating-point support (the MVE FP feature) while MVE itself is not enabled for the same core."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCpu.cpp:216-228", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCpu.cpp:377-381", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:209"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp (trigger not available in the given lines; message text only)"]
 ---
 
 ## Symptom
@@ -27,20 +27,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdCpu.
 
 ## Cause
 
-<cpu> sets <mveFP> to true while <mvePresent> is missing or false; MVE floating point requires MVE.
+The SVD device or peripheral description sets MVE floating-point support (the MVE FP feature) while MVE itself is not enabled for the same core. MVE floating-point requires the MVE extension, so the combination is rejected. The exact element names are not available in the lines given, so this reading is inferred from the message text.
 
 ## Fix
 
-Add <mvePresent>true</mvePresent> to <cpu> when the core implements MVE with floating point, or set <mveFP> to false (or remove it) for an integer-only or no-MVE configuration.
+Enable the MVE (Helium) feature in the SVD core description alongside the MVE floating-point setting, or remove the MVE floating-point setting if the target core has no MVE. Then rerun svdconv on the SVD file.
 
 ## Note
 
-Dead check at 30f5e81: the test (m_mveFP && !m_mvePresent) sits inside if(m_mvePresent), so svdconv never reports M388. mvePresent and mveFP are not in the CMSIS-SVD.xsd 1.3.9 of CMSIS 5.9.0.
+Source lines were not available, so the trigger and the exact SVD elements involved were not verified; the cause is inferred from the message wording. README does not document this message.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdCpu.cpp:216-228`
-- `tools/svdconv/SVDModel/src/SvdCpu.cpp:377-381`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:209`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp (trigger not available in the given lines; message text only)`

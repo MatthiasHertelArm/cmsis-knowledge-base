@@ -10,15 +10,15 @@ code: "M310"
 symptoms: ["M310", "Field '%NAME%': BitWidth error: %NUM%"]
 symptom_regex: "^Field '.+?': BitWidth error: .+?$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A field's width (from <bitWidth>, or <msb> - <lsb> + 1) is more than 64 bits."
+summary: "svdconv prints this when a field in the SVD file has a bit width that cannot be used, so the field's bitWidth value is not valid for its register."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:90", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:175", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:486", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:487", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/include/SvdField.h:13", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:129"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -28,19 +28,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdFiel
 
 ## Cause
 
-A field's width (from <bitWidth>, or <msb> - <lsb> + 1) is more than 64 bits. The field is dropped.
+svdconv prints this when a field in the SVD file has a bit width that cannot be used, so the field's bitWidth value is not valid for its register. The %NAME% is the field name from the SVD and %NUM% is the offending width value as parsed from the file. The exact validity rule is not visible in the lines provided, so the precise limit is unconfirmed.
 
 ## Fix
 
-Set the field's <bitWidth> (or <lsb>/<msb>, <bitRange>) to the real width of the bit field; it must fit into its register's <size>.
+Open the SVD file, find the field named in the message and check its bitWidth (or msb/lsb range) against the register size; correct the value so the field fits inside the register width and rerun svdconv.
+
+## Note
+
+Source lines were not available; the cause and fix are inferred from the message text and the README entry only, so confidence is capped at medium. The README was documented as covering this message but its text was not supplied for comparison.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdField.cpp:90`
-- `tools/svdconv/SVDModel/src/SvdField.cpp:175`
-- `tools/svdconv/SVDModel/src/SvdField.cpp:486`
-- `tools/svdconv/SVDModel/src/SvdField.cpp:487`
-- `tools/svdconv/SVDModel/include/SvdField.h:13`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:129`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

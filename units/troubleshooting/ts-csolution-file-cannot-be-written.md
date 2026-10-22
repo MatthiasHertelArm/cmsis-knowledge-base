@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["file cannot be written"]
 symptom_regex: "^file cannot be written$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:802"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgr.cpp:802"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "csolution cannot save an output file whose path prefixes the message, e.g. a folder with the same name exists at that path or the location is not writable."
+summary: "During RunConvert, csolution builds the output path <cprj directory>/<context name>.cprj and calls m_generator.GenerateCprj for it."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:794-804", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlEmitter.cpp:39-44", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlEmitter.cpp:64-67", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:1075-1093"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:795-804", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:797-798"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:794-
 
 ## Cause
 
-csolution cannot save an output file whose path prefixes the message, e.g. a folder with the same name exists at that path or the location is not writable. From ProjMgr.cpp:802 it is the legacy `<context>.cprj` written with `--cbuildgen`; the same text is printed for YAML outputs such as *.cbuild.yml.
+During RunConvert, csolution builds the output path <cprj directory>/<context name>.cprj and calls m_generator.GenerateCprj for it. When that call returns false, the tool prints this error with the context name and file path and stops. The source does not show the underlying write error, and the result of RteFsUtils::CreateDirectories on the cprj directory is ignored, so a missing or unwritable output directory, or a path that cannot be created, is a likely reason.
 
 ## Fix
 
-Remove the folder or file that blocks the path, make the output location writable, or choose another output folder with `--output`/`-o`.
+Check that the cprj output directory exists or can be created, is not blocked by a file of the same name, and is writable by the current user. Confirm the path printed in the message is valid, then rerun csolution. If the directory is fine, the source gives no further step; check the permissions and disk space of the printed path.
 
 ## Trigger in the source
 
@@ -37,11 +37,13 @@ Remove the folder or file that blocks the path, make the output location writabl
 if (m_generator.GenerateCprj(*contextItem, filename)) {
 ```
 
+## Note
+
+The message is printed only when GenerateCprj returns false, and the generator's reason is not logged in these lines. The cause given is an inference from the directory creation and path setup around the trigger, not a confirmed failure mode. The README does not document this message.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgr.cpp:794-804`
-- `tools/projmgr/src/ProjMgrYamlEmitter.cpp:39-44`
-- `tools/projmgr/src/ProjMgrYamlEmitter.cpp:64-67`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:1075-1093`
+- `tools/projmgr/src/ProjMgr.cpp:795-804`
+- `tools/projmgr/src/ProjMgr.cpp:797-798`

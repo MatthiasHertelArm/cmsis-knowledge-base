@@ -10,16 +10,16 @@ code: "M233"
 symptoms: ["M233", "Parse error: <%TAG%> = '%VALUE%'"]
 symptom_regex: "^Parse error: <.+?> = '.+?'$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Correct SVD."
-summary: "An <access> value is not one of read-only, write-only, read-write, writeOnce or read-writeOnce (or the deprecated read/write). svdconv treats the access as not set on that element; this is the <access> form of M202."
+summary: "svdconv parses the SVD file and found an element whose value could not be interpreted, so the parser reports the tag name and the offending value."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdUtils.cpp:1089-1091", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdUtils.cpp:677-720", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdTypes.cpp:19-26", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:100", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:227"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -29,22 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdUtil
 
 ## Cause
 
-An <access> value is not one of read-only, write-only, read-write, writeOnce or read-writeOnce (or the deprecated read/write). svdconv treats the access as not set on that element; this is the <access> form of M202.
+svdconv parses the SVD file and found an element whose value could not be interpreted, so the parser reports the tag name and the offending value. The README attributes this to an incorrect SVD file. The exact tag and value are the variable parts of the message and identify which element of the SVD is malformed.
 
 ## Fix
 
-Use one of the schema tokens in exact spelling, e.g. <access>read-write</access>.
+Open the SVD file and locate the element named by the tag in the message, then check that its value is valid for that element (for example a number where a number is required, with the expected format). Correct the value and rerun svdconv.
 
 ## Note
 
-Error under --strict.
+Source lines were not available, so the trigger and handling were not verified; the cause is inferred from the message text and the README entry, which only says 'Correct SVD.'
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdUtils.cpp:1089-1091`
-- `tools/svdconv/SVDModel/src/SvdUtils.cpp:677-720`
-- `tools/svdconv/SVDModel/src/SvdTypes.cpp:19-26`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:100`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:227`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

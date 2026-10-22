@@ -9,14 +9,14 @@ severity: "error"
 symptoms: ["generator output directory was not set"]
 symptom_regex: "^generator output directory was not set$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5697"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/projmgr/src/ProjMgrWorker.cpp:5697"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A selected component uses a globally registered generator, and no output folder is known for it: no `generators: options: - generator: <id> path:` and no `generators: base-dir:` in the clayer.yml, cproject.yml or csolution.yml, and no `path:` in the generator's …"
+summary: "The csolution tool resolves the output directory of an external generator in GetExtGeneratorOptions."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5683-5703", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5705-5740", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/src/ProjMgrUnitTests.cpp:5843-5867", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/test/data/ExternalGenerator/no-gendir.generator.yml"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5688-5699", "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5705-5741"]
 ---
 
 ## Symptom
@@ -25,11 +25,11 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Cause
 
-A selected component uses a globally registered generator, and no output folder is known for it: no `generators: options: - generator: <id>  path:` and no `generators: base-dir:` in the clayer.yml, cproject.yml or csolution.yml, and no `path:` in the generator's global registration (*.generator.yml).
+The csolution tool resolves the output directory of an external generator in GetExtGeneratorOptions. It takes the path from the 'generators' node of the layer, project or solution (a path set for that generator id, or a baseDir), and if that is empty it falls back to the global generator register by generator id. If the result is still empty, the tool logs this error and stops. This means the generator used by the project has no output directory: neither the generators node in the csolution or cproject YAML sets one, nor the generator's global registration provides one.
 
 ## Fix
 
-Set the folder in the cproject.yml (or csolution.yml), e.g. `generators: options: - generator: CubeMX  path: ./CubeMX`, or set `generators: base-dir: ./generated`.
+Give the generator an output directory in the csolution YAML, for example under a 'generators' node of the project or solution: set a path for the generator id, or set a baseDir so the tool builds the path from the generator id. Then run the build again. If the generator is supposed to be registered globally, check that its global registration (done by the generator's own installation) provides a path.
 
 ## Trigger in the source
 
@@ -37,11 +37,13 @@ Set the folder in the cproject.yml (or csolution.yml), e.g. `generators: options
 if (options.path.empty()) {
 ```
 
+## Note
+
+The README does not document this message. The cause is inferred from the code path that resolves the generator directory; the exact YAML keys for the generators node are taken from GetGeneratorOptions and were not checked against the schema. The global register lookup is in m_extGenerator->GetGlobalGenDir, which is outside the lines given.
+
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/projmgr/src/ProjMgrWorker.cpp:5683-5703`
-- `tools/projmgr/src/ProjMgrWorker.cpp:5705-5740`
-- `tools/projmgr/test/src/ProjMgrUnitTests.cpp:5843-5867`
-- `tools/projmgr/test/data/ExternalGenerator/no-gendir.generator.yml`
+- `tools/projmgr/src/ProjMgrWorker.cpp:5688-5699`
+- `tools/projmgr/src/ProjMgrWorker.cpp:5705-5741`

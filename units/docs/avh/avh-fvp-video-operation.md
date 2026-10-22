@@ -6,8 +6,8 @@ title: "FVP Video: Operation"
 summary: "The application initializes both video input and output streams and then continuously captures video frames from the input stream and copies them to the output stream. Application assumes that the video frame pixel format is RGB888."
 status: "draft"
 collection: "avh"
-source: "ARM-software/AVH@bb8431b:example/FVP_Video/README.md"
-doc_source: "https://github.com/ARM-software/AVH/blob/bb8431b/example/FVP_Video/README.md#operation"
+source: "ARM-software/AVH@60f78be:example/FVP_Video/README.md"
+doc_source: "https://github.com/ARM-software/AVH/blob/60f78be/example/FVP_Video/README.md#operation"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -20,13 +20,13 @@ If input and output stream resolutions differ the input frame is centered within
 output frame and/or cropped when required.
 
 Streaming stops after receiving the `END_OF_STREAM` event or can be configured to
-stop after `AUDIO_STREAM_DURATION` seconds.
+stop after `VIDEO_STREAM_DURATION` seconds.
 
 The example uses CMSIS-RTOS2 for thread management and event-driven processing.
 
 ### Configuration
 
-Default configuration ([app_config.h](https://github.com/ARM-software/AVH/blob/bb8431b/example/FVP_Video/project/app_config.h)) expects the following input
+Default configuration ([app_config.h](https://github.com/ARM-software/AVH/blob/60f78be/example/FVP_Video/project/app_config.h)) expects the following input
 and output stream format:
 
 - 640 x 480 pixels, 30FPS

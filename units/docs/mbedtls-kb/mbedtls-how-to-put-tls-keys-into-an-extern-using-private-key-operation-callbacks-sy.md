@@ -6,8 +6,8 @@ title: "How to put TLS keys into an external cryptoprocessor: Using private key 
 summary: "In f_async_sign_start or f_async_decrypt_start, make the required calculation, store the result somewhere, and return 0. The TLS stack first calls the appropriate start function, then calls the resume callback. In the resume callback, copy the result to the output buffer."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/ssl_async.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/ssl_async.md#using-private-key-operation-callbacks-synchronously"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/ssl_async.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/ssl_async.md#using-private-key-operation-callbacks-synchronously"
 license: "Apache-2.0"
 mode: "V"
 ---

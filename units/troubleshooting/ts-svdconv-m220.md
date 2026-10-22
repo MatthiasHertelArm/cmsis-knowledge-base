@@ -10,15 +10,15 @@ code: "M220"
 symptoms: ["M220", "C Code generation warning: %MSG%"]
 symptom_regex: "^C Code generation warning: .+?$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "While generating the CMSIS header, the bit mask computed for a field came out even."
+summary: "svdconv prints this warning when its C code generator reports a non-fatal problem while writing the device header or source files; the %MSG% part carries the generator's own detail text, which is the specific item to look at."
 cause_origin: "source-analysis"
-confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/HeaderGenerator.cpp:660", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/HeaderGenerator.cpp:663", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/HeaderGenerator.cpp:784", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/HeaderGenerator.cpp:846", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/HeaderData_PosMask.cpp:224", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:173", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:491"]
+confidence: "low"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp (trigger not available in the clone; message id M220 only)"]
 ---
 
 ## Symptom
@@ -28,24 +28,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/Hea
 
 ## Cause
 
-While generating the CMSIS header, the bit mask computed for a field came out even. That happens when the field width is 0 (for example <bitWidth>0</bitWidth>, or <lsb> exactly one above <msb>) and can also happen for a 64-bit field; svdconv adds the comment 'Even number for MASK detected!' next to the field's _Msk define.
+svdconv prints this warning when its C code generator reports a non-fatal problem while writing the device header or source files; the %MSG% part carries the generator's own detail text, which is the specific item to look at. The source lines were not available, so this cause is inferred from the message text and the README entry only.
 
 ## Fix
 
-Correct the field's bit position so that it is at least one bit wide, for example <bitRange>[7:4]</bitRange> with the most significant bit first, or a <bitWidth> of 1 or more.
+Read the text after the colon in the message to identify the element or value it names, correct that entry in the SVD file, and rerun svdconv. If the detail text is unclear, check the generated output for the affected item.
 
 ## Note
 
-The other source of M220 ('Peripheral unaligned address', HeaderData_RegStructure.cpp:753) is unreachable because 'unaligned' is always 0 (line 37). The field check M313 only rejects negative widths, so a zero-width field reaches the generator.
+Source lines were unavailable, so the trigger and handling could not be confirmed; the cause and fix rest on the message wording and the README claim that it is documented. The %MSG% detail varies, so the specific remedy depends on it.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence low, not reviewed yet:
 
-- `tools/svdconv/SVDGenerator/src/HeaderGenerator.cpp:660`
-- `tools/svdconv/SVDGenerator/src/HeaderGenerator.cpp:663`
-- `tools/svdconv/SVDGenerator/src/HeaderGenerator.cpp:784`
-- `tools/svdconv/SVDGenerator/src/HeaderGenerator.cpp:846`
-- `tools/svdconv/SVDGenerator/src/HeaderData_PosMask.cpp:224`
-- `tools/svdconv/SVDModel/src/SvdField.cpp:173`
-- `tools/svdconv/SVDModel/src/SvdField.cpp:491`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp (trigger not available in the clone; message id M220 only)`

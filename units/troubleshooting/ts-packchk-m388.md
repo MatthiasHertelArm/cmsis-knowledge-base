@@ -10,14 +10,14 @@ code: "M388"
 symptoms: ["M388", "Unsupported character(s) found in '%NAME%'"]
 symptom_regex: "^Unsupported character\\(s\\) found in '.+?'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "The text of a <description> element contains a character outside printable US-ASCII (0x20 to 0x7E), for example a non-ASCII letter, a symbol such as the euro sign, typographic quotes, or a line break inside the text; %NAME% shows the …"
+summary: "packchk prints this warning when a name taken from the pack (the %NAME% part, for example a component, device or file name in the PDSC) contains characters outside the set it accepts."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:207", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/CheckFiles.cpp:222-230", "Open-CMSIS-Pack/devtools@30f5e817:libs/xmlreader/src/XML_Reader.cpp:515-527", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:915-950", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/TestTextExceedsLength/TestVendor.TestTextExceedsLength.pdsc:28"]
+confidence: "low"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -27,18 +27,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-The text of a <description> element contains a character outside printable US-ASCII (0x20 to 0x7E), for example a non-ASCII letter, a symbol such as the euro sign, typographic quotes, or a line break inside the text; %NAME% shows the whole description.
+packchk prints this warning when a name taken from the pack (the %NAME% part, for example a component, device or file name in the PDSC) contains characters outside the set it accepts. The exact trigger condition could not be checked because the source clone was not available, so this reading comes from the message text alone.
 
 ## Fix
 
-Replace such characters with plain ASCII (e.g. 'EUR', straight quotes) and keep the description on one line.
+Find the element named in the message in the PDSC and rename it so it uses only plain letters, digits and the separators the schema allows (for example avoid spaces and special punctuation), then rerun packchk.
+
+## Note
+
+Source lines were not provided, so the trigger condition and the exact allowed character set are unverified. The message is not documented in the README. The %NAME% placeholder is not resolved in the message text, so the offending name is only visible in the actual build log.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence low, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:207`
-- `tools/packchk/src/CheckFiles.cpp:222-230`
-- `libs/xmlreader/src/XML_Reader.cpp:515-527`
-- `tools/packchk/test/integtests/src/PackChkIntegTests.cpp:915-950`
-- `tools/packchk/test/data/TestTextExceedsLength/TestVendor.TestTextExceedsLength.pdsc:28`
+- `tools/packchk/src/PackChk_Msgs.cpp`

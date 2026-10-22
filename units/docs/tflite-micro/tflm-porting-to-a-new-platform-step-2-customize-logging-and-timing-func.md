@@ -6,8 +6,8 @@ title: "Porting to a new platform: Step 2: Customize Logging and Timing Function
 summary: "Replace the following files with a version that is specific to your target platform:"
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/new_platform_support.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/new_platform_support.md#step-2-customize-logging-and-timing-function-for-your-platform"
+source: "tensorflow/tflite-micro@bd621c2:tensorflow/lite/micro/docs/new_platform_support.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/bd621c2/tensorflow/lite/micro/docs/new_platform_support.md#step-2-customize-logging-and-timing-function-for-your-platform"
 license: "Apache-2.0"
 mode: "V"
 ---

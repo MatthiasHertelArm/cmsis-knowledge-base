@@ -10,14 +10,14 @@ code: "M605"
 symptoms: ["M605", "Required Dcore '%NAME%' feature '%NAME2%' not defined"]
 symptom_regex: "^Required Dcore '.+?' feature '.+?' not defined$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "A <processor>, together with what it inherits from family and subFamily, lacks an attribute that packchk requires for its Dcore: Dfpu, Dmpu, Ddsp, Dendian, Dclock and DcoreVersion for every listed core; Dtz additionally for Cortex-M23, M33, M35P, M52, M55, …"
+summary: "packchk prints this warning when a device's Dcore definition in the PDSC lists a required feature by name, and that feature is not defined under the Dcore entry it refers to."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:240", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSemantic.cpp:481-559", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1284-1312", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/ProcessorFeatures/TestVendor.ProcessorFeatures.pdsc:45-53"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp (message text M605 only; trigger lines not available)"]
 ---
 
 ## Symptom
@@ -27,17 +27,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-A <processor>, together with what it inherits from family and subFamily, lacks an attribute that packchk requires for its Dcore: Dfpu, Dmpu, Ddsp, Dendian, Dclock and DcoreVersion for every listed core; Dtz additionally for Cortex-M23, M33, M35P, M52, M55, M85, Star-MC1, SC000, SC300 and the ARMV8M/ARMV81M cores; Dmve for M35P, M52, M55, M85, Star-MC1 and ARMV81MML. On devices with more than one processor every processor also needs Pname.
+packchk prints this warning when a device's Dcore definition in the PDSC lists a required feature by name, and that feature is not defined under the Dcore entry it refers to. The %NAME% part is the core name (for example a Dcore id) and %NAME2% is the feature name that the check could not find. The source lines were not available, so this reading is based on the message text alone.
 
 ## Fix
 
-Add the named attribute to the <processor> (or to the family or subFamily level it inherits from), e.g. <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Dfpu="SP_FPU" Dmpu="MPU" Ddsp="DSP" Dendian="Little-endian" Dclock="100000000"/>.
+Open the PDSC file and look at the Dcore entry named in the message. Either add the missing feature definition under that Dcore, or correct the spelling of the feature name so it matches a feature the Dcore actually defines. Then rerun packchk on the pack.
+
+## Note
+
+README does not document M605. The trigger condition is inferred from the message wording, not read from the source. Verify the exact check in PackChk_Msgs.cpp before relying on the fix.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:240`
-- `tools/packchk/src/ValidateSemantic.cpp:481-559`
-- `tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1284-1312`
-- `tools/packchk/test/data/ProcessorFeatures/TestVendor.ProcessorFeatures.pdsc:45-53`
+- `tools/packchk/src/PackChk_Msgs.cpp (message text M605 only; trigger lines not available)`

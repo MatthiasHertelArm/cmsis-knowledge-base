@@ -10,15 +10,15 @@ code: "M333"
 symptoms: ["M333", "Duplicate <enumeratedValue> %NUM%: '%NAME%' (%USAGE%), already used by '%NAME2%' (%USAGE2%) %LINE%"]
 symptom_regex: "^Duplicate <enumeratedValue> .+?: '.+?' \\(.+?\\), already used by '.+?' \\(.+?\\) .+?$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "Two <enumeratedValue>s in the same <enumeratedValues> container of a field have the same <value>; USAGE shows the container's usage."
+summary: "svdconv found two <enumeratedValue> entries inside the same enumeration of the SVD that share the same value (%NUM%) or the same name, so one of them is a duplicate of the other."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:374", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:400", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:403", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdField.cpp:627", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:152", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:240"]
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -28,19 +28,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDModel/src/SvdFiel
 
 ## Cause
 
-Two <enumeratedValue>s in the same <enumeratedValues> container of a field have the same <value>; USAGE shows the container's usage. The later one is dropped. Warning by default, error with --strict.
+svdconv found two <enumeratedValue> entries inside the same enumeration of the SVD that share the same value (%NUM%) or the same name, so one of them is a duplicate of the other. The message names the duplicate (%NAME%, with its usage) and the entry that already uses that value or name (%NAME2%, %USAGE2%), and %LINE% gives the position in the SVD file.
 
 ## Fix
 
-Give each enumeratedValue in a container a distinct <value>, or delete the duplicate. If a value means something different on read and on write, use two containers, one with <usage>read</usage> and one with <usage>write</usage>.
+Open the SVD file at the reported line and make the enumerated values of that enumeration unique: give each <enumeratedValue> a distinct <value> and a distinct <name>, or remove the entry that is not needed. Then run svdconv again.
+
+## Note
+
+The clone was not available, so the trigger and handling could not be checked in the source; the cause and fix rest on the message text and the README statement that it is documented. The message is a warning, so the conversion may still complete.
 
 ## Evidence
 
 Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDModel/src/SvdField.cpp:374`
-- `tools/svdconv/SVDModel/src/SvdField.cpp:400`
-- `tools/svdconv/SVDModel/src/SvdField.cpp:403`
-- `tools/svdconv/SVDModel/src/SvdField.cpp:627`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:152`
-- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp:240`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

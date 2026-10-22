@@ -10,16 +10,15 @@ code: "M370"
 symptoms: ["M370", "URL is not conformant: '%URL%':   Backslashes are not allowed in URL, use forward slashes."]
 symptom_regex: "^URL is not conformant: '.+?':   Backslashes are not allowed in URL, use forward slashes\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Use standard URL notation using forward slashes (/)."
-summary: "A path attribute or license entry in the PDSC holds a URL (http, https, ftp or ftps) that contains backslashes."
+summary: "The packchk tool found a URL in the PDSC (for example a release, license or other URL attribute) that contains a backslash character, which is not allowed in URL notation."
 cause_origin: "source-analysis"
 confidence: "medium"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:189", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/RteModelReader.cpp:52-67", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/ValidateSyntax.cpp:155-174", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:208"]
 ---
 
 ## Symptom
@@ -29,17 +28,12 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-A path attribute or license entry in the PDSC holds a URL (http, https, ftp or ftps) that contains backslashes.
+The packchk tool found a URL in the PDSC (for example a release, license or other URL attribute) that contains a backslash character, which is not allowed in URL notation. The variable %URL% is the offending URL string as written in the pack description.
 
 ## Fix
 
-Write the URL with forward slashes only.
+Open the PDSC file and replace every backslash in the reported URL with a forward slash, for example change https://example.com\docs\file.html to https://example.com/docs/file.html, then rerun packchk.
 
-## Evidence
+## Note
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
-
-- `tools/packchk/src/PackChk_Msgs.cpp:189`
-- `tools/packchk/src/RteModelReader.cpp:52-67`
-- `tools/packchk/src/ValidateSyntax.cpp:155-174`
-- `tools/packchk/README.md:208`
+Source lines were not available, so the trigger and handling are taken from the message text and the README only. The README cause matches the message text. The exact PDSC attribute that carries the URL is not confirmed.

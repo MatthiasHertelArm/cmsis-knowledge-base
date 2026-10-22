@@ -10,16 +10,16 @@ code: "M110"
 symptoms: ["M110", "Verifying RTE Model failed"]
 symptom_regex: "^Verifying RTE Model failed$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"
 doc_cause: "Contact Arm for clarifications"
-summary: "Validation of the RTE model built from the PDSC (and any -i reference PDSCs) found invalid items, for example a condition attribute that names an undefined condition."
+summary: "packchk reports M110 when verification of the RTE model of the pack fails, but the source lines for the trigger were not available, so the specific condition that causes it cannot be confirmed."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp:81", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/RteModelReader.cpp:142-154", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/RteModelReader.cpp:20-44", "Open-CMSIS-Pack/devtools@30f5e817:libs/rtemodel/src/RteItem.cpp:1048-1066", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1201-1247", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/test/data/CsolutionTag/TestVendor.CsolutionTag.pdsc:39", "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md:122"]
+confidence: "low"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -29,20 +29,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp
 
 ## Cause
 
-Validation of the RTE model built from the PDSC (and any -i reference PDSCs) found invalid items, for example a condition attribute that names an undefined condition. The details follow right after as 'RTE Model reports' messages (M500, M505, M506).
+packchk reports M110 when verification of the RTE model of the pack fails, but the source lines for the trigger were not available, so the specific condition that causes it cannot be confirmed. The README gives no cause beyond a pointer to contact Arm.
 
 ## Fix
 
-Work through the 'RTE Model reports' lines after M110 and fix each named element (define or correct the condition id, add the missing <processor>, remove duplicates); M110 goes away with them.
+Re-run packchk with the same pack and check the earlier messages in the same log for the component or condition that the RTE model check rejected; correct the reported component definitions in the PDSC and run packchk again.
+
+## Note
+
+Source lines were not available, so the trigger and handling are unverified; the fix is a generic check, not a source-confirmed remedy. The README cause is only a contact pointer, so the message text is the only confirmed content.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence low, not reviewed yet:
 
-- `tools/packchk/src/PackChk_Msgs.cpp:81`
-- `tools/packchk/src/RteModelReader.cpp:142-154`
-- `tools/packchk/src/RteModelReader.cpp:20-44`
-- `libs/rtemodel/src/RteItem.cpp:1048-1066`
-- `tools/packchk/test/integtests/src/PackChkIntegTests.cpp:1201-1247`
-- `tools/packchk/test/data/CsolutionTag/TestVendor.CsolutionTag.pdsc:39`
-- `tools/packchk/README.md:122`
+- `tools/packchk/src/PackChk_Msgs.cpp`

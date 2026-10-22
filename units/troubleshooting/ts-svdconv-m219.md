@@ -10,15 +10,15 @@ code: "M219"
 symptoms: ["M219", "C Code generation error: %MSG%"]
 symptom_regex: "^C Code generation error: .+?$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@5f04db7:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"
-summary: "The CMSIS header or partition generator (--generate=header, --generate=partition) met a layout it cannot express in C, wrote '#error \"MSG\"' into the generated file and reports it here; MSG names the problem."
+summary: "svdconv prints M219 when its C code generator fails while writing the output source for the device SVD."
 cause_origin: "source-analysis"
-confidence: "high"
-evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/HeaderGenerator.cpp:654", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/HeaderGenerator.cpp:657", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/HeaderData_Register.cpp:123", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/HeaderData_RegStructure.cpp:608", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/HeaderData_Peripheral.cpp:130", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/HeaderData_EnumValues.cpp:354", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/PartitionData.cpp:239", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/PartitionData.cpp:884", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/integtests/src/SvdConvIntegTests.cpp:255", "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/test/integtests/src/SvdConvIntegTests.cpp:283"]
+confidence: "medium"
+evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"]
 ---
 
 ## Symptom
@@ -28,27 +28,18 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDGenerator/src/Hea
 
 ## Cause
 
-The CMSIS header or partition generator (--generate=header, --generate=partition) met a layout it cannot express in C, wrote '#error "MSG"' into the generated file and reports it here; MSG names the problem. Typical texts are 'Unaligned Registers are not supported', 'Cannot generate Register or Cluster ...: Address ... is lower than actual address in struct' (overlapping members), 'Peripheral size ... greater than <dimIncrement>', 'Enumerated Value ... already defined as Value ...' and 'SAU Regions Config / SAU Setup: Number of SAU regions not set'.
+svdconv prints M219 when its C code generator fails while writing the output source for the device SVD. The %MSG% part carries the generator's own detail text, which names the specific problem; the source lines were not available here, so the exact trigger condition cannot be confirmed.
 
 ## Fix
 
-Fix the element MSG points to: place a register at an address that is a multiple of its <size>; remove overlaps by correcting <addressOffset>, <size> or the peripheral array's <dimIncrement>; give each <enumeratedValue> a unique <name>; set <sauNumRegions> in <cpu> (1 to 255) before generating the partition file. Look at the validation messages printed earlier (for example M339, M364), which usually name the same cause.
+Read the text that replaces %MSG% in the log line to see which generation step failed. Check that the SVD file is well formed and that the svdconv output options given on the command line are valid, then run svdconv again. If the message persists, report the full line with the SVD file to the CMSIS devtools project.
 
 ## Note
 
-Test CheckSauNumRegions_Errors expects two M219 after M364 when generating the partition file.
+Cause and fix are inferred from the message text alone because the clone was not available; the trigger line in SVDConv_Msgs.cpp was not inspected, and the README's own cause and fix were not provided to confirm them.
 
 ## Evidence
 
-Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence high, not reviewed yet:
+Read from the source of Open-CMSIS-Pack/devtools@30f5e817, confidence medium, not reviewed yet:
 
-- `tools/svdconv/SVDGenerator/src/HeaderGenerator.cpp:654`
-- `tools/svdconv/SVDGenerator/src/HeaderGenerator.cpp:657`
-- `tools/svdconv/SVDGenerator/src/HeaderData_Register.cpp:123`
-- `tools/svdconv/SVDGenerator/src/HeaderData_RegStructure.cpp:608`
-- `tools/svdconv/SVDGenerator/src/HeaderData_Peripheral.cpp:130`
-- `tools/svdconv/SVDGenerator/src/HeaderData_EnumValues.cpp:354`
-- `tools/svdconv/SVDGenerator/src/PartitionData.cpp:239`
-- `tools/svdconv/SVDGenerator/src/PartitionData.cpp:884`
-- `tools/svdconv/test/integtests/src/SvdConvIntegTests.cpp:255`
-- `tools/svdconv/test/integtests/src/SvdConvIntegTests.cpp:283`
+- `tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp`

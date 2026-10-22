@@ -6,7 +6,7 @@ title: "Test Suite Execution Environments"
 summary: "Ceedling, Unity, and CMock help you create and run test suites using any of the following approaches. For more on this topic, please see this [handy dandy article][tts-which-build] and/or follow the links for each item listed below."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/overview/test-environments.md"
+source: "ThrowTheSwitch/Ceedling@2c60022:docs/mkdocs/overview/test-environments.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/overview/test-environments/"
 license: "MIT"
 mode: "V"
@@ -39,5 +39,15 @@ item listed below.
    — believe it or not — this is often the option of last resort. That is,
    you should probably go with the other options in this list.
 
+!!! tip "Guide: Basic Porting (PDF)"
+    The [Ceedling Basic Porting Guide][porting-guide] compares simulator, native,
+    and on-target test builds in more depth, along with fitting Ceedling
+    to your toolchain.
+
+    Written in 2020, before Ceedling 1.0. Its concepts still apply, but some
+    configuration details may differ from this documentation, which takes
+    precedence.
+
 [tts-build-cross]: https://throwtheswitch.org/build/cross
 [tts-build-native]: https://throwtheswitch.org/build/native
+[porting-guide]: https://github.com/ThrowTheSwitch/Ceedling/blob/master/docs/Ceedling%20Basic%20Porting.pdf

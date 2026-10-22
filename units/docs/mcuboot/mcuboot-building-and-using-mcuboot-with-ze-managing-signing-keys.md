@@ -6,8 +6,8 @@ title: "Building and using MCUboot with Zephyr: Managing signing keys"
 summary: "The signing keys used by MCUboot are represented in standard formats, and can be generated and processed using conventional tools. However, scripts/imgtool.py is able to generate key pairs in all of the supported formats."
 status: "draft"
 collection: "mcuboot"
-source: "mcu-tools/mcuboot@ba2099f:docs/readme-zephyr.md"
-doc_source: "https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/readme-zephyr.md#managing-signing-keys"
+source: "mcu-tools/mcuboot@725d63c:docs/readme-zephyr.md"
+doc_source: "https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/readme-zephyr.md#managing-signing-keys"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -15,7 +15,7 @@ mode: "V"
 The signing keys used by MCUboot are represented in standard formats,
 and can be generated and processed using conventional tools.  However,
 `scripts/imgtool.py` is able to generate key pairs in all of the
-supported formats.  See [the docs](https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/imgtool.md) for more details on
+supported formats.  See [the docs](https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/imgtool.md) for more details on
 this tool.
 
 ### Generating a new keypair
@@ -28,7 +28,7 @@ subcommand:
 ```
 
 The argument to `-t` should be the desired key type.  See the
-[the docs](https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/imgtool.md) for more details on the possible key types.
+[the docs](https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/imgtool.md) for more details on the possible key types.
 
 ### Extracting the public key
 

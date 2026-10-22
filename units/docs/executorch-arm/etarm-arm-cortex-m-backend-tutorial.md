@@ -6,8 +6,8 @@ title: "Arm Cortex-M Backend: Tutorial"
 summary: "For cross-compilation and running on simulated hardware: - Arm GNU Toolchain for cross compilation. - Arm® Corstone™ SSE-300 FVP or SSE-320 FVP for simulation."
 status: "draft"
 collection: "executorch-arm"
-source: "pytorch/executorch@658390c:docs/source/backends/arm-cortex-m/arm-cortex-m-overview.md"
-doc_source: "https://github.com/pytorch/executorch/blob/658390c/docs/source/backends/arm-cortex-m/arm-cortex-m-overview.md#tutorial"
+source: "pytorch/executorch@6368414:docs/source/backends/arm-cortex-m/arm-cortex-m-overview.md"
+doc_source: "https://github.com/pytorch/executorch/blob/6368414/docs/source/backends/arm-cortex-m/arm-cortex-m-overview.md#tutorial"
 license: "BSD-3-Clause"
 mode: "V"
 ---
@@ -107,7 +107,7 @@ cmake --preset arm-baremetal \
   -DCMAKE_BUILD_TYPE=Release \
   -DEXECUTORCH_BUILD_DEVTOOLS=ON \
   -Bcmake-out-arm
-cmake --build cmake-out-arm --target install -j$(nproc)
+cmake --build cmake-out-arm --target install
 
 # Build the executor runner, linking the .pte into the binary
 cmake -DCMAKE_TOOLCHAIN_FILE=$(pwd)/examples/arm/ethos-u-setup/arm-none-eabi-gcc.cmake \
@@ -116,8 +116,10 @@ cmake -DCMAKE_TOOLCHAIN_FILE=$(pwd)/examples/arm/ethos-u-setup/arm-none-eabi-gcc
       -DTARGET_CPU=cortex-m55 \
       -Bbuild \
       examples/arm/executor_runner
-cmake --build build -j$(nproc) -- arm_executor_runner
+cmake --build build -- arm_executor_runner
 ```
+
+Adding `-j<N>` to `cmake --build` runs `<N>` jobs in parallel and tends to speed up the build significantly.
 
 Run on a simulated Cortex-M target:
 

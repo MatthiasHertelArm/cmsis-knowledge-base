@@ -6,8 +6,8 @@ title: "How to tune Elliptic Curves resource usage: `MBEDTLS_ECP_FIXED_POINT_OPT
 summary: "The first paragraph of the previous section said some multiples are precomputed just before computation, suggesting that they are discarded once the operation is done, and computed again for the next operation. This is true, but incomplete."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/how-do-i-tune-elliptic-curves-resource-usage.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/how-do-i-tune-elliptic-curves-resource-usage.md#mbedtls-ecp-fixed-point-optim"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/how-do-i-tune-elliptic-curves-resource-usage.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/how-do-i-tune-elliptic-curves-resource-usage.md#mbedtls-ecp-fixed-point-optim"
 license: "Apache-2.0"
 mode: "V"
 ---
