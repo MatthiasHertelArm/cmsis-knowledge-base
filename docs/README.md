@@ -35,5 +35,4 @@ on request.
 ## Historical design notes
 
 The former German design documents were removed from the current tree. Their source list also contains a
-future-source backlog that the current `sources/` manifests do not cover. The last version is in Git history:
-`git show f1bb74ff:docs/design/04_quellenliste.md`.
+future-source backlog that the current `sources/` manifests do not cover.
