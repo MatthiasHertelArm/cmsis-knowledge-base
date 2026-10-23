@@ -6,8 +6,8 @@ title: "ctrace Architecture: OpenCSD diagnostic callbacks"
 summary: "The callbacks remain complementary; no single callback reports every damaged-input condition."
 status: "draft"
 collection: "devtools-docs"
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/ctrace/docs/architecture.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/architecture.md#opencsd-diagnostic-callbacks"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/ctrace/docs/architecture.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/docs/architecture.md#opencsd-diagnostic-callbacks"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -33,7 +33,7 @@ until that operation's logger diagnostics have been emitted; a new operation
 clears it. No pointer into the producer's buffer is retained. Typed message data and packet
 context survive until output formatting. Verbose CLI preserves native detail and the bounded
 packet preview; normal CLI and CSV use the same compact category, cause and meaningful counts from the shared
-[message catalog](https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/message-system-design.md).
+[message catalog](https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/docs/message-system-design.md).
 
 Packet context renders stable `packet`, `packet_size`, `packet_bytes`, and `packet_bytes_truncated` fields. The preview
 contains at most 16 hexadecimal bytes with truncation marked outside the brackets. Unavailable bytes remain explicit.

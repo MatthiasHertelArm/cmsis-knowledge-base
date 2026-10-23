@@ -6,8 +6,8 @@ title: "Component Viewer — Architecture: Overview"
 summary: "At a high level, the Component Viewer consists of five layered subsystems:"
 status: "draft"
 collection: "cmsis-debugger"
-source: "Open-CMSIS-Pack/vscode-cmsis-debugger@28c1601:docs/component-viewer/README.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/blob/28c1601/docs/component-viewer/README.md#overview"
+source: "Open-CMSIS-Pack/vscode-cmsis-debugger@12cb62a:docs/component-viewer/README.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/blob/12cb62a/docs/component-viewer/README.md#overview"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -30,7 +30,7 @@ ComponentViewer  (component-viewer-main.ts)
 ### Subsystems
 
 | Subsystem | Key files | Responsibility |
-|-----------|-----------|----------------|
+| ----------- | ----------- | ---------------- |
 | **Controller** | `component-viewer-main.ts` | Orchestrates the lifecycle: activates the tree view, subscribes to debug events, creates instances, schedules debounced updates, manages lock/unlock. |
 | **Instance** | `component-viewer-instance.ts` | Owns one SCVD file. Parses the XML into a model, initialises the evaluation context and statement engine, then re-executes statements on every update to populate a fresh `ScvdGuiTree`. |
 | **Tree view** | `component-viewer-tree-view.ts` | VS Code `TreeDataProvider<ScvdGuiInterface>`. Receives roots from the controller (`setRoots`), tracks expand/collapse state, and provides items to VS Code for rendering. |

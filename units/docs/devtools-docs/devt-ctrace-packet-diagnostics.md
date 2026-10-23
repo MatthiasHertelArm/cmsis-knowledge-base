@@ -6,8 +6,8 @@ title: "ctrace: Packet diagnostics"
 summary: "CLI trace diagnostics are independent of event filters."
 status: "draft"
 collection: "devtools-docs"
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/ctrace/README.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/README.md#packet-diagnostics"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/ctrace/README.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/README.md#packet-diagnostics"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -70,4 +70,4 @@ and `..` intact.
 CSV diagnostic notes and default CLI wording intentionally change. Consumers that compare complete diagnostic
 strings must update those expectations. Columns, event types and filters are unchanged. Use `type` and `stream` for
 selection and `--verbose` for full diagnostic context. Internal message IDs are not additional CSV fields.
-See the [message-system design](https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/message-system-design.md) for catalog and parameter handling.
+See the [message-system design](https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/docs/message-system-design.md) for catalog and parameter handling.

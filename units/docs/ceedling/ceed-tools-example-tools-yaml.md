@@ -6,7 +6,7 @@ title: "`:tools`: Example `:tools` YAML"
 summary: "Resulting compiler command line construction from preceding example :tools YAML blurb…"
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/configuration/reference/tools.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/configuration/reference/tools.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/configuration/reference/tools/#example-tools-yaml"
 license: "MIT"
 mode: "V"
@@ -64,6 +64,11 @@ mode: "V"
   equivalents. However, this is highly impractical to do as preprocessing
   features are quite dependent on the idiosyncrasies and features of the GCC
   toolchain.
+
+* Whatever the tool, preprocessor output must keep its line markers. With
+  test preprocessing enabled, Ceedling refuses to start if `-P` or
+  `--no-line-commands` appears in the arguments of
+  `:test_file_full_preprocessor` or `:test_file_directives_only_preprocessor`.
 
 ### Example Test Compiler Tooling
 

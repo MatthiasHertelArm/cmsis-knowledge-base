@@ -6,8 +6,8 @@ title: "TensorFlow Lite for Microcontrollers Port of 16x8 Quantized Operators: D
 summary: "We propose that the 16x8 kernels are ported from the TensorFlow Lite reference kernels to TensorFlow Lite for Microcontrollers following the process in the Porting TensorFlow Lite Ops to Micro guide."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/rfc/002_16x8_quantization_port.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/rfc/002_16x8_quantization_port.md#design-proposal"
+source: "tensorflow/tflite-micro@f7ed40d:tensorflow/lite/micro/docs/rfc/002_16x8_quantization_port.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/f7ed40d/tensorflow/lite/micro/docs/rfc/002_16x8_quantization_port.md#design-proposal"
 license: "Apache-2.0"
 mode: "V"
 ---

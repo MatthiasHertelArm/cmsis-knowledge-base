@@ -6,7 +6,7 @@ title: "Generic OS migration from Armv7-M to Armv8-M architecture: List of requi
 summary: "Generic OS migration from Armv7-M to Armv8-M architecture: List of requirements"
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/integration_guide/os_migration_guide_armv8m.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/integration_guide/os_migration_guide_armv8m.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/integration_guide/os_migration_guide_armv8m.html#list-of-requirements"
 license: "BSD-3-Clause"
 mode: "V"

@@ -6,8 +6,8 @@ title: "How to put TLS keys into an external cryptoprocessor: Cryptographic data
 summary: "The start callbacks take a cert argument, which is a pointer to the server certificate used for the TLS connection."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/ssl_async.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/ssl_async.md#cryptographic-data-formats"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/ssl_async.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/ssl_async.md#cryptographic-data-formats"
 license: "Apache-2.0"
 mode: "V"
 ---

@@ -6,8 +6,8 @@ title: "Kconfig - Tips and Best Practices: \"Stuck\" symbols in menuconfig and g
 summary: "There is a common subtle gotcha related to interdependent configuration symbols with prompts. Consider these symbols:"
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/build/kconfig/tips.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/build/kconfig/tips.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/build/kconfig/tips.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/build/kconfig/tips.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

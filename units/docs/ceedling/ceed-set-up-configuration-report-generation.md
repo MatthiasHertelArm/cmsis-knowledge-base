@@ -6,7 +6,7 @@ title: "Set up & Configuration: Report generation"
 summary: "The next sections explain each of these steps."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/gcov/setup.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/plugins/gcov/setup.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/gcov/setup/#report-generation"
 license: "MIT"
 mode: "V"
@@ -82,7 +82,8 @@ are not exercised by any test. It takes one of three values:
     matchers can provide these. For GCov tasks, symbols and flags are extracted from
     the `:test` context beneath the `:defines` and `:flags` configuration sections 
     by default. If you need something special for coverage builds, use the `:gcov` 
-    context for these matchers instead.
+    context for these matchers instead. For an untested source, matchers match
+    against the source file's own path.
 
 Notes:
 

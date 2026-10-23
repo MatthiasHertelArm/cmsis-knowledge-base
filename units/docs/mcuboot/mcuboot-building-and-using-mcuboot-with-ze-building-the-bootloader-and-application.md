@@ -6,8 +6,8 @@ title: "Building and using MCUboot with Zephyr: Building the bootloader and appl
 summary: "Sysbuild is a CMake project in zephyr which allows for building multiple Zephyr images as part of a single build."
 status: "draft"
 collection: "mcuboot"
-source: "mcu-tools/mcuboot@ba2099f:docs/readme-zephyr.md"
-doc_source: "https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/readme-zephyr.md#building-the-bootloader-and-application-together-sysbuild"
+source: "mcu-tools/mcuboot@725d63c:docs/readme-zephyr.md"
+doc_source: "https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/readme-zephyr.md#building-the-bootloader-and-application-together-sysbuild"
 license: "Apache-2.0"
 mode: "V"
 ---

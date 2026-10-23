@@ -6,7 +6,7 @@ title: "Experimental Features: Trace / File Structure of `*.ctrace-run.yml`"
 summary: "The .ctrace-run.yml file starts with the node ctrace-run:. It is generated from .ctrace.yml, .cbuild-run.yml, and ELF/DWARF symbol information. This file is a generated artifact and should not be edited manually."
 status: "draft"
 collection: "cmsis-toolbox"
-source: "Open-CMSIS-Pack/cmsis-toolbox@6c04673:docs/Experimental-Features.md"
+source: "Open-CMSIS-Pack/cmsis-toolbox@3ce8307:docs/Experimental-Features.md"
 doc_source: "https://open-cmsis-pack.github.io/cmsis-toolbox/Experimental-Features/#file-structure-of-ctrace-run-yml"
 license: "Apache-2.0"
 mode: "V"
@@ -47,7 +47,7 @@ The `ref:` node references the trace generation configuration in the file `*.ctr
     `label:`                              |  Optional   | User-defined short label for Trace Compass
     `address:`                            |  Optional   | Resolved address for the setting. May be resolved from a symbol.
     `size:`                               |  Optional   | Size, in bytes, of the capture data. May be extracted from symbol information.
-    `symbol-file:`                        |  Optional   | Absolute path to the symbol file used in this reference.
+    `symbol-file:`                        |  Optional   | Path to the symbol file used in this reference, relative to `*.ctrace-run.yml`.
     `data-type:`                          |  Optional   | Type of displayed data: `unsigned`, `signed`, or `float`. Default: `unsigned`.
     `regs:`                               |  Optional   | Register setup.
 

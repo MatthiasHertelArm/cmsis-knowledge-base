@@ -6,7 +6,7 @@ title: "TF-M Internal Trusted Storage Service Integration Guide: Current ITS Ser
 summary: "TF-M Internal Trusted Storage Service Integration Guide: Current ITS Service Limitations"
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/integration_guide/services/tfm_its_integration_guide.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/integration_guide/services/tfm_its_integration_guide.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/integration_guide/services/tfm_its_integration_guide.html#current-its-service-limitations"
 license: "BSD-3-Clause"
 mode: "V"

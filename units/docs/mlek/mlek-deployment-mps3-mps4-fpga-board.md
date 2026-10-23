@@ -6,8 +6,8 @@ title: "Deployment: MPS3 + MPS4 FPGA board"
 summary: "Once the board has booted, the micro SD card is enumerated as a mass storage device. On most systems, this is automatically mounted. However, manual mounting is sometimes required."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/deployment.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/deployment.md#mps3-mps4-fpga-board"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/deployment.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/deployment.md#mps3-mps4-fpga-board"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -121,9 +121,9 @@ this size, you must use the approach described below.
 
     Note that the `boot.bin`, `itcm.bin`, `bram.bin` and `ddr.bin` files correspond to the part of the application
     residing in different load regions, as defined in the
-    [scatter file for sse-300](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../scripts/cmake/platforms/mps3/sse-300/mps3-sse-300.armclang.sct),
-    [scatter file for sse-310](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../scripts/cmake/platforms/mps3/sse-310/mps3-sse-310.armclang.sct) and
-    [scatter file for sse-320](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../scripts/cmake/platforms/mps4/sse-320/mps4-sse-320.armclang.sct).
+    [scatter file for sse-300](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../scripts/cmake/platforms/mps3/sse-300/mps3-sse-300.armclang.sct),
+    [scatter file for sse-310](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../scripts/cmake/platforms/mps3/sse-310/mps3-sse-310.armclang.sct) and
+    [scatter file for sse-320](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../scripts/cmake/platforms/mps4/sse-320/mps4-sse-320.armclang.sct).
 
 
 2. The `./bin/sectors/images.txt` file must be copied over to the MPS3. The exact location for the destination depends
@@ -241,4 +241,4 @@ this size, you must use the approach described below.
     ...
     ```
 
-The next section of the documentation details: [Implementing custom ML application](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/customizing.md).
+The next section of the documentation details: [Implementing custom ML application](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/customizing.md).

@@ -6,15 +6,15 @@ title: "Testing and benchmarking: Benchmarking"
 summary: "Profiling is enabled by default when configuring the project. Profiling enables you to display:"
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/testing_benchmarking.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/testing_benchmarking.md#benchmarking"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/testing_benchmarking.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/testing_benchmarking.md#benchmarking"
 license: "Apache-2.0"
 mode: "V"
 ---
 
 Profiling is enabled by default when configuring the project. Profiling enables you to display:
 
-- NPU event counters when the Arm® *Ethos™-U* NPU is enabled (see `ETHOS_U_NPU_ENABLED` in [Build options](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./building.md#build-options) )
+- NPU event counters when the Arm® *Ethos™-U* NPU is enabled (see `ETHOS_U_NPU_ENABLED` in [Build options](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./building.md#build-options) )
 
   - Total cycle: The number of NPU cycles
 
@@ -31,7 +31,7 @@ Profiling is enabled by default when configuring the project. Profiling enables 
    *Ethos-U* NPU reads the model. So, read-only.
 
 - If CPU profiling is enabled, the CPU cycle counts and the time elapsed, in milliseconds, for inferences performed. For
-  further information, please refer to the `CPU_PROFILE_ENABLED` in [Build options](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./building.md#build-options).
+  further information, please refer to the `CPU_PROFILE_ENABLED` in [Build options](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./building.md#build-options).
 
 > **Note:** Only do this when running on a physical FPGA board as the FVP does not contain a cycle-approximate or
 > cycle-accurate *Cortex-M* model.
@@ -61,4 +61,4 @@ INFO - NPU AXI0_WR_DATA_BEAT_WRITTEN beats: 135087
 INFO - Time ms: 210
 ```
 
-The next section of the documentation refers to: [Memory Considerations](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/memory_considerations.md).
+The next section of the documentation refers to: [Memory Considerations](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/memory_considerations.md).

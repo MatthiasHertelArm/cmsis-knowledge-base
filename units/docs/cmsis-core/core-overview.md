@@ -6,8 +6,8 @@ title: "Overview"
 summary: "The CMSIS-Core (Cortex-M) component implements the basic run-time system for Arm Cortex-M devices and gives the user access to the processor core and the device peripherals."
 status: "draft"
 collection: "cmsis-core"
-source: "ARM-software/CMSIS_6@26206e4:CMSIS/Documentation/Doxygen/Core/src/mainpage.md"
-doc_source: "https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Core/src/mainpage.md"
+source: "ARM-software/CMSIS_6@acf7392:CMSIS/Documentation/Doxygen/Core/src/mainpage.md"
+doc_source: "https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Core/src/mainpage.md"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -32,5 +32,5 @@ The following sections provide details about the CMSIS-Core (Cortex-M):
 \endif
  - cmsis_core_files describes the files of the CMSIS-Core (Cortex-M) in detail and explains how to adapt template files provided by Arm to silicon vendor devices.
  - coreMISRA_Exceptions_pg describes the violations to the MISRA standard.
- - [**API Reference**](https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Core/src/modules.html) describes the features and functions of the device_h_pg in detail.
- - [**Data Structures**](https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Core/src/annotated.html) describe the data structures of the device_h_pg in detail.
+ - [**API Reference**](https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Core/src/modules.html) describes the features and functions of the device_h_pg in detail.
+ - [**Data Structures**](https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Core/src/annotated.html) describe the data structures of the device_h_pg in detail.

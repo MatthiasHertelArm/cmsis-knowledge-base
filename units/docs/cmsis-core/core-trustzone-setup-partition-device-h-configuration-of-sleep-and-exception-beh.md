@@ -6,8 +6,8 @@ title: "TrustZone setup: partition_<Device>.h: Configuration of Sleep and Except
 summary: "TrustZone setup: partition_<Device>.h: Configuration of Sleep and Exception behaviour"
 status: "draft"
 collection: "cmsis-core"
-source: "ARM-software/CMSIS_6@26206e4:CMSIS/Documentation/Doxygen/Core/src/core_partition_device_h.md"
-doc_source: "https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Core/src/core_partition_device_h.md#configuration-of-sleep-and-exception-behaviour"
+source: "ARM-software/CMSIS_6@acf7392:CMSIS/Documentation/Doxygen/Core/src/core_partition_device_h.md"
+doc_source: "https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Core/src/core_partition_device_h.md#configuration-of-sleep-and-exception-behaviour"
 license: "Apache-2.0"
 mode: "V"
 ---

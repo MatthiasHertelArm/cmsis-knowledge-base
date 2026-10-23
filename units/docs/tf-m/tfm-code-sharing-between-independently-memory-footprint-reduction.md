@@ -6,7 +6,7 @@ title: "Code sharing between independently linked XIP binaries: Memory footprint
 summary: "Build type: MinSizeRel Platform: mps2/an521 Version: TF-Mv1.2.0 + code sharing patches MCUboot image encryption support is disabled."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/software/code_sharing.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/software/code_sharing.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/software/code_sharing.html#memory-footprint-reduction"
 license: "BSD-3-Clause"
 mode: "V"

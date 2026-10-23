@@ -6,8 +6,8 @@ title: "ctrace Architecture: Test architecture"
 summary: "Unit tests under test/unit/src mirror the production modules. Shared file, event, and diagnostic helpers live under test/unit/support. One CTest entry runs the complete GoogleTest executable and writes its XML report."
 status: "draft"
 collection: "devtools-docs"
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/ctrace/docs/architecture.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/architecture.md#test-architecture"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/ctrace/docs/architecture.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/docs/architecture.md#test-architecture"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -16,4 +16,4 @@ Unit tests under `test/unit/src` mirror the production modules. Shared file, eve
 `test/unit/support`. One CTest entry runs the complete GoogleTest executable and writes its XML report.
 
 Executable-level coverage and fixture ownership are documented next to the
-[integration tests](https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/../test/integration/README.md) and [test data](https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/../test/data/README.md).
+[integration tests](https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/docs/../test/integration/README.md) and [test data](https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/docs/../test/data/README.md).

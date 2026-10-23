@@ -6,8 +6,8 @@ title: "Additional Zephyr extension commands: Installing CMake packages: `west z
 summary: "This command registers the current Zephyr installation as a CMake config package in the CMake user package registry."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/develop/west/zephyr-cmds.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/develop/west/zephyr-cmds.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/develop/west/zephyr-cmds.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/develop/west/zephyr-cmds.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

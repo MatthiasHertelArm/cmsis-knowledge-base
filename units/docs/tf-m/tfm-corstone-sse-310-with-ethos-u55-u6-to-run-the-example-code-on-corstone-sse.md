@@ -6,7 +6,7 @@ title: "Corstone SSE-310 with Ethos-U55/U65 Example Subsystem for Arm Ecosystem 
 summary: "FPGA image is available to download here"
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/platform/arm/mps3/corstone310/README.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/platform/arm/mps3/corstone310/README.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/platform/arm/mps3/corstone310/.html#to-run-the-example-code-on-corstone-sse-310-with-ethos-u55-u65-example-subsystem"
 license: "BSD-3-Clause"
 mode: "V"

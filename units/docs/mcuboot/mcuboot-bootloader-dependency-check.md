@@ -6,8 +6,8 @@ title: "Bootloader: Dependency check"
 summary: "MCUboot can handle multiple firmware images. It is possible to update them independently but in many cases it can be desired to be able to describe dependencies between the images (e.g. to ensure API compliance and avoid interoperability issues)."
 status: "draft"
 collection: "mcuboot"
-source: "mcu-tools/mcuboot@ba2099f:docs/design.md"
-doc_source: "https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/design.md#dependency-check"
+source: "mcu-tools/mcuboot@725d63c:docs/design.md"
+doc_source: "https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/design.md#dependency-check"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -32,4 +32,4 @@ least 1 valid configuration. In worst case, the system returns to the initial
 state after dependency check.
 
 For more information on adding dependency entries to an image,
-see: [imgtool](https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/imgtool.md).
+see: [imgtool](https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/imgtool.md).

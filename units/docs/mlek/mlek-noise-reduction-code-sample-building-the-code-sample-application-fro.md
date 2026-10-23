@@ -6,8 +6,8 @@ title: "Noise Reduction Code Sample: Building the code sample application from s
 summary: "In addition to the already specified build option in the main documentation, keyword spotting use case adds:"
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/use_cases/noise_reduction.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/noise_reduction.md#building-the-code-sample-application-from-sources"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/use_cases/noise_reduction.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/noise_reduction.md#building-the-code-sample-application-from-sources"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -48,12 +48,12 @@ case adds:
   neural network model. By default, it is set to 2MiB.
 
 To **ONLY** build a `noise_reduction` example application, add `-DUSE_CASE_BUILD=noise_reduction`
-  (as specified in [Building](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../documentation.md#Building) to the `cmake` command line).
+  (as specified in [Building](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../documentation.md#Building) to the `cmake` command line).
 
 ### Build process
 
 > **Note:** This section describes the process for configuring the build for `MPS3: SSE-300`. To
-> configure a different target platform, please see the [Building](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../documentation.md#Building)
+> configure a different target platform, please see the [Building](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../documentation.md#Building)
 > section.
 
 To **only** build the `noise_reduction` example, create a build directory, and then navigate inside.
@@ -82,9 +82,9 @@ cmake .. \
 
 For more notes, please refer to:
 
-- [Configuring with custom TPIP dependencies](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../sections/building.md#configuring-with-custom-tpip-dependencies)
-- [Using Arm Compiler](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../sections/building.md#using-arm-compiler)
-- [Building for different Ethos-U variants](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../sections/building.md#building-for-different-ethos_u-npu-variants)
+- [Configuring with custom TPIP dependencies](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../sections/building.md#configuring-with-custom-tpip-dependencies)
+- [Using Arm Compiler](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../sections/building.md#using-arm-compiler)
+- [Building for different Ethos-U variants](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../sections/building.md#building-for-different-ethos_u-npu-variants)
 
 > **Note:** If you are rebuilding with changed parameters values, it is highly advised that you
 > clean the build directory and rerun the CMake command.
@@ -147,7 +147,7 @@ The application performs inference using the model pointed to by the CMake param
 > **Note:** If you want to run the model using *Ethos-U* ensure that your custom model has been
 > run through the Vela compiler successfully before continuing.
 
-For further information: [Optimize model with Vela compiler](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../sections/building.md#optimize-custom-model-with-vela-compiler).
+For further information: [Optimize model with Vela compiler](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../sections/building.md#optimize-custom-model-with-vela-compiler).
 
 An example:
 
@@ -159,7 +159,7 @@ cmake .. \
 
 > **Note** Changing the neural network model often also requires the pre-processing implementation
 > to be changed. Please refer to:
-> [How the default neural network model works](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/./noise_reduction.md#how-the-default-neural-network-model-works).
+> [How the default neural network model works](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/./noise_reduction.md#how-the-default-neural-network-model-works).
 >
 > **Note:** Before re-running the CMake command, clean the build directory.
 

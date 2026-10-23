@@ -6,8 +6,8 @@ title: "Troubleshooting: No matching distribution found for Vela"
 summary: "Vela 3.9.0 increases Python requirement to at least version 3.9, if not installed on your system the following error will occur:"
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/troubleshooting.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/troubleshooting.md#no-matching-distribution-found-for-vela"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/troubleshooting.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/troubleshooting.md#no-matching-distribution-found-for-vela"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -107,4 +107,4 @@ python3 --version
 >   Python 3.10.0
 >   ```
 
-Next section of the documentation: [Appendix](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/appendix.md).
+Next section of the documentation: [Appendix](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/appendix.md).

@@ -6,8 +6,8 @@ title: "Kconfig - Tips and Best Practices: Checking changes with `scripts/kconfi
 summary: "After you make Kconfig changes, you can use the scripts/kconfig/lint.py script to check for some potential issues, like unused symbols and symbols that are impossible to enable. Use --help to see available options."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/build/kconfig/tips.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/build/kconfig/tips.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/build/kconfig/tips.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/build/kconfig/tips.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

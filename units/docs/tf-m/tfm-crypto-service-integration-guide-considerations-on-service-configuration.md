@@ -6,7 +6,7 @@ title: "Crypto Service Integration Guide: Considerations on service configuratio
 summary: "The TF-M Crypto service relies on a cryptographic library to provide the functionalities specific by the PSA Crypto API spec and the PSA cryptoprocessor driver interface spec. At the moment, the only supported library is TF-PSA-Crypto [3]."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/integration_guide/services/tfm_crypto_integration_guide.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/integration_guide/services/tfm_crypto_integration_guide.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/integration_guide/services/tfm_crypto_integration_guide.html#considerations-on-service-configuration"
 license: "BSD-3-Clause"
 mode: "V"

@@ -6,8 +6,8 @@ title: "CMSIS Developer Assistant tool contract"
 summary: "The rules that keep agents on the MCP tools instead of pyOCD, GDB, cbuild or a serial terminal in the shell, and the shell commands with the tool that replaces each (#50)."
 status: "draft"
 collection: "cda-guides"
-source: "Open-CMSIS-Pack/CMSIS-Developer-Assistant@7db44ba:docs/agent-resources/tool-contract.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/CMSIS-Developer-Assistant/blob/7db44ba/docs/agent-resources/tool-contract.md"
+source: "Open-CMSIS-Pack/CMSIS-Developer-Assistant@29d444c:docs/agent-resources/tool-contract.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/CMSIS-Developer-Assistant/blob/29d444c/docs/agent-resources/tool-contract.md"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -21,7 +21,7 @@ replaces each (#50). This file is the only place they are written:
   into the bundled skills `cmsis-debug-live`, `cmsis-pack-docs`,
   `add-board-layer` and `cmsis-help`, and into `debug_instructions.md`.
   `src/test/toolContract.test.ts` fails when a copy differs.
-- *Configure Agents and Skills* offers to write the rules block into the
+- *Configure Agent* offers to write the rules block into the
   agents' rule files (`CLAUDE.md`, `AGENTS.md`, …), each change previewed,
   and activation brings the blocks it wrote up to date
   (`src/core/agentRules.ts`).

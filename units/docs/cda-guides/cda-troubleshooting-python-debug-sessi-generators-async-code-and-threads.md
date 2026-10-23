@@ -6,8 +6,8 @@ title: "Troubleshooting Python debug sessions: Generators, async code and thread
 summary: "Troubleshooting Python debug sessions: Generators, async code and threads"
 status: "draft"
 collection: "cda-guides"
-source: "Open-CMSIS-Pack/CMSIS-Developer-Assistant@7db44ba:docs/agent-resources/troubleshooting/python.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/CMSIS-Developer-Assistant/blob/7db44ba/docs/agent-resources/troubleshooting/python.md#generators-async-code-and-threads"
+source: "Open-CMSIS-Pack/CMSIS-Developer-Assistant@29d444c:docs/agent-resources/troubleshooting/python.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/CMSIS-Developer-Assistant/blob/29d444c/docs/agent-resources/troubleshooting/python.md#generators-async-code-and-threads"
 license: "Apache-2.0"
 mode: "V"
 ---

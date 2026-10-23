@@ -6,7 +6,7 @@ title: "Experimental Features: Trace / File Structure of `*.ctrace.yml`"
 summary: "The .ctrace.yml file starts with the node ctrace: and contains the trace capture settings for one solution-set."
 status: "draft"
 collection: "cmsis-toolbox"
-source: "Open-CMSIS-Pack/cmsis-toolbox@6c04673:docs/Experimental-Features.md"
+source: "Open-CMSIS-Pack/cmsis-toolbox@3ce8307:docs/Experimental-Features.md"
 doc_source: "https://open-cmsis-pack.github.io/cmsis-toolbox/Experimental-Features/#file-structure-of-ctrace-yml"
 license: "Apache-2.0"
 mode: "V"
@@ -29,7 +29,7 @@ The `*.ctrace.yml` file starts with the node `ctrace:` and contains the trace ca
 `- pname:`                                                |  Optional   | Section applies to a processor name (required for multi-processor systems).
     `disable:`                             |  Optional   | When set, this list node is ignored; useful for testing.
     [`timestamps:`](#timestamps)           |  Optional   | Enables timestamps in the emitted trace streams.
-    [`timesync:`](#timesync)               |  Optional   | Enables time synchronization between trace streams.
+    [`timesync:`](#timesync)               |  Optional   | Configures time synchronization between trace streams.
     [`data:`](#data)                       |  Optional   | DWT data trace configuration.
     [`exceptions:`](#exceptions)           |  Optional   | DWT exception trace configuration.
     [`events:`](#events)                   |  Optional   | DWT or PMU event trace configuration.
@@ -50,6 +50,7 @@ ctrace:
       timestamps:
         clock: 24000000
       timesync:
+        ITM: 8192
 
       data:
         - location: mysimple
@@ -89,7 +90,13 @@ The timestamp `clock` typically is the processor clock.
 
 #### `timesync:`
 
-When `timesync:` is present, time synchronization between streams is enabled, for example between ITM and ETM by global timestamps.
+The `timesync:` node controls insertion of global timestamps into ITM trace streams for correlation across processors. This requires a timestamp generator on the device, configured with the trace communication settings in `*.csolution.yml` and optionally `*.dbgconf`.
+
+`timesync:`                         |             | Content
+:-----------------------------------|:------------|:------------------------------------
+`ITM:`                              |  Optional   | Global timestamp mode: `off` (default), `packet`, `128`, or `8192`.
+
+With `packet`, the ITM generates a timestamp after each trace packet if its output FIFO is empty. With `128` or `8192`, the ITM requests a global timestamp approximately every 128 or 8192 global timestamp clock cycles.
 
 #### `data:`
 
@@ -179,12 +186,9 @@ The `synchronization:` node specifies behavior and frequency of synchronization 
 `DWT:`                                |  Optional   | Frequency `off`, `16M`, `64M`, `256M` processor cycles. Default: `16M`.
 `sync-on-run:`                        |  Optional   | Explicitly request synchronization packets at start of a step or run. Supported values: `true` (default) and `false`.
 
-`sync-on-run:` is preserved in `*.ctrace-run.yml` under `ctrace-setup:` so that pyOCD can apply the requested synchronization behavior. It only applies to trace sources with enabled synchronization and that do not always insert synchronization packets at start of a step or run. A debugger must request the packets as follows:
+`sync-on-run:` is preserved in `*.ctrace-run.yml` under `ctrace-setup:` so that pyOCD can apply the requested synchronization behavior. It only applies to trace sources with enabled synchronization and that do not always insert synchronization packets at start of a step or run.
 
-Architecture | DWT/ITM Request
-:---------------------|:--------
-Armv7-M | Debugger toggles bits 24, 26, and 28 of DWT_CYCCNT twice between setting up trace capture and start of processor step/run. These are the bits selectable by DWT_CTRL.SYNCTAP. The second toggle restores the original cycle counter value. Do not toggle other bits to avoid side effects.
-Armv8-M | N/A, processor always automatically inserts at start of step/run
+The debugger requests DWT/ITM synchronization packets by toggling bits 24, 26, and 28 of `DWT_CYCCNT` twice after setting up trace capture and before a processor step or run. These are the bits selectable by `DWT_CTRL.SYNCTAP`. The second toggle restores the original cycle counter value. Do not toggle other bits to avoid side effects.
 
 **Example:**
 
@@ -196,7 +200,7 @@ synchronization:
 
 #### `instructions:`
 
-The `instructions:` node is reserved for ETM and MTB instruction trace. It is not required for the initial implementation.
+The `instructions:` node enables ETM or MTB instruction trace. It is not required for the initial implementation.
 
 `instructions:`                       |             | Content
 :-------------------------------------|:------------|:------------------------------------

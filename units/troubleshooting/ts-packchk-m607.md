@@ -10,7 +10,7 @@ code: "M607"
 symptoms: ["M607", "Tag '%TAG%' does not allow wildcard specification: '%NAME%'"]
 symptom_regex: "^Tag '.+?' does not allow wildcard specification: '.+?'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"

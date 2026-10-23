@@ -6,8 +6,8 @@ title: "Using MLEK as a dependency: Guidelines"
 summary: "The use case APIs consist of: - common component - required for all use cases."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/mlek_as_a_dependency.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/mlek_as_a_dependency.md#guidelines"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/mlek_as_a_dependency.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/mlek_as_a_dependency.md#guidelines"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -16,18 +16,18 @@ mode: "V"
 
 The use case APIs consist of:
 - `common` component - required for all use cases. This is available as a
-  [CMake project](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../source/lib/mlek/common/CMakeLists.txt) that depends on:
+  [CMake project](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../source/lib/mlek/common/CMakeLists.txt) that depends on:
   - Following CMake target libraries:
-    - [log](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../source/lib/mlek/log/readme.md)
-    - [arm_math](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../source/lib/mlek/math/readme.md)
+    - [log](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../source/lib/mlek/log/readme.md)
+    - [arm_math](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../source/lib/mlek/math/readme.md)
 - `fwk` component - abstraction layer over the underlying ML framework - TensorFlow Lite Micro or ExecuTorch.
-  This is available as a [CMake project](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../source/lib/mlek/fwk/CMakeLists.txt) that depends on *either*:
-    - [tensorflow-lite-micro](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../scripts/cmake/tensorflow_lite_micro.cmake): this is a third-party dependency and the
+  This is available as a [CMake project](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../source/lib/mlek/fwk/CMakeLists.txt) that depends on *either*:
+    - [tensorflow-lite-micro](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../scripts/cmake/tensorflow_lite_micro.cmake): this is a third-party dependency and the
       project wrapping MLEK could provide its own variant.
-    - [executorch](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../scripts/cmake/executorch.cmake): this is a third-party dependency and the
+    - [executorch](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../scripts/cmake/executorch.cmake): this is a third-party dependency and the
       project wrapping MLEK could provide its own variant.
 - `use case specific APIs` are individual CMake projects in
-  [source/lib/mlek/use_case](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../source/lib/mlek/use_case) subdirectories. These will only depend on
+  [source/lib/mlek/use_case](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../source/lib/mlek/use_case) subdirectories. These will only depend on
   the `common` target, which also brings in its dependencies listed above.
 
 To use these components, developers can either use MLEK as a submodule or fetch the project at configuration stage.
@@ -101,18 +101,18 @@ targets too. For example, image classification pipeline will configure following
 
 ### Wrapping the complete project
 
-The top level [CMakeLists.txt](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../CMakeLists.txt) file expects certain common options to have been defined and the
+The top level [CMakeLists.txt](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../CMakeLists.txt) file expects certain common options to have been defined and the
 toolchain file to be set. For the default behaviour, the top level project could add this as a CMake subdirectory
 without issues. However, if certain options need to be overridden or environment needs to be set up differently, we
-recommend to include [MlekModule.cmake](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../MlekModule.cmake) file first and modifying the required cache variables
+recommend to include [MlekModule.cmake](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../MlekModule.cmake) file first and modifying the required cache variables
 before adding this project using `add_subdirectory` function.
 
 Let's say there is a new project that wants to add support for a new hardware target. This new project contains the
 required `build_configuration.cmake` file along with associated source files providing the `platform_drivers` API to
 HAL.
 
-> **NOTE**: Please read [Repository Structure](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../docs/documentation.md#repository-structure) and
-> [Adding custom platform support](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../docs/sections/customizing.md#adding-custom-platform-support) for actual
+> **NOTE**: Please read [Repository Structure](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../docs/documentation.md#repository-structure) and
+> [Adding custom platform support](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../docs/sections/customizing.md#adding-custom-platform-support) for actual
 > guidance on adding a new target platform. This section just provides an example from a wrapping perspective.
 
 For a directory structure like:
@@ -160,6 +160,6 @@ add_subdirectory(tests)
 
 Another scenario, for wrapping the complete project, is prototyping or adding new use-cases and re-use platform support
 this repository provides. In such cases or generally where downloading additional (or different) resources may be
-needed, the top level [set_up_default_resources.py](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../set_up_default_resources.py) provides an optional
+needed, the top level [set_up_default_resources.py](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../set_up_default_resources.py) provides an optional
 `--use-case-resources-file` argument that can be used to point to a new json file that lists the required files.
-See more on this script's arguments [here](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./building.md#fetching-resource-files).
+See more on this script's arguments [here](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./building.md#fetching-resource-files).

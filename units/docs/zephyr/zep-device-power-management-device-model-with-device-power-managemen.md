@@ -6,8 +6,8 @@ title: "Device Power Management: Device Model with Device Power Management Suppo
 summary: "Drivers initialize devices using macros. See device_model_api for details on how these macros are used. A driver which implements device power management support must provide these macros with arguments that describe its power management implementation."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/services/pm/device.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/services/pm/device.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/services/pm/device.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/services/pm/device.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

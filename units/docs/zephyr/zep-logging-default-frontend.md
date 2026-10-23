@@ -6,8 +6,8 @@ title: "Logging: Architecture / Default Frontend"
 summary: "The default frontend is engaged when the logging API is called by a source of logging (e.g."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/services/logging/index.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/services/logging/index.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/services/logging/index.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/services/logging/index.rst"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -46,11 +46,9 @@ A log message has the following format:
 |                  +----------------------------------------------------+
 |                  | 3 bits: Level                                      |
 |                  +----------------------------------------------------+
-|                  | 10 bits: Cbprintf Package Length                   |
+|                  | 11 bits: Cbprintf Package Length                   |
 |                  +----------------------------------------------------+
 |                  | 12 bits: Data length                               |
-|                  +----------------------------------------------------+
-|                  | 1 bit: Reserved                                    |
 |                  +----------------------------------------------------+
 |                  | pointer: Pointer to the source descriptor [#l0]_   |
 |                  +----------------------------------------------------+

@@ -6,8 +6,8 @@ title: "Mbed TLS automated testing and quality assurance: Test details"
 summary: "We have our own test framework for running these tests, which combines generic test functions with specific test values. The build system generates parsing-test applications, such as test_suite_aes.ecb, and runs them with the different test case inputs available."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/generic/what-tests-and-checks-are-run-for-polarssl.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/generic/what-tests-and-checks-are-run-for-polarssl.md#test-details"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/generic/what-tests-and-checks-are-run-for-polarssl.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/generic/what-tests-and-checks-are-run-for-polarssl.md#test-details"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -36,7 +36,7 @@ AES-256-ECB Decrypt NIST KAT #12 .................................. PASS
 PASSED (77 / 77 tests (0 skipped))
 ```
 
-More information on the test suites and how to add more tests can be found in [this article](https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/generic/../development/test_suites.md).
+More information on the test suites and how to add more tests can be found in [this article](https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/generic/../development/test_suites.md).
 
 ### Interoperability testing
 Because our test vectors can only test individual functions, we also run interoperability tests to check live SSL connections against OpenSSL and GnuTLS.

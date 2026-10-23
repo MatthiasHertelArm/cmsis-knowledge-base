@@ -6,8 +6,8 @@ title: "Entropy collection, random generation with threads: Random generators an
 summary: "The random generators themselves, like CTR-DRBG, do not require new entropy every time they are called."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/development/entropy-collection-and-random-generation-in-threaded-environment.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/development/entropy-collection-and-random-generation-in-threaded-environment.md#random-generators-and-entropy"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/development/entropy-collection-and-random-generation-in-threaded-environment.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/development/entropy-collection-and-random-generation-in-threaded-environment.md#random-generators-and-entropy"
 license: "Apache-2.0"
 mode: "V"
 ---

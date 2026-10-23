@@ -6,8 +6,8 @@ title: "How to put TLS keys into an external cryptoprocessor: Using private key 
 summary: "Private key operation callbacks are split in two steps: start and resume. This allows the server to remain non-blocking even if calls to the external cryptoprocessor are blocking."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/ssl_async.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/ssl_async.md#using-private-key-operation-callbacks-asynchonously"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/ssl_async.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/ssl_async.md#using-private-key-operation-callbacks-asynchonously"
 license: "Apache-2.0"
 mode: "V"
 ---

@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["generator '<…>' was not found"]
 symptom_regex: "^generator '.+?' was not found$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5113"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrWorker.cpp:5113"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["'<…>' is not a valid command. See 'csolution --help'."]
 symptom_regex: "^'.+?' is not a valid command\\. See 'csolution \\-\\-help'\\.$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:109"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgr.cpp:109"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

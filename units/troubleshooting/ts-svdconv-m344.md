@@ -10,8 +10,8 @@ code: "M344"
 symptoms: ["M344", "Register '%NAME%' (@%ADDRSIZE%) is outside or does not fit any <addressBlock> specified for Peripheral '%NAME2%' %TEXT%"]
 symptom_regex: "^Register '.+?' \\(@.+?\\) is outside or does not fit any <addressBlock> specified for Peripheral '.+?' .+?$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"

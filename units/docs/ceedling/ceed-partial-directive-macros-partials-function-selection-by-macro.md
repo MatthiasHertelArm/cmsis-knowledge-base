@@ -6,7 +6,7 @@ title: "Partial Directive Macros: Partials function-selection by macro"
 summary: "Each test or mock Partial is independently configured by exactly one MODULE macro call. The macro determines the base set of functions that Ceedling collects towards generating a Partial."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/testing-guide/partials/directives.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/testing-guide/partials/directives.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/testing-guide/partials/directives/#partials-function-selection-by-macro"
 license: "MIT"
 mode: "V"
@@ -28,6 +28,10 @@ listing each function individually.
 * `[TEST/MOCK]_PARTIAL_PUBLIC_MODULE()`
 * `[TEST/MOCK]_PARTIAL_PRIVATE_MODULE()`
 * `[TEST/MOCK]_PARTIAL_MODULE()`
+
+Each has an `_AT` variant taking the module’s directory, documented in
+[Naming a module by directory](#naming-a-module-by-directory). The filter and
+the function-list rules below apply identically to both forms.
 
 | Macro | Base set of functions | Additions | Subtractions |
 |---:|---|---|---|
@@ -52,7 +56,8 @@ listing each function individually.
 * `*_PARTIAL_ALL_MODULE` with no subtractions adds every module function to
   base set of functions.
 * Each module can appear in **at most one** `TEST_PARTIAL_*_MODULE` and 
-  `MOCK_PARTIAL_*_MODULE` macro within a given test file.
+  `MOCK_PARTIAL_*_MODULE` macro within a given test file. Two same-named modules
+  in different directories are two modules, and each may have its own pair.
 
 ### Partials function list configuration macros
 

@@ -9,7 +9,7 @@ severity: "warning"
 symptoms: ["access sequence pack was not loaded: '$Pack(<…>)$'"]
 symptom_regex: "^access sequence pack was not loaded: '\\$Pack\\(.+?\\)\\$'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3703"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrWorker.cpp:3703"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

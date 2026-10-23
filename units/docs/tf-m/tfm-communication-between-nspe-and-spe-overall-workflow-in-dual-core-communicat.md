@@ -6,7 +6,7 @@ title: "Communication Between NSPE And SPE In Dual Core System: Overall workflow
 summary: "The overall workflow in dual-core scenario can be described as follows"
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/multi-cpu/communication_between_nspe_and_spe_in_dual_core_systems.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/multi-cpu/communication_between_nspe_and_spe_in_dual_core_systems.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/multi-cpu/communication_between_nspe_and_spe_in_dual_core_systems.html#overall-workflow-in-dual-core-communication"
 license: "BSD-3-Clause"
 mode: "V"

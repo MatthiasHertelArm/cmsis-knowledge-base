@@ -3,17 +3,16 @@ id: "ceed-cppcheck-configuration"
 type: "concept"
 domain: "test"
 title: "Cppcheck: Configuration"
-summary: "Add cppcheck section to your project.yml specifying configuration options. e.g:"
+summary: "All settings live in a top-level :cppcheck section of your project file."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/cppcheck.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/plugins/cppcheck.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/cppcheck/#configuration"
 license: "MIT"
 mode: "V"
 ---
 
-Add `cppcheck` section to your `project.yml` specifying configuration options.
-e.g:
+All settings live in a top-level `:cppcheck` section of your project file.
 
 ```yaml
 :cppcheck:
@@ -23,16 +22,14 @@ e.g:
     - misra
 ```
 
-### Reports
+### `:reports:`
 
-Four types of reports are available:
+The report formats to produce. Each entry costs its own analysis pass.
 
-- html
-- sarif
-- text
-- xml (v2 and v3)
-
-They can be enabled by listing them on the `:reports` list:
+* `html` — Browsable HTML. Requires `cppcheck-htmlreport` and implies `xml`.
+* `sarif` — SARIF, consumed by many code-scanning dashboards.
+* `text` — Plain text.
+* `xml` — Cppcheck's own XML schema.
 
 ```yaml
 :cppcheck:
@@ -41,71 +38,140 @@ They can be enabled by listing them on the `:reports` list:
     - html
 ```
 
-#### HTML
+**Default:** `[]` (no reports, so `cppcheck:all` analyzes nothing and says so)
 
-HTML title can be configured:
+### `:fail_build:`
+
+When `true`, findings matching [`:fail_build_severities:`](#fail_build_severities)
+fail the build. Enabling this implies the `xml` report, because findings are
+counted from Cppcheck's own XML output.
+
+```yaml
+:cppcheck:
+  :fail_build: true
+```
+
+**Default:** `false`
+
+Cppcheck exits successfully even when it finds defects, so without this setting
+a `cppcheck:all` run can never fail a CI build.
+
+### `:fail_build_severities:`
+
+Which finding severities fail the build when
+[`:fail_build:`](#fail_build) is enabled. Valid values are `error`, `warning`,
+`style`, `performance`, `portability`, and `information`. An unrecognized value
+is rejected when the plugin loads.
+
+```yaml
+:cppcheck:
+  :fail_build_severities:
+    - error
+    - warning
+```
+
+**Default:** `[error]`
+
+!!! tip "Why not every severity by default"
+    Whole project analysis always runs with `--enable=all`, so a typical run
+    reports many `style` and `information` findings. Failing on all of them
+    would make this setting impractical on most projects.
+
+### `:html_title:`
+
+Title shown in the HTML report.
 
 ```yaml
 :cppcheck:
   :html_title: Awesome Project
 ```
 
-*Notes:*
+**Default:** unset
 
-- This report requires the `cppcheck-htmlreport` tool to be available.
-- This report implies the `xml` report.
+### `:sarif_artifact_filename:`
 
-#### Sarif
-
-Artifact file can be configured:
+Filename for the SARIF report.
 
 ```yaml
 :cppcheck:
   :sarif_artifact_filename: CppcheckResults.sarif
 ```
 
-#### Text
+**Default:** `CppcheckReport.sarif`
 
-Artifact file and output format can be configured:
+### `:text_artifact_filename:`
+
+Filename for the text report.
 
 ```yaml
 :cppcheck:
   :text_artifact_filename: CppcheckResults.txt
+```
+
+**Default:** `CppcheckReport.txt`
+
+### `:template:`
+
+Output format for the text report. Accepts any template name Cppcheck ships
+with, such as `gcc`, or a custom format string.
+
+```yaml
+:cppcheck:
   :template: gcc
 ```
 
-`:template` can be any of the ones included with Cppcheck or custom format string.
+**Default:** unset (Cppcheck's own default)
 
-#### XML
+### `:xml_artifact_filename:`
 
-Artifact file and XML version can be configured:
+Filename for the XML report.
 
 ```yaml
 :cppcheck:
   :xml_artifact_filename: CppcheckResults.xml
-  :xml_report_version: 2
 ```
 
-### Import project file
+**Default:** `CppcheckReport.xml`
 
-You can import some project files and build configurations into Cppcheck.
-Some of compatible files are:
+### `:xml_report_version:`
 
-- Cppcheck GUI project (\*.cppcheck)
-- Compile Commands (compile_commands.json)
-- Visual Studio projects (\*.vcxproj, \*.sln)
+Cppcheck XML schema version. Accepts `2` or `3`.
+
+```yaml
+:cppcheck:
+  :xml_report_version: 3
+```
+
+**Default:** `2`
+
+!!! warning "Version 3 requires a newer Cppcheck"
+    Older Cppcheck releases reject `--xml-version=3` outright and fail the
+    build. Version 2 is accepted by every release. Both versions carry the same
+    severity information, so this plugin's finding counts work with either.
+
+### `:project:`
+
+Import a project file and let Cppcheck discover sources and include paths
+itself. Compatible files include Cppcheck GUI projects (`*.cppcheck`),
+compilation databases (`compile_commands.json`), and Visual Studio projects
+(`*.vcxproj`, `*.sln`).
 
 ```yaml
 :cppcheck:
   :project: path/to/compile_commands.json
 ```
 
-*Note: If configured, Cppcheck won't look for sources and includes paths from*
-*_Ceedling_ configuration files.*
+**Default:** unset
 
-### Preprocessor defines
+!!! note "What `:project:` does and does not replace"
+    Setting this stops the plugin passing Ceedling's own source and include
+    path collections. Every other setting in this section still applies.
+    `:defines:`, `:includes:`, `:excludes:`, `:suppressions:`, `:addons:`, and
+    the rest are all still added to the command line.
 
-#### Define
+### `:defines:`
+
+Preprocessor symbols to define.
 
 ```yaml
 :cppcheck:
@@ -115,21 +181,27 @@ Some of compatible files are:
     - C=1
 ```
 
-#### Undefine
+**Default:** `[]`
+
+### `:undefines:`
+
+Preprocessor symbols to undefine.
 
 ```yaml
 :cppcheck:
   :undefines:
     - A
     - B
-    - C
 ```
 
-*Note: By default `TEST` is undefined so the analysis is performed against production code.*
+**Default:** `[TEST]`
 
-### Includes
+`TEST` is undefined by default so analysis runs against production code rather
+than test builds.
 
-Force inclusion of files before checked files.
+### `:includes:`
+
+Files force-included ahead of each analyzed file.
 
 ```yaml
 :cppcheck:
@@ -138,9 +210,11 @@ Force inclusion of files before checked files.
     - file2.h
 ```
 
-### Excludes
+**Default:** `[]`
 
-Exclude files from the analysis.
+### `:excludes:`
+
+Files excluded from analysis.
 
 ```yaml
 :cppcheck:
@@ -149,40 +223,47 @@ Exclude files from the analysis.
     - file2.c
 ```
 
-### Platform
+**Default:** `[]`
 
-Specify platform to use for the analysis, can be any of the ones included with
-Cppcheck, e.g.: unix64, or the path of the platform XML file.
+### `:platform:`
+
+Platform to analyze for. Accepts any platform Cppcheck ships with, such as
+`unix64`, or the path to a platform XML file.
 
 ```yaml
 :cppcheck:
   :platform: unix64
 ```
 
-### Standard
+**Default:** unset
 
-Specify C/C++ language standard.
+### `:standard:`
+
+C or C++ language standard.
 
 ```yaml
 :cppcheck:
   :standard: c99
 ```
 
-### Check level
+**Default:** unset
 
-Specify the check level to be used.
+### `:check_level:`
 
-- *normal*
-- *exhaustive*
+Analysis depth. Accepts the levels your Cppcheck supports, commonly `normal`
+and `exhaustive`.
 
 ```yaml
 :cppcheck:
   :check_level: exhaustive
 ```
 
-### Addons
+**Default:** unset
 
-Addons to be run.
+### `:addons:`
+
+Addons to run. Entries may be built-in addon names or paths to addon scripts
+and JSON addon configurations.
 
 ```yaml
 :cppcheck:
@@ -191,13 +272,12 @@ Addons to be run.
     - path/to/addon.py
 ```
 
-#### MISRA with rule texts file
+**Default:** `[]`
 
-Locate your rules text file or copy it to your project.
-e.g.: `<your-project>/misra.txt` and create the addon file `misra.json` inside
-your project:
+MISRA needs a rule texts file, which is not distributed with Cppcheck. Place
+your copy in the project, for example at `misra.txt`, then create an addon
+configuration naming it:
 
-##### **`misra.json`**
 ```json
 {
 	"script": "misra",
@@ -205,7 +285,7 @@ your project:
 }
 ```
 
-Enable the addon:
+Enable that configuration rather than the bare addon name:
 
 ```yaml
 :cppcheck:
@@ -213,10 +293,9 @@ Enable the addon:
     - misra.json
 ```
 
-### Checks
+### `:enable_checks:`
 
-Enable additional checks.
-Default is *style*.
+Additional checks enabled for single file analysis.
 
 ```yaml
 :cppcheck:
@@ -225,10 +304,15 @@ Default is *style*.
     - portability
 ```
 
-*Note: These are only used for single file analysis.*
-*Whole project analysis always enable all checks.*
+**Default:** `[style]`
 
-Disable individual checks:
+!!! note "Single file analysis only"
+    Whole project analysis always enables every check with `--enable=all`, so
+    this setting does not affect `cppcheck:all`.
+
+### `:disable_checks:`
+
+Checks to disable. Applies to both analysis modes.
 
 ```yaml
 :cppcheck:
@@ -237,22 +321,34 @@ Disable individual checks:
     - information
 ```
 
-### Suppressions
+**Default:** `[]`
 
-#### Inline
+### `:inline_suppressions:`
 
-Inline suppressions are disabled by default, they can be enabled with:
+Honor suppression comments written inline in source.
 
 ```yaml
 :cppcheck:
   :inline_suppressions: true
 ```
 
-#### List files
+**Default:** `false`
 
-Suppressions files can be used by giving the search paths and/or files in the
-`:paths` and `:files` sections of  your `project.yml` respectively.
-e.g.:
+### `:suppressions:`
+
+Suppressions given directly on the command line.
+
+```yaml
+:cppcheck:
+  :suppressions:
+    - memleak:src/file1.c
+    - exceptNew:src/file1.c
+```
+
+**Default:** `[]`
+
+Suppression *files* are collected separately, through Ceedling's path and file
+collections rather than this list:
 
 ```yaml
 :paths:
@@ -265,35 +361,20 @@ e.g.:
     - suppressions.xml
 ```
 
-Both XML and text files are supported, and for the latter, the file extension
-can be configured. The default is `.txt`.
-e.g.:
+Both XML and text suppression files are supported. The extension used to find
+text suppression files is configurable:
 
 ```yaml
 :extension:
   :cppcheck: .txt
 ```
 
-The files that will ultimately be used can be verified with:
+Confirm which files were collected with the
+[`files:cppcheck`](#list-suppression-files) task.
 
-```shell
-$ ceedling files:cppcheck
-```
+### `:libraries:`
 
-#### Command line
-
-Command line suppressions can also be added:
-
-```yaml
-:cppcheck:
-  :suppressions:
-    - memleak:src/file1.cpp
-    - exceptNew:src/file1.cpp
-```
-
-### Library configuration
-
-Add library configuration files:
+Library configuration files.
 
 ```yaml
 :cppcheck:
@@ -302,9 +383,11 @@ Add library configuration files:
     - lib2.cfg
 ```
 
-### Rules
+**Default:** `[]`
 
-Regular expression rules:
+### `:rules:`
+
+Regular expression rules.
 
 ```yaml
 :cppcheck:
@@ -312,9 +395,12 @@ Regular expression rules:
     - if \( p \) { free \( p \) ; }
 ```
 
-### Extra options
+**Default:** `[]`
 
-For things not covered above, add extra command line options:
+### `:options:`
+
+Raw command line arguments passed straight through to Cppcheck. This is the
+escape hatch for anything the settings above do not cover.
 
 ```yaml
 :cppcheck:
@@ -322,3 +408,5 @@ For things not covered above, add extra command line options:
     - --max-configs=<limit>
     - --suppressions-list=<file>
 ```
+
+**Default:** `[]`

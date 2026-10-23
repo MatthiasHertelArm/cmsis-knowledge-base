@@ -6,7 +6,7 @@ title: "Code sharing between independently linked XIP binaries: Usability consid
 summary: "Functions that only use local variables can be shared easily. However, functions that rely on global variables are a bit tricky."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/software/code_sharing.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/software/code_sharing.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/software/code_sharing.html#usability-considerations"
 license: "BSD-3-Clause"
 mode: "V"

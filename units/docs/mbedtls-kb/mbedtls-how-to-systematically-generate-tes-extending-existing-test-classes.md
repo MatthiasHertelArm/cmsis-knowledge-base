@@ -6,8 +6,8 @@ title: "How to systematically generate test data: Extending existing test classe
 summary: "When adding test case generation for functions, there may be previously implemented classes which generate tests for similar functions. For example, the test function mpi_add_abs() is very similar to mpi_add_mpi(), but returns an absolute result."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/add-test-generation.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/add-test-generation.md#extending-existing-test-classes"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/add-test-generation.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/add-test-generation.md#extending-existing-test-classes"
 license: "Apache-2.0"
 mode: "V"
 ---

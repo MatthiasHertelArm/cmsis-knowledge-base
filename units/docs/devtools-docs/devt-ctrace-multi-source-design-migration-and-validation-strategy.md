@@ -6,8 +6,8 @@ title: "ctrace multi-source design: Migration and validation strategy"
 summary: "The implementation was staged so that clean multi-source decoding did not depend on unproven changes in every layer at once. Each stage retained a buildable implementation and the established single-source output checks."
 status: "draft"
 collection: "devtools-docs"
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/ctrace/docs/multi-source-design.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/multi-source-design.md#migration-and-validation-strategy"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/ctrace/docs/multi-source-design.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/docs/multi-source-design.md#migration-and-validation-strategy"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -31,10 +31,10 @@ deformatter-state preservation had dedicated tests.
 The validation combined complementary evidence:
 
 - Legacy SWO goldens protected CSV bytes and CTF/XML compatibility during the structural migration.
-- The reconstructed [TB fixture](https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/../test/data/TB-Trace/README.md) preserved real interleaved hardware payload but
+- The reconstructed [TB fixture](https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/docs/../test/data/TB-Trace/README.md) preserved real interleaved hardware payload but
   documented ID changes and added synchronization. Its independent deformatter checked routing; it was not evidence
   for a producer's capture-export behavior.
-- [Synthetic formatted fixtures](https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/../test/data/formatted-synthetic/README.md) covered event families absent from the
+- [Synthetic formatted fixtures](https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/docs/../test/data/formatted-synthetic/README.md) covered event families absent from the
   hardware payload, boundary IDs, filtering, malformed packets, and per-route isolation.
 - Fault tests exercised multiple callbacks, partial-frame delivery, continuous IDs, failed resets, missing clocks,
   and backend cleanup. Chunk boundaries were varied independently of protocol packets.
@@ -42,4 +42,4 @@ The validation combined complementary evidence:
   Babeltrace validated each clock's scaling; Trace Compass acceptance checked timestamps and graphical semantics.
 
 Reproducible commands and supported consumer versions belong to the current
-[integration-test documentation](https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/../test/integration/README.md), rather than frozen test counts or execution logs.
+[integration-test documentation](https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/docs/../test/integration/README.md), rather than frozen test counts or execution logs.

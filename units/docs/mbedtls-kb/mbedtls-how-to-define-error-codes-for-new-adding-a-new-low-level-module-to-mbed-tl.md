@@ -6,8 +6,8 @@ title: "How to define error codes for new modules: Adding a new low-level module
 summary: "Find some space within the error.h file to fit the number of the error codes you need."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/development/how-are-error-codes-defined.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/development/how-are-error-codes-defined.md#adding-a-new-low-level-module-to-mbed-tls"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/development/how-are-error-codes-defined.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/development/how-are-error-codes-defined.md#adding-a-new-low-level-module-to-mbed-tls"
 license: "Apache-2.0"
 mode: "V"
 ---

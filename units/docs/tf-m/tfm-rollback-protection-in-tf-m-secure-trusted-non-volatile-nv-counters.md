@@ -6,7 +6,7 @@ title: "Rollback protection in TF-M secure boot: Trusted non-volatile (NV) count
 summary: "The Trusted Base System Architecture (TBSA-M) defines non-volatile (NV) counters or version counters as a counter with the following properties:"
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/booting/secure_boot_rollback_protection.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/booting/secure_boot_rollback_protection.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/booting/secure_boot_rollback_protection.html#trusted-non-volatile-nv-counters"
 license: "BSD-3-Clause"
 mode: "V"

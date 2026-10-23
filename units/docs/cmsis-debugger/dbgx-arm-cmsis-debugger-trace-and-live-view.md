@@ -6,8 +6,8 @@ title: "Arm CMSIS Debugger: Debugger User Interface / Trace and Live view"
 summary: "The Trace and Live View (figure: Trace and Live view) (available from the VS Code Activity Bar) currently contains the LIVE WATCH, the COMPONENT VIEWER, and the CORE PERIPHERALS views."
 status: "draft"
 collection: "cmsis-debugger"
-source: "Open-CMSIS-Pack/vscode-cmsis-debugger@28c1601:README.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/blob/28c1601/README.md#trace-and-live-view"
+source: "Open-CMSIS-Pack/vscode-cmsis-debugger@12cb62a:README.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/blob/12cb62a/README.md#trace-and-live-view"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -59,7 +59,7 @@ The **Component Viewer toolbar** offers the following action buttons:
 (figure: Component Viewer Buttons)
 
 | Button | Description |
-|--------|-------------|
+| -------- | ------------- |
 | Filter | Filter the displayed components and their entries |
 | Clear Filter | Remove component filtering |
 | Disable Periodic Update | Components are not updated while the target is running |
@@ -82,3 +82,17 @@ The Core Peripherals view shows information about the following components if im
 - Fault Reports
 
 (figure: Showing core peripheral contents in the COMPONENT PERIPHERALS view)
+
+#### Trace Generation
+
+CMSIS Debugger supports capturing [trace](#using-trace) information from Cortex-M processors using Serial Wire Output
+(SWO). You can configure which trace information the processor generates, capture the resulting trace without stopping
+program execution, and inspect the decoded trace data directly in Visual Studio Code.
+
+(figure: Trace Generation)
+
+In the debug toolbar, use the
+(figure: Show captured trace)
+button to open the generated `.csv` trace file in the [**Trace Data** view](#review-captured-trace-data).
+
+For further details on how to configure and inspect trace, refer to [Using trace](#using-trace).

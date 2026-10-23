@@ -6,7 +6,7 @@ title: "Ceedling’s Command Line: Build & plugin tasks"
 summary: "Build task are loaded from your project configuration. Unlike application commands that are fixed, build tasks vary depending on your project configuration and the files within your project structure."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/getting-started/command-line.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/getting-started/command-line.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/getting-started/command-line/#build-plugin-tasks"
 license: "MIT"
 mode: "V"
@@ -70,9 +70,21 @@ validation of code and configuration via your toolchain.
 
 ### `ceedling test:*`
 
-Execute the named test file or the named source file that has an
-accompanying test. No path. Examples: `ceedling test:foo`, `ceedling 
-test:foo.c` or `ceedling test:test_foo.c`
+Build and execute the named test executable or the named source file that has an
+accompanying test file. Examples: `ceedling test:foo`, `ceedling test:foo.c`
+or `ceedling test:test_foo.c`
+
+!!! tip "Disambiguating test files with the same name"
+    If more than one test file shares that filename in different test
+    directories, add enough of the trailing path to identify the file you
+    want. `/` and `\` are both acceptable path separators.
+    
+    For example, given _test/unit/test_foo.c_ and _test/integration/test_foo.c_, 
+    run `ceedling test:unit/test_foo.c` at the command line to identify
+    the first test file.
+    
+    When Ceedling is unable to uniquely identify a file path, it raises 
+    an error naming every matching file.
 
 ---
 
@@ -143,6 +155,47 @@ whose path contains foo/bar. _Notes:_
 1. Both directory separator characters `/` and `\` are valid.
 1. Quotes may be necessary around the task to distinguish the parameter’s
    characters from shell command line operators.
+
+---
+
+### `ceedling gen:mocks:all`
+
+Generate the mock files in the project build directory for all tests. The
+test build pipeline terminates after the mock generation stage.
+
+---
+
+### `ceedling gen:mocks:*`
+
+Generate the mock files in the project build directory for only the given 
+test or the named source file that has an accompanying test. The test 
+build pipeline terminates after the mock generation stage.
+Examples: `ceedling gen:mocks:foo`, `ceedling gen:mocks:foo.c` or 
+`ceedling gen:mocks:test_foo.c`
+
+Like the `test:` tasks, the test specifier for duplicate test filenames
+can be disambiguated with a trailing path before the test name.
+
+---
+
+### `ceedling gen:test_runner:all`
+
+Generate up through test runners in the project build directory for all 
+tests. The test build pipeline terminates after the test runner generation 
+stage.
+
+---
+
+### `ceedling gen:test_runner:*`
+
+Generate the test runner files in the project build directory for only 
+the given test or the named source file that has an accompanying test. 
+The test build pipeline terminates after the test runner generation stage.
+Examples: `ceedling gen:test_runner:foo`, `ceedling gen:test_runner:foo.c`
+or `ceedling gen:test_runner:test_foo.c`
+
+Like the `test:` tasks, the test specifier for duplicate test filenames
+can be disambiguated with a trailing path before the test name.
 
 ---
 

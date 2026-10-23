@@ -2,34 +2,43 @@
 id: "ceed-dependencies-fetching-dependencies"
 type: "concept"
 domain: "test"
-title: "Dependencies: Fetching Dependencies"
-summary: "The :dependencies plugin supports the ability to automatically fetch your dependencies for you... using some common methods of fetching source. This section contains only a couple of fields:"
+title: "Dependencies: Fetching dependencies"
+summary: "The plugin fetches a dependency with one of several common methods, configured under its :fetch:"
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/dependencies.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/plugins/dependencies.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/dependencies/#fetching-dependencies"
 license: "MIT"
 mode: "V"
 ---
 
-The `:dependencies` plugin supports the ability to automatically fetch your dependencies
-for you... using some common methods of fetching source. This section contains only a
-couple of fields:
+The plugin fetches a dependency with one of several common methods, configured under its
+`:fetch`:
 
-- `:method` -- This is the method that this dependency is fetched.
-    - `:none` -- This tells Ceedling that the code is already included in the project.
-    - `:zip` -- This tells Ceedling that we want to unpack a zip file to our source path.
-    - `:gzip` -- This tells Ceedling that we want to unpack a gzip file to our source path.
-    - `:git` -- This tells Ceedling that we want to clone a git repo to our source path.
-    - `:svn` -- This tells Ceedling that we want to checkout a subversion repo to our source path.
-    - `:custom` -- This tells Ceedling that we want to use a custom command or commands to fetch the code.
-- `:source` -- This is the path or url to fetch code when using the `:zip`, `:gzip` or `:git` method.
-- `:tag`/`:branch` -- This is the specific tag or branch that you wish to retrieve (`:git` only, optional).
-- `:hash` -- This is the specific SHA1 hash you want to fetch (`:git` only, optional and triggers a deep clone).
-- `:revision` -- This is the specific revision you want to fetch (`:svn` only, optional).
-- `:executable` -- This is a YAML list of commands to execute when using the `:custom` method
+- `:method`, the way this dependency is fetched:
+    - `:none`: the code is already part of the project, so nothing is fetched.
+    - `:zip`: unpack a zip archive into the fetch path.
+    - `:tar_gzip`: unpack a gzipped tar archive into the fetch path.
+    - `:git`: clone a git repository into the fetch path.
+    - `:svn`: check out a Subversion repository into the fetch path.
+    - `:custom`: run commands of your own in the fetch path.
+- `:source`: the archive or repository to fetch from (`:zip`, `:tar_gzip`, `:git`, and
+  `:svn`, all of which require it).
+- `:tag` or `:branch`: the tag or branch to clone (`:git` only, optional). A tag wins
+  when both are given.
+- `:hash`: the commit to check out (`:git` only, optional). It makes a full clone rather
+  than a shallow one, so the commit is available.
+- `:revision`: the revision to check out (`:svn` only, optional).
+- `:executable`: the list of commands to run (`:custom` only, required).
 
-Some notes:
+Fetching runs from inside the fetch path, so an archive `:source` given as a relative
+path is relative to the fetch path.
 
-* The `:source` location for fetching a `:zip` or `:gzip` file is relative to the `:paths` ↳ `:source`
-folder.
+A dependency is fetched once. Once its fetch path holds files, fetching it again, or
+building it after a fetch, leaves those files alone. To fetch a fresh copy, clean the
+dependency first with `dependencies:clean`.
+
+The `:zip`, `:tar_gzip`, `:git`, and `:svn` methods use the plugin’s
+[tools](#custom-tools) (`unzip`, `tar`, `git`, and `svn`). Each is checked just before a
+dependency fetches with it, so a missing tool stops only that fetch, and a machine that
+never fetches, such as a CI agent working from fetched dependencies, needs none of them.

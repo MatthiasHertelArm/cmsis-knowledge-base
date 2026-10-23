@@ -2,11 +2,11 @@
 id: "x-cmsis-debugger-setup-3"
 type: "concept"
 domain: "project"
-title: "At -Og a readback can show the old value right after a store"
+title: "updateConfiguration auto versus manual in launch.json"
 status: "draft"
 extracted_from: "proc-cmsis-debugger-setup"
 source: "cmsis-debugger-setup/SKILL.md"
 license: "Apache-2.0"
 ---
 
-**At `-Og` the line table can be one volatile store early.** Right after stepping past a store, a readback may still show the old value. Let the code run on and read again before you suspect the hardware.
+A launch configuration whose `cmsis` node says `"updateConfiguration": "manual"` is never rewritten; leave it alone and tell the user.

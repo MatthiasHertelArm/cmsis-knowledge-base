@@ -6,7 +6,7 @@ title: "CSolution Project Structure: Project Examples / Toolchain Agnostic Proje
 summary: "Generic Translation Control settings enable projects that work across the range of supported compilers (AC6, GCC, IAR, CLANG). The Translation Control settings are mapped to specify compiler controls by the build tools."
 status: "draft"
 collection: "cmsis-toolbox"
-source: "Open-CMSIS-Pack/cmsis-toolbox@6c04673:docs/build-overview.md"
+source: "Open-CMSIS-Pack/cmsis-toolbox@3ce8307:docs/build-overview.md"
 doc_source: "https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview/#toolchain-agnostic-project"
 license: "Apache-2.0"
 mode: "V"

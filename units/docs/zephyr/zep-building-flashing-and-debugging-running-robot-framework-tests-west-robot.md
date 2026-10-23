@@ -6,8 +6,8 @@ title: "Building, Flashing and Debugging: Running Robot Framework tests: `west r
 summary: "Currently the command supports only one runner which is using renode-test, (essentially a wrapper for running Robot tests in Renode), but can be easily extended by adding other runners."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/develop/west/build-flash-debug.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/develop/west/build-flash-debug.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/develop/west/build-flash-debug.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/develop/west/build-flash-debug.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

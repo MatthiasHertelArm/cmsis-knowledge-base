@@ -6,7 +6,7 @@ title: "JSON Compilation Database: Plugin Overview"
 summary: "For C and C++ projects, perhaps the most popular LSP server is the [clangd][clangd] backend."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/compile-commands-json-db.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/plugins/compile-commands-json-db.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/compile-commands-json-db/#plugin-overview"
 license: "MIT"
 mode: "V"
@@ -16,7 +16,11 @@ For C and C++ projects, perhaps the most popular LSP server is the [`clangd`][cl
 
 This plugin gives `clangd` — or any tool that understands a [JSON compilation database][json-compilation-database] — full visibility into a Ceedling build.
 
-Once enabled, this plugin generates the database as `<build root>/artifacts/compile_commands.json` for each new build. Tools that understand JSON Compilation Database files can then process it to make their features fully available to you.
+Once enabled, this plugin maintains the database as `<build root>/artifacts/compile_commands.json`. Tools that understand JSON Compilation Database files can then process it to make their features fully available to you.
+
+The database accumulates across builds. Ceedling compiles only what changed since a previous build, so entries from earlier builds carry over. The database holds one entry per source file, and the most recent compile of a file replaces any earlier entry. The file is written once at the end of each build, including a failed build, and only if something compiled.
+
+A source file that Ceedling compiles from a temporary copy, as it does to isolate certain header files, is listed under its original path, with a command that names that original path.
 
 [clangd]: https://clangd.llvm.org
 [json-compilation-database]: https://clang.llvm.org/docs/JSONCompilationDatabase.html

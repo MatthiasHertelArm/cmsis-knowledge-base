@@ -10,7 +10,7 @@ code: "M244"
 symptoms: ["M244", "C Expression: Referenced item '%NAME%' not found from: '%MSG%'"]
 symptom_regex: "^C Expression: Referenced item '.+?' not found from: '.+?'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"

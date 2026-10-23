@@ -6,8 +6,8 @@ title: "Utilities: SDS-View"
 summary: "The Python utility SDS-View generates a time-based plot from data recorded in SDS files (<stream-name>.<label>.sds) using the metadata provided in <stream-name>.sds.yml."
 status: "draft"
 collection: "sds-framework"
-source: "ARM-software/SDS-Framework@4459441:documentation/utilities.md"
-doc_source: "https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/utilities.md#sds-view"
+source: "ARM-software/SDS-Framework@c18efee:documentation/utilities.md"
+doc_source: "https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/utilities.md#sds-view"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -21,7 +21,7 @@ All plots from a single recording are displayed on the same figure (shared verti
 If there are 3 values described in the metadata file, an optional 3D view may be displayed.
 
 !!! Note
-    - SDS-View requires that all values in the [`<stream-name>.sds.yml` metadata file](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/theory.md#sds-metadata-format) have the same data type (float, uint32_t, uint16_t, ...)
+    - SDS-View requires that all values in the [`<stream-name>.sds.yml` metadata file](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/theory.md#sds-metadata-format) have the same data type (float, uint32_t, uint16_t, ...)
 
 ### Usage
 

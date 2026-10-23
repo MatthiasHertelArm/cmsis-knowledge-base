@@ -6,7 +6,7 @@ title: "`:release_build`: `:artifacts`"
 summary: "By default, Ceedling copies to the <build path>/artifacts/release directory the output of the release linker and (optionally) a map file. Many toolchains produce other important output files as well."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/configuration/reference/release-build.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/configuration/reference/release-build.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/configuration/reference/release-build/#artifacts"
 license: "MIT"
 mode: "V"
@@ -30,3 +30,4 @@ is available in artifact paths.
 **Default**: `[]` (empty)
 
 [inline-ruby-string-expansion]: ../project-file.md#inline-ruby-string-expansion
+[release-guide]: https://github.com/ThrowTheSwitch/Ceedling/blob/master/docs/Ceedling%20Managing%20Release%20Code.pdf

@@ -6,8 +6,8 @@ title: "How to define error codes for new modules: How error codes are structure
 summary: "The main structure for the error codes is documented in the error.h file."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/development/how-are-error-codes-defined.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/development/how-are-error-codes-defined.md#how-error-codes-are-structured"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/development/how-are-error-codes-defined.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/development/how-are-error-codes-defined.md#how-error-codes-are-structured"
 license: "Apache-2.0"
 mode: "V"
 ---

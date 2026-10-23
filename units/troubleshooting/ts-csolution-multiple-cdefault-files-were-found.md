@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["multiple cdefault files were found"]
 symptom_regex: "^multiple cdefault files were found$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:1164"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgr.cpp:1164"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

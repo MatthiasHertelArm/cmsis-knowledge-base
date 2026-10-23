@@ -6,8 +6,8 @@ title: "Setting up the Eclipse CDT environment on Windows: Install Eclipse C/C++
 summary: "You can either download and install a new version of Eclipse CDT, or extend the existing Eclipse for Java Developers on your system with a CDT plugin."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/compiling-and-building/setup-eclipse-cdt-environment-on-windows.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/compiling-and-building/setup-eclipse-cdt-environment-on-windows.md#install-eclipse-c-c-development-tool-cdt"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/compiling-and-building/setup-eclipse-cdt-environment-on-windows.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/compiling-and-building/setup-eclipse-cdt-environment-on-windows.md#install-eclipse-c-c-development-tool-cdt"
 license: "Apache-2.0"
 mode: "V"
 ---

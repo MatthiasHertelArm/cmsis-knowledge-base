@@ -6,7 +6,7 @@ title: "Physical attack mitigation in Trusted Firmware-M: Mitigation against phy
 summary: "The applicability of these attacks highly depends on the device. Some devices are more sensitive than others. Protection is possible at hardware and software levels as well."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/tfm_physical_attack_mitigation.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/tfm_physical_attack_mitigation.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/tfm_physical_attack_mitigation.html#mitigation-against-physical-attacks"
 license: "BSD-3-Clause"
 mode: "V"

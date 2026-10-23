@@ -6,8 +6,8 @@ title: "Quick start example ML application"
 summary: "This is a quick start guide that shows you how to run the keyword spotting example application."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/quick_start.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/quick_start.md"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/quick_start.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/quick_start.md"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -20,7 +20,7 @@ sharing SRAM with the Arm® *Cortex®-M55*.
 
 To get started quickly, please follow these steps:
 
-1. First, verify that you have installed all of [the required prerequisites](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/building.md#build-prerequisites).
+1. First, verify that you have installed all of [the required prerequisites](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/building.md#build-prerequisites).
 
 2. Clone the *Ethos-U* evaluation kit repository:
 
@@ -66,7 +66,7 @@ To get started quickly, please follow these steps:
     > python3 ./build_default.py --ml-framework executorch
     > ```
 
-5. Launch the project as explained in the following section: [Deployments](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/deployment.md#deployment). In quick
+5. Launch the project as explained in the following section: [Deployments](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/deployment.md#deployment). In quick
    start guide, we use the keyword spotting application and the FVP.
 
     Change directory to generated cmake build folder which contains the .axf file output from step 4 in it's `bin`
@@ -392,7 +392,7 @@ cmake .. \
 ```
 
 > **Note:** If you want to change the application, then, instead of using the `build_default` Python script, follow the
-> approach defined in [documentation.md](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/./documentation.md#arm_ml-embedded-evaluation-kit). For example, if you wanted to modify the number of
+> approach defined in [documentation.md](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/./documentation.md#arm_ml-embedded-evaluation-kit). For example, if you wanted to modify the number of
 > MACs units of the Ethos-U, or running a custom neural network.
 
 > **Note:** The performance summary produced by Vela compiler for any model are **estimates only**. Vela computes

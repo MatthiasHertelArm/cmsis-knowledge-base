@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["type '<…>': it must start with '.' or '+' for normal strings and with '^' or '\\' for regex patterns"]
 symptom_regex: "^type '.+?': it must start with '\\.' or '\\+' for normal strings and with '\\^' or '\\\\' for regex patterns$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:712"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrYamlParser.cpp:712"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

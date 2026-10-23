@@ -9,7 +9,7 @@ severity: "warning"
 symptoms: ["ignoring conflict: component '<…>' is listed multiple times"]
 symptom_regex: "^ignoring conflict: component '.+?' is listed multiple times$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:3906"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrWorker.cpp:3906"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

@@ -6,8 +6,8 @@ title: "Mbed TLS over low-bandwidth, unreliable datagram networks: Reducing RAM 
 summary: "As of Mbed TLS 2.13, the library uses separate, statically-sized buffers for processing incoming and outgoing messages. They are user-configurable compile-time constants in mbedtls/config.h."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/controlling_package_size.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/controlling_package_size.md#reducing-ram-usage-for-internal-message-buffers"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/controlling_package_size.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/controlling_package_size.md#reducing-ram-usage-for-internal-message-buffers"
 license: "Apache-2.0"
 mode: "V"
 ---

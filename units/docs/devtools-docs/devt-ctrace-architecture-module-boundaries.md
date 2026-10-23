@@ -6,8 +6,8 @@ title: "ctrace Architecture: Module boundaries"
 summary: "control is the composition layer. The raw-file reader is a private implementation detail of FileDecodeJob, not a separate module or public abstraction."
 status: "draft"
 collection: "devtools-docs"
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/ctrace/docs/architecture.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/architecture.md#module-boundaries"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/ctrace/docs/architecture.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/docs/architecture.md#module-boundaries"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -32,7 +32,7 @@ must not depend on control jobs or command-line details.
 | `src/tracerun` | File discovery, YAML parsing, schema subset validation, and normalized metadata |
 
 The YAML reader's validation, provisional input-format, and metadata rules are recorded in the
-[constraints](https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/constraints.md).
+[constraints](https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/docs/constraints.md).
 
 `CtraceRunMeta` is the boundary between the YAML representation and runtime processing. `TraceRunInputDescriptor`
 combines it with the selected open raw file and effective format. Decode and
@@ -74,7 +74,7 @@ stream filter is not required. `--all` therefore does not make the backends shar
 Each input writes separate `<set>.<channel>.csv` and `<set>.<channel>.ctf` artifacts. One optional
 `<set>.traceanalysis.xml` describes the target's eligible completed bundles. CTF always uses the channel-qualified
 path, including single-input runs; existing `<set>.ctf` bundles and old per-channel XML files are not migrated or
-removed. The [CTF profile](https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/ctf-format.md#files-and-common-structure)
+removed. The [CTF profile](https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/docs/ctf-format.md#files-and-common-structure)
 records this intentional difference from the published bundle path.
 
 CSV writes one combined file per input in sink callback order. `CtfBundleOutput` owns a bundle-local metadata model and
@@ -95,9 +95,9 @@ topic. Channel/processor labels are display-only, and the private CTF `ctrace_ro
 the XML. A deterministic namespace derived from the contributing clock identities prevents analysis/view collisions
 between target XML files. The legacy binary event layout is unchanged.
 
-The [CTF profile](https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/ctf-format.md) defines event schemas, metadata, clock mappings, legacy layouts, and
-[XML projection](https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/ctf-format.md#generated-trace-compass-analysis). Cross-backend compatibility and failure rules belong
-to the [output constraints](https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/constraints.md#observable-behavior-and-output-safety).
+The [CTF profile](https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/docs/ctf-format.md) defines event schemas, metadata, clock mappings, legacy layouts, and
+[XML projection](https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/docs/ctf-format.md#generated-trace-compass-analysis). Cross-backend compatibility and failure rules belong
+to the [output constraints](https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/docs/constraints.md#observable-behavior-and-output-safety).
 
 Outputs use an explicit `start`, `writeEvent` / `writeByteSkip`, `stop`, and `abort` lifecycle. `TraceOutput`
 owns the active state and common write-failure cleanup; concrete backends implement the protected lifecycle hooks.

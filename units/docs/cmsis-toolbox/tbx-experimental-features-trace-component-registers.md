@@ -6,7 +6,7 @@ title: "Experimental Features: Trace Component Registers"
 summary: "The following ITM register values are used for ctrace-disable::"
 status: "draft"
 collection: "cmsis-toolbox"
-source: "Open-CMSIS-Pack/cmsis-toolbox@6c04673:docs/Experimental-Features.md"
+source: "Open-CMSIS-Pack/cmsis-toolbox@3ce8307:docs/Experimental-Features.md"
 doc_source: "https://open-cmsis-pack.github.io/cmsis-toolbox/Experimental-Features/#trace-component-registers"
 license: "Apache-2.0"
 mode: "V"
@@ -18,9 +18,9 @@ The following ITM register values are used for `ctrace-disable:`:
 
 Name | Offset | `value:` | `mask:`
 :----|:-------|:--------|:----
-`ITM_TER` | `0xE00` | `0x00000000` | `None`
-`ITM_TPR` | `0xE40` | `0x00000000` | `None`
-`ITM_TCR` | `0xE80` | `0x00000000` | `None`
+`ITM_TER0` | `0xE00` | `0x00000000` | `None`
+`ITM_TPR`  | `0xE40` | `0x00000000` | `None`
+`ITM_TCR`  | `0xE80` | `0x00000000` | `None`
 
 ### DWT
 

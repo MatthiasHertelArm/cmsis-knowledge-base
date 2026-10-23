@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["generator '<…>' is not dry-run capable"]
 symptom_regex: "^generator '.+?' is not dry\\-run capable$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5160"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrWorker.cpp:5160"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

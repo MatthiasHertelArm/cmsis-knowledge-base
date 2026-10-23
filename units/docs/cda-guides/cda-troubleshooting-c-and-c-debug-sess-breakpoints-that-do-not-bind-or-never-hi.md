@@ -6,8 +6,8 @@ title: "Troubleshooting C and C++ debug sessions: Breakpoints that do not bind o
 summary: "Troubleshooting C and C++ debug sessions: Breakpoints that do not bind or never hit"
 status: "draft"
 collection: "cda-guides"
-source: "Open-CMSIS-Pack/CMSIS-Developer-Assistant@7db44ba:docs/agent-resources/troubleshooting/cpp.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/CMSIS-Developer-Assistant/blob/7db44ba/docs/agent-resources/troubleshooting/cpp.md#breakpoints-that-do-not-bind-or-never-hit"
+source: "Open-CMSIS-Pack/CMSIS-Developer-Assistant@29d444c:docs/agent-resources/troubleshooting/cpp.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/CMSIS-Developer-Assistant/blob/29d444c/docs/agent-resources/troubleshooting/cpp.md#breakpoints-that-do-not-bind-or-never-hit"
 license: "Apache-2.0"
 mode: "V"
 ---

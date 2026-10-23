@@ -6,7 +6,7 @@ title: "Quick Start: Quick Start Steps"
 summary: "Below is a quick overview of how to get started from Ceedling installation through running build tasks."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/getting-started/quick-start.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/getting-started/quick-start.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/getting-started/quick-start/#quick-start-steps"
 license: "MIT"
 mode: "V"
@@ -20,7 +20,9 @@ listed immediately below.
 !!! warning "C toolchain requirement"
     Ceedling requires a command line C toolchain be available in your path and is
     flexible enough to work with most anything. By default, Ceedling is ready to 
-    work with [GCC] out of the box (we recommend [MinGW] on Windows).
+    work with [GCC] out of the box. On Windows, we recommend [MinGW-w64], GCC
+    built for native Windows executables, installed through [MSYS2], a Windows
+    package manager that provides it.
 
 1. [Install Ceedling](https://throwtheswitch.github.io/Ceedling/getting-started/quick-start/installation.md)
 1. Create a project
@@ -41,5 +43,6 @@ without Ceedling—but rely on Ceedling + GCC for test builds (more on this
     [Ceedling extension](https://marketplace.visualstudio.com/items?itemName=throw-the-switch.vscode-ceedling).
 
 [GCC]: https://gcc.gnu.org
-[MinGW]: http://www.mingw.org/
+[MinGW-w64]: https://www.mingw-w64.org
+[MSYS2]: https://www.msys2.org
 [overview]: ../overview/index.md

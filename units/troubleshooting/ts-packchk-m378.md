@@ -10,8 +10,8 @@ code: "M378"
 symptoms: ["M378", "Component 'Cclass=%CCLASS%, Cgroup=%CGROUP%, Csub=%CSUB%, Cversion=%CVER%, implements the API defined in '%NAME%' but does not attribute 'Capiversion' specifying the version it implements."]
 symptom_regex: "^Component 'Cclass=.+?, Cgroup=.+?, Csub=.+?, Cversion=.+?, implements the API defined in '.+?' but does not attribute 'Capiversion' specifying the version it implements\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"

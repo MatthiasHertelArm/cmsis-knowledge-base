@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["generator '<…>' required by component '<…>' was not found in global register"]
 symptom_regex: "^generator '.+?' required by component '.+?' was not found in global register$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrExtGenerator.cpp:35"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrExtGenerator.cpp:35"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

@@ -6,13 +6,13 @@ title: "Encrypt data with AES-CBC mode"
 summary: "To encrypt data with AES, you need a key. If you are not familiar with key generation, please check out How to generate an AES key for more information."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/encrypt-with-aes-cbc.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/encrypt-with-aes-cbc.md"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/encrypt-with-aes-cbc.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/encrypt-with-aes-cbc.md"
 license: "Apache-2.0"
 mode: "V"
 ---
 
-To encrypt data with [AES](https://github.com/aes-source-code), you need a key. If you are not familiar with key generation, please check out [How to generate an AES key](https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/generate-an-aes-key.md) for more information.
+To encrypt data with [AES](https://github.com/aes-source-code), you need a key. If you are not familiar with key generation, please check out [How to generate an AES key](https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/generate-an-aes-key.md) for more information.
 
 **Note:** Please understand that only encrypting data with AES-CBC does not keep the data safe from modification or viewing. You still have to protect the **key** from others and the **integrity** of the data. This article only shows you how to use the [AES API](https://github.com/api/aes_8h.html) to encrypt some data with the AES-CBC mode.
 
@@ -37,7 +37,7 @@ size_t input_len = 40;
 size_t output_len = 0;
 ```
 
-This examples assumes you've filled the variable named **key** with the 32 bytes of the AES key (see [How to generate an AES key](https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/generate-an-aes-key.md)), **iv** with 16 bytes of random data for use as the Initialization Vector (IV) and **input** with 40 bytes of input data, and zeroized the rest of **input**.
+This examples assumes you've filled the variable named **key** with the 32 bytes of the AES key (see [How to generate an AES key](https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/generate-an-aes-key.md)), **iv** with 16 bytes of random data for use as the Initialization Vector (IV) and **input** with 40 bytes of input data, and zeroized the rest of **input**.
 
 The **CBC** mode for AES assumes that you provide data in blocks of 16 bytes. Because there are only 40 bytes of data, you have to extend the input to contain 48 bytes of data, instead. There are multiple ways to pad input data. One is to add zeroes to the end. This is only secure if you also transmit the original length of the input data (40 in this case) securely to the other side, as well. This example uses padding with zeroes.
 

@@ -6,7 +6,7 @@ title: "Coverage Reporting: ReportGenerator Settings"
 summary: "All options below live under :gcov: ↳ :report_generator:. Reports are written to <build root>/artifacts/gcov/ReportGenerator/."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/reference/gcov-plugin.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/reference/gcov-plugin.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/reference/gcov-plugin/#reportgenerator-settings"
 license: "MIT"
 mode: "V"
@@ -70,6 +70,42 @@ Verbosity level for ReportGenerator log output.
 ### `:tag`
 
 Optional build tag or version label embedded in the report.
+
+---
+
+### `:fail_under_line`
+
+Break the build if total line coverage is below this percentage.
+(ReportGenerator `minimumCoverageThresholds:lineCoverage`)
+
+**Values:** `1`–`100`
+
+---
+
+### `:fail_under_branch`
+
+Break the build if total branch coverage is below this percentage.
+(ReportGenerator `minimumCoverageThresholds:branchCoverage`)
+
+**Values:** `1`–`100`
+
+---
+
+### `:fail_under_method`
+
+Break the build if total method coverage is below this percentage.
+(ReportGenerator `minimumCoverageThresholds:methodCoverage`)
+
+**Values:** `1`–`100`
+
+---
+
+### `:fail_under_full_method`
+
+Break the build if total full method coverage is below this percentage.
+(ReportGenerator `minimumCoverageThresholds:fullMethodCoverage`)
+
+**Values:** `1`–`100`
 
 ---
 

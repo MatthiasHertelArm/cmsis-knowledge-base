@@ -6,8 +6,8 @@ title: "Arm Mbed TLS in Microsoft Visual Studio 2015: Use `cmake` to generate a 
 summary: "You can use cmake to generate Visual Studio."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/compiling-and-building/using-mbedtls-in-microsoft-visual-studio-2015.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/compiling-and-building/using-mbedtls-in-microsoft-visual-studio-2015.md#use-cmake-to-generate-a-visual-studio-solution-file"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/compiling-and-building/using-mbedtls-in-microsoft-visual-studio-2015.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/compiling-and-building/using-mbedtls-in-microsoft-visual-studio-2015.md#use-cmake-to-generate-a-visual-studio-solution-file"
 license: "Apache-2.0"
 mode: "V"
 ---

@@ -6,7 +6,7 @@ title: "Build Directive Macros: `TEST_INCLUDE_PATH()`"
 summary: "The TEST_INCLUDE_PATH() build directive allows a header search path to be injected into the build of an individual test executable."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/testing-guide/build-directives.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/testing-guide/build-directives.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/testing-guide/build-directives/#test-include-path"
 license: "MIT"
 mode: "V"
@@ -23,7 +23,7 @@ is necessary for every test executable build. That path can come from a `:paths`
 in a test file.
 
 Please see [Configuring Your Header File Search Paths](https://throwtheswitch.github.io/Ceedling/testing-guide/build-directives/conventions.md#test-build-search-paths)
-for an overview of Ceedling's options and conventions for header file search paths.
+for an overview of Ceedling’s options and conventions for header file search paths.
 
 ### `TEST_INCLUDE_PATH()` Usage
 
@@ -55,7 +55,7 @@ per line within your test file.
 #include "unity.h"    // Contains TEST_INCLUDE_PATH() definition
 #include "somefile.h" // Needed symbols and macros
 
-// Add the following to the compiler's -I search paths used to
+// Add the following to the compiler’s -I search paths used to
 // compile all components comprising the test_mycode executable.
 TEST_INCLUDE_PATH("foo/bar/")
 TEST_INCLUDE_PATH("/usr/local/include/baz/")

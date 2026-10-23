@@ -6,13 +6,13 @@ title: "Process Isolation: Handle Memory Access Faults"
 summary: "A memory access fault is triggered when a thread tries to access memory or peripherals outside of the MPU Protected Zone loaded while the thread is running."
 status: "draft"
 collection: "cmsis-rtos2"
-source: "ARM-software/CMSIS_6@26206e4:CMSIS/Documentation/Doxygen/RTOS2/src/processIsolation.md"
-doc_source: "https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/RTOS2/src/processIsolation.md#handle-memory-access-faults"
+source: "ARM-software/CMSIS_6@acf7392:CMSIS/Documentation/Doxygen/RTOS2/src/processIsolation.md"
+doc_source: "https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/RTOS2/src/processIsolation.md#handle-memory-access-faults"
 license: "Apache-2.0"
 mode: "V"
 ---
 
-A memory access fault is triggered when a thread tries to access memory or peripherals outside of the MPU Protected Zone loaded while the thread is running. In such case Memory Management Interrupt [MemoryManagement_IRQn](https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/RTOS2/src/../Core/group__NVIC__gr.html) is triggered by the processor and its handling function is executed according to the exception vector table specified in the device startup file (by default `MemManage_Handler(void)` ).
+A memory access fault is triggered when a thread tries to access memory or peripherals outside of the MPU Protected Zone loaded while the thread is running. In such case Memory Management Interrupt [MemoryManagement_IRQn](https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/RTOS2/src/../Core/group__NVIC__gr.html) is triggered by the processor and its handling function is executed according to the exception vector table specified in the device startup file (by default `MemManage_Handler(void)` ).
 
 The _MemManage_Handler()_ interrupt handler is application specific and needs to be implemented by the user. In the handler it is possible to identify the thread that caused the memory access fault, the corresponding zone id and the safety class. This information can be used to define actions for entering a safe state. rtos_process_isolation_faults provides more details on the available system recovery possibilities.
 

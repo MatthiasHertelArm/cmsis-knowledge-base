@@ -9,7 +9,7 @@ severity: "warning"
 symptoms: ["number must be integer or hexadecimal prefixed by 0x"]
 symptom_regex: "^number must be integer or hexadecimal prefixed by 0x$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:392"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrYamlParser.cpp:392"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

@@ -6,8 +6,8 @@ title: "Appendix: Arm® Cortex®-M85 Memory map overview for Corstone™-320 ref
 summary: "The following table refers to the memory mapping information specific to the Arm® Cortex®-M85."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/appendix.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/appendix.md#arm-cortex-m85-memory-map-overview-for-corstone-320-reference-design"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/appendix.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/appendix.md#arm-cortex-m85-memory-map-overview-for-corstone-320-reference-design"
 license: "Apache-2.0"
 mode: "V"
 ---

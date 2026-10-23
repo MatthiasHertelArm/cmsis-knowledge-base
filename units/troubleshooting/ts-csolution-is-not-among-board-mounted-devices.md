@@ -9,7 +9,7 @@ severity: "warning"
 symptoms: ["specified device '<…>' is not among board mounted devices"]
 symptom_regex: "^specified device '.+?' is not among board mounted devices$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:1490"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrWorker.cpp:1490"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

@@ -6,8 +6,8 @@ title: "Thread safety and multithreading: concurrency issues: Status of various 
 summary: "All contexts have associated init() and free() functions. For contexts that include mutexes, these functions create and initialize the mutex and then free and destroy it."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/development/thread-safety-and-multi-threading.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/development/thread-safety-and-multi-threading.md#status-of-various-contexts-and-associated-functions"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/development/thread-safety-and-multi-threading.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/development/thread-safety-and-multi-threading.md#status-of-various-contexts-and-associated-functions"
 license: "Apache-2.0"
 mode: "V"
 ---

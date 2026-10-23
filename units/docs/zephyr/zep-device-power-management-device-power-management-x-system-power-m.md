@@ -6,8 +6,8 @@ title: "Device Power Management: Device Power Management X System Power Manageme
 summary: "When managing power in embedded systems, it's crucial to understand the interplay between device power state and the overall system power state. Some devices may have dependencies on the system power state."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/services/pm/device.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/services/pm/device.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/services/pm/device.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/services/pm/device.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

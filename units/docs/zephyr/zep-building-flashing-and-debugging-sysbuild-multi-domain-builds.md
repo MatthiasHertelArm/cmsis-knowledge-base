@@ -6,8 +6,8 @@ title: "Building, Flashing and Debugging: Building: `west build` / Sysbuild (mul
 summary: "sysbuild can be used to create a multi-domain build system combining multiple images for a single or multiple boards."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/develop/west/build-flash-debug.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/develop/west/build-flash-debug.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/develop/west/build-flash-debug.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/develop/west/build-flash-debug.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

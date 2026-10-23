@@ -6,13 +6,13 @@ title: "Nonblocking ECC: Enabling the restartable ECC feature, generic flow"
 summary: "Nonblocking ECC: Enabling the restartable ECC feature, generic flow"
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/development/restartable-ecc.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/development/restartable-ecc.md#enabling-the-restartable-ecc-feature-generic-flow"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/development/restartable-ecc.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/development/restartable-ecc.md#enabling-the-restartable-ecc-feature-generic-flow"
 license: "Apache-2.0"
 mode: "V"
 ---
 
-* At configuration time, define `MBEDTLS_ECP_RESTARTABLE` in `mbedtls/mbedtls_config.h`. See [How do I configure Mbed TLS](https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/development/../compiling-and-building/how-do-i-configure-mbedtls.md) for more information.
+* At configuration time, define `MBEDTLS_ECP_RESTARTABLE` in `mbedtls/mbedtls_config.h`. See [How do I configure Mbed TLS](https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/development/../compiling-and-building/how-do-i-configure-mbedtls.md) for more information.
 * Set the maximal number of operations that you want to run in a row with the `ECP` module, using `mbedtls_ecp_set_max_ops()`.
 * Allocate the restart context, and initialize it by calling `mbedtls_xxx_restart_init()`.
 * `ECP`, `ECDSA`, `PK` and `X.509` need an explicit restart context, and `ECDH` and `SSL` don't, though `ECDH` requires an additional call to `mbedtls_ecdh_enable_restart()`.

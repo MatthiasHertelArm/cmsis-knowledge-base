@@ -6,8 +6,8 @@ title: "Error Handling & Defensive Programming Guide: 1. Trust Boundaries: Where
 summary: "To achieve high performance without sacrificing critical stability, TFLM distinguishes between trusted and untrusted data sources."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/error_handling_guide.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/error_handling_guide.md#1-trust-boundaries-where-data-comes-from"
+source: "tensorflow/tflite-micro@f7ed40d:tensorflow/lite/micro/docs/error_handling_guide.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/f7ed40d/tensorflow/lite/micro/docs/error_handling_guide.md#1-trust-boundaries-where-data-comes-from"
 license: "Apache-2.0"
 mode: "V"
 ---

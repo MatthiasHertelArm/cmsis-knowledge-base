@@ -6,8 +6,8 @@ title: "\\elemhead{component_viewer/typedefs}: \\elemhead{component_viewer/typed
 summary: "does not accept complex data types. Is this a bug in UV or intentional?"
 status: "draft"
 collection: "cmsis-view"
-source: "ARM-software/CMSIS-View@fef5aca:Documentation/Doxygen/src/ref_scvd.txt"
-doc_source: "https://github.com/ARM-software/CMSIS-View/blob/fef5aca/Documentation/Doxygen/src/ref_scvd.txt"
+source: "ARM-software/CMSIS-View@285e935:Documentation/Doxygen/src/ref_scvd.txt"
+doc_source: "https://github.com/ARM-software/CMSIS-View/blob/285e935/Documentation/Doxygen/src/ref_scvd.txt"
 license: "Apache-2.0"
 mode: "V"
 ---

@@ -6,8 +6,8 @@ title: "TinyStories-42M KV-cache generation on Ethos-U85: Export ctx64 plain KV 
 summary: "Although the KV model consumes one token per invocation, max_seq_length=64 describes the exported sequence capacity. PT2E uses one 64-token Wikitext sample for the quick validation calibration."
 status: "draft"
 collection: "executorch-arm"
-source: "pytorch/executorch@658390c:examples/arm/tinystories42m_example_ethos_u/README.md"
-doc_source: "https://github.com/pytorch/executorch/blob/658390c/examples/arm/tinystories42m_example_ethos_u/README.md#export-ctx64-plain-kv-cache"
+source: "pytorch/executorch@24a6116:examples/arm/tinystories42m_example_ethos_u/README.md"
+doc_source: "https://github.com/pytorch/executorch/blob/24a6116/examples/arm/tinystories42m_example_ethos_u/README.md#export-ctx64-plain-kv-cache"
 license: "BSD-3-Clause"
 mode: "V"
 ---

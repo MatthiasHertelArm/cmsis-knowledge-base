@@ -6,8 +6,8 @@ title: "Object Detection Code Sample: Building the code sample application from 
 summary: "In addition to the already specified build option in the main documentation, the Object Detection use-case specifies:"
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/use_cases/object_detection.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/object_detection.md#building-the-code-sample-application-from-sources"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/use_cases/object_detection.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/object_detection.md#building-the-code-sample-application-from-sources"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -29,7 +29,7 @@ specifies:
 - `object_detection_FILE_PATH`: The path to the directory containing the images, or a path to a single image file, that is to
    be used in the application. The default value points to the `resources/object_detection/samples` folder containing the
    delivered set of images.
-   For further information, please refer to: [Add custom input data section](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/./object_detection.md#add-custom-input).
+   For further information, please refer to: [Add custom input data section](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/./object_detection.md#add-custom-input).
 
 - `object_detection_IMAGE_SIZE`: The NN model requires input images to be of a specific size. This parameter defines the size
   of the image side in pixels. Images are considered squared. The default value is `192`, which is what the supplied
@@ -46,12 +46,12 @@ specifies:
   By default, it is set to 2MiB and is enough for most models.
 
 To build **ONLY** the Object Detection example application, add `-DUSE_CASE_BUILD=object_detection` to the `cmake` command
-line, as specified in: [Building](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../documentation.md#Building).
+line, as specified in: [Building](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../documentation.md#Building).
 
 ### Build process
 
 > **Note:** This section describes the process for configuring the build for the *MPS3: SSE-300*. To build for a
-> different target platform, please refer to: [Building](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../documentation.md#Building).
+> different target platform, please refer to: [Building](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../documentation.md#Building).
 
 To **only** build the `object_detection` example, create a build directory, and then navigate inside.
 
@@ -78,9 +78,9 @@ cmake .. \
 
 For further information, please refer to:
 
-- [Configuring with custom TPIP dependencies](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../sections/building.md#configuring-with-custom-tpip-dependencies)
-- [Using Arm Compiler](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../sections/building.md#using-arm-compiler)
-- [Building for different Ethos-U NPU variants](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../sections/building.md#building-for-different-ethos_u-npu-variants)
+- [Configuring with custom TPIP dependencies](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../sections/building.md#configuring-with-custom-tpip-dependencies)
+- [Using Arm Compiler](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../sections/building.md#using-arm-compiler)
+- [Building for different Ethos-U NPU variants](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../sections/building.md#building-for-different-ethos_u-npu-variants)
 
 > **Note:** If re-building with changed parameters values, we recommend that you clean the build directory and re-run
 > the CMake command.
@@ -177,7 +177,7 @@ The application performs inference using the model pointed to by the CMake param
 > **Note:** If you want to run the model using an *Ethos-U*, ensure that your custom model has been successfully run
 > through the Vela compiler *before* continuing.
 
-For further information: [Optimize model with Vela compiler](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../sections/building.md#Optimize-custom-model-with-Vela-compiler).
+For further information: [Optimize model with Vela compiler](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../sections/building.md#Optimize-custom-model-with-Vela-compiler).
 
 For example:
 

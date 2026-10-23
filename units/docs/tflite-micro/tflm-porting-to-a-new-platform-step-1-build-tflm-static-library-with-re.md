@@ -6,8 +6,8 @@ title: "Porting to a new platform: Step 1: Build TFLM Static Library with Refere
 summary: "Use the TFLM project generation script to create a directory tree containing only the sources that are necessary to build the code TFLM library."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/new_platform_support.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/new_platform_support.md#step-1-build-tflm-static-library-with-reference-kernels"
+source: "tensorflow/tflite-micro@f7ed40d:tensorflow/lite/micro/docs/new_platform_support.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/f7ed40d/tensorflow/lite/micro/docs/new_platform_support.md#step-1-build-tflm-static-library-with-reference-kernels"
 license: "Apache-2.0"
 mode: "V"
 ---

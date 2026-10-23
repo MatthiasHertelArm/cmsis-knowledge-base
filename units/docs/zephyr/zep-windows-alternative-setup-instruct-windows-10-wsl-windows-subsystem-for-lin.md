@@ -6,8 +6,8 @@ title: "Windows alternative setup instructions: Windows 10 WSL (Windows Subsyste
 summary: "If you are running a recent version of Windows 10 you can make use of the built-in functionality to natively run Ubuntu binaries directly on a standard command-prompt."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/develop/getting_started/installation_win.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/develop/getting_started/installation_win.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/develop/getting_started/installation_win.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/develop/getting_started/installation_win.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

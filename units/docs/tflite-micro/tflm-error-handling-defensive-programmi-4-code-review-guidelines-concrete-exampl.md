@@ -6,8 +6,8 @@ title: "Error Handling & Defensive Programming Guide: 4. Code Review Guidelines 
 summary: "Fuzzer fixes should align with the core philosophy. We evaluate them based on the type of crash:"
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/error_handling_guide.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/error_handling_guide.md#4-code-review-guidelines-concrete-examples"
+source: "tensorflow/tflite-micro@f7ed40d:tensorflow/lite/micro/docs/error_handling_guide.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/f7ed40d/tensorflow/lite/micro/docs/error_handling_guide.md#4-code-review-guidelines-concrete-examples"
 license: "Apache-2.0"
 mode: "V"
 ---

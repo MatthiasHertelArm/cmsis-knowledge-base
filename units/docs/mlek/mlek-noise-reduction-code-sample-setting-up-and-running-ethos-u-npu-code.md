@@ -6,8 +6,8 @@ title: "Noise Reduction Code Sample: Setting up and running Ethos-U NPU code sam
 summary: "The FVP is available publicly from Arm Ecosystem FVP downloads."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/use_cases/noise_reduction.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/noise_reduction.md#setting-up-and-running-ethos-u-npu-code-sample"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/use_cases/noise_reduction.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/noise_reduction.md#setting-up-and-running-ethos-u-npu-code-sample"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -84,7 +84,7 @@ INFO - NPU TOTAL cycles: 104514
 > **Note:** When running Fast Model, each inference can take several seconds on most systems.
 
 Each inference dumps the post processed output to memory. For further information, please refer to:
-[Dumping post processed results for all inferences](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/./noise_reduction.md#dumping-post_processed-results-for-all-inferences).
+[Dumping post processed results for all inferences](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/./noise_reduction.md#dumping-post_processed-results-for-all-inferences).
 
 The profiling section of the log shows that for this inference:
 

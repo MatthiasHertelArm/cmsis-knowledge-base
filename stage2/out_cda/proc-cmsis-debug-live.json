@@ -1,13 +1,17 @@
 {
   "id": "proc-cmsis-debug-live",
-  "summary": "Investigate a firmware runtime bug on a live Cortex-M debug session: faults, hangs, wrong values, silent peripherals",
+  "summary": "Investigate firmware runtime bugs such as faults, hangs, wrong values and silent peripherals by inspecting a live Cortex-M debug session through the CMSIS Debugger instead of adding prints.",
   "triggers": [
-    "first investigation step whenever live inspection is practical",
-    "instead of adding temporary printf/UART logging",
-    "LED toggles, or console output to diagnose firmware"
+    "HardFaults and other faults, crashes, hangs, failing tests",
+    "peripherals that do not respond",
+    "wrong/null values that are right in simulation but wrong on hardware",
+    "code that never reaches the line you expect",
+    "timing that does not close"
   ],
   "applies_to": {
     "tool": [
+      "cmsis-debugger",
+      "csolution",
       "cbuild"
     ],
     "toolchain": [],
@@ -16,57 +20,55 @@
     "api": []
   },
   "unmapped": [
-    "Arm Cortex-M target",
-    "CMSIS Debugger",
+    "Cortex-M family",
+    "J-Link",
+    "VS Code",
     "CMSIS Developer Assistant MCP server"
   ],
-  "verification": [
-    "You have found the root cause when you can say which line produced the wrong state, and predict what changing it will do.",
-    "Verify that prediction on the target before you claim it."
-  ],
+  "verification": [],
   "stop_conditions": [
-    "If `launch.json` is stale, the user has to regenerate it: **CMSIS Solution → Manage Solution → Debugger → Apply**. You cannot do that step for them.",
     "If the debugger cannot be used — no probe, no `launch.json`, a board that does not enumerate — say what the concrete blocker is before falling back to another method.",
-    "If a fault read answers `PROBE_WEDGED`, the debug port no longer answers (DHCSR could not be read either): stop reading and follow the hint.",
-    "A `load_and_debug` session owns its GDB server; `restart_debugging` and `load_and_debug` re-flash and reset, so to keep the fault state the user restarts the server without a reset and you `cmsis_action attach`.",
-    "Or ask the user to pick one: a click on \"CDA\" in the VS Code status bar opens Select Target Window.",
-    "`WORKER_TIMEOUT` means the target window is alive but the call did not finish in time and still runs there, often because a picker or dialog waits for the user: call `get_session_status` and ask the user to look at that window before you repeat the call.",
-    "`WINDOW_UNREACHABLE` means the window did not answer at all, because its extension host is blocked or it closed: call `list_debug_windows`, and if the window is still listed, ask the user to reload it."
+    "`initializing` | Wait, ask again. Do **not** issue a second start.",
+    "`unresponsive` | `check_target_connection`; ... `restart_debugging` and `load_and_debug` re-flash and reset, and lose that state: last, and only once the user accepts the loss.",
+    "If `launch.json` is stale, the user has to regenerate it: **CMSIS Solution → Manage Solution → Debugger → Apply**. You cannot do that step for them.",
+    "Use them after the decoded fault and frame are recorded, or when the user accepts that loss.",
+    "Never start a GDB server yourself.",
+    "If the user has the MS Serial Monitor open on the same device, the OS will not give you the tty (`PORT_HELD`). ... Then ask the user to stop monitoring the port there, and read it with `serial_capture` once it is free. Do not take the user's port silently.",
+    "When no rule decides — two windows debugging at once, or several idle ones — it refuses to guess and asks you to choose",
+    "`WORKER_TIMEOUT` ... call `get_session_status` and ask the user to look at that window before you repeat the call.",
+    "`WINDOW_UNREACHABLE` ... call `list_debug_windows`, and if the window is still listed, ask the user to reload it."
   ],
   "rules": [],
   "extracted": [
     {
       "type": "concept",
-      "title": "Cortex-M breakpoint budget (FPB code comparators)",
-      "body": "Breakpoints in flash use the FPB code comparators: **4** on Cortex-M0/M0+/M23, **6** on M3/M4, **8** on M7/M33/M55/M85 — the table of topic `breakpoints`. A device can implement fewer; `FP_CTRL` at `0xE0002000` gives the count on the target. Past it, breakpoints silently fail to bind or the adapter reports an error. `list_breakpoints` before adding one; between hypotheses, `remove_breakpoint` for the ones you set (`clear_all_breakpoints` deletes the user's too). In RAM, software breakpoints are unlimited."
-    },
-    {
-      "type": "concept",
-      "title": "Logpoints still halt the core on every hit",
-      "body": "`add_logpoint` prints and resumes rather than halting — but the core still stops on every hit while GDB formats and prints. In an ISR or a hot loop that changes the timing you are trying to measure. For those, prefer `read_cycle_counter` around the region, or have the firmware fill a RAM buffer you read back with `read_memory`.\n\nGDB infers nothing about types, so `{expr}` defaults to `%d` and you write `{expr:%s}` / `{expr:%f}` / `{expr:%p}` when it is not an integer. On the CMSIS Debugger a logpoint is a GDB `dprintf`: its text goes to VS Code's Debug Console, not to you, and `list_breakpoints` counts its hits."
-    },
-    {
-      "type": "concept",
-      "title": "When the variable and the peripheral disagree",
-      "body": "**Read the address directly.** `read_memory` on the register address tells you what the bus sees. A mismatch against the C variable means the write never landed — wrong alias, missing `volatile`, or a peripheral clock that is off.\n**Check the clock first.** A peripheral whose clock gate is closed reads back zeros or retains defaults and silently ignores writes. This is the single most common \"the peripheral is broken\" cause.\n**Watch for caches and write buffers** on M7 and larger parts: what the core wrote may not be what DMA reads."
+      "title": "Cortex-M breakpoint budget",
+      "symptoms": [],
+      "body": "Breakpoints in flash use the FPB code comparators: 4 on Cortex-M0/M0+/M23, 6 on M3/M4, 8 on M7/M33/M55/M85. A device can implement fewer; FP_CTRL at 0xE0002000 gives the count on the target. Past it, breakpoints silently fail to bind or the adapter reports an error. In RAM, software breakpoints are unlimited."
     },
     {
       "type": "troubleshooting",
-      "title": "PROBE_WEDGED during a fault read",
+      "title": "Probe wedged during fault read",
       "symptoms": [
-        "PROBE_WEDGED",
-        "INVALID_ARGUMENT"
+        "PROBE_WEDGED"
       ],
-      "body": "If a fault read answers `PROBE_WEDGED`, the debug port no longer answers (DHCSR could not be read either): stop reading and follow the hint. An attach session reconnects with `cmsis_action detach`, then `attach`, without a reset. A `load_and_debug` session owns its GDB server; `restart_debugging` and `load_and_debug` re-flash and reset, so to keep the fault state the user restarts the server without a reset and you `cmsis_action attach`. Never start a GDB server yourself. `INVALID_ARGUMENT` \"the debug port answers\" means only that address is unreadable. A lockup note means the core faulted inside a fault handler."
+      "body": "If a fault read answers PROBE_WEDGED, the debug port no longer answers (DHCSR could not be read either): stop reading and follow the hint. An attach session reconnects with cmsis_action detach, then attach, without a reset. A load_and_debug session owns its GDB server: the user restarts that server without a reset, and you cmsis_action attach. Only then restart_debugging, reset or load_and_debug again."
     },
     {
       "type": "troubleshooting",
-      "title": "Target window does not finish or does not answer",
+      "title": "Serial port held by MS Serial Monitor",
       "symptoms": [
-        "WORKER_TIMEOUT",
-        "WINDOW_UNREACHABLE"
+        "PORT_HELD"
       ],
-      "body": "`WORKER_TIMEOUT` means the target window is alive but the call did not finish in time and still runs there, often because a picker or dialog waits for the user: call `get_session_status` and ask the user to look at that window before you repeat the call. `WINDOW_UNREACHABLE` means the window did not answer at all, because its extension host is blocked or it closed: call `list_debug_windows`, and if the window is still listed, ask the user to reload it."
+      "body": "If the user has the MS Serial Monitor open on the same device, the OS will not give you the tty (PORT_HELD). serial_subscribe_monitor reads that session only where the Serial Monitor's API exposes a data event; API version 0 has none, so the call is refused and says why. Then ask the user to stop monitoring the port there, and read it with serial_capture once it is free."
+    },
+    {
+      "type": "troubleshooting",
+      "title": "Reads rejected while target is running",
+      "symptoms": [
+        "[TARGET_RUNNING]"
+      ],
+      "body": "running rejects step_over, step_into, step_out, continue_execution, read_memory, read_core_registers, read_peripheral_register, read_cycle_counter, get_fault_info, diagnose_fault, evaluate_expression, get_call_stack, get_frame_variables, get_threads, list_variable_names and get_variables_values: call pause_execution first."
     }
   ]
 }

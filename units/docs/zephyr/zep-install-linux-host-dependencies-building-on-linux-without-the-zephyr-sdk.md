@@ -6,8 +6,8 @@ title: "Install Linux Host Dependencies: Building on Linux without the Zephyr SD
 summary: "The Zephyr SDK is provided for convenience and ease of use. It provides toolchains for all Zephyr target architectures, and does not require any extra flags when building applications or running tests."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/develop/getting_started/installation_linux.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/develop/getting_started/installation_linux.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/develop/getting_started/installation_linux.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/develop/getting_started/installation_linux.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

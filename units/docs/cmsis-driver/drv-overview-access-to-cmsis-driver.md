@@ -6,13 +6,13 @@ title: "Overview: Access to CMSIS-Driver"
 summary: "CMSIS-Driver intefaces are actively maintained in the CMSIS 6 GitHub repository and released as part of the CMSIS Software Pack."
 status: "draft"
 collection: "cmsis-driver"
-source: "ARM-software/CMSIS_6@26206e4:CMSIS/Documentation/Doxygen/Driver/src/mainpage.md"
-doc_source: "https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Driver/src/mainpage.md#access-to-cmsis-driver"
+source: "ARM-software/CMSIS_6@acf7392:CMSIS/Documentation/Doxygen/Driver/src/mainpage.md"
+doc_source: "https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Driver/src/mainpage.md#access-to-cmsis-driver"
 license: "Apache-2.0"
 mode: "V"
 ---
 
-CMSIS-Driver intefaces are actively maintained in the [**CMSIS 6 GitHub repository**](https://github.com/ARM-software/CMSIS_6) and released as part of the [**CMSIS Software Pack**](https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Driver/src/../General/cmsis_pack.html).
+CMSIS-Driver intefaces are actively maintained in the [**CMSIS 6 GitHub repository**](https://github.com/ARM-software/CMSIS_6) and released as part of the [**CMSIS Software Pack**](https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Driver/src/../General/cmsis_pack.html).
 
 The CMSIS Software Pack publishes the API Interface under the Component Class **CMSIS Driver** with header files and a documentation. These header files are the reference for the implementation of the standardized peripheral driver interfaces.
 

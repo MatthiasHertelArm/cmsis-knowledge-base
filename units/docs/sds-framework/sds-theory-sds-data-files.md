@@ -6,8 +6,8 @@ title: "theory: SDS Data Files"
 summary: "Each data stream is stored in a separate SDS data file. In the diagram below SCinput.0.sds is the input to Signal Conditioning, SCoutput.0.sds is the output of Signal Conditioning, and MLoutput.0.sds is the output of the ML Model."
 status: "draft"
 collection: "sds-framework"
-source: "ARM-software/SDS-Framework@4459441:documentation/theory.md"
-doc_source: "https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/theory.md#sds-data-files"
+source: "ARM-software/SDS-Framework@c18efee:documentation/theory.md"
+doc_source: "https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/theory.md#sds-data-files"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -44,7 +44,7 @@ The `.p` is added when the SDS data stream is recorded during playback.
 The `sdsOpen` function takes `<stream-name>` for the stream and the opening mode as input parameters.
 Opening a stream in `sdsModeRead` mode is used for playback and opening a stream in `sdsModeWrite` is used for recording.
 
-The [`SDSIO-Server`](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/utilities.md#sdsio-server) adds `.<label>[.p].sds` to compose a filename as explained below:
+The [`SDSIO-Server`](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/utilities.md#sdsio-server) adds `.<label>[.p].sds` to compose a filename as explained below:
 
 **Recording:**
 
@@ -54,7 +54,7 @@ Each subsequent recording session uses the next `<label>` number in the sequence
 
 **Playback:**
 
-When a [`*.sdsio.yml` control file](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/utilities.md#sdsio-control-file-sdsioyml) is used and contains a [`play:`](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/utilities.md#play) node, the `<label>` is specified in the corresponding [`step:`](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/utilities.md#play).
+When a [`*.sdsio.yml` control file](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/utilities.md#sdsio-control-file-sdsioyml) is used and contains a [`play:`](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/utilities.md#play) node, the `<label>` is specified in the corresponding [`step:`](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/utilities.md#play).
 
 When `*.sdsio.yml` control file is not used, the `<label>` is a sequential number starting at 0. If the corresponding file does not exist, the open operation fails.
 

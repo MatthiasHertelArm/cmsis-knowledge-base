@@ -1,0 +1,24 @@
+[
+ {
+  "id": "ts-svdconv-m249",
+  "cause": "The SVD input declares a register or cluster array (dim) whose expansion produces more generated indices and model copies than the svdconv per-input limit allows. The %NUM% placeholder is the configured limit value. Because the source lines were not available, this reading is based only on the message text.",
+  "fix": "Reduce the dimension count or the dimIncrement range of the offending dim element in the SVD file, or split the large array into smaller groups, then rerun svdconv. Check the README entry for this message for any documented limit or option.",
+  "evidence": [
+   "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+  ],
+  "confidence": "medium",
+  "note": "Source lines were unavailable, so the trigger condition and the exact limit are not verified. The message is documented in the README but its README text was not provided here.",
+  "ref": "Open-CMSIS-Pack/devtools@6cb5a3c2"
+ },
+ {
+  "id": "ts-svdconv-m250",
+  "cause": "svdconv prints this error when a dimension element (dim, dimIndex, dimIncrement) in the SVD file describes an index or address range that is invalid or overflows the address space for the named dimension. The %NAME% placeholder is the name of the peripheral, register or cluster whose dimension is at fault. The exact trigger condition could not be checked because the source lines were not available, so this is inferred from the message text.",
+  "fix": "Open the SVD file, find the element named in the message, and check its dimension settings: dim (count), dimIncrement (step between entries) and dimIndex (index list or range). Make sure the count and increment keep every generated address inside the peripheral's address block, and that dimIndex values are consistent with dim. Correct the values and run svdconv again.",
+  "evidence": [
+   "tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+  ],
+  "confidence": "medium",
+  "note": "Source lines were unavailable, so the trigger and the user-facing cause are inferred from the message text only. The stated cause and fix should be verified against the actual check in SVDConv_Msgs.cpp and its caller before relying on them.",
+  "ref": "Open-CMSIS-Pack/devtools@6cb5a3c2"
+ }
+]

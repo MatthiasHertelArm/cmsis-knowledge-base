@@ -6,8 +6,8 @@ title: "How to generate a self-signed certificate: Command to generate a self-si
 summary: "The full command for generating a self-signed CA certificate that cannot sign other CA certificates for our_key.key with the name CN=myserver,O=myorganization,C=NL and valid only in the years 2013, 2014 and 2015 would be:"
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/generate-a-self-signed-certificate.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/generate-a-self-signed-certificate.md#command-to-generate-a-self-signed-certificate"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/generate-a-self-signed-certificate.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/generate-a-self-signed-certificate.md#command-to-generate-a-self-signed-certificate"
 license: "Apache-2.0"
 mode: "V"
 ---

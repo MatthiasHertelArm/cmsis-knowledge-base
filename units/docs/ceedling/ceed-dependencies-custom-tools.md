@@ -2,17 +2,41 @@
 id: "ceed-dependencies-custom-tools"
 type: "concept"
 domain: "test"
-title: "Dependencies: Custom Tools"
-summary: "You can optionally specify a compiler, assembler, and linker, just as you would a release build:"
+title: "Dependencies: Custom tools"
+summary: "The plugin’s tools are configured like any other Ceedling tool, and you can replace them under :tools:"
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/dependencies.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/plugins/dependencies.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/dependencies/#custom-tools"
 license: "MIT"
 mode: "V"
 ---
 
-You can optionally specify a compiler, assembler, and linker, just as you would a release build:
+The plugin’s tools are configured like any other Ceedling tool, and you can replace them
+under `:tools`:
+
+| Tool | Default | Used for |
+|---|---|---|
+| `:deps_compiler` | `gcc` | `:build_lib` compiling |
+| `:deps_assembler` | none | `:build_lib` assembling, needed only for assembly files |
+| `:deps_linker` | `ar` | `:build_lib` archiving |
+| `:deps_zip` | `unzip` | `:zip` fetching |
+| `:deps_targzip` | `tar` | `:tar_gzip` fetching |
+| `:deps_git_clone`, `:deps_git_checkout` | `git` | `:git` fetching |
+| `:deps_subversion` | `svn` | `:svn` fetching |
+
+The compiler, assembler, and archiver are checked just before `:build_lib` uses them, so
+a project without `:build_lib` needs none of them.
+
+`:build_lib` compiles every C file anywhere under the dependency’s `:source` path, with
+every directory holding a header there as a search path. It then archives the objects
+into the first library under `:artifacts` ↳ `:static_libraries`, built in the `:build`
+path and copied to the `:artifact` path when the two differ. A dependency’s own
+`:defines` and `:flags` apply to its compilation, and `:libraries` and `:libpaths` to its
+archiving.
+
+The compiler receives its search paths as `${5}` and its defines as `${6}`, as Ceedling’s
+own compilers do:
 
 ```yaml
 :tools:
@@ -20,8 +44,8 @@ You can optionally specify a compiler, assembler, and linker, just as you would 
     :executable: gcc
     :arguments:
       - -g
-      - -I"$": COLLECTION_PATHS_SUBPROJECTS
-      - -D$: COLLECTION_DEFINES_SUBPROJECTS
+      - -I"${5}"
+      - -D${6}
       - -c "${1}"
       - -o "${2}"
   :deps_linker:
@@ -32,29 +56,24 @@ You can optionally specify a compiler, assembler, and linker, just as you would 
       - ${1}
 ```
 
-Then, once created, you can reference these tools in your build steps by using the `:build_lib` symbol instead
-of a series of strings to explain all the steps. Ceedling will understand that it should build all the specified
-source and/or assembly files into the specified library:
+A dependency built with `:build_lib` looks like this:
 
 ```yaml
 :dependencies:
   :deps:
     - :name: CaptainCrunch
       :paths:
-        :fetch:    ../cc/
         :source:   ../cc/
         :build:    ../cc/build
         :artifact: ../cc/build
       :fetch:
         :method: :none
-      :environment: []
       :build:
         - :build_lib
       :artifacts:
         :static_libraries:
           - release/cc.a
-        :dynamic_libraries: []
-        :includes: 
+        :includes:
           - ./cc.h
       :defines:
         - THESE_GET_USED_DURING_COMPILATION

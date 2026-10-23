@@ -6,8 +6,8 @@ title: "Core Peripherals Index (`core-peripherals-index.yml`): Filtering behavio
 summary: "Core Peripherals Index (`core-peripherals-index.yml`): Filtering behavior"
 status: "draft"
 collection: "cmsis-debugger"
-source: "Open-CMSIS-Pack/vscode-cmsis-debugger@28c1601:configs/core-peripherals/README.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/blob/28c1601/configs/core-peripherals/README.md#filtering-behavior"
+source: "Open-CMSIS-Pack/vscode-cmsis-debugger@12cb62a:configs/core-peripherals/README.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/blob/12cb62a/configs/core-peripherals/README.md#filtering-behavior"
 license: "Apache-2.0"
 mode: "V"
 ---

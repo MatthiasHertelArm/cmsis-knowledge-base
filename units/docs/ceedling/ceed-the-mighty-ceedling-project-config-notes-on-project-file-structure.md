@@ -3,10 +3,10 @@ id: "ceed-the-mighty-ceedling-project-config-notes-on-project-file-structure"
 type: "concept"
 domain: "test"
 title: "The Mighty Ceedling Project Configuration File: Notes on Project File Structure"
-summary: "The Mighty Ceedling Project Configuration File: Notes on Project File Structure"
+summary: "[MinGW-w64]: https://www.mingw-w64.org [MSYS2]: https://www.msys2.org"
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/configuration/project-file.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/configuration/project-file.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/configuration/project-file/#notes-on-project-file-structure"
 license: "MIT"
 mode: "V"
@@ -38,19 +38,21 @@ mode: "V"
   is parsed. This is usually accompanied by a complaint with
   line and column number pointing into the project file.
 
-* Certain advanced features rely on `gcc` and `cpp` as preprocessing
-  tools. In most Linux systems, these tools are already available.
-  For Windows environments, we recommend the [MinGW] project
-  (Minimalist GNU for Windows).
+* Certain advanced features rely on `gcc` as a preprocessing tool.
+  In most Linux systems, the GNU Compiler Collection is already 
+  available. For Windows environments, we recommend [MinGW-w64], 
+  GCC built for native Windows executables, installed through 
+  [MSYS2], a Windows package manager that provides it.
 
 * Ceedling is primarily meant as a build tool to support automated
   unit testing. All the heavy lifting is involved there. Creating
-  a simple binary release build artifact is quite trivial in
+  a simple binary release build artifact is simpler in
   comparison. Consequently, most default options and the construction
   of Ceedling itself is skewed towards supporting testing, though
   Ceedling can, of course, build your binary release artifact
   as well. Note that some complex binary release builds are beyond
-  Ceedling's abilities. See the [`dependencies`](https://throwtheswitch.github.io/Ceedling/configuration/project-file/../plugins/dependencies.md)
+  Ceedling’s abilities. See the [`dependencies`](https://throwtheswitch.github.io/Ceedling/configuration/project-file/../plugins/dependencies.md)
   plugin for extending release build abilities.
 
-[MinGW]: http://www.mingw.org/
+[MinGW-w64]: https://www.mingw-w64.org
+[MSYS2]: https://www.msys2.org

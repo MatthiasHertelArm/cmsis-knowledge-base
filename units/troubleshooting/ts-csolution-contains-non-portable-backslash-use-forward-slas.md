@@ -9,7 +9,7 @@ severity: "warning"
 symptoms: ["'<…>' contains non-portable backslash, use forward slash instead"]
 symptom_regex: "^'.+?' contains non\\-portable backslash, use forward slash instead$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:335"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrYamlParser.cpp:335"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

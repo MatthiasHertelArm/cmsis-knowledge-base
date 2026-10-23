@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["generator output directory was not set"]
 symptom_regex: "^generator output directory was not set$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:5697"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrWorker.cpp:5697"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

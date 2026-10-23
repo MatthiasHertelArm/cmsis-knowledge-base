@@ -6,8 +6,8 @@ title: "Switching to the new code style: Coding style overview"
 summary: "The following table summarizes the old and new coding style (before/after January 2023)."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/rewrite-branch-for-coding-style.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/rewrite-branch-for-coding-style.md#coding-style-overview"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/rewrite-branch-for-coding-style.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/rewrite-branch-for-coding-style.md#coding-style-overview"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -29,4 +29,4 @@ The following table summarizes the old and new coding style (before/after Januar
 | **Single-line if/loop body** | separate line, braces optional | separate line, **braces mandatory** |
 | Opening brace | on its own line | **on the same line** except for functions |
 
-For a more detailed description of the coding style, please refer to the [coding standards](https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/../development/mbedtls-coding-standards.md).
+For a more detailed description of the coding style, please refer to the [coding standards](https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/../development/mbedtls-coding-standards.md).

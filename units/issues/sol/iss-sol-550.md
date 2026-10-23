@@ -2,38 +2,35 @@
 id: "iss-sol-550"
 type: "troubleshooting"
 domain: "project"
-title: "CMSIS Solution: Opening the CubeMX generator does nothing with CMSIS Solution 1.72 on macOS and Linux"
-summary: "A regression in version 1.72: the generator is started in a pseudo terminal, and on Linux and macOS that terminal ends when cbridge detaches, before the generator has loaded."
+title: "csolution: CubeMX generator fails to open on Linux/macOS with CMSIS Solution extension 1.72"
+summary: "The extension launched the CubeMX generator inside a pseudo terminal (observed on macOS), and cbridge detach terminated that terminal before the generator was loaded; the regression was introduced by PR #450."
 status: "draft"
-tool: "cmsis-solution"
+tool: "csolution"
 collection: "issues-sol"
 source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/550"
 doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/550"
-resolution: "workaround"
-versions: "Broken in 1.72, working in 1.70, fixed in nightly 2026-10-02"
-issue_state: "open"
-confidence: "high"
+resolution: "unresolved"
+versions: "Affected: 1.72. Works in 1.70. Fix validated in nightly 1.72.1-3-20261005; nightly build 2026-10-02 is noted as including the change."
+confidence: "medium"
 cause_origin: "issue-digest"
-checked: "supported"
-applies_to: {"tool": ["cmsis-solution", "csolution"]}
+checked: "partly"
+applies_to: {"tool": ["csolution"], "component": ["CubeMX integration"]}
 license: "own summary of a GitHub issue"
 mode: "S"
 ---
 
 ## Cause
 
-A regression in version 1.72: the generator is started in a pseudo terminal, and on Linux and macOS that terminal ends when cbridge detaches, before the generator has loaded.
+The extension launched the CubeMX generator inside a pseudo terminal (observed on macOS), and cbridge detach terminated that terminal before the generator was loaded; the regression was introduced by PR #450.
 
 ## Fix
 
-Copy the launch command from the CMSIS Solution output channel (csolution run <solution>.csolution.yml -g CubeMX -a <target>) and run it in a normal VS Code terminal; or go back to version 1.70. The fix was included in the nightly build of 2 October 2026.
+Use a build containing the fix (validated on macOS in nightly 1.72.1-3-20261005). Until a release with the fix is confirmed, copy the csolution run command from the CMSIS Solution Output channel and run it in a regular VS Code terminal, or reinstall extension 1.70.
 
 ## Source
 
-Resolution: workaround
+Resolution: unresolved
 
-Versions: Broken in 1.72, working in 1.70, fixed in nightly 2026-10-02
+Versions: Affected: 1.72. Works in 1.70. Fix validated in nightly 1.72.1-3-20261005; nightly build 2026-10-02 is noted as including the change.
 
-The issue is still open: the fix is a workaround, a later release may change it.
-
-From [Open-CMSIS-Pack/vscode-cmsis-solution #550](https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/550), summarized in own words; confidence high, checked against the thread, not reviewed yet.
+From [Open-CMSIS-Pack/vscode-cmsis-solution #550](https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/550), summarized in own words; confidence medium, corrected against the thread, not reviewed yet.

@@ -6,7 +6,7 @@ title: "CSolution Project Structure: Project Examples / Configure Related Projec
 summary: "A solution is the software view of the complete system. It combines projects that can be generated independently and therefore, manages related projects. It may also be deployed to different targets during development as described in section Software Layers."
 status: "draft"
 collection: "cmsis-toolbox"
-source: "Open-CMSIS-Pack/cmsis-toolbox@6c04673:docs/build-overview.md"
+source: "Open-CMSIS-Pack/cmsis-toolbox@3ce8307:docs/build-overview.md"
 doc_source: "https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview/#configure-related-projects"
 license: "Apache-2.0"
 mode: "V"

@@ -6,7 +6,7 @@ title: "CSolution Project Structure: Directory Structure / PLM of Software Packs
 summary: "Software packs evolve over time (bug fixes, new features, dependency and component updates). Checking the installed vs."
 status: "draft"
 collection: "cmsis-toolbox"
-source: "Open-CMSIS-Pack/cmsis-toolbox@6c04673:docs/build-overview.md"
+source: "Open-CMSIS-Pack/cmsis-toolbox@3ce8307:docs/build-overview.md"
 doc_source: "https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview/#plm-of-software-packs"
 license: "Apache-2.0"
 mode: "V"

@@ -10,8 +10,8 @@ code: "M204"
 symptoms: ["M204", "File not found: '%PATH%'!"]
 symptom_regex: "^File not found: '.+?'!$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/src/PackChk_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packchk/README.md"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/README.md"
 applies_to: {"tool": ["packchk"]}
 license: "Apache-2.0"
 mode: "V"

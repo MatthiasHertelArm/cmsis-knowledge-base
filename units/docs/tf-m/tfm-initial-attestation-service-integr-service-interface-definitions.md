@@ -6,7 +6,7 @@ title: "Initial Attestation Service Integration Guide: Code structure / Service 
 summary: "Initial Attestation Service Integration Guide: Code structure / Service interface definitions"
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/integration_guide/services/tfm_attestation_integration_guide.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/integration_guide/services/tfm_attestation_integration_guide.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/integration_guide/services/tfm_attestation_integration_guide.html#service-interface-definitions"
 license: "BSD-3-Clause"
 mode: "V"

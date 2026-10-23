@@ -6,8 +6,8 @@ title: "\\elemhead{component_viewer/events}: \\elemhead{component_viewer/events/
 summary: "Define state information for an event group. This state information is used for: - graphic display of a time-line (for example in the System Analyzer of uVision). - collecting statistical information about an event group."
 status: "draft"
 collection: "cmsis-view"
-source: "ARM-software/CMSIS-View@fef5aca:Documentation/Doxygen/src/ref_scvd.txt"
-doc_source: "https://github.com/ARM-software/CMSIS-View/blob/fef5aca/Documentation/Doxygen/src/ref_scvd.txt"
+source: "ARM-software/CMSIS-View@285e935:Documentation/Doxygen/src/ref_scvd.txt"
+doc_source: "https://github.com/ARM-software/CMSIS-View/blob/285e935/Documentation/Doxygen/src/ref_scvd.txt"
 license: "Apache-2.0"
 mode: "V"
 ---

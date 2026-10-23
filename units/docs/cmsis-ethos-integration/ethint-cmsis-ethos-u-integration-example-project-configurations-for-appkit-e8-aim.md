@@ -6,8 +6,8 @@ title: "CMSIS Ethos-U integration example: Project Configurations for AppKit-E8-
 summary: "Each column describes one combination of NPU and Vela memory mode."
 status: "draft"
 collection: "cmsis-ethos-integration"
-source: "Arm-Examples/CMSIS-Ethos-Integration@529e966:README.md"
-doc_source: "https://github.com/Arm-Examples/CMSIS-Ethos-Integration/blob/529e966/README.md#project-configurations-for-appkit-e8-aiml"
+source: "Arm-Examples/CMSIS-Ethos-Integration@9b906f5:README.md"
+doc_source: "https://github.com/Arm-Examples/CMSIS-Ethos-Integration/blob/9b906f5/README.md#project-configurations-for-appkit-e8-aiml"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -29,7 +29,9 @@ Each column describes one combination of NPU and Vela memory mode.
 | `ethos_cache`          | Unused              | Unused              | Unused                | Unused                | SRAM0 via `AXI_SRAM`  |
 | `SRAM0_SRAM1_COMBINED` | `1`                 | `1`                 | `1`                   | `1`                   | `0`                   |
 
-Set `npu.type` to `Ethos-U55` or `Ethos-U85` as indicated by the column, and set `npu.macs` to `256`. Use the table's `system` and `memory` values for `vela` in the corresponding solution. After changing these settings, recompile both `hello_world` and `tiny_cnn`:
+Set `npu.type` to `Ethos-U55` or `Ethos-U85` as indicated by the column, and set `npu.macs` to `256`.
+Use the table's `system` and `memory` values for `vela` in the corresponding solution.
+After changing these settings, recompile both `hello_world` and `tiny_cnn`:
 
 | NPU | Conversion command                                                 |
 | --- | ------------------------------------------------------------------ |
