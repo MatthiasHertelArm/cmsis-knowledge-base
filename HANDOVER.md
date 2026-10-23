@@ -62,11 +62,11 @@ Turn the skill-based RAG of the CMSIS Developer Assistant into a knowledge base 
    * **Agent tasks** (nightly subset): broken project in a sandbox, agent must fix it; success is decided by the tools (`csolution convert` clean, `cbuild` passes, FVP test passes). Compare no help vs. today's skills vs. knowledge base, with a small local model and a frontier model. Measure success rate, tool calls, tokens, time. These numbers decide when skills can be retired.
    * **Real questions**: cmsis-toolbox and devtools issues (question + resolution), later opt-in CDA usage data.
 3. Wire `knowledge.db` into the CDA behind a feature flag, parallel to the skills. Router skills (cmsis-project, cmsis-bring-up, cmsis-pack) only point to the tools.
-4. Then the next domains from `docs/design/03_wissensdomaenen.md`, each with its own golden set.
+4. Then the next domains from the priority list in `docs/concept.md`, each with its own golden set.
 
 ## Contacts
 
-Concept and decisions: Matthias Hertel. The design documents in `docs/design/` are in German; identifiers and code comments are partly German as well.
+Concept and decisions: Matthias Hertel. The concept is documented in English in `docs/concept.md`; identifiers and code comments are partly German as well.
 
 ## Update 5 Oct 2026: feature parity with the skills of CDA 2.5
 
@@ -310,3 +310,18 @@ That file came from an uncommitted working tree. This update makes it reproducib
 
 Next: let the extension's CI fetch `knowledge.core.db` by commit and sha256 instead of a local copy; review the 54
 low-confidence digests, then drop the `--drop` step; decide on `stage2/books-exclusions.json`.
+
+## Update 22 Oct 2026: the model-assisted stages unattended, GitHub Actions
+
+`tools/model_run.py` sends the four model-assisted stages (stage 2 of the skills, the message causes, the
+issue digests and their check) through the Claude API, one structured request per item, and keeps a
+manifest next to each output folder so that only items whose input changed are sent; the answers the
+reader agents wrote were adopted into the manifests (1,159 threads read, 583 digests, 583 checks, 397
+messages, 31 procedures) and stay. `tools/fetch_issues.py` fetches the threads since the last run.
+`scripts/rebuild.sh` runs both when `ANTHROPIC_API_KEY` and a GitHub token are set. Three workflows:
+`ci.yml` (core index, tests and golden set on every push and pull request), `rebuild.yml` (monthly or by
+hand: rebuild, model stages from the `ANTHROPIC_KEY` secret, gates, a pull request with the result and
+what each stage cost), `release.yml` (`scripts/release_core.sh` for a version). The message prompt the
+readers worked from was never written down; `stage2/errcat_prompt.md` now states it. Open: the first
+scheduled run will digest the open issues updated since 2 Oct that the readers never saw; review that
+pull request with the same care as the first batches.

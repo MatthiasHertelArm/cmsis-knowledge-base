@@ -2,18 +2,18 @@
 
 A knowledge base with a small knowledge graph that adds the *how, when and why* to the *what* of the CMSIS Pack Docs. It is served to coding agents through three MCP tools and is built to work with small local models: summaries first, full text only on request.
 
-Status: working prototype, built 4 Oct 2026 against live sources. All knowledge units are `status: draft`. See [HANDOVER.md](HANDOVER.md) for decisions, known issues and open points.
+Status: working prototype. All knowledge units are `status: draft`. See [HANDOVER.md](HANDOVER.md) for the current build, decisions, known issues and open points.
 
 ## Quick start (5 minutes)
 
 ```bash
 scripts/setup.sh                       # venv + dependencies
 . .venv/bin/activate
-scripts/build_core.sh                  # the core index in about 10 s: licence gate, build/knowledge.core.db, 28 checks
+scripts/build_core.sh                  # the core index in about 10 s: licence gate, build/knowledge.core.db, tests
 python tools/kb_server.py build/knowledge.core.db   # MCP server on stdio
 ```
 
-Connect an agent: [agent-setup/vscode/mcp.json](agent-setup/vscode/mcp.json) for VS Code / Copilot, [agent-setup/claude-code](agent-setup/claude-code/README.md) for Claude Code. Add [copilot-instructions.md](agent-setup/vscode/copilot-instructions.md) to the project so the agent actually uses the tools.
+The agents reach the knowledge through the CMSIS Developer Assistant's MCP tools; this repository no longer ships agent configuration files.
 
 The embedding model (BAAI/bge-small-en-v1.5, about 130 MB) is downloaded on first start. Without network, or with `KB_NO_VEC=1`, the server falls back to keyword search (BM25) only.
 
@@ -42,7 +42,7 @@ board:STMicroelectronics::B-U585I-IOT02A                           procedure | r
 * A more specific unit (`refines`) replaces the general one when both match.
 * `build_index.py --strict` fails if an `applies_to` target no longer exists (stale detection for CI).
 
-Examples with real data: `units/troubleshooting/ts-packchk-m302.md`, `units/skills/procedure/proc-generate-debug-sequences.md`, `units/skills/rule/rule-no-fabrication-generate-debug-sequences.md`. The kickoff deck in `docs/kickoff/` walks through five examples.
+Examples with real data: `units/troubleshooting/ts-packchk-m302.md`, `units/skills/procedure/proc-generate-debug-sequences.md`, `units/skills/rule/rule-no-fabrication-generate-debug-sequences.md`.
 
 ## Devices that are not public yet
 
@@ -68,7 +68,7 @@ The server loads it when `knowledge_search` gets a `cbuild` path and reloads on 
 | `tools/errcat_merge.py` | Cause, fix, note and evidence of each message, read from the devtools source (`stage2/errcat-out`), into the troubleshooting units |
 | `tools/review_csv.py` | `messages-to-review.csv`: every draft message unit, least certain first, with columns for reviewer and comment |
 | `tools/doc2ku.py` | Documentation of open-licence repositories → one concept unit per section. Markdown, doxygen (`*.txt`, doxygen Markdown), reStructuredText and Hugo pages; HTML tables become Markdown tables |
-| `tools/issues2ku.py` | Digests of closed GitHub issues (`stage2/issues-out`, written after `stage2/issues_prompt.md`) → troubleshooting units in `units/issues/<repo>`: own words, mode S, a link to the issue, tool output as the only verbatim text |
+| `tools/issues2ku.py` | Digests of GitHub issues and answered discussions (`stage2/issues-out`, written after `stage2/issues_prompt.md`) → troubleshooting units in `units/issues/<repo>`: own words, mode S, a link to the thread, tool output as the only verbatim text |
 | `scripts/build_pack.sh` | One local pack from named book collections (refined units preferred, generic units included, scope exclusions applied, edges into the core allowed), installed into the pack root: `scripts/build_pack.sh CPP_Architecture softwarearchitecturewithcplusplusseconde` |
 | `tools/pdf2ku.py`, `scripts/build_books.sh` | Test scenario for pack-carried knowledge: books in PDF form (poppler's `pdftohtml` outline and `pdftotext`) → one concept unit per section into `units/books/<book>`, built into the local pack `packs/Local.CPP_Books` and copied into the pack root (`Local/CPP_Books/<version>/`). The books are copyrighted: units and index are git-ignored and never part of `build/knowledge*.db` |
 | `tools/stage3_books.py`, `tools/books_generic.py` | Stage 3 for the books (Claude Haiku 5.5 as reader agents or through the Message Batches API): type, summary, triggers and Markdown per section, every answer gated by a script (`stage2/books_prompt.md`); then generic knowledge in own words with a verbatim evidence quote, checked against the core indexes for duplicates and contradictions (`stage2/books_generic_prompt.md`, `stage2/books_conflict_prompt.md`), into `units/books-refined` and `units/books-generic`; `classify-*` with `stage2/books_scope_prompt.md` keeps coding and design knowledge only (`stage2/books-exclusions.json`, read by `build_index.py --exclude`). `tests/eval_conflicts.py` measures what an agent gets for CMSIS and generic requests once a pack is read next to the core |
@@ -81,10 +81,11 @@ The server loads it when `knowledge_search` gets a `cbuild` path and reloads on 
 | `tools/overlay.py` | Workspace entities for unreleased devices |
 | `units/` | Generated knowledge units (all draft). `units/cda-skills` and `units/cda-routes` come from a checkout of the extension: `CDA=<checkout> scripts/rebuild.sh`. `units/docs/<source>` from `sources/docs.yml`; `units/docs-ccbysa/<source>` is built but left out of the index unless `CCBYSA=1` |
 | `build/` | `entities/*.jsonl` (tracked); the indexes `knowledge*.db` are built, never tracked |
-| `tests/` | `test_kb.py` and fixtures (incl. a workspace with a local DFP and a docs-only device). `golden.json`: 58 questions and tool outputs with the units that answer them; `node tests/eval_search.js build/knowledge.db <CDA checkout>` runs them through the extension's own search and prints hit@1, hit@5 and MRR |
-| `scripts/` | `setup.sh`, `fetch_sources.py`, `rebuild.sh`, `build_core.sh` (the shipped core index), `build_split.sh` (the core without documentation plus a documentation pack) |
-| `docs/design/` | Design documents 00 to 05 (German): concept and schema, migration findings, domains, source list with licenses, status |
-| `docs/kickoff/` | Team kickoff deck (English) and its generator |
+| `tests/` | `test_kb.py` and fixtures (incl. a workspace with a local DFP and a docs-only device). `golden.json` holds questions and tool outputs with the units that answer them; `node tests/eval_search.js build/knowledge.db <CDA checkout>` runs them through the extension's own search and prints hit@1, hit@5 and MRR |
+| `scripts/` | Setup, source fetch, rebuild, core and split builds, local pack builds and core release; see [docs/implementation.md](docs/implementation.md#scripts) for each script |
+| `docs/README.md` | Index of the documentation, with the pipeline and the reading order |
+| `docs/concept.md` | The concept: why the knowledge base exists, the node and edge types, applicability, retrieval, domains |
+| `docs/implementation.md` | The implementation reference: unit frontmatter, entity ids, the tables of `knowledge.db`, the exchange files of the model stages, every script with its inputs and outputs, how a search runs |
 
 ## Full rebuild from live sources
 
@@ -93,6 +94,16 @@ scripts/rebuild.sh            # 4 to 7 minutes; NO_VEC=1 skips the embeddings (a
 ```
 
 Fetches the Keil pack index and all active PDSC files (via the keil.com/pack mirror), clones cmsis-skills and devtools, clones the documentation sources into `.work/docs` (shallow, sparse for Zephyr, ExecuTorch, TF-M and the Learning Paths), runs the whole pipeline and the tests. `CCBYSA=1` adds the CC BY-SA documentation to the index. Inputs of the shipped build: cmsis-skills@25c2085, devtools@30f5e81, pack index of 4 Oct 2026.
+
+## Continuous integration
+
+`.github/workflows/ci.yml` builds the core index from the committed units on every push and pull request
+and gates it: the licence gate, `tests/test_kb.py`, the golden set (hit@5 at least 0.85, MRR at least
+0.65). `rebuild.yml`, by hand or on the first of the month, runs `scripts/rebuild.sh` with the
+model-assisted stages through the Claude API (`tools/model_run.py`, key in the `ANTHROPIC_KEY` secret;
+only items whose input changed are sent, the manifests next to the `stage2/` folders say which) and
+opens a pull request with the regenerated units and the review lists. `release.yml` publishes the core
+index as a release for a version. Details in [docs/implementation.md](docs/implementation.md).
 
 ## The shipped core index
 
@@ -122,4 +133,4 @@ Next to the index the build writes `build/SOURCES.md`, the attribution of its co
 
 ## Licensing of content
 
-Code in `tools/` and `scripts/`: licence to be decided (HANDOVER.md, decision 6); all rights reserved until then. Generated units carry `source`, `license` and `mode` in their frontmatter. The default index is derived from Apache-2.0, MIT and BSD-3-Clause sources only (cmsis-skills, devtools, Open-CMSIS-Pack PDSC metadata, and the documentation in `sources/docs.yml`, each unit with its own `license`, enforced by `tools/check_licences.py` on every core build). The CC BY-SA 4.0 documentation (FreeRTOS Kernel Book, Arm Learning Paths and install guides, the Arm ABI documents, Memfault's Interrupt blog) is converted into `units/docs-ccbysa` but stays out of the default index until the legal review (HANDOVER.md, decision 4); `build/knowledge.ccbysa.db` is a local build with it. Issue digests (`units/issues`) are own summaries with a link to the thread (mode S). `build/SOURCES.md`, written by every core build, is the attribution of the shipped index: every source with its licence, the copyright lines and licence texts the MIT and BSD-3-Clause licences require, the NOTICE files of the Apache-2.0 sources; the extension ships it as `resources/knowledge/SOURCES.md`. Repositories without a licence file, such as the CMSIS Solution extension's documentation, are not used. `docs/design/04_quellenliste.md` lists further sources per domain with mode V (full text), S (own summary + link) or R (reference only); Arm documents, Keil KB and Learning Paths (CC BY-SA 4.0) need legal review before use.
+Code in `tools/` and `scripts/`: licence to be decided (HANDOVER.md, decision 6); all rights reserved until then. Generated units carry `source`, `license` and `mode` in their frontmatter. The default index is derived from Apache-2.0, MIT and BSD-3-Clause sources only (cmsis-skills, devtools, Open-CMSIS-Pack PDSC metadata, and the documentation in `sources/docs.yml`, each unit with its own `license`, enforced by `tools/check_licences.py` on every core build). The CC BY-SA 4.0 documentation (FreeRTOS Kernel Book, Arm Learning Paths and install guides, the Arm ABI documents, Memfault's Interrupt blog) is converted into `units/docs-ccbysa` but stays out of the default index until the legal review (HANDOVER.md, decision 4); `build/knowledge.ccbysa.db` is a local build with it. Issue digests (`units/issues`) are own summaries with a link to the thread (mode S). `build/SOURCES.md`, written by every core build, is the attribution of the shipped index: every source with its licence, the copyright lines and licence texts the MIT and BSD-3-Clause licences require, the NOTICE files of the Apache-2.0 sources; the extension ships it as `resources/knowledge/SOURCES.md`. Repositories without a licence file, such as the CMSIS Solution extension's documentation, are not used. `sources/docs.yml`, `sources/docs-ccbysa.yml` and `sources/sources-review.csv` record configured and reviewed sources; they do not contain the full future-source backlog from the former German design documents. That candidate list, including modes V (full text), S (own summary + link) and R (reference only), is archived in Git at `f1bb74ff:docs/design/04_quellenliste.md`. Arm documents, Keil KB and Learning Paths (CC BY-SA 4.0) need legal review before use.
