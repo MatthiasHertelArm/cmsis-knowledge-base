@@ -7,7 +7,9 @@
     "LED toggles, or console output to diagnose firmware"
   ],
   "applies_to": {
-    "tool": ["cbuild"],
+    "tool": [
+      "cbuild"
+    ],
     "toolchain": [],
     "core": [],
     "component": [],
@@ -35,8 +37,8 @@
   "extracted": [
     {
       "type": "concept",
-      "title": "Cortex-M breakpoint budget (FPB comparators)",
-      "body": "Breakpoints in flash use the FPB comparators: commonly **6** on Cortex-M4/M7, **4** on Cortex-M0+. Past that, breakpoints silently fail to bind or the adapter reports an error. `clear_all_breakpoints` between hypotheses. In RAM, software breakpoints are unlimited."
+      "title": "Cortex-M breakpoint budget (FPB code comparators)",
+      "body": "Breakpoints in flash use the FPB code comparators: **4** on Cortex-M0/M0+/M23, **6** on M3/M4, **8** on M7/M33/M55/M85 — the table of topic `breakpoints`. A device can implement fewer; `FP_CTRL` at `0xE0002000` gives the count on the target. Past it, breakpoints silently fail to bind or the adapter reports an error. `list_breakpoints` before adding one; between hypotheses, `remove_breakpoint` for the ones you set (`clear_all_breakpoints` deletes the user's too). In RAM, software breakpoints are unlimited."
     },
     {
       "type": "concept",
@@ -51,13 +53,19 @@
     {
       "type": "troubleshooting",
       "title": "PROBE_WEDGED during a fault read",
-      "symptoms": ["PROBE_WEDGED", "INVALID_ARGUMENT"],
+      "symptoms": [
+        "PROBE_WEDGED",
+        "INVALID_ARGUMENT"
+      ],
       "body": "If a fault read answers `PROBE_WEDGED`, the debug port no longer answers (DHCSR could not be read either): stop reading and follow the hint. An attach session reconnects with `cmsis_action detach`, then `attach`, without a reset. A `load_and_debug` session owns its GDB server; `restart_debugging` and `load_and_debug` re-flash and reset, so to keep the fault state the user restarts the server without a reset and you `cmsis_action attach`. Never start a GDB server yourself. `INVALID_ARGUMENT` \"the debug port answers\" means only that address is unreadable. A lockup note means the core faulted inside a fault handler."
     },
     {
       "type": "troubleshooting",
       "title": "Target window does not finish or does not answer",
-      "symptoms": ["WORKER_TIMEOUT", "WINDOW_UNREACHABLE"],
+      "symptoms": [
+        "WORKER_TIMEOUT",
+        "WINDOW_UNREACHABLE"
+      ],
       "body": "`WORKER_TIMEOUT` means the target window is alive but the call did not finish in time and still runs there, often because a picker or dialog waits for the user: call `get_session_status` and ask the user to look at that window before you repeat the call. `WINDOW_UNREACHABLE` means the window did not answer at all, because its extension host is blocked or it closed: call `list_debug_windows`, and if the window is still listed, ask the user to reload it."
     }
   ]

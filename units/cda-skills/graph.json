@@ -11,6 +11,7 @@
    ],
    "status": "draft",
    "source": "add-board-layer/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "",
    "portability": "",
    "tools": [
@@ -44,6 +45,7 @@
    ],
    "status": "draft",
    "source": "cmsis-bootstrap/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "",
    "portability": "",
    "tools": [
@@ -88,6 +90,7 @@
    ],
    "status": "draft",
    "source": "cmsis-debug-live/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "",
    "portability": "",
    "tools": [
@@ -117,7 +120,8 @@
    "domain": "debug",
    "title": "cmsis-embedded-guide",
    "status": "draft",
-   "source": "cmsis-debug-live/references/cmsis-embedded-guide.md"
+   "source": "cmsis-debug-live/references/cmsis-embedded-guide.md",
+   "license": "Apache-2.0"
   },
   "proc-cmsis-debugger-setup": {
    "kind": "knowledge",
@@ -130,6 +134,7 @@
    ],
    "status": "draft",
    "source": "cmsis-debugger-setup/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "",
    "portability": "",
    "tools": [
@@ -159,6 +164,7 @@
    ],
    "status": "draft",
    "source": "cmsis-pack-docs/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "",
    "portability": "",
    "tools": [
@@ -190,6 +196,7 @@
    ],
    "status": "draft",
    "source": "debugger-troubleshooting/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "",
    "portability": "",
    "tools": [
@@ -222,6 +229,7 @@
    ],
    "status": "draft",
    "source": "fvp-debug-setup/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "",
    "portability": "",
    "tools": [
@@ -276,6 +284,7 @@
    ],
    "status": "draft",
    "source": "start-cmsis-project/SKILL.md",
+   "license": "Apache-2.0",
    "preconditions": "",
    "portability": "",
    "tools": [

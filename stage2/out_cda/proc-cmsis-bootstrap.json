@@ -7,7 +7,11 @@
     "cmsis_action answers NO_WORKSPACE or CMSIS_NO_SOLUTION"
   ],
   "applies_to": {
-    "tool": ["csolution", "cbuild", "cpackget"],
+    "tool": [
+      "csolution",
+      "cbuild",
+      "cpackget"
+    ],
     "toolchain": [],
     "core": [],
     "component": [],
@@ -22,17 +26,15 @@
     "`cmsis_action { action: 'build' }`. The first build resolves packs and can take minutes: a result with status `running` is not a failure, `cmsis_action { action: 'status' }` waits for it."
   ],
   "stop_conditions": [
-    "When one is missing, say so: the user adds it with **CMSIS Developer Assistant: Select Agent Skills** in VS Code.",
+    "When a procedure is not in the index, say so and do not improvise its steps.",
     "Ask the user to install the **Keil Studio Pack** (`Arm.keil-studio-pack`) from the Extensions view and to reload the window.",
     "**An existing project.** Ask for its folder or its `*.csolution.yml`, then go to step 6.",
     "**A new project.** Ask for the board, or the device when there is no board: the name printed on it, the manufacturer, and the revision when known; the parent folder and a project name (letters, digits, dash, underscore); the compiler, when the user has a preference: `GCC`, `AC6`, `CLANG` or `IAR`; how it will be debugged: the probe on the board or on the desk (CMSIS-DAP, ST-Link, J-Link, ULINKplus, …), or an Arm FVP simulation model.",
     "`FAIL` because a tool the manifest names is not installed yet: open the folder with `cmsis_action {action:'open_solution', path:'<folder>'}`, and ask the user to answer the prompts of the Arm Tools Environment Manager in the new window (download, licence).",
     "Any other `FAIL`: report it and stop.",
     "When the board has no BSP example and its DFP has no startup component, `$start-cmsis-project` reports that the minimal project cannot be created. Tell the user, and offer `$add-board-layer` after a solution exists, or a template of the pack.",
-    "While it is not installed, only this fallback is allowed: list the examples of the board's pack with `csolution list examples --filter \"<board>\" --verbose`, let the user choose one, copy its `folder:` into the project folder, make the copies writable and continue with step 6.",
-    "When the board has no example, ask the user to run **CMSIS: Create Solution** in VS Code or to install the skill.",
     "When `cmsis_action build` still answers `[CMSIS_NO_SOLUTION]` with \"A solution file exists\", wait ten seconds and try again, at most three times; then read `get_recent_problems` and report what the extension said.",
-    "Neither skill installed: ask the user to choose the debug adapter in the CMSIS view under **Manage Solution Settings**.",
+    "Neither procedure in the index (`knowledge_get` fails for both): ask the user to choose the debug adapter in the CMSIS view under **Manage Solution Settings**.",
     "Ask the user to connect the board.",
     "When the session does not start, read the hint of the result and `get_recent_problems`; for a probe or connection failure continue with `$debugger-troubleshooting`."
   ],

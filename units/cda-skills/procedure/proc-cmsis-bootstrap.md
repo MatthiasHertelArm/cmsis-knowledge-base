@@ -14,7 +14,7 @@ requires: ["proc-add-board-layer", "proc-check-cmsis-environment", "proc-check-z
 references: ["asset-cmsis-bootstrap-assets-vcpkg-configuration-json"]
 description: "Get from an empty VS Code window (no folder open, no project on disk) or from a folder without a solution to a CMSIS solution that builds, flashes and debugs: check the CMSIS extensions, choose the project folder, open it so the Arm Tools Environment Manager fetches the tools, create the solution for the board or device with `proc-start-cmsis-project` (`knowledge_get`) (a minimal project that always works, or an example of the board's pack) or open an existing one with cmsis_action open_solution, build, wire the debugger and hand over to cmsis-debug-live. Use when the user wants to start a new CMSIS project for a board, when get_session_status says that no folder is open, or when cmsis_action answers NO_WORKSPACE or CMSIS_NO_SOLUTION. Not for extending an existing solution (cmsis-project) and not for debugging a running target (cmsis-debug-live)."
 verification: ["a CMSIS solution that is open in a VS Code window, builds with `cmsis_action build`, and reaches `main` with `cmsis_action load_and_debug`.", "`cmsis_action { action: 'build' }`. The first build resolves packs and can take minutes: a result with status `running` is not a failure, `cmsis_action { action: 'status' }` waits for it."]
-stop_conditions: ["When one is missing, say so: the user adds it with **CMSIS Developer Assistant: Select Agent Skills** in VS Code.", "Ask the user to install the **Keil Studio Pack** (`Arm.keil-studio-pack`) from the Extensions view and to reload the window.", "**An existing project.** Ask for its folder or its `*.csolution.yml`, then go to step 6.", "**A new project.** Ask for the board, or the device when there is no board: the name printed on it, the manufacturer, and the revision when known; the parent folder and a project name (letters, digits, dash, underscore); the compiler, when the user has a preference: `GCC`, `AC6`, `CLANG` or `IAR`; how it will be debugged: the probe on the board or on the desk (CMSIS-DAP, ST-Link, J-Link, ULINKplus, …), or an Arm FVP simulation model.", "`FAIL` because a tool the manifest names is not installed yet: open the folder with `cmsis_action {action:'open_solution', path:'<folder>'}`, and ask the user to answer the prompts of the Arm Tools Environment Manager in the new window (download, licence).", "Any other `FAIL`: report it and stop.", "When the board has no BSP example and its DFP has no startup component, `proc-start-cmsis-project` (`knowledge_get`) reports that the minimal project cannot be created. Tell the user, and offer `proc-add-board-layer` (`knowledge_get`) after a solution exists, or a template of the pack.", "While it is not installed, only this fallback is allowed: list the examples of the board's pack with `csolution list examples --filter \"<board>\" --verbose`, let the user choose one, copy its `folder:` into the project folder, make the copies writable and continue with step 6.", "When the board has no example, ask the user to run **CMSIS: Create Solution** in VS Code or to install the skill.", "When `cmsis_action build` still answers `[CMSIS_NO_SOLUTION]` with \"A solution file exists\", wait ten seconds and try again, at most three times; then read `get_recent_problems` and report what the extension said.", "Neither skill installed: ask the user to choose the debug adapter in the CMSIS view under **Manage Solution Settings**.", "Ask the user to connect the board.", "When the session does not start, read the hint of the result and `get_recent_problems`; for a probe or connection failure continue with `proc-debugger-troubleshooting` (`knowledge_get`)."]
+stop_conditions: ["When a procedure is not in the index, say so and do not improvise its steps.", "Ask the user to install the **Keil Studio Pack** (`Arm.keil-studio-pack`) from the Extensions view and to reload the window.", "**An existing project.** Ask for its folder or its `*.csolution.yml`, then go to step 6.", "**A new project.** Ask for the board, or the device when there is no board: the name printed on it, the manufacturer, and the revision when known; the parent folder and a project name (letters, digits, dash, underscore); the compiler, when the user has a preference: `GCC`, `AC6`, `CLANG` or `IAR`; how it will be debugged: the probe on the board or on the desk (CMSIS-DAP, ST-Link, J-Link, ULINKplus, …), or an Arm FVP simulation model.", "`FAIL` because a tool the manifest names is not installed yet: open the folder with `cmsis_action {action:'open_solution', path:'<folder>'}`, and ask the user to answer the prompts of the Arm Tools Environment Manager in the new window (download, licence).", "Any other `FAIL`: report it and stop.", "When the board has no BSP example and its DFP has no startup component, `proc-start-cmsis-project` (`knowledge_get`) reports that the minimal project cannot be created. Tell the user, and offer `proc-add-board-layer` (`knowledge_get`) after a solution exists, or a template of the pack.", "When `cmsis_action build` still answers `[CMSIS_NO_SOLUTION]` with \"A solution file exists\", wait ten seconds and try again, at most three times; then read `get_recent_problems` and report what the extension said.", "Neither procedure in the index (`knowledge_get` fails for both): ask the user to choose the debug adapter in the CMSIS view under **Manage Solution Settings**.", "Ask the user to connect the board.", "When the session does not start, read the hint of the result and `get_recent_problems`; for a probe or connection failure continue with `proc-debugger-troubleshooting` (`knowledge_get`)."]
 unmapped: ["Keil Studio Pack (`Arm.keil-studio-pack`): CMSIS Solution extension, CMSIS Debugger, Arm Tools Environment Manager", "vcpkg-configuration.json naming CMSIS-Toolbox, CMake, Ninja and GCC from the Arm tools registry"]
 applies_to: {"tool": ["csolution", "cbuild", "cpackget"]}
 stage2: "proc-cmsis-bootstrap.json"
@@ -29,11 +29,11 @@ Goal: a CMSIS solution that is open in a VS Code window, builds with
 `cmsis_action build`, and reaches `main` with `cmsis_action load_and_debug`.
 
 This skill does little work of its own. It finds out what is missing, asks the user
-for the few things only they can decide or do, and hands over to the skill that owns
-each step. Every `$name` is a skill installed next to this one
-(`../<name>/SKILL.md`). When one is missing, say so: the user installs the skills
-again with **CMSIS Developer Assistant: Configure Agent** in VS Code. Do not improvise
-its steps.
+for the few things only they can decide or do, and hands over to the procedure that
+owns each step. Every `$name` is the procedure `proc-<name>` of the knowledge index:
+read it with `knowledge_get`; `route-project` gives the order. When a procedure is not
+in the index, say so and do not improvise its steps. Nothing here is installed
+separately: ask the user only for an extension or an external capability.
 
 The agent's shell is not the VS Code terminal: the tools the Arm Tools Environment
 Manager activates are on the PATH of VS Code's terminals, not on yours. Nothing in
@@ -82,7 +82,7 @@ Ask, unless the request already says:
     for CMSIS packs; say so in one line;
   - how it will be debugged: the probe on the board or on the desk (CMSIS-DAP,
     ST-Link, J-Link, ULINKplus, …), or an Arm FVP simulation model.
-- **A Zephyr board.** When the user wants a Zephyr application, the project skill
+- **A Zephyr board.** When the user wants a Zephyr application, the project procedure
   is `proc-start-zephyr-project` (`knowledge_get`) instead of step 5; it needs `proc-check-zephyr-environment` (`knowledge_get`)
   and `proc-identify-zephyr-board` (`knowledge_get`), and runs `west` in a shell as its steps name.
 
@@ -183,7 +183,7 @@ the `launch.json` the CMSIS Solution extension writes from it.
 
 - Hardware probe: `proc-cmsis-debugger-setup` (`knowledge_get`).
 - Arm FVP: `proc-fvp-debug-setup` (`knowledge_get`).
-- Neither skill installed: ask the user to choose the debug adapter in the CMSIS
+- Neither procedure in the index (`knowledge_get` fails for both): ask the user to choose the debug adapter in the CMSIS
   view under **Manage Solution Settings**.
 
 Skip this step when `proc-start-cmsis-project` (`knowledge_get`) already set the adapter, or the copied

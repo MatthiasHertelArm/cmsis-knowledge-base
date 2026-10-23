@@ -8,7 +8,9 @@
     "the probe changes"
   ],
   "applies_to": {
-    "tool": ["csolution"],
+    "tool": [
+      "csolution"
+    ],
     "toolchain": [],
     "core": [],
     "component": [],
@@ -26,7 +28,7 @@
     "`add_breakpoint` at the entry of the application code, not only at `main`.",
     "`cmsis_action { action: 'load_and_debug' }`. Never `start_debugging` for a CMSIS target: it skips the flash download.",
     "`continue_execution` and `wait_for_stop` to the breakpoint; `get_call_stack`, `get_variables_values` and one `read_peripheral_register` to show that stepping and reads work.",
-    "`clear_all_breakpoints`, let it run, and `serial_read` the application's output."
+    "`remove_breakpoint` for the breakpoint you set, let it run, and `serial_read` the application's output."
   ],
   "stop_conditions": [
     "If the internal flash has no algorithm in the cbuild-run file, programming cannot work whatever the adapter is. Report that first.",
