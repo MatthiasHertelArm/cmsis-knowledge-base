@@ -6,7 +6,7 @@ title: "Trusted Firmware-M Profile Medium Design: Implementation / Implementatio
 summary: "This section discusses the details of Profile Medium implementation."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/configuration/profiles/tfm_profile_medium.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/configuration/profiles/tfm_profile_medium.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/configuration/profiles/tfm_profile_medium.html#implementation-details"
 license: "BSD-3-Clause"
 mode: "V"

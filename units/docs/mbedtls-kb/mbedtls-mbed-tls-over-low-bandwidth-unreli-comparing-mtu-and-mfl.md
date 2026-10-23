@@ -6,8 +6,8 @@ title: "Mbed TLS over low-bandwidth, unreliable datagram networks: Comparing MTU
 summary: "The underlying datagram link's MTU, as set through mbedtls_ssl_set_mtu(), guards only the total size of outgoing datagrams; it does not control the size of incoming datagrams."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/controlling_package_size.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/controlling_package_size.md#comparing-mtu-and-mfl"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/controlling_package_size.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/controlling_package_size.md#comparing-mtu-and-mfl"
 license: "Apache-2.0"
 mode: "V"
 ---

@@ -3,28 +3,21 @@ id: "ceed-gcovr-configuration-results-filtering"
 type: "concept"
 domain: "test"
 title: "GCovr Configuration: Results filtering"
-summary: "By default, this plugin configures gcovr to excludes three categories of .c files from coverage results. These defaults exist because a coverage percentage is typically only meaningful over the production code you're actually trying to exercise with test coverage."
+summary: "By default, gcovr excludes three categories of .c files from coverage results, on top of whatever gcov itself already limits reporting to (the sources your test build actually compiled)."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/gcov/gcovr.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/plugins/gcov/gcovr.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/gcov/gcovr/#results-filtering"
 license: "MIT"
 mode: "V"
 ---
 
-By default, this plugin configures `gcovr` to excludes three categories of 
-`.c` files from coverage results. These defaults exist because a
-coverage percentage is typically only meaningful over the production code 
-you're actually trying to exercise with test coverage. Test code, test 
-support code, and every file Ceedling itself generates as part of a build 
-will skew that number if left in coverage reporting.
-
-The list that follows details the filtering this plugin injects into 
-Gcovr coverage report generation. The examples are usable regular 
-expressions that mirror the defaults in use. The plugin dynamically 
-generates these regular expressions from your project configuration.
-When creating them youself, you will need to match your project 
-configuration settings with static strings.
+By default, `gcovr` excludes three categories of `.c` files from coverage
+results, on top of whatever `gcov` itself already limits reporting to (the
+sources your test build actually compiled). These defaults exist because a
+coverage percentage is only meaningful over the production code you're
+actually trying to cover — test code, test support code, and every file
+Ceedling itself generates as part of a build all skew that number if left in.
 
 1.  **Test files** — matched by `:test_file_prefix` within your configured
     `:paths` ↳ `:test` directories.
@@ -33,34 +26,52 @@ configuration settings with static strings.
     `test/`:
 
     ```
-    .*test/.*/test_.+\.c$
+    .*(?:^|/)test/(?:.*/)?test_[^/]+(?:\.c)$
     ```
 
-2.  **Test support files** — any `.c` file within your configured `:paths` ↳
-    `:support` directories, regardless of name. Helpers, stubs, and fixtures
-    living there are no more production code than the test files themselves.
+    A project's `:extension` ↳ `:source` can list more than one source
+    extension; every configured extension is joined into this same
+    alternation. Given `:extension` ↳ `:source` ⇒ `['.c', '.C']`:
+
+    ```
+    .*(?:^|/)test/(?:.*/)?test_[^/]+(?:\.c|\.C)$
+    ```
+
+2.  **Test support files** — any file matching one of your configured source
+    extensions within your configured `:paths` ↳ `:support` directories,
+    regardless of name. Helpers, stubs, and fixtures living there are no more
+    production code than the test files themselves.
 
     Given a `:paths` ↳ `:support` entry of `test/support/`:
 
     ```
-    .*test/support/.+\.c$
+    .*(?:^|/)test/support/.+(?:\.c)$
+    ```
+
+    Again, every configured `:extension` ↳ `:source` value is included in
+    the alternation. Given `:extension` ↳ `:source` ⇒ `['.c', '.C']`:
+
+    ```
+    .*(?:^|/)test/support/.+(?:\.c|\.C)$
     ```
 
 3.  **Generated and vendored files** — any `.c` file anywhere below your
     `:build_root`: generated mocks, test runners, Partials output, and the
     vendored Unity/CMock/CException framework sources Ceedling copies in to
-    build against. This pattern always matches a literal `.c` extension
-    regardless of your project's own `:extension` ↳ `:source` setting, since
-    every file it catches is one Ceedling itself writes in plain C.
+    build against. Unlike the two patterns above, this one always matches a
+    literal `.c` extension regardless of your project's own `:extension` ↳
+    `:source` setting, since every file it catches is one Ceedling itself
+    writes in plain C.
 
     Given `:build_root` ⇒ `build/`:
 
     ```
-    .*build/.+\.c$
+    .*(?:^|/)build/.+\.c$
     ```
 
 These patterns are generated automatically and combined with whatever you
-provide via [`:report_exclude`](#report_exclude) below.
+provide via [`:report_exclude`](#report_exclude) below — you don't need to
+(and normally shouldn't) duplicate them yourself.
 
 !!! warning "Not applied when using a Gcovr configuration file"
     These defaults are only generated when Ceedling builds `gcovr`'s command
@@ -74,11 +85,15 @@ provide via [`:report_exclude`](#report_exclude) below.
 
 [`:report_exclude`](#report_exclude) can only add exclusions on top of the
 three defaults above — `gcovr --exclude` is a deny-list with no way to
-"un-exclude" a pattern already passed to it, and this plugin always passes its
-own three patterns ahead of anything you configure there. Setting
-[`:report_include`](#report_include) doesn't help either; it narrows which
-files are considered at all, but an exclude pattern still wins over it for
-any file matching both.
+"un-exclude" a pattern already passed to it, and Ceedling always passes its
+own three patterns ahead of anything you configure there. Neither
+[`:report_include`](#report_include) nor [`:custom_args`](#custom_args) helps
+either: `:report_include` narrows which files are considered at all, but an
+exclude pattern still wins over it for any file matching both; `:custom_args`
+lets you pass additional raw `gcovr` flags, but a raw `--filter`/`--exclude`
+of your own is just as additive as `:report_exclude` — there's no `gcovr`
+flag that removes or replaces an exclusion already given, only ones that add
+more.
 
 The only way to actually remove or replace one of these defaults — for
 example, to include test files in coverage results so you can confirm a

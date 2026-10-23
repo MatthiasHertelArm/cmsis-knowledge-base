@@ -6,8 +6,8 @@ title: "TensorFlow Lite for Microcontrollers Port of 16x8 Quantized Operators: I
 summary: "The work will be broken down into a series of pull requests, some for the benchmarks and some for each kernel."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/rfc/002_16x8_quantization_port.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/rfc/002_16x8_quantization_port.md#implementation-plan"
+source: "tensorflow/tflite-micro@f7ed40d:tensorflow/lite/micro/docs/rfc/002_16x8_quantization_port.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/f7ed40d/tensorflow/lite/micro/docs/rfc/002_16x8_quantization_port.md#implementation-plan"
 license: "Apache-2.0"
 mode: "V"
 ---

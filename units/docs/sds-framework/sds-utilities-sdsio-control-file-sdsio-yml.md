@@ -6,8 +6,8 @@ title: "Utilities: SDSIO Control File: `*.sdsio.yml`"
 summary: "The SDSIO control file .sdsio.yml configures:"
 status: "draft"
 collection: "sds-framework"
-source: "ARM-software/SDS-Framework@4459441:documentation/utilities.md"
-doc_source: "https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/utilities.md#sdsio-control-file-sdsio-yml"
+source: "ARM-software/SDS-Framework@c18efee:documentation/utilities.md"
+doc_source: "https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/utilities.md#sdsio-control-file-sdsio-yml"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -15,7 +15,7 @@ mode: "V"
 The SDSIO control file `*.sdsio.yml` configures:
 
 - For the [SDSIO-Server](#sdsio-server), the interface, workdir and steps for playback mode.
-- For the [FVP simulation models (VSI3)](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/sdsio.md#layer-sdsio_fvp), the interface, workdir, and steps for playback.
+- For the [FVP simulation models (VSI3)](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/sdsio.md#layer-sdsio_fvp), the interface, workdir, and steps for playback.
 - For the [SDS extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Arm.cmsis-sds), it configures the SDSIO-Server and the user interface.
 
 ### `sdsio:`

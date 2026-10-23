@@ -3,49 +3,51 @@ id: "ceed-dependencies-artifacts"
 type: "concept"
 domain: "test"
 title: "Dependencies: Artifacts"
-summary: "These are the outputs of the build process. There are there types of artifacts. Any dependency may have none or some of these. Calling out these files tells Ceedling that they are important."
+summary: "Artifacts are the outputs of the build process, listed under :artifacts. A dependency may have any of them or none. Your dependency’s build process may produce many other files, but these are the ones Ceedling acts on."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/dependencies.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/plugins/dependencies.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/dependencies/#artifacts"
 license: "MIT"
 mode: "V"
 ---
 
-These are the outputs of the build process. There are there types of artifacts. Any dependency
-may have none or some of these. Calling out these files tells Ceedling that they are important.
-Your dependency’s build process may produce many other files... but these are the files that
-Ceedling understands it needs to act on.
+Artifacts are the outputs of the build process, listed under `:artifacts`. A dependency
+may have any of them or none. Your dependency’s build process may produce many other
+files, but these are the ones Ceedling acts on.
 
 ### `static_libraries`
 
-Specifying one or more static libraries will tell Ceedling where it should find static libraries
-output by your build process. These libraries are automatically added to the list of dependencies
-and will be linked with the rest of your code to produce the final release.
-
-If any of these libraries don't exist, Ceedling will trigger your build process in order for it
-to produce them.
+Static libraries Ceedling links into your test and release builds. If one does not
+exist, Ceedling fetches and builds the dependency to produce it.
 
 ### `dynamic_libraries`
 
-Specifying one or more dynamic libraries will tell Ceedling where it should find dynamic libraries
-output by your build process. These libraries are automatically copied to the same folder as your
-final release binary.
+Dynamic libraries Ceedling links into your test and release builds. If one does not
+exist, Ceedling fetches and builds the dependency to produce it. `dependencies:deploy`
+copies them to the [`:deploy` path](#working-paths), by default beside your release
+executable, where it loads them at run time.
 
-If any of these libraries don't exist, Ceedling will trigger your build process in order for it
-to produce them.
+### `executables`
+
+Programs a dependency builds, such as a code generator, a flashing utility, or a tool
+your release ships alongside it. Ceedling never links them. A release build, or
+`dependencies:make`, fetches and builds the dependency when one does not exist, while
+test builds do not wait on them. `dependencies:deploy` copies them, with any dynamic
+libraries, to the [`:deploy` path](#working-paths).
+
+On Windows, list each executable with its `.exe` extension.
 
 ### `includes`
 
-Often when libraries are built, the same process will output a collection of includes so that
-your release code knows how to interact with that library. It’s the public API for that library.
-By specifying the directories that will contain these includes (don't specify the files themselves,
-Ceedling only needs the directories), Ceedling is able to automatically add these to its internal
-include list. This allows these files to be used while building your release code, as well we making
-them mockable during unit testing.
+The public headers a dependency provides. Ceedling adds their directories to its search
+paths, so your code can include them and your tests can mock them. An entry may be:
+
+- a header file, such as `include/wolfssl.h`, which adds that file’s directory;
+- a directory, such as `include`;
+- a glob, such as `include/**`, which adds every directory it finds.
 
 ### `source`
 
-It’s possible that your external dependency will just produce additional C files as its output.
-In this case, Ceedling is able to automatically add these to its internal source list. This allows
-these files to be used while building your release code.
+Directories of C files a dependency produces, such as generated code. Ceedling adds the
+directories to its search paths and their C files to your release build.

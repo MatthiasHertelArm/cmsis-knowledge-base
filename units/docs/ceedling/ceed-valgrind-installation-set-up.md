@@ -6,7 +6,7 @@ title: "Valgrind: Installation & set up"
 summary: "You have at least 3 options for getting the valgrind tool working on your system, including one readymade option."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/valgrind.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/plugins/valgrind.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/valgrind/#installation-set-up"
 license: "MIT"
 mode: "V"
@@ -48,3 +48,8 @@ project configuration:
   :enabled:
     - valgrind
 ```
+
+!!! warning "Sanitizer flags"
+    A test executable built with sanitizers (`-fsanitize`) cannot run under
+    Valgrind. A `valgrind:` build whose flags carry `-fsanitize` stops with 
+    a message naming them.

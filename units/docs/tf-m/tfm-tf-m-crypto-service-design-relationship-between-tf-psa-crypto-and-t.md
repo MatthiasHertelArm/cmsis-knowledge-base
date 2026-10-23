@@ -6,7 +6,7 @@ title: "TF-M Crypto Service design: Relationship between TF-PSA-Crypto and the T
 summary: "Up until TF-Mv2.0, the TF-M Crypto service used to provide its own separate implementation of the PSA Certified Crypto APIs, i.e. it provided its own version of the implementation defined aspects of the specifications."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/services/tfm_crypto_design.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/services/tfm_crypto_design.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/services/tfm_crypto_design.html#relationship-between-tf-psa-crypto-and-the-tf-m-crypto-service"
 license: "BSD-3-Clause"
 mode: "V"

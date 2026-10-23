@@ -6,8 +6,8 @@ title: "Implementing custom ML application: Implementing custom NN model"
 summary: "The two supported ML frameworks, TensorFlow Lite Micro and ExecuTorch, have different requirements when defining models."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/customizing.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/customizing.md#implementing-custom-nn-model"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/customizing.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/customizing.md#implementing-custom-nn-model"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -19,7 +19,7 @@ The two supported ML frameworks, TensorFlow Lite Micro and ExecuTorch, have diff
 Before inference could be run with a custom NN model, TensorFlow Lite Micro framework must learn about the operators, or
 layers, included in the model. You must register operators using the `MicroMutableOpResolver` API.
 
-The *Ethos-U* code samples project has an abstraction around TensorFlow Lite Micro API (see [NN model API](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./customizing.md#nn-model-api)).
+The *Ethos-U* code samples project has an abstraction around TensorFlow Lite Micro API (see [NN model API](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./customizing.md#nn-model-api)).
 Create `HelloWorldTflmModel.hpp` under `source/lib/mlek/fwk/tflm`,
 extend Model abstract class, and then declare the required methods.
 
@@ -139,11 +139,11 @@ generate_model_code(
 ```
 
 Use the `${use-case}_MODEL_PATH` CMake configuration parameter to include custom model in the generation or
-compilation process. Please refer to: [Build options](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./building.md#build-options) for further information.
+compilation process. Please refer to: [Build options](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./building.md#build-options) for further information.
 
-For more details on `usecase.cmake`, refer to: [Building options](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./building.md#build-options).
+For more details on `usecase.cmake`, refer to: [Building options](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./building.md#build-options).
 
-For details on code generation flow in general, refer to: [Automatic file generation](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./building.md#automatic-file-generation).
+For details on code generation flow in general, refer to: [Automatic file generation](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./building.md#automatic-file-generation).
 
 The model data is read during the `Model::Init` method execution.
 For implementation details, refer to the framework-specific `Model` subclasses:

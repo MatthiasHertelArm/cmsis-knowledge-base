@@ -6,8 +6,8 @@ title: "Using TrustZone for Armv8-M: RTOS Thread Context Management"
 summary: "To provide a consistent RTOS thread context management for Armv8-M TrustZone across the various real-time operating systems (RTOS), the CMSIS-Core (Cortex-M) includes header file tz_context.h with API definitions."
 status: "draft"
 collection: "cmsis-core"
-source: "ARM-software/CMSIS_6@26206e4:CMSIS/Documentation/Doxygen/Core/src/using_tz.md"
-doc_source: "https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Core/src/using_tz.md#rtos-thread-context-management"
+source: "ARM-software/CMSIS_6@acf7392:CMSIS/Documentation/Doxygen/Core/src/using_tz.md"
+doc_source: "https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Core/src/using_tz.md#rtos-thread-context-management"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -22,7 +22,7 @@ As the *non-secure state* and *secure state* parts of an application are separat
 
 To allocate the context memory for threads, an RTOS kernel that runs in *non-secure state* calls the interface functions defined by the header file **tz_context.h**. The **TZ Context** functions themselves are part of the *secure state* application. An minimum implementation is provided as part of RTOS2 and should handle the secure stack for the thread execution. However it is also possible to implement the context memory management system with additional features such as access control to *secure state* memory regions using an MPU.
 
-The API functions of **TZ Context** are described in the chapter [API Reference](https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Core/src/modules.html) under trustzone_functions - context_trustzone_functions.
+The API functions of **TZ Context** are described in the chapter [API Reference](https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Core/src/modules.html) under trustzone_functions - context_trustzone_functions.
 
 CMSIS-Core provides a template implementation of **TZ Contenxt** in `CMSIS\Core\Template\ARMv8-M\tz_context.c` file.
 

@@ -6,7 +6,7 @@ title: "Conventions & Behaviors: Test build search paths"
 summary: "Test builds in C are fairly complex. Each test file becomes a test executable. Each test executable needs generated runner code and optionally generated mocks."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/testing-guide/conventions.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/testing-guide/conventions.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/testing-guide/conventions/#test-build-search-paths"
 license: "MIT"
 mode: "V"
@@ -16,7 +16,7 @@ Test builds in C are fairly complex. Each test file becomes a test
 executable. Each test executable needs generated runner code and 
 optionally generated mocks. Slicing and dicing what files are 
 compiled and linked and how search paths are assembled is tricky
-business. That's why Ceedling exists in the first place. Because
+business. That’s why Ceedling exists in the first place. Because
 of these issues, search paths, in particular, require quite a bit
 of special handling.
 
@@ -56,8 +56,8 @@ it is assembled from a variety of sources. In order:
 1. `:paths` ↳ `:support` list from your project configuration
 1. `:paths` ↳ `:include` list from your project configuration
 1. `:paths` ↳ `:libraries` list from your project configuration
-1. Internal path for Unity's unit test framework C code
-1. Internal paths for CMock's C code (if respective feature enabled)
+1. Internal path for Unity’s unit test framework C code
+1. Internal paths for CMock’s C code (if respective feature enabled)
 1. `:paths` ↳ `:test_toolchain_include` list from your project 
    configuration
 

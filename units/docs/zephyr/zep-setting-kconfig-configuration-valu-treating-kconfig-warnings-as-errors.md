@@ -6,8 +6,8 @@ title: "Setting Kconfig configuration values: Treating Kconfig warnings as error
 summary: "Some Kconfig warnings abort the build by default, for example assignments to undefined symbols."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/build/kconfig/setting.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/build/kconfig/setting.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/build/kconfig/setting.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/build/kconfig/setting.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

@@ -6,8 +6,8 @@ title: "Elliptic curve performance: NIST vs. Brainpool: Can you optimize Brainpo
 summary: "Unfortunately, this is not possible. The design decision for Brainpool to use random primes was aimed at:"
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/cryptography/elliptic-curve-performance-nist-vs-brainpool.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/cryptography/elliptic-curve-performance-nist-vs-brainpool.md#can-you-optimize-brainpool-curves-to-be-as-fast-as-the-nist-curves"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/cryptography/elliptic-curve-performance-nist-vs-brainpool.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/cryptography/elliptic-curve-performance-nist-vs-brainpool.md#can-you-optimize-brainpool-curves-to-be-as-fast-as-the-nist-curves"
 license: "Apache-2.0"
 mode: "V"
 ---

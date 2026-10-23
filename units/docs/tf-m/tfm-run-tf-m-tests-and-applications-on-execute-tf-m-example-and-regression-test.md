@@ -6,7 +6,7 @@ title: "Run TF-M tests and applications on Arm platforms: Execute TF-M example a
 summary: "FPGA image is available to download here"
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/building/run_tfm_examples_on_arm_platforms.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/building/run_tfm_examples_on_arm_platforms.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/building/run_tfm_examples_on_arm_platforms.html#execute-tf-m-example-and-regression-tests-on-mps3-boards"
 license: "BSD-3-Clause"
 mode: "V"

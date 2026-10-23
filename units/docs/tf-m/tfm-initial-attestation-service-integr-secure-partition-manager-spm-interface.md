@@ -6,7 +6,7 @@ title: "Initial Attestation Service Integration Guide: Code structure / Secure P
 summary: "The Initial Attestation Service defines the following interface towards the secure partition manager (SPM). System integrators must port this interface according to their SPM implementation."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/integration_guide/services/tfm_attestation_integration_guide.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/integration_guide/services/tfm_attestation_integration_guide.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/integration_guide/services/tfm_attestation_integration_guide.html#secure-partition-manager-spm-interface"
 license: "BSD-3-Clause"
 mode: "V"

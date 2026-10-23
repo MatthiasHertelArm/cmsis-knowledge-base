@@ -6,7 +6,7 @@ title: "Non-secure Client Extension Integration Guide: Group-based context manag
 summary: "NSCE introduces a group-based context management for NS clients. The purpose is to support diverse use scenarios in the IoT world."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/integration_guide/non-secure_client_extension_integration_guide.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/integration_guide/non-secure_client_extension_integration_guide.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/integration_guide/non-secure_client_extension_integration_guide.html#group-based-context-management"
 license: "BSD-3-Clause"
 mode: "V"

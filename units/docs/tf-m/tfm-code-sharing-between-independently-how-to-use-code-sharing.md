@@ -6,7 +6,7 @@ title: "Code sharing between independently linked XIP binaries: How to use code 
 summary: "Considering the above, code sharing is an optional feature, which is disabled by default. It can be enabled from the command line with a compile time switch:"
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/software/code_sharing.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/software/code_sharing.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/software/code_sharing.html#how-to-use-code-sharing"
 license: "BSD-3-Clause"
 mode: "V"

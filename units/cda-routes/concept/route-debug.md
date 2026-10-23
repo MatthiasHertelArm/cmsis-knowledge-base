@@ -16,6 +16,6 @@ Read the procedure with `knowledge_get` before acting on it, and follow its own 
 
 | If the task is to … | Procedure |
 |---|---|
-| Investigate a firmware runtime bug on a live Cortex-M debug session: faults, hangs, wrong values, silent peripherals | `proc-cmsis-debug-live` |
+| Investigate firmware runtime bugs such as faults, hangs, wrong values and silent peripherals by inspecting a live Cortex-M debug session through the CMSIS Debugger instead of adding prints. | `proc-cmsis-debug-live` |
 | Find out why a debug or flash session fails to start, connect or program | `proc-debugger-troubleshooting` |
 | Make Load & Debug and Run work against an Arm FVP model | `proc-fvp-debug-setup` |

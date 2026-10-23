@@ -6,7 +6,7 @@ title: "Test Suite Report Log Factory: Built-in Reports"
 summary: "Each report is populated with a name, using :project ↳ :name from your configuration if set."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/report-tests-log-factory.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/plugins/report-tests-log-factory.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/report-tests-log-factory/#built-in-reports"
 license: "MIT"
 mode: "V"
@@ -18,11 +18,11 @@ Those reports that support build time or test suite execution time “stopwatch�
 
 ### Execution duration values
 
-Some test reporting formats include the execution time (duration) for aspects of a test suite run. Various granularities exist from the total time for all tests to the time of each suite (per the relevant defition of a suite) to the time required to run individual test cases. See _CeedlingPacket_ for the details on time duration values.
+Some test reporting formats include the execution time (duration) for aspects of a test suite run. Various granularities exist from the total time for all tests to the time of each suite (per the relevant definition of a suite) to the time required to run individual test cases. See _CeedlingPacket_ for the details on time duration values.
 
-Ceedling automatically gathers all the relevant durations. In fact, Ceedling itself performs the needed timing and arithmetric in all cases, except one. Individual test case exection time tracking is specifically a [Unity] feature (see its documentation for more details). If enabled and if your platform supports the time mechanism Unity relies on, Ceedling will automatically collect test case time values and make them available to reports.
+Ceedling automatically gathers all the relevant durations. In fact, Ceedling itself performs the needed timing and arithmetic in all cases, except one. Individual test case execution time tracking is specifically a [Unity] feature (see its documentation for more details). If enabled and if your platform supports the time mechanism Unity relies on, Ceedling will automatically collect test case time values and make them available to reports.
 
-To enable test case duration measurements, they must be enabled as a Unity compilation option. Add `UNITY_INCLUDE_EXEC_TIME` to Unity's compilation symbols (`:unity` ↳ `:defines`) in your Ceedling project file (below). This plugin and the core of Ceedling take care of the rest. Unity test case durations as reported by Ceedling default to 0 if this Unity compilation option is not configured.
+To enable test case duration measurements, they must be enabled as a Unity compilation option. Add `UNITY_INCLUDE_EXEC_TIME` to Unity’s compilation symbols (`:unity` ↳ `:defines`) in your Ceedling project file (below). This plugin and the core of Ceedling take care of the rest. Unity test case durations as reported by Ceedling default to 0 if this Unity compilation option is not configured.
 
 ```yaml
 :unity:
@@ -107,7 +107,7 @@ In the following example a single test file _TestUsartModel.c_ exercised four te
 
 ### JUnit XML Format
 
-[JUnit] holds a certain position among testing tools. While it is an xUnit-style framework specific to unit testing Java, it has influenced how Continuous Integration build tools operate, and its [JUnit XML report format][junit-xml-format] has become something of a defacto standard for test reports in any language. The JUnit XML format has been revised in various ways over time but generally has more available documentation than some other formats.
+[JUnit] holds a certain position among testing tools. While it is an xUnit-style framework specific to unit testing Java, it has influenced how Continuous Integration build tools operate, and its [JUnit XML report format][junit-xml-format] has become something of a de facto standard for test reports in any language. The JUnit XML format has been revised in various ways over time but generally has more available documentation than some other formats.
 
 [JUnit]: https://junit.org/
 [junit-xml-format]: https://docs.getxray.app/display/XRAY/Taking+advantage+of+JUnit+XML+reports
@@ -122,17 +122,38 @@ In the following example a single test file _TestUsartModel.c_ exercised four te
 :report_tests_log_factory:
   :reports:
     - junit
-  # Default filename shown for completeness
-  # `:junit` block only needed to override default
+  # Defaults shown for completeness
+  # `:junit` block only needed to override defaults
   :junit:
     :filename: junit_tests_report.xml
+    :file_line_anchor: FALSE
 ```
+
+#### JUnit test locations
+
+Each `<testcase>` names where its test lives, so CI tools can group results and
+link to the code.
+
+* **`classname`** is the test file’s path without its extension, the same as the
+  enclosing `<testsuite>` name. Keeping the path matters because Ceedling can build
+  two test files of the same name in different folders, each with a test case of
+  the same name. CI tools identify a test case by its class and name together, and
+  the path keeps the two apart.
+* **`file`** is the test file’s path.
+* **`line`** is the line Unity reported for the test, when it reports one.
+* A failure’s message starts with the file and line in the form compilers use,
+  such as `test/TestUsartModel.c:62: Expected 8 Was 9`.
+
+Some tools follow a `file` attribute written as `path#line` to the line itself.
+Set `:file_line_anchor` to `TRUE` to write `file` that way for each test case that
+has a line, such as `test/TestUsartModel.c#62`. It defaults to `FALSE`, which
+writes the plain path that tools such as GitLab turn into a link.
 
 #### Example JUnit test report
 
 In the following example a single test file _TestUsartModel.c_ exercised four test cases. Two test cases passed, one test case failed, and one test case was ignored (a.k.a. “skipped” in JUnit lingo).
 
-In mapping a Ceedling test suite to JUnit convetions, a Ceedling _test file_ becomes a JUnit _test suite_.
+In mapping a Ceedling test suite to JUnit conventions, a Ceedling _test file_ becomes a JUnit _test suite_.
 
 ```sh
  > ceedling test:UsartModel
@@ -142,12 +163,12 @@ In mapping a Ceedling test suite to JUnit convetions, a Ceedling _test file_ bec
 <?xml version="1.0" encoding="utf-8" ?>
 <testsuites name="Ceedling Test Suite" tests="4" failures="1" time="0.331">
   <testsuite name="test/TestUsartModel" tests="4" failures="1" skipped="1" errors="0" time="0.331">
-    <testcase name="testGetBaudRateRegisterSettingShouldReturnAppropriateBaudRateRegisterSetting" time="0.000"/>
-    <testcase name="testShouldReturnErrorMessageUponInvalidTemperatureValue" time="0.000"/>
-    <testcase name="testGetFormattedTemperatureFormatsTemperatureFromCalculatorAppropriately" time="0.000">
-      <failure message="Function TemperatureFilter_GetTemperatureInCelcius() called more times than expected." />
+    <testcase name="testGetBaudRateRegisterSettingShouldReturnAppropriateBaudRateRegisterSetting" classname="test/TestUsartModel" file="test/TestUsartModel.c" line="25" time="0.000"/>
+    <testcase name="testShouldReturnErrorMessageUponInvalidTemperatureValue" classname="test/TestUsartModel" file="test/TestUsartModel.c" line="33" time="0.000"/>
+    <testcase name="testGetFormattedTemperatureFormatsTemperatureFromCalculatorAppropriately" classname="test/TestUsartModel" file="test/TestUsartModel.c" line="44" time="0.000">
+      <failure message="test/TestUsartModel.c:44: Function TemperatureFilter_GetTemperatureInCelcius() called more times than expected." />
     </testcase>
-    <testcase name="testShouldReturnWakeupMessage" time="0.000">
+    <testcase name="testShouldReturnWakeupMessage" classname="test/TestUsartModel" file="test/TestUsartModel.c" line="51" time="0.000">
       <skipped />
     </testcase>
   </testsuite>
@@ -180,7 +201,7 @@ In mapping a Ceedling test suite to JUnit convetions, a Ceedling _test file_ bec
 
 In the following example a single test file _TestUsartModel.c_ exercised four test cases. Two test cases passed, one test case failed, and one test case was ignored.
 
-In mapping a Ceedling test suite to CppUnit convetions, a CppUnit test name is the concatenation of a Ceedling test filename and a test case function name. As such, a test filename will appear in the report a number of times equal to the number of test cases it holds. Test IDs are merely an incrementing count useful to uniquely identifying tests by number; no ordering or convention is enforced in generating them.
+In mapping a Ceedling test suite to CppUnit conventions, a CppUnit test name is the concatenation of a Ceedling test filename and a test case function name. As such, a test filename will appear in the report a number of times equal to the number of test cases it holds. Test IDs are merely an incrementing count useful to uniquely identifying tests by number; no ordering or convention is enforced in generating them.
 
 ```sh
  > ceedling test:UsartModel

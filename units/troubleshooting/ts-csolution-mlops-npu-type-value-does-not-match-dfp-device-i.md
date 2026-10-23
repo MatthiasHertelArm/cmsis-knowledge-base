@@ -9,7 +9,7 @@ severity: "warning"
 symptoms: ["mlops.npu.type value does not match DFP device information"]
 symptom_regex: "^mlops\\.npu\\.type value does not match DFP device information$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrMlops.cpp:283"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrMlops.cpp:283"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

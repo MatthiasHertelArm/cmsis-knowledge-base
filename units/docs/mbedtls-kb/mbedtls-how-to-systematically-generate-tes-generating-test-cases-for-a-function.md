@@ -6,8 +6,8 @@ title: "How to systematically generate test data: Generating test cases for a fu
 summary: "To add test cases for a function, a concrete class derived from BaseTarget must be added to the script. This class must implement all abstract methods and some attributes of BaseTarget."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/add-test-generation.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/add-test-generation.md#generating-test-cases-for-a-function"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/add-test-generation.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/add-test-generation.md#generating-test-cases-for-a-function"
 license: "Apache-2.0"
 mode: "V"
 ---

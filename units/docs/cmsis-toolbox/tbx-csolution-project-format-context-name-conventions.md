@@ -6,7 +6,7 @@ title: "CSolution Project Format: Name Conventions / `context:` Name Conventions
 summary: "A context: name combines project-name, built-type, and target-type and is used in various places in the CMSIS-Toolbox. The following syntax is used to specify a context: name."
 status: "draft"
 collection: "cmsis-toolbox"
-source: "Open-CMSIS-Pack/cmsis-toolbox@6c04673:docs/YML-Input-Format.md"
+source: "Open-CMSIS-Pack/cmsis-toolbox@3ce8307:docs/YML-Input-Format.md"
 doc_source: "https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format/#context-name-conventions"
 license: "Apache-2.0"
 mode: "V"

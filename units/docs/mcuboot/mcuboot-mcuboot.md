@@ -6,8 +6,8 @@ title: "MCUboot"
 summary: "[(figure: Package on PyPI)][pypi] [(figure: Coverity Scan Build Status)][coverity] [(figure: Build Status (Sim))][sim] [(figure: Build Status (Mynewt))][mynewt] [(figure: Build Status (Espressif))][espressif] [(figure: Publishing Status (imgtool))][imgtool] [(figure: Build Status (Travis CI))][travis] [(figure: Apache 2.0)][license]"
 status: "draft"
 collection: "mcuboot"
-source: "mcu-tools/mcuboot@ba2099f:README.md"
-doc_source: "https://github.com/mcu-tools/mcuboot/blob/ba2099f/README.md"
+source: "mcu-tools/mcuboot@725d63c:README.md"
+doc_source: "https://github.com/mcu-tools/mcuboot/blob/725d63c/README.md"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -30,7 +30,7 @@ mode: "V"
 [travis]: https://travis-ci.org/mcu-tools/mcuboot
 [license]: https://github.com/mcu-tools/mcuboot/blob/main/LICENSE
 
-This is MCUboot version 2.5.0-rc1
+This is MCUboot version 2.5.0
 
 MCUboot is a secure bootloader for 32-bits microcontrollers. It defines a
 common infrastructure for the bootloader and the system flash layout on

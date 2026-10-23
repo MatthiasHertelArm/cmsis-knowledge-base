@@ -6,7 +6,7 @@ title: "Physical attack mitigation in Trusted Firmware-M: TF-M Threat Model agai
 summary: "Part of: TF-M Threat Model against physical attacks"
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/tfm_physical_attack_mitigation.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/tfm_physical_attack_mitigation.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/tfm_physical_attack_mitigation.html#physical-attack-target"
 license: "BSD-3-Clause"
 mode: "V"

@@ -6,8 +6,8 @@ title: "Mbed TLS coding standards: Code structure"
 summary: "However, don't use variable-length arrays (VLAs) as they are not supported by all compilers/systems, and can cause problems for static analysis."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/development/mbedtls-coding-standards.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/development/mbedtls-coding-standards.md#code-structure"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/development/mbedtls-coding-standards.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/development/mbedtls-coding-standards.md#code-structure"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -68,4 +68,4 @@ Most functions that need cleanup have a single cleanup block at the end. The lab
 
 ### External function dependencies
 
-Mbed TLS code should minimize use of external functions. Standard `libc` functions are allowed, but should be documented in the [KB article on external dependencies](https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/development/what-external-dependencies-does-mbedtls-rely-on.md).
+Mbed TLS code should minimize use of external functions. Standard `libc` functions are allowed, but should be documented in the [KB article on external dependencies](https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/development/what-external-dependencies-does-mbedtls-rely-on.md).

@@ -6,8 +6,8 @@ title: "Additional Zephyr extension commands: Working with binary blobs: `west b
 summary: "The blobs command allows users to interact with :ref:binary blobs <bin-blobs> declared in one or more modules via their module.yml file."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/develop/west/zephyr-cmds.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/develop/west/zephyr-cmds.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/develop/west/zephyr-cmds.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/develop/west/zephyr-cmds.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

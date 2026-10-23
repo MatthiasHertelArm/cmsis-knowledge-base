@@ -6,8 +6,8 @@ title: "Image tool: Signing images"
 summary: "Image signing takes an image in binary or Intel Hex format intended for the primary slot and adds a header and trailer that the bootloader is expecting:"
 status: "draft"
 collection: "mcuboot"
-source: "mcu-tools/mcuboot@ba2099f:docs/imgtool.md"
-doc_source: "https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/imgtool.md#signing-images"
+source: "mcu-tools/mcuboot@725d63c:docs/imgtool.md"
+doc_source: "https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/imgtool.md#signing-images"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -133,7 +133,7 @@ existing in the file should not change.
 
 The `--compression` option enables LZMA compression over payload. Details
 about internals of image generated with this option can be found here
-[here](https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/./compression_format.md)
+[here](https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/./compression_format.md)
 This isn't fully supported on the embedded side but can be utilised when
 project is built on top of the mcuboot.
 
@@ -158,4 +158,4 @@ which case only the hash of the public key is added to the TLV area (the full
 public key is incorporated into the bootloader). When the `full` option is used
 instead, the TLV area will contain the whole public key and thus the bootloader
 can be independent from the key(s). For more information on the additional
-requirements of this option, see the [design](https://github.com/mcu-tools/mcuboot/blob/ba2099f/docs/design.md) document.
+requirements of this option, see the [design](https://github.com/mcu-tools/mcuboot/blob/725d63c/docs/design.md) document.

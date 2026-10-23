@@ -6,8 +6,8 @@ title: "TFLM Compression Support"
 summary: "TFLM supports fixed width compression of const-tensors using lookup tables. Const-tensors are typically those containing trained weights or biases, but can be any tensor where the values are fixed within the model and unchanging."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/compression.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/compression.md"
+source: "tensorflow/tflite-micro@f7ed40d:tensorflow/lite/micro/docs/compression.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/f7ed40d/tensorflow/lite/micro/docs/compression.md"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -17,7 +17,7 @@ Const-tensors are typically those containing trained weights or biases, but can
 be any tensor where the values are fixed within the model and unchanging.
 
 For a complete end-to-end tutorial demonstrating compression with weight clustering,
-see the [MNIST Compression Tutorial](https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/../compression/mnist_compression_tutorial.ipynb).
+see the [MNIST Compression Tutorial](https://github.com/tensorflow/tflite-micro/blob/f7ed40d/tensorflow/lite/micro/docs/../compression/tutorial/mnist_compression_tutorial.ipynb).
 
 Const-tensors are compressed to fixed width bitstrings, and lookup tables are
 added to the model schema for each tensor.

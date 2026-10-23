@@ -2,12 +2,12 @@
 id: "x-cmsis-debug-live-4"
 type: "troubleshooting"
 domain: "debug"
-title: "PROBE_WEDGED during a fault read"
+title: "Reads rejected while target is running"
 status: "draft"
-symptoms: ["PROBE_WEDGED", "INVALID_ARGUMENT"]
+symptoms: ["[TARGET_RUNNING]"]
 extracted_from: "proc-cmsis-debug-live"
 source: "cmsis-debug-live/SKILL.md"
 license: "Apache-2.0"
 ---
 
-If a fault read answers `PROBE_WEDGED`, the debug port no longer answers (DHCSR could not be read either): stop reading and follow the hint. An attach session reconnects with `cmsis_action detach`, then `attach`, without a reset. A `load_and_debug` session owns its GDB server; `restart_debugging` and `load_and_debug` re-flash and reset, so to keep the fault state the user restarts the server without a reset and you `cmsis_action attach`. Never start a GDB server yourself. `INVALID_ARGUMENT` "the debug port answers" means only that address is unreadable. A lockup note means the core faulted inside a fault handler.
+running rejects step_over, step_into, step_out, continue_execution, read_memory, read_core_registers, read_peripheral_register, read_cycle_counter, get_fault_info, diagnose_fault, evaluate_expression, get_call_stack, get_frame_variables, get_threads, list_variable_names and get_variables_values: call pause_execution first.

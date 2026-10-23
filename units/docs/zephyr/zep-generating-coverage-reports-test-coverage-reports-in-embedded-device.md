@@ -6,8 +6,8 @@ title: "Generating coverage reports: Test coverage reports in embedded devices o
 summary: "GCC GCOV <gcov> is a test coverage program used together with the GCC compiler to analyze and create test coverage reports for your programs, helping you create more efficient, faster running code and discovering untested code paths"
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/develop/test/coverage.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/develop/test/coverage.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/develop/test/coverage.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/develop/test/coverage.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

@@ -6,7 +6,7 @@ title: "Valgrind: Artifacts"
 summary: "Each test executable produces a Valgrind log file at:"
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/valgrind.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/plugins/valgrind.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/valgrind/#artifacts"
 license: "MIT"
 mode: "V"
@@ -16,6 +16,13 @@ Each test executable produces a Valgrind log file at:
 
 ```
 build/artifacts/valgrind/<test_name>.log
+```
+
+With [`:xml_report:`](#xml_report) enabled, a machine-readable report is written
+beside it:
+
+```
+build/artifacts/valgrind/<test_name>.xml
 ```
 
 For example, running `ceedling valgrind:test_my_module.c` produces:

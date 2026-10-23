@@ -6,8 +6,8 @@ title: "TensorFlow Lite for Microcontrollers Port of 16x8 Quantized Operators: O
 summary: "TensorFlow Lite has kernel implementations that support 8 bit quantized weights but use 16 bit activations. We wish to port these implementations to TensorFlow Lite for Microcontrollers. The increased precision available for activations can improve performance for some quantized models."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/rfc/002_16x8_quantization_port.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/rfc/002_16x8_quantization_port.md#objective"
+source: "tensorflow/tflite-micro@f7ed40d:tensorflow/lite/micro/docs/rfc/002_16x8_quantization_port.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/f7ed40d/tensorflow/lite/micro/docs/rfc/002_16x8_quantization_port.md#objective"
 license: "Apache-2.0"
 mode: "V"
 ---

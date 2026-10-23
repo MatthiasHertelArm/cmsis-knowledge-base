@@ -6,8 +6,8 @@ title: "Building the ML embedded code sample applications from sources: Build pr
 summary: "Before proceeding, it is essential that the following prerequisites have been fulfilled:"
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/building.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/building.md#build-prerequisites"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/building.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/building.md#build-prerequisites"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -75,7 +75,7 @@ For ATfE/LLVM:
     ```
 
 > **Note:** Required version of CMake is also installed in the Python3 virtual environment created by
-> `set_up_default_resources.py` script. See [Fetching resource files](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./building.md#fetching-resource-files) section.
+> `set_up_default_resources.py` script. See [Fetching resource files](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./building.md#fetching-resource-files) section.
 >
 > To add CMake to the PATH on Ubuntu for example, use: `export PATH=/absolute/path/for/cmake/:${PATH}`
 > Once `set_up_default_resources.py` has been executed, activating the virtual environment will enable you
@@ -94,7 +94,7 @@ For ATfE/LLVM:
     ```
 
   > **Note:** If you do not have a supported version of Python installed, see the
-  > [Troubleshooting](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./troubleshooting.md#how-to-update-python3-package-to-a-supported-version)
+  > [Troubleshooting](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./troubleshooting.md#how-to-update-python3-package-to-a-supported-version)
   > section for instructions on how to install and use one.
 
 - The build system creates a Python virtual environment during the build process. Please make sure that Python virtual
@@ -131,7 +131,7 @@ For ATfE/LLVM:
 
 - Access to the internet to download the third-party dependencies, specifically: TensorFlow Lite Micro, ExecuTorch,
   Arm® *Ethos™-U55* NPU driver, and CMSIS. Instructions for downloading these are listed under:
-  [preparing build environment](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./building.md#preparing-build-environment).
+  [preparing build environment](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./building.md#preparing-build-environment).
 
 > **NOTE**: A Docker image built from the `Dockerfile` provided will have all the above packages installed and
 > available for use. The GNU Embedded toolchain is available by default and the environment of the image will

@@ -6,8 +6,8 @@ title: "Summary"
 summary: "This guide describes the recommended high-level architecture and steps to add hardware-specific optimized kernels to TfLite Micro."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/optimized_kernel_implementations.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/optimized_kernel_implementations.md"
+source: "tensorflow/tflite-micro@f7ed40d:tensorflow/lite/micro/docs/optimized_kernel_implementations.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/f7ed40d/tensorflow/lite/micro/docs/optimized_kernel_implementations.md"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -27,7 +27,7 @@ important.
 
 1.  Pick a benchmark that you would like to measure the performance for.
 
-    *   Existing benchmarks are in the [benchmarks directory](https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/../benchmarks).
+    *   Existing benchmarks are in the [benchmarks directory](https://github.com/tensorflow/tflite-micro/blob/f7ed40d/tensorflow/lite/micro/docs/../benchmarks).
     *   If none of the existing benchmarks capture your use-case, then please
         create a github issue or start a thread on micro@tensorflow.org to
         figure out how to add in a new benchmark.

@@ -6,7 +6,7 @@ title: "Partials"
 summary: "A Partial is your C code sliced and diced to expose elements for testing that you could not otherwise access without rewriting your source code. Think of Partials as a unit testing scalpel."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/testing-guide/partials/index.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/testing-guide/partials/index.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/testing-guide/partials/"
 license: "MIT"
 mode: "V"
@@ -35,6 +35,12 @@ Partials are useful when you need to test:
     See the [`wondrous_forest`](https://throwtheswitch.github.io/Ceedling/testing-guide/partials/../../getting-started/example-projects/wondrous-forest.md) 
     example available within Ceedling for a working example project 
     demonstrating Partials in action.
+
+!!! warning "Partials test suite build time"
+    Partials require multiple runs of preprocessing and complex code scanning
+    across each C file within a partialized module. This can drive up test 
+    suite build time noticeably — particularly if you are migrating from 
+    a Ceedling test build with no preprocessing enabled to adopting Partials.
 
 ---
 

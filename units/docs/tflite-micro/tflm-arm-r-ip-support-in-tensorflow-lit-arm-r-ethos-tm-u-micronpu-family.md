@@ -6,8 +6,8 @@ title: "Arm(R) IP support in Tensorflow Lite for Microcontrollers (TFLM): Arm(R)
 summary: "The Ethos-U microNPU (Neural Processing Unit) family consists of Ethos-U55 and Ethos-U65."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/arm.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/arm.md#arm-r-ethos-tm-u-micronpu-family"
+source: "tensorflow/tflite-micro@f7ed40d:tensorflow/lite/micro/docs/arm.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/f7ed40d/tensorflow/lite/micro/docs/arm.md#arm-r-ethos-tm-u-micronpu-family"
 license: "Apache-2.0"
 mode: "V"
 ---

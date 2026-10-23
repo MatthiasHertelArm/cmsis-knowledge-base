@@ -6,8 +6,8 @@ title: "vidx2pidx: Open-CMSIS-Pack Package Index Generator Tool: Contributions a
 summary: "Contributions are accepted under Apache 2.0. Only submit contributions where you have authored all of the code."
 status: "draft"
 collection: "ocp-tools-readmes"
-source: "Open-CMSIS-Pack/vidx2pidx@2147c19:README.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/vidx2pidx/blob/2147c19/README.md#contributions-and-pull-requests"
+source: "Open-CMSIS-Pack/vidx2pidx@d53a8c2:README.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/vidx2pidx/blob/d53a8c2/README.md#contributions-and-pull-requests"
 license: "Apache-2.0"
 mode: "V"
 ---

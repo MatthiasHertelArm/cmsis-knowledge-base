@@ -6,7 +6,7 @@ title: "CSolution Project Structure: Directory Structure / PLM of Configuration 
 summary: "Configurable source and header files use an effective version during Project Lifetime Management (PLM). A file may specify its own version; otherwise, it inherits the component version or, when that is absent, the pack version."
 status: "draft"
 collection: "cmsis-toolbox"
-source: "Open-CMSIS-Pack/cmsis-toolbox@6c04673:docs/build-overview.md"
+source: "Open-CMSIS-Pack/cmsis-toolbox@3ce8307:docs/build-overview.md"
 doc_source: "https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview/#plm-of-configuration-files"
 license: "Apache-2.0"
 mode: "V"

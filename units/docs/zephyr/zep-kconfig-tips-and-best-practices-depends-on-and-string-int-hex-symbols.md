@@ -6,8 +6,8 @@ title: "Kconfig - Tips and Best Practices: `depends on` and `string`/`int`/`hex`
 summary: "depends on works not just for bool symbols, but also for string, int, and hex symbols (and for choices)."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/build/kconfig/tips.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/build/kconfig/tips.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/build/kconfig/tips.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/build/kconfig/tips.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

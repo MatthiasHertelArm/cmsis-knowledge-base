@@ -6,7 +6,7 @@ title: "Conventions & Behaviors: Build errors, test failures"
 summary: "Ceedling will run a specified build until an error. An error refers to a build step encountering an unrecoverable problem. Files not found, nonexistent paths, compilation errors, missing symbols, plugin exceptions, etc."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/testing-guide/conventions.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/testing-guide/conventions.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/testing-guide/conventions/#build-errors-test-failures"
 license: "MIT"
 mode: "V"
@@ -53,7 +53,7 @@ build with an exit code of 0 even upon test case failures.
 ```
 
 If you use the option for graceful failures in CI, you'll want to
-rig up some kind of logging monitor that scans Ceedling's test
+rig up some kind of logging monitor that scans Ceedling’s test
 summary report sent to `$stdout` and/or a log file. Otherwise, you
 could have a successful build but failing tests.
 
@@ -62,7 +62,7 @@ could have a successful build but failing tests.
 Ceedling works by collecting multiple Unity test executables together 
 into a test suite (more here: [Anatomy of a Test Suite](https://throwtheswitch.github.io/Ceedling/testing-guide/conventions/test-suite-anatomy.md)).
 
-A Unity test executable's exit code is the number of failed tests. An
+A Unity test executable’s exit code is the number of failed tests. An
 exit code of `0` means all tests passed while anything larger than zero
 is the number of test failures.
 
@@ -73,3 +73,4 @@ much simpler exit code convention than Unity: `0` = 🙂 while `1` = ☹️.
 
 [CMock]: http://github.com/ThrowTheSwitch/CMock
 [Unity]: http://github.com/ThrowTheSwitch/Unity
+[MSYS2]: https://www.msys2.org

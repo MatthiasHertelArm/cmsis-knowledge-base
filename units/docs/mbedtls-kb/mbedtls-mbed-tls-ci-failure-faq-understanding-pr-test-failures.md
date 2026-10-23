@@ -6,8 +6,8 @@ title: "Mbed TLS CI failure FAQ: Understanding PR test failures"
 summary: "If the PR tests fail, the status on GitHub is set to a string that lists failed components. Note that due to a GitHub limitation, the list of failed components may be truncated."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/testing/understanding-ci-failures.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/testing/understanding-ci-failures.md#understanding-pr-test-failures"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/testing/understanding-ci-failures.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/testing/understanding-ci-failures.md#understanding-pr-test-failures"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -32,7 +32,7 @@ https://ci.trustedfirmware.org/job/mbed-tls-pr-head/job/PR-9999-head/1/artifact/
 
 If there are a large number of failures, the file will be compressed: add a `.xz` suffix to the URL.
 
-The failure list consists of the lines of the [outcome file](https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/testing/testing-ci.md#outcome-analysis) where the status is FAIL.
+The failure list consists of the lines of the [outcome file](https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/testing/testing-ci.md#outcome-analysis) where the status is FAIL.
 
 ### Analyzing `outcomes.csv` or `failures.csv`
 
@@ -87,7 +87,7 @@ In terms of configurations, a suggested order is:
 
 ### Outcome analysis failed
 
-If you're unfamiliar with outcome analysis, please read the [outcome analysis section in the CI guide](https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/testing/testing-ci.md#outcome-analysis).
+If you're unfamiliar with outcome analysis, please read the [outcome analysis section in the CI guide](https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/testing/testing-ci.md#outcome-analysis).
 
 Outcome analysis may fail due to earlier failures, in which case you should resolve these failures and get updated CI results. In particular:
 

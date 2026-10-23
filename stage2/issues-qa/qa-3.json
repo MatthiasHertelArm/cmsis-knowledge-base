@@ -668,19 +668,6 @@
   "symptoms_ok": true
  },
  {
-  "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/704",
-  "verdict": "partly",
-  "problems": [
-   "'build the secure image again afterwards' is not in the thread",
-   "the --rebuild cleaning of all contexts is reported but has no resolution, so 'user-error' covers only the target-set misconfiguration"
-  ],
-  "symptoms_ok": true,
-  "cause_fixed": "Two separate effects. In the reported project the target-set of the non-secure-only target pointed at the Release project context while the Debug set was selected, so the wrong context was built. In addition, --rebuild with --active cleans all contexts, not only those of the selected target-set, which deletes the prebuilt secure artifacts that the non-secure image consumes.",
-  "fix_fixed": "Make each target-set reference the project contexts of its own build type (CM33_ns.Debug in the Debug set). Building the non-secure context directly with --context does not remove the secure artifacts. The --rebuild cleaning behaviour has no fix in the thread.",
-  "versions_fixed": "CMSIS-Toolbox/cbuild 2.14.x",
-  "resolution_fixed": "user-error"
- },
- {
   "issue": "https://github.com/Open-CMSIS-Pack/cmsis-toolbox/issues/423",
   "verdict": "partly",
   "problems": [
@@ -738,12 +725,6 @@
  },
  {
   "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/issues/419",
-  "verdict": "supported",
-  "problems": [],
-  "symptoms_ok": true
- },
- {
-  "issue": "https://github.com/Open-CMSIS-Pack/vscode-cmsis-solution/issues/550",
   "verdict": "supported",
   "problems": [],
   "symptoms_ok": true

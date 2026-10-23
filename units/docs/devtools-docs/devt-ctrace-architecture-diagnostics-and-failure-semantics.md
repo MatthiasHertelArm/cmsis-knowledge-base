@@ -6,8 +6,8 @@ title: "ctrace Architecture: Diagnostics and failure semantics"
 summary: "Diagnostics carry a severity, compact message, normal context, optional detailed message, detailed context, typed raw-location data, visibility, and impact. Severity describes the issue, while impact determines whether the current job must fail."
 status: "draft"
 collection: "devtools-docs"
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/ctrace/docs/architecture.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/architecture.md#diagnostics-and-failure-semantics"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/ctrace/docs/architecture.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/docs/architecture.md#diagnostics-and-failure-semantics"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -20,7 +20,7 @@ without necessarily preventing the decoding of otherwise valid trace input.
 `MessageCatalog.inc` owns ctrace's diagnostic templates and generates the central `MessageId` enum. Each entry keeps
 its detailed and compact text together. `Messages` substitutes positional arguments; typed `TraceMessages` and
 `DiagnosticMessages` adapters select IDs and arguments. Trace records remain structured until output; CLI-only
-messages can be formatted at their existing call sites. See the [message-system design](https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/message-system-design.md).
+messages can be formatted at their existing call sites. See the [message-system design](https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/docs/message-system-design.md).
 
 `StderrDiagnosticSink` selects normal text or detailed text/context for `--verbose` / `-v`. Normal trace messages match
 CSV notes; raw offsets/ranges, cycle intervals, native codes and packet previews remain verbose details. Selected

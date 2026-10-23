@@ -6,8 +6,8 @@ title: "Polling API: Concepts"
 summary: "The polling API's main function is k_poll, which is very similar in concept to the POSIX poll function, except that it operates on kernel objects rather than on file descriptors."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/kernel/services/polling.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/kernel/services/polling.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/kernel/services/polling.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/kernel/services/polling.rst"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -25,7 +25,7 @@ There is a limited set of such conditions:
 - a kernel FIFO contains data ready to be retrieved
 - a kernel LIFO contains data ready to be retrieved
 - a kernel message queue contains data ready to be retrieved
-- a kernel pipe contains data ready to be retrieved
+- a kernel pipe contains data ready to be retrieved, or has been closed
 - a poll signal is raised
 
 A thread that wants to wait on multiple conditions must define an array of

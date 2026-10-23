@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["file not allowed to be updated"]
 symptom_regex: "^file not allowed to be updated$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlEmitter.cpp:57"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrYamlEmitter.cpp:57"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

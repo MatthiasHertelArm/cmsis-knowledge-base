@@ -6,8 +6,8 @@ title: "Setting up a Python environment for Mbed TLS: Python and package version
 summary: "Each branch of Mbed TLS has different minimum requirements on Python. See README.md in the branch."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/development/python-environment.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/development/python-environment.md#python-and-package-versions"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/development/python-environment.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/development/python-environment.md#python-and-package-versions"
 license: "Apache-2.0"
 mode: "V"
 ---

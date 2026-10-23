@@ -6,8 +6,8 @@ title: "SDSIO Interface: Layer: sdsio_rtt"
 summary: "The layer/sdsio/rtt/sdsio_rtt.clayer.yml is configured for recording and playback using the SEGGER RTT component for I/O via a debug adapter."
 status: "draft"
 collection: "sds-framework"
-source: "ARM-software/SDS-Framework@4459441:documentation/sdsio.md"
-doc_source: "https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/sdsio.md#layer-sdsio-rtt"
+source: "ARM-software/SDS-Framework@c18efee:documentation/sdsio.md"
+doc_source: "https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/sdsio.md#layer-sdsio-rtt"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -25,7 +25,7 @@ runs on the host and connects to the debug probe socket using
 
 #### Connect with SEGGER J-Link
 
-Configure `interface:` in the [`*.sdsio.yml` control file](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/utilities.md#sdsio-control-file-sdsioyml) as shown below:
+Configure `interface:` in the [`*.sdsio.yml` control file](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/utilities.md#sdsio-control-file-sdsioyml) as shown below:
 
 ```yml
 sdsio:
@@ -69,7 +69,7 @@ pyOCD can expose each RTT channel as a TCP socket server. RTT is configured unde
                   port: 5100    # any free TCP port on localhost
 ```
 
-Configure `interface:` in the [`*.sdsio.yml` control file](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/utilities.md#sdsio-control-file-sdsioyml) as shown below:
+Configure `interface:` in the [`*.sdsio.yml` control file](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/utilities.md#sdsio-control-file-sdsioyml) as shown below:
 
 ```yml
 sdsio:

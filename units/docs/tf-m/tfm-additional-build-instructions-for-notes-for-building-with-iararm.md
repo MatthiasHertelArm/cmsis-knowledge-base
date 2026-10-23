@@ -6,7 +6,7 @@ title: "Additional build instructions for the IAR toolchain: Notes for building 
 summary: "IAR Embedded Workbench for ARM (EWARM) versions v9.30.1 or later are required."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/building/tfm_build_instruction_iar.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/building/tfm_build_instruction_iar.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/building/tfm_build_instruction_iar.html#notes-for-building-with-iararm"
 license: "BSD-3-Clause"
 mode: "V"

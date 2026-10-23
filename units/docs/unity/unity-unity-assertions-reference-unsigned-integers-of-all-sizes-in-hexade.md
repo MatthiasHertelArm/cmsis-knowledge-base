@@ -6,8 +6,8 @@ title: "Unity Assertions Reference: The Assertions in All Their Blessed Glory / 
 summary: "Part of: The Assertions in All Their Blessed Glory"
 status: "draft"
 collection: "unity"
-source: "ThrowTheSwitch/Unity@2b80d1a:docs/UnityAssertionsReference.md"
-doc_source: "https://github.com/ThrowTheSwitch/Unity/blob/2b80d1a/docs/UnityAssertionsReference.md#unsigned-integers-of-all-sizes-in-hexadecimal"
+source: "ThrowTheSwitch/Unity@7f1a686:docs/UnityAssertionsReference.md"
+doc_source: "https://github.com/ThrowTheSwitch/Unity/blob/7f1a686/docs/UnityAssertionsReference.md#unsigned-integers-of-all-sizes-in-hexadecimal"
 license: "MIT"
 mode: "V"
 ---

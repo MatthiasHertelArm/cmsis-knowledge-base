@@ -6,8 +6,8 @@ title: "Mbed TLS over low-bandwidth, unreliable datagram networks: Configuring M
 summary: "The maximum size of packets that a specific network connection is able to handle is commonly called the maximum transmission unit, or MTU for short."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/controlling_package_size.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/controlling_package_size.md#configuring-mbed-tls-in-networks-with-low-mtu"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/controlling_package_size.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/controlling_package_size.md#configuring-mbed-tls-in-networks-with-low-mtu"
 license: "Apache-2.0"
 mode: "V"
 ---

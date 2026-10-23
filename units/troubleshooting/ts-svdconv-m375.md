@@ -10,8 +10,8 @@ code: "M375"
 symptoms: ["M375", "%LEVEL% '%NAME%' (<enumeratedValues> '%NAME2%'): Too many <enumeratedValues> container specified."]
 symptom_regex: "^.+? '.+?' \\(<enumeratedValues> '.+?'\\): Too many <enumeratedValues> container specified\\.$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"

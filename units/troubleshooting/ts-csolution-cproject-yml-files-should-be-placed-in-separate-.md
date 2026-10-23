@@ -9,7 +9,7 @@ severity: "warning"
 symptoms: ["cproject.yml files should be placed in separate sub-directories"]
 symptom_regex: "^cproject\\.yml files should be placed in separate sub\\-directories$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgr.cpp:521"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgr.cpp:521"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

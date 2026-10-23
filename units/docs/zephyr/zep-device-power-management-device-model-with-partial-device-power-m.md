@@ -6,8 +6,8 @@ title: "Device Power Management: Device Model with Partial Device Power Manageme
 summary: "If CONFIG_PM_DEVICE is not enabled, the device power state is tied to the devices initialization state."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/services/pm/device.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/services/pm/device.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/services/pm/device.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/services/pm/device.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

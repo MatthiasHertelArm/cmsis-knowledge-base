@@ -6,7 +6,7 @@ title: "Initial Attestation Service Integration Guide: Comparison of asymmetric 
 summary: "The symmetric key based authentication requires a more complex infrastructure for key management. Symmetric keys must be kept secret because they are sensitive asset, like the private key in case of asymmetric cryptographic algorithms."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/integration_guide/services/tfm_attestation_integration_guide.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/integration_guide/services/tfm_attestation_integration_guide.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/integration_guide/services/tfm_attestation_integration_guide.html#comparison-of-asymmetric-and-symmetric-algorithm-based-token-authentication"
 license: "BSD-3-Clause"
 mode: "V"

@@ -6,8 +6,8 @@ title: "Building, Flashing and Debugging: Debugging: `west debug`, `west debugse
 summary: "From a Zephyr build directory, to attach a debugger to your board and open up a debug console (e.g. a GDB session)::"
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/develop/west/build-flash-debug.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/develop/west/build-flash-debug.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/develop/west/build-flash-debug.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/develop/west/build-flash-debug.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["file is missing and required due to use of --frozen-packs option"]
 symptom_regex: "^file is missing and required due to use of \\-\\-frozen\\-packs option$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:66"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrYamlParser.cpp:66"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

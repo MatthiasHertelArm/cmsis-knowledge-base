@@ -6,8 +6,8 @@ title: "Running a fixed virtual platform based on Arm(R) Corstone(TM)-300 softwa
 summary: "This target makes use of a fixed virtual platform (FVP) based on Arm Corstone-300 software. - More info about Arm Corstone-300 - More info about FVPs"
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/cortex_m_corstone_300/README.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/cortex_m_corstone_300/README.md"
+source: "tensorflow/tflite-micro@f7ed40d:tensorflow/lite/micro/cortex_m_corstone_300/README.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/f7ed40d/tensorflow/lite/micro/cortex_m_corstone_300/README.md"
 license: "Apache-2.0"
 mode: "V"
 ---

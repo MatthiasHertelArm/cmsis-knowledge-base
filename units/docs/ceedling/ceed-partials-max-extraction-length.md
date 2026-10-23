@@ -6,16 +6,13 @@ title: "`:partials`: `:max_extraction_length`"
 summary: "Building a Partial requires Ceedling to extract each C construct — a variable declaration, a function, a macro, and so on — from your source files one at a time."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/configuration/reference/partials.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/configuration/reference/partials.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/configuration/reference/partials/#max-extraction-length"
 license: "MIT"
 mode: "V"
 ---
 
-Notes:
-
-- The default should be sufficient for nearly all test builds. Modification should only be necessary on error.
-- This configuration option is only available in Ceedling 1.1.4+.
+**_Note:_** The default should be sufficient for nearly all test builds. Modification should only be necessary on error.
 
 Building a Partial requires Ceedling to extract each C construct — a
 variable declaration, a function, a macro, and so on — from your source

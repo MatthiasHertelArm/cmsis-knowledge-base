@@ -6,8 +6,8 @@ title: "Vela: Installation"
 summary: "Vela runs on:  Apple macOS  Linux  Microsoft Windows"
 status: "draft"
 collection: "ethos-u-vela"
-source: "artificial-intelligence/ethos-u/ethos-u-vela@eb9cf0d:README.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/eb9cf0d/README.md#installation"
+source: "artificial-intelligence/ethos-u/ethos-u-vela@4bd6685:README.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/4bd6685/README.md#installation"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -44,7 +44,7 @@ this it requires the following:
 ### Manually Building
 
 The source code is available from [Arm's GitLab Instance](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela),
-see [Building From Source](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/eb9cf0d/BUILD.md) for more details.
+see [Building From Source](https://gitlab.arm.com/artificial-intelligence/ethos-u/ethos-u-vela/-/blob/4bd6685/BUILD.md) for more details.
 
 ### Development builds
 

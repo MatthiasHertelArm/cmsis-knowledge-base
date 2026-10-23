@@ -9,7 +9,7 @@ severity: "warning"
 symptoms: ["<…>'device: Dname'<…>'board:' node<…> is deprecated at this level and accepted in *.csolution.yml only"]
 symptom_regex: "^.+?'device: Dname'.+?'board:' node.+? is deprecated at this level and accepted in \\*\\.csolution\\.yml only$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:1127"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrYamlParser.cpp:1127"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

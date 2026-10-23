@@ -6,8 +6,8 @@ title: "Inference Runner Code Sample: Building the Code Samples application from
 summary: "In addition to the already specified build option in the main documentation, the Inference Runner use-case adds the following:"
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/use_cases/inference_runner.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/inference_runner.md#building-the-code-samples-application-from-sources"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/use_cases/inference_runner.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/inference_runner.md#building-the-code-samples-application-from-sources"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -31,15 +31,15 @@ following:
 - `inference_runner_ACTIVATION_BUF_SZ`: The intermediate, or activation, buffer size reserved for the NN model. By
   default, it is set to 2MiB and is enough for most models.
 
-- `inference_runner_DYNAMIC_MEM_LOAD_ENABLED`: This can be set to ON or OFF, to allow dynamic model load capability for use with MPS3 FVPs. See section [Building with dynamic model load capability](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/./inference_runner.md#building-with-dynamic-model-load-capability) below for more details.
+- `inference_runner_DYNAMIC_MEM_LOAD_ENABLED`: This can be set to ON or OFF, to allow dynamic model load capability for use with MPS3 FVPs. See section [Building with dynamic model load capability](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/./inference_runner.md#building-with-dynamic-model-load-capability) below for more details.
 
 To build **ONLY** the Inference Runner example application, add `-DUSE_CASE_BUILD=inference_runner` to the `cmake`
-command line, as specified in: [Building](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../documentation.md#Building).
+command line, as specified in: [Building](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../documentation.md#Building).
 
 ### Build process
 
 > **Note:** This section describes the process for configuring the build for the *MPS3: SSE-300*. To build for a
-> different target platform, please refer to: [Building](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../documentation.md#Building).
+> different target platform, please refer to: [Building](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../documentation.md#Building).
 
 Create a build directory and navigate inside, like so:
 
@@ -66,9 +66,9 @@ cmake .. \
 
 For further information, please refer to:
 
-- [Configuring with custom TPIP dependencies](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../sections/building.md#configuring-with-custom-tpip-dependencies)
-- [Using Arm Compiler](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../sections/building.md#using-arm-compiler)
-- [Building for different Ethos-U NPU variants](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../sections/building.md#building-for-different-ethos_u-npu-variants)
+- [Configuring with custom TPIP dependencies](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../sections/building.md#configuring-with-custom-tpip-dependencies)
+- [Using Arm Compiler](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../sections/building.md#using-arm-compiler)
+- [Building for different Ethos-U NPU variants](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../sections/building.md#building-for-different-ethos_u-npu-variants)
 
 > **Note:** If re-building with changed parameters values, we recommend that you clean the build directory and re-run
 > the CMake command.
@@ -117,7 +117,7 @@ The application performs inference using the model pointed to by the CMake param
 > **Note:** If you want to run the model using an *Ethos-U*, ensure that your custom model has been successfully run
 > through the Vela compiler *before* continuing.
 
-For further information: [Optimize model with Vela compiler](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/../sections/building.md#Optimize-custom-model-with-Vela-compiler).
+For further information: [Optimize model with Vela compiler](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/../sections/building.md#Optimize-custom-model-with-Vela-compiler).
 
 Then, you must set `inference_runner_MODEL_PATH` to the location of the Vela processed model file.
 

@@ -6,13 +6,13 @@ title: "Generating an RSA key pair: Building the legacy RSA key pair generator"
 summary: "Before 4.0, Mbed TLS shipped the source code for an RSA key pair generator application, called gen_key. To build the executable for the application, please check out the building Mbed TLS."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/cryptography/rsa-key-pair-generator.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/cryptography/rsa-key-pair-generator.md#building-the-legacy-rsa-key-pair-generator"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/cryptography/rsa-key-pair-generator.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/cryptography/rsa-key-pair-generator.md#building-the-legacy-rsa-key-pair-generator"
 license: "Apache-2.0"
 mode: "V"
 ---
 
-Before 4.0, Mbed TLS shipped the source code for an RSA key pair generator application, called **gen_key**. To build the executable for the application, please check out the [building Mbed TLS](https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/cryptography/../compiling-and-building/how-do-i-build-compile-mbedtls.md).
+Before 4.0, Mbed TLS shipped the source code for an RSA key pair generator application, called **gen_key**. To build the executable for the application, please check out the [building Mbed TLS](https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/cryptography/../compiling-and-building/how-do-i-build-compile-mbedtls.md).
 
 After the compilation, the legacy executable is often located in the `programs/pkey` directory.
 

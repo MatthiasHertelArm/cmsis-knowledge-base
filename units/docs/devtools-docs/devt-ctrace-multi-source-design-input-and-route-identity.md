@@ -6,8 +6,8 @@ title: "ctrace multi-source design: Input and route identity"
 summary: "Input format describes the effective capture bytes. A single source can be formatted, and a sink's name does not prove how its formatter was configured. The migration introduced the provisional, ctrace-private ctrace-run.trace-format field and an internal 16-byte memory-aligned framing contract."
 status: "draft"
 collection: "devtools-docs"
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/ctrace/docs/multi-source-design.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/multi-source-design.md#input-and-route-identity"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/ctrace/docs/multi-source-design.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/docs/multi-source-design.md#input-and-route-identity"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -23,7 +23,7 @@ communication rather than trace-source setup.
 Generated `ctrace-refs.stream` assignments are the routing authority. Copied target setup, including an optional
 `itm.atbid`, cannot replace effective generated routing information. Processor-ITM references are the preferred route
 anchors; a constrained feature-reference fallback accommodates existing producer output. The full normalization rules
-remain in the [routing constraints](https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/constraints.md#routing-invariants).
+remain in the [routing constraints](https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/docs/constraints.md#routing-invariants).
 
 Four identities have separate purposes:
 

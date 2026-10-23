@@ -6,13 +6,13 @@ title: "Using only a few modules from the library: Building Mbed TLS files direc
 summary: "Mbed TLS comes with build scripts for GNU make (Makefile), CMake (CMakeLists.txt) and Visual Studio (visualc/VS2010/mbedTLS.sln). By default, these create static libraries mbedcrypto, mbedx509 and mbedtls which you can link into your application."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/using-loose-modules-without-the-full-library.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/using-loose-modules-without-the-full-library.md#building-mbed-tls-files-directly-in-an-application"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/using-loose-modules-without-the-full-library.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/using-loose-modules-without-the-full-library.md#building-mbed-tls-files-directly-in-an-application"
 license: "Apache-2.0"
 mode: "V"
 ---
 
-Mbed TLS comes with build scripts for GNU make (`Makefile`), CMake (`CMakeLists.txt`) and Visual Studio (`visualc/VS2010/mbedTLS.sln`). By default, these create static libraries `mbedcrypto`, `mbedx509` and `mbedtls` which you can link into your application. (You don't need to link `mbedx509` or `mbedtls` if you don't use these features.) For more information, see [How to compile and build Mbed TLS](https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/../compiling-and-building/how-do-i-build-compile-mbedtls.md).
+Mbed TLS comes with build scripts for GNU make (`Makefile`), CMake (`CMakeLists.txt`) and Visual Studio (`visualc/VS2010/mbedTLS.sln`). By default, these create static libraries `mbedcrypto`, `mbedx509` and `mbedtls` which you can link into your application. (You don't need to link `mbedx509` or `mbedtls` if you don't use these features.) For more information, see [How to compile and build Mbed TLS](https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/../compiling-and-building/how-do-i-build-compile-mbedtls.md).
 
 If you prefer, you can include the Mbed TLS source files in your own build scripts. All the library code is in the `library` subdirectory, except for a few features that use code from the `3rdparty` directory tree. All the public headers are in the `include` directory tree.
 

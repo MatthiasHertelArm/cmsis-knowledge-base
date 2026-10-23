@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["invalid define: <…>, improper quotes"]
 symptom_regex: "^invalid define: .+?, improper quotes$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:450"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrYamlParser.cpp:450"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

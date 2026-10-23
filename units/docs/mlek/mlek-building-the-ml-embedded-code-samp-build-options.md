@@ -6,8 +6,8 @@ title: "Building the ML embedded code sample applications from sources: Build op
 summary: "The project build system allows you to specify custom neural network models for each use-case along with the network inputs."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/building.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/building.md#build-options"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/building.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/building.md#build-options"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -18,7 +18,7 @@ inputs.
 It also builds the chosen ML framework (TensorFlow Lite for Microcontrollers or ExecuTorch) library,
 Arm® *Ethos™-U* NPU driver library, and the CMSIS-DSP library from sources.
 
-The build script is parameterized to support different options (see [common_opts.cmake](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../scripts/cmake/configuration_options/common_opts.cmake)).
+The build script is parameterized to support different options (see [common_opts.cmake](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../scripts/cmake/configuration_options/common_opts.cmake)).
 Default values for these parameters configure the build for all use-cases to be executed on an MPS3 FPGA or the Fixed Virtual
 Platform (FVP) implementation of the Arm® *Corstone™-300* design.
 
@@ -38,7 +38,7 @@ The build parameters are:
 
 - `CMAKE_TOOLCHAIN_FILE`: This built-in CMake parameter can be used to override the default toolchain file used for the
   build. All the valid toolchain files are located in the scripts directory. For example, see:
-  [bare-metal-gcc.cmake](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../scripts/cmake/toolchains/bare-metal-gcc.cmake).
+  [bare-metal-gcc.cmake](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../scripts/cmake/toolchains/bare-metal-gcc.cmake).
 
 - `LINKER_SCRIPT_OVERRIDE_PATH`: Optional path to a custom linker control file that overrides the platform default.
   When left unset, the build uses the standard linker script or scatter file selected by the target platform and
@@ -116,12 +116,12 @@ The build parameters are:
   > configuration for all the use cases. If the user has overridden use-case specific model path
   > parameter `ETHOS_U_NPU_CONFIG_ID` parameter will become irrelevant for that use-case. Also, the
   > model files for the chosen `ETHOS_U_NPU_CONFIG_ID` are expected to exist in the default locations.
-  > See [Fetching resource files](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./building.md#fetching-resource-files) for details on how to do this for your
+  > See [Fetching resource files](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./building.md#fetching-resource-files) for details on how to do this for your
   > chosen configuration.
 
 - `ETHOS_U_NPU_CACHE_SIZE`: The *Ethos-U* NPU cache size used if the *Ethos-U* NPU processor selected with the option
   `ETHOS_U_NPU_ID` is `U65` or `U85`.
-  Default value is 393216 (see [default_vela.ini](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../scripts/vela/default_vela.ini) ).
+  Default value is 393216 (see [default_vela.ini](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../scripts/vela/default_vela.ini) ).
 
 - `CPU_PROFILE_ENABLED`: Sets whether profiling information for the CPU core should be displayed. By default, this is
   set to false, but can be turned on for FPGA targets. The FVP and the CPU core cycle counts are **not** meaningful and
@@ -159,12 +159,12 @@ The build parameters are:
 
 - `TA_CONFIG_FILE`: The path to the CMake configuration file that contains the timing adapter parameters. Used only if
   the timing adapter build is enabled. Default for Ethos-U55 NPU is
-  [ta_config_u55_high_end.cmake](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../scripts/cmake/timing_adapter/ta_config_u55_high_end.cmake),
-  for Ethos-U65 NPU is [ta_config_u55_high_end.cmake](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../scripts/cmake/timing_adapter/ta_config_u55_high_end.cmake).
+  [ta_config_u55_high_end.cmake](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../scripts/cmake/timing_adapter/ta_config_u55_high_end.cmake),
+  for Ethos-U65 NPU is [ta_config_u55_high_end.cmake](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../scripts/cmake/timing_adapter/ta_config_u55_high_end.cmake).
   For Ethos-U85 NPU, the default configuration file depends on the MAC configuration.
-  The default for 128 and 256 is [ta_config_u85_sys_dram_low.cmake](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../scripts/cmake/timing_adapter/ta_config_u85_sys_dram_low.cmake),
-  the default for 512 and 1024 is [ta_config_u85_sys_dram_mid.cmake](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../scripts/cmake/timing_adapter/ta_config_u85_sys_dram_mid.cmake),
-  and the default for 2048 is [ta_config_u85_sys_dram_high.cmake](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../scripts/cmake/timing_adapter/ta_config_u85_sys_dram_high.cmake).
+  The default for 128 and 256 is [ta_config_u85_sys_dram_low.cmake](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../scripts/cmake/timing_adapter/ta_config_u85_sys_dram_low.cmake),
+  the default for 512 and 1024 is [ta_config_u85_sys_dram_mid.cmake](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../scripts/cmake/timing_adapter/ta_config_u85_sys_dram_mid.cmake),
+  and the default for 2048 is [ta_config_u85_sys_dram_high.cmake](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../scripts/cmake/timing_adapter/ta_config_u85_sys_dram_high.cmake).
 
 - `TENSORFLOW_LITE_MICRO_CLEAN_BUILD`: Optional parameter to enable, or disable, "cleaning" prior to building for the
   TensorFlow Lite Micro library. Enabled by default.
@@ -183,8 +183,8 @@ The build parameters are:
 
 - `FVP_VSI_ENABLED`: Configures the build for applications to use
   [Virtual Streaming Interface](https://arm-software.github.io/AVH/main/simulation/html/group__arm__vsi.html) (VSI)
-  available for FVP targets. Read more about VSI requirements [here](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./deployment.md#vsi-requirements) and about
-  deployment [here](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./deployment.md#deployment-with-virtual-streaming-interface). Note that enabling this option will
+  available for FVP targets. Read more about VSI requirements [here](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./deployment.md#vsi-requirements) and about
+  deployment [here](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./deployment.md#deployment-with-virtual-streaming-interface). Note that enabling this option will
   conflict with `BUILD_FVP_TESTS`.
 
 - `FVP_VSI_SRC_PATH`: If `FVP_VSI_ENABLED` is `ON`, this cache variable defaults to the git submodule for AVH
@@ -195,7 +195,7 @@ The build parameters are:
   By default, this is set to `OFF` and is only included as an option for `MPS3` and `MPS4` based target platforms.
 
   > **NOTE**: If semihosting enabled application is used with FVPs, additional command line arguments must be provided.
-  > See [semihosting section under deployment](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./deployment.md#semihosting).
+  > See [semihosting section under deployment](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./deployment.md#semihosting).
 
 - `RESOURCES_PATH`: The path to the resources downloaded by the set_up_default_resources.py script
   and compiled using Vela.  This can be set if this script was run using the `--downloads-dir` flag to

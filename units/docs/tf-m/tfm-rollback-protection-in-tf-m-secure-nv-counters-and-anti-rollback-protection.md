@@ -6,7 +6,7 @@ title: "Rollback protection in TF-M secure boot: NV counters and anti-rollback p
 summary: "Trusted non-volatile counters might not be supported by a hardware platform. In this case anti-rollback protection might still be feasible."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/booting/secure_boot_rollback_protection.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/booting/secure_boot_rollback_protection.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/booting/secure_boot_rollback_protection.html#nv-counters-and-anti-rollback-protection"
 license: "BSD-3-Clause"
 mode: "V"

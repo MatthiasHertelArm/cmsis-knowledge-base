@@ -6,8 +6,8 @@ title: "Deployment: Fixed Virtual Platform / Deploying on an FVP"
 summary: "This section assumes that the FVP has been installed (see Installing an FVP) to the home directory of the user: ~/FVP_Corstone_SSE-300. The installation, typically, has the executable under ~/FVP_Corstone_SSE-300/model/<OS><compiler-version>/ directory. For the example below, we assume it is: ~/FVP_Corstone_SSE-300/models/Linux64_GCC-6.4."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/deployment.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/deployment.md#deploying-on-an-fvp"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/deployment.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/deployment.md#deploying-on-an-fvp"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -15,7 +15,7 @@ mode: "V"
 _Part of: Fixed Virtual Platform_
 
 This section assumes that the FVP has been installed (see
-[Installing an FVP](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./deployment.md#installing-an-fvp))
+[Installing an FVP](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./deployment.md#installing-an-fvp))
 to the home directory of the user: `~/FVP_Corstone_SSE-300`. The installation, typically, has the
 executable under `~/FVP_Corstone_SSE-300/model/<OS>_<compiler-version>/` directory. For the example
 below, we assume it is: `~/FVP_Corstone_SSE-300/models/Linux64_GCC-6.4`.
@@ -23,7 +23,7 @@ below, we assume it is: `~/FVP_Corstone_SSE-300/models/Linux64_GCC-6.4`.
 > **NOTE**: The commandline arguments for the FVP mentioned below are valid for FVPs (and AVH) for
 > Arm® Corstone™-300, Corstone™-310, Corstone™-315 and Corstone™-320.
 
-To run a use-case on the FVP, from the [Build directory](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../sections/building.md#create-a-build-directory):
+To run a use-case on the FVP, from the [Build directory](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../sections/building.md#create-a-build-directory):
 
 ```commandline
 ~/FVP_Corstone_SSE-300/models/Linux64_GCC-6.4/FVP_Corstone_SSE-300_Ethos-U55 -a ./bin/mlek_<use_case>.axf

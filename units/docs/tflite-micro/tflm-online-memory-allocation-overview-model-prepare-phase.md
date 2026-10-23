@@ -6,8 +6,8 @@ title: "Online Memory Allocation Overview in TensorFlow Lite Micro: Model Prepar
 summary: "After the interpreter has initialized all operator kernels, another pass through the subgraph is done. This time, each operator implementation that provides a TfLiteRegistration::prepare() function is called."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/online_memory_allocation_overview.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/online_memory_allocation_overview.md#model-prepare-phase"
+source: "tensorflow/tflite-micro@f7ed40d:tensorflow/lite/micro/docs/online_memory_allocation_overview.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/f7ed40d/tensorflow/lite/micro/docs/online_memory_allocation_overview.md#model-prepare-phase"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -27,7 +27,7 @@ is the space between the head and the tail in the arena. During the prepare
 phase, nothing has yet been placed in the head section. This extra space between
 the head and tail is used to allocate buffers that are available until
 `MicroAllocator::ResetTempAllocations()` is called. Additional information
-[available here](https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/memory_management.md#temporary-section).
+[available here](https://github.com/tensorflow/tflite-micro/blob/f7ed40d/tensorflow/lite/micro/docs/memory_management.md#temporary-section).
 
 NOTE: The `TfLiteTensor` struct is only available in TFLM during
 `TfLiteRegistration::prepare()`, after this allocation phase tensor data can

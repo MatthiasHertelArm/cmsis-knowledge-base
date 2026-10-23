@@ -6,8 +6,8 @@ title: "Multi-domain logging using ARM Coresight STM: STM Extended Stimulus Port
 summary: "Local domain (each core) has access to its own set of STMESP peripherals. Each set has registers for writing data (with or without timestamp and with or without marking) and writing a flag."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/services/logging/cs_stm.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/services/logging/cs_stm.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/services/logging/cs_stm.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/services/logging/cs_stm.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

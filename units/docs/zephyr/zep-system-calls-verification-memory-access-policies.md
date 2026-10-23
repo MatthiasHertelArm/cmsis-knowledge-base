@@ -6,8 +6,8 @@ title: "System Calls: Verification Function / Verification Memory Access Policie
 summary: "Parameters passed to system calls by reference require special handling, because the value of these parameters can be changed at any time by any user thread that has access to the memory that parameter points to."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/kernel/usermode/syscalls.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/kernel/usermode/syscalls.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/kernel/usermode/syscalls.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/kernel/usermode/syscalls.rst"
 license: "Apache-2.0"
 mode: "V"
 ---

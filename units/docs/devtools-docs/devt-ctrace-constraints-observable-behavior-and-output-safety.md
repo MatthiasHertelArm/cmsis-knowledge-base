@@ -6,8 +6,8 @@ title: "ctrace Constraints: Observable behavior and output safety"
 summary: "ctrace Constraints: Observable behavior and output safety"
 status: "draft"
 collection: "devtools-docs"
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/ctrace/docs/constraints.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/constraints.md#observable-behavior-and-output-safety"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/ctrace/docs/constraints.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/docs/constraints.md#observable-behavior-and-output-safety"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -16,7 +16,7 @@ mode: "V"
   `<set>.traceanalysis.xml` collects the target's eligible completed CTF views. The channel-qualified CTF path applies
   even with one input; legacy `<set>.ctf` bundles and old per-channel XML files are not reused, migrated, or removed.
   Aligning the intentional CTF path change with the published
-  CTF specification remains [follow-up work](https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/ctrace/docs/todo.md#inputs-and-time-correlation).
+  CTF specification remains [follow-up work](https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/ctrace/docs/todo.md#inputs-and-time-correlation).
 - CSV remains one combined file per input in sink callback order, not a global raw-input or chronological order across
   routes. The unformatted route has an empty `stream` field; formatted routes expose their architectural IDs.
   Type and stream filters affect output, not decoding or diagnostic reporting. The seventh CSV column is `address`,

@@ -10,8 +10,8 @@ code: "M302"
 symptoms: ["M302", "Size of Register '%NAME%:%NUM%' must be 8, 16 or 32 Bits"]
 symptom_regex: "^Size of Register '.+?:.+?' must be 8, 16 or 32 Bits$"
 documented: true
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
-doc_source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
+doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/README.md"
 applies_to: {"tool": ["svdconv"]}
 license: "Apache-2.0"
 mode: "V"

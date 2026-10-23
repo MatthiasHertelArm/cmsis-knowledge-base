@@ -3,35 +3,34 @@ id: "ceed-cppcheck-plugin-overview"
 type: "concept"
 domain: "test"
 title: "Cppcheck: Plugin overview"
-summary: "The Cppcheck plugin integrates Cppcheck static analysis into Ceedling, facilitating automated code quality checks as part of your development workflow. It provides two analysis modes:"
+summary: "The Cppcheck plugin runs [Cppcheck] over your project and writes reports to the build artifacts directory. It provides two analysis modes."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/cppcheck.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/plugins/cppcheck.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/cppcheck/#plugin-overview"
 license: "MIT"
 mode: "V"
 ---
 
-The Cppcheck plugin integrates [Cppcheck](https://cppcheck.sourceforge.io)
-static analysis into Ceedling, facilitating automated code quality checks as
-part of your development workflow. It provides two analysis modes:
+The Cppcheck plugin runs [Cppcheck] over your project and writes reports to the
+build artifacts directory. It provides two analysis modes.
 
-- **Whole project analysis**: By running `ceedling cppcheck:all`, all project
-source files will be analyzed with all checks enabled (`--enable=all`) and
-configurable reports can be generated in multiple formats.
-- **Single file analysis**: By running `ceedling cppcheck:<filename>`, an
-individual source file will be analyzed using the checks configured in the
-`:enable_checks` list (defaults to `style`).
+- **Whole project analysis**: `ceedling cppcheck:all` analyzes all project
+  sources with every check enabled (`--enable=all`) and writes the reports you
+  configure.
+- **Single file analysis**: `ceedling cppcheck:<filename>` analyzes one source
+  file using the checks in [`:enable_checks:`](#enable_checks), and prints
+  findings to the console.
 
-The plugin supports extensive Cppcheck configuration options such as platform,
-language standard, preprocessor defines, include/exclude paths, and suppression
-management. It also integrates with advanced features like MISRA addons, custom
-check levels, library configuration files, and regular expression rules. All of
-these can be configured in your `project.yml` file.
+Reports are available in HTML, SARIF, text, and XML. The plugin also exposes
+most of Cppcheck's configuration surface, including platform, language
+standard, preprocessor defines, include and exclude paths, addons such as
+MISRA, library configuration files, regular expression rules, and suppression
+management.
 
-The plugin can produce reports in HTML, SARIF, text, and XML (v2 and v3)
-formats, all stored under the build artifacts directory.
+A build can be failed on findings. See [`:fail_build:`](#fail_build).
 
-It also suppoprts using a project file (such as `compile_commands.json` or a
-Cppcheck GUI project), in which case, the plugin delegates source and include
-path discovery to Cppcheck rather than using Ceedling's own file collection.
+!!! note "Analysis runs once per report format"
+    Cppcheck emits one format per invocation, so each entry in
+    [`:reports:`](#reports) costs its own full analysis pass. Cppcheck's own
+    `--cppcheck-build-dir` cache reduces the cost of passes after the first.

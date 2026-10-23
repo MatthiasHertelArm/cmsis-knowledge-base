@@ -6,8 +6,8 @@ title: "Building the ML embedded code sample applications from sources: Optimize
 summary: "The Vela compiler is a tool that can optimize a neural network model into a version that can run on an embedded system containing an Ethos-U NPU."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/building.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/building.md#optimize-custom-model-with-vela-compiler"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/building.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/building.md#optimize-custom-model-with-vela-compiler"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -54,7 +54,7 @@ The Vela command contains the following:
   the SRAM usage whereas the Performance strategy optimises the neural network for maximal performance.
   Note that if using the Performance strategy, you can also pass the `--arena-cache-size` option to Vela.
 - `--config`: Specifies the path to the Vela configuration file. The format of the file is a Python ConfigParser `.ini`
-    file. An example can be found in the `dependencies` folder [default_vela.ini](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../../scripts/vela/default_vela.ini).
+    file. An example can be found in the `dependencies` folder [default_vela.ini](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../../scripts/vela/default_vela.ini).
 - `--memory-mode`: Selects the memory mode to use as specified in the Vela configuration file.
 - `--system-config`: Selects the system configuration to use as specified in the Vela configuration file:
   `Ethos_U55_High_End_Embedded`for *Ethos-U55*, `Ethos_U65_High_End` for *Ethos-U65*,

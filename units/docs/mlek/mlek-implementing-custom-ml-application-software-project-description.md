@@ -6,13 +6,13 @@ title: "Implementing custom ML application: Software project description"
 summary: "See Repository structure section for the outline of the repo."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/customizing.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/customizing.md#software-project-description"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/customizing.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/customizing.md#software-project-description"
 license: "Apache-2.0"
 mode: "V"
 ---
 
-See [Repository structure](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/../documentation.md#repository-structure) section for the outline of the repo.
+See [Repository structure](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/../documentation.md#repository-structure) section for the outline of the repo.
 
 > **Convention**: Separate use-cases must be organized in sub-folders under the `source/app/use_case` folder. The name of
 > the directory is used as a name for this use-case and can be provided as a `USE_CASE_BUILD` parameter value. The build

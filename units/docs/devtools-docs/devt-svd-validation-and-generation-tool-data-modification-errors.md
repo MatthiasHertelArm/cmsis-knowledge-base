@@ -6,8 +6,8 @@ title: "SVD Validation and Generation Tool: Error and Warning Messages / Data mo
 summary: "SVD Validation and Generation Tool: Error and Warning Messages / Data modification errors"
 status: "draft"
 collection: "devtools-docs"
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/svdconv/SVDConv/README.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/svdconv/SVDConv/README.md#data-modification-errors"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/README.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/svdconv/SVDConv/README.md#data-modification-errors"
 license: "Apache-2.0"
 mode: "V"
 ---

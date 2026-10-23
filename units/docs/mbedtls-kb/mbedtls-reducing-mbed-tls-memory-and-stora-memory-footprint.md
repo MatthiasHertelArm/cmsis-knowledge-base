@@ -6,8 +6,8 @@ title: "Reducing Mbed TLS memory and storage footprint: Memory footprint"
 summary: "The memory footprint is the size of the memory needed at runtime to store variables, contexts and other runtime information."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/reduce-polarssl-memory-and-storage-footprint.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/reduce-polarssl-memory-and-storage-footprint.md#memory-footprint"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/reduce-polarssl-memory-and-storage-footprint.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/reduce-polarssl-memory-and-storage-footprint.md#memory-footprint"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -36,11 +36,11 @@ By default, the `MBEDTLS_ECP_MAX_BITS` is set to `521` to support 521 bits ellip
 
 #### Reducing the ECP window size
 
-By default, elliptic curve multiplications use a window size (`MBEDTLS_ECP_WINDOW_SIZE`) of up to 6. You can reduce this value down to 2, which reduces the memory used to the detriment of performance. The larger the elliptic curves, the bigger the impact. See also [How to tune ECC resource usage](https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/how-do-i-tune-elliptic-curves-resource-usage.md).
+By default, elliptic curve multiplications use a window size (`MBEDTLS_ECP_WINDOW_SIZE`) of up to 6. You can reduce this value down to 2, which reduces the memory used to the detriment of performance. The larger the elliptic curves, the bigger the impact. See also [How to tune ECC resource usage](https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/how-do-i-tune-elliptic-curves-resource-usage.md).
 
 #### Disabling the ECP fixed point optimizations
 
-If you disable the ECP fixed point optimizations (`MBEDTLS_ECP_FIXED_POINT_OPTIM`), you lose some performance but use less memory. See also [How to tune ECC resource usage](https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/how-do-i-tune-elliptic-curves-resource-usage.md).
+If you disable the ECP fixed point optimizations (`MBEDTLS_ECP_FIXED_POINT_OPTIM`), you lose some performance but use less memory. See also [How to tune ECC resource usage](https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/how-do-i-tune-elliptic-curves-resource-usage.md).
 
 ### SSL/TLS
 

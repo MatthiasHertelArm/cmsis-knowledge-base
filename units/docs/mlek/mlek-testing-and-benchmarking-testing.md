@@ -6,8 +6,8 @@ title: "Testing and benchmarking: Testing"
 summary: "The tests folder uses the following structure:"
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/sections/testing_benchmarking.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/testing_benchmarking.md#testing"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/sections/testing_benchmarking.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/testing_benchmarking.md#testing"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -33,8 +33,8 @@ The folders contain the following information:
 - `use_case`: Every use-case specific test in their respective folders.
 - `utils`: Utility sources that are only used within the tests.
 
-When [configuring](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./building.md#configuring-native-unit_test-build) and
-[building](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/sections/./building.md#building-the-configured-project) for your `native` target platform, the results of the build is
+When [configuring](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./building.md#configuring-native-unit_test-build) and
+[building](https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/sections/./building.md#building-the-configured-project) for your `native` target platform, the results of the build is
 placed under `<build folder>/bin/` folder. For example:
 
 ```tree

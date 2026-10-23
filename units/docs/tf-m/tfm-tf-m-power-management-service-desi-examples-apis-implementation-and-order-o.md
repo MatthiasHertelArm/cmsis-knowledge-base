@@ -6,7 +6,7 @@ title: "TF-M Power Management Service design (RFC): Examples: APIs implementatio
 summary: "In the example above, entering the power state transition pre_state_custom_1b follows pre_state_custom_1a, while exiting the state post_state_custom_1b preceeds post_state_custom_1b."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/services/tfm_power_mgmt.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/services/tfm_power_mgmt.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/services/tfm_power_mgmt.html#examples-apis-implementation-and-order-of-execution"
 license: "BSD-3-Clause"
 mode: "V"

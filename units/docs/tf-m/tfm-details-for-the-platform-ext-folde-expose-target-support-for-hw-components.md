@@ -6,7 +6,7 @@ title: "Details for the platform/ext folder: Expose target support for HW compon
 summary: "Services may require HW components to be supported by the target to enable some features (e.g. PS service with rollback protection, etc)."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/integration_guide/source_structure/platform_ext_folder.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/integration_guide/source_structure/platform_ext_folder.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/integration_guide/source_structure/platform_ext_folder.html#expose-target-support-for-hw-components"
 license: "BSD-3-Clause"
 mode: "V"

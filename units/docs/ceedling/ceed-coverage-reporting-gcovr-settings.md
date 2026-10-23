@@ -6,7 +6,7 @@ title: "Coverage Reporting: GCovr Settings"
 summary: "All options below live under :gcov: ↳ :gcovr:. Reports are written to <build root>/artifacts/gcov/gcovr/."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/reference/gcov-plugin.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/reference/gcov-plugin.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/reference/gcov-plugin/#gcovr-settings"
 license: "MIT"
 mode: "V"
@@ -28,7 +28,9 @@ this path.
 
 Load a `gcovr` configuration file. (`gcovr --config`)
 
-**Default:** `gcovr.cfg` in the `:report_root` directory, if present.
+**Default:** unset — Ceedling does not look for or autodetect a config file
+on disk; `gcovr` itself is only ever told to load one when `:config_file` is
+explicitly set.
 
 ---
 
@@ -56,7 +58,8 @@ Exit with status 8 if total decision coverage is below this percentage.
 (`gcovr --fail-under-decision`)
 
 `gcovr` treats `--fail-under-decision` as a no-op without `--decisions` also
-present — setting this option implies `:decisions` (below) automatically.
+present — setting this option implies `:decisions` (below) automatically, so
+it's never silently non-functional.
 
 **Values:** `1`–`100`
 
@@ -331,9 +334,47 @@ Override the default JSON report output filename.
 
 ---
 
+### `:jacoco_pretty`
+
+Pretty-print the JaCoCo XML report. Requires `gcovr` 7.0 or higher. (`gcovr --jacoco-pretty`)
+
+**Default:** `FALSE`
+
+---
+
+### `:jacoco_artifact_filename`
+
+Override the default JaCoCo XML report output filename. Requires `gcovr` 7.0 or higher.
+
+**Default:** `GcovCoverageJaCoCo.xml`
+
+---
+
+### `:lcov_comment`
+
+Set a comment in the LCOV report. Requires `gcovr` 7.0 or higher. (`gcovr --lcov-comment`)
+
+---
+
+### `:lcov_test_name`
+
+Set the test name recorded in the LCOV report. Requires `gcovr` 7.0 or higher.
+(`gcovr --lcov-test-name`)
+
+---
+
+### `:lcov_artifact_filename`
+
+Override the default LCOV report output filename. Requires `gcovr` 7.0 or higher.
+
+**Default:** `GcovCoverage.lcov`
+
+---
+
 ### `:text_artifact_filename`
 
-Override the default text report output filename. When unset the text report
-is printed to the console.
+Override the default text report output filename.
+
+**Default:** `coverage.txt`
 
 ---

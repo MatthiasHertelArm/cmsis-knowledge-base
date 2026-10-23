@@ -6,13 +6,13 @@ title: "theory: SDSIO-Server Monitor Interface"
 summary: "The SDSIO-Server provides an additional TCP socket that may be used by a monitor program to observe SDS file activity and control sdsFlags in the firmware. The monitor interface is enabled with command line option --mon-port <port>."
 status: "draft"
 collection: "sds-framework"
-source: "ARM-software/SDS-Framework@4459441:documentation/theory.md"
-doc_source: "https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/theory.md#sdsio-server-monitor-interface"
+source: "ARM-software/SDS-Framework@c18efee:documentation/theory.md"
+doc_source: "https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/theory.md#sdsio-server-monitor-interface"
 license: "Apache-2.0"
 mode: "V"
 ---
 
-The [SDSIO-Server](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/utilities.md#sdsio-server) provides an additional TCP socket that may be used by a monitor program to observe
+The [SDSIO-Server](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/utilities.md#sdsio-server) provides an additional TCP socket that may be used by a monitor program to observe
 SDS file activity and control `sdsFlags` in the firmware.
 The monitor interface is enabled with command line option `--mon-port <port>`.
 

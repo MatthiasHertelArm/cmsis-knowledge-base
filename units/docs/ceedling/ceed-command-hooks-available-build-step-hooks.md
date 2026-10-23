@@ -6,7 +6,7 @@ title: "Command Hooks: Available Build Step Hooks"
 summary: "Define any of the following entries within a top-level :command_hooks: section of your Ceedling project file to automagically connect utilities or scripts to build process steps."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/command-hooks.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/plugins/command-hooks.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/command-hooks/#available-build-step-hooks"
 license: "MIT"
 mode: "V"
@@ -22,16 +22,16 @@ As an example, consider a Ceedling project with ten test files and seventeen moc
 * 1 occurrence of the `:pre_test_build` hook.
 * 10 occurrences of the `:pre_test` and `:post_test` hooks.
 * 17 occurrences of the `:pre_mock_generate` and `:post_mock_generate` hooks.
-* 10 occurrences of the `:pre_test_runner_generate` and `:post_test_runner_generate` hooks.
-* 27(+) occurrences of the `:pre_compile` and `:post_compile` hooks. These hooks would be called 27 times for test file and mock file compilation. A test suite build will also include compilation of the source files under tests, Unity’s source, CMock’s source, and generated test runner C files -- easily more than another two dozen compilation hook calls.
-* 10 occurrences of the `:pre_link` and `:post_link` hooks for test executable creation.
+* 10 occurrences of the `:pre_runner_generate` and `:post_runner_generate` hooks.
+* 27(+) occurrences of the `:pre_compile_execute` and `:post_compile_execute` hooks. These hooks would be called 27 times for test file and mock file compilation. A test suite build will also include compilation of the source files under tests, Unity’s source, CMock’s source, and generated test runner C files -- easily more than another two dozen compilation hook calls.
+* 10 occurrences of the `:pre_link_execute` and `:post_link_execute` hooks for test executable creation.
 * 10 occurrences of the `:pre_test_fixture_execute` and `:post_test_fixture_execute` hooks for running test executables and gathering the results of the tests cases they contain.
 * 1 occurrence of the `:post_test_build` hook.
 * 1 occurrence of the `:post_build` hook unless a build error occurred (`:post_error` would be called instead).
 
 ### `:pre_build`
 
-Called once just before Ceedling executes any tasks.
+Called once just before Ceedling executes a build. Commands that build nothing, such as `clean`, `clobber`, or `module:create`, don’t call it, nor `:post_build` or `:post_error`.
 
 The parameter available to a tool (`${1}`) when the hook is called is a floating-point stopwatch value in seconds. This value and the corresponding `post_build` value can be used to compute the total build duration.
 
@@ -143,19 +143,19 @@ The parameter available to a tool (`${1}`) when the hook is called is the test�
 
 Called just after each test runner is generated.
 
-The parameter available to a tool (`${1}`) when the hook is called is the test’s filepath.
+The parameter available to a tool (`${1}`) when the hook is called is the generated test runner’s filepath.
 
 ### `:pre_compile_execute`
 
 Called just before each C or assembly file is compiled.
 
-The parameter available to a tool (`${1}`) when the hook is called is the filepath of the file to be compiled.
+The parameters available to a tool when the hook is called are the filepath of the file to be compiled (`${1}`) and the filepath of the object file to be produced (`${2}`).
 
 ### `:post_compile_execute`
 
 Called just after each file compilation.
 
-The parameter available to a tool (`${1}`) when the hook is called is the filepath of the input file that was compiled.
+The parameters available to a tool when the hook is called are the filepath of the input file that was compiled (`${1}`) and the filepath of the object file produced (`${2}`).
 
 ### `:pre_link_execute`
 

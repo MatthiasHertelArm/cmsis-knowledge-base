@@ -6,13 +6,13 @@ title: "TrustZone setup: partition_<Device>.h: Region/ISR setup: partition_gen.h
 summary: "The partition_gen.h header file can be generated using CMSIS-Zone."
 status: "draft"
 collection: "cmsis-core"
-source: "ARM-software/CMSIS_6@26206e4:CMSIS/Documentation/Doxygen/Core/src/core_partition_device_h.md"
-doc_source: "https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Core/src/core_partition_device_h.md#region-isr-setup-partition-gen-h"
+source: "ARM-software/CMSIS_6@acf7392:CMSIS/Documentation/Doxygen/Core/src/core_partition_device_h.md"
+doc_source: "https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Core/src/core_partition_device_h.md#region-isr-setup-partition-gen-h"
 license: "Apache-2.0"
 mode: "V"
 ---
 
-The partition_gen.h header file can be generated using [CMSIS-Zone](https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Core/src/../Zone/index.html).
+The partition_gen.h header file can be generated using [CMSIS-Zone](https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Core/src/../Zone/index.html).
 
 The partition_<Device>.h file includes the partition_gen.h file with configuration settings for:
 

@@ -6,8 +6,8 @@ title: "\\elemhead{component_viewer/objects}: \\elemhead{component_viewer/object
 summary: "Define variables, calculations, and the viewer output for a software component."
 status: "draft"
 collection: "cmsis-view"
-source: "ARM-software/CMSIS-View@fef5aca:Documentation/Doxygen/src/ref_scvd.txt"
-doc_source: "https://github.com/ARM-software/CMSIS-View/blob/fef5aca/Documentation/Doxygen/src/ref_scvd.txt"
+source: "ARM-software/CMSIS-View@285e935:Documentation/Doxygen/src/ref_scvd.txt"
+doc_source: "https://github.com/ARM-software/CMSIS-View/blob/285e935/Documentation/Doxygen/src/ref_scvd.txt"
 license: "Apache-2.0"
 mode: "V"
 ---

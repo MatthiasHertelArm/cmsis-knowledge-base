@@ -6,7 +6,7 @@ title: "The Mighty Ceedling Project Configuration File: Let’s Be Careful Out T
 summary: "Ceedling performs validation of the values you set in your configuration file (this assumes your YAML is correct and will not fail format parsing, of course)."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/configuration/project-file.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/configuration/project-file.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/configuration/project-file/#let-s-be-careful-out-there"
 license: "MIT"
 mode: "V"
@@ -28,4 +28,4 @@ any trouble. Ceedling will happily process that section
 or value and simply use the properly spelled default maintained
 internally — thus leading to unexpected behavior without warning.
 
-[example-config-file]: ../snapshot/assets/project.yml
+[example-config-file]: ../snapshot/assets/features/project.yml

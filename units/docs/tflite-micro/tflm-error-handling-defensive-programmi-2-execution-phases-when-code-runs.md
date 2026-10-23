@@ -6,8 +6,8 @@ title: "Error Handling & Defensive Programming Guide: 2. Execution Phases: When 
 summary: "TFLM distinguishes between setup (which runs once) and execution (which runs continuously)."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/error_handling_guide.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/error_handling_guide.md#2-execution-phases-when-code-runs"
+source: "tensorflow/tflite-micro@f7ed40d:tensorflow/lite/micro/docs/error_handling_guide.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/f7ed40d/tensorflow/lite/micro/docs/error_handling_guide.md#2-execution-phases-when-code-runs"
 license: "Apache-2.0"
 mode: "V"
 ---

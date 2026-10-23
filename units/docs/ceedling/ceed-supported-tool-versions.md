@@ -6,13 +6,13 @@ title: "Supported tool versions"
 summary: "At the time of the last major updates to the Gcov plugin, the following notes on version compatibility were known to be accurate."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/plugins/gcov/tool-versions.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/plugins/gcov/tool-versions.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/plugins/gcov/tool-versions/"
 license: "MIT"
 mode: "V"
 ---
 
-_**Last updated:**_ May 17, 2026
+_**Last updated:**_ October 13, 2026
 
 At the time of the last major updates to the Gcov plugin, the following notes
 on version compatibility were known to be accurate.

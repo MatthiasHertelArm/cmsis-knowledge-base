@@ -6,8 +6,8 @@ title: "CMSIS MLOps LiteRT model converter specification: Input from `*.cbuild-m
 summary: "Paths in the generated file are relative to the directory containing the .cbuild-mlops.yml file."
 status: "draft"
 collection: "cmsis-ethos-u"
-source: "ARM-software/CMSIS-Ethos-U@b2b641e:examples/Test-Ethos-U/script/model-converter-specification.md"
-doc_source: "https://github.com/ARM-software/CMSIS-Ethos-U/blob/b2b641e/examples/Test-Ethos-U/script/model-converter-specification.md#input-from-cbuild-mlops-yml"
+source: "ARM-software/CMSIS-Ethos-U@cf13d8d:examples/Test-Ethos-U/script/model-converter-specification.md"
+doc_source: "https://github.com/ARM-software/CMSIS-Ethos-U/blob/cf13d8d/examples/Test-Ethos-U/script/model-converter-specification.md#input-from-cbuild-mlops-yml"
 license: "Apache-2.0"
 mode: "V"
 ---

@@ -6,8 +6,8 @@ title: "Core Peripherals Index (`core-peripherals-index.yml`): Feature keys and 
 summary: "Use feature keys that can appear on a processor entry in system-resources>processors of .cbuild-run.yml."
 status: "draft"
 collection: "cmsis-debugger"
-source: "Open-CMSIS-Pack/vscode-cmsis-debugger@28c1601:configs/core-peripherals/README.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/blob/28c1601/configs/core-peripherals/README.md#feature-keys-and-allowed-values"
+source: "Open-CMSIS-Pack/vscode-cmsis-debugger@12cb62a:configs/core-peripherals/README.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/vscode-cmsis-debugger/blob/12cb62a/configs/core-peripherals/README.md#feature-keys-and-allowed-values"
 license: "Apache-2.0"
 mode: "V"
 ---

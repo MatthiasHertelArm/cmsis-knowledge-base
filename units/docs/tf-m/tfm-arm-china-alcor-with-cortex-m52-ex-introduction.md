@@ -6,7 +6,7 @@ title: "Arm China Alcor with Cortex-M52 Example Subsystem for MPS3 (AN557): Intr
 summary: "Alcor is an ArmChina reference subsystem for secure System on Chips containing an Armv8.1-M Cortex-M52 processor. It is an MPS3 based platform with the usual MPS3 peripherals."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/platform/armchina/mps3/alcor/README.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/platform/armchina/mps3/alcor/README.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/platform/armchina/mps3/alcor/.html#introduction"
 license: "BSD-3-Clause"
 mode: "V"

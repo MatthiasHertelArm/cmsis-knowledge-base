@@ -6,8 +6,8 @@ title: "BabbleSim: Building and running the tests"
 summary: "Check the nrf52_bsim page for instructions on how to set up the simulator."
 status: "draft"
 collection: "zephyr"
-source: "zephyrproject-rtos/zephyr@8f62a4a:doc/develop/test/bsim.rst"
-doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/8f62a4a/doc/develop/test/bsim.rst"
+source: "zephyrproject-rtos/zephyr@76280bc:doc/develop/test/bsim.rst"
+doc_source: "https://github.com/zephyrproject-rtos/zephyr/blob/76280bc/doc/develop/test/bsim.rst"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -101,6 +101,15 @@ See the `Bluetooth sample test <tests/bsim/bluetooth/host/misc/sample_test/READM
 code.
 
 
+#### Test images
+
+
+When adding a new test, always consider if it is possible to have that test be part of an existing
+image. Each image adds CI build time, while the bs_tests system allows
+sharing an image for multiple tests which are selected at runtime, as long as their Kconfig and
+other global state do not conflict.
+
+
 #### Test scripts
 
 
@@ -138,7 +147,7 @@ Here are the conventions:
   posteriori.
 - Avoid overly long tests. If the test takes over 20 seconds of runtime, consider if it is possible
   to split it in several separate tests.
-- If the test takes over 5 seconds, set `EXECUTE_TIMEOUT` to a value that is at least 5 times
+- If the test takes over 6 seconds, set `EXECUTE_TIMEOUT` to a value that is at least 5 times
   bigger than the measured run-time.
 - Do not set `EXECUTE_TIMEOUT` to a value lower than the default.
 - Tests should not be overly verbose: less than a hundred lines are expected on the outputs. Do make
@@ -147,3 +156,5 @@ Here are the conventions:
   passed to the test script directly to the Phy executable. This is used, for example, to run the
   Phy in check mode (`-c`), in which the Phy verifies that the last simulation and this one have
   produced the exact same radio traffic.
+- Only override random seeds if there is a real need for that test. Avoid designing tests which are
+  overly sensitive to random seed changes.

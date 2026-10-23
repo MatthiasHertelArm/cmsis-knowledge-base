@@ -6,8 +6,8 @@ title: "SDS Template Application"
 summary: "The SDS template application is a test framework for DSP and ML algorithms. It supports recording and playback of real-world data streams on physical hardware or simulation models using Arm Virtual Hardware (FVP), feeding a user algorithm under test."
 status: "draft"
 collection: "sds-framework"
-source: "ARM-software/SDS-Framework@4459441:documentation/template.md"
-doc_source: "https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/template.md"
+source: "ARM-software/SDS-Framework@c18efee:documentation/template.md"
+doc_source: "https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/template.md"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -24,11 +24,11 @@ The [SDS template application](https://github.com/ARM-software/SDS-Framework/tre
 The SDS template application is implemented as a [CMSIS-Toolbox Reference Application](https://open-cmsis-pack.github.io/cmsis-toolbox/ReferenceApplications/). It is hardware-agnostic and requires an `SDSIO-Layer` and a `Board-Layer` with drivers for the target hardware.
 
 An `SDSIO-Layer` connects the SDS template application to a communication interface for SDS file I/O operations.
-For hardware targets, the following [SDSIO interfaces](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/sdsio.md) are available as pre-configured software layers:
+For hardware targets, the following [SDSIO interfaces](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/sdsio.md) are available as pre-configured software layers:
 
-- [Ethernet Interface](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/sdsio.md#layer-sdsio_network) using the MDK-Middleware Network component.
-- [USB Bulk Interface](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/sdsio.md#layer-sdsio_usb) using the MDK-Middleware USB component.
-- [RTT (Real-Time Transfer)](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/sdsio.md#layer-sdsio_rtt) using the SEGGER RTT component for I/O via the debug adapter.
-- [Memory Card Interface](https://github.com/ARM-software/SDS-Framework/blob/4459441/documentation/sdsio.md#layer-sdsio_fs) using the MDK-Middleware File System component.
+- [Ethernet Interface](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/sdsio.md#layer-sdsio_network) using the MDK-Middleware Network component.
+- [USB Bulk Interface](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/sdsio.md#layer-sdsio_usb) using the MDK-Middleware USB component.
+- [RTT (Real-Time Transfer)](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/sdsio.md#layer-sdsio_rtt) using the SEGGER RTT component for I/O via the debug adapter.
+- [Memory Card Interface](https://github.com/ARM-software/SDS-Framework/blob/c18efee/documentation/sdsio.md#layer-sdsio_fs) using the MDK-Middleware File System component.
 
 With a custom SDSIO interface, alternative I/O configurations are possible.

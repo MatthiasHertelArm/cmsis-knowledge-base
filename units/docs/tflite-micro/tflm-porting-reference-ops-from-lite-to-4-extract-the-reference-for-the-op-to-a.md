@@ -6,8 +6,8 @@ title: "Porting Reference Ops from Lite to Micro: 4. Extract the reference for t
 summary: "Move the reference implementation of the op in [reference_ops.h][] to a standalone header so that Micro can include it without including unrelated dependencies via reference_ops.h."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/porting_reference_ops.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/porting_reference_ops.md#4-extract-the-reference-for-the-op-to-a-standalone-header-pr2"
+source: "tensorflow/tflite-micro@f7ed40d:tensorflow/lite/micro/docs/porting_reference_ops.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/f7ed40d/tensorflow/lite/micro/docs/porting_reference_ops.md#4-extract-the-reference-for-the-op-to-a-standalone-header-pr2"
 license: "Apache-2.0"
 mode: "V"
 ---

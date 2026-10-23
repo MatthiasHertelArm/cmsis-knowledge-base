@@ -6,15 +6,15 @@ title: "Pack Generation Tool: Multiple Sets of CMake Options"
 summary: "The example CMakeTestMultipleBuilds has a CMakeLists.txt producing a library with different sources and include paths depending on the DEVICE option that can assume the values DEV1, DEV2 or DEV3:"
 status: "draft"
 collection: "devtools-docs"
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/packgen/README.md"
-doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/packgen/README.md#multiple-sets-of-cmake-options"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packgen/README.md"
+doc_source: "https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/packgen/README.md#multiple-sets-of-cmake-options"
 license: "Apache-2.0"
 mode: "V"
 ---
 
 The example
-[CMakeTestMultipleBuilds](https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/packgen/./test/data/CMakeTestMultipleBuilds) has a
-[CMakeLists.txt](https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/packgen/./test/data/CMakeTestMultipleBuilds/CMakeLists.txt) producing a library with different sources and
+[CMakeTestMultipleBuilds](https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/packgen/./test/data/CMakeTestMultipleBuilds) has a
+[CMakeLists.txt](https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/packgen/./test/data/CMakeTestMultipleBuilds/CMakeLists.txt) producing a library with different sources and
 include paths depending on the `DEVICE` option that can assume the values `DEV1`, `DEV2` or `DEV3`:
 
 ### CMakeLists.txt
@@ -40,7 +40,7 @@ include paths depending on the `DEVICE` option that can assume the values `DEV1`
 
   It means the CMake generation step has to be executed several times to cover
   all the possible results. To instruct the tool to run all the configurations,
-  the [manifest.yml](https://github.com/Open-CMSIS-Pack/devtools/blob/30f5e817/tools/packgen/./test/data/CMakeTestMultipleBuilds/manifest.yml)
+  the [manifest.yml](https://github.com/Open-CMSIS-Pack/devtools/blob/6cb5a3c/tools/packgen/./test/data/CMakeTestMultipleBuilds/manifest.yml)
   has the following build options mapping:
 
 ### manifest.yml

@@ -6,8 +6,8 @@ title: "Porting Reference Ops from Lite to Micro: 5. Port the op from Lite to Mi
 summary: "In the first commit of this PR, copy the kernel and test from Lite to Micro without making any modifications and without adding them to the build."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/porting_reference_ops.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/porting_reference_ops.md#5-port-the-op-from-lite-to-micro-pr3"
+source: "tensorflow/tflite-micro@f7ed40d:tensorflow/lite/micro/docs/porting_reference_ops.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/f7ed40d/tensorflow/lite/micro/docs/porting_reference_ops.md#5-port-the-op-from-lite-to-micro-pr3"
 license: "Apache-2.0"
 mode: "V"
 ---

@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["node '<…>' shall contain mapping elements"]
 symptom_regex: "^node '.+?' shall contain mapping elements$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrYamlParser.cpp:1753"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrYamlParser.cpp:1753"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

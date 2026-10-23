@@ -6,8 +6,8 @@ title: "Arm Mbed TLS in Microsoft Visual Studio 2015: Use the solution file supp
 summary: "Part of: Use the solution file supplied with the Mbed TLS source code"
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/compiling-and-building/using-mbedtls-in-microsoft-visual-studio-2015.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/compiling-and-building/using-mbedtls-in-microsoft-visual-studio-2015.md#set-up-a-new-project"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/compiling-and-building/using-mbedtls-in-microsoft-visual-studio-2015.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/compiling-and-building/using-mbedtls-in-microsoft-visual-studio-2015.md#set-up-a-new-project"
 license: "Apache-2.0"
 mode: "V"
 ---

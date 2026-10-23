@@ -6,14 +6,14 @@ title: "Offline Memory Plan Via NonpersistentMemoryPlannerShim: Background and M
 summary: "The (memory management page) describes a way to specify the offset of each non persistent buffer in a flatbuffer model file."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/offline_memory_plan.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/offline_memory_plan.md#background-and-motivation"
+source: "tensorflow/tflite-micro@f7ed40d:tensorflow/lite/micro/docs/offline_memory_plan.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/f7ed40d/tensorflow/lite/micro/docs/offline_memory_plan.md#background-and-motivation"
 license: "Apache-2.0"
 mode: "V"
 ---
 
 The
-[(memory management page)](https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/memory_management.md#offline-planned-tensor-allocations)
+[(memory management page)](https://github.com/tensorflow/tflite-micro/blob/f7ed40d/tensorflow/lite/micro/docs/memory_management.md#offline-planned-tensor-allocations)
 describes a way to specify the offset of each non persistent buffer in a
 flatbuffer model file. This document describes an alternative that allows the
 offset of each non persistent buffer for the Model within the TFLM arena to be

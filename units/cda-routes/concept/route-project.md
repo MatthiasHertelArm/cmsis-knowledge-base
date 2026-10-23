@@ -21,12 +21,12 @@ Read the procedure with `knowledge_get` before acting on it, and follow its own 
 | Add a verified board or device target to an existing CMSIS solution, declare its support packs, and offer compatible packaged board layers when the project uses them. | `proc-add-cmsis-target` |
 | Verify the CMSIS tools environment exported by the CMSIS Solution extension, CMSIS-Toolbox, CMake, Ninja, and available compiler toolchains, and return a `PASS` or `FAIL` report without installing or reconfiguring tools. | `proc-check-cmsis-environment` |
 | Verify an existing Zephyr workspace, its Python virtual environment, and the venv-local west installation, returning a `PASS` or `FAIL` report without installing, upgrading, repairing, or reconfiguring Zephyr, Python, or west. | `proc-check-zephyr-environment` |
-| Go from an empty VS Code window to a CMSIS solution that builds and debugs | `proc-cmsis-bootstrap` |
-| Wire the debug adapter of a csolution target and verify Load & Debug | `proc-cmsis-debugger-setup` |
+| Takes an empty VS Code window or a folder without a solution to a CMSIS solution that builds, flashes and debugs, then hands over to cmsis-debug-live. | `proc-cmsis-bootstrap` |
+| Wires the debug adapter of a csolution target so that Load & Debug works, and verifies it on the target with a breakpoint and the serial console. | `proc-cmsis-debugger-setup` |
 | Identify packaged CMSIS board layers compatible with an existing solution target and its required connections, returning `MATCHES`, `NO MATCH`, or `NOT REQUIRED` with exact command evidence. | `proc-identify-cmsis-board-layer` |
 | Resolve a supplied board or device to exactly one verified CMSIS identity, identify its BSP or DFP, and ask the user when multiple candidates remain. | `proc-identify-cmsis-board-support` |
 | Resolve a user-supplied physical board to its exact Zephyr board target and fitted MCU or SoC using the installed west board catalog. | `proc-identify-zephyr-board` |
-| Create the first csolution for a board or device: a minimal project, or an example or template of its pack | `proc-start-cmsis-project` |
+| Creates the first csolution for a verified board or device, either a minimal CMSIS project or an example or template of its pack, then opens and builds it. | `proc-start-cmsis-project` |
 | Create and validate one initial west-integrated CMSIS Zephyr Blinky solution for a board already supported by Zephyr, from verified environment, board, and pack information, using `cbuild setup` and `cbuild`. | `proc-start-zephyr-project` |
 
 ## Typical order

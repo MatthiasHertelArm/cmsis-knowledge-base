@@ -6,7 +6,7 @@ title: "CSolution Project Structure: Project Examples / Use a Prebuilt Secure Im
 summary: "A non-secure project may use a secure image that is not part of the active target set. This is useful when the secure application is built and released separately. The non-secure application typically needs two matching artifacts:"
 status: "draft"
 collection: "cmsis-toolbox"
-source: "Open-CMSIS-Pack/cmsis-toolbox@6c04673:docs/build-overview.md"
+source: "Open-CMSIS-Pack/cmsis-toolbox@3ce8307:docs/build-overview.md"
 doc_source: "https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview/#use-a-prebuilt-secure-image"
 license: "Apache-2.0"
 mode: "V"

@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["context '<…>' generator '<…>' from component '<…>': reading gpdsc failed"]
 symptom_regex: "^context '.+?' generator '.+?' from component '.+?': reading gpdsc failed$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cpp:2895"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrWorker.cpp:2895"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"

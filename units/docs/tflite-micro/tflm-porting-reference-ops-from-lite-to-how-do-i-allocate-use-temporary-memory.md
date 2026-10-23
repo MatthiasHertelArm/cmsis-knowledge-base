@@ -6,8 +6,8 @@ title: "Porting Reference Ops from Lite to Micro: How do I allocate/use temporar
 summary: "Use the TfLiteContext::RequestScratchBufferInArena and TfLiteContext::GetScratchBuffer methods. The temporary memory is shared between all operators, and is only valid for your operator within the scope of your operator's Invoke method."
 status: "draft"
 collection: "tflite-micro"
-source: "tensorflow/tflite-micro@3f787dc:tensorflow/lite/micro/docs/porting_reference_ops.md"
-doc_source: "https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/porting_reference_ops.md#how-do-i-allocate-use-temporary-memory"
+source: "tensorflow/tflite-micro@f7ed40d:tensorflow/lite/micro/docs/porting_reference_ops.md"
+doc_source: "https://github.com/tensorflow/tflite-micro/blob/f7ed40d/tensorflow/lite/micro/docs/porting_reference_ops.md#how-do-i-allocate-use-temporary-memory"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -20,7 +20,7 @@ to share data between operator invocations.  Scratch buffer temporary memory is
 to be used only as pre-allocated storage during the execution scope of your
 operator's `Invoke` method.
 
-An example code snippet looks like ([add_n.cc](https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/../kernels/add_n.cc)):
+An example code snippet looks like ([add_n.cc](https://github.com/tensorflow/tflite-micro/blob/f7ed40d/tensorflow/lite/micro/docs/../kernels/add_n.cc)):
 ```C++
 if (output->type == kTfLiteFloat32) {
     // Allocate scratch buffer space for pointer to each tensor's data
@@ -45,7 +45,7 @@ method, use `MicroContext::AllocateTempBuffer`.  A matching call to
 `MicroContext::DeallocateTempBuffer` must be made prior to returning from your
 operator's `Prepare` method.
 
-An example code snippet ([depthwise_conv_vision.cc](https://github.com/tensorflow/tflite-micro/blob/3f787dc/tensorflow/lite/micro/docs/../kernels/xtensa/depthwise_conv_vision.cc)):
+An example code snippet ([depthwise_conv_vision.cc](https://github.com/tensorflow/tflite-micro/blob/f7ed40d/tensorflow/lite/micro/docs/../kernels/xtensa/depthwise_conv_vision.cc)):
 ```C++
 TfLiteTensor filter_int8;
 

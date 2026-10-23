@@ -6,8 +6,8 @@ title: "Mbed TLS over low-bandwidth, unreliable datagram networks: Negotiating a
 summary: "The value of mbedtls_ssl_get_max_out_record_payload() indicates the maximum size of outgoing application datagrams, but it does not bound the size of incoming application datagrams."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/controlling_package_size.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/controlling_package_size.md#negotiating-a-maximum-message-size-with-the-peer"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/controlling_package_size.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/controlling_package_size.md#negotiating-a-maximum-message-size-with-the-peer"
 license: "Apache-2.0"
 mode: "V"
 ---

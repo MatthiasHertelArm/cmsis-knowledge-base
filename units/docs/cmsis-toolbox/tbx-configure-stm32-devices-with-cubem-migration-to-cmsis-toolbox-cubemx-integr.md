@@ -6,7 +6,7 @@ title: "Configure STM32 Devices with CubeMX: Migration to CMSIS-Toolbox CubeMX I
 summary: "In previous CubeMX integrations a .gpdsc file is used to import the generator output. The following table compares the CMSIS-Toolbox CubeMX integration (based on .cgen.yml files) with the previous STM32CubeMX integration (based on .gpdsc files)."
 status: "draft"
 collection: "cmsis-toolbox"
-source: "Open-CMSIS-Pack/cmsis-toolbox@6c04673:docs/CubeMX.md"
+source: "Open-CMSIS-Pack/cmsis-toolbox@3ce8307:docs/CubeMX.md"
 doc_source: "https://open-cmsis-pack.github.io/cmsis-toolbox/CubeMX/#migration-to-cmsis-toolbox-cubemx-integration"
 license: "Apache-2.0"
 mode: "V"

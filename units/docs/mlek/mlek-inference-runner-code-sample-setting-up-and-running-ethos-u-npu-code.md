@@ -6,8 +6,8 @@ title: "Inference Runner Code Sample: Setting up and running Ethos-U NPU code sa
 summary: "The FVP is available publicly from Arm Ecosystem FVP downloads."
 status: "draft"
 collection: "mlek"
-source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@3cd3772:docs/use_cases/inference_runner.md"
-doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/3cd3772/docs/use_cases/inference_runner.md#setting-up-and-running-ethos-u-npu-code-sample"
+source: "artificial-intelligence/ethos-u/ml-embedded-evaluation-kit@138a9c0:docs/use_cases/inference_runner.md"
+doc_source: "https://gitlab.arm.com/artificial-intelligence/ethos-u/ml-embedded-evaluation-kit/-/blob/138a9c0/docs/use_cases/inference_runner.md#setting-up-and-running-ethos-u-npu-code-sample"
 license: "Apache-2.0"
 mode: "V"
 ---

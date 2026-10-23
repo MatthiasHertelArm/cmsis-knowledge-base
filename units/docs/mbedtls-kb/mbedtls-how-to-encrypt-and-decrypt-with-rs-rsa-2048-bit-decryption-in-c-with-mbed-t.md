@@ -6,8 +6,8 @@ title: "How to encrypt and decrypt with RSA: RSA 2048-bit decryption in C with M
 summary: "Decryption is very similar in set-up. The main difference is that you need the private key instead of the public key to perform the decryption."
 status: "draft"
 collection: "mbedtls-kb"
-source: "Mbed-TLS/mbedtls-docs@7ba0cff:kb/how-to/encrypt-and-decrypt-with-rsa.md"
-doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/7ba0cff/kb/how-to/encrypt-and-decrypt-with-rsa.md#rsa-2048-bit-decryption-in-c-with-mbed-tls"
+source: "Mbed-TLS/mbedtls-docs@363c297:kb/how-to/encrypt-and-decrypt-with-rsa.md"
+doc_source: "https://github.com/Mbed-TLS/mbedtls-docs/blob/363c297/kb/how-to/encrypt-and-decrypt-with-rsa.md#rsa-2048-bit-decryption-in-c-with-mbed-tls"
 license: "Apache-2.0"
 mode: "V"
 ---

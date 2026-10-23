@@ -6,8 +6,8 @@ title: "User Benefits: Continuous Testing"
 summary: "Applying continuous integration work flows for embedded applications can be complicated by the specifics of development environments and the need of executing the program on target hardware."
 status: "draft"
 collection: "avh"
-source: "ARM-software/AVH@bb8431b:DoxyGen/overview/src/benefits.md"
-doc_source: "https://github.com/ARM-software/AVH/blob/bb8431b/DoxyGen/overview/src/benefits.md#continuous-testing"
+source: "ARM-software/AVH@60f78be:DoxyGen/overview/src/benefits.md"
+doc_source: "https://github.com/ARM-software/AVH/blob/60f78be/DoxyGen/overview/src/benefits.md#continuous-testing"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -19,7 +19,7 @@ shown on the figure below.
 
 (figure: Comparison of test efforts in CI and no CI workflows)
 
-[Arm FVP Infrastructure](https://github.com/ARM-software/AVH/blob/bb8431b/DoxyGen/overview/src/../../infrastructure/html/index.html) with integration in tools such as Keil MDK and GitHub
+[Arm FVP Infrastructure](https://github.com/ARM-software/AVH/blob/60f78be/DoxyGen/overview/src/../../infrastructure/html/index.html) with integration in tools such as Keil MDK and GitHub
 Actions simplifies setup of CI workflows.
 
 For unit and integration tests, virtual targets offer additional advantages over hardware, including:

@@ -6,7 +6,7 @@ title: "Fixing implicit casting for C enumeration values: C99 Standard point of 
 summary: "In TF-M many implicit casts are done between integer types (uint32_t, int32_t, size_t, etc), enumerated types (enum foobar) and enumeration constants (FOOBAR_ENUM_1)."
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/design_docs/software/enum_implicit_casting.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/design_docs/software/enum_implicit_casting.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/design_docs/software/enum_implicit_casting.html#c99-standard-point-of-view"
 license: "BSD-3-Clause"
 mode: "V"

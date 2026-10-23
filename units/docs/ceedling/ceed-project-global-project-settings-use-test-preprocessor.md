@@ -6,7 +6,7 @@ title: "`:project`: Global project settings: `:use_test_preprocessor`"
 summary: "This option allows Ceedling to work with test files that contain tricky conditional compilation statements (e.g. #ifdef) as well as mockable header files containing conditional preprocessor directives and/or macros."
 status: "draft"
 collection: "ceedling"
-source: "ThrowTheSwitch/Ceedling@bdc011f:docs/mkdocs/configuration/reference/project.md"
+source: "ThrowTheSwitch/Ceedling@cee146d:docs/mkdocs/configuration/reference/project.md"
 doc_source: "https://throwtheswitch.github.io/Ceedling/configuration/reference/project/#use-test-preprocessor"
 license: "MIT"
 mode: "V"
@@ -28,5 +28,9 @@ See the [documentation on test preprocessing][test-preprocessing] for more.
 * `:all` enables preprocessing for all mockable header files and test C files.
 * `:mocks` enables only preprocessing of header files that are to be mocked.
 * `:tests` enables only preprocessing of your test files.
+
+!!! note
+    Enabling Partials (`:project` ↳ `:use_partials`) sets this option to `:all`,
+    whatever value you give it, since Partials require preprocessing.
 
 **Default**: `:none`

@@ -6,7 +6,7 @@ title: "Corstone SSE-315 with Ethos-U65 Example Subsystem for Ecosystem FVP: To 
 summary: "FVP is available to download here"
 status: "draft"
 collection: "tf-m"
-source: "TrustedFirmware-M/trusted-firmware-m@9671378:docs/platform/arm/mps4/corstone315/README.rst"
+source: "TrustedFirmware-M/trusted-firmware-m@b7db526:docs/platform/arm/mps4/corstone315/README.rst"
 doc_source: "https://trustedfirmware-m.readthedocs.io/en/latest/platform/arm/mps4/corstone315/.html#to-run-the-example-code-on-corstone-315-ethos-u65-ecosystem-fvp"
 license: "BSD-3-Clause"
 mode: "V"

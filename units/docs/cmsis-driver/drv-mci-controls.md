@@ -6,8 +6,8 @@ title: "MCI Controls"
 summary: "Configure and control the MCI interface."
 status: "draft"
 collection: "cmsis-driver"
-source: "ARM-software/CMSIS_6@26206e4:CMSIS/Documentation/Doxygen/Driver/src/Driver_MCI.c"
-doc_source: "https://github.com/ARM-software/CMSIS_6/blob/26206e4/CMSIS/Documentation/Doxygen/Driver/src/Driver_MCI.c"
+source: "ARM-software/CMSIS_6@acf7392:CMSIS/Documentation/Doxygen/Driver/src/Driver_MCI.c"
+doc_source: "https://github.com/ARM-software/CMSIS_6/blob/acf7392/CMSIS/Documentation/Doxygen/Driver/src/Driver_MCI.c"
 license: "Apache-2.0"
 mode: "V"
 ---
@@ -118,6 +118,13 @@ ARM_MCI_SUSPEND_TRANSFER
 
 ```c
 ARM_MCI_RESUME_TRANSFER
+```
+
+
+### ARM_MCI_UHS_VOLTAGE_SWITCH
+
+```c
+ARM_MCI_UHS_VOLTAGE_SWITCH
 ```
 
 ******************************************************************************************************************

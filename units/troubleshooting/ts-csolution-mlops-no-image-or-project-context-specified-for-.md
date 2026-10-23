@@ -9,7 +9,7 @@ severity: "error"
 symptoms: ["mlops: no image or project-context specified for target '<…>'"]
 symptom_regex: "^mlops: no image or project\\-context specified for target '.+?'$"
 documented: false
-source: "Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrMlops.cpp:201"
+source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrMlops.cpp:201"
 applies_to: {"tool": ["csolution"]}
 license: "Apache-2.0"
 mode: "V"
