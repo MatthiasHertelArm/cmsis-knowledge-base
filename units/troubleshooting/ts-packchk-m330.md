@@ -8,7 +8,7 @@ tool: "packchk"
 severity: "error"
 code: "M330"
 symptoms: ["M330", "Condition redefined: '%COND%', already defined in Line %LINE%"]
-symptom_regex: "^Condition redefined: '.+?', already defined in Line .+?$"
+symptom_regex: "^Condition redefined: '.+?', already defined in Line .*$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/README.md"

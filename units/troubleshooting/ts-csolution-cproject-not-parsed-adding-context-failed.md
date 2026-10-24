@@ -6,6 +6,7 @@ title: "csolution: cproject not parsed, adding context failed"
 status: "draft"
 tool: "csolution"
 severity: "error"
+role: "summary"
 symptoms: ["cproject not parsed, adding context failed"]
 symptom_regex: "^cproject not parsed, adding context failed$"
 documented: false

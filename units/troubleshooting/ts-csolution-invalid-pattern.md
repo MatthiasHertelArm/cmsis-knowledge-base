@@ -7,7 +7,7 @@ status: "draft"
 tool: "csolution"
 severity: "error"
 symptoms: ["invalid pattern '<…>': <…>"]
-symptom_regex: "^invalid pattern '.+?': .+?$"
+symptom_regex: "^invalid pattern '.+?': .*$"
 documented: false
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrYamlParser.cpp:719"
 applies_to: {"tool": ["csolution"]}

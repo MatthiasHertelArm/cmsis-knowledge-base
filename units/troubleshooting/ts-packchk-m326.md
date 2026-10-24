@@ -8,7 +8,7 @@ tool: "packchk"
 severity: "error"
 code: "M326"
 symptoms: ["M326", "Path is not conformant: '%PATH%':   Absolute Paths or Drive references are not allowed, use Paths relative to PDSC file."]
-symptom_regex: "^Path is not conformant: '.+?':   Absolute Paths or Drive references are not allowed, use Paths relative to PDSC file\\.$"
+symptom_regex: "^Path is not conformant: '.+?':$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/README.md"

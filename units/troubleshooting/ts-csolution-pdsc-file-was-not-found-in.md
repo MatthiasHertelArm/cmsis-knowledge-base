@@ -7,7 +7,7 @@ status: "draft"
 tool: "csolution"
 severity: "error"
 symptoms: ["pdsc file was not found in: <…>"]
-symptom_regex: "^pdsc file was not found in: .+?$"
+symptom_regex: "^pdsc file was not found in: .*$"
 documented: false
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrWorker.cpp:1807"
 applies_to: {"tool": ["csolution"]}

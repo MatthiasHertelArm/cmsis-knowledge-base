@@ -8,7 +8,7 @@ tool: "packchk"
 severity: "warning"
 code: "M337"
 symptoms: ["M337", "File with category '%CAT%' has wrong extension '%EXT%': '%PATH%'%MSG%"]
-symptom_regex: "^File with category '.+?' has wrong extension '.+?': '.+?'.+?$"
+symptom_regex: "^File with category '.+?' has wrong extension '.+?': '.+?'.*$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/README.md"

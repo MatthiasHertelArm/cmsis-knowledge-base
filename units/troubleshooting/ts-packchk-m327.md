@@ -8,7 +8,7 @@ tool: "packchk"
 severity: "warning"
 code: "M327"
 symptoms: ["M327", "Path is not conformant: '%PATH%':   Backslashes are not recommended, use forward slashes."]
-symptom_regex: "^Path is not conformant: '.+?':   Backslashes are not recommended, use forward slashes\\.$"
+symptom_regex: "^Path is not conformant: '.+?':$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/README.md"

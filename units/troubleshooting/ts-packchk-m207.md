@@ -8,7 +8,7 @@ tool: "packchk"
 severity: "error"
 code: "M207"
 symptoms: ["M207", "PDSC file name mismatch!   Expected: '%PDSC1%.pdsc'   Actual  : '%PDSC2%.pdsc'"]
-symptom_regex: "^PDSC file name mismatch!   Expected: '.+?\\.pdsc'   Actual  : '.+?\\.pdsc'$"
+symptom_regex: "^PDSC file name mismatch!$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/README.md"

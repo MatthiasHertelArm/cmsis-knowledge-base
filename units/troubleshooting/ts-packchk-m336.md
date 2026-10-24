@@ -8,7 +8,7 @@ tool: "packchk"
 severity: "warning"
 code: "M336"
 symptoms: ["M336", "Component 'Cclass=%CCLASS%, Cgroup=%CGROUP%, Cversion=%CVER%, condition=%COND%' is member of the Cclass='%CCLASS%' which shall contain device specific components.   The referenced condition id does not contain a rule filtering for a device or set of devices."]
-symptom_regex: "^Component 'Cclass=.+?, Cgroup=.+?, Cversion=.+?, condition=.+?' is member of the Cclass='.+?' which shall contain device specific components\\.   The referenced condition id does not contain a rule filtering for a device or set of devices\\.$"
+symptom_regex: "^Component 'Cclass=.+?, Cgroup=.+?, Cversion=.+?, condition=.+?' is member of the Cclass='.+?' which shall contain device specific components\\.$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/README.md"

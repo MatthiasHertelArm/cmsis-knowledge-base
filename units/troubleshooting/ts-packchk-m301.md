@@ -8,7 +8,7 @@ tool: "packchk"
 severity: "error"
 code: "M301"
 symptoms: ["M301", "Checking Pack URL of PDSC file failed:   Expected URL : '%URL1%'   Package  URL : '%URL2%'"]
-symptom_regex: "^Checking Pack URL of PDSC file failed:   Expected URL : '.+?'   Package  URL : '.+?'$"
+symptom_regex: "^Checking Pack URL of PDSC file failed:$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/README.md"

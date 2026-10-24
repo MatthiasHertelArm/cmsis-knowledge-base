@@ -6,6 +6,7 @@ title: "csolution: processing target-sets list failed"
 status: "draft"
 tool: "csolution"
 severity: "error"
+role: "summary"
 symptoms: ["processing target-sets list failed"]
 symptom_regex: "^processing target\\-sets list failed$"
 documented: false

@@ -20,6 +20,14 @@
    "model": "reader agents",
    "prompt_sha": ""
   },
+  "ts-csolution-add-path-to-compiler-bin-directory-with-environm": {
+   "sha": "b327c9fbbbbfca93",
+   "at": "adopted",
+   "kept": true,
+   "file": "csolution-c.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
   "ts-csolution-base-not-found-base-version-unknown": {
    "sha": "960828f3a62c8dee",
    "at": "adopted",
@@ -97,6 +105,14 @@
    "at": "adopted",
    "kept": true,
    "file": "csolution-a.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "ts-csolution-compiler-undefined-use-toolchain-option-or-add-c": {
+   "sha": "d607f73c7c0b0adf",
+   "at": "adopted",
+   "kept": true,
+   "file": "csolution-c.json",
    "model": "reader agents",
    "prompt_sha": ""
   },
@@ -684,6 +700,14 @@
    "model": "reader agents",
    "prompt_sha": ""
   },
+  "ts-csolution-no-compiler-registered-add-path-to-compiler-bin-": {
+   "sha": "e3c742e2218297e0",
+   "at": "adopted",
+   "kept": true,
+   "file": "csolution-c.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
   "ts-csolution-no-component-was-found-for-device": {
    "sha": "c579fcbb3c612fef",
    "at": "adopted",
@@ -804,6 +828,14 @@
    "model": "reader agents",
    "prompt_sha": ""
   },
+  "ts-csolution-no-toolchain-cmake-files-found-for": {
+   "sha": "9ba9bafa0eef7033",
+   "at": "adopted",
+   "kept": true,
+   "file": "csolution-c.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
   "ts-csolution-no-unresolved-dependency-was-found-with-filter": {
    "sha": "9f05aef0032372c9",
    "at": "adopted",
@@ -813,7 +845,7 @@
    "prompt_sha": ""
   },
   "ts-csolution-not-found-in-included-packs": {
-   "sha": "4a62730abc00dcfd",
+   "sha": "8f08daf004e6a98f",
    "at": "adopted",
    "kept": true,
    "file": "csolution-a.json",
@@ -961,6 +993,14 @@
    "at": "adopted",
    "kept": true,
    "file": "csolution-b.json",
+   "model": "reader agents",
+   "prompt_sha": ""
+  },
+  "ts-csolution-schema-check-failed-verify-syntax": {
+   "sha": "efeb712fac96fb38",
+   "at": "adopted",
+   "kept": true,
+   "file": "csolution-c.json",
    "model": "reader agents",
    "prompt_sha": ""
   },

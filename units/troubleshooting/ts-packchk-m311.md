@@ -8,7 +8,7 @@ tool: "packchk"
 severity: "error"
 code: "M311"
 symptoms: ["M311", "Redefinition of '%TAG%' : '%NAME%', see Line %LINE%"]
-symptom_regex: "^Redefinition of '.+?' : '.+?', see Line .+?$"
+symptom_regex: "^Redefinition of '.+?' : '.+?', see Line .*$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/README.md"

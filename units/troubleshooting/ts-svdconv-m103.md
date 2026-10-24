@@ -8,7 +8,7 @@ tool: "svdconv"
 severity: "error"
 code: "M103"
 symptoms: ["M103", "Internal Error: %REF%"]
-symptom_regex: "^Internal Error: .+?$"
+symptom_regex: "^Internal Error: .*$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/README.md"

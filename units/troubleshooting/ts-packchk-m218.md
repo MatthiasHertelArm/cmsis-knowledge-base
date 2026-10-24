@@ -8,7 +8,7 @@ tool: "packchk"
 severity: "error"
 code: "M218"
 symptoms: ["M218", "Unable to find PACK.xsd schema file. Searched in '%MSG%' relative to '%PATH%'.   Alternatively use --xsd to specify the location of the schema file."]
-symptom_regex: "^Unable to find PACK\\.xsd schema file\\. Searched in '.+?' relative to '.+?'\\.   Alternatively use \\-\\-xsd to specify the location of the schema file\\.$"
+symptom_regex: "^Unable to find PACK\\.xsd schema file\\. Searched in '.+?' relative to '.+?'\\.$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/README.md"

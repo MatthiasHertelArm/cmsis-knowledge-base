@@ -8,7 +8,7 @@ tool: "packchk"
 severity: "warning"
 code: "M359"
 symptoms: ["M359", "Family has no Device(s) or Subfamilies: '%FAMILY%"]
-symptom_regex: "^Family has no Device\\(s\\) or Subfamilies: '.+?$"
+symptom_regex: "^Family has no Device\\(s\\) or Subfamilies: '.*$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/README.md"

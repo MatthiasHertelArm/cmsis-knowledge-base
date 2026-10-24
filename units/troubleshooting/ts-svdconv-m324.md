@@ -8,7 +8,7 @@ tool: "svdconv"
 severity: "error"
 code: "M324"
 symptoms: ["M324", "Field '%NAME%' %BITRANGE% does not fit into Register '%NAME2%:%NUM%' %LINE%"]
-symptom_regex: "^Field '.+?' .+? does not fit into Register '.+?:.+?' .+?$"
+symptom_regex: "^Field '.+?' .+? does not fit into Register '.+?:.+?' .*$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/README.md"

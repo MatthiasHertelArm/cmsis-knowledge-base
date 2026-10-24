@@ -7,7 +7,7 @@ status: "draft"
 tool: "csolution"
 severity: "warning"
 symptoms: ["target-type '+<…>' does not exist in solution<…>, did you mean '.<…>'?<…>"]
-symptom_regex: "^target\\-type '\\+.+?' does not exist in solution.+?, did you mean '\\..+?'\\?.+?$"
+symptom_regex: "^target\\-type '\\+.+?' does not exist in solution.*$"
 documented: false
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrWorker.cpp:4099"
 applies_to: {"tool": ["csolution"]}

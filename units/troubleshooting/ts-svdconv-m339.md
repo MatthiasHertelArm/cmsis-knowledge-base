@@ -8,7 +8,7 @@ tool: "svdconv"
 severity: "error"
 code: "M339"
 symptoms: ["M339", "Register '%NAME%' (%ACCESS%) (@%ADDRSIZE%) has same address or overlaps '%NAME2%' (%ACCESS2%) (@%ADDRSIZE2%) %LINE%"]
-symptom_regex: "^Register '.+?' \\(.+?\\) \\(@.+?\\) has same address or overlaps '.+?' \\(.+?\\) \\(@.+?\\) .+?$"
+symptom_regex: "^Register '.+?' \\(.+?\\) \\(@.+?\\) has same address or overlaps '.+?' \\(.+?\\) \\(@.+?\\) .*$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/README.md"

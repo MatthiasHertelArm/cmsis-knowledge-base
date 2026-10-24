@@ -6,8 +6,8 @@ title: "csolution: component '…' not found in included packs… did you mean '
 status: "draft"
 tool: "csolution"
 severity: "error"
-symptoms: ["component '<…>' not found in included packs<…>\n  did you mean '<…>'?<…>"]
-symptom_regex: "^component '.+?' not found in included packs.+?\\\n  did you mean '.+?'\\?.+?$"
+symptoms: ["component '<…>' not found in included packs<…>"]
+symptom_regex: "^component '.+?' not found in included packs.*$"
 documented: false
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrWorker.cpp:2001"
 applies_to: {"tool": ["csolution"]}
@@ -21,8 +21,7 @@ evidence: ["Open-CMSIS-Pack/devtools@30f5e817:tools/projmgr/src/ProjMgrWorker.cp
 
 ## Symptom
 
-`component '<…>' not found in included packs<…>
-  did you mean '<…>'?<…>`
+`component '<…>' not found in included packs<…>`
 
 ## Cause
 

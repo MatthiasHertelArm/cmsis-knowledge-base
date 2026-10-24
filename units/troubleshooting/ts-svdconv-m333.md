@@ -8,7 +8,7 @@ tool: "svdconv"
 severity: "warning"
 code: "M333"
 symptoms: ["M333", "Duplicate <enumeratedValue> %NUM%: '%NAME%' (%USAGE%), already used by '%NAME2%' (%USAGE2%) %LINE%"]
-symptom_regex: "^Duplicate <enumeratedValue> .+?: '.+?' \\(.+?\\), already used by '.+?' \\(.+?\\) .+?$"
+symptom_regex: "^Duplicate <enumeratedValue> .+?: '.+?' \\(.+?\\), already used by '.+?' \\(.+?\\) .*$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/README.md"

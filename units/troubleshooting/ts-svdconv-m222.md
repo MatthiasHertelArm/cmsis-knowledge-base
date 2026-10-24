@@ -8,7 +8,7 @@ tool: "svdconv"
 severity: "warning"
 code: "M222"
 symptoms: ["M222", "Input filename has no extension: '%NAME%"]
-symptom_regex: "^Input filename has no extension: '.+?$"
+symptom_regex: "^Input filename has no extension: '.*$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/README.md"

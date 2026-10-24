@@ -6,6 +6,7 @@ title: "csolution: processing context '…' failed"
 status: "draft"
 tool: "csolution"
 severity: "error"
+role: "summary"
 symptoms: ["processing context '<…>' failed"]
 symptom_regex: "^processing context '.+?' failed$"
 documented: false

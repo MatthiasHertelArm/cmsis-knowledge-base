@@ -8,7 +8,7 @@ tool: "svdconv"
 severity: "warning"
 code: "M221"
 symptoms: ["M221", "Input filename must end with .svd: '%NAME%"]
-symptom_regex: "^Input filename must end with \\.svd: '.+?$"
+symptom_regex: "^Input filename must end with \\.svd: '.*$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/README.md"

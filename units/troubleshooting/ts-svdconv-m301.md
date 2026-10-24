@@ -8,7 +8,7 @@ tool: "svdconv"
 severity: "error"
 code: "M301"
 symptoms: ["M301", "Interrupt number '%NUM% : %NAME%' already defined: %NAME2% %LINE%"]
-symptom_regex: "^Interrupt number '.+? : .+?' already defined: .+? .+?$"
+symptom_regex: "^Interrupt number '.+? : .+?' already defined: .+? .*$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/README.md"

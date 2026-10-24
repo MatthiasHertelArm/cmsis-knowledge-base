@@ -8,7 +8,7 @@ tool: "packchk"
 severity: "error"
 code: "M392"
 symptoms: ["M392", "Redefined Device or Variant '%NAME%': %MSG%"]
-symptom_regex: "^Redefined Device or Variant '.+?': .+?$"
+symptom_regex: "^Redefined Device or Variant '.+?': .*$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/README.md"

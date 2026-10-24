@@ -8,7 +8,7 @@ tool: "svdconv"
 severity: "error"
 code: "M226"
 symptoms: ["M226", "SFD Code generation error: %MSG%"]
-symptom_regex: "^SFD Code generation error: .+?$"
+symptom_regex: "^SFD Code generation error: .*$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/README.md"

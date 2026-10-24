@@ -8,7 +8,7 @@ tool: "packchk"
 severity: "warning"
 code: "M609"
 symptoms: ["M609", "Processor '%NAME%': Exact one memory with attribute \"startup=1\" must be configured, but found %NUM%"]
-symptom_regex: "^Processor '.+?': Exact one memory with attribute \"startup=1\" must be configured, but found .+?$"
+symptom_regex: "^Processor '.+?': Exact one memory with attribute \"startup=1\" must be configured, but found .*$"
 documented: false
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}

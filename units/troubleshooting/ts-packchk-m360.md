@@ -8,7 +8,7 @@ tool: "packchk"
 severity: "warning"
 code: "M360"
 symptoms: ["M360", "Subfamily has no Device(s): '%SUBFAMILY%"]
-symptom_regex: "^Subfamily has no Device\\(s\\): '.+?$"
+symptom_regex: "^Subfamily has no Device\\(s\\): '.*$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/README.md"

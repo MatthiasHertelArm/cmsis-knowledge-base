@@ -8,7 +8,7 @@ tool: "svdconv"
 severity: "error"
 code: "M313"
 symptoms: ["M313", "Field '%NAME%': LSB > MSB: BitWith calculates to %NUM%"]
-symptom_regex: "^Field '.+?': LSB > MSB: BitWith calculates to .+?$"
+symptom_regex: "^Field '.+?': LSB > MSB: BitWith calculates to .*$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/README.md"

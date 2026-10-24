@@ -7,7 +7,7 @@ status: "draft"
 tool: "csolution"
 severity: "warning"
 symptoms: ["'<…>' this linker script is ignored<…>; multiple linker scripts defined<…>"]
-symptom_regex: "^'.+?' this linker script is ignored.+?; multiple linker scripts defined.+?$"
+symptom_regex: "^'.+?' this linker script is ignored.*$"
 documented: false
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrWorker.cpp:3884"
 applies_to: {"tool": ["csolution"]}

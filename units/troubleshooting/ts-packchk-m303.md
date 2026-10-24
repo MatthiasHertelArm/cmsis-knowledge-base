@@ -8,7 +8,7 @@ tool: "packchk"
 severity: "error"
 code: "M303"
 symptoms: ["M303", "No package name found in the PDSC file. Add the <name> tag and provide the package name. For example: <name>MCU-Name_DFP</name>."]
-symptom_regex: "^No package name found in the PDSC file\\. Add the <name> tag and provide the package name\\. For example: <name>MCU\\-Name_DFP</name>\\.$"
+symptom_regex: "^No package name found in the PDSC file\\. Add the <name> tag and provide the$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/README.md"

@@ -8,7 +8,7 @@ tool: "svdconv"
 severity: "error"
 code: "M106"
 symptoms: ["M106", "Command '%NAME%' failed: %NUM%: %MSG%"]
-symptom_regex: "^Command '.+?' failed: .+?: .+?$"
+symptom_regex: "^Command '.+?' failed: .+?: .*$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/README.md"

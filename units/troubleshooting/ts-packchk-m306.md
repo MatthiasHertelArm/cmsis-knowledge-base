@@ -8,7 +8,7 @@ tool: "packchk"
 severity: "error"
 code: "M306"
 symptoms: ["M306", "No package description found in the PDSC file. Add the <description> tag and provide a descriptive text. For example: <description>Device Family Pack for  ...</description>."]
-symptom_regex: "^No package description found in the PDSC file\\. Add the <description> tag and provide a descriptive text\\. For example: <description>Device Family Pack for  \\.\\.\\.</description>\\.$"
+symptom_regex: "^No package description found in the PDSC file\\. Add the <description> tag$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/README.md"

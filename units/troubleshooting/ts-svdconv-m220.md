@@ -8,7 +8,7 @@ tool: "svdconv"
 severity: "warning"
 code: "M220"
 symptoms: ["M220", "C Code generation warning: %MSG%"]
-symptom_regex: "^C Code generation warning: .+?$"
+symptom_regex: "^C Code generation warning: .*$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/README.md"

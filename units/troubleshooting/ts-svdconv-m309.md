@@ -8,7 +8,7 @@ tool: "svdconv"
 severity: "error"
 code: "M309"
 symptoms: ["M309", "Field '%NAME%': Offset error: %NUM%"]
-symptom_regex: "^Field '.+?': Offset error: .+?$"
+symptom_regex: "^Field '.+?': Offset error: .*$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/README.md"

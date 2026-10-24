@@ -7,7 +7,7 @@ status: "draft"
 tool: "csolution"
 severity: "warning"
 symptoms: ["solution created for unknown tool: <…>"]
-symptom_regex: "^solution created for unknown tool: .+?$"
+symptom_regex: "^solution created for unknown tool: .*$"
 documented: false
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgr.cpp:1204"
 applies_to: {"tool": ["csolution"]}

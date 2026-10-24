@@ -7,7 +7,7 @@ status: "draft"
 tool: "csolution"
 severity: "warning"
 symptoms: ["<…>Component <…> uses unknown generator <…>"]
-symptom_regex: "^.+?Component .+? uses unknown generator .+?$"
+symptom_regex: "^.+?Component .+? uses unknown generator .*$"
 documented: false
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrCbuild.cpp:179"
 applies_to: {"tool": ["csolution"]}

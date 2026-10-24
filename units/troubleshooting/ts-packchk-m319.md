@@ -8,7 +8,7 @@ tool: "packchk"
 severity: "error"
 code: "M319"
 symptoms: ["M319", "'%TAG%': '%NAME%' already defined for '%TAG2%': '%NAME2%', see Line %LINE%"]
-symptom_regex: "^'.+?': '.+?' already defined for '.+?': '.+?', see Line .+?$"
+symptom_regex: "^'.+?': '.+?' already defined for '.+?': '.+?', see Line .*$"
 documented: false
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}

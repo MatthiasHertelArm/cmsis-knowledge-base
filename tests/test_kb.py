@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Tests fuer build_index, kb_lib und kb_server. Aufruf: python tests/test_kb.py (aus kb/)."""
-import asyncio, json, os, sqlite3, subprocess, sys, tempfile
+import asyncio, json, os, re, sqlite3, subprocess, sys, tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -89,6 +89,30 @@ if full.exists():
     check("Procedure-Body vollstaendig", proc["body"].strip() == src.split("---\n", 2)[2].strip())
     r = kb.search("debug sequences", budget=300)
     check("Token-Budget eingehalten", r["budget_used"] <= 300 or len(r["results"]) == 1, r["budget_used"])
+    # Symptom patterns: the search tests each against one line of tool output, so a pattern must compile
+    # and must not need a line break (neither the character nor the escape \n or \r).
+    rows = kb.db.execute("SELECT id, json_extract(meta,'$.symptom_regex') FROM nodes "
+                         "WHERE json_extract(meta,'$.symptom_regex') IS NOT NULL").fetchall()
+    bad = []
+    for nid, rx in rows:
+        try:
+            re.compile(rx)
+        except re.error as e:
+            bad.append(f"{nid}: {e}")
+    check("every symptom_regex compiles", rows and not bad, bad[:5])
+    multi = [nid for nid, rx in rows if re.search(r"[\r\n]|(?<!\\)(?:\\\\)*\\[nr]", rx)]
+    check("no symptom_regex spans two lines", not multi, multi[:5])
+
+    def exact(line):
+        return [x["id"] for x in kb.search(line)["results"] if x["exact_symptom"]]
+    r = exact("error csolution: component 'Compiler:CORE' not found in included packs\n  did you mean 'CMSIS-Compiler:CORE'?")
+    check("first line of a two-line message matches its unit", r[:1] == ["ts-csolution-not-found-in-included-packs"], r)
+    r = exact("error csolution: build-type '.Debug2' does not exist in solution")
+    check("message without its optional ending matches", r[:1] == ["ts-csolution-does-not-exist-in-solution"], r)
+    r = exact("error csolution: compiler undefined, use '--toolchain' option or add 'compiler: <value>' to yml input")
+    check("toolchain message has a unit", r[:1] == ["ts-csolution-compiler-undefined-use-toolchain-option-or-add-c"], r)
+    role = kb.get("ts-csolution-processing-context").get("meta", {}).get("role")
+    check("summary line carries role summary", role == "summary", role)
 
     async def mcp_roundtrip():
         from mcp.client.stdio import stdio_client, StdioServerParameters

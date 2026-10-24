@@ -8,7 +8,7 @@ tool: "packchk"
 severity: "error"
 code: "M511"
 symptoms: ["M511", "Xerxes reports: %MSG%"]
-symptom_regex: "^Xerxes reports: .+?$"
+symptom_regex: "^Xerxes reports: .*$"
 documented: false
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}

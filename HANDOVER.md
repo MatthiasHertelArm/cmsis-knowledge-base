@@ -325,3 +325,23 @@ what each stage cost), `release.yml` (`scripts/release_core.sh` for a version). 
 readers worked from was never written down; `stage2/errcat_prompt.md` now states it. Open: the first
 scheduled run will digest the open issues updated since 2 Oct that the readers never saw; review that
 pull request with the same care as the first batches.
+
+## Update 24 Oct 2026: a symptom pattern matches one line
+
+The extension tests every `symptom_regex` against one line of tool output at a time. Two testers' failed
+builds were answered with `ts-csolution-processing-context`, the summary line, instead of the unit of the
+error before it: `ts-csolution-not-found-in-included-packs` had a pattern with a line break and an obligatory
+`did you mean` hint, so it never matched, and `compiler undefined, …` had no unit at all.
+
+| Item | State |
+|---|---|
+| Patterns | `tools/errcat.py` builds the pattern from the message's first line (a real or an escaped newline ends it), lets a variable at the end of the line be empty (`.*`), and makes a part that csolution prints only on a condition (`cond ? "text" : ""`) optional. 74 of the 399 units changed their pattern: 56 a trailing variable, 14 packchk and svdconv messages of several lines cut to the first, 3 csolution messages with an optional ending, and the one with the line break. `symptoms` changed for that one only; titles, ids, cause and fix are unchanged |
+| New units | The toolchain messages csolution collects in `m_toolchainErrors` and prints at the end, and the schema checker's `schema check failed, verify syntax`, which it logs through a variable: `ts-csolution-compiler-undefined-use-toolchain-option-or-add-c`, `ts-csolution-no-toolchain-cmake-files-found-for`, `ts-csolution-no-compiler-registered-add-path-to-compiler-bin-`, `ts-csolution-add-path-to-compiler-bin-directory-with-environm`, `ts-csolution-schema-check-failed-verify-syntax`. Cause and fix read from the source (`stage2/errcat-out/csolution-c.json`, adopted into the manifest like the reader agents' files); draft, confidence high. 404 message units now |
+| `role: summary` | `ts-csolution-processing-context`, `ts-csolution-processing-target-sets-list-failed`, `ts-csolution-cproject-not-parsed-adding-context-failed`: the source prints each only after another error (the reasons are in `SUMMARY` in `errcat.py`). Not given: `processing contexts list failed` (also printed for a solution without contexts, with nothing before it), `failed to load and insert packs` (its details follow it), the RTE initialisation and pack-parsing messages (nothing before them) |
+| Check | `tests/test_kb.py`: every `symptom_regex` of the index compiles and none holds a line break; the testers' lines match their units; `processing context` carries the role |
+| Manifest | `ts-csolution-not-found-in-included-packs` keeps its analysis; its hash in `stage2/errcat-out.manifest.json` follows the shortened message, so the next run does not send it again |
+
+Still open: two csolution messages choose between two texts (`mlops: …` in ProjMgrMlops.cpp, `'device: Dname'` or
+`'board:' node … is deprecated` in ProjMgrYamlParser.cpp); their patterns still require both and never match.
+The issue digest `iss-devtools-1659` (compiler `LLVM`) matches `schema check failed, verify syntax` as well.
+

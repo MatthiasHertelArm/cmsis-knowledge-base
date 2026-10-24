@@ -8,7 +8,7 @@ tool: "packchk"
 severity: "error"
 code: "M310"
 symptoms: ["M310", "Filename mismatch (case sensitive):   PDSC name : '%PDSC%'   Filename  : '%SYSTEM%'"]
-symptom_regex: "^Filename mismatch \\(case sensitive\\):   PDSC name : '.+?'   Filename  : '.+?'$"
+symptom_regex: "^Filename mismatch \\(case sensitive\\):$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/README.md"

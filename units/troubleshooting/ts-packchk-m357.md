@@ -8,7 +8,7 @@ tool: "packchk"
 severity: "warning"
 code: "M357"
 symptoms: ["M357", "Config File '%NAME%', which gets copied to project, is also found in the include path to the original pack folder. Do not place config header files in the same directory as regular header files. See Line %LINE%"]
-symptom_regex: "^Config File '.+?', which gets copied to project, is also found in the include path to the original pack folder\\. Do not place config header files in the same directory as regular header files\\. See Line .+?$"
+symptom_regex: "^Config File '.+?', which gets copied to project, is also found in the include path to the original pack folder\\. Do not place config header files in the same directory as regular header files\\. See Line .*$"
 documented: false
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
 applies_to: {"tool": ["packchk"]}

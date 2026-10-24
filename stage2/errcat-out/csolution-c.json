@@ -1,0 +1,86 @@
+[
+ {
+  "id": "ts-csolution-compiler-undefined-use-toolchain-option-or-add-c",
+  "cause": "No compiler is set for the context: neither the cproject.yml, the csolution.yml, the target-type or build-type, a clayer.yml nor the `--toolchain` option gives `compiler:`, and cdefault.yml has none either, so csolution cannot choose a toolchain and the context fails. The message is printed once, after all contexts were processed. It ends with `, selectable values can be found in cbuild-idx.yml` when `select-compiler:` in the csolution.yml or cdefault.yml lists a compiler whose version range a registered toolchain meets; those compilers are then written under `select-compiler:` in the cbuild-idx.yml, and `csolution convert` exits with its code for an undefined compiler.",
+  "fix": "Add `compiler:` with AC6, GCC, IAR or CLANG, optionally with a version (`compiler: GCC`, `compiler: AC6@>=6.18.0`), to the csolution.yml (or to the cproject.yml, a target-type or build-type, or cdefault.yml), or pass `--toolchain <compiler>`. When the message names cbuild-idx.yml, take one of the values listed under `select-compiler:` there.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:1908-1931",
+   "tools/projmgr/src/ProjMgrWorker.cpp:3080-3102",
+   "tools/projmgr/src/ProjMgrWorker.cpp:6037-6064",
+   "tools/projmgr/src/ProjMgrWorker.cpp:6066-6091",
+   "tools/projmgr/src/ProjMgrCbuildIdx.cpp:84-91",
+   "tools/projmgr/src/ProjMgr.cpp:386-389",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:6669-6684"
+  ],
+  "confidence": "high",
+  "note": "Printed after the contexts were processed, so `processing context '…' failed` for an affected context can come before it. With `csolution setup` and a `select-compiler:` list in the csolution.yml, the first selectable compiler that is registered is used instead and the message does not appear."
+ },
+ {
+  "id": "ts-csolution-no-toolchain-cmake-files-found-for",
+  "cause": "csolution found no toolchain configuration file `<name>.<major>.<minor>.<patch>.cmake` for the named compiler in the compiler root, the folder named second: the one `CMSIS_COMPILER_ROOT` points to, else the `etc` folder of the CMSIS-Toolbox installation (empty when that folder does not exist). Either the name has no such file there (a `compiler:` value or a registered `<name>_TOOLCHAIN_<major>_<minor>_<patch>` environment variable with a name the installation does not support), `CMSIS_COMPILER_ROOT` points to a folder without these files, or a fixed version (`compiler: <name>@<version>`) is older than every file for that compiler.",
+  "fix": "Use a compiler name the installation has a toolchain file for (AC6, GCC, IAR or CLANG) in `compiler:` and in the `*_TOOLCHAIN_*` environment variables; if `CMSIS_COMPILER_ROOT` is set, point it to the CMSIS-Toolbox `etc` folder that holds the `*.cmake` toolchain files. For a fixed version, use one that is not older than the toolchain files there, or a minimum version (`<name>@>=<version>`).",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:5442-5473",
+   "tools/projmgr/src/ProjMgrWorker.cpp:5430-5440",
+   "tools/projmgr/src/ProjMgrUtils.cpp:199-212",
+   "tools/projmgr/src/ProjMgrWorker.cpp:1948-1951",
+   "tools/projmgr/src/ProjMgrWorker.cpp:5395-5411",
+   "tools/projmgr/src/ProjMgrWorker.cpp:5004-5019",
+   "libs/rteutils/src/VersionCmp.cpp:165-187",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:2158-2190",
+   "tools/projmgr/test/src/ProjMgrWorkerUnitTests.cpp:68-92"
+  ],
+  "confidence": "high",
+  "note": "Printed once, after the contexts were processed; the context itself goes on with the version from `compiler:`. `csolution list toolchains` prints it for a registered environment variable with an unknown name (unit test with UNKNOWN_TOOLCHAIN_1_2_3)."
+ },
+ {
+  "id": "ts-csolution-no-compiler-registered-add-path-to-compiler-bin-",
+  "cause": "No environment variable of the form `<name>_TOOLCHAIN_<major>_<minor>_<patch>=<path>` is set, so csolution knows no installed compiler. It reads these variables from its environment to find the compiler of a context and to list or select toolchains; the message is a warning, printed once at the end.",
+  "fix": "Set one variable per installed compiler to its `bin` directory in the environment csolution runs in, with the compiler's name (AC6, GCC, IAR or CLANG) and version, e.g. `AC6_TOOLCHAIN_6_18_0=<path to the compiler>/bin`; then run csolution again.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:5377-5393",
+   "tools/projmgr/src/ProjMgrWorker.cpp:1935-1946",
+   "tools/projmgr/src/ProjMgr.cpp:353-360",
+   "tools/projmgr/src/ProjMgrWorker.cpp:6037-6052",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:2071-2076",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:2079-2090"
+  ],
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "id": "ts-csolution-add-path-to-compiler-bin-directory-with-environm",
+  "cause": "Toolchains are registered through `<name>_TOOLCHAIN_<major>_<minor>_<patch>` environment variables, but none is set for the compiler the context uses: the name in the message, from `compiler:` or `--toolchain`. csolution goes on and prints this warning once at the end.",
+  "fix": "Set `<name>_TOOLCHAIN_<major>_<minor>_<patch>` for this compiler to its `bin` directory (the message names the variable's prefix), or select a compiler that is registered.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrWorker.cpp:1933-1946",
+   "tools/projmgr/src/ProjMgrWorker.cpp:5377-5393",
+   "tools/projmgr/src/ProjMgrWorker.cpp:6037-6052"
+  ],
+  "confidence": "high",
+  "note": "No unit test prints this message."
+ },
+ {
+  "id": "ts-csolution-schema-check-failed-verify-syntax",
+  "cause": "Before it reads a YAML file, csolution checks it against its schema (cdefault.yml, csolution.yml, cbuild-pack.yml, cproject.yml, clayer.yml, cbuild-set.yml, debug-adapters.yml, and the files it generates) and prints this message with the file, line and column of each problem. It appears when the file is not valid YAML (the position of the parse error), or when a node breaks the schema: a key that is not allowed at that place, a value that does not have the allowed form, or a node that fits none or not all of the alternatives the schema combines.",
+  "fix": "Open the file at the line and column printed in front of the message and correct it there: the YAML syntax (indentation, quoting, a key repeated in one map), the spelling and level of the key, or the form of the value. `-n` (`--no-check-schema`) skips the check; it does not make the input valid.",
+  "evidence": [
+   "tools/projmgr/src/ProjMgrYamlSchemaChecker.cpp:18-39",
+   "libs/ymlschemachecker/src/YmlSchemaValidator.cpp:47-54",
+   "libs/ymlschemachecker/src/YmlSchemaValidator.cpp:159-191",
+   "libs/ymlschemachecker/src/YmlSchemaErrorHandler.cpp:27-54",
+   "external/json-schema-validator.patch:56",
+   "external/json-schema-validator.patch:65",
+   "external/json-schema-validator.patch:116",
+   "external/json-schema-validator.patch:125",
+   "tools/projmgr/src/ProjMgrYamlParser.cpp:29-33",
+   "tools/projmgr/src/ProjMgrYamlEmitter.cpp:79-82",
+   "tools/projmgr/src/ProjMgr.cpp:57",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:1617-1636",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:5485-5498",
+   "tools/projmgr/test/src/ProjMgrUnitTests.cpp:7379-7395"
+  ],
+  "confidence": "high",
+  "note": "csolution logs each schema error through a variable (ProjMgrYamlSchemaChecker.cpp:36), so the text is not in tools/projmgr: it comes from the schema checker library (a YAML parse error) and from devtools' patch of json-schema-validator, which replaces the validator's messages for a pattern mismatch, an additional property and failed anyOf/oneOf/allOf combinations with this one. Other schema violations may still print the validator's own text."
+ }
+]

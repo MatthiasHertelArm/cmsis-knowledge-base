@@ -8,7 +8,7 @@ tool: "packchk"
 severity: "error"
 code: "M367"
 symptoms: ["M367", "Redefined %TYPE% '%NAME%' found, see Line %LINE%"]
-symptom_regex: "^Redefined .+? '.+?' found, see Line .+?$"
+symptom_regex: "^Redefined .+? '.+?' found, see Line .*$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/src/PackChk_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/packchk/README.md"

@@ -8,7 +8,7 @@ tool: "svdconv"
 severity: "warning"
 code: "M358"
 symptoms: ["M358", "AddressBlock of Peripheral '%NAME%' %TEXT% overlaps AddressBlock %TEXT2% in same peripheral %LINE%"]
-symptom_regex: "^AddressBlock of Peripheral '.+?' .+? overlaps AddressBlock .+? in same peripheral .+?$"
+symptom_regex: "^AddressBlock of Peripheral '.+?' .+? overlaps AddressBlock .+? in same peripheral .*$"
 documented: true
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/src/SVDConv_Msgs.cpp"
 doc_source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/svdconv/SVDConv/README.md"

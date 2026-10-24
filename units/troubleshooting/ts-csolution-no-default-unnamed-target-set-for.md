@@ -7,7 +7,7 @@ status: "draft"
 tool: "csolution"
 severity: "error"
 symptoms: ["mlops: <…>no default unnamed target set for '<…>'<…>target set '<…>' not found<…>"]
-symptom_regex: "^mlops: .+?no default unnamed target set for '.+?'.+?target set '.+?' not found.+?$"
+symptom_regex: "^mlops: .+?no default unnamed target set for '.+?'.+?target set '.+?' not found.*$"
 documented: false
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrMlops.cpp:85"
 applies_to: {"tool": ["csolution"]}

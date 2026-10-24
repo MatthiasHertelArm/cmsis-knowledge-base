@@ -7,7 +7,7 @@ status: "draft"
 tool: "csolution"
 severity: "error"
 symptoms: ["malformed access sequence: '<…>"]
-symptom_regex: "^malformed access sequence: '.+?$"
+symptom_regex: "^malformed access sequence: '.*$"
 documented: false
 source: "Open-CMSIS-Pack/devtools@6cb5a3c:tools/projmgr/src/ProjMgrWorker.cpp:3722"
 applies_to: {"tool": ["csolution"]}
